@@ -31,7 +31,7 @@ public final class JMetadata {
 
     /**
      * Constructor
-     * 
+     *
      * @throws IOException
      */
     public JMetadata() throws IOException {
@@ -61,7 +61,7 @@ public final class JMetadata {
 
     /**
      * Constructor
-     * 
+     *
      * @param jna_library_path path for JNA to find library to be loaded
      */
     public JMetadata(final String jna_library_path) {
@@ -71,7 +71,7 @@ public final class JMetadata {
 
     /**
      * Open a file and collect information about it (technical information and tags).
-     * 
+     *
      * @param file file to open
      * @return true if file was opened, false if file was not not opened
      */
@@ -82,7 +82,7 @@ public final class JMetadata {
     /**
      * Called by the garbage collector on an object when garbage collection determines that there are no more references to the object. A subclass overrides the finalize method to dispose of system
      * resources or to perform other cleanup.
-     * 
+     *
      * @throws Throwable
      */
     public void close() throws Throwable {
@@ -91,7 +91,7 @@ public final class JMetadata {
 
     /**
      * Open a file and collect information about it (technical information and tags).
-     * 
+     *
      * @param filename full name of the file to open
      * @return true if file was opened, false if file was not not opened
      */
@@ -101,7 +101,7 @@ public final class JMetadata {
 
     /**
      * Get the number of video stream of the file
-     * 
+     *
      * @return number of streams
      */
     public int getNumVideoStreams() {
@@ -110,7 +110,7 @@ public final class JMetadata {
 
     /**
      * Get the number of audio stream of the file
-     * 
+     *
      * @return number of streams
      */
     public int getNumAudioStreams() {
@@ -119,7 +119,7 @@ public final class JMetadata {
 
     /**
      * Get the number of subtitle stream of the file
-     * 
+     *
      * @return number of streams
      */
     public int getNumSubtitleStreams() {
@@ -128,21 +128,21 @@ public final class JMetadata {
 
     /**
      * Get the format use of the file
-     * 
+     *
      * @return format use
      */
     public String getFormat() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.Format, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FORMAT, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
     }
 
     /**
      * Get the duration of the media, in milliseconds
-     * 
+     *
      * @return duration in milliseconds, null if something goes wrong
      */
     public Double getDuration() {
         Double result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.Duration, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.DURATION, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Double.valueOf(duration);
         }
@@ -152,12 +152,12 @@ public final class JMetadata {
 
     /**
      * Get the size of the file in bytes
-     * 
+     *
      * @return size in bytes, null if something goes wrong
      */
     public Long getFileSize() {
         Long result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FileSize, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FILESIZE, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Long.valueOf(duration);
         }
@@ -167,21 +167,21 @@ public final class JMetadata {
 
     /**
      * Get the format version use of the file
-     * 
+     *
      * @return format version use
      */
     public String getFormatVersion() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.Format_Version, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FORMAT_VERSION, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
     }
 
     /**
      * Get the bit rate of all streams in bps
-     * 
+     *
      * @return bit rate in bps, null if something goes wrong
      */
     public Long getOverallBitRate() {
         Long result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.OverallBitRate, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.OVERALLBITRATE, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Long.valueOf(duration);
         }
@@ -191,11 +191,11 @@ public final class JMetadata {
 
     /**
      * Get informations from video streams
-     * 
+     *
      * @return list of video stream (empty if nothing found)
      */
     public List<JMetadataVideo> getVideoStreams() {
-        final List<JMetadataVideo> result = new ArrayList<JMetadataVideo>();
+        final List<JMetadataVideo> result = new ArrayList<>();
 
         final int numberVideoStream = getNumVideoStreams();
         for (int i = 0; i < numberVideoStream; i++) {
@@ -208,11 +208,11 @@ public final class JMetadata {
 
     /**
      * Get informations from audio streams
-     * 
+     *
      * @return list of audio stream (empty if nothing found)
      */
     public List<JMetadataAudio> getAudioStreams() {
-        final List<JMetadataAudio> result = new ArrayList<JMetadataAudio>();
+        final List<JMetadataAudio> result = new ArrayList<>();
 
         final int numberAudioStream = getNumAudioStreams();
         for (int i = 0; i < numberAudioStream; i++) {
@@ -225,7 +225,7 @@ public final class JMetadata {
 
     /**
      * Get informations from subtitle streams
-     * 
+     *
      * @return list of subtitle stream (empty if nothing found)
      */
     public List<JMetadataSubtitle> getSubtitleStreams() {

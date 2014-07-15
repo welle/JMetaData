@@ -2,13 +2,12 @@ package aka.jmetadata.main;
 
 /**
  * @author Charlotte
- * 
  */
 public final class JMetadataConstants {
 
     /**
-     * MediaInfo parameters
-     * 
+     * MediaInfo parameters.
+     *
      * General
      * Count : Number of objects available in this stream
      * Status : bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished)
@@ -291,32 +290,32 @@ public final class JMetadataConstants {
      * EPG_Positions_Begin
      * EPG_Positions_End
      */
-
     public static class General {
         /**
-         * Format used
+         * Format used.
          */
-        public static final String Format = "Format";
+        public static final String FORMAT = "Format";
         /**
-         * Version of this format
+         * Version of this format.
          */
-        public static final String Format_Version = "Format_Version";
+        public static final String FORMAT_VERSION = "Format_Version";
         /**
-         * File size in bytes
+         * File size in bytes.
          */
-        public static final String FileSize = "FileSize";
+        public static final String FILESIZE = "FileSize";
         /**
-         * Play time of the stream in ms
+         * Play time of the stream in ms.
          */
-        public static final String Duration = "Duration";
+        public static final String DURATION = "Duration";
         /**
-         * Bit rate of all streams in bps
+         * Bit rate of all streams in bps.
          */
-        public static final String OverallBitRate = "OverallBitRate";
+        public static final String OVERALLBITRATE = "OverallBitRate";
     }
 
     /**
      * Video
+     *
      * Count : Number of objects available in this stream
      * Status : bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished)
      * StreamCount : Number of streams of this kind available
@@ -1336,7 +1335,7 @@ public final class JMetadataConstants {
      * Chapters_Pos_Begin : Used by third-party developers to know about the beginning of the chapters list, to be used by Get(Stream_Menu, x, Pos), where Pos is an Integer between Chapters_Pos_Begin
      * and Chapters_Pos_End
      * Chapters_Pos_End : Used by third-party developers to know about the end of the chapters list (this position excluded)
-     * 
+     *
      */
 
 }

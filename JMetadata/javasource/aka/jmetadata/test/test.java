@@ -12,7 +12,7 @@ import aka.jmetadata.main.JMetadataVideo;
 public class test {
 
     public static void main(final String[] args) {
-        final JMetadata jMetadata = new JMetadata("d:/Jet/MediaSubProjects/JMetadata/lib/");
+        final JMetadata jMetadata = new JMetadata("d:/Projets persos/jmetadata/lib/");
 
         final File dir = new File("\\\\lilith\\qvideos\\films hd");
         // It is also possible to filter the list of returned files.

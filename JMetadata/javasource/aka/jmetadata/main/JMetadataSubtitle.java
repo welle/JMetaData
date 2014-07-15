@@ -19,7 +19,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Constructor
-     * 
+     *
      * @param mediaInfo herited from JMetadata
      * @param streamNumber streamNumber to parse
      */
@@ -30,7 +30,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Get the format use of the subtitle
-     * 
+     *
      * @return format use
      */
     public String getFormat() {
@@ -39,7 +39,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Get the Codec ID (found in some containers) use of the subtitle
-     * 
+     *
      * @return Codec ID
      */
     public String getCodecID() {
@@ -48,7 +48,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Get the Info about codec ID use of the subtitle
-     * 
+     *
      * @return Info about codec ID
      */
     public String getCodecIDInfo() {
@@ -57,7 +57,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Get the Name of the track of the subtitle
-     * 
+     *
      * @return Name of the track
      */
     public String getName() {
@@ -66,7 +66,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Get the Language use of the subtitle
-     * 
+     *
      * @return Language
      */
     public String getLanguage() {
@@ -75,7 +75,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Set if that track should be used if no language found matches the user preference.
-     * 
+     *
      * @return true if that track should be used if no language found matches the user preference.
      */
     public String isDefault() {
@@ -84,7 +84,7 @@ public final class JMetadataSubtitle {
 
     /**
      * Set if that track should be used if no language found matches the user preference.
-     * 
+     *
      * @return true if that track should be used if no language found matches the user preference.
      */
     public String isForced() {
