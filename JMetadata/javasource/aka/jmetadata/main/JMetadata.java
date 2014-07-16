@@ -7,8 +7,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import aka.jmetadata.main.constants.General;
+import aka.jmetadata.main.constants.InfoKind;
+import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
-import aka.jmetadata.main.mediainfo.MediaInfo.StreamKind;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OSHelperConstants.OS_ARCH;
@@ -27,6 +32,7 @@ import com.sun.jna.Platform;
  */
 public final class JMetadata {
 
+    @Nonnull
     private final MediaInfo mediaInfo;
 
     /**
@@ -62,10 +68,10 @@ public final class JMetadata {
     /**
      * Constructor
      *
-     * @param jna_library_path path for JNA to find library to be loaded
+     * @param jnaLibraryPath path for JNA to find library to be loaded
      */
-    public JMetadata(final String jna_library_path) {
-        System.setProperty("jna.library.path", jna_library_path);
+    public JMetadata(@Nonnull final String jnaLibraryPath) {
+        System.setProperty("jna.library.path", jnaLibraryPath);
         this.mediaInfo = new MediaInfo();
     }
 
@@ -75,7 +81,7 @@ public final class JMetadata {
      * @param file file to open
      * @return true if file was opened, false if file was not not opened
      */
-    public boolean open(final File file) {
+    public boolean open(@Nonnull final File file) {
         return this.mediaInfo.open(file);
     }
 
@@ -95,7 +101,7 @@ public final class JMetadata {
      * @param filename full name of the file to open
      * @return true if file was opened, false if file was not not opened
      */
-    public boolean open(final String filename) {
+    public boolean open(@Nonnull final String filename) {
         return this.mediaInfo.open(filename);
     }
 
@@ -131,8 +137,9 @@ public final class JMetadata {
      *
      * @return format use
      */
+    @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FORMAT, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.General, 0, General.FORMAT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -142,7 +149,7 @@ public final class JMetadata {
      */
     public Double getDuration() {
         Double result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.DURATION, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.General, 0, General.DURATION, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Double.valueOf(duration);
         }
@@ -157,7 +164,7 @@ public final class JMetadata {
      */
     public Long getFileSize() {
         Long result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FILESIZE, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.General, 0, General.FILESIZE, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Long.valueOf(duration);
         }
@@ -171,7 +178,7 @@ public final class JMetadata {
      * @return format version use
      */
     public String getFormatVersion() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.FORMAT_VERSION, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.General, 0, General.FORMAT_VERSION, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -181,7 +188,7 @@ public final class JMetadata {
      */
     public Long getOverallBitRate() {
         Long result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.General, 0, JMetadataConstants.General.OVERALLBITRATE, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.General, 0, General.OVERALLBITRATE, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Long.valueOf(duration);
         }

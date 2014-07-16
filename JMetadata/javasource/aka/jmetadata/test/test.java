@@ -20,7 +20,7 @@ public class test {
         final FilenameFilter filter = new FilenameFilter() {
             @Override
             public boolean accept(final File dir, final String name) {
-                return !name.startsWith(".");
+                return !name.startsWith(".") && name.endsWith(".avi");
             }
         };
         final File[] children = dir.listFiles(filter);

@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import aka.jmetadata.main.constants.InfoKind;
+import aka.jmetadata.main.constants.StreamKind;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OSHelperConstants.OS_ARCH;
 
@@ -31,12 +33,11 @@ public final class MediaInfo {
         LOGGER = Logger.getLogger(MediaInfo.class.getPackage().getName());
     }
 
-    static String libraryName;
+    private static String libraryName;
 
     // Internal stuff
     interface MediaInfoDLLInternal extends Library {
         MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, new FunctionMapper() {
-
             @Override
             public String getFunctionName(final NativeLibrary lib, final Method method) {
                 // e.g. MediaInfo_New(), MediaInfo_Open() ...
@@ -68,51 +69,6 @@ public final class MediaInfo {
     }
 
     private Pointer handlePointer;
-
-    /**
-     * Kind of Stream to get.
-     */
-    public enum StreamKind {
-        General, Video, Audio, Text, Chapters, Image, Menu;
-    }
-
-    // Enums
-    @SuppressWarnings("javadoc")
-    public enum InfoKind {
-        /**
-         * Unique name of parameter.
-         */
-        Name,
-        /**
-         * Value of parameter.
-         */
-        Text,
-        /**
-         * Unique name of measure unit of parameter.
-         */
-        Measure, Options,
-        /**
-         * Translated name of parameter.
-         */
-        Name_Text,
-        /**
-         * Translated name of measure unit.
-         */
-        Measure_Text,
-        /**
-         * More information about the parameter.
-         */
-        Info,
-        /**
-         * How this parameter is supported, could be N (No), B (Beta), R (Read only), W
-         * (Read/Write).
-         */
-        HowTo,
-        /**
-         * Domain of this piece of information.
-         */
-        Domain;
-    }
 
     /**
      * Constructor
@@ -231,7 +187,7 @@ public final class MediaInfo {
      *            the help...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public String get(final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind) {
+    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind) {
         return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);
     }
 

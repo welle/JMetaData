@@ -1,5 +1,10 @@
 package aka.jmetadata.main;
 
+import javax.annotation.Nonnull;
+
+import aka.jmetadata.main.constants.InfoKind;
+import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.constants.Text;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**
@@ -18,12 +23,12 @@ public final class JMetadataSubtitle {
     private final int streamNumber;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mediaInfo herited from JMetadata
      * @param streamNumber streamNumber to parse
      */
-    public JMetadataSubtitle(final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataSubtitle(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
         this.mediaInfo = mediaInfo;
         this.streamNumber = streamNumber;
     }
@@ -34,7 +39,7 @@ public final class JMetadataSubtitle {
      * @return format use
      */
     public String getFormat() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.Format, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Format, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -43,7 +48,7 @@ public final class JMetadataSubtitle {
      * @return Codec ID
      */
     public String getCodecID() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.CodecID, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CodecID, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -52,7 +57,7 @@ public final class JMetadataSubtitle {
      * @return Info about codec ID
      */
     public String getCodecIDInfo() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.CodecID_Info, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CodecID_Info, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -61,7 +66,7 @@ public final class JMetadataSubtitle {
      * @return Name of the track
      */
     public String getName() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.Title, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Title, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -70,7 +75,7 @@ public final class JMetadataSubtitle {
      * @return Language
      */
     public String getLanguage() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.Language, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Language, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -79,7 +84,7 @@ public final class JMetadataSubtitle {
      * @return true if that track should be used if no language found matches the user preference.
      */
     public String isDefault() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.Default, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Default, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -88,6 +93,6 @@ public final class JMetadataSubtitle {
      * @return true if that track should be used if no language found matches the user preference.
      */
     public String isForced() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Text, this.streamNumber, JMetadataConstants.Text.Forced, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Forced, InfoKind.Text, InfoKind.Name);
     }
 }

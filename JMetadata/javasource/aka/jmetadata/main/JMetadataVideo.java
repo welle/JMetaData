@@ -3,6 +3,9 @@ package aka.jmetadata.main;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import aka.jmetadata.main.constants.InfoKind;
+import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.constants.Video;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
 
@@ -39,7 +42,7 @@ public final class JMetadataVideo {
      */
     @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Format, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Format, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -49,7 +52,7 @@ public final class JMetadataVideo {
      */
     @Nullable
     public String getFormatInfo() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Format_Info, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Format_Info, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -59,7 +62,7 @@ public final class JMetadataVideo {
      */
     @Nullable
     public String getFormatProfile() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Format_Profile, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Format_Profile, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -69,7 +72,7 @@ public final class JMetadataVideo {
      */
     @Nullable
     public String getCodecID() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.CodecID, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.CodecID, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -80,7 +83,7 @@ public final class JMetadataVideo {
     @Nullable
     public Double getDuration() {
         Double result = null;
-        final String duration = this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Duration, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Duration, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Double.valueOf(duration);
         }
@@ -96,7 +99,7 @@ public final class JMetadataVideo {
     @Nullable
     public Long getBitRate() {
         Long result = null;
-        final String bitRate = this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.BitRate, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String bitRate = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.BitRate, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(bitRate)) {
             result = Long.valueOf(bitRate);
         }
@@ -112,7 +115,7 @@ public final class JMetadataVideo {
     @Nullable
     public Integer getWidth() {
         Integer result = null;
-        final String width = this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Width, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String width = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Width, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(width)) {
             result = Integer.valueOf(width);
         }
@@ -128,7 +131,7 @@ public final class JMetadataVideo {
     @Nullable
     public Integer getHeight() {
         Integer result = null;
-        final String height = this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Height, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String height = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Height, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(height)) {
             result = Integer.valueOf(height);
         }
@@ -144,7 +147,7 @@ public final class JMetadataVideo {
     @Nullable
     public Double getDisplayAspectRatio() {
         Double result = null;
-        final String aspectRatio = this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.DisplayAspectRatio, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String aspectRatio = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.DisplayAspectRatio, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(aspectRatio)) {
             result = Double.valueOf(aspectRatio);
         }
@@ -160,7 +163,7 @@ public final class JMetadataVideo {
     @Nullable
     public Double getFrameRate() {
         Double result = null;
-        final String frameRate = this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.FrameRate, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        final String frameRate = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.FrameRate, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(frameRate)) {
             result = Double.valueOf(frameRate);
         }
@@ -175,6 +178,6 @@ public final class JMetadataVideo {
      */
     @Nullable
     public String getLanguage() {
-        return this.mediaInfo.get(MediaInfo.StreamKind.Video, this.streamNumber, JMetadataConstants.Video.Language, MediaInfo.InfoKind.Text, MediaInfo.InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Language, InfoKind.Text, InfoKind.Name);
     }
 }
