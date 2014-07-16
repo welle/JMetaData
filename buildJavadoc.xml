@@ -22,9 +22,10 @@
     	
     <import file="classpath.xml" />
 
-    <path id="JMetadata.source">
-		<pathelement location="JMetadata/javasource/" />
-	</path>
+	<fileset id="javadoc" dir="JMetadata/javasource/">
+	    <exclude name="**/test/**"/>
+	    <include name="aka/**"/>
+    </fileset>  
 
 
 	<target name="javadoc">
@@ -38,14 +39,11 @@
 			source="1.7" 
 			linksource="false" 
 			classpathref="JMetadata.classpath"
-			sourcepathref="JMetadata.source"
 			packagenames="aka/**/*.*"
 			breakiterator="true" 
 			private="true" >
-
-			<doctitle><![CDATA[<h1>SharePlot ${version}</h1>]]></doctitle>
-			<bottom><![CDATA[<i>Copyright &#169; 2011 InveO sprl. All Rights Reserved.</i>]]></bottom>
-			<header><![CDATA[<b>SharePlot</b><br>v${version}]]></header>
+			<header><![CDATA[<b>JMetadata</b><br>]]></header>
+	    	<fileset refid="javadoc"/>
 			<link href="http://download.oracle.com/javase/7/docs/api/" />
 		</javadoc>
 	</target>
