@@ -1,5 +1,7 @@
 package aka.jmetadata.main.constants;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author Charlotte
  *
@@ -293,22 +295,27 @@ public final class General {
     /**
      * Format used.
      */
+    @Nonnull
     public static final String FORMAT = "Format";
     /**
      * Version of this format.
      */
+    @Nonnull
     public static final String FORMAT_VERSION = "Format_Version";
     /**
      * File size in bytes.
      */
+    @Nonnull
     public static final String FILESIZE = "FileSize";
     /**
      * Play time of the stream in ms.
      */
+    @Nonnull
     public static final String DURATION = "Duration";
     /**
      * Bit rate of all streams in bps.
      */
+    @Nonnull
     public static final String OVERALLBITRATE = "OverallBitRate";
 
     private General() {

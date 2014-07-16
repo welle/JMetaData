@@ -1,8 +1,9 @@
 package aka.jmetadata.main.constants;
 
 /**
- * @author Charlotte
+ * Kind of informations.
  *
+ * @author Charlotte
  */
 public enum InfoKind {
     /**
@@ -16,7 +17,11 @@ public enum InfoKind {
     /**
      * Unique name of measure unit of parameter.
      */
-    Measure, Options,
+    Measure,
+    /**
+     * Options.
+     */
+    Options,
     /**
      * Translated name of parameter.
      */

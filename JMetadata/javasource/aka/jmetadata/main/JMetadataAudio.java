@@ -1,5 +1,8 @@
 package aka.jmetadata.main;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import aka.jmetadata.main.constants.Audio;
 import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
@@ -18,73 +21,80 @@ import aka.swissknife.data.TextUtils;
  */
 public final class JMetadataAudio {
 
+    @Nonnull
     private final MediaInfo mediaInfo;
     private final int streamNumber;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mediaInfo herited from JMetadata
      * @param streamNumber streamNumber to parse
      */
-    public JMetadataAudio(final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataAudio(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
         this.mediaInfo = mediaInfo;
         this.streamNumber = streamNumber;
     }
 
     /**
-     * Get the format use of the audio
+     * Get the format use of the audio.
      *
      * @return format use
      */
+    @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Format, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the format info use of the audio
+     * Get the format info use of the audio.
      *
      * @return format info use
      */
+    @Nullable
     public String getFormatInfo() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Format_Info, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_INFO, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the profile of the format use of the audio
+     * Get the profile of the format use of the audio.
      *
      * @return profile format info use
      */
+    @Nullable
     public String getFormatProfile() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Format_Profile, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_PROFILE, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Codec ID (found in some containers) use of the audio
+     * Get the Codec ID (found in some containers) use of the audio.
      *
      * @return Codec ID
      */
+    @Nullable
     public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CodecID, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Hint/popular name for this codec ID use of the audio
+     * Get the Hint/popular name for this codec ID use of the audio.
      *
      * @return Hint/popular name for this codec ID
      */
+    @Nullable
     public String getCodecIDHint() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CodecID_HINT, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID_HINT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get Play time of the stream in ms
+     * Get Play time of the stream in ms.
      *
      * @return Play time of the stream in ms
      */
+    @Nullable
     public Double getDuration() {
         Double result = null;
-        final String duration = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Duration, InfoKind.Text, InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DURATION, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Double.valueOf(duration);
         }
@@ -93,13 +103,14 @@ public final class JMetadataAudio {
     }
 
     /**
-     * Get Bit rate in bps
+     * Get Bit rate in bps.
      *
      * @return Bit rate in bps
      */
+    @Nullable
     public Long getBitRate() {
         Long result = null;
-        final String bitRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.BitRate, InfoKind.Text, InfoKind.Name);
+        final String bitRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.BITRATE, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(bitRate)) {
             result = Long.valueOf(bitRate);
         }
@@ -108,13 +119,14 @@ public final class JMetadataAudio {
     }
 
     /**
-     * Get Number of channels
+     * Get Number of channels.
      *
      * @return Number of channels
      */
+    @Nullable
     public Integer getChannels() {
         Integer result = null;
-        final String channels = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Channels, InfoKind.Text, InfoKind.Name);
+        final String channels = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CHANNELS, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(channels)) {
             result = Integer.valueOf(channels);
         }
@@ -123,14 +135,16 @@ public final class JMetadataAudio {
     }
 
     /**
-     * Get Sampling Rate in KHz use of the audio
+     * Get Sampling Rate in KHz use of the audio.
      *
      * @return Sampling Rate in KHz
      */
+    @Nullable
     public Long getSamplingRate() {
         Long result = null;
-        String samplingRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.SamplingRate, InfoKind.Text, InfoKind.Name);
+        String samplingRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.SAMPLING_RATE, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(samplingRate)) {
+            assert samplingRate != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (samplingRate.contains(" ")) {
                 samplingRate = samplingRate.substring(0, samplingRate.indexOf(' ') - 1);
             }
@@ -143,12 +157,13 @@ public final class JMetadataAudio {
     }
 
     /**
-     * Get the Language use of the audio
+     * Get the Language use of the audio.
      *
      * @return Language
      */
+    @Nullable
     public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Language, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.LANGUAGE, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -156,17 +171,18 @@ public final class JMetadataAudio {
      *
      * @return true if that track should be used if no language found matches the user preference.
      */
+    @Nullable
     public String isDefault() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Default, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DEFAULT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
      * Set if that track should be used if no language found matches the user preference.
      *
-     * @return true if that track should be used if no language found matches the user preference.
+     * @return <code>true</code> if that track should be used if no language found matches the user preference.
      */
+    @Nullable
     public String isForced() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.Forced, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORCED, InfoKind.Text, InfoKind.Name);
     }
-
 }

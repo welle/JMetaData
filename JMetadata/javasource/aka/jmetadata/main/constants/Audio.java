@@ -1,5 +1,7 @@
 package aka.jmetadata.main.constants;
 
+import javax.annotation.Nonnull;
+
 /**
  * Audio
  * Count : Number of objects available in this stream
@@ -223,57 +225,70 @@ package aka.jmetadata.main.constants;
 
 public final class Audio {
     /**
-     * Number of streams of this kind available
+     * Number of streams of this kind available.
      */
-    public static final String StreamCount = "StreamCount";
+    @Nonnull
+    public static final String STREAMCOUNT = "StreamCount";
     /**
-     * Format used
+     * Format used.
      */
-    public static final String Format = "Format";
+    @Nonnull
+    public static final String FORMAT = "Format";
     /**
-     * Info about Format
+     * Info about Format.
      */
-    public static final String Format_Info = "Format/Info";
+    @Nonnull
+    public static final String FORMAT_INFO = "Format/Info";
     /**
-     * Profile of the Format
+     * Profile of the Format.
      */
-    public static final String Format_Profile = "Format_Profile";
+    @Nonnull
+    public static final String FORMAT_PROFILE = "Format_Profile";
     /**
-     * Codec ID (found in some containers)
+     * Codec ID (found in some containers).
      */
-    public static final String CodecID = "CodecID";
+    @Nonnull
+    public static final String CODEC_ID = "CodecID";
     /**
-     * Hint/popular name for this codec ID
+     * Hint/popular name for this codec ID.
      */
-    public static final String CodecID_HINT = "CodecID/Hint";
+    @Nonnull
+    public static final String CODEC_ID_HINT = "CodecID/Hint";
     /**
-     * Play time of the stream in ms
+     * Play time of the stream in ms.
      */
-    public static final String Duration = "Duration";
+    @Nonnull
+    public static final String DURATION = "Duration";
     /**
-     * Bit rate in bps
+     * Bit rate in bps.
      */
-    public static final String BitRate = "BitRate";
+    @Nonnull
+    public static final String BITRATE = "BitRate";
     /**
-     * Number of channels
+     * Number of channels.
      */
-    public static final String Channels = "Channel(s)";
+    @Nonnull
+    public static final String CHANNELS = "Channel(s)";
     /**
-     * Sampling Rate in KHz
+     * Sampling Rate in KHz.
      */
-    public static final String SamplingRate = "SamplingRate";
+    @Nonnull
+    public static final String SAMPLING_RATE = "SamplingRate";
     /**
-     * Language
+     * Language.
      */
-    public static final String Language = "Language/String";
+    @Nonnull
+    public static final String LANGUAGE = "Language/String";
     /**
      * Set if that track should be used if no language found matches the user preference.
      */
-    public static final String Default = "Default";
+    @Nonnull
+    public static final String DEFAULT = "Default";
     /**
      * Set if that track should be used if no language found matches the user preference.
      */
-    public static final String Forced = "Forced";
+    @Nonnull
+    public static final String FORCED = "Forced";
 
     private Audio() {
         // Singleton

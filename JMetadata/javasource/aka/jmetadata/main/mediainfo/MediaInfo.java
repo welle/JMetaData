@@ -35,8 +35,10 @@ public final class MediaInfo {
 
     private static String libraryName;
 
-    // Internal stuff
     interface MediaInfoDLLInternal extends Library {
+        /**
+         * Instance of the media info dll internal.
+         */
         MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, new FunctionMapper() {
             @Override
             public String getFunctionName(final NativeLibrary lib, final Method method) {
@@ -172,7 +174,8 @@ public final class MediaInfo {
      *            in string format ("Codec", "Width"...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final String parameter) {
+    @Nullable
+    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
         return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
     }
 
@@ -187,7 +190,8 @@ public final class MediaInfo {
      *            the help...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind) {
+    @Nullable
+    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter, @Nonnull final InfoKind infoKind) {
         return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);
     }
 
@@ -203,7 +207,8 @@ public final class MediaInfo {
      * @param searchKind Where to look for the parameter
      * @return a string about information you search, an empty string if there is a problem
      */
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind, final InfoKind searchKind) {
+    @Nullable
+    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter, @Nonnull final InfoKind infoKind, @Nonnull final InfoKind searchKind) {
         return MediaInfoDLLInternal.INSTANCE.Get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
     }
 
@@ -216,7 +221,8 @@ public final class MediaInfo {
      *            in integer format (first parameter, second parameter...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public String get(final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
+    @Nullable
+    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
         return get(streamKind, streamNumber, parameterIndex, InfoKind.Text);
     }
 
@@ -231,7 +237,8 @@ public final class MediaInfo {
      *            the help...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public String get(final StreamKind streamKind, final int streamNumber, final int parameterIndex, final InfoKind infoKind) {
+    @Nullable
+    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final int parameterIndex, @Nonnull final InfoKind infoKind) {
         return MediaInfoDLLInternal.INSTANCE.GetI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
     }
 
@@ -242,7 +249,7 @@ public final class MediaInfo {
      * @param streamKind Kind of Stream (general, video, audio...)
      * @return number of Streams of the given Stream kind
      */
-    public int getStreamCount(final StreamKind streamKind) {
+    public int getStreamCount(@Nonnull final StreamKind streamKind) {
         return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), -1);
     }
 
@@ -254,7 +261,7 @@ public final class MediaInfo {
      * @param streamNumber Stream number in this kind of Stream (first, second...)
      * @return number of Streams of the given Stream kind
      */
-    public int getStreamCount(final StreamKind streamKind, final int streamNumber) {
+    public int getStreamCount(@Nonnull final StreamKind streamKind, final int streamNumber) {
         return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
     }
 
@@ -264,7 +271,8 @@ public final class MediaInfo {
      * @param option The name of option
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
-    public String option(final String option) {
+    @Nullable
+    public String option(@Nonnull final String option) {
         return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString("")).toString();
     }
 
@@ -275,7 +283,8 @@ public final class MediaInfo {
      * @param value The value of option
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
-    public String option(final String option, final String value) {
+    @Nullable
+    public String option(@Nonnull final String option, @Nonnull final String value) {
         return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString(value)).toString();
     }
 
@@ -285,7 +294,8 @@ public final class MediaInfo {
      * @param option The name of option
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
-    public static String optionStatic(final String option) {
+    @Nullable
+    public static String optionStatic(@Nonnull final String option) {
         return MediaInfoDLLInternal.INSTANCE.Option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString("")).toString();
     }
 
@@ -296,7 +306,8 @@ public final class MediaInfo {
      * @param value The value of option
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
-    public static String optionStatic(final String option, final String value) {
+    @Nullable
+    public static String optionStatic(@Nonnull final String option, @Nonnull final String value) {
         return MediaInfoDLLInternal.INSTANCE.Option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(value)).toString();
     }
 

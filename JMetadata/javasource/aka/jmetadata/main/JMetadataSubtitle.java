@@ -1,6 +1,7 @@
 package aka.jmetadata.main;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
@@ -19,6 +20,7 @@ import aka.jmetadata.main.mediainfo.MediaInfo;
  */
 public final class JMetadataSubtitle {
 
+    @Nonnull
     private final MediaInfo mediaInfo;
     private final int streamNumber;
 
@@ -34,48 +36,53 @@ public final class JMetadataSubtitle {
     }
 
     /**
-     * Get the format use of the subtitle
+     * Get the format use of the subtitle.
      *
      * @return format use
      */
+    @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Format, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORMAT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Codec ID (found in some containers) use of the subtitle
+     * Get the Codec ID (found in some containers) use of the subtitle.
      *
      * @return Codec ID
      */
+    @Nullable
     public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CodecID, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Info about codec ID use of the subtitle
+     * Get the Info about codec ID use of the subtitle.
      *
      * @return Info about codec ID
      */
+    @Nullable
     public String getCodecIDInfo() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CodecID_Info, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID_INFO, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Name of the track of the subtitle
+     * Get the Name of the track of the subtitle.
      *
      * @return Name of the track
      */
+    @Nullable
     public String getName() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Title, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.TITLE, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Language use of the subtitle
+     * Get the Language use of the subtitle.
      *
      * @return Language
      */
+    @Nullable
     public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Language, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.LANGUAGE, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -83,8 +90,9 @@ public final class JMetadataSubtitle {
      *
      * @return true if that track should be used if no language found matches the user preference.
      */
+    @Nullable
     public String isDefault() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Default, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.DEFAULT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
@@ -92,7 +100,8 @@ public final class JMetadataSubtitle {
      *
      * @return true if that track should be used if no language found matches the user preference.
      */
+    @Nullable
     public String isForced() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.Forced, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORCED, InfoKind.Text, InfoKind.Name);
     }
 }

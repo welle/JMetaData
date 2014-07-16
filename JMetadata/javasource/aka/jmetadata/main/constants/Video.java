@@ -1,5 +1,7 @@
 package aka.jmetadata.main.constants;
 
+import javax.annotation.Nonnull;
+
 /**
  * Video
  *
@@ -255,53 +257,65 @@ package aka.jmetadata.main.constants;
 
 public final class Video {
     /**
-     * Number of streams of this kind available
+     * Number of streams of this kind available.
      */
-    public static final String StreamCount = "StreamCount";
+    @Nonnull
+    public static final String STREAMCOUNT = "StreamCount";
     /**
-     * Format used
+     * Format used.
      */
-    public static final String Format = "Format";
+    @Nonnull
+    public static final String FORMAT = "Format";
     /**
-     * Info about Format
+     * Info about Format.
      */
-    public static final String Format_Info = "Format/Info";
+    @Nonnull
+    public static final String FORMAT_INFO = "Format/Info";
     /**
-     * Profile of the Format
+     * Profile of the Format.
      */
-    public static final String Format_Profile = "Format_Profile";
+    @Nonnull
+    public static final String FORMAT_PROFILE = "Format_Profile";
     /**
-     * Codec ID (found in some containers)
+     * Codec ID (found in some containers).
      */
-    public static final String CodecID = "CodecID";
+    @Nonnull
+    public static final String CODEC_ID = "CodecID";
     /**
-     * Play time of the stream in ms
+     * Play time of the stream in ms.
      */
-    public static final String Duration = "Duration";
+    @Nonnull
+    public static final String DURATION = "Duration";
     /**
-     * Bit rate in bps
+     * Bit rate in bps.
      */
-    public static final String BitRate = "BitRate";
+    @Nonnull
+    public static final String BITRATE = "BitRate";
     /**
-     * Width (aperture size if present) in pixel
+     * Width (aperture size if present) in pixel.
      */
-    public static final String Width = "Width";
+    @Nonnull
+    public static final String WIDTH = "Width";
     /**
-     * Height (aperture size if present) in pixel
+     * Height (aperture size if present) in pixel.
      */
-    public static final String Height = "Height";
+    @Nonnull
+    public static final String HEIGHT = "Height";
     /**
-     * Display Aspect ratio
+     * Display Aspect ratio.
      */
-    public static final String DisplayAspectRatio = "DisplayAspectRatio";
+    @Nonnull
+    public static final String DISPLAY_ASPECT_RATIO = "DisplayAspectRatio";
     /**
-     * Frames per second
+     * Frames per second.
      */
-    public static final String FrameRate = "FrameRate";
+    @Nonnull
+    public static final String FRAME_RATE = "FrameRate";
     /**
-     * Language
+     * Language.
      */
-    public static final String Language = "Language/String";
+    @Nonnull
+    public static final String LANGUAGE = "Language/String";
 
     private Video() {
         // Singleton

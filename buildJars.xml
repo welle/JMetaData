@@ -43,8 +43,8 @@
         </tstamp>
         
     	<jar jarfile="${target.applications}/${project}.jar" basedir="${classes}"
-    	             includes="${pkg_base}/**" 
-    	             excludes="${pkg_base}/**/*_JUnitTest.*">
+    	             includes="${pkg_base}/**/" 
+    	             excludes="**/test/**">
         	<fileset dir="${project}/../lib/"
                      includes="libmediainfo.dylib, mediainfo.dll, mediainfo64.dll"
             />

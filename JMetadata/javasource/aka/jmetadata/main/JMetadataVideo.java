@@ -21,11 +21,12 @@ import aka.swissknife.data.TextUtils;
  */
 public final class JMetadataVideo {
 
+    @Nonnull
     private final MediaInfo mediaInfo;
     private final int streamNumber;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mediaInfo herited from JMetadata
      * @param streamNumber streamNumber to parse
@@ -36,54 +37,54 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get the format use of the video
+     * Get the format use of the video.
      *
      * @return format use
      */
     @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Format, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.FORMAT, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the format info use of the video
+     * Get the format info use of the video.
      *
      * @return format info use
      */
     @Nullable
     public String getFormatInfo() {
-        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Format_Info, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.FORMAT_INFO, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the profile of the format use of the video
+     * Get the profile of the format use of the video.
      *
      * @return profile format info use
      */
     @Nullable
     public String getFormatProfile() {
-        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Format_Profile, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.FORMAT_PROFILE, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the Codec ID (found in some containers) use of the video
+     * Get the Codec ID (found in some containers) use of the video.
      *
      * @return Codec ID
      */
     @Nullable
     public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.CodecID, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.CODEC_ID, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get Play time of the stream in ms
+     * Get Play time of the stream in ms.
      *
      * @return Play time of the stream in ms
      */
     @Nullable
     public Double getDuration() {
         Double result = null;
-        final String duration = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Duration, InfoKind.Text, InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.DURATION, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(duration)) {
             result = Double.valueOf(duration);
         }
@@ -92,14 +93,14 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get Bit rate in bps
+     * Get Bit rate in bps.
      *
      * @return Bit rate in bps
      */
     @Nullable
     public Long getBitRate() {
         Long result = null;
-        final String bitRate = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.BitRate, InfoKind.Text, InfoKind.Name);
+        final String bitRate = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.BITRATE, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(bitRate)) {
             result = Long.valueOf(bitRate);
         }
@@ -108,14 +109,14 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get Width (aperture size if present) in pixel
+     * Get Width (aperture size if present) in pixel.
      *
      * @return Width (aperture size if present) in pixel
      */
     @Nullable
     public Integer getWidth() {
         Integer result = null;
-        final String width = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Width, InfoKind.Text, InfoKind.Name);
+        final String width = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.WIDTH, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(width)) {
             result = Integer.valueOf(width);
         }
@@ -124,14 +125,14 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get Height (aperture size if present) in pixel
+     * Get Height (aperture size if present) in pixel.
      *
      * @return Height (aperture size if present) in pixel
      */
     @Nullable
     public Integer getHeight() {
         Integer result = null;
-        final String height = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Height, InfoKind.Text, InfoKind.Name);
+        final String height = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.HEIGHT, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(height)) {
             result = Integer.valueOf(height);
         }
@@ -140,14 +141,14 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get the Display Aspect ratio use of the video
+     * Get the Display Aspect ratio use of the video.
      *
      * @return Display Aspect ratio
      */
     @Nullable
     public Double getDisplayAspectRatio() {
         Double result = null;
-        final String aspectRatio = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.DisplayAspectRatio, InfoKind.Text, InfoKind.Name);
+        final String aspectRatio = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.DISPLAY_ASPECT_RATIO, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(aspectRatio)) {
             result = Double.valueOf(aspectRatio);
         }
@@ -156,14 +157,14 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get the Frames per second
+     * Get the Frames per second.
      *
      * @return Frames per second, null if something goes wrong
      */
     @Nullable
     public Double getFrameRate() {
         Double result = null;
-        final String frameRate = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.FrameRate, InfoKind.Text, InfoKind.Name);
+        final String frameRate = this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.FRAME_RATE, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(frameRate)) {
             result = Double.valueOf(frameRate);
         }
@@ -172,12 +173,12 @@ public final class JMetadataVideo {
     }
 
     /**
-     * Get the Language use of the video
+     * Get the Language use of the video.
      *
      * @return Language
      */
     @Nullable
     public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.Language, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Video, this.streamNumber, Video.LANGUAGE, InfoKind.Text, InfoKind.Name);
     }
 }

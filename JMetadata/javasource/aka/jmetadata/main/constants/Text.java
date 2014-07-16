@@ -1,5 +1,7 @@
 package aka.jmetadata.main.constants;
 
+import javax.annotation.Nonnull;
+
 /**
  * Text
  * Count : Count of objects available in this stream
@@ -198,37 +200,45 @@ package aka.jmetadata.main.constants;
 
 public final class Text {
     /**
-     * Number of streams of this kind available
+     * Number of streams of this kind available.
      */
-    public static final String StreamCount = "StreamCount";
+    @Nonnull
+    public static final String STREAMCOUNT = "StreamCount";
     /**
-     * Format used
+     * Format used.
      */
-    public static final String Format = "Format";
+    @Nonnull
+    public static final String FORMAT = "Format";
     /**
-     * Codec ID (found in some containers)
+     * Codec ID (found in some containers).
      */
-    public static final String CodecID = "CodecID";
+    @Nonnull
+    public static final String CODEC_ID = "CodecID";
     /**
-     * Info about codec ID
+     * Info about codec ID.
      */
-    public static final String CodecID_Info = "CodecID/Info";
+    @Nonnull
+    public static final String CODEC_ID_INFO = "CodecID/Info";
     /**
-     * Name of the track
+     * Name of the track.
      */
-    public static final String Title = "Title";
+    @Nonnull
+    public static final String TITLE = "Title";
     /**
-     * Language
+     * Language.
      */
-    public static final String Language = "Language/String";
+    @Nonnull
+    public static final String LANGUAGE = "Language/String";
     /**
      * Set if that track should be used if no language found matches the user preference.
      */
-    public static final String Default = "Default";
+    @Nonnull
+    public static final String DEFAULT = "Default";
     /**
      * Set if that track should be used if no language found matches the user preference.
      */
-    public static final String Forced = "Forced";
+    @Nonnull
+    public static final String FORCED = "Forced";
 
     private Text() {
         // Singleton

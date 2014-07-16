@@ -13,34 +13,43 @@ import javax.annotation.Nullable;
 import aka.jmetadata.main.constants.General;
 import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OSHelperConstants.OS_ARCH;
 
+import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 
 /**
  * A test for the various media information functions.
  * <p>
  * For regular media files (like ".mpg" or ".avi") the track information is available after the media has been parsed (or played).
+ * </p>
  * <p>
  * For DVD media files (like ".iso" files) the track information is not available after the media has been parsed, a video output must have been created, and even then the video track width/height
  * might not be available until a short time later.
+ * </p>
  * <p>
  * In all cases, the other functions for title, video, audio and chapter descriptions require that a video output has been created before they return valid information.
+ * </p>
+ *
+ * @author Charlotte
  */
 public final class JMetadata {
 
     @Nonnull
     private final MediaInfo mediaInfo;
+    private static final int BUF_SIZE = 1024;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @throws IOException
+     * @throws IOException if mediainfo library could not be loaded.
+     * @throws LibNotfoundException if no mediainfo library could be found.
      */
-    public JMetadata() throws IOException {
+    public JMetadata() throws IOException, LibNotfoundException {
         String libraryName = null;
 
         if (Platform.isWindows()) {
@@ -52,21 +61,22 @@ public final class JMetadata {
         } else if (Platform.isMac()) {
             libraryName = "libmediainfo.dylib";
         } else {
-            // TODO add linux lib
+            // libmediainfo for Linux depends on libzen
+            NativeLibrary.getInstance("zen");
+//            libraryName = "libmediainfo.dylib";
         }
 
-        // libmediainfo for Linux depends on libzen
-        if (!Platform.isWindows() && !Platform.isMac()) {
-//                NativeLibrary.getInstance("zen");
+        if (TextUtils.isEmpty(libraryName)) {
+            throw new LibNotfoundException();
         }
 
-        loadJarDll(libraryName);
-
+        assert libraryName != null : "As LibNotfoundException was not throwed, it should not be possible.";
+        loadDLL(libraryName);
         this.mediaInfo = new MediaInfo();
     }
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param jnaLibraryPath path for JNA to find library to be loaded
      */
@@ -79,15 +89,15 @@ public final class JMetadata {
      * Open a file and collect information about it (technical information and tags).
      *
      * @param file file to open
-     * @return true if file was opened, false if file was not not opened
+     * @return <code>true</code> if file was opened
      */
     public boolean open(@Nonnull final File file) {
         return this.mediaInfo.open(file);
     }
 
     /**
-     * Called by the garbage collector on an object when garbage collection determines that there are no more references to the object. A subclass overrides the finalize method to dispose of system
-     * resources or to perform other cleanup.
+     * Called by the garbage collector on an object when garbage collection determines that there are no more references to the object. <br>
+     * A subclass overrides the finalize method to dispose of system resources or to perform other cleanup.
      *
      * @throws Throwable
      */
@@ -106,7 +116,7 @@ public final class JMetadata {
     }
 
     /**
-     * Get the number of video stream of the file
+     * Get the number of video stream of the file.
      *
      * @return number of streams
      */
@@ -115,7 +125,7 @@ public final class JMetadata {
     }
 
     /**
-     * Get the number of audio stream of the file
+     * Get the number of audio stream of the file.
      *
      * @return number of streams
      */
@@ -124,7 +134,7 @@ public final class JMetadata {
     }
 
     /**
-     * Get the number of subtitle stream of the file
+     * Get the number of subtitle stream of the file.
      *
      * @return number of streams
      */
@@ -133,7 +143,7 @@ public final class JMetadata {
     }
 
     /**
-     * Get the format use of the file
+     * Get the format use of the file.
      *
      * @return format use
      */
@@ -143,10 +153,11 @@ public final class JMetadata {
     }
 
     /**
-     * Get the duration of the media, in milliseconds
+     * Get the duration of the media, in milliseconds.
      *
-     * @return duration in milliseconds, null if something goes wrong
+     * @return duration in milliseconds
      */
+    @Nullable
     public Double getDuration() {
         Double result = null;
         final String duration = this.mediaInfo.get(StreamKind.General, 0, General.DURATION, InfoKind.Text, InfoKind.Name);
@@ -158,10 +169,11 @@ public final class JMetadata {
     }
 
     /**
-     * Get the size of the file in bytes
+     * Get the size of the file in bytes.
      *
-     * @return size in bytes, null if something goes wrong
+     * @return size in bytes
      */
+    @Nullable
     public Long getFileSize() {
         Long result = null;
         final String duration = this.mediaInfo.get(StreamKind.General, 0, General.FILESIZE, InfoKind.Text, InfoKind.Name);
@@ -173,19 +185,21 @@ public final class JMetadata {
     }
 
     /**
-     * Get the format version use of the file
+     * Get the format version use of the file.
      *
      * @return format version use
      */
+    @Nullable
     public String getFormatVersion() {
         return this.mediaInfo.get(StreamKind.General, 0, General.FORMAT_VERSION, InfoKind.Text, InfoKind.Name);
     }
 
     /**
-     * Get the bit rate of all streams in bps
+     * Get the bit rate of all streams in bps.
      *
-     * @return bit rate in bps, null if something goes wrong
+     * @return bit rate in bps
      */
+    @Nullable
     public Long getOverallBitRate() {
         Long result = null;
         final String duration = this.mediaInfo.get(StreamKind.General, 0, General.OVERALLBITRATE, InfoKind.Text, InfoKind.Name);
@@ -197,10 +211,11 @@ public final class JMetadata {
     }
 
     /**
-     * Get informations from video streams
+     * Get informations from video streams.
      *
-     * @return list of video stream (empty if nothing found)
+     * @return list of video stream
      */
+    @Nonnull
     public List<JMetadataVideo> getVideoStreams() {
         final List<JMetadataVideo> result = new ArrayList<>();
 
@@ -214,10 +229,11 @@ public final class JMetadata {
     }
 
     /**
-     * Get informations from audio streams
+     * Get informations from audio streams.
      *
-     * @return list of audio stream (empty if nothing found)
+     * @return list of audio stream
      */
+    @Nonnull
     public List<JMetadataAudio> getAudioStreams() {
         final List<JMetadataAudio> result = new ArrayList<>();
 
@@ -231,10 +247,11 @@ public final class JMetadata {
     }
 
     /**
-     * Get informations from subtitle streams
+     * Get informations from subtitle streams.
      *
-     * @return list of subtitle stream (empty if nothing found)
+     * @return list of subtitle stream
      */
+    @Nonnull
     public List<JMetadataSubtitle> getSubtitleStreams() {
         final List<JMetadataSubtitle> result = new ArrayList<JMetadataSubtitle>();
 
@@ -247,9 +264,9 @@ public final class JMetadata {
         return result;
     }
 
-    private void loadJarDll(final String name) throws IOException {
+    private void loadDLL(@Nonnull final String name) throws IOException {
         final InputStream in = getClass().getClassLoader().getResourceAsStream(name);
-        final byte[] buffer = new byte[1024];
+        final byte[] buffer = new byte[BUF_SIZE];
         int read = -1;
         final File temp = new File(new File(System.getProperty("java.io.tmpdir")), name);
         final FileOutputStream fos = new FileOutputStream(temp);
