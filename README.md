@@ -10,6 +10,8 @@ You can either let the JMetaData lib load its own dll or use yours.
 
 In the class test.java you'll find a comprehensive example of how to use it.
 
+Javadoc is available in bitbucket source folders.
+
 ### Dependencies ###
 
 * [JNA v3.0.9](https://github.com/twall/jna)
