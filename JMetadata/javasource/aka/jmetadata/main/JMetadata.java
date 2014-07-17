@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -265,18 +267,29 @@ public final class JMetadata {
     }
 
     private void loadDLL(@Nonnull final String name) throws IOException {
-        final InputStream in = getClass().getClassLoader().getResourceAsStream(name);
-        final byte[] buffer = new byte[BUF_SIZE];
-        int read = -1;
-        final File temp = new File(new File(System.getProperty("java.io.tmpdir")), name);
-        final FileOutputStream fos = new FileOutputStream(temp);
+        try {
+            System.loadLibrary(name);
+        } catch (final UnsatisfiedLinkError e) {
+            // have to use a stream
+            final InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);
+            // always write to different location
+            final String tempDir = System.getProperty("java.io.tmpdir") + "/" + ("" + new Date().getTime()) + "/lib/";
+            final File dir = new File(tempDir);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
 
-        while ((read = in.read(buffer)) != -1) {
-            fos.write(buffer, 0, read);
+            final File fileOut = new File(tempDir + name);
+            final OutputStream out = new FileOutputStream(fileOut);
+            int read = -1;
+            final byte[] buffer = new byte[BUF_SIZE];
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
+            in.close();
+            out.close();
+            System.setProperty("jna.library.path", tempDir);
+            System.load(fileOut.toString());
         }
-        fos.close();
-        in.close();
-
-        System.load(temp.getAbsolutePath());
     }
 }
