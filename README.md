@@ -2,7 +2,9 @@
 
 ## Quick summary ##
 
-JmetaData is a wrapper using mediainfo lib to collect video metadatas. Mediainfo DLL are contained in main jar and will be extracted to system temp directory when calling main constructor.
+JmetaData is a wrapper using mediainfo lib to collect video metadatas. 
+
+You can either let the JMetaData lib load its own dll or use yours.
 
 ## How to use it ##
 
