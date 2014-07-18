@@ -6,7 +6,7 @@ JmetaData is a wrapper using mediainfo lib to collect video metadatas.
 
 You can either let the JMetaData lib load its own dll or use yours.
 
-Current version support windows 32/64 bits and mac OS. Linux is not currently supported
+Current version support windows 32/64 bits and mac OS. Linux is not currently supported.
 
 ## How to use it ##
 
