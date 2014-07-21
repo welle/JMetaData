@@ -289,7 +289,7 @@ import javax.annotation.Nonnull;
  *
  * @author Charlotte
  */
-public final class General {
+public final class Commons {
     /**
      * Format used.
      */
@@ -315,6 +315,11 @@ public final class General {
      */
     @Nonnull
     public static final String OVERALLBITRATE = "OverallBitRate";
+    /**
+     * Number of streams of this kind available.
+     */
+    @Nonnull
+    public static final String STREAMCOUNT = "StreamCount";
     /**
      * Stream type name.
      */
@@ -811,7 +816,7 @@ public final class General {
     @Nonnull
     public static final String ENCODED_LIBRARY_SETTINGS = "Encoded_Library_Settings";
 
-    private General() {
+    private Commons() {
         // Singleton
     }
 }
