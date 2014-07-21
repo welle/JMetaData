@@ -6,9 +6,11 @@ JmetaData is a wrapper using mediainfo lib to collect video metadatas.
 
 You can either let the JMetaData lib load its own dll or use yours.
 
+Current version support windows 32/64 bits and mac OS. Linux is not currently supported.
+
 ## How to use it ##
 
-In the class test.java you'll find a comprehensive example of how to use it.
+In the class Examples.java you'll find a comprehensive example of how to use it.
 
 Javadoc is available in bitbucket source folders.
 
