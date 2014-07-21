@@ -68,34 +68,34 @@ import javax.annotation.Nonnull;
  * Codec_Settings_Law : Deprecated, do not use in new projects
  * Codec_Settings_ITU : Deprecated, do not use in new projects
  * Duration : Play time of the stream
- * Duration/String : Play time in format : XXx YYy only, YYy omited if zero
- * Duration/String1 : Play time in format : HHh MMmn SSs MMMms, XX omited if zero
- * Duration/String2 : Play time in format : XXx YYy only, YYy omited if zero
+ * Duration/String : Play time in format : XXx YYy only, YYy omitted if zero
+ * Duration/String1 : Play time in format : HHh MMmn SSs MMMms, XX omitted if zero
+ * Duration/String2 : Play time in format : XXx YYy only, YYy omitted if zero
  * Duration/String3 : Play time in format : HH:MM:SS.MMM
  * Duration_FirstFrame : Duration of the first frame if it is longer than others, in ms
- * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
- * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
- * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
+ * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
+ * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omitted if zero
+ * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
  * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM
  * Duration_LastFrame : Duration of the last frame if it is longer than others, in ms
- * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
- * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
- * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
+ * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
+ * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omitted if zero
+ * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
  * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM
  * Source_Duration : Source Play time of the stream
- * Source_Duration/String : Source Play time in format : XXx YYy only, YYy omited if zero
- * Source_Duration/String1 : Source Play time in format : HHh MMmn SSs MMMms, XX omited if zero
- * Source_Duration/String2 : Source Play time in format : XXx YYy only, YYy omited if zero
+ * Source_Duration/String : Source Play time in format : XXx YYy only, YYy omitted if zero
+ * Source_Duration/String1 : Source Play time in format : HHh MMmn SSs MMMms, XX omitted if zero
+ * Source_Duration/String2 : Source Play time in format : XXx YYy only, YYy omitted if zero
  * Source_Duration/String3 : Source Play time in format : HH:MM:SS.MMM
  * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in ms
- * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
- * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
- * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
+ * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
+ * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omitted if zero
+ * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
  * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM
  * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in ms
- * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
- * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
- * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
+ * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
+ * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omitted if zero
+ * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omitted if zero
  * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM
  * BitRate_Mode : Bit rate mode (VBR, CBR)
  * BitRate_Mode/String : Bit rate mode (Constant, Variable)
@@ -222,7 +222,6 @@ import javax.annotation.Nonnull;
  * Tagged_Date : UTC time that the tags were done for this item.
  * Encryption
  */
-
 public final class Audio {
     /**
      * Number of streams of this kind available.
