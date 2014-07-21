@@ -291,136 +291,6 @@ import javax.annotation.Nonnull;
  */
 public final class General {
     /**
-     * Format used.
-     */
-    @Nonnull
-    public static final String FORMAT = "Format";
-    /**
-     * Version of this format.
-     */
-    @Nonnull
-    public static final String FORMAT_VERSION = "Format_Version";
-    /**
-     * File size in bytes.
-     */
-    @Nonnull
-    public static final String FILESIZE = "FileSize";
-    /**
-     * Play time of the stream in ms.
-     */
-    @Nonnull
-    public static final String DURATION = "Duration";
-    /**
-     * Bit rate of all streams in bps.
-     */
-    @Nonnull
-    public static final String OVERALLBITRATE = "OverallBitRate";
-    /**
-     * Stream type name.
-     */
-    @Nonnull
-    public static final String STREAMKIND = "StreamKind";
-    /**
-     * Stream type name.
-     */
-    @Nonnull
-    public static final String STREAM_KIND_STRING = "StreamKind/String";
-    /**
-     * Number of the stream (base=0).
-     */
-    @Nonnull
-    public static final String STREAM_KIND_ID = "StreamKindID";
-    /**
-     * When multiple streams, number of the stream (base=1).
-     */
-    @Nonnull
-    public static final String STREAM_KIND_POS = "StreamKindPos";
-    /**
-     * Stream order in the file, whatever is the kind of stream (base=0).
-     */
-    @Nonnull
-    public static final String STREAMORDER = "StreamOrder";
-    /**
-     * The ID for this stream in this file.
-     */
-    @Nonnull
-    public static final String ID = "ID";
-    /**
-     * The ID for this stream in this file.
-     */
-    @Nonnull
-    public static final String ID_STRING = "ID/String";
-    /**
-     * The unique ID for this stream, should be copied with stream copy.
-     */
-    @Nonnull
-    public static final String UNIQUE_ID = "UniqueID";
-    /**
-     * The unique ID for this stream, should be copied with stream copy.
-     */
-    @Nonnull
-    public static final String UNIQUE_ID_STRING = "UniqueID/String";
-    /**
-     * The menu ID for this stream in this file.
-     */
-    @Nonnull
-    public static final String MENUID = "MenuID";
-    /**
-     * The menu ID for this stream in this file.
-     */
-    @Nonnull
-    public static final String MENUID_STRING = "MenuID/String";
-    /**
-     * Number of general streams.
-     */
-    @Nonnull
-    public static final String GENERALCOUNT = "GeneralCount";
-    /**
-     * Number of video streams.
-     */
-    @Nonnull
-    public static final String VIDEOCOUNT = "VideoCount";
-    /**
-     * Number of audio streams.
-     */
-    @Nonnull
-    public static final String AUDIOCOUNT = "AudioCount";
-    /**
-     * Number of text streams.
-     */
-    @Nonnull
-    public static final String TEXTCOUNT = "TextCount";
-    /**
-     * Number of chapters streams.
-     */
-    @Nonnull
-    public static final String CHAPTERSCOUNT = "ChaptersCount";
-    /**
-     * Number of image streams.
-     */
-    @Nonnull
-    public static final String IMAGECOUNT = "ImageCount";
-    /**
-     * Number of menu streams.
-     */
-    @Nonnull
-    public static final String MENUCOUNT = "MenuCount";
-    /**
-     * Video Codecs in this file, separated by /.
-     */
-    @Nonnull
-    public static final String VIDEO_FORMAT_LIST = "Video_Format_List";
-    /**
-     * Video Codecs in this file with popular name (hint), separated by /.
-     */
-    @Nonnull
-    public static final String VIDEO_FORMAT_WITH_HINT_LIST = "Video_Format_WithHint_Lis";
-    /**
-     * Video languages in this file, full names, separated by /.
-     */
-    @Nonnull
-    public static final String VIDEO_LANGUAGE_LIST = "Video_Language_List";
-    /**
      * Audio Codecs in this file,separated by /.
      */
     @Nonnull
@@ -436,20 +306,10 @@ public final class General {
     @Nonnull
     public static final String AUDIO_LANGUAGE_LIST = "Audio_Language_List";
     /**
-     * Text Codecs in this file, separated by /.
+     * Number of audio streams.
      */
     @Nonnull
-    public static final String TEXT_FORMAT_LIST = "Text_Format_List";
-    /**
-     * Text Codecs in this file with popular name (hint),separated by /.
-     */
-    @Nonnull
-    public static final String TEXT_FORMAT_WITH_HINT_LIST = "Text_Format_WithHint_List";
-    /**
-     * Text languages in this file, separated by /.
-     */
-    @Nonnull
-    public static final String TEXT_LANGUAGE_LIST = "Text_Language_List";
+    public static final String AUDIOCOUNT = "AudioCount";
     /**
      * Chapters Codecs in this file, separated by /.
      */
@@ -466,135 +326,125 @@ public final class General {
     @Nonnull
     public static final String CHAPTERS_LANGUAGE_LIST = "Chapters_Language_List";
     /**
-     * Image Codecs in this file, separated by /.
+     * Number of chapters streams.
      */
     @Nonnull
-    public static final String IMAGE_FORMAT_LIST = "Image_Format_List";
-    /**
-     * Image Codecs in this file with popular name (hint),separated by /.
-     */
-    @Nonnull
-    public static final String IMAGE_FORMAT_WITH_HINT_LIST = "Image_Format_WithHint_Lis";
-    /**
-     * Image languages in this file, separated by /.
-     */
-    @Nonnull
-    public static final String IMAGE_LANGUAGE_LIST = "Image_Language_List";
-    /**
-     * Menu Codecs in this file, separated by /.
-     */
-    @Nonnull
-    public static final String MENU_FORMAT_LIST = "Menu_Format_List";
-    /**
-     * Menu Codecs in this file with popular name (hint),separated by /.
-     */
-    @Nonnull
-    public static final String MENU_FORMAT_WITH_HINT_LIST = "Menu_Format_WithHint_List";
-    /**
-     * Menu languages in this file, separated by /.
-     */
-    @Nonnull
-    public static final String MENU_LANGUAGE_LIST = "Menu_Language_List";
-    /**
-     * Complete name (Folder+Name+Extension).
-     */
-    @Nonnull
-    public static final String COMPLETE_NAME = "CompleteName";
-    /**
-     * Folder name only.
-     */
-    @Nonnull
-    public static final String FOLDER_NAME = "FolderName";
-    /**
-     * File name only.
-     */
-    @Nonnull
-    public static final String FILE_NAME = "FileName";
-    /**
-     * File extension only.
-     */
-    @Nonnull
-    public static final String FILE_EXTENSION = "FileExtension";
-    /**
-     * Info about this Format.
-     */
-    @Nonnull
-    public static final String FORMAT_INFO = "Format/Info";
-    /**
-     * Link to a description of this format.
-     */
-    @Nonnull
-    public static final String FORMAT_URL = "Format/Url";
-    /**
-     * Known extensions of this format.
-     */
-    @Nonnull
-    public static final String FORMAT_EXTENSIONS = "Format/Extensions";
-    /**
-     * Commercial name used by vendor for theses settings or Format field if there is no difference.
-     */
-    @Nonnull
-    public static final String FORMAT_COMMERCIAL = "Format_Commercial";
-    /**
-     * Commercial name used by vendor for theses settings if there is one.
-     */
-    @Nonnull
-    public static final String FORMAT_COMMERCIAL_IF_ANY = "Format_Commercial_IfAny";
-    /**
-     * Profile of the Format.
-     */
-    @Nonnull
-    public static final String FORMAT_PROFILE = "Format_Profile";
-    /**
-     * Compression method used.
-     */
-    @Nonnull
-    public static final String FORMAT_COMPRESSION = "Format_Compression";
-    /**
-     * Settings needed for decoder used.
-     */
-    @Nonnull
-    public static final String FORMAT_SETTINGS = "Format_Settings";
-    /**
-     * Internet Media Type (aka MIME Type, Content-Type).
-     */
-    @Nonnull
-    public static final String INTERNET_MEDIA_TYPE = "InternetMediaType";
+    public static final String CHAPTERSCOUNT = "ChaptersCount";
     /**
      * Codec ID (final found in some containers).
      */
     @Nonnull
     public static final String CODEC_ID = "CodecID";
     /**
-     * Codec ID (final found in some containers).
+     * Manual description given by the container.
      */
     @Nonnull
-    public static final String CODEC_ID_STRING = "CodecID/String";
-    /**
-     * Info about this codec.
-     */
-    @Nonnull
-    public static final String CODEC_ID_INFO = "CodecID/Info";
+    public static final String CODEC_ID_DESCRIPTION = "CodecID_Description";
     /**
      * A hint/popular name for this codec.
      */
     @Nonnull
     public static final String CODEC_ID_HINT = "CodecID/Hint";
     /**
+     * Info about this codec.
+     */
+    @Nonnull
+    public static final String CODEC_ID_INFO = "CodecID/Info";
+    /**
+     * Codec ID (final found in some containers).
+     */
+    @Nonnull
+    public static final String CODEC_ID_STRING = "CodecID/String";
+    /**
      * A link to more details about this codec ID.
      */
     @Nonnull
     public static final String CODEC_ID_URL = "CodecID/Url";
     /**
-     * Manual description given by the container.
+     * Complete name (Folder+Name+Extension).
      */
     @Nonnull
-    public static final String CODEC_ID_DESCRIPTION = "CodecID_Description";
+    public static final String COMPLETE_NAME = "CompleteName";
     /**
-     * If Audio and video are muxed.
+     * Duration End.
      */
     @Nonnull
-    public static final String INTERLEAVED = "Interleaved";
+    public static final String DURATION_END = "Duration_End";
+    /**
+     * Duration Start.
+     */
+    @Nonnull
+    public static final String DURATION_START = "Duration_Start";
+    /**
+     * Name of the software package used to create the file, such as Microsoft WaveEdit.
+     */
+    @Nonnull
+    public static final String ENCODED_APPLICATION = "Encoded_Application";
+    /**
+     * URL of the software package used to create the file, such as Microsoft WaveEdit.
+     */
+    @Nonnull
+    public static final String ENCODED_APPLICATION_URL = "Encoded_Application/Url";
+    /**
+     * The time/date/year that the encoding of this item was completed began.
+     */
+    @Nonnull
+    public static final String ENCODED_DATE = "Encoded_Date";
+    /**
+     * Software used to create the file.
+     */
+    @Nonnull
+    public static final String ENCODED_LIBRARY = "Encoded_Library";
+    /**
+     * Release date of the the encoding-software.
+     */
+    @Nonnull
+    public static final String ENCODED_LIBRARY_DATE = "Encoded_Library/Date";
+    /**
+     * Name of the the encoding-software.
+     */
+    @Nonnull
+    public static final String ENCODED_LIBRARY_NAME = "Encoded_Library/Name";
+    /**
+     * Parameters used by the software.
+     */
+    @Nonnull
+    public static final String ENCODED_LIBRARY_SETTINGS = "Encoded_Library_Settings";
+    /**
+     * Software used to create the file.
+     */
+    @Nonnull
+    public static final String ENCODED_LIBRARY_STRING = "Encoded_Library/String";
+    /**
+     * Version of the the encoding-software.
+     */
+    @Nonnull
+    public static final String ENCODED_LIBRARY_VERSION = "Encoded_Library/Version";
+    /**
+     * The time that the file was created on the file system.
+     */
+    @Nonnull
+    public static final String FILE_CREATED_DATE = "File_Created_Date";
+    /**
+     * File extension only.
+     */
+    @Nonnull
+    public static final String FILE_EXTENSION = "FileExtension";
+    /**
+     * The time that the file was modified on the file system.
+     */
+    @Nonnull
+    public static final String FILE_MODIFIED_DATE = "File_Modified_Date";
+    /**
+     * File name only.
+     */
+    @Nonnull
+    public static final String FILE_NAME = "FileName";
+    /**
+     * File size in bytes.
+     */
+    @Nonnull
+    public static final String FILESIZE = "FileSize";
     /**
      * File size (final with measure).
      */
@@ -621,70 +471,85 @@ public final class General {
     @Nonnull
     public static final String FILESIZE_STRING4 = "FileSize/String4";
     /**
-     * Play time in format : XXx YYy only, YYy omited if zero.
+     * Folder name only.
      */
     @Nonnull
-    public static final String DURATION_STRING = "Duration/String";
+    public static final String FOLDER_NAME = "FolderName";
     /**
-     * Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+     * Known extensions of this format.
      */
     @Nonnull
-    public static final String DURATION_STRING1 = "Duration/String1";
+    public static final String FORMAT_EXTENSIONS = "Format/Extensions";
     /**
-     * Play time in format : XXx YYy only, YYy omited if zero.
+     * Settings needed for decoder used.
      */
     @Nonnull
-    public static final String DURATION_STRING2 = "Duration/String2";
+    public static final String FORMAT_SETTINGS = "Format_Settings";
     /**
-     * Play time in format : HH:MM:SS.MMM.
+     * Number of general streams.
      */
     @Nonnull
-    public static final String DURATION_STRING3 = "Duration/String3";
+    public static final String GENERALCOUNT = "GeneralCount";
     /**
-     * Duration Start.
+     * Image Codecs in this file, separated by /.
      */
     @Nonnull
-    public static final String DURATION_START = "Duration_Start";
+    public static final String IMAGE_FORMAT_LIST = "Image_Format_List";
     /**
-     * Duration End.
+     * Image Codecs in this file with popular name (hint),separated by /.
      */
     @Nonnull
-    public static final String DURATION_END = "Duration_End";
+    public static final String IMAGE_FORMAT_WITH_HINT_LIST = "Image_Format_WithHint_Lis";
     /**
-     * Bit rate mode of all streams (VBR, CBR).
+     * Image languages in this file, separated by /.
      */
     @Nonnull
-    public static final String OVERALLBITRATE_MODE = "OverallBitRate_Mode";
+    public static final String IMAGE_LANGUAGE_LIST = "Image_Language_List";
     /**
-     * Bit rate mode of all streams (Variable, Constant).
+     * Number of image streams.
      */
     @Nonnull
-    public static final String OVERALLBITRATE_MODE_STRING = "OverallBitRate_Mode/Strin";
+    public static final String IMAGECOUNT = "ImageCount";
     /**
-     * Bit rate of all streams (with measure).
+     * If Audio and video are muxed.
      */
     @Nonnull
-    public static final String OVERALLBITRATE_STRING = "OverallBitRate/String";
+    public static final String INTERLEAVED = "Interleaved";
     /**
-     * Minimum Bit rate in bps.
+     * Internet Media Type (aka MIME Type, Content-Type).
      */
     @Nonnull
-    public static final String OVERALLBITRATE_MINIMUM = "OverallBitRate_Minimum";
+    public static final String INTERNET_MEDIA_TYPE = "InternetMediaType";
     /**
-     * Minimum Bit rate in bps (with measurement).
+     * IsStreamable.
      */
     @Nonnull
-    public static final String OVERALLBITRATE_MINIMUM_STRING = "OverallBitRate_Minimum/St";
+    public static final String ISSTREAMABLE = "IsStreamable";
     /**
-     * Nominal Bit rate in bps.
+     * Menu Codecs in this file, separated by /.
      */
     @Nonnull
-    public static final String OVERALLBITRATE_NOMINAL = "OverallBitRate_Nominal";
+    public static final String MENU_FORMAT_LIST = "Menu_Format_List";
     /**
-     * Nominal Bit rate in bps (with measurement).
+     * Menu Codecs in this file with popular name (hint),separated by /.
      */
     @Nonnull
-    public static final String OVERALLBITRATE_NOMINAL_STRING = "OverallBitRate_Nominal/St";
+    public static final String MENU_FORMAT_WITH_HINT_LIST = "Menu_Format_WithHint_List";
+    /**
+     * Menu languages in this file, separated by /.
+     */
+    @Nonnull
+    public static final String MENU_LANGUAGE_LIST = "Menu_Language_List";
+    /**
+     * Number of menu streams.
+     */
+    @Nonnull
+    public static final String MENUCOUNT = "MenuCount";
+    /**
+     * Bit rate of all streams in bps.
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE = "OverallBitRate";
     /**
      * Maximum Bit rate in bps.
      */
@@ -696,10 +561,55 @@ public final class General {
     @Nonnull
     public static final String OVERALLBITRATE_MAXIMUM_STRING = "OverallBitRate_Maximum/St";
     /**
+     * Minimum Bit rate in bps.
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_MINIMUM = "OverallBitRate_Minimum";
+    /**
+     * Minimum Bit rate in bps (with measurement).
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_MINIMUM_STRING = "OverallBitRate_Minimum/St";
+    /**
+     * Bit rate mode of all streams (VBR, CBR).
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_MODE = "OverallBitRate_Mode";
+    /**
+     * Bit rate mode of all streams (Variable, Constant).
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_MODE_STRING = "OverallBitRate_Mode/Strin";
+    /**
+     * Nominal Bit rate in bps.
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_NOMINAL = "OverallBitRate_Nominal";
+    /**
+     * Nominal Bit rate in bps (with measurement).
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_NOMINAL_STRING = "OverallBitRate_Nominal/St";
+    /**
+     * Bit rate of all streams (with measure).
+     */
+    @Nonnull
+    public static final String OVERALLBITRATE_STRING = "OverallBitRate/String";
+    /**
+     * The time/date/year that the recording began.
+     */
+    @Nonnull
+    public static final String RECORDED_DATE = "Recorded_Date";
+    /**
      * StreamSize.
      */
     @Nonnull
     public static final String STREAMSIZE = "StreamSize";
+    /**
+     * Stream size divided by file size.
+     */
+    @Nonnull
+    public static final String STREAMSIZE_PROPORTION = "StreamSize_Proportion";
     /**
      * StreamSize.
      */
@@ -731,85 +641,55 @@ public final class General {
     @Nonnull
     public static final String STREAMSIZE_STRING5 = "StreamSize/String5";
     /**
-     * Stream size divided by file size.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_PROPORTION = "StreamSize_Proportion";
-    /**
-     * IsStreamable.
-     */
-    @Nonnull
-    public static final String ISSTREAMABLE = "IsStreamable";
-    /**
-     * The time/date/year that the recording began.
-     */
-    @Nonnull
-    public static final String RECORDED_DATE = "Recorded_Date";
-    /**
-     * The time/date/year that the encoding of this item was completed began.
-     */
-    @Nonnull
-    public static final String ENCODED_DATE = "Encoded_Date";
-    /**
      * The time/date/year that the tags were done for this item.
      */
     @Nonnull
     public static final String TAGGED_DATE = "Tagged_Date";
     /**
+     * Text Codecs in this file, separated by /.
+     */
+    @Nonnull
+    public static final String TEXT_FORMAT_LIST = "Text_Format_List";
+    /**
+     * Text Codecs in this file with popular name (hint),separated by /.
+     */
+    @Nonnull
+    public static final String TEXT_FORMAT_WITH_HINT_LIST = "Text_Format_WithHint_List";
+    /**
+     * Text languages in this file, separated by /.
+     */
+    @Nonnull
+    public static final String TEXT_LANGUAGE_LIST = "Text_Language_List";
+    /**
+     * Number of text streams.
+     */
+    @Nonnull
+    public static final String TEXTCOUNT = "TextCount";
+    /**
+     * Video Codecs in this file, separated by /.
+     */
+    @Nonnull
+    public static final String VIDEO_FORMAT_LIST = "Video_Format_List";
+    /**
+     * Video Codecs in this file with popular name (hint), separated by /.
+     */
+    @Nonnull
+    public static final String VIDEO_FORMAT_WITH_HINT_LIST = "Video_Format_WithHint_Lis";
+    /**
+     * Video languages in this file, full names, separated by /.
+     */
+    @Nonnull
+    public static final String VIDEO_LANGUAGE_LIST = "Video_Language_List";
+    /**
+     * Number of video streams.
+     */
+    @Nonnull
+    public static final String VIDEOCOUNT = "VideoCount";
+    /**
      * The time/date/year that the composition of the music/script began.
      */
     @Nonnull
     public static final String WRITTEN_DATE = "Written_Date";
-    /**
-     * The time that the file was created on the file system.
-     */
-    @Nonnull
-    public static final String FILE_CREATED_DATE = "File_Created_Date";
-    /**
-     * The time that the file was modified on the file system.
-     */
-    @Nonnull
-    public static final String FILE_MODIFIED_DATE = "File_Modified_Date";
-    /**
-     * Name of the software package used to create the file, such as Microsoft WaveEdit.
-     */
-    @Nonnull
-    public static final String ENCODED_APPLICATION = "Encoded_Application";
-    /**
-     * URL of the software package used to create the file, such as Microsoft WaveEdit.
-     */
-    @Nonnull
-    public static final String ENCODED_APPLICATION_URL = "Encoded_Application/Url";
-    /**
-     * Software used to create the file.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY = "Encoded_Library";
-    /**
-     * Software used to create the file.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_STRING = "Encoded_Library/String";
-    /**
-     * Name of the the encoding-software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_NAME = "Encoded_Library/Name";
-    /**
-     * Version of the the encoding-software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_VERSION = "Encoded_Library/Version";
-    /**
-     * Release date of the the encoding-software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_DATE = "Encoded_Library/Date";
-    /**
-     * Parameters used by the software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_SETTINGS = "Encoded_Library_Settings";
 
     private General() {
         // Singleton

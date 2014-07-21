@@ -257,11 +257,6 @@ import javax.annotation.Nonnull;
 
 public final class Video {
     /**
-     * Format used.
-     */
-    @Nonnull
-    public static final String FORMAT = "Format";
-    /**
      * Info about Format.
      */
     @Nonnull
@@ -311,28 +306,13 @@ public final class Video {
      */
     @Nonnull
     public static final String LANGUAGE = "Language/String";
+    /**
+     * Play time in format : HH:MM:SS:FF (HH:MM:SS.
+     */
+    @Nonnull
+    public static final String DURATION_STRING4 = "Duration/String4";
 
     /**
-     * StreamKind : Stream type name
-     * StreamKind/String : Stream type name
-     * StreamKindID : Number of the stream (base=0)
-     * StreamKindPos : When multiple streams, number of the stream (base=1)
-     * StreamOrder : Stream order in the file, whatever is the kind of stream (base=0)
-     * Inform : Last **Inform** call
-     * ID : The ID for this stream in this file
-     * ID/String : The ID for this stream in this file
-     * UniqueID : The unique ID for this stream, should be copied with stream copy
-     * UniqueID/String : A unique ID for this stream, should be copied with stream copy
-     * MenuID : The menu ID for this stream in this file
-     * MenuID/String : The menu ID for this stream in this file
-     * Format : Format used
-     * Format/Info : Info about Format
-     * Format/Url : Link
-     * Format_Commercial : Commercial name used by vendor for theses setings or Format field if there is no difference
-     * Format_Commercial_IfAny : Commercial name used by vendor for theses setings if there is one
-     * Format_Version : Version of this format
-     * Format_Profile : Profile of the Format
-     * Format_Compression : Compression mode of the Format
      * MultiView_BaseProfile : Multiview, profile of the base stream
      * MultiView_Count : Multiview, count of views
      * MultiView_Layout : Multiview, how views are muxed in the container in case of it is not muxing in the stream
@@ -381,12 +361,6 @@ public final class Video {
      * Codec_Settings_Matrix_Dat : Deprecated, do not use in new projects
      * Codec_Settings_CABAC : Deprecated, do not use in new projects
      * Codec_Settings_RefFrames : Deprecated, do not use in new projects
-     * Duration : Play time of the stream in ms
-     * Duration/String : Play time in format : XXx YYy only, YYy omited if zero
-     * Duration/String1 : Play time in format : HHh MMmn SSs MMMms, XX omited if zero
-     * Duration/String2 : Play time in format : XXx YYy only, YYy omited if zero
-     * Duration/String3 : Play time in format : HH:MM:SS.MMM
-     * Duration/String4 : Play time in format : HH:MM:SS:FF (HH:MM:SS
      * Duration_FirstFrame : Duration of the first frame if it is longer than others, in ms
      * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
      * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
