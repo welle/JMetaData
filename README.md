@@ -2,7 +2,7 @@
 
 ## Quick summary ##
 
-JmetaData is a wrapper using mediainfo lib to collect video metadatas. 
+JmetaData is a wrapper using JNA lib to access mediainfo library to collect video metadatas. 
 
 You can either let the JMetaData lib load its own dll or use yours.
 
