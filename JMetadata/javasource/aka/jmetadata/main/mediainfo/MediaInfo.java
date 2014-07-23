@@ -4,6 +4,11 @@ import static java.util.Collections.singletonMap;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.logging.Logger;
 
 import javax.annotation.Nonnull;
@@ -11,6 +16,8 @@ import javax.annotation.Nullable;
 
 import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.helper.DateHelper;
+import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OSHelperConstants.OS_ARCH;
 
@@ -178,6 +185,128 @@ public final class MediaInfo {
     @Nullable
     public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
         return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a Long about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Long getAsLong(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+        Long result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (TextUtils.isDigit(value)) {
+            result = Long.valueOf(value);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a Integer about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Integer getAsInteger(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+        Integer result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (TextUtils.isDigit(value)) {
+            result = Integer.valueOf(value);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a BigInteger about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public BigInteger getAsBigInteger(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+        BigInteger result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (TextUtils.isDigit(value)) {
+            result = new BigInteger(value);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a URL about information you search, an empty string if there is a problem
+     * @throws MalformedURLException if no protocol is specified or an unknown protocol is found.
+     */
+    @Nullable
+    public URL getAsURL(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) throws MalformedURLException {
+        URL result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (!TextUtils.isEmpty(value)) {
+            result = new URL(value);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a Double about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Double getAsDouble(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+        Double result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (!TextUtils.isEmpty(value)) {
+            result = Double.valueOf(value);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a Date about information you search, an empty string if there is a problem
+     * @throws ParseException if the beginning of the specified string cannot be parsed.
+     */
+    @Nullable
+    public Date getAsDate(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) throws ParseException {
+        Date result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null;
+            result = DateHelper.parse(value);
+        }
+        return result;
     }
 
     /**

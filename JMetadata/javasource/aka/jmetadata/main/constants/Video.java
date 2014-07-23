@@ -257,26 +257,6 @@ import javax.annotation.Nonnull;
 
 public final class Video {
     /**
-     * Info about Format.
-     */
-    @Nonnull
-    public static final String FORMAT_INFO = "Format/Info";
-    /**
-     * Profile of the Format.
-     */
-    @Nonnull
-    public static final String FORMAT_PROFILE = "Format_Profile";
-    /**
-     * Codec ID (found in some containers).
-     */
-    @Nonnull
-    public static final String CODEC_ID = "CodecID";
-    /**
-     * Play time of the stream in ms.
-     */
-    @Nonnull
-    public static final String DURATION = "Duration";
-    /**
      * Bit rate in bps.
      */
     @Nonnull
@@ -311,118 +291,213 @@ public final class Video {
      */
     @Nonnull
     public static final String DURATION_STRING4 = "Duration/String4";
+    /**
+     * Multiview, profile of the base stream.
+     */
+    @Nonnull
+    public static final String MULTIVIEW_BASEPROFILE = "MultiView_BaseProfile";
+    /**
+     * Multiview, count of views.
+     */
+    @Nonnull
+    public static final String MULTIVIEW_COUNT = "MultiView_Count";
+    /**
+     * Multiview, how views are muxed in the container in case of it is not muxing in the stream.
+     */
+    @Nonnull
+    public static final String MULTIVIEW_LAYOUT = "MultiView_Layout";
+    /**
+     * How this file is muxed in the container.
+     */
+    @Nonnull
+    public static final String MUXING_MODE = "MuxingMode";
+    /**
+     * Duration of the first frame if it is longer than others, in ms.
+     */
+    @Nonnull
+    public static final String DURATION_FIRSTFRAME = "Duration_FirstFrame";
+    /**
+     * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+     */
+    @Nonnull
+    public static final String DURATION_FIRSTFRAME_STRING_TYPE = "Duration_FirstFrame/String";
+    /**
+     * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+     */
+    @Nonnull
+    public static final String DURATION_FIRSTFRAME_STRING_TYPE1 = "Duration_FirstFrame/String1";
+    /**
+     * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+     */
+    @Nonnull
+    public static final String DURATION_FIRSTFRAME_STRING_TYPE2 = "Duration_FirstFrame/String2";
+    /**
+     * Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+     */
+    @Nonnull
+    public static final String DURATION_FIRSTFRAME_STRING_TYPE3 = "Duration_FirstFrame/String3";
+    /**
+     * Bit rate mode (VBR, CBR).
+     */
+    @Nonnull
+    public static final String BITRATE_MODE = "BitRate_Mode";
+    /**
+     * Bit rate mode (Variable, Cconstant).
+     */
+    @Nonnull
+    public static final String BITRATE_MODE_STRING = "BitRate_Mode/String";
+    /**
+     * Bit rate (with measurement).
+     */
+    @Nonnull
+    public static final String BITRATE_STRING = "BitRate/String";
+    /**
+     * Minimum Bit rate in bps.
+     */
+    @Nonnull
+    public static final String BITRATE_MINIMUM = "BitRate_Minimum";
+    /**
+     * Minimum Bit rate (with measurement).
+     */
+    @Nonnull
+    public static final String BITRATE_MINIMUM_STRING = "BitRate_Minimum/String";
+    /**
+     * Nominal Bit rate in bps.
+     */
+    @Nonnull
+    public static final String BITRATE_NOMINAL = "BitRate_Nominal";
+    /**
+     * Nominal Bit rate (with measurement).
+     */
+    @Nonnull
+    public static final String BITRATE_NOMINAL_STRING = "BitRate_Nominal/String";
+    /**
+     * Maximum Bit rate in bps.
+     */
+    @Nonnull
+    public static final String BITRATE_MAXIMUM = "BitRate_Maximum";
+    /**
+     * Maximum Bit rate (with measurement).
+     */
+    @Nonnull
+    public static final String BITRATE_MAXIMUM_STRING = "BitRate_Maximum/String";
+    /**
+     * Encoded (with forced padding) bit rate in bps, if some container padding is present.
+     */
+    @Nonnull
+    public static final String BITRATE_ENCODED = "BitRate_Encoded";
+    /**
+     * Encoded (with forced padding) bit rate (with measurement), if some container padding is present.
+     */
+    @Nonnull
+    public static final String BITRATE_ENCODED_STRING = "BitRate_Encoded/String";
+    /**
+     * Width (aperture size if present) with measurement (pixel).
+     */
+    @Nonnull
+    public static final String WIDTH_STRING = "Width/String";
+    /**
+     * Offset between original width and displayed width (aperture size) in pixel.
+     */
+    @Nonnull
+    public static final String WIDTH_OFFSET = "Width_Offset";
+    /**
+     * Offset between original width and displayed width (aperture size) in pixel.
+     */
+    @Nonnull
+    public static final String WIDTH_OFFSET_STRING = "Width_Offset/String";
+    /**
+     * Original (in the raw stream) width in pixel.
+     */
+    @Nonnull
+    public static final String WIDTH_ORIGINAL = "Width_Original";
+    /**
+     * Original (in the raw stream) width with measurement (pixel).
+     */
+    @Nonnull
+    public static final String WIDTH_ORIGINAL_STRING = "Width_Original/String";
+    /**
+     * Height (aperture size if present) with measurement (pixel).
+     */
+    @Nonnull
+    public static final String HEIGHT_STRING = "Height/String";
+    /**
+     * Offset between original height and displayed height (aperture size) in pixel.
+     */
+    @Nonnull
+    public static final String HEIGHT_OFFSET = "Height_Offset";
+    /**
+     * Offset between original height and displayed height (aperture size) in pixel.
+     */
+    @Nonnull
+    public static final String HEIGHT_OFFSET_STRING = "Height_Offset/String";
+    /**
+     * Original (in the raw stream) height in pixel.
+     */
+    @Nonnull
+    public static final String HEIGHT_ORIGINAL = "Height_Original";
+    /**
+     * Original (in the raw stream) height with measurement (pixel).
+     */
+    @Nonnull
+    public static final String HEIGHT_ORIGINAL_STRING = "Height_Original/String";
+    /**
+     * Pixel Aspect ratio.
+     */
+    @Nonnull
+    public static final String PIXEL_ASPECT_RATIO = "PixelAspectRatio";
+    /**
+     * Pixel Aspect ratio.
+     */
+    @Nonnull
+    public static final String PIXEL_ASPECT_RATIO_STRING = "PixelAspectRatio/String";
+    /**
+     * Original (in the raw stream) Pixel Aspect ratio.
+     */
+    @Nonnull
+    public static final String PIXEL_ASPECT_RATIO_ORIGINAL = "PixelAspectRatio_Original";
+    /**
+     * Original (in the raw stream) Pixel Aspect ratio.
+     */
+    @Nonnull
+    public static final String PIXEL_ASPECT_RATIO_ORIGINAL_STRING = "PixelAspectRatio_Original/String";
+    /**
+     * Display Aspect ratio.
+     */
+    @Nonnull
+    public static final String DISPLAY_ASPECT_RATIO_STRING = "DisplayAspectRatio/String";
+    /**
+     * Original (in the raw stream) Display Aspect ratio.
+     */
+    @Nonnull
+    public static final String DISPLAY_ASPECT_RATIO_ORIGINAL = "DisplayAspectRatio_Original";
+    /**
+     * Original (in the raw stream) Display Aspect ratio.
+     */
+    @Nonnull
+    public static final String DISPLAY_ASPECT_RATIO_ORIGINAL_STRING = "DisplayAspectRatio_Original/String";
+    /**
+     * Active Format Description (AFD value).
+     */
+    @Nonnull
+    public static final String ACTIVE_FORMAT_DESCRIPTION = "ActiveFormatDescription";
+    /**
+     * Active Format Description (text).
+     */
+    @Nonnull
+    public static final String ACTIVE_FORMAT_DESCRIPTION_STRING = "ActiveFormatDescription/String";
+    /**
+     * Rotation.
+     */
+    @Nonnull
+    public static final String ROTATION = "Rotation";
+    /**
+     * Rotation (if not horizontal).
+     */
+    @Nonnull
+    public static final String ROTATION_STRING = "Rotation/String";
 
     /**
-     * MultiView_BaseProfile : Multiview, profile of the base stream
-     * MultiView_Count : Multiview, count of views
-     * MultiView_Layout : Multiview, how views are muxed in the container in case of it is not muxing in the stream
-     * Format_Settings : Settings needed for decoder used, summary
-     * Format_Settings_BVOP : Settings needed for decoder used, detailled
-     * Format_Settings_BVOP/Stri : Settings needed for decoder used, detailled
-     * Format_Settings_QPel : Settings needed for decoder used, detailled
-     * Format_Settings_QPel/Stri : Settings needed for decoder used, detailled
-     * Format_Settings_GMC : Settings needed for decoder used, detailled
-     * Format_Settings_GMC/String
-     * Format_Settings_Matrix : Settings needed for decoder used, detailled
-     * Format_Settings_Matrix/St : Settings needed for decoder used, detailled
-     * Format_Settings_Matrix_Da : Matrix, in binary format encoded BASE64. Order = intra, non-intra, gray intra, gray non-intra
-     * Format_Settings_CABAC : Settings needed for decoder used, detailled
-     * Format_Settings_CABAC/Str : Settings needed for decoder used, detailled
-     * Format_Settings_RefFrames : Settings needed for decoder used, detailled
-     * Format_Settings_RefFrames : Settings needed for decoder used, detailled
-     * Format_Settings_Pulldown : Settings needed for decoder used, detailled
-     * Format_Settings_FrameMode : Settings needed for decoder used, detailled
-     * Format_Settings_GOP : Settings needed for decoder used, detailled (M=x N=y)
-     * Format_Settings_FrameStru : Settings needed for decoder used, detailled (Type of frame, and field/frame info)
-     * Format_Settings_Wrapping : Wrapping mode (Frame wrapped or Clip wrapped)
-     * InternetMediaType : Internet Media Type (aka MIME Type, Content-Type)
-     * MuxingMode : How this file is muxed in the container
-     * CodecID : Codec ID (found in some containers)
-     * CodecID/String : Codec ID (found in some containers)
-     * CodecID/Info : Info on the codec
-     * CodecID/Hint : Hint/popular name for this codec
-     * CodecID/Url : Homepage for more details about this codec
-     * CodecID_Description : Manual description given by the container
-     * Codec : Deprecated, do not use in new projects
-     * Codec/String : Deprecated, do not use in new projects
-     * Codec/Family : Deprecated, do not use in new projects
-     * Codec/Info : Deprecated, do not use in new projects
-     * Codec/Url : Deprecated, do not use in new projects
-     * Codec/CC : Deprecated, do not use in new projects
-     * Codec_Profile : Deprecated, do not use in new projects
-     * Codec_Description : Deprecated, do not use in new projects
-     * Codec_Settings : Deprecated, do not use in new projects
-     * Codec_Settings_PacketBitS : Deprecated, do not use in new projects
-     * Codec_Settings_BVOP : Deprecated, do not use in new projects
-     * Codec_Settings_QPel : Deprecated, do not use in new projects
-     * Codec_Settings_GMC : Deprecated, do not use in new projects
-     * Codec_Settings_GMC/String : Deprecated, do not use in new projects
-     * Codec_Settings_Matrix : Deprecated, do not use in new projects
-     * Codec_Settings_Matrix_Dat : Deprecated, do not use in new projects
-     * Codec_Settings_CABAC : Deprecated, do not use in new projects
-     * Codec_Settings_RefFrames : Deprecated, do not use in new projects
-     * Duration_FirstFrame : Duration of the first frame if it is longer than others, in ms
-     * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
-     * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Duration_FirstFrame/Strin : Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM
-     * Duration_LastFrame : Duration of the last frame if it is longer than others, in ms
-     * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
-     * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Duration_LastFrame/String : Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM
-     * Source_Duration : Source Play time of the stream
-     * Source_Duration/String : Source Play time in format : XXx YYy only, YYy omited if zero
-     * Source_Duration/String1 : Source Play time in format : HHh MMmn SSs MMMms, XX omited if zero
-     * Source_Duration/String2 : Source Play time in format : XXx YYy only, YYy omited if zero
-     * Source_Duration/String3 : Source Play time in format : HH:MM:SS.MMM
-     * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in ms
-     * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
-     * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Source_Duration_FirstFram : Source Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM
-     * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in ms
-     * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero
-     * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero
-     * Source_Duration_LastFrame : Source Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM
-     * BitRate_Mode : Bit rate mode (VBR, CBR)
-     * BitRate_Mode/String : Bit rate mode (Variable, Cconstant)
-     * BitRate : Bit rate in bps
-     * BitRate/String : Bit rate (with measurement)
-     * BitRate_Minimum : Minimum Bit rate in bps
-     * BitRate_Minimum/String : Minimum Bit rate (with measurement)
-     * BitRate_Nominal : Nominal Bit rate in bps
-     * BitRate_Nominal/String : Nominal Bit rate (with measurement)
-     * BitRate_Maximum : Maximum Bit rate in bps
-     * BitRate_Maximum/String : Maximum Bit rate (with measurement)
-     * BitRate_Encoded : Encoded (with forced padding) bit rate in bps, if some container padding is present
-     * BitRate_Encoded/String : Encoded (with forced padding) bit rate (with measurement), if some container padding is present
-     * Width : Width (aperture size if present) in pixel
-     * Width/String : Width (aperture size if present) with measurement (pixel)
-     * Width_Offset : Offset between original width and displayed width (aperture size) in pixel
-     * Width_Offset/String : Offset between original width and displayed width (aperture size) in pixel
-     * Width_Original : Original (in the raw stream) width in pixel
-     * Width_Original/String : Original (in the raw stream) width with measurement (pixel)
-     * Height : Height (aperture size if present) in pixel
-     * Height/String : Height (aperture size if present) with measurement (pixel)
-     * Height_Offset : Offset between original height and displayed height (aperture size) in pixel
-     * Height_Offset/String : Offset between original height and displayed height (aperture size) in pixel
-     * Height_Original : Original (in the raw stream) height in pixel
-     * Height_Original/String : Original (in the raw stream) height with measurement (pixel)
-     * PixelAspectRatio : Pixel Aspect ratio
-     * PixelAspectRatio/String : Pixel Aspect ratio
-     * PixelAspectRatio_Original : Original (in the raw stream) Pixel Aspect ratio
-     * PixelAspectRatio_Original : Original (in the raw stream) Pixel Aspect ratio
-     * DisplayAspectRatio : Display Aspect ratio
-     * DisplayAspectRatio/String : Display Aspect ratio
-     * DisplayAspectRatio_Origin : Original (in the raw stream) Display Aspect ratio
-     * DisplayAspectRatio_Origin : Original (in the raw stream) Display Aspect ratio
-     * ActiveFormatDescription : Active Format Description (AFD value)
-     * ActiveFormatDescription/S : Active Format Description (text)
-     * ActiveFormatDescription_M : Active Format Description (AFD value) muxing mode (Ancillary or Raw stream)
-     * Rotation : Rotation
-     * Rotation/String : Rotation (if not horizontal)
      * FrameRate_Mode : Frame rate mode (CFR, VFR)
      * FrameRate_Mode/String : Frame rate mode (Constant, Variable)
      * FrameRate_Mode_Original : Original frame rate mode (CFR, VFR)

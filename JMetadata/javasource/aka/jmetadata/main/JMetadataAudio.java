@@ -4,7 +4,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import aka.jmetadata.main.constants.Audio;
-import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
@@ -43,7 +42,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT);
     }
 
     /**
@@ -53,7 +52,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String getFormatInfo() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_INFO, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_INFO);
     }
 
     /**
@@ -63,7 +62,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String getFormatProfile() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_PROFILE, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_PROFILE);
     }
 
     /**
@@ -73,7 +72,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID);
     }
 
     /**
@@ -83,7 +82,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String getCodecIDHint() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID_HINT, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID_HINT);
     }
 
     /**
@@ -94,7 +93,7 @@ public final class JMetadataAudio {
     @Nullable
     public Double getDuration() {
         Double result = null;
-        final String duration = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DURATION, InfoKind.Text, InfoKind.Name);
+        final String duration = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DURATION);
         if (TextUtils.isDigit(duration)) {
             result = Double.valueOf(duration);
         }
@@ -110,7 +109,7 @@ public final class JMetadataAudio {
     @Nullable
     public Long getBitRate() {
         Long result = null;
-        final String bitRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.BITRATE, InfoKind.Text, InfoKind.Name);
+        final String bitRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.BITRATE);
         if (TextUtils.isDigit(bitRate)) {
             result = Long.valueOf(bitRate);
         }
@@ -126,7 +125,7 @@ public final class JMetadataAudio {
     @Nullable
     public Integer getChannels() {
         Integer result = null;
-        final String channels = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CHANNELS, InfoKind.Text, InfoKind.Name);
+        final String channels = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CHANNELS);
         if (TextUtils.isDigit(channels)) {
             result = Integer.valueOf(channels);
         }
@@ -142,7 +141,7 @@ public final class JMetadataAudio {
     @Nullable
     public Long getSamplingRate() {
         Long result = null;
-        String samplingRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.SAMPLING_RATE, InfoKind.Text, InfoKind.Name);
+        String samplingRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.SAMPLING_RATE);
         if (!TextUtils.isEmpty(samplingRate)) {
             assert samplingRate != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (samplingRate.contains(" ")) {
@@ -163,7 +162,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.LANGUAGE, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.LANGUAGE);
     }
 
     /**
@@ -173,7 +172,7 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String isDefault() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DEFAULT, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DEFAULT);
     }
 
     /**
@@ -183,6 +182,6 @@ public final class JMetadataAudio {
      */
     @Nullable
     public String isForced() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORCED, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORCED);
     }
 }

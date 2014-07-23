@@ -3,7 +3,6 @@ package aka.jmetadata.main;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.constants.Text;
 import aka.jmetadata.main.mediainfo.MediaInfo;
@@ -42,7 +41,7 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORMAT, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORMAT);
     }
 
     /**
@@ -52,7 +51,7 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID);
     }
 
     /**
@@ -62,7 +61,7 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String getCodecIDInfo() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID_INFO, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID_INFO);
     }
 
     /**
@@ -72,7 +71,7 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String getName() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.TITLE, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.TITLE);
     }
 
     /**
@@ -82,7 +81,7 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.LANGUAGE, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.LANGUAGE);
     }
 
     /**
@@ -92,7 +91,7 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String isDefault() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.DEFAULT, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.DEFAULT);
     }
 
     /**
@@ -102,6 +101,6 @@ public final class JMetadataSubtitle {
      */
     @Nullable
     public String isForced() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORCED, InfoKind.Text, InfoKind.Name);
+        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORCED);
     }
 }

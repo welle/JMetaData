@@ -8,11 +8,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import aka.jmetadata.main.constants.Commons;
-import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.constants.Video;
 import aka.jmetadata.main.mediainfo.MediaInfo;
-import aka.swissknife.data.TextUtils;
 
 /**
  * A test for the various media information functions.
@@ -46,7 +44,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormat() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT);
     }
 
     /**
@@ -56,7 +54,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatInfo() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.FORMAT_INFO, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_INFO);
     }
 
     /**
@@ -66,7 +64,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatProfile() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.FORMAT_PROFILE, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_PROFILE);
     }
 
     /**
@@ -76,7 +74,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getCodecID() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.CODEC_ID, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.CODEC_ID);
     }
 
     /**
@@ -86,13 +84,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Double getDuration() {
-        Double result = null;
-        final String duration = getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DURATION, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(duration)) {
-            result = Double.valueOf(duration);
-        }
-
-        return result;
+        return getMediaInfo().getAsDouble(StreamKind.Video, this.streamNumber, Commons.DURATION);
     }
 
     /**
@@ -102,13 +94,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Long getBitRate() {
-        Long result = null;
-        final String bitRate = getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(bitRate)) {
-            result = Long.valueOf(bitRate);
-        }
-
-        return result;
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.BITRATE);
     }
 
     /**
@@ -118,13 +104,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getWidth() {
-        Integer result = null;
-        final String width = getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.WIDTH, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(width)) {
-            result = Integer.valueOf(width);
-        }
-
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Video.WIDTH);
     }
 
     /**
@@ -134,13 +114,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getHeight() {
-        Integer result = null;
-        final String height = getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.HEIGHT, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(height)) {
-            result = Integer.valueOf(height);
-        }
-
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Video.HEIGHT);
     }
 
     /**
@@ -150,13 +124,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Double getDisplayAspectRatio() {
-        Double result = null;
-        final String aspectRatio = getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DISPLAY_ASPECT_RATIO, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(aspectRatio)) {
-            result = Double.valueOf(aspectRatio);
-        }
-
-        return result;
+        return getMediaInfo().getAsDouble(StreamKind.Video, this.streamNumber, Video.DISPLAY_ASPECT_RATIO);
     }
 
     /**
@@ -166,13 +134,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Double getFrameRate() {
-        Double result = null;
-        final String frameRate = getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.FRAME_RATE, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(frameRate)) {
-            result = Double.valueOf(frameRate);
-        }
-
-        return result;
+        return getMediaInfo().getAsDouble(StreamKind.Video, this.streamNumber, Video.FRAME_RATE);
     }
 
     /**
@@ -182,7 +144,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getLanguage() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.LANGUAGE, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.LANGUAGE);
     }
 
     /**
@@ -192,7 +154,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamKind() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAMKIND, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAMKIND);
     }
 
     /**
@@ -202,7 +164,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamKindString() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAM_KIND_STRING, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAM_KIND_STRING);
     }
 
     /**
@@ -212,12 +174,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getStreamKindID() {
-        Integer result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAM_KIND_ID, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = Integer.valueOf(value);
-        }
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Commons.STREAM_KIND_ID);
     }
 
     /**
@@ -227,12 +184,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getStreamKindPosition() {
-        Integer result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAM_KIND_POS, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = Integer.valueOf(value);
-        }
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Commons.STREAM_KIND_POS);
     }
 
     /**
@@ -242,12 +194,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getID() {
-        Integer result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.ID, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = Integer.valueOf(value);
-        }
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Commons.ID);
     }
 
     /**
@@ -257,12 +204,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getStreamKindOrder() {
-        Integer result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.STREAMORDER, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = Integer.valueOf(value);
-        }
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Commons.STREAMORDER);
     }
 
     /**
@@ -272,7 +214,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getIDString() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.ID_STRING, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.ID_STRING);
     }
 
     /**
@@ -282,7 +224,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationString() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING);
     }
 
     /**
@@ -292,7 +234,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType1() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING1, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING1);
     }
 
     /**
@@ -302,7 +244,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType2() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING2, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING2);
     }
 
     /**
@@ -312,7 +254,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType3() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING3, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.DURATION_STRING3);
     }
 
     /**
@@ -322,7 +264,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType4() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DURATION_STRING4, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DURATION_STRING4);
     }
 
     /**
@@ -332,12 +274,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public BigInteger getUniqueID() {
-        BigInteger result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.UNIQUE_ID, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = new BigInteger(value);
-        }
-        return result;
+        return getMediaInfo().getAsBigInteger(StreamKind.Video, this.streamNumber, Commons.UNIQUE_ID);
     }
 
     /**
@@ -347,7 +284,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getUniqueIDString() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.UNIQUE_ID_STRING, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.UNIQUE_ID_STRING);
     }
 
     /**
@@ -357,12 +294,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public Integer getMenuID() {
-        Integer result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.MENUID, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = new Integer(value);
-        }
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Commons.MENUID);
     }
 
     /**
@@ -372,7 +304,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getMenuIDString() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.MENUID_STRING, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.MENUID_STRING);
     }
 
     /**
@@ -382,7 +314,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatVersion() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_VERSION, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_VERSION);
     }
 
     /**
@@ -393,13 +325,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public URL getFormatURL() throws MalformedURLException {
-        URL result = null;
-        final String value = getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_URL, InfoKind.Text, InfoKind.Name);
-        if (!TextUtils.isEmpty(value)) {
-            result = new URL(value);
-        }
-
-        return result;
+        return getMediaInfo().getAsURL(StreamKind.Video, this.streamNumber, Commons.FORMAT_URL);
     }
 
     /**
@@ -409,7 +335,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatCommercial() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_COMMERCIAL, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_COMMERCIAL);
     }
 
     /**
@@ -419,7 +345,7 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatCommercialIfAny() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_COMMERCIAL_IF_ANY, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_COMMERCIAL_IF_ANY);
     }
 
     /**
@@ -429,7 +355,448 @@ public final class JMetadataVideo extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatCompression() {
-        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_COMPRESSION, InfoKind.Text, InfoKind.Name);
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_COMPRESSION);
+    }
+
+    /**
+     * Get multiview, profile of the base stream.
+     *
+     * @return profile of the base stream
+     */
+    @Nullable
+    public String getMultiviewBaseProfile() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.MULTIVIEW_BASEPROFILE);
+    }
+
+    /**
+     * Get multiview, count of views.
+     *
+     * @return count of views
+     */
+    @Nullable
+    public Integer getMultiviewCount() {
+        return getMediaInfo().getAsInteger(StreamKind.Video, this.streamNumber, Video.MULTIVIEW_COUNT);
+    }
+
+    /**
+     * Get multiview, how views are muxed in the container in case of it is not muxing in the stream.
+     *
+     * @return how views are muxed in the container in case of it is not muxing in the stream
+     */
+    @Nullable
+    public String getMultiviewLayout() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.MULTIVIEW_LAYOUT);
+    }
+
+    /**
+     * Get settings needed for decoder used.
+     *
+     * @return settings
+     */
+    @Nullable
+    public String getFormatSettings() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.FORMAT_SETTINGS);
+    }
+
+    /**
+     * Get Internet Media Type (a.k.a MIME Type, Content-Type).
+     *
+     * @return Internet Media Type
+     */
+    @Nullable
+    public String getInternetMediaType() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.INTERNET_MEDIA_TYPE);
+    }
+
+    /**
+     * Get how this file is muxed in the container.
+     *
+     * @return How this file is muxed in the container
+     */
+    @Nullable
+    public String getMuxingMode() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.MUXING_MODE);
+    }
+
+    /**
+     * Get codec ID (final found in some containers).
+     *
+     * @return codec ID
+     */
+    @Nullable
+    public String getCodecIDString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.CODEC_ID_STRING);
+    }
+
+    /**
+     * Get info about this codec.
+     *
+     * @return info about this codec
+     */
+    @Nullable
+    public String getCodecIDInfo() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.CODEC_ID_INFO);
+    }
+
+    /**
+     * Get hint/popular name for this codec.
+     *
+     * @return hint/popular name
+     */
+    @Nullable
+    public String getCodecIDHint() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.CODEC_ID_HINT);
+    }
+
+    /**
+     * Get link to more details about this codec ID.
+     *
+     * @return link to more details
+     * @throws MalformedURLException if no protocol is specified or an unknown protocol is found
+     */
+    @Nullable
+    public URL getCodecIDURL() throws MalformedURLException {
+        return getMediaInfo().getAsURL(StreamKind.Video, this.streamNumber, Commons.CODEC_ID_URL);
+    }
+
+    /**
+     * Get manual description given by the container.
+     *
+     * @return manual description
+     */
+    @Nullable
+    public String getCodecIDDescription() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Commons.CODEC_ID_DESCRIPTION);
+    }
+
+    /**
+     * Get duration of the first frame if it is longer than others, in ms.
+     *
+     * @return Duration
+     */
+    @Nullable
+    public Long getDurationFirstTrame() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.DURATION_FIRSTFRAME);
+    }
+
+    /**
+     * Get duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+     *
+     * @return Duration
+     */
+    @Nullable
+    public String getDurationFirstTrameType1() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DURATION_FIRSTFRAME_STRING_TYPE1);
+    }
+
+    /**
+     * Get duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+     *
+     * @return Duration
+     */
+    @Nullable
+    public String getDurationFirstTrameType2() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DURATION_FIRSTFRAME_STRING_TYPE2);
+    }
+
+    /**
+     * Get duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+     *
+     * @return Duration
+     */
+    @Nullable
+    public String getDurationFirstTrameType3() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DURATION_FIRSTFRAME_STRING_TYPE3);
+    }
+
+    /**
+     * Get bit rate mode (VBR, CBR).
+     *
+     * @return bit rate mode
+     */
+    @Nullable
+    public String getBitRateMode() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_MODE);
+    }
+
+    /**
+     * Get bit rate mode (Variable, Cconstant).
+     *
+     * @return bit rate mode
+     */
+    @Nullable
+    public String getBitRateModeString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_MODE_STRING);
+    }
+
+    /**
+     * Get bit rate (with measurement).
+     *
+     * @return bit rate
+     */
+    @Nullable
+    public String getBitRateString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_STRING);
+    }
+
+    /**
+     * Get minimum bit rate in bps.
+     *
+     * @return minimum bit rate
+     */
+    @Nullable
+    public Long getBitRateMinimum() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.BITRATE_MINIMUM);
+    }
+
+    /**
+     * Get minimum bit rate in bps (with measurement).
+     *
+     * @return minimum bit rate
+     */
+    @Nullable
+    public String getBitRateMinimumString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_MINIMUM_STRING);
+    }
+
+    /**
+     * Get nominal bit rate in bps.
+     *
+     * @return nominal bit rate
+     */
+    @Nullable
+    public Long getBitRateNominal() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.BITRATE_NOMINAL);
+    }
+
+    /**
+     * Get nominal bit rate in bps (with measurement).
+     *
+     * @return nominal bit rate
+     */
+    @Nullable
+    public String getBitRateNominalString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_NOMINAL_STRING);
+    }
+
+    /**
+     * Get maximum bit rate in bps.
+     *
+     * @return maximum bit rate
+     */
+    @Nullable
+    public Long getBitRateMaximum() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.BITRATE_MAXIMUM);
+    }
+
+    /**
+     * Get maximum bit rate in bps (with measurement).
+     *
+     * @return maximum bit rate
+     */
+    @Nullable
+    public String getBitRateMaximumString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_MAXIMUM_STRING);
+    }
+
+    /**
+     * Get encoded (with forced padding) bit rate in bps, if some container padding is present.
+     *
+     * @return encoded bit rate
+     */
+    @Nullable
+    public Long getBitRateEncoded() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.BITRATE_ENCODED);
+    }
+
+    /**
+     * Get encoded (with forced padding) bit rate (with measurement), if some container padding is present.
+     *
+     * @return encoded bit rate
+     */
+    @Nullable
+    public String getBitRateEncodedString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.BITRATE_ENCODED_STRING);
+    }
+
+    /**
+     * Get original (in the raw stream) width in pixel.
+     *
+     * @return original (in the raw stream) width
+     */
+    @Nullable
+    public Long getWidthOriginal() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.WIDTH_ORIGINAL);
+    }
+
+    /**
+     * Get original (in the raw stream) width with measurement (pixel).
+     *
+     * @return original (in the raw stream) width
+     */
+    @Nullable
+    public String getWidthOriginalString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.WIDTH_ORIGINAL_STRING);
+    }
+
+    /**
+     * Get height (aperture size if present) with measurement (pixel).
+     *
+     * @return height
+     */
+    @Nullable
+    public String getHeightString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.HEIGHT_STRING);
+    }
+
+    /**
+     * Get offset between original height and displayed height (aperture size) in pixel.
+     *
+     * @return offset between original height and displayed height
+     */
+    @Nullable
+    public Long getHeightOffset() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.HEIGHT_OFFSET);
+    }
+
+    /**
+     * Get offset between original height and displayed height (aperture size) in pixel.
+     *
+     * @return offset between original height and displayed height
+     */
+    @Nullable
+    public String getHeightOffsetString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.HEIGHT_OFFSET_STRING);
+    }
+
+    /**
+     * Get original (in the raw stream) height in pixel.
+     *
+     * @return original (in the raw stream) height
+     */
+    @Nullable
+    public Long getHeightOriginal() {
+        return getMediaInfo().getAsLong(StreamKind.Video, this.streamNumber, Video.HEIGHT_ORIGINAL);
+    }
+
+    /**
+     * Get original (in the raw stream) height with measurement (pixel).
+     *
+     * @return original (in the raw stream) height
+     */
+    @Nullable
+    public String getHeightOriginalString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.HEIGHT_ORIGINAL_STRING);
+    }
+
+    /**
+     * Get pixel aspect ratio.
+     *
+     * @return pixel aspect ratio
+     */
+    @Nullable
+    public Double getPixelAspectRatio() {
+        return getMediaInfo().getAsDouble(StreamKind.Video, this.streamNumber, Video.PIXEL_ASPECT_RATIO);
+    }
+
+    /**
+     * Get pixel aspect ratio with measurement (pixel).
+     *
+     * @return pixel aspect ratio
+     */
+    @Nullable
+    public String getPixelAspectRatioString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.PIXEL_ASPECT_RATIO_STRING);
+    }
+
+    /**
+     * Get original pixel aspect ratio.
+     *
+     * @return original pixel aspect ratio
+     */
+    @Nullable
+    public Double getPixelAspectRatioOriginal() {
+        return getMediaInfo().getAsDouble(StreamKind.Video, this.streamNumber, Video.PIXEL_ASPECT_RATIO_ORIGINAL);
+    }
+
+    /**
+     * Get original pixel aspect ratio with measurement (pixel).
+     *
+     * @return original pixel aspect ratio
+     */
+    @Nullable
+    public String getPixelAspectRatioOriginalString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.PIXEL_ASPECT_RATIO_ORIGINAL_STRING);
+    }
+
+    /**
+     * Get display aspect ratio.
+     *
+     * @return display aspect ratio
+     */
+    @Nullable
+    public String getDisplayAspectRatioString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DISPLAY_ASPECT_RATIO_STRING);
+    }
+
+    /**
+     * Get original display aspect ratio.
+     *
+     * @return original display aspect ratio
+     */
+    @Nullable
+    public Double getDisplayAspectRatioOriginal() {
+        return getMediaInfo().getAsDouble(StreamKind.Video, this.streamNumber, Video.DISPLAY_ASPECT_RATIO_ORIGINAL);
+    }
+
+    /**
+     * Get original display aspect ratio with measurement (pixel).
+     *
+     * @return original display aspect ratio
+     */
+    @Nullable
+    public String getDisplayAspectRatioOriginalString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.DISPLAY_ASPECT_RATIO_ORIGINAL_STRING);
+    }
+
+    /**
+     * Get Active Format Description (AFD value).
+     *
+     * @return Active Format Description
+     */
+    @Nullable
+    public String getActiveFormatDescription() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.ACTIVE_FORMAT_DESCRIPTION);
+    }
+
+    /**
+     * Get Active Format Description (text).
+     *
+     * @return Active Format Description
+     */
+    @Nullable
+    public String getActiveFormatDescriptionString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.ACTIVE_FORMAT_DESCRIPTION_STRING);
+    }
+
+    /**
+     * Get rotation.
+     *
+     * @return rotation
+     */
+    @Nullable
+    public String getRotation() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.ROTATION);
+    }
+
+    /**
+     * Get rotation (if not horizontal).
+     *
+     * @return rotation
+     */
+    @Nullable
+    public String getRotationString() {
+        return getMediaInfo().get(StreamKind.Video, this.streamNumber, Video.ROTATION_STRING);
     }
 
 }
