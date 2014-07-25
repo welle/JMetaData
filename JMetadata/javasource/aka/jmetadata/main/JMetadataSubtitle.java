@@ -8,7 +8,7 @@ import aka.jmetadata.main.constants.Text;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**
- * This class contains all methods to extract audio informations of a specific subtitle stream.
+ * This class contains all methods to extract subtitle informations of a specific subtitle stream.
  *
  * @author Charlotte
  */

@@ -6,7 +6,7 @@ import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**
- * This class contains all methods to extract audio informations of a specific menu stream.
+ * This class contains all methods to extract menu informations of a specific menu stream.
  *
  * @author Charlotte
  */

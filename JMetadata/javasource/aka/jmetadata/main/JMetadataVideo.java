@@ -8,7 +8,7 @@ import aka.jmetadata.main.constants.Video;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**
- * This class contains all methods to extract audio informations of a specific video stream.
+ * This class contains all methods to extract video informations of a specific video stream.
  *
  * @author Charlotte
  */
