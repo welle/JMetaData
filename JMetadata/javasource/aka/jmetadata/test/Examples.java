@@ -124,14 +124,10 @@ public class Examples {
         System.out.println(" Format = " + jMetadataVideo.getFormat());
         System.out.println(" Format Version = " + jMetadataVideo.getFormatVersion());
         System.out.println(" Format Settings = " + jMetadataVideo.getFormatSettings());
-        System.out.println(" Language = " + jMetadataVideo.getLanguage());
         System.out.println(" Bit Rate = " + jMetadataVideo.getBitRate());
         System.out.println(" Width = " + jMetadataVideo.getWidth());
         System.out.println(" Height = " + jMetadataVideo.getHeight());
-//        System.out.println(" File Size = " + jMetadataVideo.getFileSize());
         System.out.println(" Frame Rate = " + jMetadataVideo.getFrameRate());
-//        System.out.println(" OverallBitRate = " + jMetadataVideo.getOverallBitRate());
-//        System.out.println(" StreamCount = " + jMetadataVideo.getStreamCount());
         System.out.println(" StreamKind = " + jMetadataVideo.getStreamKind());
         System.out.println(" StreamKindString = " + jMetadataVideo.getStreamKindString());
         System.out.println(" StreamKindID = " + jMetadataVideo.getStreamKindID());
@@ -206,6 +202,87 @@ public class Examples {
         System.out.println(" Active format description string = " + jMetadataVideo.getActiveFormatDescriptionString());
         System.out.println(" Rotation = " + jMetadataVideo.getRotation());
         System.out.println(" Rotation string = " + jMetadataVideo.getRotationString());
+        System.out.println(" Frame rate mode = " + jMetadataVideo.getFrameRateMode());
+        System.out.println(" Frame rate mode string = " + jMetadataVideo.getFrameRateModeString());
+        System.out.println(" Frame rate mode original = " + jMetadataVideo.getFrameRateModeOriginal());
+        System.out.println(" Frame rate mode original string = " + jMetadataVideo.getFrameRateModeOriginalString());
+        System.out.println(" Frame rate string = " + jMetadataVideo.getFrameRateString());
+        System.out.println(" Frame rate original = " + jMetadataVideo.getFrameRateOriginal());
+        System.out.println(" Frame rate original string = " + jMetadataVideo.getFrameRateOriginalString());
+        System.out.println(" Frame rate minimum = " + jMetadataVideo.getFrameRateMinimum());
+        System.out.println(" Frame rate minimum string = " + jMetadataVideo.getFrameRateMinimumString());
+        System.out.println(" Frame rate nominal = " + jMetadataVideo.getFrameRateNominal());
+        System.out.println(" Frame rate nominal string = " + jMetadataVideo.getFrameRateNominalString());
+        System.out.println(" Frame rate maximum = " + jMetadataVideo.getFrameRateMaximum());
+        System.out.println(" Frame rate maximum string = " + jMetadataVideo.getFrameRateMaximumString());
+        System.out.println(" Frame count = " + jMetadataVideo.getFrameCount());
+        System.out.println(" Source Frame count = " + jMetadataVideo.getSourceFrameCount());
+        System.out.println(" Standard = " + jMetadataVideo.getStandard());
+        try {
+            System.out.println(" Encoded date = " + jMetadataVideo.getEncodedDate());
+        } catch (final ParseException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        try {
+            System.out.println(" Tagged date = " + jMetadataVideo.getTaggedDate());
+        } catch (final ParseException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        System.out.println(" Encoded Application = " + jMetadataVideo.getEncodedApplication());
+        try {
+            System.out.println(" Encoded Application URL = " + jMetadataVideo.getEncodedApplicationURL());
+        } catch (final MalformedURLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        System.out.println(" Encoded Library = " + jMetadataVideo.getEncodedLibrary());
+        System.out.println(" Encoded Library String = " + jMetadataVideo.getEncodedLibraryString());
+        System.out.println(" Encoded Library name = " + jMetadataVideo.getEncodedLibraryName());
+        System.out.println(" Encoded Library version = " + jMetadataVideo.getEncodedLibraryVersion());
+        System.out.println(" Encoded Library release date = " + jMetadataVideo.getEncodedLibraryDate());
+        System.out.println(" Encoded Library settings = " + jMetadataVideo.getEncodedLibrarySettings());
+        System.out.println(" Stream size = " + jMetadataVideo.getStreamsize());
+        System.out.println(" Stream size string = " + jMetadataVideo.getStreamsizeString());
+        System.out.println(" Stream size string type 1 = " + jMetadataVideo.getStreamsizeStringType1());
+        System.out.println(" Stream size string type 2 = " + jMetadataVideo.getStreamsizeStringType2());
+        System.out.println(" Stream size string type 3 = " + jMetadataVideo.getStreamsizeStringType3());
+        System.out.println(" Stream size string type 4 = " + jMetadataVideo.getStreamsizeStringType4());
+        System.out.println(" Stream size string type 5 = " + jMetadataVideo.getStreamsizeStringType5());
+        System.out.println(" Stream size proportion = " + jMetadataVideo.getStreamsizeProportion());
+        System.out.println(" Language = " + jMetadataVideo.getLanguage());
+        System.out.println(" Language string = " + jMetadataVideo.getLanguageString());
+        System.out.println(" Language string 1 = " + jMetadataVideo.getLanguageString1());
+        System.out.println(" Language string 2 = " + jMetadataVideo.getLanguageString2());
+        System.out.println(" Language string 3 = " + jMetadataVideo.getLanguageString3());
+        System.out.println(" Language string 4 = " + jMetadataVideo.getLanguageString4());
+        System.out.println(" Language more = " + jMetadataVideo.getLanguageMore());
+        System.out.println(" Is default ? = " + jMetadataVideo.isDefault());
+        System.out.println(" Default string = " + jMetadataVideo.getDefaultString());
+        System.out.println(" Is forced ? = " + jMetadataVideo.isForced());
+        System.out.println(" Forced string = " + jMetadataVideo.getForcedString());
+        System.out.println(" Alignment = " + jMetadataVideo.getAlignment());
+        System.out.println(" Alignment string = " + jMetadataVideo.getAlignmentString());
+        System.out.println(" Title = " + jMetadataVideo.getTitle());
+        System.out.println(" Color space = " + jMetadataVideo.getColorSpace());
+        System.out.println(" Chroma subsampling = " + jMetadataVideo.getChromaSubsampling());
+        System.out.println(" Bit depth = " + jMetadataVideo.getBitDepth());
+        System.out.println(" Bit depth string = " + jMetadataVideo.getBitDepthString());
+        System.out.println(" Scan type = " + jMetadataVideo.getScanType());
+        System.out.println(" Scan type string = " + jMetadataVideo.getScanTypeString());
+        System.out.println(" Scan order = " + jMetadataVideo.getScanOrder());
+        System.out.println(" Scan order string = " + jMetadataVideo.getScanOrderString());
+        System.out.println(" Compression mode = " + jMetadataVideo.getCompressionMode());
+        System.out.println(" Compression mode string = " + jMetadataVideo.getCompressionModeString());
+        System.out.println(" Compression ratio = " + jMetadataVideo.getCompressionRatio());
+        System.out.println(" bits/(Pixel*Frame) (like Gordian Knot) = " + jMetadataVideo.getBitsDividedPixelsFrame());
+        System.out.println(" Delay = " + jMetadataVideo.getDelay());
+        System.out.println(" Delay string = " + jMetadataVideo.getDelayString());
+        System.out.println(" Delay string 1 = " + jMetadataVideo.getDelayStringType1());
+        System.out.println(" Delay string 2 = " + jMetadataVideo.getDelayStringType2());
+        System.out.println(" Delay string 3 = " + jMetadataVideo.getDelayStringType3());
+        System.out.println(" Delay string 4 = " + jMetadataVideo.getDelayStringType4());
+        System.out.println(" Delay settings = " + jMetadataVideo.getDelaySettings());
+        System.out.println(" Encryption = " + jMetadataVideo.getEncryption());
+        System.out.println(" Buffer size = " + jMetadataVideo.getBufferSize());
     }
 
     private static void printJMetaDataInfos(@Nonnull final JMetadataGeneral jMetadataGeneral) {

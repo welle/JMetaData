@@ -194,6 +194,21 @@ public final class MediaInfo {
      * @param streamNumber Stream number in Kind of Stream (first, second...)
      * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
      *            in string format ("Codec", "Width"...)
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    public boolean getAsBoolean(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+
+        return "Yes".equals(value);
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
      * @return a Long about information you search, an empty string if there is a problem
      */
     @Nullable

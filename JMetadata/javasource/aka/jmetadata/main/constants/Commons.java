@@ -534,6 +534,131 @@ public final class Commons {
      */
     @Nonnull
     public static final String ENCODED_LIBRARY_SETTINGS = "Encoded_Library_Settings";
+    /**
+     * Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+     */
+    @Nonnull
+    public static final String LANGUAGE = "Language";
+    /**
+     * Language (full).
+     */
+    @Nonnull
+    public static final String LANGUAGE_STRING = "Language/String";
+    /**
+     * Language (full).
+     */
+    @Nonnull
+    public static final String LANGUAGE_STRING1 = "Language/String1";
+    /**
+     * Language (2-letter ISO 639-1 if exists, else empty).
+     */
+    @Nonnull
+    public static final String LANGUAGE_STRING2 = "Language/String2";
+    /**
+     * Language (3-letter ISO 639-2 if exists, else empty).
+     */
+    @Nonnull
+    public static final String LANGUAGE_STRING3 = "Language/String3";
+    /**
+     * Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+     */
+    @Nonnull
+    public static final String LANGUAGE_STRING4 = "Language/String4";
+    /**
+     * More info about Language (e.g. Director's Comment).
+     */
+    @Nonnull
+    public static final String LANGUAGE_MORE = "Language_More";
+    /**
+     * Set if that track should be used if no language found matches the user preference.
+     */
+    @Nonnull
+    public static final String DEFAULT = "Default";
+    /**
+     * Set if that track should be used if no language found matches the user preference.
+     */
+    @Nonnull
+    public static final String DEFAULT_STRING = "Default/String";
+    /**
+     * Set if that track should be used if no language found matches the user preference.
+     */
+    @Nonnull
+    public static final String FORCED = "Forced";
+    /**
+     * Set if that track should be used if no language found matches the user preference.
+     */
+    @Nonnull
+    public static final String FORCED_STRING = "Forced/String";
+    /**
+     * How this stream file is aligned in the container.
+     */
+    @Nonnull
+    public static final String ALIGNMENT = "Alignment";
+    /**
+     * Name of the track.
+     */
+    @Nonnull
+    public static final String TITLE = "Title";
+    /**
+     * How this stream file is aligned in the container.
+     */
+    @Nonnull
+    public static final String ALIGNMENT_STRING = "Alignment/String";
+    /**
+     * Compression mode (Lossy or Lossless).
+     */
+    @Nonnull
+    public static final String COMPRESSION_MODE = "Compression_Mode";
+    /**
+     * Compression mode (Lossy or Lossless).
+     */
+    @Nonnull
+    public static final String COMPRESSION_MODE_STRING = "Compression_Mode/String";
+    /**
+     * Current stream size divided by uncompressed stream size.
+     */
+    @Nonnull
+    public static final String COMPRESSION_RATIO = "Compression_Ratio";
+    /**
+     * Delay fixed in the stream (relative) IN MS.
+     */
+    @Nonnull
+    public static final String DELAY = "Delay";
+    /**
+     * Delay with measurement.
+     */
+    @Nonnull
+    public static final String DELAY_STRING = "Delay/String";
+    /**
+     * Delay with measurement.
+     */
+    @Nonnull
+    public static final String DELAY_STRING1 = "Delay/String1";
+    /**
+     * Delay with measurement.
+     */
+    @Nonnull
+    public static final String DELAY_STRING2 = "Delay/String2";
+    /**
+     * Delay in format : HH:MM:SS.MMM.
+     */
+    @Nonnull
+    public static final String DELAY_STRING3 = "Delay/String3";
+    /**
+     * Delay in format : HH:MM:SS:FF (HH:MM:SS).
+     */
+    @Nonnull
+    public static final String DELAY_STRING4 = "Delay/String4";
+    /**
+     * Delay settings (in case of timecode for example).
+     */
+    @Nonnull
+    public static final String DELAY_SETTINGS = "Delay_Settings";
+    /**
+     * Encryption.
+     */
+    @Nonnull
+    public static final String ENCRYPTION = "Encryption";
 
     private Commons() {
         // Singleton

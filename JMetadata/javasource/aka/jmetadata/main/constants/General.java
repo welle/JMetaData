@@ -65,51 +65,6 @@ public final class General {
     @Nonnull
     public static final String DURATION_START = "Duration_Start";
     /**
-     * Name of the software package used to create the file, such as Microsoft WaveEdit.
-     */
-    @Nonnull
-    public static final String ENCODED_APPLICATION = "Encoded_Application";
-    /**
-     * URL of the software package used to create the file, such as Microsoft WaveEdit.
-     */
-    @Nonnull
-    public static final String ENCODED_APPLICATION_URL = "Encoded_Application/Url";
-    /**
-     * The time/date/year that the encoding of this item was completed began.
-     */
-    @Nonnull
-    public static final String ENCODED_DATE = "Encoded_Date";
-    /**
-     * Software used to create the file.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY = "Encoded_Library";
-    /**
-     * Release date of the the encoding-software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_DATE = "Encoded_Library/Date";
-    /**
-     * Name of the the encoding-software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_NAME = "Encoded_Library/Name";
-    /**
-     * Parameters used by the software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_SETTINGS = "Encoded_Library_Settings";
-    /**
-     * Software used to create the file.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_STRING = "Encoded_Library/String";
-    /**
-     * Version of the the encoding-software.
-     */
-    @Nonnull
-    public static final String ENCODED_LIBRARY_VERSION = "Encoded_Library/Version";
-    /**
      * The time that the file was created on the file system.
      */
     @Nonnull
@@ -279,51 +234,6 @@ public final class General {
      */
     @Nonnull
     public static final String RECORDED_DATE = "Recorded_Date";
-    /**
-     * StreamSize.
-     */
-    @Nonnull
-    public static final String STREAMSIZE = "StreamSize";
-    /**
-     * Stream size divided by file size.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_PROPORTION = "StreamSize_Proportion";
-    /**
-     * StreamSize.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_STRING = "StreamSize/String";
-    /**
-     * StreamSize.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_STRING1 = "StreamSize/String1";
-    /**
-     * StreamSize.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_STRING2 = "StreamSize/String2";
-    /**
-     * StreamSize.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_STRING3 = "StreamSize/String3";
-    /**
-     * StreamSize.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_STRING4 = "StreamSize/String4";
-    /**
-     * StreamSize : With proportion.
-     */
-    @Nonnull
-    public static final String STREAMSIZE_STRING5 = "StreamSize/String5";
-    /**
-     * The time/date/year that the tags were done for this item.
-     */
-    @Nonnull
-    public static final String TAGGED_DATE = "Tagged_Date";
     /**
      * Text Codecs in this file, separated by /.
      */

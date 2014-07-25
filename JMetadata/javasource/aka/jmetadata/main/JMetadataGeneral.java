@@ -1020,7 +1020,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public Long getStreamsize() {
-        return getMediaInfo().getAsLong(StreamKind.General, 0, General.STREAMSIZE);
+        return getMediaInfo().getAsLong(StreamKind.General, 0, Commons.STREAMSIZE);
     }
 
     /**
@@ -1030,7 +1030,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.STREAMSIZE_STRING);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING);
     }
 
     /**
@@ -1040,7 +1040,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType1() {
-        return getMediaInfo().get(StreamKind.General, 0, General.STREAMSIZE_STRING1);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING1);
     }
 
     /**
@@ -1050,7 +1050,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType2() {
-        return getMediaInfo().get(StreamKind.General, 0, General.STREAMSIZE_STRING2);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING2);
     }
 
     /**
@@ -1060,7 +1060,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType3() {
-        return getMediaInfo().get(StreamKind.General, 0, General.STREAMSIZE_STRING3);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING3);
     }
 
     /**
@@ -1070,7 +1070,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType4() {
-        return getMediaInfo().get(StreamKind.General, 0, General.STREAMSIZE_STRING4);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING4);
     }
 
     /**
@@ -1080,7 +1080,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType5() {
-        return getMediaInfo().get(StreamKind.General, 0, General.STREAMSIZE_STRING5);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING5);
     }
 
     /**
@@ -1090,7 +1090,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public Double getStreamsizeProportion() {
-        return getMediaInfo().getAsDouble(StreamKind.General, 0, General.STREAMSIZE_PROPORTION);
+        return getMediaInfo().getAsDouble(StreamKind.General, 0, Commons.STREAMSIZE_PROPORTION);
     }
 
     /**
@@ -1122,7 +1122,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public Date getEncodedDate() throws ParseException {
-        return getMediaInfo().getAsDate(StreamKind.General, 0, General.ENCODED_DATE);
+        return getMediaInfo().getAsDate(StreamKind.General, 0, Commons.ENCODED_DATE);
     }
 
     /**
@@ -1133,7 +1133,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public Date getTaggedDate() throws ParseException {
-        return getMediaInfo().getAsDate(StreamKind.General, 0, General.TAGGED_DATE);
+        return getMediaInfo().getAsDate(StreamKind.General, 0, Commons.TAGGED_DATE);
     }
 
     /**
@@ -1176,7 +1176,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedApplication() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_APPLICATION);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_APPLICATION);
     }
 
     /**
@@ -1187,7 +1187,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public URL getEncodedApplicationURL() throws MalformedURLException {
-        return getMediaInfo().getAsURL(StreamKind.General, 0, General.ENCODED_APPLICATION_URL);
+        return getMediaInfo().getAsURL(StreamKind.General, 0, Commons.ENCODED_APPLICATION_URL);
     }
 
     /**
@@ -1197,7 +1197,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibrary() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_LIBRARY);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY);
     }
 
     /**
@@ -1207,7 +1207,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_LIBRARY_STRING);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_STRING);
     }
 
     /**
@@ -1217,7 +1217,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryName() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_LIBRARY_NAME);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_NAME);
     }
 
     /**
@@ -1227,7 +1227,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryVersion() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_LIBRARY_VERSION);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_VERSION);
     }
 
     /**
@@ -1237,7 +1237,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryDate() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_LIBRARY_DATE);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_DATE);
     }
 
     /**
@@ -1247,7 +1247,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibrarySettings() {
-        return getMediaInfo().get(StreamKind.General, 0, General.ENCODED_LIBRARY_SETTINGS);
+        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_SETTINGS);
     }
 
     /**
