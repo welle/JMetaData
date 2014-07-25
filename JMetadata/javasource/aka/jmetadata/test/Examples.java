@@ -101,9 +101,9 @@ public class Examples {
         System.out.println("AUDIOS");
         System.out.println("--------------------");
         final List<JMetadataAudio> audioStreamList = jMetadata.getAudioStreams();
-        for (final JMetadataAudio jMetadataVideo : audioStreamList) {
-            System.out.println("AUDIO - Codec: " + jMetadataVideo.getCodecID() + " Codec Hint: " + jMetadataVideo.getCodecIDHint() + " Sampling rate: " + jMetadataVideo.getSamplingRate() + " Format: " + jMetadataVideo.getFormat() + " Format Info: " + jMetadataVideo.getFormatInfo() + " Format Profile: " + jMetadataVideo.getFormatProfile() + " Language: " + jMetadataVideo.getLanguage() + " Bit Rate: " + jMetadataVideo.getBitRate() + " Duration " + jMetadataVideo.getDuration() + " Channels: "
-                    + jMetadataVideo.getChannels() + " DEFAULT: " + jMetadataVideo.isDefault() + " forced: " + jMetadataVideo.isForced());
+        for (final JMetadataAudio jMetadataAudio : audioStreamList) {
+            assert jMetadataAudio != null;
+            printJMetadataAudios(jMetadataAudio);
         }
         System.out.println("_________________________________________________________________________________________");
 
@@ -114,6 +114,152 @@ public class Examples {
             System.out.println("SUBTITLE - Codec: " + jMetadataVideo.getCodecID() + " Codec Hint: " + jMetadataVideo.getCodecID() + " Format: " + jMetadataVideo.getFormat() + " CODEC Info: " + jMetadataVideo.getCodecIDInfo() + " Language: " + jMetadataVideo.getLanguage() + " DEFAULT: " + jMetadataVideo.isDefault() + " forced: " + jMetadataVideo.isForced());
         }
         System.out.println("_________________________________________________________________________________________");
+    }
+
+    private static void printJMetadataAudios(@Nonnull final JMetadataAudio jMetadataAudio) {
+        System.out.println("AUDIO #" + jMetadataAudio.getStreamKindID());
+        System.out.println("----------");
+        System.out.println(" Duration = " + jMetadataAudio.getDuration());
+        System.out.println(" Format = " + jMetadataAudio.getFormat());
+        System.out.println(" Format Version = " + jMetadataAudio.getFormatVersion());
+        System.out.println(" Format Settings = " + jMetadataAudio.getFormatSettings());
+        System.out.println(" Bit Rate = " + jMetadataAudio.getBitRate());
+        System.out.println(" Frame Rate = " + jMetadataAudio.getFrameRate());
+        System.out.println(" StreamKind = " + jMetadataAudio.getStreamKind());
+        System.out.println(" StreamKindString = " + jMetadataAudio.getStreamKindString());
+        System.out.println(" StreamKindID = " + jMetadataAudio.getStreamKindID());
+        System.out.println(" StreamKindPos = " + jMetadataAudio.getStreamKindPosition());
+        System.out.println(" StreamKindOrder = " + jMetadataAudio.getStreamKindOrder());
+        System.out.println(" ID = " + jMetadataAudio.getID());
+        System.out.println(" ID String = " + jMetadataAudio.getIDString());
+        System.out.println(" Unique ID = " + jMetadataAudio.getUniqueID());
+        System.out.println(" Unique ID String = " + jMetadataAudio.getUniqueIDString());
+        System.out.println(" Menu ID  = " + jMetadataAudio.getMenuID());
+        System.out.println(" Menu ID String = " + jMetadataAudio.getMenuIDString());
+        System.out.println(" Format info = " + jMetadataAudio.getFormatInfo());
+        System.out.println(" #Channels = " + jMetadataAudio.getChannels());
+        System.out.println(" Sampling rate = " + jMetadataAudio.getSamplingRate());
+        try {
+            System.out.println(" Format URL = " + jMetadataAudio.getFormatURL());
+        } catch (final MalformedURLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        System.out.println(" Format Commercial = " + jMetadataAudio.getFormatCommercial());
+        System.out.println(" Format Commercial If Any = " + jMetadataAudio.getFormatCommercialIfAny());
+        System.out.println(" Format Profile = " + jMetadataAudio.getFormatProfile());
+        System.out.println(" Format Compression = " + jMetadataAudio.getFormatCompression());
+        System.out.println(" Codec ID = " + jMetadataAudio.getCodecID());
+        System.out.println(" Duration String = " + jMetadataAudio.getDurationString());
+        System.out.println(" Duration String Type 1 = " + jMetadataAudio.getDurationStringType1());
+        System.out.println(" Duration String Type 2 = " + jMetadataAudio.getDurationStringType2());
+        System.out.println(" Duration String Type 3 = " + jMetadataAudio.getDurationStringType3());
+        System.out.println(" Internet Media Type = " + jMetadataAudio.getInternetMediaType());
+        System.out.println(" Muxing mode = " + jMetadataAudio.getMuxingMode());
+        System.out.println(" Codec ID String = " + jMetadataAudio.getCodecIDString());
+        System.out.println(" Codec ID Info = " + jMetadataAudio.getCodecIDInfo());
+        System.out.println(" Codec ID Hint = " + jMetadataAudio.getCodecIDHint());
+        System.out.println(" Codec ID Description = " + jMetadataAudio.getCodecIDDescription());
+        try {
+            System.out.println(" Codec ID URL = " + jMetadataAudio.getCodecIDURL());
+        } catch (final MalformedURLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        System.out.println(" Duration first trame = " + jMetadataAudio.getDurationFirstTrame());
+        System.out.println(" Duration first trame Type 1 = " + jMetadataAudio.getDurationFirstTrameType1());
+        System.out.println(" Duration first trame Type 2 = " + jMetadataAudio.getDurationFirstTrameType2());
+        System.out.println(" Duration first trame Type 3 = " + jMetadataAudio.getDurationFirstTrameType3());
+        System.out.println(" Bit rate mode = " + jMetadataAudio.getBitRateMode());
+        System.out.println(" Bit rate mode string = " + jMetadataAudio.getBitRateModeString());
+        System.out.println(" Bit rate string = " + jMetadataAudio.getBitRateString());
+        System.out.println(" Bit rate minimum = " + jMetadataAudio.getBitRateMinimum());
+        System.out.println(" Bit rate minimum string = " + jMetadataAudio.getBitRateMinimumString());
+        System.out.println(" Bit rate nominal = " + jMetadataAudio.getBitRateNominal());
+        System.out.println(" Bit rate nominal string = " + jMetadataAudio.getBitRateNominalString());
+        System.out.println(" Bit rate maximum = " + jMetadataAudio.getBitRateMaximum());
+        System.out.println(" Bit rate maximum string = " + jMetadataAudio.getBitRateMaximumString());
+        System.out.println(" Bit rate encoded = " + jMetadataAudio.getBitRateEncoded());
+        System.out.println(" Frame count = " + jMetadataAudio.getFrameCount());
+        System.out.println(" Source Frame count = " + jMetadataAudio.getSourceFrameCount());
+        try {
+            System.out.println(" Encoded date = " + jMetadataAudio.getEncodedDate());
+        } catch (final ParseException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        try {
+            System.out.println(" Tagged date = " + jMetadataAudio.getTaggedDate());
+        } catch (final ParseException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        System.out.println(" Encoded Application = " + jMetadataAudio.getEncodedApplication());
+        try {
+            System.out.println(" Encoded Application URL = " + jMetadataAudio.getEncodedApplicationURL());
+        } catch (final MalformedURLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        System.out.println(" Encoded Library = " + jMetadataAudio.getEncodedLibrary());
+        System.out.println(" Encoded Library String = " + jMetadataAudio.getEncodedLibraryString());
+        System.out.println(" Encoded Library name = " + jMetadataAudio.getEncodedLibraryName());
+        System.out.println(" Encoded Library version = " + jMetadataAudio.getEncodedLibraryVersion());
+        System.out.println(" Encoded Library release date = " + jMetadataAudio.getEncodedLibraryDate());
+        System.out.println(" Encoded Library settings = " + jMetadataAudio.getEncodedLibrarySettings());
+        System.out.println(" Stream size = " + jMetadataAudio.getStreamsize());
+        System.out.println(" Stream size string = " + jMetadataAudio.getStreamsizeString());
+        System.out.println(" Stream size string type 1 = " + jMetadataAudio.getStreamsizeStringType1());
+        System.out.println(" Stream size string type 2 = " + jMetadataAudio.getStreamsizeStringType2());
+        System.out.println(" Stream size string type 3 = " + jMetadataAudio.getStreamsizeStringType3());
+        System.out.println(" Stream size string type 4 = " + jMetadataAudio.getStreamsizeStringType4());
+        System.out.println(" Stream size string type 5 = " + jMetadataAudio.getStreamsizeStringType5());
+        System.out.println(" Stream size proportion = " + jMetadataAudio.getStreamsizeProportion());
+        System.out.println(" Language = " + jMetadataAudio.getLanguage());
+        System.out.println(" Language string = " + jMetadataAudio.getLanguageString());
+        System.out.println(" Language string 1 = " + jMetadataAudio.getLanguageString1());
+        System.out.println(" Language string 2 = " + jMetadataAudio.getLanguageString2());
+        System.out.println(" Language string 3 = " + jMetadataAudio.getLanguageString3());
+        System.out.println(" Language string 4 = " + jMetadataAudio.getLanguageString4());
+        System.out.println(" Language more = " + jMetadataAudio.getLanguageMore());
+        System.out.println(" Is default ? = " + jMetadataAudio.isDefault());
+        System.out.println(" Default string = " + jMetadataAudio.getDefaultString());
+        System.out.println(" Is forced ? = " + jMetadataAudio.isForced());
+        System.out.println(" Forced string = " + jMetadataAudio.getForcedString());
+        System.out.println(" Alignment = " + jMetadataAudio.getAlignment());
+        System.out.println(" Alignment string = " + jMetadataAudio.getAlignmentString());
+        System.out.println(" Title = " + jMetadataAudio.getTitle());
+        System.out.println(" Bit depth = " + jMetadataAudio.getBitDepth());
+        System.out.println(" Bit depth string = " + jMetadataAudio.getBitDepthString());
+        System.out.println(" Compression mode = " + jMetadataAudio.getCompressionMode());
+        System.out.println(" Compression mode string = " + jMetadataAudio.getCompressionModeString());
+        System.out.println(" Compression ratio = " + jMetadataAudio.getCompressionRatio());
+        System.out.println(" Delay = " + jMetadataAudio.getDelay());
+        System.out.println(" Delay string = " + jMetadataAudio.getDelayString());
+        System.out.println(" Delay string 1 = " + jMetadataAudio.getDelayStringType1());
+        System.out.println(" Delay string 2 = " + jMetadataAudio.getDelayStringType2());
+        System.out.println(" Delay string 3 = " + jMetadataAudio.getDelayStringType3());
+        System.out.println(" Delay string 4 = " + jMetadataAudio.getDelayStringType4());
+        System.out.println(" Delay settings = " + jMetadataAudio.getDelaySettings());
+        System.out.println(" Encryption = " + jMetadataAudio.getEncryption());
+        System.out.println(" Delay source = " + jMetadataAudio.getDelaySource());
+        System.out.println(" Delay source string = " + jMetadataAudio.getDelaySourceString());
+        System.out.println(" Status = " + jMetadataAudio.getStatus());
+        System.out.println(" Channel(s) string = " + jMetadataAudio.getChannelsString());
+        System.out.println(" Channel position = " + jMetadataAudio.getChannelPosition());
+        System.out.println(" Channel position string = " + jMetadataAudio.getChannelPositionString());
+        System.out.println(" Channel layout = " + jMetadataAudio.getChannelLayout());
+        System.out.println(" Sampling rate string = " + jMetadataAudio.getSamplingRateString());
+        System.out.println(" Frame rate string = " + jMetadataAudio.getFrameRateString());
+        System.out.println(" Video delay = " + jMetadataAudio.getVideoDelay());
+        System.out.println(" Video delay string = " + jMetadataAudio.getVideoDelayString());
+        System.out.println(" Video delay string type 1 = " + jMetadataAudio.getVideoDelayStringType1());
+        System.out.println(" Video delay string type 2 = " + jMetadataAudio.getVideoDelayStringType2());
+        System.out.println(" Video delay string type 3 = " + jMetadataAudio.getVideoDelayStringType3());
+        System.out.println(" Video delay string type 4 = " + jMetadataAudio.getVideoDelayStringType4());
+        System.out.println(" Replaygain gain = " + jMetadataAudio.getReplayGain());
+        System.out.println(" Replaygain gain string = " + jMetadataAudio.getReplayGainString());
+        System.out.println(" Replaygain peak = " + jMetadataAudio.getReplayGainPeak());
+        System.out.println(" Interleave Duration = " + jMetadataAudio.getInterleaveDuration());
+        System.out.println(" Interleave Duration string = " + jMetadataAudio.getInterleaveDurationString());
+        System.out.println(" Interleave Preload = " + jMetadataAudio.getInterleavePreload());
+        System.out.println(" Interleave Preload string = " + jMetadataAudio.getInterleavePreloadString());
+        System.out.println(" Interleave Video Frames = " + jMetadataAudio.getInterleaveVideoFrames());
     }
 
     private static void printJMetadataVideos(@Nonnull final JMetadataVideo jMetadataVideo) {
@@ -283,6 +429,8 @@ public class Examples {
         System.out.println(" Delay settings = " + jMetadataVideo.getDelaySettings());
         System.out.println(" Encryption = " + jMetadataVideo.getEncryption());
         System.out.println(" Buffer size = " + jMetadataVideo.getBufferSize());
+        System.out.println(" Delay source = " + jMetadataVideo.getDelaySource());
+        System.out.println(" Delay source string = " + jMetadataVideo.getDelaySourceString());
     }
 
     private static void printJMetaDataInfos(@Nonnull final JMetadataGeneral jMetadataGeneral) {

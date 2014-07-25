@@ -9,11 +9,6 @@ import javax.annotation.Nonnull;
 
 public final class Video {
     /**
-     * Bit rate in bps.
-     */
-    @Nonnull
-    public static final String BITRATE = "BitRate";
-    /**
      * Width (aperture size if present) in pixel.
      */
     @Nonnull
@@ -28,11 +23,6 @@ public final class Video {
      */
     @Nonnull
     public static final String DISPLAY_ASPECT_RATIO = "DisplayAspectRatio";
-    /**
-     * Frames per second.
-     */
-    @Nonnull
-    public static final String FRAME_RATE = "FrameRate";
     /**
      * Play time in format : HH:MM:SS:FF (HH:MM:SS.
      */
@@ -53,91 +43,6 @@ public final class Video {
      */
     @Nonnull
     public static final String MULTIVIEW_LAYOUT = "MultiView_Layout";
-    /**
-     * How this file is muxed in the container.
-     */
-    @Nonnull
-    public static final String MUXING_MODE = "MuxingMode";
-    /**
-     * Duration of the first frame if it is longer than others, in ms.
-     */
-    @Nonnull
-    public static final String DURATION_FIRSTFRAME = "Duration_FirstFrame";
-    /**
-     * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
-     */
-    @Nonnull
-    public static final String DURATION_FIRSTFRAME_STRING_TYPE = "Duration_FirstFrame/String";
-    /**
-     * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
-     */
-    @Nonnull
-    public static final String DURATION_FIRSTFRAME_STRING_TYPE1 = "Duration_FirstFrame/String1";
-    /**
-     * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
-     */
-    @Nonnull
-    public static final String DURATION_FIRSTFRAME_STRING_TYPE2 = "Duration_FirstFrame/String2";
-    /**
-     * Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
-     */
-    @Nonnull
-    public static final String DURATION_FIRSTFRAME_STRING_TYPE3 = "Duration_FirstFrame/String3";
-    /**
-     * Bit rate mode (VBR, CBR).
-     */
-    @Nonnull
-    public static final String BITRATE_MODE = "BitRate_Mode";
-    /**
-     * Bit rate mode (Variable, Cconstant).
-     */
-    @Nonnull
-    public static final String BITRATE_MODE_STRING = "BitRate_Mode/String";
-    /**
-     * Bit rate (with measurement).
-     */
-    @Nonnull
-    public static final String BITRATE_STRING = "BitRate/String";
-    /**
-     * Minimum Bit rate in bps.
-     */
-    @Nonnull
-    public static final String BITRATE_MINIMUM = "BitRate_Minimum";
-    /**
-     * Minimum Bit rate (with measurement).
-     */
-    @Nonnull
-    public static final String BITRATE_MINIMUM_STRING = "BitRate_Minimum/String";
-    /**
-     * Nominal Bit rate in bps.
-     */
-    @Nonnull
-    public static final String BITRATE_NOMINAL = "BitRate_Nominal";
-    /**
-     * Nominal Bit rate (with measurement).
-     */
-    @Nonnull
-    public static final String BITRATE_NOMINAL_STRING = "BitRate_Nominal/String";
-    /**
-     * Maximum Bit rate in bps.
-     */
-    @Nonnull
-    public static final String BITRATE_MAXIMUM = "BitRate_Maximum";
-    /**
-     * Maximum Bit rate (with measurement).
-     */
-    @Nonnull
-    public static final String BITRATE_MAXIMUM_STRING = "BitRate_Maximum/String";
-    /**
-     * Encoded (with forced padding) bit rate in bps, if some container padding is present.
-     */
-    @Nonnull
-    public static final String BITRATE_ENCODED = "BitRate_Encoded";
-    /**
-     * Encoded (with forced padding) bit rate (with measurement), if some container padding is present.
-     */
-    @Nonnull
-    public static final String BITRATE_ENCODED_STRING = "BitRate_Encoded/String";
     /**
      * Width (aperture size if present) with measurement (pixel).
      */
@@ -264,11 +169,6 @@ public final class Video {
     @Nonnull
     public static final String FRAMERATE_MODE_ORIGINAL_STRING = "FrameRate_Mode_Original/String";
     /**
-     * Frames per second (with measurement).
-     */
-    @Nonnull
-    public static final String FRAMERATE_STRING = " FrameRate/String";
-    /**
      * Original (in the raw stream) frames per second.
      */
     @Nonnull
@@ -309,16 +209,6 @@ public final class Video {
     @Nonnull
     public static final String FRAMERATE_MAXIMUM_STRING = "FrameRate_Maximum/String";
     /**
-     * Number of frames.
-     */
-    @Nonnull
-    public static final String FRAMECOUNT = "FrameCount";
-    /**
-     * Source Number of frames.
-     */
-    @Nonnull
-    public static final String SOURCE_FRAMECOUNT = "Source_FrameCount";
-    /**
      * NTSC or PAL.
      */
     @Nonnull
@@ -333,16 +223,6 @@ public final class Video {
      */
     @Nonnull
     public static final String CHROMASUBSAMPLING = "ChromaSubsampling";
-    /**
-     * BitDepth (16/24/32).
-     */
-    @Nonnull
-    public static final String BITDEPTH = "BitDepth";
-    /**
-     * BitDepth (16/24/32 bits).
-     */
-    @Nonnull
-    public static final String BITDEPTH_STRING = "BitDepth/String";
     /**
      * ScanType.
      */

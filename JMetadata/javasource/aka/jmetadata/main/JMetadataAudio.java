@@ -18,11 +18,7 @@ import aka.swissknife.data.TextUtils;
  * <p>
  * In all cases, the other functions for title, video, audio and chapter descriptions require that a video output has been created before they return valid information.
  */
-public final class JMetadataAudio {
-
-    @Nonnull
-    private final MediaInfo mediaInfo;
-    private final int streamNumber;
+public final class JMetadataAudio extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
@@ -31,117 +27,28 @@ public final class JMetadataAudio {
      * @param streamNumber streamNumber to parse
      */
     public JMetadataAudio(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
-        this.mediaInfo = mediaInfo;
-        this.streamNumber = streamNumber;
+        super(StreamKind.Audio, mediaInfo, streamNumber);
     }
 
     /**
-     * Get the format use of the audio.
+     * Get number of channels.
      *
-     * @return format use
-     */
-    @Nullable
-    public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT);
-    }
-
-    /**
-     * Get the format info use of the audio.
-     *
-     * @return format info use
-     */
-    @Nullable
-    public String getFormatInfo() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_INFO);
-    }
-
-    /**
-     * Get the profile of the format use of the audio.
-     *
-     * @return profile format info use
-     */
-    @Nullable
-    public String getFormatProfile() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORMAT_PROFILE);
-    }
-
-    /**
-     * Get the Codec ID (found in some containers) use of the audio.
-     *
-     * @return Codec ID
-     */
-    @Nullable
-    public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID);
-    }
-
-    /**
-     * Get the Hint/popular name for this codec ID use of the audio.
-     *
-     * @return Hint/popular name for this codec ID
-     */
-    @Nullable
-    public String getCodecIDHint() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CODEC_ID_HINT);
-    }
-
-    /**
-     * Get Play time of the stream in ms.
-     *
-     * @return Play time of the stream in ms
-     */
-    @Nullable
-    public Double getDuration() {
-        Double result = null;
-        final String duration = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DURATION);
-        if (TextUtils.isDigit(duration)) {
-            result = Double.valueOf(duration);
-        }
-
-        return result;
-    }
-
-    /**
-     * Get Bit rate in bps.
-     *
-     * @return Bit rate in bps
-     */
-    @Nullable
-    public Long getBitRate() {
-        Long result = null;
-        final String bitRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.BITRATE);
-        if (TextUtils.isDigit(bitRate)) {
-            result = Long.valueOf(bitRate);
-        }
-
-        return result;
-    }
-
-    /**
-     * Get Number of channels.
-     *
-     * @return Number of channels
+     * @return number of channels
      */
     @Nullable
     public Integer getChannels() {
-        Integer result = null;
-        final String channels = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.CHANNELS);
-        if (TextUtils.isDigit(channels)) {
-            result = Integer.valueOf(channels);
-        }
-
-        return result;
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.CHANNELS);
     }
 
     /**
-     * Get Sampling Rate in KHz use of the audio.
+     * Get sampling Rate in KHz use of the audio.
      *
-     * @return Sampling Rate in KHz
+     * @return sampling Rate in KHz
      */
     @Nullable
     public Long getSamplingRate() {
         Long result = null;
-        String samplingRate = this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.SAMPLING_RATE);
+        String samplingRate = getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SAMPLING_RATE);
         if (!TextUtils.isEmpty(samplingRate)) {
             assert samplingRate != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (samplingRate.contains(" ")) {
@@ -156,32 +63,212 @@ public final class JMetadataAudio {
     }
 
     /**
-     * Get the Language use of the audio.
+     * Get bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
      *
-     * @return Language
+     * @return bit field
      */
     @Nullable
-    public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.LANGUAGE);
+    public Integer getStatus() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.STATUS);
     }
 
     /**
-     * Set if that track should be used if no language found matches the user preference.
+     * Get number of channels (with measurement).
      *
-     * @return true if that track should be used if no language found matches the user preference.
+     * @return number of channels
      */
     @Nullable
-    public String isDefault() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.DEFAULT);
+    public String getChannelsString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNELS_STRING);
     }
 
     /**
-     * Set if that track should be used if no language found matches the user preference.
+     * Get position of channels.
      *
-     * @return <code>true</code> if that track should be used if no language found matches the user preference.
+     * @return position of channels
      */
     @Nullable
-    public String isForced() {
-        return this.mediaInfo.get(StreamKind.Audio, this.streamNumber, Audio.FORCED);
+    public String getChannelPosition() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNEL_POSITION);
+    }
+
+    /**
+     * Get position of channels (x/y.z format).
+     *
+     * @return position of channels
+     */
+    @Nullable
+    public String getChannelPositionString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNEL_POSITION_STRING);
+    }
+
+    /**
+     * Get sampling Rate in KHz use of the audio.
+     *
+     * @return sampling Rate in KHz
+     */
+    @Nullable
+    public String getSamplingRateString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SAMPLING_RATE_STRING);
+    }
+
+    /**
+     * Get layout of channels (in the stream).
+     *
+     * @return layout of channels
+     */
+    @Nullable
+    public String getChannelLayout() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNELLAYOUT);
+    }
+
+    /**
+     * Get source sample count (based on sampling rate).
+     *
+     * @return source sample count
+     */
+    @Nullable
+    public String getSourceSamplingCount() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SOURCE_SAMPLING_COUNT);
+    }
+
+    /**
+     * Get delay fixed in the stream (absolute / video).
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public Integer getVideoDelay() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType1() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE1);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType2() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE2);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType3() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE3);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType4() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE4);
+    }
+
+    /**
+     * Get gain to apply to reach 89dB SPL on playback.
+     *
+     * @return gain to apply to reach 89dB
+     */
+    @Nullable
+    public String getReplayGain() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_GAIN);
+    }
+
+    /**
+     * Get gain to apply to reach 89dB SPL on playback.
+     *
+     * @return gain to apply to reach 89dB
+     */
+    @Nullable
+    public String getReplayGainString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_GAIN_STRING);
+    }
+
+    /**
+     * Get maximum absolute peak value of the item.
+     *
+     * @return maximum absolute peak value
+     */
+    @Nullable
+    public String getReplayGainPeak() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_PEAK);
+    }
+
+    /**
+     * Get between how much time (ms) the stream is inserted.
+     *
+     * @return how much time
+     */
+    @Nullable
+    public Integer getInterleaveDuration() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_DURATION);
+    }
+
+    /**
+     * Get between how much time (ms) the stream is inserted (with measurement).
+     *
+     * @return how much time
+     */
+    @Nullable
+    public String getInterleaveDurationString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_DURATION_STRING);
+    }
+
+    /**
+     * Get how much time is buffered before the first video frame.
+     *
+     * @return how much time
+     */
+    @Nullable
+    public Integer getInterleavePreload() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_PRELOAD);
+    }
+
+    /**
+     * Get how much time is buffered before the first video frame (with measurement).
+     *
+     * @return how much time
+     */
+    @Nullable
+    public String getInterleavePreloadString() {
+        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_PRELOAD_STRING);
+    }
+
+    /**
+     * Get between how many video frames the stream is inserted.
+     *
+     * @return how many video frames
+     */
+    @Nullable
+    public Integer getInterleaveVideoFrames() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_VIDEOFRAMES);
     }
 }

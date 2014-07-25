@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import aka.jmetadata.main.constants.DateFormat;
 
 /**
- * All methods linked to date.
+ * All methods linked to date manipulation.
  *
  * @author Charlotte
  */
