@@ -14,14 +14,10 @@ import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**
- * A test for the various media information functions.
- * <p>
- * For regular media files (like ".mpg" or ".avi") the track information is available after the media has been parsed (or played).
- * <p>
- * For DVD media files (like ".iso" files) the track information is not available after the media has been parsed, a video output must have been created, and even then the video track width/height
- * might not be available until a short time later.
- * <p>
- * In all cases, the other functions for title, video, audio and chapter descriptions require that a video output has been created before they return valid information.
+ * AbstractStreamJMetadata is an abstract class providing commons methods for metadata extraction.<br>
+ * The developer need only subclass this abstract class and add, if necessary, specific methods.
+ *
+ * @author Charlotte
  */
 public abstract class AbstractStreamJMetadata extends AbstractJMetadata {
 
@@ -35,6 +31,8 @@ public abstract class AbstractStreamJMetadata extends AbstractJMetadata {
      * @param streamkind Kind of Stream (general, video, audio...)
      * @param mediaInfo herited from JMetadata
      * @param streamNumber streamNumber to parse
+     * @see StreamKind
+     * @see MediaInfo
      */
     public AbstractStreamJMetadata(@Nonnull final StreamKind streamkind, @Nonnull final MediaInfo mediaInfo, final int streamNumber) {
         super(mediaInfo);

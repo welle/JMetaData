@@ -3,7 +3,9 @@ package aka.jmetadata.main.constants;
 import javax.annotation.Nonnull;
 
 /**
- * Audio
+ * Audio constants parameters.
+ * 
+ * @author Charlotte
  */
 public final class Audio {
     /**

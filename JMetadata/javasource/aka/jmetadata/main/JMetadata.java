@@ -22,17 +22,7 @@ import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 
 /**
- * A test for the various media information functions.
- * <p>
- * For regular media files (like ".mpg" or ".avi") the track information is available after the media has been parsed (or played).
- * </p>
- * <p>
- * For DVD media files (like ".iso" files) the track information is not available after the media has been parsed, a video output must have been created, and even then the video track width/height
- * might not be available until a short time later.
- * </p>
- * <p>
- * In all cases, the other functions for title, video, audio and chapter descriptions require that a video output has been created before they return valid information.
- * </p>
+ * Main class to use to extract metadata informations. This class contains all useful methods to get all kind of streams that can be present in the file.
  *
  * @author Charlotte
  */
@@ -114,48 +104,23 @@ public final class JMetadata {
         return this.mediaInfo.open(filename);
     }
 
-    /**
-     * Get the number of video stream of the file.
-     *
-     * @return number of video streams
-     */
-    public int getNumVideoStreams() {
+    private int getNumVideoStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Video);
     }
 
-    /**
-     * Get the number of audio stream of the file.
-     *
-     * @return number of audio streams
-     */
-    public int getNumAudioStreams() {
+    private int getNumAudioStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Audio);
     }
 
-    /**
-     * Get the number of subtitle stream of the file.
-     *
-     * @return number of subtitle streams
-     */
-    public int getNumSubtitleStreams() {
+    private int getNumSubtitleStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Text);
     }
 
-    /**
-     * Get the number of chapters stream of the file.
-     *
-     * @return number of chapters streams
-     */
-    public int getNumChapterStreams() {
+    private int getNumChapterStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Chapters);
     }
 
-    /**
-     * Get the number of menu stream of the file.
-     *
-     * @return number of menu streams
-     */
-    public int getNumMenuStreams() {
+    private int getNumMenuStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Menu);
     }
 
@@ -163,6 +128,7 @@ public final class JMetadata {
      * Get informations from main file.
      *
      * @return general information
+     * @see JMetadataGeneral
      */
     @Nonnull
     public JMetadataGeneral getGeneral() {
@@ -173,6 +139,7 @@ public final class JMetadata {
      * Get informations from video streams.
      *
      * @return list of video streams
+     * @see JMetadataVideo
      */
     @Nonnull
     public List<JMetadataVideo> getVideoStreams() {
@@ -191,6 +158,7 @@ public final class JMetadata {
      * Get informations from audio streams.
      *
      * @return list of audio stream
+     * @see JMetadataAudio
      */
     @Nonnull
     public List<JMetadataAudio> getAudioStreams() {
@@ -209,6 +177,7 @@ public final class JMetadata {
      * Get informations from subtitle streams.
      *
      * @return list of subtitle stream
+     * @see JMetadataSubtitle
      */
     @Nonnull
     public List<JMetadataSubtitle> getSubtitleStreams() {
@@ -227,6 +196,7 @@ public final class JMetadata {
      * Get informations from chapters streams.
      *
      * @return list of chapters stream
+     * @see JMetadataChapter
      */
     @Nonnull
     public List<JMetadataChapter> getChapterStreams() {
@@ -245,6 +215,7 @@ public final class JMetadata {
      * Get informations from menu streams.
      *
      * @return list of menu stream
+     * @see JMetadataMenu
      */
     @Nonnull
     public List<JMetadataMenu> getMenuStreams() {

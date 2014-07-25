@@ -3,9 +3,10 @@ package aka.jmetadata.main.constants;
 import javax.annotation.Nonnull;
 
 /**
- * Text
+ * Text constants parameters.
+ *
+ * @author Charlotte
  */
-
 public final class Text {
     /**
      * Width.

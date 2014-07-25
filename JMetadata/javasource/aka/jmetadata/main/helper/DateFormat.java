@@ -1,4 +1,4 @@
-package aka.jmetadata.main.constants;
+package aka.jmetadata.main.helper;
 
 import java.text.SimpleDateFormat;
 
@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
  *
  * @author Charlotte
  */
-public enum DateFormat {
+enum DateFormat {
 
     /**
      * Date format 1 {@value} (example: UTC 2014-07-17 07:48:54.611)

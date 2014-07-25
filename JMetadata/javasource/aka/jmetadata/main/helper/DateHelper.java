@@ -6,8 +6,6 @@ import java.util.Date;
 
 import javax.annotation.Nonnull;
 
-import aka.jmetadata.main.constants.DateFormat;
-
 /**
  * All methods linked to date manipulation.
  *

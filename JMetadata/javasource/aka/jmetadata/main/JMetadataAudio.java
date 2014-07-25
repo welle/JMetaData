@@ -9,22 +9,18 @@ import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
 
 /**
- * A test for the various media information functions.
- * <p>
- * For regular media files (like ".mpg" or ".avi") the track information is available after the media has been parsed (or played).
- * <p>
- * For DVD media files (like ".iso" files) the track information is not available after the media has been parsed, a video output must have been created, and even then the video track width/height
- * might not be available until a short time later.
- * <p>
- * In all cases, the other functions for title, video, audio and chapter descriptions require that a video output has been created before they return valid information.
+ * This class contains all methods to extract audio informations of a specific audio stream.
+ *
+ * @author Charlotte
  */
 public final class JMetadataAudio extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
      *
-     * @param mediaInfo herited from JMetadata
-     * @param streamNumber streamNumber to parse
+     * @param mediaInfo instance of mediainfo JNA library
+     * @param streamNumber number of the stream to parse
+     * @see MediaInfo
      */
     public JMetadataAudio(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Audio, mediaInfo, streamNumber);

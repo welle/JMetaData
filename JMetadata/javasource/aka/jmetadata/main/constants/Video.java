@@ -3,10 +3,10 @@ package aka.jmetadata.main.constants;
 import javax.annotation.Nonnull;
 
 /**
- * Video
+ * Video constants parameters.
  *
+ * @author Charlotte
  */
-
 public final class Video {
     /**
      * Width (aperture size if present) in pixel.

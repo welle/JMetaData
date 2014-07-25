@@ -3,8 +3,7 @@ package aka.jmetadata.main.constants;
 import javax.annotation.Nonnull;
 
 /**
- * MediaInfo parameters.
- *
+ * General constants parameters.
  *
  * @author Charlotte
  */
