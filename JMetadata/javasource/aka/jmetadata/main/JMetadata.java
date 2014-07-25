@@ -117,7 +117,7 @@ public final class JMetadata {
     /**
      * Get the number of video stream of the file.
      *
-     * @return number of streams
+     * @return number of video streams
      */
     public int getNumVideoStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Video);
@@ -126,7 +126,7 @@ public final class JMetadata {
     /**
      * Get the number of audio stream of the file.
      *
-     * @return number of streams
+     * @return number of audio streams
      */
     public int getNumAudioStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Audio);
@@ -135,10 +135,28 @@ public final class JMetadata {
     /**
      * Get the number of subtitle stream of the file.
      *
-     * @return number of streams
+     * @return number of subtitle streams
      */
     public int getNumSubtitleStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Text);
+    }
+
+    /**
+     * Get the number of chapters stream of the file.
+     *
+     * @return number of chapters streams
+     */
+    public int getNumChapterStreams() {
+        return this.mediaInfo.getStreamCount(StreamKind.Chapters);
+    }
+
+    /**
+     * Get the number of menu stream of the file.
+     *
+     * @return number of menu streams
+     */
+    public int getNumMenuStreams() {
+        return this.mediaInfo.getStreamCount(StreamKind.Menu);
     }
 
     /**
@@ -154,7 +172,7 @@ public final class JMetadata {
     /**
      * Get informations from video streams.
      *
-     * @return list of video stream
+     * @return list of video streams
      */
     @Nonnull
     public List<JMetadataVideo> getVideoStreams() {
@@ -200,6 +218,42 @@ public final class JMetadata {
         for (int i = 0; i < numberSubtitleStream; i++) {
             final JMetadataSubtitle jMetadataSubtitle = new JMetadataSubtitle(this.mediaInfo, i);
             result.add(jMetadataSubtitle);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get informations from chapters streams.
+     *
+     * @return list of chapters stream
+     */
+    @Nonnull
+    public List<JMetadataChapter> getChapterStreams() {
+        final List<JMetadataChapter> result = new ArrayList<JMetadataChapter>();
+
+        final int numberChaptersStream = getNumChapterStreams();
+        for (int i = 0; i < numberChaptersStream; i++) {
+            final JMetadataChapter jMetadataChapter = new JMetadataChapter(this.mediaInfo, i);
+            result.add(jMetadataChapter);
+        }
+
+        return result;
+    }
+
+    /**
+     * Get informations from menu streams.
+     *
+     * @return list of menu stream
+     */
+    @Nonnull
+    public List<JMetadataMenu> getMenuStreams() {
+        final List<JMetadataMenu> result = new ArrayList<JMetadataMenu>();
+
+        final int numberMenuStream = getNumMenuStreams();
+        for (int i = 0; i < numberMenuStream; i++) {
+            final JMetadataMenu jMetadataMenu = new JMetadataMenu(this.mediaInfo, i);
+            result.add(jMetadataMenu);
         }
 
         return result;

@@ -17,11 +17,7 @@ import aka.jmetadata.main.mediainfo.MediaInfo;
  * <p>
  * In all cases, the other functions for title, video, audio and chapter descriptions require that a video output has been created before they return valid information.
  */
-public final class JMetadataSubtitle {
-
-    @Nonnull
-    private final MediaInfo mediaInfo;
-    private final int streamNumber;
+public final class JMetadataSubtitle extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
@@ -30,77 +26,106 @@ public final class JMetadataSubtitle {
      * @param streamNumber streamNumber to parse
      */
     public JMetadataSubtitle(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
-        this.mediaInfo = mediaInfo;
-        this.streamNumber = streamNumber;
+        super(StreamKind.Text, mediaInfo, streamNumber);
     }
 
     /**
-     * Get the format use of the subtitle.
+     * Get color space.
      *
-     * @return format use
+     * @return color space
      */
     @Nullable
-    public String getFormat() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORMAT);
+    public String getColorSpace() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.COLORSPACE);
     }
 
     /**
-     * Get the Codec ID (found in some containers) use of the subtitle.
+     * Get chroma subsampling.
      *
-     * @return Codec ID
+     * @return chroma subsampling
      */
     @Nullable
-    public String getCodecID() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID);
+    public String getChromaSubsampling() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.CHROMASUBSAMPLING);
     }
 
     /**
-     * Get the Info about codec ID use of the subtitle.
+     * Get Width (aperture size if present) in pixel.
      *
-     * @return Info about codec ID
+     * @return Width (aperture size if present) in pixel
      */
     @Nullable
-    public String getCodecIDInfo() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.CODEC_ID_INFO);
+    public Integer getWidth() {
+        return getMediaInfo().getAsInteger(StreamKind.Text, getStreamNumber(), Text.WIDTH);
     }
 
     /**
-     * Get the Name of the track of the subtitle.
+     * Get Height (aperture size if present) in pixel.
      *
-     * @return Name of the track
+     * @return Height (aperture size if present) in pixel
      */
     @Nullable
-    public String getName() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.TITLE);
+    public Integer getHeight() {
+        return getMediaInfo().getAsInteger(StreamKind.Text, getStreamNumber(), Text.HEIGHT);
     }
 
     /**
-     * Get the Language use of the subtitle.
+     * Get delay fixed in the stream (absolute / video).
      *
-     * @return Language
+     * @return delay fixed in the stream
      */
     @Nullable
-    public String getLanguage() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.LANGUAGE);
+    public Integer getVideoDelay() {
+        return getMediaInfo().getAsInteger(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY);
     }
 
     /**
-     * Set if that track should be used if no language found matches the user preference.
+     * Get delay fixed in the stream.
      *
-     * @return true if that track should be used if no language found matches the user preference.
+     * @return delay fixed in the stream
      */
     @Nullable
-    public String isDefault() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.DEFAULT);
+    public String getVideoDelayString() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING);
     }
 
     /**
-     * Set if that track should be used if no language found matches the user preference.
+     * Get delay fixed in the stream.
      *
-     * @return true if that track should be used if no language found matches the user preference.
+     * @return delay fixed in the stream
      */
     @Nullable
-    public String isForced() {
-        return this.mediaInfo.get(StreamKind.Text, this.streamNumber, Text.FORCED);
+    public String getVideoDelayStringType1() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE1);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType2() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE2);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType3() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE3);
+    }
+
+    /**
+     * Get delay fixed in the stream.
+     *
+     * @return delay fixed in the stream
+     */
+    @Nullable
+    public String getVideoDelayStringType4() {
+        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE4);
     }
 }
