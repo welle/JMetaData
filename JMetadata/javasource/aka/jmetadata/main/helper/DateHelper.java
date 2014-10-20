@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * All methods linked to date manipulation.
@@ -22,8 +22,8 @@ public final class DateHelper {
      * @return date parsed from the string.
      * @throws ParseException if the beginning of the specified string cannot be parsed.
      */
-    @Nonnull
-    public static Date parse(@Nonnull final String dateToParse) throws ParseException {
+    @NonNull
+    public static Date parse(@NonNull final String dateToParse) throws ParseException {
         Date result = null;
         final DateFormat[] values = DateFormat.values();
         for (int i = 0; i < values.length; i++) {

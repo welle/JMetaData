@@ -1,7 +1,7 @@
 package aka.jmetadata.main;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.constants.Text;
@@ -21,7 +21,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataSubtitle(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataSubtitle(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Text, mediaInfo, streamNumber);
     }
 

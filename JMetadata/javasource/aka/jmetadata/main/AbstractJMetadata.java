@@ -3,7 +3,7 @@ package aka.jmetadata.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
@@ -15,7 +15,7 @@ import aka.swissknife.data.TextUtils;
  */
 public abstract class AbstractJMetadata {
 
-    @Nonnull
+    @NonNull
     private final MediaInfo mediaInfo;
 
     /**
@@ -24,7 +24,7 @@ public abstract class AbstractJMetadata {
      * @param mediaInfo
      * @see MediaInfo
      */
-    public AbstractJMetadata(@Nonnull final MediaInfo mediaInfo) {
+    public AbstractJMetadata(@NonNull final MediaInfo mediaInfo) {
         this.mediaInfo = mediaInfo;
     }
 
@@ -35,8 +35,8 @@ public abstract class AbstractJMetadata {
      * @param splitter string representing a regular expression which be used to split
      * @return list of string
      */
-    @Nonnull
-    protected final List<String> splitValues(@Nonnull final String valueToSplit, @Nonnull final String splitter) {
+    @NonNull
+    protected final List<String> splitValues(@NonNull final String valueToSplit, @NonNull final String splitter) {
         final List<String> result = new ArrayList<>();
         final String[] values = valueToSplit.split(splitter);
         for (final String value : values) {
@@ -53,7 +53,7 @@ public abstract class AbstractJMetadata {
      * @return mediainfo
      * @see MediaInfo
      */
-    @Nonnull
+    @NonNull
     protected final MediaInfo getMediaInfo() {
         return this.mediaInfo;
     }

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.Commons;
 import aka.jmetadata.main.constants.General;
@@ -30,7 +30,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      * @param mediaInfo instance of mediainfo JNA library
      * @see MediaInfo
      */
-    public JMetadataGeneral(@Nonnull final MediaInfo mediaInfo) {
+    public JMetadataGeneral(@NonNull final MediaInfo mediaInfo) {
         super(mediaInfo);
     }
 
@@ -294,7 +294,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return video Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getVideoFormatList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.VIDEO_FORMAT_LIST);
@@ -311,7 +311,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return video Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getVideoFormatWithHintList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.VIDEO_FORMAT_WITH_HINT_LIST);
@@ -328,7 +328,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return video languages in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getVideoLanguageList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.VIDEO_LANGUAGE_LIST);
@@ -345,7 +345,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return audio Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getAudioFormatList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.AUDIO_FORMAT_LIST);
@@ -362,7 +362,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return audio Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getAudioFormatWithHintList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.AUDIO_FORMAT_WITH_HINT_LIST);
@@ -379,7 +379,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return audio languages in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getAudioLanguageList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.AUDIO_LANGUAGE_LIST);
@@ -396,7 +396,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return text Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getTextFormatList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.TEXT_FORMAT_LIST);
@@ -413,7 +413,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return text Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getTextFormatWithHintList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.TEXT_FORMAT_WITH_HINT_LIST);
@@ -430,7 +430,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return text languages in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getTextLanguageList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.TEXT_LANGUAGE_LIST);
@@ -447,7 +447,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return chapters Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getChaptersFormatList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.CHAPTERS_FORMAT_LIST);
@@ -464,7 +464,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return chapters Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getChaptersFormatWithHintList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.CHAPTERS_FORMAT_WITH_HINT_LIST);
@@ -481,7 +481,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return chapters languages in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getChaptersLanguageList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.CHAPTERS_LANGUAGE_LIST);
@@ -498,7 +498,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return image Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getImageFormatList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.IMAGE_FORMAT_LIST);
@@ -515,7 +515,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return image Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getImageFormatWithHintList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.IMAGE_FORMAT_WITH_HINT_LIST);
@@ -532,7 +532,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return image languages in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getImageLanguageList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.IMAGE_LANGUAGE_LIST);
@@ -549,7 +549,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return menu Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getMenuFormatList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.MENU_FORMAT_LIST);
@@ -566,7 +566,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return menu Codecs in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getMenuFormatWithHintList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.MENU_FORMAT_WITH_HINT_LIST);
@@ -583,7 +583,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return menu languages in this file
      */
-    @Nonnull
+    @NonNull
     public List<String> getMenuLanguageList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.MENU_LANGUAGE_LIST);
@@ -661,7 +661,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      *
      * @return known extensions of this format
      */
-    @Nonnull
+    @NonNull
     public List<String> getFormatExtensionsList() {
         List<String> result = new ArrayList<>();
         final String value = getMediaInfo().get(StreamKind.General, 0, General.FORMAT_EXTENSIONS);

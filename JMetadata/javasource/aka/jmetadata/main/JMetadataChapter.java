@@ -1,6 +1,6 @@
 package aka.jmetadata.main;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
@@ -19,7 +19,7 @@ public final class JMetadataChapter extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataChapter(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataChapter(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Chapters, mediaInfo, streamNumber);
     }
 }

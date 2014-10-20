@@ -11,8 +11,8 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
@@ -142,7 +142,7 @@ public final class MediaInfo {
      * @param fileName full name of the file to open
      * @return true if file was opened, false if file was not not opened
      */
-    public boolean open(@Nonnull final String fileName) {
+    public boolean open(@NonNull final String fileName) {
         return MediaInfoDLLInternal.INSTANCE.open(this.handlePointer, new WString(fileName)) > 0;
     }
 
@@ -152,7 +152,7 @@ public final class MediaInfo {
      * @param file file to open
      * @return true if file was opened, false if file was not not opened
      */
-    public boolean open(@Nonnull final File file) {
+    public boolean open(@NonNull final File file) {
         return file.isFile() && MediaInfoDLLInternal.INSTANCE.open(this.handlePointer, new WString(file.getAbsolutePath())) > 0;
     }
 
@@ -183,7 +183,7 @@ public final class MediaInfo {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
     }
 
@@ -196,7 +196,7 @@ public final class MediaInfo {
      *            in string format ("Codec", "Width"...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public boolean getAsBoolean(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+    public boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
 
         return "Yes".equals(value);
@@ -212,7 +212,7 @@ public final class MediaInfo {
      * @return a Long about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Long getAsLong(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+    public Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Long result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(value)) {
@@ -232,7 +232,7 @@ public final class MediaInfo {
      * @return a Integer about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Integer getAsInteger(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+    public Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Integer result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(value)) {
@@ -252,7 +252,7 @@ public final class MediaInfo {
      * @return a BigInteger about information you search, an empty string if there is a problem
      */
     @Nullable
-    public BigInteger getAsBigInteger(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+    public BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         BigInteger result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (TextUtils.isDigit(value)) {
@@ -273,7 +273,7 @@ public final class MediaInfo {
      * @throws MalformedURLException if no protocol is specified or an unknown protocol is found.
      */
     @Nullable
-    public URL getAsURL(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) throws MalformedURLException {
+    public URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) throws MalformedURLException {
         URL result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
@@ -293,7 +293,7 @@ public final class MediaInfo {
      * @return a Double about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Double getAsDouble(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) {
+    public Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Double result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
@@ -314,7 +314,7 @@ public final class MediaInfo {
      * @throws ParseException if the beginning of the specified string cannot be parsed.
      */
     @Nullable
-    public Date getAsDate(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter) throws ParseException {
+    public Date getAsDate(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) throws ParseException {
         Date result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
@@ -336,7 +336,7 @@ public final class MediaInfo {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter, @Nonnull final InfoKind infoKind) {
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind) {
         return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);
     }
 
@@ -353,7 +353,7 @@ public final class MediaInfo {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, @Nonnull final String parameter, @Nonnull final InfoKind infoKind, @Nonnull final InfoKind searchKind) {
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind, @NonNull final InfoKind searchKind) {
         return MediaInfoDLLInternal.INSTANCE.get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
     }
 
@@ -367,7 +367,7 @@ public final class MediaInfo {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
         return get(streamKind, streamNumber, parameterIndex, InfoKind.Text);
     }
 
@@ -383,7 +383,7 @@ public final class MediaInfo {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String get(@Nonnull final StreamKind streamKind, final int streamNumber, final int parameterIndex, @Nonnull final InfoKind infoKind) {
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex, @NonNull final InfoKind infoKind) {
         return MediaInfoDLLInternal.INSTANCE.getI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
     }
 
@@ -394,7 +394,7 @@ public final class MediaInfo {
      * @param streamKind Kind of Stream (general, video, audio...)
      * @return number of Streams of the given Stream kind
      */
-    public int getStreamCount(@Nonnull final StreamKind streamKind) {
+    public int getStreamCount(@NonNull final StreamKind streamKind) {
         return MediaInfoDLLInternal.INSTANCE.count_Get(this.handlePointer, streamKind.ordinal(), -1);
     }
 
@@ -406,7 +406,7 @@ public final class MediaInfo {
      * @param streamNumber Stream number in this kind of Stream (first, second...)
      * @return number of Streams of the given Stream kind
      */
-    public int getStreamCount(@Nonnull final StreamKind streamKind, final int streamNumber) {
+    public int getStreamCount(@NonNull final StreamKind streamKind, final int streamNumber) {
         return MediaInfoDLLInternal.INSTANCE.count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
     }
 
@@ -417,7 +417,7 @@ public final class MediaInfo {
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
     @Nullable
-    public String option(@Nonnull final String option) {
+    public String option(@NonNull final String option) {
         return MediaInfoDLLInternal.INSTANCE.option(this.handlePointer, new WString(option), new WString("")).toString();
     }
 
@@ -429,7 +429,7 @@ public final class MediaInfo {
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
     @Nullable
-    public String option(@Nonnull final String option, @Nonnull final String value) {
+    public String option(@NonNull final String option, @NonNull final String value) {
         return MediaInfoDLLInternal.INSTANCE.option(this.handlePointer, new WString(option), new WString(value)).toString();
     }
 
@@ -440,7 +440,7 @@ public final class MediaInfo {
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
     @Nullable
-    public static String optionStatic(@Nonnull final String option) {
+    public static String optionStatic(@NonNull final String option) {
         return MediaInfoDLLInternal.INSTANCE.option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString("")).toString();
     }
 
@@ -452,7 +452,7 @@ public final class MediaInfo {
      * @return Depends on the option: by default "" (nothing) means No, other means Yes
      */
     @Nullable
-    public static String optionStatic(@Nonnull final String option, @Nonnull final String value) {
+    public static String optionStatic(@NonNull final String option, @NonNull final String value) {
         return MediaInfoDLLInternal.INSTANCE.option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(value)).toString();
     }
 

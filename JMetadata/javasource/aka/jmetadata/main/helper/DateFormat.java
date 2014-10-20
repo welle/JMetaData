@@ -2,7 +2,7 @@ package aka.jmetadata.main.helper;
 
 import java.text.SimpleDateFormat;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 /**
  * Date format enum.
@@ -20,12 +20,12 @@ enum DateFormat {
      */
     Type2("z yyyy-MM-dd HH:mm:ss");
 
-    @Nonnull
+    @NonNull
     private final String value;
-    @Nonnull
+    @NonNull
     private SimpleDateFormat sdf;
 
-    private DateFormat(@Nonnull final String value) {
+    private DateFormat(@NonNull final String value) {
         this.value = value;
         this.sdf = new SimpleDateFormat(value);
     }
@@ -35,7 +35,7 @@ enum DateFormat {
      *
      * @return name.
      */
-    @Nonnull
+    @NonNull
     public String getValue() {
         return this.value;
     }
@@ -45,7 +45,7 @@ enum DateFormat {
      *
      * @return simple date format.
      */
-    @Nonnull
+    @NonNull
     public SimpleDateFormat getSimpleDateFormat() {
         return this.sdf;
     }

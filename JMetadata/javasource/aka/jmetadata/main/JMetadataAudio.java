@@ -1,12 +1,13 @@
 package aka.jmetadata.main;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.Audio;
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
+
 
 /**
  * This class contains all methods to extract audio informations of a specific audio stream.
@@ -22,7 +23,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataAudio(@Nonnull final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataAudio(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Audio, mediaInfo, streamNumber);
     }
 

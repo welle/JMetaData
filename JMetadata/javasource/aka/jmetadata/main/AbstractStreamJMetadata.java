@@ -6,8 +6,8 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.Date;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.Commons;
 import aka.jmetadata.main.constants.StreamKind;
@@ -22,7 +22,7 @@ import aka.jmetadata.main.mediainfo.MediaInfo;
 public abstract class AbstractStreamJMetadata extends AbstractJMetadata {
 
     private final int streamNumber;
-    @Nonnull
+    @NonNull
     private final StreamKind streamkind;
 
     /**
@@ -34,7 +34,7 @@ public abstract class AbstractStreamJMetadata extends AbstractJMetadata {
      * @see StreamKind
      * @see MediaInfo
      */
-    public AbstractStreamJMetadata(@Nonnull final StreamKind streamkind, @Nonnull final MediaInfo mediaInfo, final int streamNumber) {
+    public AbstractStreamJMetadata(@NonNull final StreamKind streamkind, @NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(mediaInfo);
         this.streamNumber = streamNumber;
         this.streamkind = streamkind;

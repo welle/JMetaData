@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import org.eclipse.jdt.annotation.NonNull;
 
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.exception.LibNotfoundException;
@@ -28,7 +28,7 @@ import com.sun.jna.Platform;
  */
 public final class JMetadata {
 
-    @Nonnull
+    @NonNull
     private final MediaInfo mediaInfo;
     private static final int BUF_SIZE = 1024;
 
@@ -69,7 +69,7 @@ public final class JMetadata {
      *
      * @param jnaLibraryPath path for JNA to find library to be loaded
      */
-    public JMetadata(@Nonnull final String jnaLibraryPath) {
+    public JMetadata(@NonNull final String jnaLibraryPath) {
         System.setProperty("jna.library.path", jnaLibraryPath);
         this.mediaInfo = new MediaInfo();
     }
@@ -80,7 +80,7 @@ public final class JMetadata {
      * @param file file to open
      * @return <code>true</code> if file was opened
      */
-    public boolean open(@Nonnull final File file) {
+    public boolean open(@NonNull final File file) {
         return this.mediaInfo.open(file);
     }
 
@@ -100,7 +100,7 @@ public final class JMetadata {
      * @param filename full name of the file to open
      * @return true if file was opened, false if file was not not opened
      */
-    public boolean open(@Nonnull final String filename) {
+    public boolean open(@NonNull final String filename) {
         return this.mediaInfo.open(filename);
     }
 
@@ -130,7 +130,7 @@ public final class JMetadata {
      * @return general information
      * @see JMetadataGeneral
      */
-    @Nonnull
+    @NonNull
     public JMetadataGeneral getGeneral() {
         return new JMetadataGeneral(this.mediaInfo);
     }
@@ -141,7 +141,7 @@ public final class JMetadata {
      * @return list of video streams
      * @see JMetadataVideo
      */
-    @Nonnull
+    @NonNull
     public List<JMetadataVideo> getVideoStreams() {
         final List<JMetadataVideo> result = new ArrayList<>();
 
@@ -160,7 +160,7 @@ public final class JMetadata {
      * @return list of audio stream
      * @see JMetadataAudio
      */
-    @Nonnull
+    @NonNull
     public List<JMetadataAudio> getAudioStreams() {
         final List<JMetadataAudio> result = new ArrayList<>();
 
@@ -179,7 +179,7 @@ public final class JMetadata {
      * @return list of subtitle stream
      * @see JMetadataSubtitle
      */
-    @Nonnull
+    @NonNull
     public List<JMetadataSubtitle> getSubtitleStreams() {
         final List<JMetadataSubtitle> result = new ArrayList<JMetadataSubtitle>();
 
@@ -198,7 +198,7 @@ public final class JMetadata {
      * @return list of chapters stream
      * @see JMetadataChapter
      */
-    @Nonnull
+    @NonNull
     public List<JMetadataChapter> getChapterStreams() {
         final List<JMetadataChapter> result = new ArrayList<JMetadataChapter>();
 
@@ -217,7 +217,7 @@ public final class JMetadata {
      * @return list of menu stream
      * @see JMetadataMenu
      */
-    @Nonnull
+    @NonNull
     public List<JMetadataMenu> getMenuStreams() {
         final List<JMetadataMenu> result = new ArrayList<JMetadataMenu>();
 
@@ -230,7 +230,7 @@ public final class JMetadata {
         return result;
     }
 
-    private void loadDLL(@Nonnull final String name) throws IOException {
+    private void loadDLL(@NonNull final String name) throws IOException {
         try {
             System.loadLibrary(name);
         } catch (final UnsatisfiedLinkError e) {
