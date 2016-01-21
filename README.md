@@ -18,5 +18,5 @@ Javadoc is available in bitbucket source folders or you can view it [online](htt
 
 * [JNA v3.0.9](https://github.com/twall/jna)
 version 3.0.9 of the lib is available in this repository. 
-* Swissknife also available in this repository
-* JSR 305 for annotations code
+* Swissknife also available in this repository.
+* JSR 305 for annotations code.
