@@ -4,9 +4,9 @@ import java.util.Map.Entry;
 
 import org.eclipse.jdt.annotation.Nullable;
 
-import aka.jmetadata.main.constants.VideoCodecConstants;
-import aka.jmetadata.main.constants.VideoCodecConstants.ASPECT_RATIO;
-import aka.jmetadata.main.constants.VideoCodecConstants.RESOLUTION;
+import aka.jmetadata.main.constants.CodecVideoConstants;
+import aka.jmetadata.main.constants.CodecVideoConstants.ASPECT_RATIO;
+import aka.jmetadata.main.constants.CodecVideoConstants.RESOLUTION;
 import aka.swissknife.data.MathUtils;
 
 /**
@@ -46,7 +46,7 @@ public class MediaInfoHelper {
         double min = Float.MAX_VALUE;
         ASPECT_RATIO result = null;
 
-        for (final Entry<ASPECT_RATIO, Float> item : VideoCodecConstants.ASPECT_RATIO_VALUE.entrySet()) {
+        for (final Entry<ASPECT_RATIO, Float> item : CodecVideoConstants.ASPECT_RATIO_VALUE.entrySet()) {
             final ASPECT_RATIO aRatio = item.getKey();
             final Float v = item.getValue();
             final double diff = Math.abs(v.floatValue() - aspectRatio);
@@ -71,7 +71,7 @@ public class MediaInfoHelper {
         double min = Float.MAX_VALUE;
         RESOLUTION result = null;
 
-        for (final Entry<RESOLUTION, Float> item : VideoCodecConstants.RESOLUTION_VALUE.entrySet()) {
+        for (final Entry<RESOLUTION, Float> item : CodecVideoConstants.RESOLUTION_VALUE.entrySet()) {
             final RESOLUTION res = item.getKey();
             final Float v = item.getValue();
             final double diff = Math.abs(v.floatValue() - resolution);

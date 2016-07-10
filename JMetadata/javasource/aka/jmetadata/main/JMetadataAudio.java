@@ -8,7 +8,6 @@ import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
 
-
 /**
  * This class contains all methods to extract audio informations of a specific audio stream.
  *
@@ -46,11 +45,9 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
     public Long getSamplingRate() {
         Long result = null;
         String samplingRate = getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SAMPLING_RATE);
+        samplingRate = TextUtils.trimNonNumerical(samplingRate);
         if (!TextUtils.isEmpty(samplingRate)) {
             assert samplingRate != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
-            if (samplingRate.contains(" ")) {
-                samplingRate = samplingRate.substring(0, samplingRate.indexOf(' ') - 1);
-            }
             if (TextUtils.isDigit(samplingRate)) {
                 result = Long.valueOf(samplingRate);
             }

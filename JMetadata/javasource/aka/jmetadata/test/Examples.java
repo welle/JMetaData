@@ -19,9 +19,9 @@ import aka.jmetadata.main.JMetadataGeneral;
 import aka.jmetadata.main.JMetadataMenu;
 import aka.jmetadata.main.JMetadataSubtitle;
 import aka.jmetadata.main.JMetadataVideo;
-import aka.jmetadata.main.constants.VideoCodecConstants;
-import aka.jmetadata.main.constants.VideoCodecConstants.ASPECT_RATIO;
-import aka.jmetadata.main.constants.VideoCodecConstants.RESOLUTION;
+import aka.jmetadata.main.constants.CodecVideoConstants;
+import aka.jmetadata.main.constants.CodecVideoConstants.ASPECT_RATIO;
+import aka.jmetadata.main.constants.CodecVideoConstants.RESOLUTION;
 import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.helper.MediaInfoHelper;
 import aka.jmetadata.main.mediainfo.MediaInfo;
@@ -41,7 +41,8 @@ public class Examples {
      *            not used.
      */
     public static void main(final String[] args) {
-        testWithInternalDLL();
+//        testWithInternalDLL();
+        testWithInternalDLL2();
         // testWithExternalDLL();
     }
 
@@ -63,6 +64,27 @@ public class Examples {
                         printJMetadata(jMetadata);
                     }
                 }
+            }
+            jMetadata.close();
+        } catch (final IOException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        } catch (final LibNotfoundException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        } catch (final Throwable e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+    }
+
+    private static void testWithInternalDLL2() {
+        try {
+            // use internal dll
+            final JMetadata jMetadata = new JMetadata();
+
+//            final File file = new File("\\\\Leviathan\\Movies\\HD\\Batman v Superman L’Aube de la Justice (2016).mkv");
+            final File file = new File("\\\\Leviathan\\Movies\\HD\\Prometheus (2012).mkv");
+            System.out.println("[test] testWithInternalDLL - " + file.getAbsolutePath());
+            if (jMetadata.open(file)) {
+                printJMetadata(jMetadata);
             }
             jMetadata.close();
         } catch (final IOException e) {
@@ -688,17 +710,17 @@ public class Examples {
         }
 
         if (aRatio != null) {
-            System.out.println(" Display Aspect Ratio = " + VideoCodecConstants.ASPECT_RATIO_NAME.get(aRatio));
+            System.out.println(" Display Aspect Ratio = " + CodecVideoConstants.ASPECT_RATIO_NAME.get(aRatio));
 
             if (height != null) {
                 RESOLUTION res = null;
                 if (aRatio == ASPECT_RATIO.AS_1_78 || aRatio == ASPECT_RATIO.AS_1_85) {
                     res = MediaInfoHelper.getClosestResolution(height.doubleValue());
                 } else {
-                    res = MediaInfoHelper.getClosestResolution(height.floatValue() * VideoCodecConstants.ASPECT_RATIO_VALUE.get(ASPECT_RATIO.AS_1_33).floatValue());
+                    res = MediaInfoHelper.getClosestResolution(height.floatValue() * CodecVideoConstants.ASPECT_RATIO_VALUE.get(ASPECT_RATIO.AS_1_33).floatValue());
                 }
                 if (res != null) {
-                    System.out.println(" Resolution = " + VideoCodecConstants.RESOLUTION_NAME.get(res));
+                    System.out.println(" Resolution = " + res.getResolution() + " " + res.getFullName());
                 }
             }
         }
