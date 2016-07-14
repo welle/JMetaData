@@ -13,7 +13,7 @@ import aka.swissknife.data.TextUtils;
  *
  * @author Charlotte
  */
-public final class JMetadataAudio extends AbstractStreamJMetadata {
+public final class JMetadataAudioOld extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
@@ -22,7 +22,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataAudio(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataAudioOld(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Audio, mediaInfo, streamNumber);
     }
 
@@ -44,7 +44,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
     @Nullable
     public Long getSamplingRate() {
         Long result = null;
-        String samplingRate = getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SAMPLING_RATE);
+        String samplingRate = getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.SAMPLINGRATESTRING);
         samplingRate = TextUtils.trimNonNumerical(samplingRate);
         if (!TextUtils.isEmpty(samplingRate)) {
             assert samplingRate != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
@@ -73,7 +73,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getChannelsString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNELS_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.CHANNELSSTRING);
     }
 
     /**
@@ -83,7 +83,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getChannelPosition() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNEL_POSITION);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.CHANNELPOSITIONS);
     }
 
     /**
@@ -93,7 +93,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getChannelPositionString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNEL_POSITION_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.CHANNELPOSITIONSSTRING2);
     }
 
     /**
@@ -103,7 +103,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getSamplingRateString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SAMPLING_RATE_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.SAMPLINGRATESTRING);
     }
 
     /**
@@ -113,7 +113,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getChannelLayout() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.CHANNELLAYOUT);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.CHANNELLAYOUT);
     }
 
     /**
@@ -123,7 +123,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getSourceSamplingCount() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.SOURCE_SAMPLING_COUNT);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.SOURCE_SAMPLING_COUNT);
     }
 
     /**
@@ -143,7 +143,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING);
     }
 
     /**
@@ -153,7 +153,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType1() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE1);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE1);
     }
 
     /**
@@ -163,7 +163,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType2() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE2);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE2);
     }
 
     /**
@@ -173,7 +173,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType3() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE3);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE3);
     }
 
     /**
@@ -183,7 +183,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType4() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE4);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.VIDEO_DELAY_STRING_TYPE4);
     }
 
     /**
@@ -193,7 +193,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getReplayGain() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_GAIN);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_GAIN);
     }
 
     /**
@@ -203,7 +203,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getReplayGainString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_GAIN_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_GAIN_STRING);
     }
 
     /**
@@ -213,7 +213,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getReplayGainPeak() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_PEAK);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.REPLAYGAIN_PEAK);
     }
 
     /**
@@ -233,7 +233,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getInterleaveDurationString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_DURATION_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_DURATION_STRING);
     }
 
     /**
@@ -253,7 +253,7 @@ public final class JMetadataAudio extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getInterleavePreloadString() {
-        return getMediaInfo().get(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_PRELOAD_STRING);
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.INTERLEAVE_PRELOAD_STRING);
     }
 
     /**

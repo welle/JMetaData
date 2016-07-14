@@ -1,8 +1,8 @@
 package aka.jmetadata.main.helper;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import org.eclipse.jdt.annotation.NonNull;
 
@@ -20,17 +20,18 @@ public final class DateHelper {
      *
      * @param dateToParse whose beginning should be parsed.
      * @return date parsed from the string.
-     * @throws ParseException if the beginning of the specified string cannot be parsed.
+     * @throws DateTimeParseException if the beginning of the specified string cannot be parsed.
      */
     @NonNull
-    public static Date parse(@NonNull final String dateToParse) throws ParseException {
-        Date result = null;
+    public static LocalDate parse(@NonNull final String dateToParse) throws DateTimeParseException {
+        LocalDate result = LocalDate.now();
         final DateFormat[] values = DateFormat.values();
         for (int i = 0; i < values.length; i++) {
             try {
-                final SimpleDateFormat formatter = values[i].getSimpleDateFormat();
-                result = formatter.parse(dateToParse);
-            } catch (final ParseException e) {
+                final DateTimeFormatter formatter = values[i].getSimpleDateFormat();
+                result = LocalDate.parse(dateToParse, formatter);
+                break;
+            } catch (final DateTimeParseException e) {
                 if (i == values.length - 1) {
                     // All date formats failed, throw exception
                     throw e;
@@ -38,7 +39,6 @@ public final class DateHelper {
             }
         }
 
-        assert result != null : "As DateFormat enum contains at least one value and ParseException was throwed if failed, it should not be possible.";
         return result;
     }
 

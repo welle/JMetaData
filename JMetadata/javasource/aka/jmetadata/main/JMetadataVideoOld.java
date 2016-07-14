@@ -12,7 +12,7 @@ import aka.jmetadata.main.mediainfo.MediaInfo;
  *
  * @author Charlotte
  */
-public final class JMetadataVideo extends AbstractStreamJMetadata {
+public final class JMetadataVideoOld extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
@@ -21,7 +21,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataVideo(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataVideoOld(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Video, mediaInfo, streamNumber);
     }
 
@@ -62,7 +62,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getDurationStringType4() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.DURATION_STRING4);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.DURATION_STRING4);
     }
 
     /**
@@ -72,7 +72,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getMultiviewBaseProfile() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.MULTIVIEW_BASEPROFILE);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.MULTIVIEW_BASEPROFILE);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getMultiviewLayout() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.MULTIVIEW_LAYOUT);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.MULTIVIEW_LAYOUT);
     }
 
     /**
@@ -112,7 +112,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getWidthOriginalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.WIDTH_ORIGINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.WIDTH_ORIGINAL_STRING);
     }
 
     /**
@@ -122,7 +122,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getHeightString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.HEIGHT_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.HEIGHT_STRING);
     }
 
     /**
@@ -142,7 +142,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getHeightOffsetString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.HEIGHT_OFFSET_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.HEIGHT_OFFSET_STRING);
     }
 
     /**
@@ -162,7 +162,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getHeightOriginalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.HEIGHT_ORIGINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.HEIGHT_ORIGINAL_STRING);
     }
 
     /**
@@ -182,7 +182,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getPixelAspectRatioString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.PIXEL_ASPECT_RATIO_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.PIXEL_ASPECT_RATIO_STRING);
     }
 
     /**
@@ -202,7 +202,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getPixelAspectRatioOriginalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.PIXEL_ASPECT_RATIO_ORIGINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.PIXEL_ASPECT_RATIO_ORIGINAL_STRING);
     }
 
     /**
@@ -212,7 +212,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getDisplayAspectRatioString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.DISPLAY_ASPECT_RATIO_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.DISPLAY_ASPECT_RATIO_STRING);
     }
 
     /**
@@ -232,7 +232,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getDisplayAspectRatioOriginalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.DISPLAY_ASPECT_RATIO_ORIGINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.DISPLAY_ASPECT_RATIO_ORIGINAL_STRING);
     }
 
     /**
@@ -242,7 +242,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getActiveFormatDescription() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.ACTIVE_FORMAT_DESCRIPTION);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.ACTIVE_FORMAT_DESCRIPTION);
     }
 
     /**
@@ -252,7 +252,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getActiveFormatDescriptionString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.ACTIVE_FORMAT_DESCRIPTION_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.ACTIVE_FORMAT_DESCRIPTION_STRING);
     }
 
     /**
@@ -262,7 +262,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getRotation() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.ROTATION);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.ROTATION);
     }
 
     /**
@@ -272,7 +272,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getRotationString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.ROTATION_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.ROTATION_STRING);
     }
 
     /**
@@ -282,7 +282,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateMode() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE);
     }
 
     /**
@@ -292,7 +292,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateModeString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE_STRING);
     }
 
     /**
@@ -302,7 +302,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateModeOriginal() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE_ORIGINAL);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE_ORIGINAL);
     }
 
     /**
@@ -312,7 +312,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateModeOriginalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE_ORIGINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MODE_ORIGINAL_STRING);
     }
 
     /**
@@ -332,7 +332,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateOriginalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_ORIGINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_ORIGINAL_STRING);
     }
 
     /**
@@ -352,7 +352,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateMinimumString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MINIMUM_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MINIMUM_STRING);
     }
 
     /**
@@ -372,7 +372,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateNominalString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_NOMINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_NOMINAL_STRING);
     }
 
     /**
@@ -392,7 +392,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getFrameRateMaximumString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MAXIMUM_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FRAMERATE_MAXIMUM_STRING);
     }
 
     /**
@@ -402,7 +402,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getStandard() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.STANDARD);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.STANDARD);
     }
 
     /**
@@ -412,7 +412,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getColorSpace() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.COLORSPACE);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.COLORSPACE);
     }
 
     /**
@@ -422,7 +422,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getChromaSubsampling() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLING);
     }
 
     /**
@@ -432,7 +432,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getScanType() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.SCANTYPE);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.SCANTYPE);
     }
 
     /**
@@ -442,7 +442,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getScanTypeString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.SCANTYPE_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.SCANTYPE_STRING);
     }
 
     /**
@@ -452,7 +452,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getScanOrder() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.SCANORDER);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.SCANORDER);
     }
 
     /**
@@ -462,7 +462,7 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getScanOrderString() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.SCANORDER_STRING);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.SCANORDER_STRING);
     }
 
     /**
@@ -482,6 +482,6 @@ public final class JMetadataVideo extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getBufferSize() {
-        return getMediaInfo().get(StreamKind.Video, getStreamNumber(), Video.BUFFERSIZE);
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.BUFFERSIZE);
     }
 }

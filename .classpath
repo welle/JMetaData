@@ -3,11 +3,16 @@
 	<classpathentry kind="src" path="JMetadata/javasource"/>
 	<classpathentry kind="src" path="lib"/>
 	<classpathentry kind="src" path="Test/javasource"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="annotationpath" value="/JMetadata/externalAnnotate"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="libs/jna-3.0.9.jar"/>
 	<classpathentry kind="lib" path="libs/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar"/>
 	<classpathentry kind="lib" path="libs/SwissKnife.jar"/>
 	<classpathentry kind="lib" path="libs/tomcat-juli.jar"/>
+	<classpathentry kind="lib" path="libs/opencsv-3.8.jar"/>
 	<classpathentry kind="output" path="JMetadata/classes"/>
 </classpath>

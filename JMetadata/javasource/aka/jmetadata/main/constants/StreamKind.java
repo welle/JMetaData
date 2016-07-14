@@ -6,30 +6,37 @@ package aka.jmetadata.main.constants;
  * @author Charlotte
  */
 public enum StreamKind {
+
     /**
      * General.
      */
     General,
+
     /**
      * Video.
      */
     Video,
+
     /**
      * Audio.
      */
     Audio,
+
     /**
      * Text.
      */
     Text,
+
     /**
      * Chapters.
      */
     Chapters,
+
     /**
      * Image.
      */
     Image,
+
     /**
      * Menu.
      */

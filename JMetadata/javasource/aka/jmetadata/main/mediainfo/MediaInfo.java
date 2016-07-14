@@ -7,19 +7,13 @@ import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
-
-import aka.jmetadata.main.constants.InfoKind;
-import aka.jmetadata.main.constants.StreamKind;
-import aka.jmetadata.main.helper.DateHelper;
-import aka.swissknife.data.TextUtils;
-import aka.swissknife.os.OSHelper;
-import aka.swissknife.os.OSHelperConstants.OS_ARCH;
 
 import com.sun.jna.FunctionMapper;
 import com.sun.jna.Library;
@@ -28,6 +22,13 @@ import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
+
+import aka.jmetadata.main.constants.InfoKind;
+import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.helper.DateHelper;
+import aka.swissknife.data.TextUtils;
+import aka.swissknife.os.OSHelper;
+import aka.swissknife.os.OSHelperConstants.OS_ARCH;
 
 /**
  * MediaInfo JNA library.
@@ -183,7 +184,7 @@ public final class MediaInfo {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public String getAsString(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
     }
 
@@ -196,10 +197,15 @@ public final class MediaInfo {
      *            in string format ("Codec", "Width"...)
      * @return a string about information you search, an empty string if there is a problem
      */
-    public boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    @Nullable
+    public Boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
 
-        return "Yes".equals(value);
+        if ("Yes".equals(value)) {
+            return Boolean.TRUE;
+        } else {
+            return Boolean.FALSE;
+        }
     }
 
     /**
@@ -214,9 +220,17 @@ public final class MediaInfo {
     @Nullable
     public Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Long result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = Long.valueOf(value);
+        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        value = TextUtils.trimNonNumerical(value);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            if (TextUtils.isDigit(value)) {
+                try {
+                    result = Long.valueOf(value);
+                } catch (final NumberFormatException e) {
+                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsLong", e.getMessage(), e);
+                }
+            }
         }
 
         return result;
@@ -234,9 +248,17 @@ public final class MediaInfo {
     @Nullable
     public Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Integer result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = Integer.valueOf(value);
+        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        value = TextUtils.trimNonNumerical(value);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            if (TextUtils.isDigit(value)) {
+                try {
+                    result = Integer.valueOf(value);
+                } catch (final NumberFormatException e) {
+                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsInteger", e.getMessage(), e);
+                }
+            }
         }
 
         return result;
@@ -254,9 +276,17 @@ public final class MediaInfo {
     @Nullable
     public BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         BigInteger result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        if (TextUtils.isDigit(value)) {
-            result = new BigInteger(value);
+        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        value = TextUtils.trimNonNumerical(value);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            if (TextUtils.isDigit(value)) {
+                try {
+                    result = new BigInteger(value);
+                } catch (final NumberFormatException e) {
+                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsBigInteger", e.getMessage(), e);
+                }
+            }
         }
 
         return result;
@@ -270,14 +300,17 @@ public final class MediaInfo {
      * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
      *            in string format ("Codec", "Width"...)
      * @return a URL about information you search, an empty string if there is a problem
-     * @throws MalformedURLException if no protocol is specified or an unknown protocol is found.
      */
     @Nullable
-    public URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) throws MalformedURLException {
+    public URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         URL result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
-            result = new URL(value);
+            try {
+                result = new URL(value);
+            } catch (final MalformedURLException e) {
+                LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsURL", e.getMessage(), e);
+            }
         }
 
         return result;
@@ -295,9 +328,17 @@ public final class MediaInfo {
     @Nullable
     public Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Double result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        value = TextUtils.trimNonNumerical(value);
         if (!TextUtils.isEmpty(value)) {
-            result = Double.valueOf(value);
+            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            if (TextUtils.isDigit(value)) {
+                try {
+                    result = Double.valueOf(value);
+                } catch (final NumberFormatException e) {
+                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsDouble", e.getMessage(), e);
+                }
+            }
         }
 
         return result;
@@ -311,15 +352,18 @@ public final class MediaInfo {
      * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
      *            in string format ("Codec", "Width"...)
      * @return a Date about information you search, an empty string if there is a problem
-     * @throws ParseException if the beginning of the specified string cannot be parsed.
      */
     @Nullable
-    public Date getAsDate(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) throws ParseException {
-        Date result = null;
+    public LocalDate getAsLocalDate(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+        LocalDate result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = DateHelper.parse(value);
+            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            try {
+                result = DateHelper.parse(value);
+            } catch (final DateTimeParseException e) {
+                LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsLocalDate", e.getMessage(), e);
+            }
         }
         return result;
     }

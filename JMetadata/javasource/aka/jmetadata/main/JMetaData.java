@@ -11,6 +11,9 @@ import java.util.List;
 
 import org.eclipse.jdt.annotation.NonNull;
 
+import com.sun.jna.NativeLibrary;
+import com.sun.jna.Platform;
+
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
@@ -18,15 +21,12 @@ import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OSHelperConstants.OS_ARCH;
 
-import com.sun.jna.NativeLibrary;
-import com.sun.jna.Platform;
-
 /**
  * Main class to use to extract metadata informations. This class contains all useful methods to get all kind of streams that can be present in the file.
  *
  * @author Charlotte
  */
-public final class JMetadata {
+public final class JMetaData {
 
     @NonNull
     private final MediaInfo mediaInfo;
@@ -38,7 +38,7 @@ public final class JMetadata {
      * @throws IOException if mediainfo library could not be loaded.
      * @throws LibNotfoundException if no mediainfo library could be found.
      */
-    public JMetadata() throws IOException, LibNotfoundException {
+    public JMetaData() throws IOException, LibNotfoundException {
         String libraryName = null;
 
         if (Platform.isWindows()) {
@@ -69,7 +69,7 @@ public final class JMetadata {
      *
      * @param jnaLibraryPath path for JNA to find library to be loaded
      */
-    public JMetadata(@NonNull final String jnaLibraryPath) {
+    public JMetaData(@NonNull final String jnaLibraryPath) {
         System.setProperty("jna.library.path", jnaLibraryPath);
         this.mediaInfo = new MediaInfo();
     }
@@ -116,10 +116,6 @@ public final class JMetadata {
         return this.mediaInfo.getStreamCount(StreamKind.Text);
     }
 
-    private int getNumChapterStreams() {
-        return this.mediaInfo.getStreamCount(StreamKind.Chapters);
-    }
-
     private int getNumMenuStreams() {
         return this.mediaInfo.getStreamCount(StreamKind.Menu);
     }
@@ -128,26 +124,26 @@ public final class JMetadata {
      * Get informations from main file.
      *
      * @return general information
-     * @see JMetadataGeneral
+     * @see JMetadataGeneralOld
      */
     @NonNull
-    public JMetadataGeneral getGeneral() {
-        return new JMetadataGeneral(this.mediaInfo);
+    public JMetaDataGeneral getGeneral() {
+        return new JMetaDataGeneral(this.mediaInfo);
     }
 
     /**
      * Get informations from video streams.
      *
      * @return list of video streams
-     * @see JMetadataVideo
+     * @see JMetaDataVideo
      */
     @NonNull
-    public List<JMetadataVideo> getVideoStreams() {
-        final List<JMetadataVideo> result = new ArrayList<>();
+    public List<@NonNull JMetaDataVideo> getVideoStreams() {
+        final List<@NonNull JMetaDataVideo> result = new ArrayList<>();
 
         final int numberVideoStream = getNumVideoStreams();
         for (int i = 0; i < numberVideoStream; i++) {
-            final JMetadataVideo jMetadataVideo = new JMetadataVideo(this.mediaInfo, i);
+            final JMetaDataVideo jMetadataVideo = new JMetaDataVideo(this.mediaInfo, i);
             result.add(jMetadataVideo);
         }
 
@@ -158,15 +154,15 @@ public final class JMetadata {
      * Get informations from audio streams.
      *
      * @return list of audio stream
-     * @see JMetadataAudio
+     * @see JMetaDataAudio
      */
     @NonNull
-    public List<JMetadataAudio> getAudioStreams() {
-        final List<JMetadataAudio> result = new ArrayList<>();
+    public List<@NonNull JMetaDataAudio> getAudioStreams() {
+        final List<@NonNull JMetaDataAudio> result = new ArrayList<>();
 
         final int numberAudioStream = getNumAudioStreams();
         for (int i = 0; i < numberAudioStream; i++) {
-            final JMetadataAudio jMetadataAudio = new JMetadataAudio(this.mediaInfo, i);
+            final JMetaDataAudio jMetadataAudio = new JMetaDataAudio(this.mediaInfo, i);
             result.add(jMetadataAudio);
         }
 
@@ -177,35 +173,16 @@ public final class JMetadata {
      * Get informations from subtitle streams.
      *
      * @return list of subtitle stream
-     * @see JMetadataSubtitle
+     * @see JMetaDataText
      */
     @NonNull
-    public List<JMetadataSubtitle> getSubtitleStreams() {
-        final List<JMetadataSubtitle> result = new ArrayList<JMetadataSubtitle>();
+    public List<@NonNull JMetaDataText> getSubtitleStreams() {
+        final List<@NonNull JMetaDataText> result = new ArrayList<>();
 
         final int numberSubtitleStream = getNumSubtitleStreams();
         for (int i = 0; i < numberSubtitleStream; i++) {
-            final JMetadataSubtitle jMetadataSubtitle = new JMetadataSubtitle(this.mediaInfo, i);
+            final JMetaDataText jMetadataSubtitle = new JMetaDataText(this.mediaInfo, i);
             result.add(jMetadataSubtitle);
-        }
-
-        return result;
-    }
-
-    /**
-     * Get informations from chapters streams.
-     *
-     * @return list of chapters stream
-     * @see JMetadataChapter
-     */
-    @NonNull
-    public List<JMetadataChapter> getChapterStreams() {
-        final List<JMetadataChapter> result = new ArrayList<JMetadataChapter>();
-
-        final int numberChaptersStream = getNumChapterStreams();
-        for (int i = 0; i < numberChaptersStream; i++) {
-            final JMetadataChapter jMetadataChapter = new JMetadataChapter(this.mediaInfo, i);
-            result.add(jMetadataChapter);
         }
 
         return result;
@@ -215,15 +192,15 @@ public final class JMetadata {
      * Get informations from menu streams.
      *
      * @return list of menu stream
-     * @see JMetadataMenu
+     * @see JMetaDataMenu
      */
     @NonNull
-    public List<JMetadataMenu> getMenuStreams() {
-        final List<JMetadataMenu> result = new ArrayList<JMetadataMenu>();
+    public List<@NonNull JMetaDataMenu> getMenuStreams() {
+        final List<@NonNull JMetaDataMenu> result = new ArrayList<>();
 
         final int numberMenuStream = getNumMenuStreams();
         for (int i = 0; i < numberMenuStream; i++) {
-            final JMetadataMenu jMetadataMenu = new JMetadataMenu(this.mediaInfo, i);
+            final JMetaDataMenu jMetadataMenu = new JMetaDataMenu(this.mediaInfo, i);
             result.add(jMetadataMenu);
         }
 
@@ -233,7 +210,7 @@ public final class JMetadata {
     private void loadDLL(@NonNull final String name) throws IOException {
         try {
             System.loadLibrary(name);
-        } catch (final UnsatisfiedLinkError e) {
+        } catch (@SuppressWarnings("unused") final UnsatisfiedLinkError e) {
             // have to use a stream
             final InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);
             // always write to different location

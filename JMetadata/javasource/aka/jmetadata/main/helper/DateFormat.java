@@ -1,6 +1,6 @@
 package aka.jmetadata.main.helper;
 
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 
 import org.eclipse.jdt.annotation.NonNull;
 
@@ -15,6 +15,7 @@ enum DateFormat {
      * Date format 1 {@value} (example: UTC 2014-07-17 07:48:54.611)
      */
     Type1("z yyyy-MM-dd HH:mm:ss.SSS"),
+
     /**
      * Date format 1 {@value} (example: UTC 2010-02-19 02:01:40)
      */
@@ -23,11 +24,11 @@ enum DateFormat {
     @NonNull
     private final String value;
     @NonNull
-    private SimpleDateFormat sdf;
+    private DateTimeFormatter sdf;
 
     private DateFormat(@NonNull final String value) {
         this.value = value;
-        this.sdf = new SimpleDateFormat(value);
+        this.sdf = DateTimeFormatter.ofPattern(value);
     }
 
     /**
@@ -46,7 +47,7 @@ enum DateFormat {
      * @return simple date format.
      */
     @NonNull
-    public SimpleDateFormat getSimpleDateFormat() {
+    public DateTimeFormatter getSimpleDateFormat() {
         return this.sdf;
     }
 }

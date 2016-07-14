@@ -6,11 +6,11 @@ import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**
- * This class contains all methods to extract chapter informations of a specific chapter stream.
+ * This class contains all methods to extract menu informations of a specific menu stream.
  *
  * @author Charlotte
  */
-public final class JMetadataChapter extends AbstractStreamJMetadata {
+public final class JMetadataMenuOld extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
@@ -19,7 +19,7 @@ public final class JMetadataChapter extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataChapter(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
-        super(StreamKind.Chapters, mediaInfo, streamNumber);
+    public JMetadataMenuOld(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
+        super(StreamKind.Menu, mediaInfo, streamNumber);
     }
 }

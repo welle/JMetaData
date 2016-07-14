@@ -12,7 +12,7 @@ import aka.jmetadata.main.mediainfo.MediaInfo;
  *
  * @author Charlotte
  */
-public final class JMetadataSubtitle extends AbstractStreamJMetadata {
+public final class JMetadataSubtitleOld extends AbstractStreamJMetadata {
 
     /**
      * Constructor.
@@ -21,7 +21,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      * @param streamNumber number of the stream to parse
      * @see MediaInfo
      */
-    public JMetadataSubtitle(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
+    public JMetadataSubtitleOld(@NonNull final MediaInfo mediaInfo, final int streamNumber) {
         super(StreamKind.Text, mediaInfo, streamNumber);
     }
 
@@ -32,7 +32,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getColorSpace() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.COLORSPACE);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.COLORSPACE);
     }
 
     /**
@@ -42,7 +42,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getChromaSubsampling() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.CHROMASUBSAMPLING);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.CHROMASUBSAMPLING);
     }
 
     /**
@@ -82,7 +82,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayString() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType1() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE1);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE1);
     }
 
     /**
@@ -102,7 +102,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType2() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE2);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE2);
     }
 
     /**
@@ -112,7 +112,7 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType3() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE3);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE3);
     }
 
     /**
@@ -122,6 +122,6 @@ public final class JMetadataSubtitle extends AbstractStreamJMetadata {
      */
     @Nullable
     public String getVideoDelayStringType4() {
-        return getMediaInfo().get(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE4);
+        return getMediaInfo().getAsString(StreamKind.Text, getStreamNumber(), Text.VIDEO_DELAY_STRING_TYPE4);
     }
 }

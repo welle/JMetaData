@@ -12,13 +12,12 @@ import java.util.logging.Logger;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
-import aka.jmetadata.main.JMetadata;
-import aka.jmetadata.main.JMetadataAudio;
-import aka.jmetadata.main.JMetadataChapter;
-import aka.jmetadata.main.JMetadataGeneral;
-import aka.jmetadata.main.JMetadataMenu;
-import aka.jmetadata.main.JMetadataSubtitle;
-import aka.jmetadata.main.JMetadataVideo;
+import aka.jmetadata.main.JMetaData;
+import aka.jmetadata.main.JMetaDataAudio;
+import aka.jmetadata.main.JMetaDataGeneral;
+import aka.jmetadata.main.JMetaDataMenu;
+import aka.jmetadata.main.JMetaDataText;
+import aka.jmetadata.main.JMetaDataVideo;
 import aka.jmetadata.main.constants.CodecVideoConstants;
 import aka.jmetadata.main.constants.CodecVideoConstants.ASPECT_RATIO;
 import aka.jmetadata.main.constants.CodecVideoConstants.RESOLUTION;
@@ -49,7 +48,7 @@ public class Examples {
     private static void testWithInternalDLL() {
         try {
             // use internal dll
-            final JMetadata jMetadata = new JMetadata();
+            final JMetaData jMetadata = new JMetaData();
 
             final File directory = new File("d:/testvideos/");
             // final File directory = new
@@ -78,10 +77,10 @@ public class Examples {
     private static void testWithInternalDLL2() {
         try {
             // use internal dll
-            final JMetadata jMetadata = new JMetadata();
+            final JMetaData jMetadata = new JMetaData();
 
-//            final File file = new File("\\\\Leviathan\\Movies\\HD\\Batman v Superman L’Aube de la Justice (2016).mkv");
-            final File file = new File("\\\\Leviathan\\Movies\\HD\\Prometheus (2012).mkv");
+            final File file = new File("\\\\Leviathan\\Movies\\HD\\Batman v Superman L’Aube de la Justice (2016).mkv");
+//            final File file = new File("\\\\Leviathan\\Movies\\HD\\Prometheus (2012).mkv");
             System.out.println("[test] testWithInternalDLL - " + file.getAbsolutePath());
             if (jMetadata.open(file)) {
                 printJMetadata(jMetadata);
@@ -98,7 +97,7 @@ public class Examples {
 
     private static void testWithExternalDLL() {
         // use external dll
-        final JMetadata jMetadata = new JMetadata("./lib/");
+        final JMetaData jMetadata = new JMetaData("./lib/");
         final File directory = new File("./Test/videos/");
         final File[] children = getFiles(directory);
         if (children == null) {
@@ -118,12 +117,12 @@ public class Examples {
         }
     }
 
-    private static void printJMetadata(@NonNull final JMetadata jMetadata) {
+    private static void printJMetadata(@NonNull final JMetaData jMetadata) {
         printJMetaDataInfos(jMetadata.getGeneral());
-        final List<JMetadataVideo> videoStreamList = jMetadata.getVideoStreams();
+        final List<JMetaDataVideo> videoStreamList = jMetadata.getVideoStreams();
         System.out.println("VIDEOS");
         System.out.println("--------------------");
-        for (final JMetadataVideo jMetadataVideo : videoStreamList) {
+        for (final JMetaDataVideo jMetadataVideo : videoStreamList) {
             assert jMetadataVideo != null;
             printJMetadataVideos(jMetadataVideo);
         }
@@ -131,8 +130,8 @@ public class Examples {
 
         System.out.println("AUDIOS");
         System.out.println("--------------------");
-        final List<JMetadataAudio> audioStreamList = jMetadata.getAudioStreams();
-        for (final JMetadataAudio jMetadataAudio : audioStreamList) {
+        final List<JMetaDataAudio> audioStreamList = jMetadata.getAudioStreams();
+        for (final JMetaDataAudio jMetadataAudio : audioStreamList) {
             assert jMetadataAudio != null;
             printJMetadataAudios(jMetadataAudio);
         }
@@ -140,34 +139,26 @@ public class Examples {
 
         System.out.println("SUBTITLES");
         System.out.println("--------------------");
-        final List<JMetadataSubtitle> textStreamList = jMetadata.getSubtitleStreams();
-        for (final JMetadataSubtitle jMetadataSubtitle : textStreamList) {
+        final List<JMetaDataText> textStreamList = jMetadata.getSubtitleStreams();
+        for (final JMetaDataText jMetadataSubtitle : textStreamList) {
             assert jMetadataSubtitle != null;
             printjMetadataSubtitles(jMetadataSubtitle);
         }
         System.out.println("_________________________________________________________________________________________");
 
-        System.out.println("CHAPTERS");
-        System.out.println("--------------------");
-        final List<JMetadataChapter> chapterStreamList = jMetadata.getChapterStreams();
-        for (final JMetadataChapter jMetadataChapter : chapterStreamList) {
-            assert jMetadataChapter != null;
-            printjMetadataChapters(jMetadataChapter);
-        }
-        System.out.println("_________________________________________________________________________________________");
-
         System.out.println("MENUS");
         System.out.println("--------------------");
-        final List<JMetadataMenu> menuStreamList = jMetadata.getMenuStreams();
-        for (final JMetadataMenu jMetadataMenu : menuStreamList) {
+
+        final List<JMetaDataMenu> menuStreamList = jMetadata.getMenuStreams();
+        for (final JMetaDataMenu jMetadataMenu : menuStreamList) {
             assert jMetadataMenu != null;
             printjMetadataMenus(jMetadataMenu);
         }
         System.out.println("_________________________________________________________________________________________");
     }
 
-    private static void printjMetadataMenus(@NonNull final JMetadataMenu jMetadataMenu) {
-        System.out.println("MENU #" + jMetadataMenu.getStreamKindID());
+    private static void printjMetadataMenus(@NonNull final JMetaDataMenu jMetadataMenu) {
+        System.out.println("MENU #" + jMetadataMenu.getStreamKindIDAsInteger());
         System.out.println("-------------");
         System.out.println(" Duration = " + jMetadataMenu.getDuration());
         System.out.println(" Format = " + jMetadataMenu.getFormat());
@@ -290,131 +281,7 @@ public class Examples {
         System.out.println(" Frame rate string = " + jMetadataMenu.getFrameRateString());
     }
 
-    private static void printjMetadataChapters(@NonNull final JMetadataChapter jMetadataChapter) {
-        System.out.println("CHAPTER #" + jMetadataChapter.getStreamKindID());
-        System.out.println("-------------");
-        System.out.println(" Duration = " + jMetadataChapter.getDuration());
-        System.out.println(" Format = " + jMetadataChapter.getFormat());
-        System.out.println(" Format Version = " + jMetadataChapter.getFormatVersion());
-        System.out.println(" Format Settings = " + jMetadataChapter.getFormatSettings());
-        System.out.println(" Bit Rate = " + jMetadataChapter.getBitRate());
-        System.out.println(" Frame Rate = " + jMetadataChapter.getFrameRate());
-        System.out.println(" StreamKind = " + jMetadataChapter.getStreamKind());
-        System.out.println(" StreamKindString = " + jMetadataChapter.getStreamKindString());
-        System.out.println(" StreamKindID = " + jMetadataChapter.getStreamKindID());
-        System.out.println(" StreamKindPos = " + jMetadataChapter.getStreamKindPosition());
-        System.out.println(" StreamKindOrder = " + jMetadataChapter.getStreamKindOrder());
-        System.out.println(" ID = " + jMetadataChapter.getID());
-        System.out.println(" ID String = " + jMetadataChapter.getIDString());
-        System.out.println(" Unique ID = " + jMetadataChapter.getUniqueID());
-        System.out.println(" Unique ID String = " + jMetadataChapter.getUniqueIDString());
-        System.out.println(" Menu ID  = " + jMetadataChapter.getMenuID());
-        System.out.println(" Menu ID String = " + jMetadataChapter.getMenuIDString());
-        System.out.println(" Format info = " + jMetadataChapter.getFormatInfo());
-        try {
-            System.out.println(" Format URL = " + jMetadataChapter.getFormatURL());
-        } catch (final MalformedURLException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        }
-        System.out.println(" Format Commercial = " + jMetadataChapter.getFormatCommercial());
-        System.out.println(" Format Commercial If Any = " + jMetadataChapter.getFormatCommercialIfAny());
-        System.out.println(" Format Profile = " + jMetadataChapter.getFormatProfile());
-        System.out.println(" Format Compression = " + jMetadataChapter.getFormatCompression());
-        System.out.println(" Codec ID = " + jMetadataChapter.getCodecID());
-        System.out.println(" Duration String = " + jMetadataChapter.getDurationString());
-        System.out.println(" Duration String Type 1 = " + jMetadataChapter.getDurationStringType1());
-        System.out.println(" Duration String Type 2 = " + jMetadataChapter.getDurationStringType2());
-        System.out.println(" Duration String Type 3 = " + jMetadataChapter.getDurationStringType3());
-        System.out.println(" Internet Media Type = " + jMetadataChapter.getInternetMediaType());
-        System.out.println(" Muxing mode = " + jMetadataChapter.getMuxingMode());
-        System.out.println(" Codec ID String = " + jMetadataChapter.getCodecIDString());
-        System.out.println(" Codec ID Info = " + jMetadataChapter.getCodecIDInfo());
-        System.out.println(" Codec ID Hint = " + jMetadataChapter.getCodecIDHint());
-        System.out.println(" Codec ID Description = " + jMetadataChapter.getCodecIDDescription());
-        try {
-            System.out.println(" Codec ID URL = " + jMetadataChapter.getCodecIDURL());
-        } catch (final MalformedURLException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        }
-        System.out.println(" Duration first trame = " + jMetadataChapter.getDurationFirstTrame());
-        System.out.println(" Duration first trame Type 1 = " + jMetadataChapter.getDurationFirstTrameType1());
-        System.out.println(" Duration first trame Type 2 = " + jMetadataChapter.getDurationFirstTrameType2());
-        System.out.println(" Duration first trame Type 3 = " + jMetadataChapter.getDurationFirstTrameType3());
-        System.out.println(" Bit rate mode = " + jMetadataChapter.getBitRateMode());
-        System.out.println(" Bit rate mode string = " + jMetadataChapter.getBitRateModeString());
-        System.out.println(" Bit rate string = " + jMetadataChapter.getBitRateString());
-        System.out.println(" Bit rate minimum = " + jMetadataChapter.getBitRateMinimum());
-        System.out.println(" Bit rate minimum string = " + jMetadataChapter.getBitRateMinimumString());
-        System.out.println(" Bit rate nominal = " + jMetadataChapter.getBitRateNominal());
-        System.out.println(" Bit rate nominal string = " + jMetadataChapter.getBitRateNominalString());
-        System.out.println(" Bit rate maximum = " + jMetadataChapter.getBitRateMaximum());
-        System.out.println(" Bit rate maximum string = " + jMetadataChapter.getBitRateMaximumString());
-        System.out.println(" Bit rate encoded = " + jMetadataChapter.getBitRateEncoded());
-        System.out.println(" Frame count = " + jMetadataChapter.getFrameCount());
-        System.out.println(" Source Frame count = " + jMetadataChapter.getSourceFrameCount());
-        try {
-            System.out.println(" Encoded date = " + jMetadataChapter.getEncodedDate());
-        } catch (final ParseException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        }
-        try {
-            System.out.println(" Tagged date = " + jMetadataChapter.getTaggedDate());
-        } catch (final ParseException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        }
-        System.out.println(" Encoded Application = " + jMetadataChapter.getEncodedApplication());
-        try {
-            System.out.println(" Encoded Application URL = " + jMetadataChapter.getEncodedApplicationURL());
-        } catch (final MalformedURLException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        }
-        System.out.println(" Encoded Library = " + jMetadataChapter.getEncodedLibrary());
-        System.out.println(" Encoded Library String = " + jMetadataChapter.getEncodedLibraryString());
-        System.out.println(" Encoded Library name = " + jMetadataChapter.getEncodedLibraryName());
-        System.out.println(" Encoded Library version = " + jMetadataChapter.getEncodedLibraryVersion());
-        System.out.println(" Encoded Library release date = " + jMetadataChapter.getEncodedLibraryDate());
-        System.out.println(" Encoded Library settings = " + jMetadataChapter.getEncodedLibrarySettings());
-        System.out.println(" Stream size = " + jMetadataChapter.getStreamsize());
-        System.out.println(" Stream size string = " + jMetadataChapter.getStreamsizeString());
-        System.out.println(" Stream size string type 1 = " + jMetadataChapter.getStreamsizeStringType1());
-        System.out.println(" Stream size string type 2 = " + jMetadataChapter.getStreamsizeStringType2());
-        System.out.println(" Stream size string type 3 = " + jMetadataChapter.getStreamsizeStringType3());
-        System.out.println(" Stream size string type 4 = " + jMetadataChapter.getStreamsizeStringType4());
-        System.out.println(" Stream size string type 5 = " + jMetadataChapter.getStreamsizeStringType5());
-        System.out.println(" Stream size proportion = " + jMetadataChapter.getStreamsizeProportion());
-        System.out.println(" Language = " + jMetadataChapter.getLanguage());
-        System.out.println(" Language string = " + jMetadataChapter.getLanguageString());
-        System.out.println(" Language string 1 = " + jMetadataChapter.getLanguageString1());
-        System.out.println(" Language string 2 = " + jMetadataChapter.getLanguageString2());
-        System.out.println(" Language string 3 = " + jMetadataChapter.getLanguageString3());
-        System.out.println(" Language string 4 = " + jMetadataChapter.getLanguageString4());
-        System.out.println(" Language more = " + jMetadataChapter.getLanguageMore());
-        System.out.println(" Is default ? = " + jMetadataChapter.isDefault());
-        System.out.println(" Default string = " + jMetadataChapter.getDefaultString());
-        System.out.println(" Is forced ? = " + jMetadataChapter.isForced());
-        System.out.println(" Forced string = " + jMetadataChapter.getForcedString());
-        System.out.println(" Alignment = " + jMetadataChapter.getAlignment());
-        System.out.println(" Alignment string = " + jMetadataChapter.getAlignmentString());
-        System.out.println(" Title = " + jMetadataChapter.getTitle());
-        System.out.println(" Bit depth = " + jMetadataChapter.getBitDepth());
-        System.out.println(" Bit depth string = " + jMetadataChapter.getBitDepthString());
-        System.out.println(" Compression mode = " + jMetadataChapter.getCompressionMode());
-        System.out.println(" Compression mode string = " + jMetadataChapter.getCompressionModeString());
-        System.out.println(" Compression ratio = " + jMetadataChapter.getCompressionRatio());
-        System.out.println(" Delay = " + jMetadataChapter.getDelay());
-        System.out.println(" Delay string = " + jMetadataChapter.getDelayString());
-        System.out.println(" Delay string 1 = " + jMetadataChapter.getDelayStringType1());
-        System.out.println(" Delay string 2 = " + jMetadataChapter.getDelayStringType2());
-        System.out.println(" Delay string 3 = " + jMetadataChapter.getDelayStringType3());
-        System.out.println(" Delay string 4 = " + jMetadataChapter.getDelayStringType4());
-        System.out.println(" Delay settings = " + jMetadataChapter.getDelaySettings());
-        System.out.println(" Encryption = " + jMetadataChapter.getEncryption());
-        System.out.println(" Delay source = " + jMetadataChapter.getDelaySource());
-        System.out.println(" Delay source string = " + jMetadataChapter.getDelaySourceString());
-        System.out.println(" Frame rate string = " + jMetadataChapter.getFrameRateString());
-    }
-
-    private static void printjMetadataSubtitles(@NonNull final JMetadataSubtitle jMetadataSubtitle) {
+    private static void printjMetadataSubtitles(@NonNull final JMetaDataText jMetadataSubtitle) {
         System.out.println("SUBTITLES #" + jMetadataSubtitle.getStreamKindID());
         System.out.println("-------------");
         System.out.println(" Duration = " + jMetadataSubtitle.getDuration());
@@ -548,7 +415,7 @@ public class Examples {
         System.out.println(" Video delay string type 4 = " + jMetadataSubtitle.getVideoDelayStringType4());
     }
 
-    private static void printJMetadataAudios(@NonNull final JMetadataAudio jMetadataAudio) {
+    private static void printJMetadataAudios(@NonNull final JMetaDataAudio jMetadataAudio) {
         System.out.println("AUDIO #" + jMetadataAudio.getStreamKindID());
         System.out.println("----------");
         System.out.println(" Duration = " + jMetadataAudio.getDuration());
@@ -694,7 +561,7 @@ public class Examples {
         System.out.println(" Interleave Video Frames = " + jMetadataAudio.getInterleaveVideoFrames());
     }
 
-    private static void printJMetadataVideos(@NonNull final JMetadataVideo jMetadataVideo) {
+    private static void printJMetadataVideos(@NonNull final JMetaDataVideo jMetadataVideo) {
         System.out.println("VIDEO #" + jMetadataVideo.getStreamKindID());
         System.out.println("----------");
         final Double aspectRatio = jMetadataVideo.getDisplayAspectRatio();
@@ -894,10 +761,10 @@ public class Examples {
         System.out.println(" Delay source string = " + jMetadataVideo.getDelaySourceString());
     }
 
-    private static void printJMetaDataInfos(@NonNull final JMetadataGeneral jMetadataGeneral) {
+    private static void printJMetaDataInfos(@NonNull final JMetaDataGeneral jMetadataGeneral) {
         System.out.println("GENERAL");
         System.out.println("--------------------");
-        System.out.println(" # Video = " + jMetadataGeneral.getNumVideoStreams());
+        System.out.println(" # Video = " + jMetadataGeneral.getNumberVideoStreams());
         System.out.println(" # Audio = " + jMetadataGeneral.getNumAudioStreams());
         System.out.println(" # Subtitle = " + jMetadataGeneral.getNumSubtitleStreams());
         System.out.println(" Duration = " + jMetadataGeneral.getDuration());

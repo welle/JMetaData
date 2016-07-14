@@ -11,7 +11,6 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
-import aka.jmetadata.main.constants.Commons;
 import aka.jmetadata.main.constants.General;
 import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
@@ -22,7 +21,7 @@ import aka.swissknife.data.TextUtils;
  *
  * @author Charlotte
  */
-public final class JMetadataGeneral extends AbstractJMetadata {
+public final class JMetadataGeneralOld extends AbstractJMetadata {
 
     /**
      * Constructor.
@@ -30,7 +29,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      * @param mediaInfo instance of mediainfo JNA library
      * @see MediaInfo
      */
-    public JMetadataGeneral(@NonNull final MediaInfo mediaInfo) {
+    public JMetadataGeneralOld(@NonNull final MediaInfo mediaInfo) {
         super(mediaInfo);
     }
 
@@ -86,7 +85,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatVersion() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_VERSION);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_VERSION);
     }
 
     /**
@@ -106,7 +105,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamKind() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMKIND);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMKIND);
     }
 
     /**
@@ -116,7 +115,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamKindString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAM_KIND_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAM_KIND_STRING);
     }
 
     /**
@@ -166,7 +165,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getIDString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ID_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ID_STRING);
     }
 
     /**
@@ -186,7 +185,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getUniqueIDString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.UNIQUE_ID_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.UNIQUE_ID_STRING);
     }
 
     /**
@@ -206,7 +205,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getMenuIDString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.MENUID_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.MENUID_STRING);
     }
 
     /**
@@ -297,7 +296,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getVideoFormatList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.VIDEO_FORMAT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.VIDEO_FORMAT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -314,7 +313,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getVideoFormatWithHintList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.VIDEO_FORMAT_WITH_HINT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.VIDEO_FORMAT_WITH_HINT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -331,7 +330,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getVideoLanguageList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.VIDEO_LANGUAGE_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.VIDEO_LANGUAGE_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -348,7 +347,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getAudioFormatList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.AUDIO_FORMAT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.AUDIO_FORMAT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -365,7 +364,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getAudioFormatWithHintList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.AUDIO_FORMAT_WITH_HINT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.AUDIO_FORMAT_WITH_HINT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -382,7 +381,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getAudioLanguageList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.AUDIO_LANGUAGE_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.AUDIO_LANGUAGE_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -399,7 +398,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getTextFormatList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.TEXT_FORMAT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.TEXT_FORMAT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -416,7 +415,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getTextFormatWithHintList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.TEXT_FORMAT_WITH_HINT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.TEXT_FORMAT_WITH_HINT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -433,7 +432,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getTextLanguageList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.TEXT_LANGUAGE_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.TEXT_LANGUAGE_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -450,7 +449,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getChaptersFormatList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.CHAPTERS_FORMAT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CHAPTERS_FORMAT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -467,7 +466,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getChaptersFormatWithHintList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.CHAPTERS_FORMAT_WITH_HINT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CHAPTERS_FORMAT_WITH_HINT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -484,7 +483,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getChaptersLanguageList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.CHAPTERS_LANGUAGE_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CHAPTERS_LANGUAGE_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -501,7 +500,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getImageFormatList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.IMAGE_FORMAT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.IMAGE_FORMAT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -518,7 +517,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getImageFormatWithHintList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.IMAGE_FORMAT_WITH_HINT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.IMAGE_FORMAT_WITH_HINT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -535,7 +534,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getImageLanguageList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.IMAGE_LANGUAGE_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.IMAGE_LANGUAGE_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -552,7 +551,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getMenuFormatList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.MENU_FORMAT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.MENU_FORMAT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -569,10 +568,10 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getMenuFormatWithHintList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.MENU_FORMAT_WITH_HINT_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.MENU_FORMAT_WITH_HINT_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
-            result = splitValues(value, "/");
+            result = splitValues(value, '/');
         }
 
         return result;
@@ -586,7 +585,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getMenuLanguageList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.MENU_LANGUAGE_LIST);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.MENU_LANGUAGE_LIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -602,7 +601,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getCompleteName() {
-        return getMediaInfo().get(StreamKind.General, 0, General.COMPLETE_NAME);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.COMPLETE_NAME);
     }
 
     /**
@@ -612,7 +611,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFolderName() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FOLDER_NAME);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FOLDER_NAME);
     }
 
     /**
@@ -622,7 +621,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFileName() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILE_NAME);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILE_NAME);
     }
 
     /**
@@ -632,7 +631,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFileExtension() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILE_EXTENSION);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILE_EXTENSION);
     }
 
     /**
@@ -642,7 +641,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatInfo() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_INFO);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_INFO);
     }
 
     /**
@@ -664,7 +663,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
     @NonNull
     public List<String> getFormatExtensionsList() {
         List<String> result = new ArrayList<>();
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.FORMAT_EXTENSIONS);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.FORMAT_EXTENSIONS);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, " ");
@@ -680,7 +679,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatCommercial() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_COMMERCIAL);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_COMMERCIAL);
     }
 
     /**
@@ -690,7 +689,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatCommercialIfAny() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_COMMERCIAL_IF_ANY);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_COMMERCIAL_IF_ANY);
     }
 
     /**
@@ -700,7 +699,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatProfile() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_PROFILE);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_PROFILE);
     }
 
     /**
@@ -710,7 +709,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatCompression() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_COMPRESSION);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_COMPRESSION);
     }
 
     /**
@@ -720,7 +719,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormatSettings() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT_SETTINGS);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT_SETTINGS);
     }
 
     /**
@@ -730,7 +729,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getInternetMediaType() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.INTERNET_MEDIA_TYPE);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.INTERNET_MEDIA_TYPE);
     }
 
     /**
@@ -750,7 +749,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getCodecIDString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.CODEC_ID_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.CODEC_ID_STRING);
     }
 
     /**
@@ -760,7 +759,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getCodecIDInfo() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.CODEC_ID_INFO);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.CODEC_ID_INFO);
     }
 
     /**
@@ -770,7 +769,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getCodecIDHint() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.CODEC_ID_HINT);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.CODEC_ID_HINT);
     }
 
     /**
@@ -791,7 +790,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getCodecIDDescription() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.CODEC_ID_DESCRIPTION);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.CODEC_ID_DESCRIPTION);
     }
 
     /**
@@ -800,7 +799,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      * @return <code>true</code> if Audio and video are muxed
      */
     public boolean isInterleaved() {
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.INTERLEAVED);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.INTERLEAVED);
         return "Yes".equals(value);
     }
 
@@ -811,7 +810,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFilesizeString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILESIZE_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILESIZE_STRING);
     }
 
     /**
@@ -821,7 +820,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFilesizeString1Digits() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILESIZE_STRING1);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILESIZE_STRING1);
     }
 
     /**
@@ -831,7 +830,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFilesizeString2Digits() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILESIZE_STRING2);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILESIZE_STRING2);
     }
 
     /**
@@ -841,7 +840,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFilesizeString3Digits() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILESIZE_STRING3);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILESIZE_STRING3);
     }
 
     /**
@@ -851,7 +850,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFilesizeString4Digits() {
-        return getMediaInfo().get(StreamKind.General, 0, General.FILESIZE_STRING4);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FILESIZE_STRING4);
     }
 
     /**
@@ -861,7 +860,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.DURATION_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.DURATION_STRING);
     }
 
     /**
@@ -871,7 +870,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType1() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.DURATION_STRING1);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.DURATION_STRING1);
     }
 
     /**
@@ -881,7 +880,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType2() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.DURATION_STRING2);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.DURATION_STRING2);
     }
 
     /**
@@ -891,7 +890,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStringType3() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.DURATION_STRING3);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.DURATION_STRING3);
     }
 
     /**
@@ -901,7 +900,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationStart() {
-        return getMediaInfo().get(StreamKind.General, 0, General.DURATION_START);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.DURATION_START);
     }
 
     /**
@@ -911,7 +910,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getDurationEnd() {
-        return getMediaInfo().get(StreamKind.General, 0, General.DURATION_END);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.DURATION_END);
     }
 
     /**
@@ -931,7 +930,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getOverallBitRateModeString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.OVERALLBITRATE_MODE_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.OVERALLBITRATE_MODE_STRING);
     }
 
     /**
@@ -941,7 +940,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getOverallBitRateString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.OVERALLBITRATE_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.OVERALLBITRATE_STRING);
     }
 
     /**
@@ -981,7 +980,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getOverallBitRateMinimumString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.OVERALLBITRATE_MINIMUM_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.OVERALLBITRATE_MINIMUM_STRING);
     }
 
     /**
@@ -991,7 +990,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getOverallBitRateMaximumString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.OVERALLBITRATE_MAXIMUM_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.OVERALLBITRATE_MAXIMUM_STRING);
     }
 
     /**
@@ -1001,7 +1000,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getOverallBitRateNominalString() {
-        return getMediaInfo().get(StreamKind.General, 0, General.OVERALLBITRATE_NOMINAL_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.OVERALLBITRATE_NOMINAL_STRING);
     }
 
     /**
@@ -1021,7 +1020,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMSIZE_STRING);
     }
 
     /**
@@ -1031,7 +1030,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType1() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING1);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMSIZE_STRING1);
     }
 
     /**
@@ -1041,7 +1040,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType2() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING2);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMSIZE_STRING2);
     }
 
     /**
@@ -1051,7 +1050,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType3() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING3);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMSIZE_STRING3);
     }
 
     /**
@@ -1061,7 +1060,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType4() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING4);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMSIZE_STRING4);
     }
 
     /**
@@ -1071,7 +1070,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getStreamsizeStringType5() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.STREAMSIZE_STRING5);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.STREAMSIZE_STRING5);
     }
 
     /**
@@ -1090,7 +1089,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      * @return <code>true</code> if streamable
      */
     public boolean isStreamable() {
-        final String value = getMediaInfo().get(StreamKind.General, 0, General.ISSTREAMABLE);
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.ISSTREAMABLE);
         return "Yes".equals(value);
     }
 
@@ -1167,7 +1166,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedApplication() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_APPLICATION);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_APPLICATION);
     }
 
     /**
@@ -1188,7 +1187,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibrary() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_LIBRARY);
     }
 
     /**
@@ -1198,7 +1197,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryString() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_STRING);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_LIBRARY_STRING);
     }
 
     /**
@@ -1208,7 +1207,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryName() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_NAME);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_LIBRARY_NAME);
     }
 
     /**
@@ -1218,7 +1217,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryVersion() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_VERSION);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_LIBRARY_VERSION);
     }
 
     /**
@@ -1228,7 +1227,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibraryDate() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_DATE);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_LIBRARY_DATE);
     }
 
     /**
@@ -1238,7 +1237,7 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getEncodedLibrarySettings() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.ENCODED_LIBRARY_SETTINGS);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.ENCODED_LIBRARY_SETTINGS);
     }
 
     /**
@@ -1248,6 +1247,6 @@ public final class JMetadataGeneral extends AbstractJMetadata {
      */
     @Nullable
     public String getFormat() {
-        return getMediaInfo().get(StreamKind.General, 0, Commons.FORMAT);
+        return getMediaInfo().getAsString(StreamKind.General, 0, Commons.FORMAT);
     }
 }
