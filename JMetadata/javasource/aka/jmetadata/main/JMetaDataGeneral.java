@@ -843,23 +843,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODEC);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
     * Get Identifies the changes in sharpness for the digitizer requiered to produce the file.
     * 
     * @return Identifies the changes in sharpness for the digitizer requiered to produce the file.
@@ -1798,23 +1781,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getCodecIDDescriptionAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECIDDESCRIPTION);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecInfoAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECINFO);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -4059,23 +4025,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getFormatStringAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.FORMATSTRING);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
     * Get Package name i.e. technical flavor of the content.
     * 
     * @return Package name i.e. technical flavor of the content.
@@ -4756,23 +4705,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getEncodedLibraryVersionAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.ENCODEDLIBRARYVERSION);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getImageCodecListAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.IMAGECODECLIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -7181,23 +7113,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getUniqueIDAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.UNIQUEID);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecStringAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECSTRING);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -12022,23 +11937,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecSettingsAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECSETTINGS);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
     * Get Album/Sort.
     * 
     * @return Album/Sort.
@@ -12719,23 +12617,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getStreamSizeStringAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.STREAMSIZESTRING);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getTextCodecListAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.TEXTCODECLIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -14120,40 +14001,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getVideoCodecListAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.VIDEOCODECLIST);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getMenuCodecListAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.MENUCODECLIST);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
     * Get HeaderSize.
     * 
     * @return HeaderSize.
@@ -14318,23 +14165,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getEncodedLibrarySettingsAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.ENCODEDLIBRARYSETTINGS);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getAudioCodecListAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.AUDIOCODECLIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -15711,23 +15541,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getTaggedApplicationAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.TAGGEDAPPLICATION);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getOtherCodecListAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.OTHERCODECLIST);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
@@ -21498,23 +21311,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecExtensionsAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECEXTENSIONS);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
     * Get Number of video streams.
     * 
     * @return Number of video streams.
@@ -26151,40 +25947,6 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getTrackMoreAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.TRACKMORE);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecUrlAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECURL);
-        if (!TextUtils.isEmpty(value)) {
-            assert value != null;
-            result = splitValues(value, "/");
-        }
-        return result;
-    }
-
-   /**
-    * Get Deprecated, do not use in new projects.
-    * 
-    * @return Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public final List<@NonNull String> getCodecSettingsAutomaticAsStringList() {
-        List<@NonNull String> result = new ArrayList<>();
-        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.CODECSETTINGSAUTOMATIC);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");
