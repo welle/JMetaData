@@ -124,7 +124,7 @@ public final class JMetaData {
      * Get informations from main file.
      *
      * @return general information
-     * @see JMetadataGeneralOld
+     * @see JMetaDataGeneral
      */
     @NonNull
     public JMetaDataGeneral getGeneral() {

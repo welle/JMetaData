@@ -4,4 +4,4 @@ now
  ()L1java/time/LocalDate;
 parse
  (Ljava/lang/CharSequence;Ljava/time/format/DateTimeFormatter;)Ljava/time/LocalDate;
- (Ljava/lang/CharSequence;Ljava/time/format/DateTimeFormatter;)L1java/time/LocalDate;
+ (Ljava/lang/CharSequence;Ljava/time/format/DateTimeFormatter;)Ljava/time/LocalDate;

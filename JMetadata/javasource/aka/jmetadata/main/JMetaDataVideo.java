@@ -2,7 +2,8 @@ package aka.jmetadata.main;
 
 import java.math.BigInteger;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
@@ -55,8 +56,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) width in pixel.
     */
     @Nullable
-    public final LocalDate getWidthOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHORIGINAL);
+    public final LocalDateTime getWidthOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHORIGINAL);
+    }
+
+   /**
+    * Get Original (in the raw stream) width in pixel.
+    * 
+    * @return Original (in the raw stream) width in pixel.
+    */
+    @Nullable
+    public final LocalTime getWidthOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHORIGINAL);
     }
 
    /**
@@ -126,8 +137,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay source (Stream or empty).
     */
     @Nullable
-    public final LocalDate getDelayOriginalSourceAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSOURCE);
+    public final LocalDateTime getDelayOriginalSourceAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSOURCE);
+    }
+
+   /**
+    * Get Delay source (Stream or empty).
+    * 
+    * @return Delay source (Stream or empty).
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalSourceAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSOURCE);
     }
 
    /**
@@ -197,8 +218,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Stream order in the file, whatever is the kind of stream (base=0).
     */
     @Nullable
-    public final LocalDate getStreamOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMORDER);
+    public final LocalDateTime getStreamOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMORDER);
+    }
+
+   /**
+    * Get Stream order in the file, whatever is the kind of stream (base=0).
+    * 
+    * @return Stream order in the file, whatever is the kind of stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getStreamOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMORDER);
     }
 
    /**
@@ -268,8 +299,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the the encoding-software.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYNAME);
+    public final LocalDateTime getEncodedLibraryNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYNAME);
+    }
+
+   /**
+    * Get Name of the the encoding-software.
+    * 
+    * @return Name of the the encoding-software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYNAME);
     }
 
    /**
@@ -339,8 +380,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Multiview, how views are muxed in the container in case of it is not muxing in the stream.
     */
     @Nullable
-    public final LocalDate getMultiViewLayoutAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWLAYOUT);
+    public final LocalDateTime getMultiViewLayoutAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWLAYOUT);
+    }
+
+   /**
+    * Get Multiview, how views are muxed in the container in case of it is not muxing in the stream.
+    * 
+    * @return Multiview, how views are muxed in the container in case of it is not muxing in the stream.
+    */
+    @Nullable
+    public final LocalTime getMultiViewLayoutAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWLAYOUT);
     }
 
    /**
@@ -410,8 +461,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING4);
+    public final LocalDateTime getDurationFirstFrameString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING4);
     }
 
    /**
@@ -481,8 +542,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Chromaticity coordinates of the source primaries.
     */
     @Nullable
-    public final LocalDate getcolourprimariesAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COLOURPRIMARIES);
+    public final LocalDateTime getcolourprimariesAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COLOURPRIMARIES);
+    }
+
+   /**
+    * Get Chromaticity coordinates of the source primaries.
+    * 
+    * @return Chromaticity coordinates of the source primaries.
+    */
+    @Nullable
+    public final LocalTime getcolourprimariesAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COLOURPRIMARIES);
     }
 
    /**
@@ -552,8 +623,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING5);
+    public final LocalDateTime getDurationFirstFrameString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING5);
     }
 
    /**
@@ -623,8 +704,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING2);
+    public final LocalDateTime getDurationFirstFrameString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING2);
+    }
+
+   /**
+    * Get Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING2);
     }
 
    /**
@@ -694,8 +785,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING);
+    public final LocalDateTime getSourceDurationFirstFrameStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING);
+    }
+
+   /**
+    * Get Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING);
     }
 
    /**
@@ -765,8 +866,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Rotation (if not horizontal).
     */
     @Nullable
-    public final LocalDate getRotationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ROTATIONSTRING);
+    public final LocalDateTime getRotationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ROTATIONSTRING);
+    }
+
+   /**
+    * Get Rotation (if not horizontal).
+    * 
+    * @return Rotation (if not horizontal).
+    */
+    @Nullable
+    public final LocalTime getRotationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ROTATIONSTRING);
     }
 
    /**
@@ -836,8 +947,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING3);
+    public final LocalDateTime getDurationFirstFrameString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING3);
+    }
+
+   /**
+    * Get Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+    * 
+    * @return Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING3);
     }
 
    /**
@@ -907,8 +1028,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType_StoreMethod.
     */
     @Nullable
-    public final LocalDate getScanTypeStoreMethodAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHOD);
+    public final LocalDateTime getScanTypeStoreMethodAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHOD);
+    }
+
+   /**
+    * Get ScanType_StoreMethod.
+    * 
+    * @return ScanType_StoreMethod.
+    */
+    @Nullable
+    public final LocalTime getScanTypeStoreMethodAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHOD);
     }
 
    /**
@@ -978,8 +1109,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the last frame if it is longer than others, in ms.
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAME);
+    public final LocalDateTime getSourceDurationLastFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAME);
+    }
+
+   /**
+    * Get Source Duration of the last frame if it is longer than others, in ms.
+    * 
+    * @return Source Duration of the last frame if it is longer than others, in ms.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAME);
     }
 
    /**
@@ -1049,8 +1190,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING1);
+    public final LocalDateTime getDurationFirstFrameString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING1);
+    }
+
+   /**
+    * Get Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING1);
     }
 
    /**
@@ -1120,8 +1271,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture width in pixel.
     */
     @Nullable
-    public final LocalDate getWidthCleanApertureAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHCLEANAPERTURE);
+    public final LocalDateTime getWidthCleanApertureAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHCLEANAPERTURE);
+    }
+
+   /**
+    * Get Clean Aperture width in pixel.
+    * 
+    * @return Clean Aperture width in pixel.
+    */
+    @Nullable
+    public final LocalTime getWidthCleanApertureAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHCLEANAPERTURE);
     }
 
    /**
@@ -1191,8 +1352,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Opto-electronic transfer characteristic of the source picture.
     */
     @Nullable
-    public final LocalDate gettransfercharacteristicsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TRANSFERCHARACTERISTICS);
+    public final LocalDateTime gettransfercharacteristicsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TRANSFERCHARACTERISTICS);
+    }
+
+   /**
+    * Get Opto-electronic transfer characteristic of the source picture.
+    * 
+    * @return Opto-electronic transfer characteristic of the source picture.
+    */
+    @Nullable
+    public final LocalTime gettransfercharacteristicsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TRANSFERCHARACTERISTICS);
     }
 
    /**
@@ -1262,8 +1433,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled (M=x N=y).
     */
     @Nullable
-    public final LocalDate getFormatSettingsGOPAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGOP);
+    public final LocalDateTime getFormatSettingsGOPAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGOP);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled (M=x N=y).
+    * 
+    * @return Settings needed for decoder used, detailled (M=x N=y).
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsGOPAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGOP);
     }
 
    /**
@@ -1333,8 +1514,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture width with measurement (pixel).
     */
     @Nullable
-    public final LocalDate getWidthCleanApertureStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHCLEANAPERTURESTRING);
+    public final LocalDateTime getWidthCleanApertureStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHCLEANAPERTURESTRING);
+    }
+
+   /**
+    * Get Clean Aperture width with measurement (pixel).
+    * 
+    * @return Clean Aperture width with measurement (pixel).
+    */
+    @Nullable
+    public final LocalTime getWidthCleanApertureStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHCLEANAPERTURESTRING);
     }
 
    /**
@@ -1404,8 +1595,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Compression mode of the Format.
     */
     @Nullable
-    public final LocalDate getFormatCompressionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATCOMPRESSION);
+    public final LocalDateTime getFormatCompressionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATCOMPRESSION);
+    }
+
+   /**
+    * Get Compression mode of the Format.
+    * 
+    * @return Compression mode of the Format.
+    */
+    @Nullable
+    public final LocalTime getFormatCompressionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATCOMPRESSION);
     }
 
    /**
@@ -1475,8 +1676,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Alignment/String.
     */
     @Nullable
-    public final LocalDate getAlignmentStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ALIGNMENTSTRING);
+    public final LocalDateTime getAlignmentStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ALIGNMENTSTRING);
+    }
+
+   /**
+    * Get Alignment/String.
+    * 
+    * @return Alignment/String.
+    */
+    @Nullable
+    public final LocalTime getAlignmentStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ALIGNMENTSTRING);
     }
 
    /**
@@ -1546,8 +1757,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING);
+    public final LocalDateTime getDelayStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING);
     }
 
    /**
@@ -1617,8 +1838,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Encoded Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING);
+    public final LocalDateTime getSourceStreamSizeEncodedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING);
+    }
+
+   /**
+    * Get Source Encoded Streamsize in with percentage value.
+    * 
+    * @return Source Encoded Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING);
     }
 
    /**
@@ -1688,8 +1919,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Manual description given by the container.
     */
     @Nullable
-    public final LocalDate getCodecIDDescriptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CODECIDDESCRIPTION);
+    public final LocalDateTime getCodecIDDescriptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CODECIDDESCRIPTION);
+    }
+
+   /**
+    * Get Manual description given by the container.
+    * 
+    * @return Manual description given by the container.
+    */
+    @Nullable
+    public final LocalTime getCodecIDDescriptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CODECIDDESCRIPTION);
     }
 
    /**
@@ -1759,8 +2000,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @Nullable
-    public final LocalDate getStatusAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STATUS);
+    public final LocalDateTime getStatusAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STATUS);
+    }
+
+   /**
+    * Get bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    * 
+    * @return bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    */
+    @Nullable
+    public final LocalTime getStatusAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STATUS);
     }
 
    /**
@@ -1830,8 +2081,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING);
+    public final LocalDateTime getDurationFirstFrameStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING);
+    }
+
+   /**
+    * Get Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAMESTRING);
     }
 
    /**
@@ -1901,8 +2162,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frames per second.
     */
     @Nullable
-    public final LocalDate getFrameRateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATE);
+    public final LocalDateTime getFrameRateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATE);
+    }
+
+   /**
+    * Get Frames per second.
+    * 
+    * @return Frames per second.
+    */
+    @Nullable
+    public final LocalTime getFrameRateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATE);
     }
 
    /**
@@ -1972,8 +2243,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return How this file is muxed in the container.
     */
     @Nullable
-    public final LocalDate getMuxingModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MUXINGMODE);
+    public final LocalDateTime getMuxingModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MUXINGMODE);
+    }
+
+   /**
+    * Get How this file is muxed in the container.
+    * 
+    * @return How this file is muxed in the container.
+    */
+    @Nullable
+    public final LocalTime getMuxingModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MUXINGMODE);
     }
 
    /**
@@ -2043,8 +2324,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType_StoreMethod/String.
     */
     @Nullable
-    public final LocalDate getScanTypeStoreMethodStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHODSTRING);
+    public final LocalDateTime getScanTypeStoreMethodStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHODSTRING);
+    }
+
+   /**
+    * Get ScanType_StoreMethod/String.
+    * 
+    * @return ScanType_StoreMethod/String.
+    */
+    @Nullable
+    public final LocalTime getScanTypeStoreMethodStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHODSTRING);
     }
 
    /**
@@ -2114,8 +2405,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay settings (in case of timecode for example).
     */
     @Nullable
-    public final LocalDate getDelaySettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSETTINGS);
+    public final LocalDateTime getDelaySettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSETTINGS);
+    }
+
+   /**
+    * Get Delay settings (in case of timecode for example).
+    * 
+    * @return Delay settings (in case of timecode for example).
+    */
+    @Nullable
+    public final LocalTime getDelaySettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSETTINGS);
     }
 
    /**
@@ -2185,8 +2486,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Encoded Streamsize in bytes.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODED);
+    public final LocalDateTime getSourceStreamSizeEncodedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODED);
+    }
+
+   /**
+    * Get Source Encoded Streamsize in bytes.
+    * 
+    * @return Source Encoded Streamsize in bytes.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODED);
     }
 
    /**
@@ -2256,8 +2567,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture Display Aspect ratio.
     */
     @Nullable
-    public final LocalDate getDisplayAspectRatioCleanApertureStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOCLEANAPERTURESTRING);
+    public final LocalDateTime getDisplayAspectRatioCleanApertureStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOCLEANAPERTURESTRING);
+    }
+
+   /**
+    * Get Clean Aperture Display Aspect ratio.
+    * 
+    * @return Clean Aperture Display Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getDisplayAspectRatioCleanApertureStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOCLEANAPERTURESTRING);
     }
 
    /**
@@ -2327,8 +2648,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Bit rate mode (Variable, Cconstant).
     */
     @Nullable
-    public final LocalDate getBitRateModeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEMODESTRING);
+    public final LocalDateTime getBitRateModeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMODESTRING);
+    }
+
+   /**
+    * Get Bit rate mode (Variable, Cconstant).
+    * 
+    * @return Bit rate mode (Variable, Cconstant).
+    */
+    @Nullable
+    public final LocalTime getBitRateModeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMODESTRING);
     }
 
    /**
@@ -2398,8 +2729,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Multiview, count of views.
     */
     @Nullable
-    public final LocalDate getMultiViewCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWCOUNT);
+    public final LocalDateTime getMultiViewCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWCOUNT);
+    }
+
+   /**
+    * Get Multiview, count of views.
+    * 
+    * @return Multiview, count of views.
+    */
+    @Nullable
+    public final LocalTime getMultiViewCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWCOUNT);
     }
 
    /**
@@ -2469,8 +2810,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Offset between original width and displayed width in pixel.
     */
     @Nullable
-    public final LocalDate getWidthOffsetStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHOFFSETSTRING);
+    public final LocalDateTime getWidthOffsetStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHOFFSETSTRING);
+    }
+
+   /**
+    * Get Offset between original width and displayed width in pixel.
+    * 
+    * @return Offset between original width and displayed width in pixel.
+    */
+    @Nullable
+    public final LocalTime getWidthOffsetStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHOFFSETSTRING);
     }
 
    /**
@@ -2540,8 +2891,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsBVOPStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSBVOPSTRING);
+    public final LocalDateTime getFormatSettingsBVOPStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSBVOPSTRING);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsBVOPStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSBVOPSTRING);
     }
 
    /**
@@ -2611,8 +2972,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Minimum Frames per second (with measurement).
     */
     @Nullable
-    public final LocalDate getFrameRateMinimumStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMINIMUMSTRING);
+    public final LocalDateTime getFrameRateMinimumStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMINIMUMSTRING);
+    }
+
+   /**
+    * Get Minimum Frames per second (with measurement).
+    * 
+    * @return Minimum Frames per second (with measurement).
+    */
+    @Nullable
+    public final LocalTime getFrameRateMinimumStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMINIMUMSTRING);
     }
 
    /**
@@ -2682,8 +3053,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Version of encoding-software.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYVERSION);
+    public final LocalDateTime getEncodedLibraryVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYVERSION);
+    }
+
+   /**
+    * Get Version of encoding-software.
+    * 
+    * @return Version of encoding-software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYVERSION);
     }
 
    /**
@@ -2753,8 +3134,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsFrameModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSFRAMEMODE);
+    public final LocalDateTime getFormatSettingsFrameModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSFRAMEMODE);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsFrameModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSFRAMEMODE);
     }
 
    /**
@@ -2824,8 +3215,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING);
+    public final LocalDateTime getSourceDurationLastFrameStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING);
+    }
+
+   /**
+    * Get Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING);
     }
 
    /**
@@ -2895,8 +3296,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Info on the codec.
     */
     @Nullable
-    public final LocalDate getCodecIDInfoAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CODECIDINFO);
+    public final LocalDateTime getCodecIDInfoAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CODECIDINFO);
+    }
+
+   /**
+    * Get Info on the codec.
+    * 
+    * @return Info on the codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDInfoAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CODECIDINFO);
     }
 
    /**
@@ -2966,8 +3377,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) Display Aspect ratio.
     */
     @Nullable
-    public final LocalDate getDisplayAspectRatioOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOORIGINAL);
+    public final LocalDateTime getDisplayAspectRatioOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOORIGINAL);
+    }
+
+   /**
+    * Get Original (in the raw stream) Display Aspect ratio.
+    * 
+    * @return Original (in the raw stream) Display Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getDisplayAspectRatioOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOORIGINAL);
     }
 
    /**
@@ -3037,8 +3458,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Presence of colour description.
     */
     @Nullable
-    public final LocalDate getcolourdescriptionpresentOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COLOURDESCRIPTIONPRESENTORIGINAL);
+    public final LocalDateTime getcolourdescriptionpresentOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COLOURDESCRIPTIONPRESENTORIGINAL);
+    }
+
+   /**
+    * Get Presence of colour description.
+    * 
+    * @return Presence of colour description.
+    */
+    @Nullable
+    public final LocalTime getcolourdescriptionpresentOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COLOURDESCRIPTIONPRESENTORIGINAL);
     }
 
    /**
@@ -3108,8 +3539,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Streamsize in bytes.
     */
     @Nullable
-    public final LocalDate getStreamSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZE);
+    public final LocalDateTime getStreamSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZE);
+    }
+
+   /**
+    * Get Streamsize in bytes.
+    * 
+    * @return Streamsize in bytes.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZE);
     }
 
    /**
@@ -3179,8 +3620,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Active Format Description (text).
     */
     @Nullable
-    public final LocalDate getActiveFormatDescriptionStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTIONSTRING);
+    public final LocalDateTime getActiveFormatDescriptionStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTIONSTRING);
+    }
+
+   /**
+    * Get Active Format Description (text).
+    * 
+    * @return Active Format Description (text).
+    */
+    @Nullable
+    public final LocalTime getActiveFormatDescriptionStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTIONSTRING);
     }
 
    /**
@@ -3250,8 +3701,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Width (aperture size if present) with measurement (pixel).
     */
     @Nullable
-    public final LocalDate getWidthStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHSTRING);
+    public final LocalDateTime getWidthStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHSTRING);
+    }
+
+   /**
+    * Get Width (aperture size if present) with measurement (pixel).
+    * 
+    * @return Width (aperture size if present) with measurement (pixel).
+    */
+    @Nullable
+    public final LocalTime getWidthStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHSTRING);
     }
 
    /**
@@ -3321,8 +3782,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Info about Format.
     */
     @Nullable
-    public final LocalDate getFormatInfoAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATINFO);
+    public final LocalDateTime getFormatInfoAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATINFO);
+    }
+
+   /**
+    * Get Info about Format.
+    * 
+    * @return Info about Format.
+    */
+    @Nullable
+    public final LocalTime getFormatInfoAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATINFO);
     }
 
    /**
@@ -3392,8 +3863,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize/String1.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING1);
+    public final LocalDateTime getSourceStreamSizeString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING1);
+    }
+
+   /**
+    * Get Source_StreamSize/String1.
+    * 
+    * @return Source_StreamSize/String1.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING1);
     }
 
    /**
@@ -3463,8 +3944,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Stream size divided by file size.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeProportionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEPROPORTION);
+    public final LocalDateTime getSourceStreamSizeProportionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEPROPORTION);
+    }
+
+   /**
+    * Get Source Stream size divided by file size.
+    * 
+    * @return Source Stream size divided by file size.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeProportionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEPROPORTION);
     }
 
    /**
@@ -3534,8 +4025,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Homepage for more details about this codec.
     */
     @Nullable
-    public final LocalDate getCodecIDUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CODECIDURL);
+    public final LocalDateTime getCodecIDUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CODECIDURL);
+    }
+
+   /**
+    * Get Homepage for more details about this codec.
+    * 
+    * @return Homepage for more details about this codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CODECIDURL);
     }
 
    /**
@@ -3605,8 +4106,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize/String2.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING2);
+    public final LocalDateTime getSourceStreamSizeString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING2);
+    }
+
+   /**
+    * Get Source_StreamSize/String2.
+    * 
+    * @return Source_StreamSize/String2.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING2);
     }
 
    /**
@@ -3676,8 +4187,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Height with measurement (pixel).
     */
     @Nullable
-    public final LocalDate getHeightStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTSTRING);
+    public final LocalDateTime getHeightStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTSTRING);
+    }
+
+   /**
+    * Get Height with measurement (pixel).
+    * 
+    * @return Height with measurement (pixel).
+    */
+    @Nullable
+    public final LocalTime getHeightStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTSTRING);
     }
 
    /**
@@ -3747,8 +4268,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING5);
+    public final LocalDateTime getSourceStreamSizeString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING5);
+    }
+
+   /**
+    * Get Source Streamsize in with percentage value.
+    * 
+    * @return Source Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING5);
     }
 
    /**
@@ -3818,8 +4349,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize/String3.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING3);
+    public final LocalDateTime getSourceStreamSizeString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING3);
+    }
+
+   /**
+    * Get Source_StreamSize/String3.
+    * 
+    * @return Source_StreamSize/String3.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING3);
     }
 
    /**
@@ -3889,8 +4430,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize/String4.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING4);
+    public final LocalDateTime getSourceStreamSizeString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING4);
+    }
+
+   /**
+    * Get Source_StreamSize/String4.
+    * 
+    * @return Source_StreamSize/String4.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING4);
     }
 
    /**
@@ -3960,8 +4511,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Set if that track should not be used.
     */
     @Nullable
-    public final LocalDate getDisabledStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISABLEDSTRING);
+    public final LocalDateTime getDisabledStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISABLEDSTRING);
+    }
+
+   /**
+    * Get Set if that track should not be used.
+    * 
+    * @return Set if that track should not be used.
+    */
+    @Nullable
+    public final LocalTime getDisabledStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISABLEDSTRING);
     }
 
    /**
@@ -4031,8 +4592,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType_Original/String.
     */
     @Nullable
-    public final LocalDate getScanTypeOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPEORIGINALSTRING);
+    public final LocalDateTime getScanTypeOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPEORIGINALSTRING);
+    }
+
+   /**
+    * Get ScanType_Original/String.
+    * 
+    * @return ScanType_Original/String.
+    */
+    @Nullable
+    public final LocalTime getScanTypeOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPEORIGINALSTRING);
     }
 
    /**
@@ -4102,8 +4673,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Operating System of encoding-software.
     */
     @Nullable
-    public final LocalDate getEncodedOperatingSystemAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDOPERATINGSYSTEM);
+    public final LocalDateTime getEncodedOperatingSystemAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDOPERATINGSYSTEM);
+    }
+
+   /**
+    * Get Operating System of encoding-software.
+    * 
+    * @return Operating System of encoding-software.
+    */
+    @Nullable
+    public final LocalTime getEncodedOperatingSystemAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDOPERATINGSYSTEM);
     }
 
    /**
@@ -4173,8 +4754,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Sampled height.
     */
     @Nullable
-    public final LocalDate getSampledHeightAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SAMPLEDHEIGHT);
+    public final LocalDateTime getSampledHeightAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SAMPLEDHEIGHT);
+    }
+
+   /**
+    * Get Sampled height.
+    * 
+    * @return Sampled height.
+    */
+    @Nullable
+    public final LocalTime getSampledHeightAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SAMPLEDHEIGHT);
     }
 
    /**
@@ -4244,8 +4835,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the company.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationCompanyNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONCOMPANYNAME);
+    public final LocalDateTime getEncodedApplicationCompanyNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONCOMPANYNAME);
+    }
+
+   /**
+    * Get Name of the company.
+    * 
+    * @return Name of the company.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationCompanyNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONCOMPANYNAME);
     }
 
    /**
@@ -4315,8 +4916,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Current stream size divided by uncompressed stream size.
     */
     @Nullable
-    public final LocalDate getCompressionRatioAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONRATIO);
+    public final LocalDateTime getCompressionRatioAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONRATIO);
+    }
+
+   /**
+    * Get Current stream size divided by uncompressed stream size.
+    * 
+    * @return Current stream size divided by uncompressed stream size.
+    */
+    @Nullable
+    public final LocalTime getCompressionRatioAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONRATIO);
     }
 
    /**
@@ -4386,8 +4997,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Commercial name used by vendor for theses setings if there is one.
     */
     @Nullable
-    public final LocalDate getFormatCommercialIfAnyAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATCOMMERCIALIFANY);
+    public final LocalDateTime getFormatCommercialIfAnyAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATCOMMERCIALIFANY);
+    }
+
+   /**
+    * Get Commercial name used by vendor for theses setings if there is one.
+    * 
+    * @return Commercial name used by vendor for theses setings if there is one.
+    */
+    @Nullable
+    public final LocalTime getFormatCommercialIfAnyAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATCOMMERCIALIFANY);
     }
 
    /**
@@ -4457,8 +5078,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return UTC time that the tags were done for this item..
     */
     @Nullable
-    public final LocalDate getTaggedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TAGGEDDATE);
+    public final LocalDateTime getTaggedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TAGGEDDATE);
+    }
+
+   /**
+    * Get UTC time that the tags were done for this item..
+    * 
+    * @return UTC time that the tags were done for this item..
+    */
+    @Nullable
+    public final LocalTime getTaggedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TAGGEDDATE);
     }
 
    /**
@@ -4528,8 +5159,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture Display Aspect ratio.
     */
     @Nullable
-    public final LocalDate getDisplayAspectRatioCleanApertureAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOCLEANAPERTURE);
+    public final LocalDateTime getDisplayAspectRatioCleanApertureAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOCLEANAPERTURE);
+    }
+
+   /**
+    * Get Clean Aperture Display Aspect ratio.
+    * 
+    * @return Clean Aperture Display Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getDisplayAspectRatioCleanApertureAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOCLEANAPERTURE);
     }
 
    /**
@@ -4599,8 +5240,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.IDSTRING);
+    public final LocalDateTime getIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.IDSTRING);
+    }
+
+   /**
+    * Get The ID for this stream in this file.
+    * 
+    * @return The ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.IDSTRING);
     }
 
    /**
@@ -4670,8 +5321,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) Pixel Aspect ratio.
     */
     @Nullable
-    public final LocalDate getPixelAspectRatioOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOORIGINAL);
+    public final LocalDateTime getPixelAspectRatioOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOORIGINAL);
+    }
+
+   /**
+    * Get Original (in the raw stream) Pixel Aspect ratio.
+    * 
+    * @return Original (in the raw stream) Pixel Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getPixelAspectRatioOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOORIGINAL);
     }
 
    /**
@@ -4741,8 +5402,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
     */
     @Nullable
-    public final LocalDate getmatrixcoefficientsOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MATRIXCOEFFICIENTSORIGINAL);
+    public final LocalDateTime getmatrixcoefficientsOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MATRIXCOEFFICIENTSORIGINAL);
+    }
+
+   /**
+    * Get Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
+    * 
+    * @return Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
+    */
+    @Nullable
+    public final LocalTime getmatrixcoefficientsOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MATRIXCOEFFICIENTSORIGINAL);
     }
 
    /**
@@ -4812,8 +5483,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Compression mode (Lossy or Lossless).
     */
     @Nullable
-    public final LocalDate getCompressionModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONMODE);
+    public final LocalDateTime getCompressionModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONMODE);
+    }
+
+   /**
+    * Get Compression mode (Lossy or Lossless).
+    * 
+    * @return Compression mode (Lossy or Lossless).
+    */
+    @Nullable
+    public final LocalTime getCompressionModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONMODE);
     }
 
    /**
@@ -4883,8 +5564,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getBitRateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATE);
+    public final LocalDateTime getBitRateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATE);
+    }
+
+   /**
+    * Get Bit rate in bps.
+    * 
+    * @return Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getBitRateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATE);
     }
 
    /**
@@ -4954,8 +5645,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return UTC time that the encoding of this item was completed began..
     */
     @Nullable
-    public final LocalDate getEncodedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDDATE);
+    public final LocalDateTime getEncodedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDDATE);
+    }
+
+   /**
+    * Get UTC time that the encoding of this item was completed began..
+    * 
+    * @return UTC time that the encoding of this item was completed began..
+    */
+    @Nullable
+    public final LocalTime getEncodedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDDATE);
     }
 
    /**
@@ -5025,8 +5726,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Bit rate mode (VBR, CBR).
     */
     @Nullable
-    public final LocalDate getBitRateModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEMODE);
+    public final LocalDateTime getBitRateModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMODE);
+    }
+
+   /**
+    * Get Bit rate mode (VBR, CBR).
+    * 
+    * @return Bit rate mode (VBR, CBR).
+    */
+    @Nullable
+    public final LocalTime getBitRateModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMODE);
     }
 
    /**
@@ -5096,8 +5807,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The unique ID for this stream, should be copied with stream copy.
     */
     @Nullable
-    public final LocalDate getUniqueIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.UNIQUEID);
+    public final LocalDateTime getUniqueIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.UNIQUEID);
+    }
+
+   /**
+    * Get The unique ID for this stream, should be copied with stream copy.
+    * 
+    * @return The unique ID for this stream, should be copied with stream copy.
+    */
+    @Nullable
+    public final LocalTime getUniqueIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.UNIQUEID);
     }
 
    /**
@@ -5167,8 +5888,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Maximum Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getBitRateMaximumStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEMAXIMUMSTRING);
+    public final LocalDateTime getBitRateMaximumStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMAXIMUMSTRING);
+    }
+
+   /**
+    * Get Maximum Bit rate (with measurement).
+    * 
+    * @return Maximum Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getBitRateMaximumStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMAXIMUMSTRING);
     }
 
    /**
@@ -5238,8 +5969,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDelayString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING3);
+    public final LocalDateTime getDelayString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING3);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS.MMM.
+    * 
+    * @return Delay in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDelayString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING3);
     }
 
    /**
@@ -5309,8 +6050,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Matrix, in binary format encoded BASE64. Order = intra, non-intra, gray intra, gray non-intra.
     */
     @Nullable
-    public final LocalDate getFormatSettingsMatrixDataAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIXDATA);
+    public final LocalDateTime getFormatSettingsMatrixDataAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIXDATA);
+    }
+
+   /**
+    * Get Matrix, in binary format encoded BASE64. Order = intra, non-intra, gray intra, gray non-intra.
+    * 
+    * @return Matrix, in binary format encoded BASE64. Order = intra, non-intra, gray intra, gray non-intra.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsMatrixDataAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIXDATA);
     }
 
    /**
@@ -5380,8 +6131,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDelayString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING4);
+    public final LocalDateTime getDelayString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING4);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDelayString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING4);
     }
 
    /**
@@ -5451,8 +6212,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ColorSpace.
     */
     @Nullable
-    public final LocalDate getColorSpaceAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COLORSPACE);
+    public final LocalDateTime getColorSpaceAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COLORSPACE);
+    }
+
+   /**
+    * Get ColorSpace.
+    * 
+    * @return ColorSpace.
+    */
+    @Nullable
+    public final LocalTime getColorSpaceAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COLORSPACE);
     }
 
    /**
@@ -5522,8 +6293,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING1);
+    public final LocalDateTime getDelayString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING1);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING1);
     }
 
    /**
@@ -5593,8 +6374,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING2);
+    public final LocalDateTime getDelayString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING2);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING2);
     }
 
    /**
@@ -5664,8 +6455,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code settings.
     */
     @Nullable
-    public final LocalDate getTimeCodeSettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMECODESETTINGS);
+    public final LocalDateTime getTimeCodeSettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMECODESETTINGS);
+    }
+
+   /**
+    * Get Time code settings.
+    * 
+    * @return Time code settings.
+    */
+    @Nullable
+    public final LocalTime getTimeCodeSettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMECODESETTINGS);
     }
 
    /**
@@ -5735,8 +6536,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDelayString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING5);
+    public final LocalDateTime getDelayString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING5);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDelayString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSTRING5);
     }
 
    /**
@@ -5806,8 +6617,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay fixed in the stream (relative) IN MS.
     */
     @Nullable
-    public final LocalDate getDelayAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAY);
+    public final LocalDateTime getDelayAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAY);
+    }
+
+   /**
+    * Get Delay fixed in the stream (relative) IN MS.
+    * 
+    * @return Delay fixed in the stream (relative) IN MS.
+    */
+    @Nullable
+    public final LocalTime getDelayAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAY);
     }
 
    /**
@@ -5877,8 +6698,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
     */
     @Nullable
-    public final LocalDate getGopOpenClosedFirstFrameStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDFIRSTFRAMESTRING);
+    public final LocalDateTime getGopOpenClosedFirstFrameStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDFIRSTFRAMESTRING);
+    }
+
+   /**
+    * Get Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
+    * 
+    * @return Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
+    */
+    @Nullable
+    public final LocalTime getGopOpenClosedFirstFrameStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDFIRSTFRAMESTRING);
     }
 
    /**
@@ -5948,8 +6779,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the software package used to create the file, such as Microsoft WaveEdit..
     */
     @Nullable
-    public final LocalDate getEncodedApplicationUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONURL);
+    public final LocalDateTime getEncodedApplicationUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONURL);
+    }
+
+   /**
+    * Get Name of the software package used to create the file, such as Microsoft WaveEdit..
+    * 
+    * @return Name of the software package used to create the file, such as Microsoft WaveEdit..
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONURL);
     }
 
    /**
@@ -6019,8 +6860,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code in HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available format.
     */
     @Nullable
-    public final LocalDate getTimeCodeFirstFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMECODEFIRSTFRAME);
+    public final LocalDateTime getTimeCodeFirstFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMECODEFIRSTFRAME);
+    }
+
+   /**
+    * Get Time code in HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available format.
+    * 
+    * @return Time code in HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available format.
+    */
+    @Nullable
+    public final LocalTime getTimeCodeFirstFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMECODEFIRSTFRAME);
     }
 
    /**
@@ -6090,8 +6941,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize_Encoded/String4.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING4);
+    public final LocalDateTime getSourceStreamSizeEncodedString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING4);
+    }
+
+   /**
+    * Get Source_StreamSize_Encoded/String4.
+    * 
+    * @return Source_StreamSize_Encoded/String4.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING4);
     }
 
    /**
@@ -6161,8 +7022,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Encoded Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING5);
+    public final LocalDateTime getSourceStreamSizeEncodedString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING5);
+    }
+
+   /**
+    * Get Source Encoded Streamsize in with percentage value.
+    * 
+    * @return Source Encoded Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING5);
     }
 
    /**
@@ -6232,8 +7103,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING1);
+    public final LocalDateTime getSourceDurationFirstFrameString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING1);
+    }
+
+   /**
+    * Get Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING1);
     }
 
    /**
@@ -6303,8 +7184,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsPulldownAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSPULLDOWN);
+    public final LocalDateTime getFormatSettingsPulldownAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSPULLDOWN);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsPulldownAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSPULLDOWN);
     }
 
    /**
@@ -6374,8 +7265,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING2);
+    public final LocalDateTime getSourceDurationFirstFrameString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING2);
+    }
+
+   /**
+    * Get Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING2);
     }
 
    /**
@@ -6445,8 +7346,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING3);
+    public final LocalDateTime getSourceDurationFirstFrameString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING3);
+    }
+
+   /**
+    * Get Source Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+    * 
+    * @return Source Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING3);
     }
 
    /**
@@ -6516,8 +7427,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Software used to create the file.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARY);
+    public final LocalDateTime getEncodedLibraryAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARY);
+    }
+
+   /**
+    * Get Software used to create the file.
+    * 
+    * @return Software used to create the file.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARY);
     }
 
    /**
@@ -6587,8 +7508,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING4);
+    public final LocalDateTime getSourceDurationFirstFrameString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING4);
     }
 
    /**
@@ -6658,8 +7589,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING5);
+    public final LocalDateTime getSourceDurationFirstFrameString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAMESTRING5);
     }
 
    /**
@@ -6729,8 +7670,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Stored height.
     */
     @Nullable
-    public final LocalDate getStoredHeightAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STOREDHEIGHT);
+    public final LocalDateTime getStoredHeightAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STOREDHEIGHT);
+    }
+
+   /**
+    * Get Stored height.
+    * 
+    * @return Stored height.
+    */
+    @Nullable
+    public final LocalTime getStoredHeightAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STOREDHEIGHT);
     }
 
    /**
@@ -6800,8 +7751,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Nominal Frames per second.
     */
     @Nullable
-    public final LocalDate getFrameRateNominalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATENOMINAL);
+    public final LocalDateTime getFrameRateNominalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATENOMINAL);
+    }
+
+   /**
+    * Get Nominal Frames per second.
+    * 
+    * @return Nominal Frames per second.
+    */
+    @Nullable
+    public final LocalTime getFrameRateNominalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATENOMINAL);
     }
 
    /**
@@ -6871,8 +7832,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Internet Media Type (aka MIME Type, Content-Type).
     */
     @Nullable
-    public final LocalDate getInternetMediaTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.INTERNETMEDIATYPE);
+    public final LocalDateTime getInternetMediaTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.INTERNETMEDIATYPE);
+    }
+
+   /**
+    * Get Internet Media Type (aka MIME Type, Content-Type).
+    * 
+    * @return Internet Media Type (aka MIME Type, Content-Type).
+    */
+    @Nullable
+    public final LocalTime getInternetMediaTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.INTERNETMEDIATYPE);
     }
 
    /**
@@ -6942,8 +7913,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize_Encoded/String2.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING2);
+    public final LocalDateTime getSourceStreamSizeEncodedString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING2);
+    }
+
+   /**
+    * Get Source_StreamSize_Encoded/String2.
+    * 
+    * @return Source_StreamSize_Encoded/String2.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING2);
     }
 
    /**
@@ -7013,8 +7994,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Set if that track should not be used.
     */
     @Nullable
-    public final LocalDate getDisabledAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISABLED);
+    public final LocalDateTime getDisabledAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISABLED);
+    }
+
+   /**
+    * Get Set if that track should not be used.
+    * 
+    * @return Set if that track should not be used.
+    */
+    @Nullable
+    public final LocalTime getDisabledAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISABLED);
     }
 
    /**
@@ -7084,8 +8075,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frames per second, denominator.
     */
     @Nullable
-    public final LocalDate getFrameRateDenAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEDEN);
+    public final LocalDateTime getFrameRateDenAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEDEN);
+    }
+
+   /**
+    * Get Frames per second, denominator.
+    * 
+    * @return Frames per second, denominator.
+    */
+    @Nullable
+    public final LocalTime getFrameRateDenAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEDEN);
     }
 
    /**
@@ -7155,8 +8156,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize_Encoded/String3.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING3);
+    public final LocalDateTime getSourceStreamSizeEncodedString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING3);
+    }
+
+   /**
+    * Get Source_StreamSize_Encoded/String3.
+    * 
+    * @return Source_StreamSize_Encoded/String3.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING3);
     }
 
    /**
@@ -7226,8 +8237,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Maximum Frames per second (with measurement).
     */
     @Nullable
-    public final LocalDate getFrameRateMaximumStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMAXIMUMSTRING);
+    public final LocalDateTime getFrameRateMaximumStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMAXIMUMSTRING);
+    }
+
+   /**
+    * Get Maximum Frames per second (with measurement).
+    * 
+    * @return Maximum Frames per second (with measurement).
+    */
+    @Nullable
+    public final LocalTime getFrameRateMaximumStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMAXIMUMSTRING);
     }
 
    /**
@@ -7297,8 +8318,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encoded Stream size divided by file size.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedProportionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDPROPORTION);
+    public final LocalDateTime getStreamSizeEncodedProportionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDPROPORTION);
+    }
+
+   /**
+    * Get Encoded Stream size divided by file size.
+    * 
+    * @return Encoded Stream size divided by file size.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedProportionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDPROPORTION);
     }
 
    /**
@@ -7368,8 +8399,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source_StreamSize_Encoded/String1.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING1);
+    public final LocalDateTime getSourceStreamSizeEncodedString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING1);
+    }
+
+   /**
+    * Get Source_StreamSize_Encoded/String1.
+    * 
+    * @return Source_StreamSize_Encoded/String1.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDSTRING1);
     }
 
    /**
@@ -7439,8 +8480,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder_Original.
     */
     @Nullable
-    public final LocalDate getScanOrderOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDERORIGINAL);
+    public final LocalDateTime getScanOrderOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERORIGINAL);
+    }
+
+   /**
+    * Get ScanOrder_Original.
+    * 
+    * @return ScanOrder_Original.
+    */
+    @Nullable
+    public final LocalTime getScanOrderOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERORIGINAL);
     }
 
    /**
@@ -7510,8 +8561,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time of the stream in ms.
     */
     @Nullable
-    public final LocalDate getDurationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATION);
+    public final LocalDateTime getDurationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATION);
+    }
+
+   /**
+    * Get Play time of the stream in ms.
+    * 
+    * @return Play time of the stream in ms.
+    */
+    @Nullable
+    public final LocalTime getDurationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATION);
     }
 
    /**
@@ -7581,8 +8642,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getSourceDurationString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING5);
+    public final LocalDateTime getSourceDurationString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getSourceDurationString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING5);
     }
 
    /**
@@ -7652,8 +8723,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationLastFrameStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING);
+    public final LocalDateTime getDurationLastFrameStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING);
+    }
+
+   /**
+    * Get Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING);
     }
 
    /**
@@ -7723,8 +8804,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getSourceDurationString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING4);
+    public final LocalDateTime getSourceDurationString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING4);
     }
 
    /**
@@ -7794,8 +8885,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Play time in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getSourceDurationString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING3);
+    public final LocalDateTime getSourceDurationString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING3);
+    }
+
+   /**
+    * Get Source Play time in format : HH:MM:SS.MMM.
+    * 
+    * @return Source Play time in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING3);
     }
 
    /**
@@ -7865,8 +8966,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING2);
+    public final LocalDateTime getSourceDurationString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING2);
+    }
+
+   /**
+    * Get Source Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Source Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING2);
     }
 
    /**
@@ -7936,8 +9047,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ChromaSubsampling/String.
     */
     @Nullable
-    public final LocalDate getChromaSubsamplingStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLINGSTRING);
+    public final LocalDateTime getChromaSubsamplingStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLINGSTRING);
+    }
+
+   /**
+    * Get ChromaSubsampling/String.
+    * 
+    * @return ChromaSubsampling/String.
+    */
+    @Nullable
+    public final LocalTime getChromaSubsamplingStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLINGSTRING);
     }
 
    /**
@@ -8007,8 +9128,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING1);
+    public final LocalDateTime getSourceDurationString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING1);
+    }
+
+   /**
+    * Get Source Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Source Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING1);
     }
 
    /**
@@ -8078,8 +9209,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Hint/popular name for this codec.
     */
     @Nullable
-    public final LocalDate getCodecIDHintAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CODECIDHINT);
+    public final LocalDateTime getCodecIDHintAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CODECIDHINT);
+    }
+
+   /**
+    * Get Hint/popular name for this codec.
+    * 
+    * @return Hint/popular name for this codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDHintAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CODECIDHINT);
     }
 
    /**
@@ -8149,8 +9290,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the software package used to create the file, such as Microsoft WaveEdit.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATION);
+    public final LocalDateTime getEncodedApplicationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATION);
+    }
+
+   /**
+    * Get Name of the software package used to create the file, such as Microsoft WaveEdit.
+    * 
+    * @return Name of the software package used to create the file, such as Microsoft WaveEdit.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATION);
     }
 
    /**
@@ -8220,8 +9371,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Compression mode (Lossy or Lossless).
     */
     @Nullable
-    public final LocalDate getCompressionModeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONMODESTRING);
+    public final LocalDateTime getCompressionModeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONMODESTRING);
+    }
+
+   /**
+    * Get Compression mode (Lossy or Lossless).
+    * 
+    * @return Compression mode (Lossy or Lossless).
+    */
+    @Nullable
+    public final LocalTime getCompressionModeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COMPRESSIONMODESTRING);
     }
 
    /**
@@ -8291,8 +9452,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize/String2.
     */
     @Nullable
-    public final LocalDate getStreamSizeString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING2);
+    public final LocalDateTime getStreamSizeString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING2);
+    }
+
+   /**
+    * Get StreamSize/String2.
+    * 
+    * @return StreamSize/String2.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING2);
     }
 
    /**
@@ -8362,8 +9533,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize/String1.
     */
     @Nullable
-    public final LocalDate getStreamSizeString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING1);
+    public final LocalDateTime getStreamSizeString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING1);
+    }
+
+   /**
+    * Get StreamSize/String1.
+    * 
+    * @return StreamSize/String1.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING1);
     }
 
    /**
@@ -8433,8 +9614,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize/String4.
     */
     @Nullable
-    public final LocalDate getStreamSizeString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING4);
+    public final LocalDateTime getStreamSizeString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING4);
+    }
+
+   /**
+    * Get StreamSize/String4.
+    * 
+    * @return StreamSize/String4.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING4);
     }
 
    /**
@@ -8504,8 +9695,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original frame rate mode (Constant, Variable).
     */
     @Nullable
-    public final LocalDate getFrameRateModeOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODEORIGINALSTRING);
+    public final LocalDateTime getFrameRateModeOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODEORIGINALSTRING);
+    }
+
+   /**
+    * Get Original frame rate mode (Constant, Variable).
+    * 
+    * @return Original frame rate mode (Constant, Variable).
+    */
+    @Nullable
+    public final LocalTime getFrameRateModeOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODEORIGINALSTRING);
     }
 
    /**
@@ -8575,8 +9776,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize/String3.
     */
     @Nullable
-    public final LocalDate getStreamSizeString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING3);
+    public final LocalDateTime getStreamSizeString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING3);
+    }
+
+   /**
+    * Get StreamSize/String3.
+    * 
+    * @return StreamSize/String3.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING3);
     }
 
    /**
@@ -8646,8 +9857,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getStreamSizeString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING5);
+    public final LocalDateTime getStreamSizeString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING5);
+    }
+
+   /**
+    * Get Streamsize in with percentage value.
+    * 
+    * @return Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING5);
     }
 
    /**
@@ -8717,8 +9938,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Minimum Frames per second.
     */
     @Nullable
-    public final LocalDate getFrameRateMinimumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMINIMUM);
+    public final LocalDateTime getFrameRateMinimumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMINIMUM);
+    }
+
+   /**
+    * Get Minimum Frames per second.
+    * 
+    * @return Minimum Frames per second.
+    */
+    @Nullable
+    public final LocalTime getFrameRateMinimumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMINIMUM);
     }
 
    /**
@@ -8788,8 +10019,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Stream type name.
     */
     @Nullable
-    public final LocalDate getStreamKindAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMKIND);
+    public final LocalDateTime getStreamKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMKIND);
+    }
+
+   /**
+    * Get Stream type name.
+    * 
+    * @return Stream type name.
+    */
+    @Nullable
+    public final LocalTime getStreamKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMKIND);
     }
 
    /**
@@ -8859,8 +10100,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getBitRateStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATESTRING);
+    public final LocalDateTime getBitRateStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATESTRING);
+    }
+
+   /**
+    * Get Bit rate (with measurement).
+    * 
+    * @return Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getBitRateStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATESTRING);
     }
 
    /**
@@ -8930,8 +10181,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frame rate mode (Constant, Variable).
     */
     @Nullable
-    public final LocalDate getFrameRateModeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODESTRING);
+    public final LocalDateTime getFrameRateModeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODESTRING);
+    }
+
+   /**
+    * Get Frame rate mode (Constant, Variable).
+    * 
+    * @return Frame rate mode (Constant, Variable).
+    */
+    @Nullable
+    public final LocalTime getFrameRateModeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODESTRING);
     }
 
    /**
@@ -9001,8 +10262,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Language (full).
     */
     @Nullable
-    public final LocalDate getLanguageString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING1);
+    public final LocalDateTime getLanguageString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING1);
+    }
+
+   /**
+    * Get Language (full).
+    * 
+    * @return Language (full).
+    */
+    @Nullable
+    public final LocalTime getLanguageString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING1);
     }
 
    /**
@@ -9072,8 +10343,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsGMCAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGMC);
+    public final LocalDateTime getFormatSettingsGMCAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGMC);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsGMCAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGMC);
     }
 
    /**
@@ -9143,8 +10424,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return NTSC or PAL.
     */
     @Nullable
-    public final LocalDate getStandardAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STANDARD);
+    public final LocalDateTime getStandardAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STANDARD);
+    }
+
+   /**
+    * Get NTSC or PAL.
+    * 
+    * @return NTSC or PAL.
+    */
+    @Nullable
+    public final LocalTime getStandardAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STANDARD);
     }
 
    /**
@@ -9214,8 +10505,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Language (2-letter ISO 639-1 if exists, else empty).
     */
     @Nullable
-    public final LocalDate getLanguageString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING2);
+    public final LocalDateTime getLanguageString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING2);
+    }
+
+   /**
+    * Get Language (2-letter ISO 639-1 if exists, else empty).
+    * 
+    * @return Language (2-letter ISO 639-1 if exists, else empty).
+    */
+    @Nullable
+    public final LocalTime getLanguageString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING2);
     }
 
    /**
@@ -9285,8 +10586,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Language (3-letter ISO 639-2 if exists, else empty).
     */
     @Nullable
-    public final LocalDate getLanguageString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING3);
+    public final LocalDateTime getLanguageString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING3);
+    }
+
+   /**
+    * Get Language (3-letter ISO 639-2 if exists, else empty).
+    * 
+    * @return Language (3-letter ISO 639-2 if exists, else empty).
+    */
+    @Nullable
+    public final LocalTime getLanguageString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING3);
     }
 
    /**
@@ -9356,8 +10667,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
     */
     @Nullable
-    public final LocalDate getLanguageString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING4);
+    public final LocalDateTime getLanguageString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING4);
+    }
+
+   /**
+    * Get Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+    * 
+    * @return Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+    */
+    @Nullable
+    public final LocalTime getLanguageString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING4);
     }
 
    /**
@@ -9427,8 +10748,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Codec ID (found in some containers).
     */
     @Nullable
-    public final LocalDate getCodecIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CODECID);
+    public final LocalDateTime getCodecIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CODECID);
+    }
+
+   /**
+    * Get Codec ID (found in some containers).
+    * 
+    * @return Codec ID (found in some containers).
+    */
+    @Nullable
+    public final LocalTime getCodecIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CODECID);
     }
 
    /**
@@ -9498,8 +10829,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Number of a group in order to provide versions of the same track.
     */
     @Nullable
-    public final LocalDate getAlternateGroupAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ALTERNATEGROUP);
+    public final LocalDateTime getAlternateGroupAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ALTERNATEGROUP);
+    }
+
+   /**
+    * Get Number of a group in order to provide versions of the same track.
+    * 
+    * @return Number of a group in order to provide versions of the same track.
+    */
+    @Nullable
+    public final LocalTime getAlternateGroupAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ALTERNATEGROUP);
     }
 
    /**
@@ -9569,8 +10910,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
     */
     @Nullable
-    public final LocalDate getLanguageAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGE);
+    public final LocalDateTime getLanguageAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGE);
+    }
+
+   /**
+    * Get Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+    * 
+    * @return Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+    */
+    @Nullable
+    public final LocalTime getLanguageAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGE);
     }
 
    /**
@@ -9640,8 +10991,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder/String.
     */
     @Nullable
-    public final LocalDate getScanOrderStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTRING);
+    public final LocalDateTime getScanOrderStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTRING);
+    }
+
+   /**
+    * Get ScanOrder/String.
+    * 
+    * @return ScanOrder/String.
+    */
+    @Nullable
+    public final LocalTime getScanOrderStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTRING);
     }
 
    /**
@@ -9711,8 +11072,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Offset between original height and displayed height  in pixel.
     */
     @Nullable
-    public final LocalDate getHeightOffsetStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTOFFSETSTRING);
+    public final LocalDateTime getHeightOffsetStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTOFFSETSTRING);
+    }
+
+   /**
+    * Get Offset between original height and displayed height  in pixel.
+    * 
+    * @return Offset between original height and displayed height  in pixel.
+    */
+    @Nullable
+    public final LocalTime getHeightOffsetStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTOFFSETSTRING);
     }
 
    /**
@@ -9782,8 +11153,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the last frame if it is longer than others, in ms.
     */
     @Nullable
-    public final LocalDate getDurationLastFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAME);
+    public final LocalDateTime getDurationLastFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAME);
+    }
+
+   /**
+    * Get Duration of the last frame if it is longer than others, in ms.
+    * 
+    * @return Duration of the last frame if it is longer than others, in ms.
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAME);
     }
 
    /**
@@ -9853,8 +11234,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYSTRING);
+    public final LocalDateTime getEncodedLibraryStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYSTRING);
+    }
+
+   /**
+    * Get Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    * 
+    * @return Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYSTRING);
     }
 
    /**
@@ -9924,8 +11315,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsRefFramesStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSREFFRAMESSTRING);
+    public final LocalDateTime getFormatSettingsRefFramesStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSREFFRAMESSTRING);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsRefFramesStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSREFFRAMESSTRING);
     }
 
    /**
@@ -9995,8 +11396,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getStreamSizeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING);
+    public final LocalDateTime getStreamSizeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING);
+    }
+
+   /**
+    * Get Streamsize in with percentage value.
+    * 
+    * @return Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZESTRING);
     }
 
    /**
@@ -10066,8 +11477,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getDefaultStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DEFAULTSTRING);
+    public final LocalDateTime getDefaultStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DEFAULTSTRING);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getDefaultStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DEFAULTSTRING);
     }
 
    /**
@@ -10137,8 +11558,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The ID for this stream in the original medium of the material.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ORIGINALSOURCEMEDIUMIDSTRING);
+    public final LocalDateTime getOriginalSourceMediumIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ORIGINALSOURCEMEDIUMIDSTRING);
+    }
+
+   /**
+    * Get The ID for this stream in the original medium of the material.
+    * 
+    * @return The ID for this stream in the original medium of the material.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ORIGINALSOURCEMEDIUMIDSTRING);
     }
 
    /**
@@ -10208,8 +11639,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING1);
+    public final LocalDateTime getSourceDurationLastFrameString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING1);
+    }
+
+   /**
+    * Get Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING1);
     }
 
    /**
@@ -10279,8 +11720,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING3);
+    public final LocalDateTime getSourceDurationLastFrameString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING3);
+    }
+
+   /**
+    * Get Source Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
+    * 
+    * @return Source Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING3);
     }
 
    /**
@@ -10350,8 +11801,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Presence of colour description.
     */
     @Nullable
-    public final LocalDate getcolourdescriptionpresentAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COLOURDESCRIPTIONPRESENT);
+    public final LocalDateTime getcolourdescriptionpresentAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COLOURDESCRIPTIONPRESENT);
+    }
+
+   /**
+    * Get Presence of colour description.
+    * 
+    * @return Presence of colour description.
+    */
+    @Nullable
+    public final LocalTime getcolourdescriptionpresentAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COLOURDESCRIPTIONPRESENT);
     }
 
    /**
@@ -10421,8 +11882,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING2);
+    public final LocalDateTime getSourceDurationLastFrameString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING2);
+    }
+
+   /**
+    * Get Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING2);
     }
 
    /**
@@ -10492,8 +11963,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder_Stored/String.
     */
     @Nullable
-    public final LocalDate getScanOrderStoredStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTOREDSTRING);
+    public final LocalDateTime getScanOrderStoredStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTOREDSTRING);
+    }
+
+   /**
+    * Get ScanOrder_Stored/String.
+    * 
+    * @return ScanOrder_Stored/String.
+    */
+    @Nullable
+    public final LocalTime getScanOrderStoredStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTOREDSTRING);
     }
 
    /**
@@ -10563,8 +12044,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsMatrixAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIX);
+    public final LocalDateTime getFormatSettingsMatrixAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIX);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsMatrixAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIX);
     }
 
    /**
@@ -10634,8 +12125,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING5);
+    public final LocalDateTime getSourceDurationLastFrameString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING5);
     }
 
    /**
@@ -10705,8 +12206,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Display Aspect ratio.
     */
     @Nullable
-    public final LocalDate getDisplayAspectRatioStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOSTRING);
+    public final LocalDateTime getDisplayAspectRatioStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOSTRING);
+    }
+
+   /**
+    * Get Display Aspect ratio.
+    * 
+    * @return Display Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getDisplayAspectRatioStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOSTRING);
     }
 
    /**
@@ -10776,8 +12287,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getSourceDurationLastFrameString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING4);
+    public final LocalDateTime getSourceDurationLastFrameString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationLastFrameString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONLASTFRAMESTRING4);
     }
 
    /**
@@ -10847,8 +12368,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return 16/24/32 bits.
     */
     @Nullable
-    public final LocalDate getBitDepthStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITDEPTHSTRING);
+    public final LocalDateTime getBitDepthStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITDEPTHSTRING);
+    }
+
+   /**
+    * Get 16/24/32 bits.
+    * 
+    * @return 16/24/32 bits.
+    */
+    @Nullable
+    public final LocalTime getBitDepthStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITDEPTHSTRING);
     }
 
    /**
@@ -10918,8 +12449,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Number of frames.
     */
     @Nullable
-    public final LocalDate getFrameCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMECOUNT);
+    public final LocalDateTime getFrameCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMECOUNT);
+    }
+
+   /**
+    * Get Number of frames.
+    * 
+    * @return Number of frames.
+    */
+    @Nullable
+    public final LocalTime getFrameCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMECOUNT);
     }
 
    /**
@@ -10989,8 +12530,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the track.
     */
     @Nullable
-    public final LocalDate getTitleAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TITLE);
+    public final LocalDateTime getTitleAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TITLE);
+    }
+
+   /**
+    * Get Name of the track.
+    * 
+    * @return Name of the track.
+    */
+    @Nullable
+    public final LocalTime getTitleAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TITLE);
     }
 
    /**
@@ -11060,8 +12611,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay drop frame.
     */
     @Nullable
-    public final LocalDate getDelayDropFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYDROPFRAME);
+    public final LocalDateTime getDelayDropFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYDROPFRAME);
+    }
+
+   /**
+    * Get Delay drop frame.
+    * 
+    * @return Delay drop frame.
+    */
+    @Nullable
+    public final LocalTime getDelayDropFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYDROPFRAME);
     }
 
    /**
@@ -11131,8 +12692,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Rotation.
     */
     @Nullable
-    public final LocalDate getRotationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ROTATION);
+    public final LocalDateTime getRotationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ROTATION);
+    }
+
+   /**
+    * Get Rotation.
+    * 
+    * @return Rotation.
+    */
+    @Nullable
+    public final LocalTime getRotationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ROTATION);
     }
 
    /**
@@ -11202,8 +12773,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Maximum Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getBitRateMaximumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEMAXIMUM);
+    public final LocalDateTime getBitRateMaximumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMAXIMUM);
+    }
+
+   /**
+    * Get Maximum Bit rate in bps.
+    * 
+    * @return Maximum Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getBitRateMaximumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMAXIMUM);
     }
 
    /**
@@ -11273,8 +12854,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Defines the size of the buffer needed to decode the sequence..
     */
     @Nullable
-    public final LocalDate getBufferSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BUFFERSIZE);
+    public final LocalDateTime getBufferSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BUFFERSIZE);
+    }
+
+   /**
+    * Get Defines the size of the buffer needed to decode the sequence..
+    * 
+    * @return Defines the size of the buffer needed to decode the sequence..
+    */
+    @Nullable
+    public final LocalTime getBufferSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BUFFERSIZE);
     }
 
    /**
@@ -11344,8 +12935,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Stream size divided by file size.
     */
     @Nullable
-    public final LocalDate getStreamSizeProportionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEPROPORTION);
+    public final LocalDateTime getStreamSizeProportionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEPROPORTION);
+    }
+
+   /**
+    * Get Stream size divided by file size.
+    * 
+    * @return Stream size divided by file size.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeProportionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEPROPORTION);
     }
 
    /**
@@ -11415,8 +13016,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Encoded Stream size divided by file size.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeEncodedProportionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDPROPORTION);
+    public final LocalDateTime getSourceStreamSizeEncodedProportionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDPROPORTION);
+    }
+
+   /**
+    * Get Source Encoded Stream size divided by file size.
+    * 
+    * @return Source Encoded Stream size divided by file size.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeEncodedProportionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZEENCODEDPROPORTION);
     }
 
    /**
@@ -11486,8 +13097,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Parameters used by the software.
     */
     @Nullable
-    public final LocalDate getEncodedLibrarySettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYSETTINGS);
+    public final LocalDateTime getEncodedLibrarySettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYSETTINGS);
+    }
+
+   /**
+    * Get Parameters used by the software.
+    * 
+    * @return Parameters used by the software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibrarySettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYSETTINGS);
     }
 
    /**
@@ -11557,8 +13178,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Play time of the stream, in ms.
     */
     @Nullable
-    public final LocalDate getSourceDurationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATION);
+    public final LocalDateTime getSourceDurationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATION);
+    }
+
+   /**
+    * Get Source Play time of the stream, in ms.
+    * 
+    * @return Source Play time of the stream, in ms.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATION);
     }
 
    /**
@@ -11628,8 +13259,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frame rate mode (CFR, VFR).
     */
     @Nullable
-    public final LocalDate getFrameRateModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODE);
+    public final LocalDateTime getFrameRateModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODE);
+    }
+
+   /**
+    * Get Frame rate mode (CFR, VFR).
+    * 
+    * @return Frame rate mode (CFR, VFR).
+    */
+    @Nullable
+    public final LocalTime getFrameRateModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODE);
     }
 
    /**
@@ -11699,8 +13340,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Offset between original width and displayed width in pixel.
     */
     @Nullable
-    public final LocalDate getWidthOffsetAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHOFFSET);
+    public final LocalDateTime getWidthOffsetAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHOFFSET);
+    }
+
+   /**
+    * Get Offset between original width and displayed width in pixel.
+    * 
+    * @return Offset between original width and displayed width in pixel.
+    */
+    @Nullable
+    public final LocalTime getWidthOffsetAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHOFFSET);
     }
 
    /**
@@ -11770,8 +13421,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Sampled width.
     */
     @Nullable
-    public final LocalDate getSampledWidthAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SAMPLEDWIDTH);
+    public final LocalDateTime getSampledWidthAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SAMPLEDWIDTH);
+    }
+
+   /**
+    * Get Sampled width.
+    * 
+    * @return Sampled width.
+    */
+    @Nullable
+    public final LocalTime getSampledWidthAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SAMPLEDWIDTH);
     }
 
    /**
@@ -11841,8 +13502,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayOriginalString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING1);
+    public final LocalDateTime getDelayOriginalString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING1);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING1);
     }
 
    /**
@@ -11912,8 +13583,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Count of objects available in this stream.
     */
     @Nullable
-    public final LocalDate getCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COUNT);
+    public final LocalDateTime getCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COUNT);
+    }
+
+   /**
+    * Get Count of objects available in this stream.
+    * 
+    * @return Count of objects available in this stream.
+    */
+    @Nullable
+    public final LocalTime getCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COUNT);
     }
 
    /**
@@ -11983,8 +13664,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Wrapping mode (Frame wrapped or Clip wrapped).
     */
     @Nullable
-    public final LocalDate getFormatSettingsWrappingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSWRAPPING);
+    public final LocalDateTime getFormatSettingsWrappingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSWRAPPING);
+    }
+
+   /**
+    * Get Wrapping mode (Frame wrapped or Clip wrapped).
+    * 
+    * @return Wrapping mode (Frame wrapped or Clip wrapped).
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsWrappingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSWRAPPING);
     }
 
    /**
@@ -12054,8 +13745,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayOriginalString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING2);
+    public final LocalDateTime getDelayOriginalString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING2);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING2);
     }
 
    /**
@@ -12125,8 +13826,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encryption.
     */
     @Nullable
-    public final LocalDate getEncryptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCRYPTION);
+    public final LocalDateTime getEncryptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCRYPTION);
+    }
+
+   /**
+    * Get Encryption.
+    * 
+    * @return Encryption.
+    */
+    @Nullable
+    public final LocalTime getEncryptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCRYPTION);
     }
 
    /**
@@ -12196,8 +13907,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Multiview, profile of the base stream.
     */
     @Nullable
-    public final LocalDate getMultiViewBaseProfileAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWBASEPROFILE);
+    public final LocalDateTime getMultiViewBaseProfileAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWBASEPROFILE);
+    }
+
+   /**
+    * Get Multiview, profile of the base stream.
+    * 
+    * @return Multiview, profile of the base stream.
+    */
+    @Nullable
+    public final LocalTime getMultiViewBaseProfileAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MULTIVIEWBASEPROFILE);
     }
 
    /**
@@ -12267,8 +13988,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay fixed in the raw stream (relative) IN MS.
     */
     @Nullable
-    public final LocalDate getDelayOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINAL);
+    public final LocalDateTime getDelayOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINAL);
+    }
+
+   /**
+    * Get Delay fixed in the raw stream (relative) IN MS.
+    * 
+    * @return Delay fixed in the raw stream (relative) IN MS.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINAL);
     }
 
    /**
@@ -12338,8 +14069,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return bits/(Pixel*Frame) (like Gordian Knot).
     */
     @Nullable
-    public final LocalDate getBitsPixelFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITSPIXELFRAME);
+    public final LocalDateTime getBitsPixelFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITSPIXELFRAME);
+    }
+
+   /**
+    * Get bits/(Pixel*Frame) (like Gordian Knot).
+    * 
+    * @return bits/(Pixel*Frame) (like Gordian Knot).
+    */
+    @Nullable
+    public final LocalTime getBitsPixelFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITSPIXELFRAME);
     }
 
    /**
@@ -12409,8 +14150,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frames per second, numerator.
     */
     @Nullable
-    public final LocalDate getFrameRateNumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATENUM);
+    public final LocalDateTime getFrameRateNumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATENUM);
+    }
+
+   /**
+    * Get Frames per second, numerator.
+    * 
+    * @return Frames per second, numerator.
+    */
+    @Nullable
+    public final LocalTime getFrameRateNumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATENUM);
     }
 
    /**
@@ -12480,8 +14231,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return How this stream file is aligned in the container.
     */
     @Nullable
-    public final LocalDate getAlignmentAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ALIGNMENT);
+    public final LocalDateTime getAlignmentAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ALIGNMENT);
+    }
+
+   /**
+    * Get How this stream file is aligned in the container.
+    * 
+    * @return How this stream file is aligned in the container.
+    */
+    @Nullable
+    public final LocalTime getAlignmentAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ALIGNMENT);
     }
 
    /**
@@ -12551,8 +14312,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Version of this format.
     */
     @Nullable
-    public final LocalDate getFormatVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATVERSION);
+    public final LocalDateTime getFormatVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATVERSION);
+    }
+
+   /**
+    * Get Version of this format.
+    * 
+    * @return Version of this format.
+    */
+    @Nullable
+    public final LocalTime getFormatVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATVERSION);
     }
 
    /**
@@ -12622,8 +14393,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return When multiple streams, number of the stream (base=1).
     */
     @Nullable
-    public final LocalDate getStreamKindPosAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMKINDPOS);
+    public final LocalDateTime getStreamKindPosAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMKINDPOS);
+    }
+
+   /**
+    * Get When multiple streams, number of the stream (base=1).
+    * 
+    * @return When multiple streams, number of the stream (base=1).
+    */
+    @Nullable
+    public final LocalTime getStreamKindPosAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMKINDPOS);
     }
 
    /**
@@ -12693,8 +14474,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The ID for this stream in the original medium of the material.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ORIGINALSOURCEMEDIUMID);
+    public final LocalDateTime getOriginalSourceMediumIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ORIGINALSOURCEMEDIUMID);
+    }
+
+   /**
+    * Get The ID for this stream in the original medium of the material.
+    * 
+    * @return The ID for this stream in the original medium of the material.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ORIGINALSOURCEMEDIUMID);
     }
 
    /**
@@ -12764,8 +14555,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING);
+    public final LocalDateTime getDurationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING);
+    }
+
+   /**
+    * Get Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING);
     }
 
    /**
@@ -12835,8 +14636,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsMatrixStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIXSTRING);
+    public final LocalDateTime getFormatSettingsMatrixStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIXSTRING);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsMatrixStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSMATRIXSTRING);
     }
 
    /**
@@ -12906,8 +14717,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ID);
+    public final LocalDateTime getIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ID);
+    }
+
+   /**
+    * Get The ID for this stream in this file.
+    * 
+    * @return The ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ID);
     }
 
    /**
@@ -12977,8 +14798,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code source (Container, Stream, SystemScheme1, SDTI, ANC...).
     */
     @Nullable
-    public final LocalDate getTimeCodeSourceAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMECODESOURCE);
+    public final LocalDateTime getTimeCodeSourceAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMECODESOURCE);
+    }
+
+   /**
+    * Get Time code source (Container, Stream, SystemScheme1, SDTI, ANC...).
+    * 
+    * @return Time code source (Container, Stream, SystemScheme1, SDTI, ANC...).
+    */
+    @Nullable
+    public final LocalTime getTimeCodeSourceAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMECODESOURCE);
     }
 
    /**
@@ -13048,8 +14879,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Release date of software.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYDATE);
+    public final LocalDateTime getEncodedLibraryDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYDATE);
+    }
+
+   /**
+    * Get Release date of software.
+    * 
+    * @return Release date of software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYDATE);
     }
 
    /**
@@ -13119,8 +14960,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The menu ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getMenuIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MENUIDSTRING);
+    public final LocalDateTime getMenuIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MENUIDSTRING);
+    }
+
+   /**
+    * Get The menu ID for this stream in this file.
+    * 
+    * @return The menu ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getMenuIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MENUIDSTRING);
     }
 
    /**
@@ -13190,8 +15041,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType/String.
     */
     @Nullable
-    public final LocalDate getScanTypeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTRING);
+    public final LocalDateTime getScanTypeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTRING);
+    }
+
+   /**
+    * Get ScanType/String.
+    * 
+    * @return ScanType/String.
+    */
+    @Nullable
+    public final LocalTime getScanTypeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTRING);
     }
 
    /**
@@ -13261,8 +15122,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return More info about Language (e.g. Director's Comment).
     */
     @Nullable
-    public final LocalDate getLanguageMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGEMORE);
+    public final LocalDateTime getLanguageMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGEMORE);
+    }
+
+   /**
+    * Get More info about Language (e.g. Director's Comment).
+    * 
+    * @return More info about Language (e.g. Director's Comment).
+    */
+    @Nullable
+    public final LocalTime getLanguageMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGEMORE);
     }
 
    /**
@@ -13332,8 +15203,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING);
+    public final LocalDateTime getSourceStreamSizeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING);
+    }
+
+   /**
+    * Get Source Streamsize in with percentage value.
+    * 
+    * @return Source Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZESTRING);
     }
 
    /**
@@ -13403,8 +15284,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Maximum Frames per second.
     */
     @Nullable
-    public final LocalDate getFrameRateMaximumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMAXIMUM);
+    public final LocalDateTime getFrameRateMaximumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMAXIMUM);
+    }
+
+   /**
+    * Get Maximum Frames per second.
+    * 
+    * @return Maximum Frames per second.
+    */
+    @Nullable
+    public final LocalTime getFrameRateMaximumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMAXIMUM);
     }
 
    /**
@@ -13474,8 +15365,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) frames per second.
     */
     @Nullable
-    public final LocalDate getFrameRateOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINAL);
+    public final LocalDateTime getFrameRateOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINAL);
+    }
+
+   /**
+    * Get Original (in the raw stream) frames per second.
+    * 
+    * @return Original (in the raw stream) frames per second.
+    */
+    @Nullable
+    public final LocalTime getFrameRateOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINAL);
     }
 
    /**
@@ -13545,8 +15446,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Display Aspect ratio.
     */
     @Nullable
-    public final LocalDate getDisplayAspectRatioAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIO);
+    public final LocalDateTime getDisplayAspectRatioAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIO);
+    }
+
+   /**
+    * Get Display Aspect ratio.
+    * 
+    * @return Display Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getDisplayAspectRatioAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIO);
     }
 
    /**
@@ -13616,8 +15527,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the first frame if it is longer than others, in ms.
     */
     @Nullable
-    public final LocalDate getDurationFirstFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAME);
+    public final LocalDateTime getDurationFirstFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAME);
+    }
+
+   /**
+    * Get Duration of the first frame if it is longer than others, in ms.
+    * 
+    * @return Duration of the first frame if it is longer than others, in ms.
+    */
+    @Nullable
+    public final LocalTime getDurationFirstFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONFIRSTFRAME);
     }
 
    /**
@@ -13687,8 +15608,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay in format: HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDelayOriginalString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING3);
+    public final LocalDateTime getDelayOriginalString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING3);
+    }
+
+   /**
+    * Get Delay in format: HH:MM:SS.MMM.
+    * 
+    * @return Delay in format: HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING3);
     }
 
    /**
@@ -13758,8 +15689,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONSTRING);
+    public final LocalDateTime getEncodedApplicationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONSTRING);
+    }
+
+   /**
+    * Get Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    * 
+    * @return Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONSTRING);
     }
 
    /**
@@ -13829,8 +15770,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDelayOriginalString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING4);
+    public final LocalDateTime getDelayOriginalString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING4);
+    }
+
+   /**
+    * Get Delay in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Delay in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING4);
     }
 
    /**
@@ -13900,8 +15851,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDelayOriginalString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING5);
+    public final LocalDateTime getDelayOriginalString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING5);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING5);
     }
 
    /**
@@ -13971,8 +15932,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getForcedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORCED);
+    public final LocalDateTime getForcedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORCED);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getForcedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORCED);
     }
 
    /**
@@ -14042,8 +16013,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Stored width.
     */
     @Nullable
-    public final LocalDate getStoredWidthAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STOREDWIDTH);
+    public final LocalDateTime getStoredWidthAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STOREDWIDTH);
+    }
+
+   /**
+    * Get Stored width.
+    * 
+    * @return Stored width.
+    */
+    @Nullable
+    public final LocalTime getStoredWidthAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STOREDWIDTH);
     }
 
    /**
@@ -14113,8 +16094,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frames per second, denominator.
     */
     @Nullable
-    public final LocalDate getFrameRateOriginalDenAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALDEN);
+    public final LocalDateTime getFrameRateOriginalDenAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALDEN);
+    }
+
+   /**
+    * Get Frames per second, denominator.
+    * 
+    * @return Frames per second, denominator.
+    */
+    @Nullable
+    public final LocalTime getFrameRateOriginalDenAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALDEN);
     }
 
    /**
@@ -14184,8 +16175,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Last **Inform** call.
     */
     @Nullable
-    public final LocalDate getInformAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.INFORM);
+    public final LocalDateTime getInformAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.INFORM);
+    }
+
+   /**
+    * Get Last **Inform** call.
+    * 
+    * @return Last **Inform** call.
+    */
+    @Nullable
+    public final LocalTime getInformAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.INFORM);
     }
 
    /**
@@ -14255,8 +16256,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsRefFramesAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSREFFRAMES);
+    public final LocalDateTime getFormatSettingsRefFramesAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSREFFRAMES);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsRefFramesAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSREFFRAMES);
     }
 
    /**
@@ -14326,8 +16337,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Duration of the first frame if it is longer than others, in ms.
     */
     @Nullable
-    public final LocalDate getSourceDurationFirstFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAME);
+    public final LocalDateTime getSourceDurationFirstFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAME);
+    }
+
+   /**
+    * Get Source Duration of the first frame if it is longer than others, in ms.
+    * 
+    * @return Source Duration of the first frame if it is longer than others, in ms.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationFirstFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONFIRSTFRAME);
     }
 
    /**
@@ -14397,8 +16418,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp with measurement.
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING);
+    public final LocalDateTime getTimeStampFirstFrameStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING);
+    }
+
+   /**
+    * Get TimeStamp with measurement.
+    * 
+    * @return TimeStamp with measurement.
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING);
     }
 
    /**
@@ -14468,8 +16499,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Active Format Description (AFD value).
     */
     @Nullable
-    public final LocalDate getActiveFormatDescriptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTION);
+    public final LocalDateTime getActiveFormatDescriptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTION);
+    }
+
+   /**
+    * Get Active Format Description (AFD value).
+    * 
+    * @return Active Format Description (AFD value).
+    */
+    @Nullable
+    public final LocalTime getActiveFormatDescriptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTION);
     }
 
    /**
@@ -14539,8 +16580,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder_StoredDisplayedInverted.
     */
     @Nullable
-    public final LocalDate getScanOrderStoredDisplayedInvertedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTOREDDISPLAYEDINVERTED);
+    public final LocalDateTime getScanOrderStoredDisplayedInvertedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTOREDDISPLAYEDINVERTED);
+    }
+
+   /**
+    * Get ScanOrder_StoredDisplayedInverted.
+    * 
+    * @return ScanOrder_StoredDisplayedInverted.
+    */
+    @Nullable
+    public final LocalTime getScanOrderStoredDisplayedInvertedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTOREDDISPLAYEDINVERTED);
     }
 
    /**
@@ -14610,8 +16661,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Number of the stream (base=0).
     */
     @Nullable
-    public final LocalDate getStreamKindIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMKINDID);
+    public final LocalDateTime getStreamKindIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMKINDID);
+    }
+
+   /**
+    * Get Number of the stream (base=0).
+    * 
+    * @return Number of the stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getStreamKindIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMKINDID);
     }
 
    /**
@@ -14681,8 +16742,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Nominal Frames per second (with measurement).
     */
     @Nullable
-    public final LocalDate getFrameRateNominalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATENOMINALSTRING);
+    public final LocalDateTime getFrameRateNominalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATENOMINALSTRING);
+    }
+
+   /**
+    * Get Nominal Frames per second (with measurement).
+    * 
+    * @return Nominal Frames per second (with measurement).
+    */
+    @Nullable
+    public final LocalTime getFrameRateNominalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATENOMINALSTRING);
     }
 
    /**
@@ -14752,8 +16823,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Link.
     */
     @Nullable
-    public final LocalDate getFormatUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATURL);
+    public final LocalDateTime getFormatUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATURL);
+    }
+
+   /**
+    * Get Link.
+    * 
+    * @return Link.
+    */
+    @Nullable
+    public final LocalTime getFormatUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATURL);
     }
 
    /**
@@ -14823,8 +16904,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Minimum Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getBitRateMinimumStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEMINIMUMSTRING);
+    public final LocalDateTime getBitRateMinimumStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMINIMUMSTRING);
+    }
+
+   /**
+    * Get Minimum Bit rate (with measurement).
+    * 
+    * @return Minimum Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getBitRateMinimumStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMINIMUMSTRING);
     }
 
    /**
@@ -14894,8 +16985,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Width (aperture size if present) in pixel.
     */
     @Nullable
-    public final LocalDate getWidthAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTH);
+    public final LocalDateTime getWidthAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTH);
+    }
+
+   /**
+    * Get Width (aperture size if present) in pixel.
+    * 
+    * @return Width (aperture size if present) in pixel.
+    */
+    @Nullable
+    public final LocalTime getWidthAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTH);
     }
 
    /**
@@ -14965,8 +17066,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frames per second (with measurement).
     */
     @Nullable
-    public final LocalDate getFrameRateStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATESTRING);
+    public final LocalDateTime getFrameRateStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATESTRING);
+    }
+
+   /**
+    * Get Frames per second (with measurement).
+    * 
+    * @return Frames per second (with measurement).
+    */
+    @Nullable
+    public final LocalTime getFrameRateStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATESTRING);
     }
 
    /**
@@ -15036,8 +17147,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Number of frames.
     */
     @Nullable
-    public final LocalDate getSourceFrameCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEFRAMECOUNT);
+    public final LocalDateTime getSourceFrameCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEFRAMECOUNT);
+    }
+
+   /**
+    * Get Source Number of frames.
+    * 
+    * @return Source Number of frames.
+    */
+    @Nullable
+    public final LocalTime getSourceFrameCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEFRAMECOUNT);
     }
 
    /**
@@ -15107,8 +17228,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsBVOPAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSBVOP);
+    public final LocalDateTime getFormatSettingsBVOPAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSBVOP);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsBVOPAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSBVOP);
     }
 
    /**
@@ -15178,8 +17309,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getDefaultAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DEFAULT);
+    public final LocalDateTime getDefaultAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DEFAULT);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getDefaultAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DEFAULT);
     }
 
    /**
@@ -15249,8 +17390,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
     */
     @Nullable
-    public final LocalDate getGopOpenClosedFirstFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDFIRSTFRAME);
+    public final LocalDateTime getGopOpenClosedFirstFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDFIRSTFRAME);
+    }
+
+   /**
+    * Get Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
+    * 
+    * @return Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
+    */
+    @Nullable
+    public final LocalTime getGopOpenClosedFirstFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDFIRSTFRAME);
     }
 
    /**
@@ -15320,8 +17471,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code information about Open/Closed.
     */
     @Nullable
-    public final LocalDate getGopOpenClosedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSED);
+    public final LocalDateTime getGopOpenClosedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSED);
+    }
+
+   /**
+    * Get Time code information about Open/Closed.
+    * 
+    * @return Time code information about Open/Closed.
+    */
+    @Nullable
+    public final LocalTime getGopOpenClosedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSED);
     }
 
    /**
@@ -15391,8 +17552,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay settings (in case of timecode for example).
     */
     @Nullable
-    public final LocalDate getDelayOriginalSettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSETTINGS);
+    public final LocalDateTime getDelayOriginalSettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSETTINGS);
+    }
+
+   /**
+    * Get Delay settings (in case of timecode for example).
+    * 
+    * @return Delay settings (in case of timecode for example).
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalSettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSETTINGS);
     }
 
    /**
@@ -15462,8 +17633,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the product.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONNAME);
+    public final LocalDateTime getEncodedApplicationNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONNAME);
+    }
+
+   /**
+    * Get Name of the product.
+    * 
+    * @return Name of the product.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONNAME);
     }
 
    /**
@@ -15533,8 +17714,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The unique ID for this stream, should be copied with stream copy.
     */
     @Nullable
-    public final LocalDate getUniqueIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.UNIQUEIDSTRING);
+    public final LocalDateTime getUniqueIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.UNIQUEIDSTRING);
+    }
+
+   /**
+    * Get The unique ID for this stream, should be copied with stream copy.
+    * 
+    * @return The unique ID for this stream, should be copied with stream copy.
+    */
+    @Nullable
+    public final LocalTime getUniqueIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.UNIQUEIDSTRING);
     }
 
    /**
@@ -15604,8 +17795,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder.
     */
     @Nullable
-    public final LocalDate getScanOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDER);
+    public final LocalDateTime getScanOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDER);
+    }
+
+   /**
+    * Get ScanOrder.
+    * 
+    * @return ScanOrder.
+    */
+    @Nullable
+    public final LocalTime getScanOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDER);
     }
 
    /**
@@ -15675,8 +17876,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Profile of the Format.
     */
     @Nullable
-    public final LocalDate getFormatProfileAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATPROFILE);
+    public final LocalDateTime getFormatProfileAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATPROFILE);
+    }
+
+   /**
+    * Get Profile of the Format.
+    * 
+    * @return Profile of the Format.
+    */
+    @Nullable
+    public final LocalTime getFormatProfileAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATPROFILE);
     }
 
    /**
@@ -15746,8 +17957,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Offset between original height and displayed height in pixel.
     */
     @Nullable
-    public final LocalDate getHeightOffsetAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTOFFSET);
+    public final LocalDateTime getHeightOffsetAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTOFFSET);
+    }
+
+   /**
+    * Get Offset between original height and displayed height in pixel.
+    * 
+    * @return Offset between original height and displayed height in pixel.
+    */
+    @Nullable
+    public final LocalTime getHeightOffsetAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTOFFSET);
     }
 
    /**
@@ -15817,8 +18038,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ChromaSubsampling_Position.
     */
     @Nullable
-    public final LocalDate getChromaSubsamplingPositionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLINGPOSITION);
+    public final LocalDateTime getChromaSubsamplingPositionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLINGPOSITION);
+    }
+
+   /**
+    * Get ChromaSubsampling_Position.
+    * 
+    * @return ChromaSubsampling_Position.
+    */
+    @Nullable
+    public final LocalTime getChromaSubsamplingPositionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLINGPOSITION);
     }
 
    /**
@@ -15888,8 +18119,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Encoded/String2.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING2);
+    public final LocalDateTime getStreamSizeEncodedString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING2);
+    }
+
+   /**
+    * Get StreamSize_Encoded/String2.
+    * 
+    * @return StreamSize_Encoded/String2.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING2);
     }
 
    /**
@@ -15959,8 +18200,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Demuxed/String1.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING1);
+    public final LocalDateTime getStreamSizeDemuxedString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING1);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String1.
+    * 
+    * @return StreamSize_Demuxed/String1.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING1);
     }
 
    /**
@@ -16030,8 +18281,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Encoded/String3.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING3);
+    public final LocalDateTime getStreamSizeEncodedString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING3);
+    }
+
+   /**
+    * Get StreamSize_Encoded/String3.
+    * 
+    * @return StreamSize_Encoded/String3.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING3);
     }
 
    /**
@@ -16101,8 +18362,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Demuxed/String2.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING2);
+    public final LocalDateTime getStreamSizeDemuxedString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING2);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String2.
+    * 
+    * @return StreamSize_Demuxed/String2.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING2);
     }
 
    /**
@@ -16172,8 +18443,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Demuxed/String3.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING3);
+    public final LocalDateTime getStreamSizeDemuxedString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING3);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String3.
+    * 
+    * @return StreamSize_Demuxed/String3.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING3);
     }
 
    /**
@@ -16243,8 +18524,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Encoded/String1.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING1);
+    public final LocalDateTime getStreamSizeEncodedString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING1);
+    }
+
+   /**
+    * Get StreamSize_Encoded/String1.
+    * 
+    * @return StreamSize_Encoded/String1.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING1);
     }
 
    /**
@@ -16314,8 +18605,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Language (full).
     */
     @Nullable
-    public final LocalDate getLanguageStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING);
+    public final LocalDateTime getLanguageStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING);
+    }
+
+   /**
+    * Get Language (full).
+    * 
+    * @return Language (full).
+    */
+    @Nullable
+    public final LocalTime getLanguageStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.LANGUAGESTRING);
     }
 
    /**
@@ -16385,8 +18686,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Demuxed/String4.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING4);
+    public final LocalDateTime getStreamSizeDemuxedString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING4);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String4.
+    * 
+    * @return StreamSize_Demuxed/String4.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING4);
     }
 
    /**
@@ -16456,8 +18767,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING5);
+    public final LocalDateTime getStreamSizeDemuxedString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING5);
+    }
+
+   /**
+    * Get StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
+    * 
+    * @return StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING5);
     }
 
    /**
@@ -16527,8 +18848,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Encoded/String4.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING4);
+    public final LocalDateTime getStreamSizeEncodedString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING4);
+    }
+
+   /**
+    * Get StreamSize_Encoded/String4.
+    * 
+    * @return StreamSize_Encoded/String4.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING4);
     }
 
    /**
@@ -16598,8 +18929,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) frames per second (with measurement).
     */
     @Nullable
-    public final LocalDate getFrameRateOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALSTRING);
+    public final LocalDateTime getFrameRateOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALSTRING);
+    }
+
+   /**
+    * Get Original (in the raw stream) frames per second (with measurement).
+    * 
+    * @return Original (in the raw stream) frames per second (with measurement).
+    */
+    @Nullable
+    public final LocalTime getFrameRateOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALSTRING);
     }
 
    /**
@@ -16669,8 +19010,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encoded Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING5);
+    public final LocalDateTime getStreamSizeEncodedString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING5);
+    }
+
+   /**
+    * Get Encoded Streamsize in with percentage value.
+    * 
+    * @return Encoded Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING5);
     }
 
    /**
@@ -16740,8 +19091,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDurationLastFrameString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING5);
+    public final LocalDateTime getDurationLastFrameString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING5);
     }
 
    /**
@@ -16811,8 +19172,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDurationLastFrameString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING4);
+    public final LocalDateTime getDurationLastFrameString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING4);
     }
 
    /**
@@ -16882,8 +19253,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original frame rate mode (CFR, VFR).
     */
     @Nullable
-    public final LocalDate getFrameRateModeOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODEORIGINAL);
+    public final LocalDateTime getFrameRateModeOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODEORIGINAL);
+    }
+
+   /**
+    * Get Original frame rate mode (CFR, VFR).
+    * 
+    * @return Original frame rate mode (CFR, VFR).
+    */
+    @Nullable
+    public final LocalTime getFrameRateModeOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEMODEORIGINAL);
     }
 
    /**
@@ -16953,8 +19334,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize_Demuxed in with percentage value.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING);
+    public final LocalDateTime getStreamSizeDemuxedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING);
+    }
+
+   /**
+    * Get StreamSize_Demuxed in with percentage value.
+    * 
+    * @return StreamSize_Demuxed in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXEDSTRING);
     }
 
    /**
@@ -17024,8 +19415,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getForcedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORCEDSTRING);
+    public final LocalDateTime getForcedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORCEDSTRING);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getForcedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORCEDSTRING);
     }
 
    /**
@@ -17095,8 +19496,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return 16/24/32.
     */
     @Nullable
-    public final LocalDate getBitDepthAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITDEPTH);
+    public final LocalDateTime getBitDepthAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITDEPTH);
+    }
+
+   /**
+    * Get 16/24/32.
+    * 
+    * @return 16/24/32.
+    */
+    @Nullable
+    public final LocalTime getBitDepthAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITDEPTH);
     }
 
    /**
@@ -17166,8 +19577,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encoded Streamsize in bytes.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODED);
+    public final LocalDateTime getStreamSizeEncodedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODED);
+    }
+
+   /**
+    * Get Encoded Streamsize in bytes.
+    * 
+    * @return Encoded Streamsize in bytes.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODED);
     }
 
    /**
@@ -17237,8 +19658,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Colour range for YUV colour space.
     */
     @Nullable
-    public final LocalDate getcolourrangeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COLOURRANGE);
+    public final LocalDateTime getcolourrangeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COLOURRANGE);
+    }
+
+   /**
+    * Get Colour range for YUV colour space.
+    * 
+    * @return Colour range for YUV colour space.
+    */
+    @Nullable
+    public final LocalTime getcolourrangeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COLOURRANGE);
     }
 
    /**
@@ -17308,8 +19739,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Count of streams of that kind available.
     */
     @Nullable
-    public final LocalDate getStreamCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMCOUNT);
+    public final LocalDateTime getStreamCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMCOUNT);
+    }
+
+   /**
+    * Get Count of streams of that kind available.
+    * 
+    * @return Count of streams of that kind available.
+    */
+    @Nullable
+    public final LocalTime getStreamCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMCOUNT);
     }
 
    /**
@@ -17379,8 +19820,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Format_Settings_GMC/String.
     */
     @Nullable
-    public final LocalDate getFormatSettingsGMCStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGMCSTRING);
+    public final LocalDateTime getFormatSettingsGMCStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGMCSTRING);
+    }
+
+   /**
+    * Get Format_Settings_GMC/String.
+    * 
+    * @return Format_Settings_GMC/String.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsGMCStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSGMCSTRING);
     }
 
    /**
@@ -17450,8 +19901,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) Pixel Aspect ratio.
     */
     @Nullable
-    public final LocalDate getPixelAspectRatioOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOORIGINALSTRING);
+    public final LocalDateTime getPixelAspectRatioOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOORIGINALSTRING);
+    }
+
+   /**
+    * Get Original (in the raw stream) Pixel Aspect ratio.
+    * 
+    * @return Original (in the raw stream) Pixel Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getPixelAspectRatioOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOORIGINALSTRING);
     }
 
    /**
@@ -17521,8 +19982,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encoded Streamsize in with percentage value.
     */
     @Nullable
-    public final LocalDate getStreamSizeEncodedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING);
+    public final LocalDateTime getStreamSizeEncodedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING);
+    }
+
+   /**
+    * Get Encoded Streamsize in with percentage value.
+    * 
+    * @return Encoded Streamsize in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeEncodedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING);
     }
 
    /**
@@ -17592,8 +20063,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Chromaticity coordinates of the source primaries.
     */
     @Nullable
-    public final LocalDate getcolourprimariesOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.COLOURPRIMARIESORIGINAL);
+    public final LocalDateTime getcolourprimariesOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.COLOURPRIMARIESORIGINAL);
+    }
+
+   /**
+    * Get Chromaticity coordinates of the source primaries.
+    * 
+    * @return Chromaticity coordinates of the source primaries.
+    */
+    @Nullable
+    public final LocalTime getcolourprimariesOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.COLOURPRIMARIESORIGINAL);
     }
 
    /**
@@ -17663,8 +20144,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Pixel Aspect ratio.
     */
     @Nullable
-    public final LocalDate getPixelAspectRatioStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOSTRING);
+    public final LocalDateTime getPixelAspectRatioStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOSTRING);
+    }
+
+   /**
+    * Get Pixel Aspect ratio.
+    * 
+    * @return Pixel Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getPixelAspectRatioStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOSTRING);
     }
 
    /**
@@ -17734,8 +20225,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING2);
+    public final LocalDateTime getDurationString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING2);
+    }
+
+   /**
+    * Get Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING2);
     }
 
    /**
@@ -17805,8 +20306,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder_Original/String.
     */
     @Nullable
-    public final LocalDate getScanOrderOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDERORIGINALSTRING);
+    public final LocalDateTime getScanOrderOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERORIGINALSTRING);
+    }
+
+   /**
+    * Get ScanOrder_Original/String.
+    * 
+    * @return ScanOrder_Original/String.
+    */
+    @Nullable
+    public final LocalTime getScanOrderOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERORIGINALSTRING);
     }
 
    /**
@@ -17876,8 +20387,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDurationString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING3);
+    public final LocalDateTime getDurationString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING3);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.MMM.
+    * 
+    * @return Play time in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDurationString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING3);
     }
 
    /**
@@ -17947,8 +20468,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING1);
+    public final LocalDateTime getDurationString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING1);
+    }
+
+   /**
+    * Get Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING1);
     }
 
    /**
@@ -18018,8 +20549,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture Pixel Aspect ratio.
     */
     @Nullable
-    public final LocalDate getPixelAspectRatioCleanApertureAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOCLEANAPERTURE);
+    public final LocalDateTime getPixelAspectRatioCleanApertureAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOCLEANAPERTURE);
+    }
+
+   /**
+    * Get Clean Aperture Pixel Aspect ratio.
+    * 
+    * @return Clean Aperture Pixel Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getPixelAspectRatioCleanApertureAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOCLEANAPERTURE);
     }
 
    /**
@@ -18089,8 +20630,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDurationString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING4);
+    public final LocalDateTime getDurationString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDurationString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING4);
     }
 
    /**
@@ -18160,8 +20711,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsCABACStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSCABACSTRING);
+    public final LocalDateTime getFormatSettingsCABACStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSCABACSTRING);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsCABACStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSCABACSTRING);
     }
 
    /**
@@ -18231,8 +20792,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDurationString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING5);
+    public final LocalDateTime getDurationString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDurationString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONSTRING5);
     }
 
    /**
@@ -18302,8 +20873,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encoded (with forced padding) bit rate in bps, if some container padding is present.
     */
     @Nullable
-    public final LocalDate getBitRateEncodedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEENCODED);
+    public final LocalDateTime getBitRateEncodedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEENCODED);
+    }
+
+   /**
+    * Get Encoded (with forced padding) bit rate in bps, if some container padding is present.
+    * 
+    * @return Encoded (with forced padding) bit rate in bps, if some container padding is present.
+    */
+    @Nullable
+    public final LocalTime getBitRateEncodedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEENCODED);
     }
 
    /**
@@ -18373,8 +20954,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsQPelAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSQPEL);
+    public final LocalDateTime getFormatSettingsQPelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSQPEL);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsQPelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSQPEL);
     }
 
    /**
@@ -18444,8 +21035,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled (Type of frame, and field/frame info).
     */
     @Nullable
-    public final LocalDate getFormatSettingsPictureStructureAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSPICTURESTRUCTURE);
+    public final LocalDateTime getFormatSettingsPictureStructureAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSPICTURESTRUCTURE);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled (Type of frame, and field/frame info).
+    * 
+    * @return Settings needed for decoder used, detailled (Type of frame, and field/frame info).
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsPictureStructureAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSPICTURESTRUCTURE);
     }
 
    /**
@@ -18515,8 +21116,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) height with measurement (pixel).
     */
     @Nullable
-    public final LocalDate getHeightOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTORIGINALSTRING);
+    public final LocalDateTime getHeightOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTORIGINALSTRING);
+    }
+
+   /**
+    * Get Original (in the raw stream) height with measurement (pixel).
+    * 
+    * @return Original (in the raw stream) height with measurement (pixel).
+    */
+    @Nullable
+    public final LocalTime getHeightOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTORIGINALSTRING);
     }
 
    /**
@@ -18586,8 +21197,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay source (Container or Stream or empty).
     */
     @Nullable
-    public final LocalDate getDelaySourceAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSOURCE);
+    public final LocalDateTime getDelaySourceAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSOURCE);
+    }
+
+   /**
+    * Get Delay source (Container or Stream or empty).
+    * 
+    * @return Delay source (Container or Stream or empty).
+    */
+    @Nullable
+    public final LocalTime getDelaySourceAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSOURCE);
     }
 
    /**
@@ -18657,8 +21278,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType.
     */
     @Nullable
-    public final LocalDate getScanTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPE);
+    public final LocalDateTime getScanTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPE);
+    }
+
+   /**
+    * Get ScanType.
+    * 
+    * @return ScanType.
+    */
+    @Nullable
+    public final LocalTime getScanTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPE);
     }
 
    /**
@@ -18728,8 +21359,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType_StoreMethod_FieldsPerBlock.
     */
     @Nullable
-    public final LocalDate getScanTypeStoreMethodFieldsPerBlockAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHODFIELDSPERBLOCK);
+    public final LocalDateTime getScanTypeStoreMethodFieldsPerBlockAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHODFIELDSPERBLOCK);
+    }
+
+   /**
+    * Get ScanType_StoreMethod_FieldsPerBlock.
+    * 
+    * @return ScanType_StoreMethod_FieldsPerBlock.
+    */
+    @Nullable
+    public final LocalTime getScanTypeStoreMethodFieldsPerBlockAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPESTOREMETHODFIELDSPERBLOCK);
     }
 
    /**
@@ -18799,8 +21440,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay drop frame info.
     */
     @Nullable
-    public final LocalDate getDelayOriginalDropFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALDROPFRAME);
+    public final LocalDateTime getDelayOriginalDropFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALDROPFRAME);
+    }
+
+   /**
+    * Get Delay drop frame info.
+    * 
+    * @return Delay drop frame info.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalDropFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALDROPFRAME);
     }
 
    /**
@@ -18870,8 +21521,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationLastFrameString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING1);
+    public final LocalDateTime getDurationLastFrameString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING1);
+    }
+
+   /**
+    * Get Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING1);
     }
 
    /**
@@ -18941,8 +21602,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING);
+    public final LocalDateTime getDelayOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYORIGINALSTRING);
     }
 
    /**
@@ -19012,8 +21683,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDurationLastFrameString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING3);
+    public final LocalDateTime getDurationLastFrameString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING3);
+    }
+
+   /**
+    * Get Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
+    * 
+    * @return Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING3);
     }
 
    /**
@@ -19083,8 +21764,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationLastFrameString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING2);
+    public final LocalDateTime getDurationLastFrameString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING2);
+    }
+
+   /**
+    * Get Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationLastFrameString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DURATIONLASTFRAMESTRING2);
     }
 
    /**
@@ -19154,8 +21845,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture height in pixel.
     */
     @Nullable
-    public final LocalDate getHeightCleanApertureAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTCLEANAPERTURE);
+    public final LocalDateTime getHeightCleanApertureAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTCLEANAPERTURE);
+    }
+
+   /**
+    * Get Clean Aperture height in pixel.
+    * 
+    * @return Clean Aperture height in pixel.
+    */
+    @Nullable
+    public final LocalTime getHeightCleanApertureAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTCLEANAPERTURE);
     }
 
    /**
@@ -19225,8 +21926,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return StreamSize in bytes of hte stream after demux.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXED);
+    public final LocalDateTime getStreamSizeDemuxedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXED);
+    }
+
+   /**
+    * Get StreamSize in bytes of hte stream after demux.
+    * 
+    * @return StreamSize in bytes of hte stream after demux.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEDEMUXED);
     }
 
    /**
@@ -19296,8 +22007,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, summary.
     */
     @Nullable
-    public final LocalDate getFormatSettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGS);
+    public final LocalDateTime getFormatSettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGS);
+    }
+
+   /**
+    * Get Settings needed for decoder used, summary.
+    * 
+    * @return Settings needed for decoder used, summary.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGS);
     }
 
    /**
@@ -19367,8 +22088,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
     */
     @Nullable
-    public final LocalDate getFirstPacketOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FIRSTPACKETORDER);
+    public final LocalDateTime getFirstPacketOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FIRSTPACKETORDER);
+    }
+
+   /**
+    * Get Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    * 
+    * @return Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getFirstPacketOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FIRSTPACKETORDER);
     }
 
    /**
@@ -19438,8 +22169,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture height with measurement (pixel).
     */
     @Nullable
-    public final LocalDate getHeightCleanApertureStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTCLEANAPERTURESTRING);
+    public final LocalDateTime getHeightCleanApertureStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTCLEANAPERTURESTRING);
+    }
+
+   /**
+    * Get Clean Aperture height with measurement (pixel).
+    * 
+    * @return Clean Aperture height with measurement (pixel).
+    */
+    @Nullable
+    public final LocalTime getHeightCleanApertureStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTCLEANAPERTURESTRING);
     }
 
    /**
@@ -19509,8 +22250,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp with measurement.
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING1);
+    public final LocalDateTime getTimeStampFirstFrameString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING1);
+    }
+
+   /**
+    * Get TimeStamp with measurement.
+    * 
+    * @return TimeStamp with measurement.
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING1);
     }
 
    /**
@@ -19580,8 +22331,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING5);
+    public final LocalDateTime getTimeStampFirstFrameString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING5);
+    }
+
+   /**
+    * Get TimeStamp in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return TimeStamp in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING5);
     }
 
    /**
@@ -19651,8 +22412,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Clean Aperture Pixel Aspect ratio.
     */
     @Nullable
-    public final LocalDate getPixelAspectRatioCleanApertureStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOCLEANAPERTURESTRING);
+    public final LocalDateTime getPixelAspectRatioCleanApertureStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOCLEANAPERTURESTRING);
+    }
+
+   /**
+    * Get Clean Aperture Pixel Aspect ratio.
+    * 
+    * @return Clean Aperture Pixel Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getPixelAspectRatioCleanApertureStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIOCLEANAPERTURESTRING);
     }
 
    /**
@@ -19722,8 +22493,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING4);
+    public final LocalDateTime getTimeStampFirstFrameString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING4);
+    }
+
+   /**
+    * Get TimeStamp in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return TimeStamp in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING4);
     }
 
    /**
@@ -19793,8 +22574,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING3);
+    public final LocalDateTime getTimeStampFirstFrameString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING3);
+    }
+
+   /**
+    * Get TimeStamp in format : HH:MM:SS.MMM.
+    * 
+    * @return TimeStamp in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING3);
     }
 
    /**
@@ -19864,8 +22655,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp with measurement.
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING2);
+    public final LocalDateTime getTimeStampFirstFrameString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING2);
+    }
+
+   /**
+    * Get TimeStamp with measurement.
+    * 
+    * @return TimeStamp with measurement.
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAMESTRING2);
     }
 
    /**
@@ -19935,8 +22736,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Nominal Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getBitRateNominalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATENOMINALSTRING);
+    public final LocalDateTime getBitRateNominalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATENOMINALSTRING);
+    }
+
+   /**
+    * Get Nominal Bit rate (with measurement).
+    * 
+    * @return Nominal Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getBitRateNominalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATENOMINALSTRING);
     }
 
    /**
@@ -20006,8 +22817,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanOrder_Stored.
     */
     @Nullable
-    public final LocalDate getScanOrderStoredAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTORED);
+    public final LocalDateTime getScanOrderStoredAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTORED);
+    }
+
+   /**
+    * Get ScanOrder_Stored.
+    * 
+    * @return ScanOrder_Stored.
+    */
+    @Nullable
+    public final LocalTime getScanOrderStoredAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANORDERSTORED);
     }
 
    /**
@@ -20077,8 +22898,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Format used.
     */
     @Nullable
-    public final LocalDate getFormatAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMAT);
+    public final LocalDateTime getFormatAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMAT);
+    }
+
+   /**
+    * Get Format used.
+    * 
+    * @return Format used.
+    */
+    @Nullable
+    public final LocalTime getFormatAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMAT);
     }
 
    /**
@@ -20148,8 +22979,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) Display Aspect ratio.
     */
     @Nullable
-    public final LocalDate getDisplayAspectRatioOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOORIGINALSTRING);
+    public final LocalDateTime getDisplayAspectRatioOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOORIGINALSTRING);
+    }
+
+   /**
+    * Get Original (in the raw stream) Display Aspect ratio.
+    * 
+    * @return Original (in the raw stream) Display Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getDisplayAspectRatioOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DISPLAYASPECTRATIOORIGINALSTRING);
     }
 
    /**
@@ -20219,8 +23060,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) width with measurement (pixel).
     */
     @Nullable
-    public final LocalDate getWidthOriginalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.WIDTHORIGINALSTRING);
+    public final LocalDateTime getWidthOriginalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.WIDTHORIGINALSTRING);
+    }
+
+   /**
+    * Get Original (in the raw stream) width with measurement (pixel).
+    * 
+    * @return Original (in the raw stream) width with measurement (pixel).
+    */
+    @Nullable
+    public final LocalTime getWidthOriginalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.WIDTHORIGINALSTRING);
     }
 
    /**
@@ -20290,8 +23141,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Frames per second, numerator.
     */
     @Nullable
-    public final LocalDate getFrameRateOriginalNumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALNUM);
+    public final LocalDateTime getFrameRateOriginalNumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALNUM);
+    }
+
+   /**
+    * Get Frames per second, numerator.
+    * 
+    * @return Frames per second, numerator.
+    */
+    @Nullable
+    public final LocalTime getFrameRateOriginalNumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FRAMERATEORIGINALNUM);
     }
 
    /**
@@ -20361,8 +23222,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Height in pixel.
     */
     @Nullable
-    public final LocalDate getHeightAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHT);
+    public final LocalDateTime getHeightAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHT);
+    }
+
+   /**
+    * Get Height in pixel.
+    * 
+    * @return Height in pixel.
+    */
+    @Nullable
+    public final LocalTime getHeightAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHT);
     }
 
    /**
@@ -20432,8 +23303,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Codec ID (found in some containers).
     */
     @Nullable
-    public final LocalDate getCodecIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CODECIDSTRING);
+    public final LocalDateTime getCodecIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CODECIDSTRING);
+    }
+
+   /**
+    * Get Codec ID (found in some containers).
+    * 
+    * @return Codec ID (found in some containers).
+    */
+    @Nullable
+    public final LocalTime getCodecIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CODECIDSTRING);
     }
 
    /**
@@ -20503,8 +23384,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Name of the company.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryCompanyNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYCOMPANYNAME);
+    public final LocalDateTime getEncodedLibraryCompanyNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYCOMPANYNAME);
+    }
+
+   /**
+    * Get Name of the company.
+    * 
+    * @return Name of the company.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryCompanyNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDLIBRARYCOMPANYNAME);
     }
 
    /**
@@ -20574,8 +23465,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return TimeStamp fixed in the stream (relative) IN MS.
     */
     @Nullable
-    public final LocalDate getTimeStampFirstFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAME);
+    public final LocalDateTime getTimeStampFirstFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAME);
+    }
+
+   /**
+    * Get TimeStamp fixed in the stream (relative) IN MS.
+    * 
+    * @return TimeStamp fixed in the stream (relative) IN MS.
+    */
+    @Nullable
+    public final LocalTime getTimeStampFirstFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TIMESTAMPFIRSTFRAME);
     }
 
    /**
@@ -20645,8 +23546,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Streamsize in bytes.
     */
     @Nullable
-    public final LocalDate getSourceStreamSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZE);
+    public final LocalDateTime getSourceStreamSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZE);
+    }
+
+   /**
+    * Get Source Streamsize in bytes.
+    * 
+    * @return Source Streamsize in bytes.
+    */
+    @Nullable
+    public final LocalTime getSourceStreamSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCESTREAMSIZE);
     }
 
    /**
@@ -20716,8 +23627,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Commercial name used by vendor for theses setings or Format field if there is no difference.
     */
     @Nullable
-    public final LocalDate getFormatCommercialAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATCOMMERCIAL);
+    public final LocalDateTime getFormatCommercialAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATCOMMERCIAL);
+    }
+
+   /**
+    * Get Commercial name used by vendor for theses setings or Format field if there is no difference.
+    * 
+    * @return Commercial name used by vendor for theses setings or Format field if there is no difference.
+    */
+    @Nullable
+    public final LocalTime getFormatCommercialAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATCOMMERCIAL);
     }
 
    /**
@@ -20787,8 +23708,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Active Format Description (AFD value) muxing mode (Ancillary or Raw stream).
     */
     @Nullable
-    public final LocalDate getActiveFormatDescriptionMuxingModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTIONMUXINGMODE);
+    public final LocalDateTime getActiveFormatDescriptionMuxingModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTIONMUXINGMODE);
+    }
+
+   /**
+    * Get Active Format Description (AFD value) muxing mode (Ancillary or Raw stream).
+    * 
+    * @return Active Format Description (AFD value) muxing mode (Ancillary or Raw stream).
+    */
+    @Nullable
+    public final LocalTime getActiveFormatDescriptionMuxingModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ACTIVEFORMATDESCRIPTIONMUXINGMODE);
     }
 
    /**
@@ -20858,8 +23789,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ScanType_Original.
     */
     @Nullable
-    public final LocalDate getScanTypeOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SCANTYPEORIGINAL);
+    public final LocalDateTime getScanTypeOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPEORIGINAL);
+    }
+
+   /**
+    * Get ScanType_Original.
+    * 
+    * @return ScanType_Original.
+    */
+    @Nullable
+    public final LocalTime getScanTypeOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SCANTYPEORIGINAL);
     }
 
    /**
@@ -20929,8 +23870,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Delay source (Container or Stream or empty).
     */
     @Nullable
-    public final LocalDate getDelaySourceStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.DELAYSOURCESTRING);
+    public final LocalDateTime getDelaySourceStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.DELAYSOURCESTRING);
+    }
+
+   /**
+    * Get Delay source (Container or Stream or empty).
+    * 
+    * @return Delay source (Container or Stream or empty).
+    */
+    @Nullable
+    public final LocalTime getDelaySourceStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.DELAYSOURCESTRING);
     }
 
    /**
@@ -21000,8 +23951,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Opto-electronic transfer characteristic of the source picture.
     */
     @Nullable
-    public final LocalDate gettransfercharacteristicsOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.TRANSFERCHARACTERISTICSORIGINAL);
+    public final LocalDateTime gettransfercharacteristicsOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.TRANSFERCHARACTERISTICSORIGINAL);
+    }
+
+   /**
+    * Get Opto-electronic transfer characteristic of the source picture.
+    * 
+    * @return Opto-electronic transfer characteristic of the source picture.
+    */
+    @Nullable
+    public final LocalTime gettransfercharacteristicsOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.TRANSFERCHARACTERISTICSORIGINAL);
     }
 
    /**
@@ -21071,8 +24032,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Nominal Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getBitRateNominalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATENOMINAL);
+    public final LocalDateTime getBitRateNominalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATENOMINAL);
+    }
+
+   /**
+    * Get Nominal Bit rate in bps.
+    * 
+    * @return Nominal Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getBitRateNominalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATENOMINAL);
     }
 
    /**
@@ -21142,8 +24113,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Minimum Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getBitRateMinimumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEMINIMUM);
+    public final LocalDateTime getBitRateMinimumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMINIMUM);
+    }
+
+   /**
+    * Get Minimum Bit rate in bps.
+    * 
+    * @return Minimum Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getBitRateMinimumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEMINIMUM);
     }
 
    /**
@@ -21213,8 +24194,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Original (in the raw stream) height in pixel.
     */
     @Nullable
-    public final LocalDate getHeightOriginalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.HEIGHTORIGINAL);
+    public final LocalDateTime getHeightOriginalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTORIGINAL);
+    }
+
+   /**
+    * Get Original (in the raw stream) height in pixel.
+    * 
+    * @return Original (in the raw stream) height in pixel.
+    */
+    @Nullable
+    public final LocalTime getHeightOriginalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.HEIGHTORIGINAL);
     }
 
    /**
@@ -21284,8 +24275,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Source Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getSourceDurationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING);
+    public final LocalDateTime getSourceDurationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING);
+    }
+
+   /**
+    * Get Source Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Source Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getSourceDurationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SOURCEDURATIONSTRING);
     }
 
    /**
@@ -21355,8 +24356,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
     */
     @Nullable
-    public final LocalDate getmatrixcoefficientsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MATRIXCOEFFICIENTS);
+    public final LocalDateTime getmatrixcoefficientsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MATRIXCOEFFICIENTS);
+    }
+
+   /**
+    * Get Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
+    * 
+    * @return Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
+    */
+    @Nullable
+    public final LocalTime getmatrixcoefficientsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MATRIXCOEFFICIENTS);
     }
 
    /**
@@ -21426,8 +24437,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Encoded (with forced padding) bit rate (with measurement), if some container padding is present.
     */
     @Nullable
-    public final LocalDate getBitRateEncodedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.BITRATEENCODEDSTRING);
+    public final LocalDateTime getBitRateEncodedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.BITRATEENCODEDSTRING);
+    }
+
+   /**
+    * Get Encoded (with forced padding) bit rate (with measurement), if some container padding is present.
+    * 
+    * @return Encoded (with forced padding) bit rate (with measurement), if some container padding is present.
+    */
+    @Nullable
+    public final LocalTime getBitRateEncodedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.BITRATEENCODEDSTRING);
     }
 
    /**
@@ -21497,8 +24518,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Stream type name.
     */
     @Nullable
-    public final LocalDate getStreamKindStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.STREAMKINDSTRING);
+    public final LocalDateTime getStreamKindStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.STREAMKINDSTRING);
+    }
+
+   /**
+    * Get Stream type name.
+    * 
+    * @return Stream type name.
+    */
+    @Nullable
+    public final LocalTime getStreamKindStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.STREAMKINDSTRING);
     }
 
    /**
@@ -21568,8 +24599,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return ChromaSubsampling.
     */
     @Nullable
-    public final LocalDate getChromaSubsamplingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLING);
+    public final LocalDateTime getChromaSubsamplingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLING);
+    }
+
+   /**
+    * Get ChromaSubsampling.
+    * 
+    * @return ChromaSubsampling.
+    */
+    @Nullable
+    public final LocalTime getChromaSubsamplingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.CHROMASUBSAMPLING);
     }
 
    /**
@@ -21639,8 +24680,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Time code information about Open/Closed.
     */
     @Nullable
-    public final LocalDate getGopOpenClosedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDSTRING);
+    public final LocalDateTime getGopOpenClosedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDSTRING);
+    }
+
+   /**
+    * Get Time code information about Open/Closed.
+    * 
+    * @return Time code information about Open/Closed.
+    */
+    @Nullable
+    public final LocalTime getGopOpenClosedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.GOPOPENCLOSEDSTRING);
     }
 
    /**
@@ -21710,8 +24761,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsQPelStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSQPELSTRING);
+    public final LocalDateTime getFormatSettingsQPelStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSQPELSTRING);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsQPelStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSQPELSTRING);
     }
 
    /**
@@ -21781,8 +24842,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Version of the product.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONVERSION);
+    public final LocalDateTime getEncodedApplicationVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONVERSION);
+    }
+
+   /**
+    * Get Version of the product.
+    * 
+    * @return Version of the product.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ENCODEDAPPLICATIONVERSION);
     }
 
    /**
@@ -21852,8 +24923,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return The menu ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getMenuIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.MENUID);
+    public final LocalDateTime getMenuIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.MENUID);
+    }
+
+   /**
+    * Get The menu ID for this stream in this file.
+    * 
+    * @return The menu ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getMenuIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.MENUID);
     }
 
    /**
@@ -21923,8 +25004,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Number of a group in order to provide versions of the same track.
     */
     @Nullable
-    public final LocalDate getAlternateGroupStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.ALTERNATEGROUPSTRING);
+    public final LocalDateTime getAlternateGroupStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.ALTERNATEGROUPSTRING);
+    }
+
+   /**
+    * Get Number of a group in order to provide versions of the same track.
+    * 
+    * @return Number of a group in order to provide versions of the same track.
+    */
+    @Nullable
+    public final LocalTime getAlternateGroupStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.ALTERNATEGROUPSTRING);
     }
 
    /**
@@ -21994,8 +25085,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used, detailled.
     */
     @Nullable
-    public final LocalDate getFormatSettingsCABACAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSCABAC);
+    public final LocalDateTime getFormatSettingsCABACAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSCABAC);
+    }
+
+   /**
+    * Get Settings needed for decoder used, detailled.
+    * 
+    * @return Settings needed for decoder used, detailled.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsCABACAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGSCABAC);
     }
 
    /**
@@ -22065,8 +25166,18 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     * @return Pixel Aspect ratio.
     */
     @Nullable
-    public final LocalDate getPixelAspectRatioAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIO);
+    public final LocalDateTime getPixelAspectRatioAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIO);
+    }
+
+   /**
+    * Get Pixel Aspect ratio.
+    * 
+    * @return Pixel Aspect ratio.
+    */
+    @Nullable
+    public final LocalTime getPixelAspectRatioAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.PIXELASPECTRATIO);
     }
 
    /**

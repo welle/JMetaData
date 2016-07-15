@@ -2,7 +2,8 @@ package aka.jmetadata.main;
 
 import java.math.BigInteger;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,8 +95,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Library of Congress Control Number..
     */
     @Nullable
-    public final LocalDate getLCCNAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LCCN);
+    public final LocalDateTime getLCCNAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LCCN);
+    }
+
+   /**
+    * Get Library of Congress Control Number..
+    * 
+    * @return Library of Congress Control Number..
+    */
+    @Nullable
+    public final LocalTime getLCCNAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LCCN);
     }
 
    /**
@@ -180,8 +191,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Owner of the file.
     */
     @Nullable
-    public final LocalDate getOwnerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OWNER);
+    public final LocalDateTime getOwnerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OWNER);
+    }
+
+   /**
+    * Get Owner of the file.
+    * 
+    * @return Owner of the file.
+    */
+    @Nullable
+    public final LocalTime getOwnerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OWNER);
     }
 
    /**
@@ -266,8 +287,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return NetworkName.
     */
     @Nullable
-    public final LocalDate getNetworkNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.NETWORKNAME);
+    public final LocalDateTime getNetworkNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.NETWORKNAME);
+    }
+
+   /**
+    * Get NetworkName.
+    * 
+    * @return NetworkName.
+    */
+    @Nullable
+    public final LocalTime getNetworkNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.NETWORKNAME);
     }
 
    /**
@@ -352,8 +383,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Text Codecs in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getTextFormatListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TEXTFORMATLIST);
+    public final LocalDateTime getTextFormatListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TEXTFORMATLIST);
+    }
+
+   /**
+    * Get Text Codecs in this file, separated by /.
+    * 
+    * @return Text Codecs in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getTextFormatListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TEXTFORMATLIST);
     }
 
    /**
@@ -438,8 +479,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return iTunes compilation.
     */
     @Nullable
-    public final LocalDate getCompilationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMPILATION);
+    public final LocalDateTime getCompilationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPILATION);
+    }
+
+   /**
+    * Get iTunes compilation.
+    * 
+    * @return iTunes compilation.
+    */
+    @Nullable
+    public final LocalTime getCompilationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPILATION);
     }
 
    /**
@@ -524,8 +575,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Stream order in the file, whatever is the kind of stream (base=0).
     */
     @Nullable
-    public final LocalDate getStreamOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMORDER);
+    public final LocalDateTime getStreamOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMORDER);
+    }
+
+   /**
+    * Get Stream order in the file, whatever is the kind of stream (base=0).
+    * 
+    * @return Stream order in the file, whatever is the kind of stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getStreamOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMORDER);
     }
 
    /**
@@ -610,8 +671,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the the encoding-software.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARYNAME);
+    public final LocalDateTime getEncodedLibraryNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARYNAME);
+    }
+
+   /**
+    * Get Name of the the encoding-software.
+    * 
+    * @return Name of the the encoding-software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARYNAME);
     }
 
    /**
@@ -696,8 +767,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return (Generic)More info about the title of file.
     */
     @Nullable
-    public final LocalDate getTitleMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TITLEMORE);
+    public final LocalDateTime getTitleMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TITLEMORE);
+    }
+
+   /**
+    * Get (Generic)More info about the title of file.
+    * 
+    * @return (Generic)More info about the title of file.
+    */
+    @Nullable
+    public final LocalTime getTitleMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TITLEMORE);
     }
 
    /**
@@ -782,8 +863,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Describes the changes in lightness settings on the digitizer required to produce the file.
     */
     @Nullable
-    public final LocalDate getLightnessAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LIGHTNESS);
+    public final LocalDateTime getLightnessAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LIGHTNESS);
+    }
+
+   /**
+    * Get Describes the changes in lightness settings on the digitizer required to produce the file.
+    * 
+    * @return Describes the changes in lightness settings on the digitizer required to produce the file.
+    */
+    @Nullable
+    public final LocalTime getLightnessAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LIGHTNESS);
     }
 
    /**
@@ -868,8 +959,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Identifies the changes in sharpness for the digitizer requiered to produce the file.
     */
     @Nullable
-    public final LocalDate getOriginalSourceFormSharpnessAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEFORMSHARPNESS);
+    public final LocalDateTime getOriginalSourceFormSharpnessAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMSHARPNESS);
+    }
+
+   /**
+    * Get Identifies the changes in sharpness for the digitizer requiered to produce the file.
+    * 
+    * @return Identifies the changes in sharpness for the digitizer requiered to produce the file.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceFormSharpnessAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMSHARPNESS);
     }
 
    /**
@@ -954,8 +1055,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File extension only.
     */
     @Nullable
-    public final LocalDate getFileExtensionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILEEXTENSION);
+    public final LocalDateTime getFileExtensionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILEEXTENSION);
+    }
+
+   /**
+    * Get File extension only.
+    * 
+    * @return File extension only.
+    */
+    @Nullable
+    public final LocalTime getFileExtensionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILEEXTENSION);
     }
 
    /**
@@ -1040,8 +1151,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Real name of an actor or actress playing a role in the movie..
     */
     @Nullable
-    public final LocalDate getActorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ACTOR);
+    public final LocalDateTime getActorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ACTOR);
+    }
+
+   /**
+    * Get Real name of an actor or actress playing a role in the movie..
+    * 
+    * @return Real name of an actor or actress playing a role in the movie..
+    */
+    @Nullable
+    public final LocalTime getActorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ACTOR);
     }
 
    /**
@@ -1126,8 +1247,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return name of the person or organization that commissioned the subject of the file.
     */
     @Nullable
-    public final LocalDate getCommissionedByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMMISSIONEDBY);
+    public final LocalDateTime getCommissionedByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMMISSIONEDBY);
+    }
+
+   /**
+    * Get name of the person or organization that commissioned the subject of the file.
+    * 
+    * @return name of the person or organization that commissioned the subject of the file.
+    */
+    @Nullable
+    public final LocalTime getCommissionedByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMMISSIONEDBY);
     }
 
    /**
@@ -1212,8 +1343,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Compression method used.
     */
     @Nullable
-    public final LocalDate getFormatCompressionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATCOMPRESSION);
+    public final LocalDateTime getFormatCompressionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATCOMPRESSION);
+    }
+
+   /**
+    * Get Compression method used.
+    * 
+    * @return Compression method used.
+    */
+    @Nullable
+    public final LocalTime getFormatCompressionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATCOMPRESSION);
     }
 
    /**
@@ -1298,8 +1439,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Band/orchestra/accompaniment/musician..
     */
     @Nullable
-    public final LocalDate getAccompanimentAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ACCOMPANIMENT);
+    public final LocalDateTime getAccompanimentAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ACCOMPANIMENT);
+    }
+
+   /**
+    * Get Band/orchestra/accompaniment/musician..
+    * 
+    * @return Band/orchestra/accompaniment/musician..
+    */
+    @Nullable
+    public final LocalTime getAccompanimentAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ACCOMPANIMENT);
     }
 
    /**
@@ -1384,8 +1535,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Cover, in binary format encoded BASE64.
     */
     @Nullable
-    public final LocalDate getCoverDataAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COVERDATA);
+    public final LocalDateTime getCoverDataAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COVERDATA);
+    }
+
+   /**
+    * Get Cover, in binary format encoded BASE64.
+    * 
+    * @return Cover, in binary format encoded BASE64.
+    */
+    @Nullable
+    public final LocalTime getCoverDataAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COVERDATA);
     }
 
    /**
@@ -1470,8 +1631,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Video Codecs in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getVideoFormatListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.VIDEOFORMATLIST);
+    public final LocalDateTime getVideoFormatListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.VIDEOFORMATLIST);
+    }
+
+   /**
+    * Get Video Codecs in this file, separated by /.
+    * 
+    * @return Video Codecs in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getVideoFormatListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.VIDEOFORMATLIST);
     }
 
    /**
@@ -1556,8 +1727,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSTRING);
+    public final LocalDateTime getDelayStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSTRING);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSTRING);
     }
 
    /**
@@ -1642,8 +1823,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The date/year that the item was released..
     */
     @Nullable
-    public final LocalDate getReleasedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.RELEASEDDATE);
+    public final LocalDateTime getReleasedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.RELEASEDDATE);
+    }
+
+   /**
+    * Get The date/year that the item was released..
+    * 
+    * @return The date/year that the item was released..
+    */
+    @Nullable
+    public final LocalTime getReleasedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.RELEASEDDATE);
     }
 
    /**
@@ -1728,8 +1919,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Manual description given by the container.
     */
     @Nullable
-    public final LocalDate getCodecIDDescriptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDDESCRIPTION);
+    public final LocalDateTime getCodecIDDescriptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDDESCRIPTION);
+    }
+
+   /**
+    * Get Manual description given by the container.
+    * 
+    * @return Manual description given by the container.
+    */
+    @Nullable
+    public final LocalTime getCodecIDDescriptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDDESCRIPTION);
     }
 
    /**
@@ -1814,8 +2015,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @Nullable
-    public final LocalDate getStatusAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STATUS);
+    public final LocalDateTime getStatusAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STATUS);
+    }
+
+   /**
+    * Get bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    * 
+    * @return bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    */
+    @Nullable
+    public final LocalTime getStatusAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STATUS);
     }
 
    /**
@@ -1900,8 +2111,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File size (with measure, 2 digit mini).
     */
     @Nullable
-    public final LocalDate getFileSizeString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILESIZESTRING2);
+    public final LocalDateTime getFileSizeString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILESIZESTRING2);
+    }
+
+   /**
+    * Get File size (with measure, 2 digit mini).
+    * 
+    * @return File size (with measure, 2 digit mini).
+    */
+    @Nullable
+    public final LocalTime getFileSizeString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILESIZESTRING2);
     }
 
    /**
@@ -1986,8 +2207,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original name of the track in the original support.
     */
     @Nullable
-    public final LocalDate getOriginalTrackAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALTRACK);
+    public final LocalDateTime getOriginalTrackAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALTRACK);
+    }
+
+   /**
+    * Get Original name of the track in the original support.
+    * 
+    * @return Original name of the track in the original support.
+    */
+    @Nullable
+    public final LocalTime getOriginalTrackAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALTRACK);
     }
 
    /**
@@ -2072,8 +2303,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File size (with measure, 1 digit mini).
     */
     @Nullable
-    public final LocalDate getFileSizeString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILESIZESTRING1);
+    public final LocalDateTime getFileSizeString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILESIZESTRING1);
+    }
+
+   /**
+    * Get File size (with measure, 1 digit mini).
+    * 
+    * @return File size (with measure, 1 digit mini).
+    */
+    @Nullable
+    public final LocalTime getFileSizeString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILESIZESTRING1);
     }
 
    /**
@@ -2158,8 +2399,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Frames per second.
     */
     @Nullable
-    public final LocalDate getFrameRateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FRAMERATE);
+    public final LocalDateTime getFrameRateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FRAMERATE);
+    }
+
+   /**
+    * Get Frames per second.
+    * 
+    * @return Frames per second.
+    */
+    @Nullable
+    public final LocalTime getFrameRateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FRAMERATE);
     }
 
    /**
@@ -2244,8 +2495,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of this track.
     */
     @Nullable
-    public final LocalDate getTrackPositionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TRACKPOSITION);
+    public final LocalDateTime getTrackPositionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TRACKPOSITION);
+    }
+
+   /**
+    * Get Number of this track.
+    * 
+    * @return Number of this track.
+    */
+    @Nullable
+    public final LocalTime getTrackPositionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TRACKPOSITION);
     }
 
    /**
@@ -2330,8 +2591,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the assistant director..
     */
     @Nullable
-    public final LocalDate getAssistantDirectorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ASSISTANTDIRECTOR);
+    public final LocalDateTime getAssistantDirectorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ASSISTANTDIRECTOR);
+    }
+
+   /**
+    * Get Name of the assistant director..
+    * 
+    * @return Name of the assistant director..
+    */
+    @Nullable
+    public final LocalTime getAssistantDirectorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ASSISTANTDIRECTOR);
     }
 
    /**
@@ -2416,8 +2687,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Version of the CodecID.
     */
     @Nullable
-    public final LocalDate getCodecIDVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDVERSION);
+    public final LocalDateTime getCodecIDVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDVERSION);
+    }
+
+   /**
+    * Get Version of the CodecID.
+    * 
+    * @return Version of the CodecID.
+    */
+    @Nullable
+    public final LocalTime getCodecIDVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDVERSION);
     }
 
    /**
@@ -2502,8 +2783,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Video languagesin this file, full names, separated by /.
     */
     @Nullable
-    public final LocalDate getVideoLanguageListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.VIDEOLANGUAGELIST);
+    public final LocalDateTime getVideoLanguageListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.VIDEOLANGUAGELIST);
+    }
+
+   /**
+    * Get Video languagesin this file, full names, separated by /.
+    * 
+    * @return Video languagesin this file, full names, separated by /.
+    */
+    @Nullable
+    public final LocalTime getVideoLanguageListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.VIDEOLANGUAGELIST);
     }
 
    /**
@@ -2588,8 +2879,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption_Format.
     */
     @Nullable
-    public final LocalDate getEncryptionFormatAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTIONFORMAT);
+    public final LocalDateTime getEncryptionFormatAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTIONFORMAT);
+    }
+
+   /**
+    * Get Encryption_Format.
+    * 
+    * @return Encryption_Format.
+    */
+    @Nullable
+    public final LocalTime getEncryptionFormatAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTIONFORMAT);
     }
 
    /**
@@ -2674,8 +2975,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original name of album, serie....
     */
     @Nullable
-    public final LocalDate getOriginalAlbumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALALBUM);
+    public final LocalDateTime getOriginalAlbumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALALBUM);
+    }
+
+   /**
+    * Get Original name of album, serie....
+    * 
+    * @return Original name of album, serie....
+    */
+    @Nullable
+    public final LocalTime getOriginalAlbumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALALBUM);
     }
 
    /**
@@ -2760,8 +3071,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original form of the material, e.g. slide, paper, map.
     */
     @Nullable
-    public final LocalDate getOriginalSourceFormAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEFORM);
+    public final LocalDateTime getOriginalSourceFormAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEFORM);
+    }
+
+   /**
+    * Get Original form of the material, e.g. slide, paper, map.
+    * 
+    * @return Original form of the material, e.g. slide, paper, map.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceFormAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEFORM);
     }
 
    /**
@@ -2846,8 +3167,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay settings (in case of timecode for example).
     */
     @Nullable
-    public final LocalDate getDelaySettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSETTINGS);
+    public final LocalDateTime getDelaySettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSETTINGS);
+    }
+
+   /**
+    * Get Delay settings (in case of timecode for example).
+    * 
+    * @return Delay settings (in case of timecode for example).
+    */
+    @Nullable
+    public final LocalTime getDelaySettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSETTINGS);
     }
 
    /**
@@ -2932,8 +3263,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return TimeZone.
     */
     @Nullable
-    public final LocalDate getTimeZoneAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TIMEZONE);
+    public final LocalDateTime getTimeZoneAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TIMEZONE);
+    }
+
+   /**
+    * Get TimeZone.
+    * 
+    * @return TimeZone.
+    */
+    @Nullable
+    public final LocalTime getTimeZoneAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TIMEZONE);
     }
 
    /**
@@ -3018,8 +3359,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Image Codecs in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getImageFormatListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.IMAGEFORMATLIST);
+    public final LocalDateTime getImageFormatListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.IMAGEFORMATLIST);
+    }
+
+   /**
+    * Get Image Codecs in this file, separated by /.
+    * 
+    * @return Image Codecs in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getImageFormatListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.IMAGEFORMATLIST);
     }
 
    /**
@@ -3104,8 +3455,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of menu streams.
     */
     @Nullable
-    public final LocalDate getMenuCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MENUCOUNT);
+    public final LocalDateTime getMenuCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MENUCOUNT);
+    }
+
+   /**
+    * Get Number of menu streams.
+    * 
+    * @return Number of menu streams.
+    */
+    @Nullable
+    public final LocalTime getMenuCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MENUCOUNT);
     }
 
    /**
@@ -3190,8 +3551,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Image Codecs in this file with popular name (hint), separated by /.
     */
     @Nullable
-    public final LocalDate getImageFormatWithHintListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.IMAGEFORMATWITHHINTLIST);
+    public final LocalDateTime getImageFormatWithHintListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.IMAGEFORMATWITHHINTLIST);
+    }
+
+   /**
+    * Get Image Codecs in this file with popular name (hint), separated by /.
+    * 
+    * @return Image Codecs in this file with popular name (hint), separated by /.
+    */
+    @Nullable
+    public final LocalTime getImageFormatWithHintListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.IMAGEFORMATWITHHINTLIST);
     }
 
    /**
@@ -3276,8 +3647,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the part. e.g. CD1, CD2.
     */
     @Nullable
-    public final LocalDate getPartAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PART);
+    public final LocalDateTime getPartAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PART);
+    }
+
+   /**
+    * Get Name of the part. e.g. CD1, CD2.
+    * 
+    * @return Name of the part. e.g. CD1, CD2.
+    */
+    @Nullable
+    public final LocalTime getPartAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PART);
     }
 
    /**
@@ -3362,8 +3743,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Bit rate mode of all streams (Variable, Constant).
     */
     @Nullable
-    public final LocalDate getOverallBitRateModeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATEMODESTRING);
+    public final LocalDateTime getOverallBitRateModeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATEMODESTRING);
+    }
+
+   /**
+    * Get Bit rate mode of all streams (Variable, Constant).
+    * 
+    * @return Bit rate mode of all streams (Variable, Constant).
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateModeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATEMODESTRING);
     }
 
    /**
@@ -3448,8 +3839,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Place of the part e.g. 2 of 3.
     */
     @Nullable
-    public final LocalDate getPartPositionTotalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PARTPOSITIONTOTAL);
+    public final LocalDateTime getPartPositionTotalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PARTPOSITIONTOTAL);
+    }
+
+   /**
+    * Get Place of the part e.g. 2 of 3.
+    * 
+    * @return Place of the part e.g. 2 of 3.
+    */
+    @Nullable
+    public final LocalTime getPartPositionTotalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PARTPOSITIONTOTAL);
     }
 
    /**
@@ -3534,8 +3935,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original name of the movie.
     */
     @Nullable
-    public final LocalDate getOriginalMovieAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALMOVIE);
+    public final LocalDateTime getOriginalMovieAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALMOVIE);
+    }
+
+   /**
+    * Get Original name of the movie.
+    * 
+    * @return Original name of the movie.
+    */
+    @Nullable
+    public final LocalTime getOriginalMovieAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALMOVIE);
     }
 
    /**
@@ -3620,8 +4031,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The maximum absolute peak value of the item.
     */
     @Nullable
-    public final LocalDate getAlbumReplayGainPeakAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMREPLAYGAINPEAK);
+    public final LocalDateTime getAlbumReplayGainPeakAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMREPLAYGAINPEAK);
+    }
+
+   /**
+    * Get The maximum absolute peak value of the item.
+    * 
+    * @return The maximum absolute peak value of the item.
+    */
+    @Nullable
+    public final LocalTime getAlbumReplayGainPeakAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMREPLAYGAINPEAK);
     }
 
    /**
@@ -3706,8 +4127,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File size (with measure, 4 digit mini).
     */
     @Nullable
-    public final LocalDate getFileSizeString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILESIZESTRING4);
+    public final LocalDateTime getFileSizeString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILESIZESTRING4);
+    }
+
+   /**
+    * Get File size (with measure, 4 digit mini).
+    * 
+    * @return File size (with measure, 4 digit mini).
+    */
+    @Nullable
+    public final LocalTime getFileSizeString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILESIZESTRING4);
     }
 
    /**
@@ -3792,8 +4223,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File size (with measure, 3 digit mini).
     */
     @Nullable
-    public final LocalDate getFileSizeString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILESIZESTRING3);
+    public final LocalDateTime getFileSizeString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILESIZESTRING3);
+    }
+
+   /**
+    * Get File size (with measure, 3 digit mini).
+    * 
+    * @return File size (with measure, 3 digit mini).
+    */
+    @Nullable
+    public final LocalTime getFileSizeString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILESIZESTRING3);
     }
 
    /**
@@ -3878,8 +4319,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the artist(s), that interpreted, remixed, or otherwise modified the item..
     */
     @Nullable
-    public final LocalDate getRemixedByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.REMIXEDBY);
+    public final LocalDateTime getRemixedByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.REMIXEDBY);
+    }
+
+   /**
+    * Get Name of the artist(s), that interpreted, remixed, or otherwise modified the item..
+    * 
+    * @return Name of the artist(s), that interpreted, remixed, or otherwise modified the item..
+    */
+    @Nullable
+    public final LocalTime getRemixedByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.REMIXEDBY);
     }
 
    /**
@@ -3964,8 +4415,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the subtrack..
     */
     @Nullable
-    public final LocalDate getSubTrackAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SUBTRACK);
+    public final LocalDateTime getSubTrackAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SUBTRACK);
+    }
+
+   /**
+    * Get Name of the subtrack..
+    * 
+    * @return Name of the subtrack..
+    */
+    @Nullable
+    public final LocalTime getSubTrackAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SUBTRACK);
     }
 
    /**
@@ -4050,8 +4511,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Package name i.e. technical flavor of the content.
     */
     @Nullable
-    public final LocalDate getPackageNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PACKAGENAME);
+    public final LocalDateTime getPackageNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PACKAGENAME);
+    }
+
+   /**
+    * Get Package name i.e. technical flavor of the content.
+    * 
+    * @return Package name i.e. technical flavor of the content.
+    */
+    @Nullable
+    public final LocalTime getPackageNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PACKAGENAME);
     }
 
    /**
@@ -4136,8 +4607,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original medium of the material, e.g. vinyl, Audio-CD, Super8 or BetaMax.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUM);
+    public final LocalDateTime getOriginalSourceMediumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUM);
+    }
+
+   /**
+    * Get Original medium of the material, e.g. vinyl, Audio-CD, Super8 or BetaMax.
+    * 
+    * @return Original medium of the material, e.g. vinyl, Audio-CD, Super8 or BetaMax.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUM);
     }
 
    /**
@@ -4222,8 +4703,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File name only.
     */
     @Nullable
-    public final LocalDate getFileNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILENAME);
+    public final LocalDateTime getFileNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILENAME);
+    }
+
+   /**
+    * Get File name only.
+    * 
+    * @return File name only.
+    */
+    @Nullable
+    public final LocalTime getFileNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILENAME);
     }
 
    /**
@@ -4308,8 +4799,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Comic/Position_Total.
     */
     @Nullable
-    public final LocalDate getComicPositionTotalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMICPOSITIONTOTAL);
+    public final LocalDateTime getComicPositionTotalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMICPOSITIONTOTAL);
+    }
+
+   /**
+    * Get Comic/Position_Total.
+    * 
+    * @return Comic/Position_Total.
+    */
+    @Nullable
+    public final LocalTime getComicPositionTotalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMICPOSITIONTOTAL);
     }
 
    /**
@@ -4394,8 +4895,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Main music-artist for a movie.
     */
     @Nullable
-    public final LocalDate getMusicByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MUSICBY);
+    public final LocalDateTime getMusicByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MUSICBY);
+    }
+
+   /**
+    * Get Main music-artist for a movie.
+    * 
+    * @return Main music-artist for a movie.
+    */
+    @Nullable
+    public final LocalTime getMusicByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MUSICBY);
     }
 
    /**
@@ -4480,8 +4991,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time/date/year that the composition of the music/script began..
     */
     @Nullable
-    public final LocalDate getWrittenDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.WRITTENDATE);
+    public final LocalDateTime getWrittenDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.WRITTENDATE);
+    }
+
+   /**
+    * Get The time/date/year that the composition of the music/script began..
+    * 
+    * @return The time/date/year that the composition of the music/script began..
+    */
+    @Nullable
+    public final LocalTime getWrittenDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.WRITTENDATE);
     }
 
    /**
@@ -4566,8 +5087,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time that the file was modified on the file system.
     */
     @Nullable
-    public final LocalDate getFileModifiedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILEMODIFIEDDATE);
+    public final LocalDateTime getFileModifiedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILEMODIFIEDDATE);
+    }
+
+   /**
+    * Get The time that the file was modified on the file system.
+    * 
+    * @return The time that the file was modified on the file system.
+    */
+    @Nullable
+    public final LocalTime getFileModifiedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILEMODIFIEDDATE);
     }
 
    /**
@@ -4652,8 +5183,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Version of encoding-software.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARYVERSION);
+    public final LocalDateTime getEncodedLibraryVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARYVERSION);
+    }
+
+   /**
+    * Get Version of encoding-software.
+    * 
+    * @return Version of encoding-software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARYVERSION);
     }
 
    /**
@@ -4738,8 +5279,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Info about this codec.
     */
     @Nullable
-    public final LocalDate getCodecIDInfoAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDINFO);
+    public final LocalDateTime getCodecIDInfoAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDINFO);
+    }
+
+   /**
+    * Get Info about this codec.
+    * 
+    * @return Info about this codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDInfoAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDINFO);
     }
 
    /**
@@ -4824,8 +5375,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Stream size in bytes.
     */
     @Nullable
-    public final LocalDate getStreamSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZE);
+    public final LocalDateTime getStreamSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZE);
+    }
+
+   /**
+    * Get Stream size in bytes.
+    * 
+    * @return Stream size in bytes.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZE);
     }
 
    /**
@@ -4910,8 +5471,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the season, e.g. Strawars first Trilogy, Season 1.
     */
     @Nullable
-    public final LocalDate getSeasonAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SEASON);
+    public final LocalDateTime getSeasonAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SEASON);
+    }
+
+   /**
+    * Get Name of the season, e.g. Strawars first Trilogy, Season 1.
+    * 
+    * @return Name of the season, e.g. Strawars first Trilogy, Season 1.
+    */
+    @Nullable
+    public final LocalTime getSeasonAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SEASON);
     }
 
    /**
@@ -4996,8 +5567,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The name of the costume designer..
     */
     @Nullable
-    public final LocalDate getCostumeDesignerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COSTUMEDESIGNER);
+    public final LocalDateTime getCostumeDesignerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COSTUMEDESIGNER);
+    }
+
+   /**
+    * Get The name of the costume designer..
+    * 
+    * @return The name of the costume designer..
+    */
+    @Nullable
+    public final LocalTime getCostumeDesignerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COSTUMEDESIGNER);
     }
 
    /**
@@ -5082,8 +5663,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original artist(s)/performer(s)..
     */
     @Nullable
-    public final LocalDate getOriginalPerformerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALPERFORMER);
+    public final LocalDateTime getOriginalPerformerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALPERFORMER);
+    }
+
+   /**
+    * Get Original artist(s)/performer(s)..
+    * 
+    * @return Original artist(s)/performer(s)..
+    */
+    @Nullable
+    public final LocalTime getOriginalPerformerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALPERFORMER);
     }
 
    /**
@@ -5168,8 +5759,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Other formats in this file with popular name (hint), separated by /.
     */
     @Nullable
-    public final LocalDate getOtherFormatWithHintListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OTHERFORMATWITHHINTLIST);
+    public final LocalDateTime getOtherFormatWithHintListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OTHERFORMATWITHHINTLIST);
+    }
+
+   /**
+    * Get Other formats in this file with popular name (hint), separated by /.
+    * 
+    * @return Other formats in this file with popular name (hint), separated by /.
+    */
+    @Nullable
+    public final LocalTime getOtherFormatWithHintListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OTHERFORMATWITHHINTLIST);
     }
 
    /**
@@ -5254,8 +5855,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Info about this Format.
     */
     @Nullable
-    public final LocalDate getFormatInfoAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATINFO);
+    public final LocalDateTime getFormatInfoAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATINFO);
+    }
+
+   /**
+    * Get Info about this Format.
+    * 
+    * @return Info about this Format.
+    */
+    @Nullable
+    public final LocalTime getFormatInfoAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATINFO);
     }
 
    /**
@@ -5340,8 +5951,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return If Audio and video are muxed.
     */
     @Nullable
-    public final LocalDate getInterleavedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.INTERLEAVED);
+    public final LocalDateTime getInterleavedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.INTERLEAVED);
+    }
+
+   /**
+    * Get If Audio and video are muxed.
+    * 
+    * @return If Audio and video are muxed.
+    */
+    @Nullable
+    public final LocalTime getInterleavedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.INTERLEAVED);
     }
 
    /**
@@ -5426,8 +6047,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A link to more details about this codec ID.
     */
     @Nullable
-    public final LocalDate getCodecIDUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDURL);
+    public final LocalDateTime getCodecIDUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDURL);
+    }
+
+   /**
+    * Get A link to more details about this codec ID.
+    * 
+    * @return A link to more details about this codec ID.
+    */
+    @Nullable
+    public final LocalTime getCodecIDUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDURL);
     }
 
    /**
@@ -5512,8 +6143,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption_Mode.
     */
     @Nullable
-    public final LocalDate getEncryptionModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTIONMODE);
+    public final LocalDateTime getEncryptionModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTIONMODE);
+    }
+
+   /**
+    * Get Encryption_Mode.
+    * 
+    * @return Encryption_Mode.
+    */
+    @Nullable
+    public final LocalTime getEncryptionModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTIONMODE);
     }
 
    /**
@@ -5598,8 +6239,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Location that the item was originaly designed/written. Information should be stored in the following format: country code, state/province, city where the coutry code is the same 2 octets as in Internet domains, or possibly ISO-3166. e.g. US, Texas, Austin or US, , Austin..
     */
     @Nullable
-    public final LocalDate getWrittenLocationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.WRITTENLOCATION);
+    public final LocalDateTime getWrittenLocationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.WRITTENLOCATION);
+    }
+
+   /**
+    * Get Location that the item was originaly designed/written. Information should be stored in the following format: country code, state/province, city where the coutry code is the same 2 octets as in Internet domains, or possibly ISO-3166. e.g. US, Texas, Austin or US, , Austin..
+    * 
+    * @return Location that the item was originaly designed/written. Information should be stored in the following format: country code, state/province, city where the coutry code is the same 2 octets as in Internet domains, or possibly ISO-3166. e.g. US, Texas, Austin or US, , Austin..
+    */
+    @Nullable
+    public final LocalTime getWrittenLocationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.WRITTENLOCATION);
     }
 
    /**
@@ -5684,8 +6335,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Specifies the size of the original subject of the file. eg 8.5 in h, 11 in w.
     */
     @Nullable
-    public final LocalDate getDimensionsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DIMENSIONS);
+    public final LocalDateTime getDimensionsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DIMENSIONS);
+    }
+
+   /**
+    * Get Specifies the size of the original subject of the file. eg 8.5 in h, 11 in w.
+    * 
+    * @return Specifies the size of the original subject of the file. eg 8.5 in h, 11 in w.
+    */
+    @Nullable
+    public final LocalTime getDimensionsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DIMENSIONS);
     }
 
    /**
@@ -5770,8 +6431,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the organization publishing the album (i.e. the 'record label') or movie..
     */
     @Nullable
-    public final LocalDate getPublisherAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PUBLISHER);
+    public final LocalDateTime getPublisherAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PUBLISHER);
+    }
+
+   /**
+    * Get Name of the organization publishing the album (i.e. the 'record label') or movie..
+    * 
+    * @return Name of the organization publishing the album (i.e. the 'record label') or movie..
+    */
+    @Nullable
+    public final LocalTime getPublisherAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PUBLISHER);
     }
 
    /**
@@ -5856,8 +6527,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Cover_Type.
     */
     @Nullable
-    public final LocalDate getCoverTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COVERTYPE);
+    public final LocalDateTime getCoverTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COVERTYPE);
+    }
+
+   /**
+    * Get Cover_Type.
+    * 
+    * @return Cover_Type.
+    */
+    @Nullable
+    public final LocalTime getCoverTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COVERTYPE);
     }
 
    /**
@@ -5942,8 +6623,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Operating System of encoding-software.
     */
     @Nullable
-    public final LocalDate getEncodedOperatingSystemAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDOPERATINGSYSTEM);
+    public final LocalDateTime getEncodedOperatingSystemAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDOPERATINGSYSTEM);
+    }
+
+   /**
+    * Get Operating System of encoding-software.
+    * 
+    * @return Operating System of encoding-software.
+    */
+    @Nullable
+    public final LocalTime getEncodedOperatingSystemAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDOPERATINGSYSTEM);
     }
 
    /**
@@ -6028,8 +6719,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the company.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationCompanyNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDAPPLICATIONCOMPANYNAME);
+    public final LocalDateTime getEncodedApplicationCompanyNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONCOMPANYNAME);
+    }
+
+   /**
+    * Get Name of the company.
+    * 
+    * @return Name of the company.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationCompanyNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONCOMPANYNAME);
     }
 
    /**
@@ -6114,8 +6815,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Is there a cover.
     */
     @Nullable
-    public final LocalDate getCoverAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COVER);
+    public final LocalDateTime getCoverAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COVER);
+    }
+
+   /**
+    * Get Is there a cover.
+    * 
+    * @return Is there a cover.
+    */
+    @Nullable
+    public final LocalTime getCoverAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COVER);
     }
 
    /**
@@ -6200,8 +6911,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Commercial name used by vendor for theses setings if there is one.
     */
     @Nullable
-    public final LocalDate getFormatCommercialIfAnyAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATCOMMERCIALIFANY);
+    public final LocalDateTime getFormatCommercialIfAnyAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATCOMMERCIALIFANY);
+    }
+
+   /**
+    * Get Commercial name used by vendor for theses setings if there is one.
+    * 
+    * @return Commercial name used by vendor for theses setings if there is one.
+    */
+    @Nullable
+    public final LocalTime getFormatCommercialIfAnyAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATCOMMERCIALIFANY);
     }
 
    /**
@@ -6286,8 +7007,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time/date/year that the tags were done for this item..
     */
     @Nullable
-    public final LocalDate getTaggedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TAGGEDDATE);
+    public final LocalDateTime getTaggedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TAGGEDDATE);
+    }
+
+   /**
+    * Get The time/date/year that the tags were done for this item..
+    * 
+    * @return The time/date/year that the tags were done for this item..
+    */
+    @Nullable
+    public final LocalTime getTaggedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TAGGEDDATE);
     }
 
    /**
@@ -6372,8 +7103,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the product the file was originally intended for.
     */
     @Nullable
-    public final LocalDate getOriginalSourceFormNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEFORMNAME);
+    public final LocalDateTime getOriginalSourceFormNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMNAME);
+    }
+
+   /**
+    * Get Name of the product the file was originally intended for.
+    * 
+    * @return Name of the product the file was originally intended for.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceFormNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMNAME);
     }
 
    /**
@@ -6458,8 +7199,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Album performer/artist of this file.
     */
     @Nullable
-    public final LocalDate getAlbumPerformerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMPERFORMER);
+    public final LocalDateTime getAlbumPerformerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMPERFORMER);
+    }
+
+   /**
+    * Get Album performer/artist of this file.
+    * 
+    * @return Album performer/artist of this file.
+    */
+    @Nullable
+    public final LocalTime getAlbumPerformerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMPERFORMER);
     }
 
    /**
@@ -6544,8 +7295,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A very general tag for everyone else that wants to be listed..
     */
     @Nullable
-    public final LocalDate getThanksToAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.THANKSTO);
+    public final LocalDateTime getThanksToAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.THANKSTO);
+    }
+
+   /**
+    * Get A very general tag for everyone else that wants to be listed..
+    * 
+    * @return A very general tag for everyone else that wants to be listed..
+    */
+    @Nullable
+    public final LocalTime getThanksToAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.THANKSTO);
     }
 
    /**
@@ -6630,8 +7391,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.IDSTRING);
+    public final LocalDateTime getIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.IDSTRING);
+    }
+
+   /**
+    * Get The ID for this stream in this file.
+    * 
+    * @return The ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.IDSTRING);
     }
 
    /**
@@ -6716,8 +7487,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Comic_More.
     */
     @Nullable
-    public final LocalDate getComicMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMICMORE);
+    public final LocalDateTime getComicMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMICMORE);
+    }
+
+   /**
+    * Get Comic_More.
+    * 
+    * @return Comic_More.
+    */
+    @Nullable
+    public final LocalTime getComicMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMICMORE);
     }
 
    /**
@@ -6802,8 +7583,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The person responsible for designing the Overall visual appearance of a movie..
     */
     @Nullable
-    public final LocalDate getProductionDesignerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PRODUCTIONDESIGNER);
+    public final LocalDateTime getProductionDesignerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PRODUCTIONDESIGNER);
+    }
+
+   /**
+    * Get The person responsible for designing the Overall visual appearance of a movie..
+    * 
+    * @return The person responsible for designing the Overall visual appearance of a movie..
+    */
+    @Nullable
+    public final LocalTime getProductionDesignerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PRODUCTIONDESIGNER);
     }
 
    /**
@@ -6888,8 +7679,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time/date/year that the encoding of this item was completed began..
     */
     @Nullable
-    public final LocalDate getEncodedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDDATE);
+    public final LocalDateTime getEncodedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDDATE);
+    }
+
+   /**
+    * Get The time/date/year that the encoding of this item was completed began..
+    * 
+    * @return The time/date/year that the encoding of this item was completed began..
+    */
+    @Nullable
+    public final LocalTime getEncodedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDDATE);
     }
 
    /**
@@ -6974,8 +7775,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return ServiceChannel.
     */
     @Nullable
-    public final LocalDate getServiceChannelAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SERVICECHANNEL);
+    public final LocalDateTime getServiceChannelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SERVICECHANNEL);
+    }
+
+   /**
+    * Get ServiceChannel.
+    * 
+    * @return ServiceChannel.
+    */
+    @Nullable
+    public final LocalTime getServiceChannelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SERVICECHANNEL);
     }
 
    /**
@@ -7060,8 +7871,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The unique ID for this stream, should be copied with stream copy.
     */
     @Nullable
-    public final LocalDate getUniqueIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.UNIQUEID);
+    public final LocalDateTime getUniqueIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.UNIQUEID);
+    }
+
+   /**
+    * Get The unique ID for this stream, should be copied with stream copy.
+    * 
+    * @return The unique ID for this stream, should be copied with stream copy.
+    */
+    @Nullable
+    public final LocalTime getUniqueIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.UNIQUEID);
     }
 
    /**
@@ -7146,8 +7967,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDelayString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSTRING3);
+    public final LocalDateTime getDelayString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSTRING3);
+    }
+
+   /**
+    * Get format : HH:MM:SS.MMM.
+    * 
+    * @return format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDelayString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSTRING3);
     }
 
    /**
@@ -7232,8 +8063,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDelayString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSTRING4);
+    public final LocalDateTime getDelayString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSTRING4);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDelayString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSTRING4);
     }
 
    /**
@@ -7318,8 +8159,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSTRING1);
+    public final LocalDateTime getDelayString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSTRING1);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSTRING1);
     }
 
    /**
@@ -7404,8 +8255,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSTRING2);
+    public final LocalDateTime getDelayString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSTRING2);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSTRING2);
     }
 
    /**
@@ -7490,8 +8351,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Brand or trademark associated with the marketing of music recordings and music videos..
     */
     @Nullable
-    public final LocalDate getLabelAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LABEL);
+    public final LocalDateTime getLabelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LABEL);
+    }
+
+   /**
+    * Get Brand or trademark associated with the marketing of music recordings and music videos..
+    * 
+    * @return Brand or trademark associated with the marketing of music recordings and music videos..
+    */
+    @Nullable
+    public final LocalTime getLabelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LABEL);
     }
 
    /**
@@ -7576,8 +8447,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDelayString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSTRING5);
+    public final LocalDateTime getDelayString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSTRING5);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDelayString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSTRING5);
     }
 
    /**
@@ -7662,8 +8543,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Link to a site about this track.
     */
     @Nullable
-    public final LocalDate getTrackUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TRACKURL);
+    public final LocalDateTime getTrackUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TRACKURL);
+    }
+
+   /**
+    * Get Link to a site about this track.
+    * 
+    * @return Link to a site about this track.
+    */
+    @Nullable
+    public final LocalTime getTrackUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TRACKURL);
     }
 
    /**
@@ -7748,8 +8639,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original name of the part in the original support.
     */
     @Nullable
-    public final LocalDate getOriginalPartAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALPART);
+    public final LocalDateTime getOriginalPartAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALPART);
+    }
+
+   /**
+    * Get Original name of the part in the original support.
+    * 
+    * @return Original name of the part in the original support.
+    */
+    @Nullable
+    public final LocalTime getOriginalPartAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALPART);
     }
 
    /**
@@ -7834,8 +8735,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption_Padding.
     */
     @Nullable
-    public final LocalDate getEncryptionPaddingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTIONPADDING);
+    public final LocalDateTime getEncryptionPaddingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTIONPADDING);
+    }
+
+   /**
+    * Get Encryption_Padding.
+    * 
+    * @return Encryption_Padding.
+    */
+    @Nullable
+    public final LocalTime getEncryptionPaddingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTIONPADDING);
     }
 
    /**
@@ -7920,8 +8831,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay fixed in the stream (relative) IN MS.
     */
     @Nullable
-    public final LocalDate getDelayAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAY);
+    public final LocalDateTime getDelayAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAY);
+    }
+
+   /**
+    * Get Delay fixed in the stream (relative) IN MS.
+    * 
+    * @return Delay fixed in the stream (relative) IN MS.
+    */
+    @Nullable
+    public final LocalTime getDelayAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAY);
     }
 
    /**
@@ -8006,8 +8927,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the software package used to create the file, such as Microsoft WaveEdit..
     */
     @Nullable
-    public final LocalDate getEncodedApplicationUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDAPPLICATIONURL);
+    public final LocalDateTime getEncodedApplicationUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONURL);
+    }
+
+   /**
+    * Get Name of the software package used to create the file, such as Microsoft WaveEdit..
+    * 
+    * @return Name of the software package used to create the file, such as Microsoft WaveEdit..
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONURL);
     }
 
    /**
@@ -8092,8 +9023,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Cover_Mime.
     */
     @Nullable
-    public final LocalDate getCoverMimeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COVERMIME);
+    public final LocalDateTime getCoverMimeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COVERMIME);
+    }
+
+   /**
+    * Get Cover_Mime.
+    * 
+    * @return Cover_Mime.
+    */
+    @Nullable
+    public final LocalTime getCoverMimeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COVERMIME);
     }
 
    /**
@@ -8178,8 +9119,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return DataSize.
     */
     @Nullable
-    public final LocalDate getDataSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DATASIZE);
+    public final LocalDateTime getDataSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DATASIZE);
+    }
+
+   /**
+    * Get DataSize.
+    * 
+    * @return DataSize.
+    */
+    @Nullable
+    public final LocalTime getDataSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DATASIZE);
     }
 
    /**
@@ -8264,8 +9215,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Software used to create the file.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARY);
+    public final LocalDateTime getEncodedLibraryAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARY);
+    }
+
+   /**
+    * Get Software used to create the file.
+    * 
+    * @return Software used to create the file.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARY);
     }
 
    /**
@@ -8350,8 +9311,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of the part.
     */
     @Nullable
-    public final LocalDate getPartPositionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PARTPOSITION);
+    public final LocalDateTime getPartPositionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PARTPOSITION);
+    }
+
+   /**
+    * Get Number of the part.
+    * 
+    * @return Number of the part.
+    */
+    @Nullable
+    public final LocalTime getPartPositionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PARTPOSITION);
     }
 
    /**
@@ -8436,8 +9407,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Complete name (Folder+Name+Extension) of the last file (in the case of a sequence of files).
     */
     @Nullable
-    public final LocalDate getCompleteNameLastAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMPLETENAMELAST);
+    public final LocalDateTime getCompleteNameLastAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPLETENAMELAST);
+    }
+
+   /**
+    * Get Complete name (Folder+Name+Extension) of the last file (in the case of a sequence of files).
+    * 
+    * @return Complete name (Folder+Name+Extension) of the last file (in the case of a sequence of files).
+    */
+    @Nullable
+    public final LocalTime getCompleteNameLastAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPLETENAMELAST);
     }
 
    /**
@@ -8522,8 +9503,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Text of a song.
     */
     @Nullable
-    public final LocalDate getLyricsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LYRICS);
+    public final LocalDateTime getLyricsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LYRICS);
+    }
+
+   /**
+    * Get Text of a song.
+    * 
+    * @return Text of a song.
+    */
+    @Nullable
+    public final LocalTime getLyricsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LYRICS);
     }
 
    /**
@@ -8608,8 +9599,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Internet Media Type (aka MIME Type, Content-Type).
     */
     @Nullable
-    public final LocalDate getInternetMediaTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.INTERNETMEDIATYPE);
+    public final LocalDateTime getInternetMediaTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.INTERNETMEDIATYPE);
+    }
+
+   /**
+    * Get Internet Media Type (aka MIME Type, Content-Type).
+    * 
+    * @return Internet Media Type (aka MIME Type, Content-Type).
+    */
+    @Nullable
+    public final LocalTime getInternetMediaTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.INTERNETMEDIATYPE);
     }
 
    /**
@@ -8694,8 +9695,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
     */
     @Nullable
-    public final LocalDate getLawRatingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LAWRATING);
+    public final LocalDateTime getLawRatingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LAWRATING);
+    }
+
+   /**
+    * Get Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
+    * 
+    * @return Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
+    */
+    @Nullable
+    public final LocalTime getLawRatingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LAWRATING);
     }
 
    /**
@@ -8780,8 +9791,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Frames per second, denominator.
     */
     @Nullable
-    public final LocalDate getFrameRateDenAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FRAMERATEDEN);
+    public final LocalDateTime getFrameRateDenAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FRAMERATEDEN);
+    }
+
+   /**
+    * Get Frames per second, denominator.
+    * 
+    * @return Frames per second, denominator.
+    */
+    @Nullable
+    public final LocalTime getFrameRateDenAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FRAMERATEDEN);
     }
 
    /**
@@ -8866,8 +9887,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption_Method.
     */
     @Nullable
-    public final LocalDate getEncryptionMethodAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTIONMETHOD);
+    public final LocalDateTime getEncryptionMethodAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTIONMETHOD);
+    }
+
+   /**
+    * Get Encryption_Method.
+    * 
+    * @return Encryption_Method.
+    */
+    @Nullable
+    public final LocalTime getEncryptionMethodAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTIONMETHOD);
     }
 
    /**
@@ -8952,8 +9983,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The name of the director of photography, also known as cinematographer..
     */
     @Nullable
-    public final LocalDate getDirectorOfPhotographyAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DIRECTOROFPHOTOGRAPHY);
+    public final LocalDateTime getDirectorOfPhotographyAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DIRECTOROFPHOTOGRAPHY);
+    }
+
+   /**
+    * Get The name of the director of photography, also known as cinematographer..
+    * 
+    * @return The name of the director of photography, also known as cinematographer..
+    */
+    @Nullable
+    public final LocalTime getDirectorOfPhotographyAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DIRECTOROFPHOTOGRAPHY);
     }
 
    /**
@@ -9038,8 +10079,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Audio Codecs in this file,separated by /.
     */
     @Nullable
-    public final LocalDate getAudioFormatListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.AUDIOFORMATLIST);
+    public final LocalDateTime getAudioFormatListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.AUDIOFORMATLIST);
+    }
+
+   /**
+    * Get Audio Codecs in this file,separated by /.
+    * 
+    * @return Audio Codecs in this file,separated by /.
+    */
+    @Nullable
+    public final LocalTime getAudioFormatListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.AUDIOFORMATLIST);
     }
 
    /**
@@ -9124,8 +10175,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Other formats in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getOtherFormatListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OTHERFORMATLIST);
+    public final LocalDateTime getOtherFormatListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OTHERFORMATLIST);
+    }
+
+   /**
+    * Get Other formats in this file, separated by /.
+    * 
+    * @return Other formats in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getOtherFormatListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OTHERFORMATLIST);
     }
 
    /**
@@ -9210,8 +10271,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The person who arranged the piece. e.g. Ravel..
     */
     @Nullable
-    public final LocalDate getArrangerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ARRANGER);
+    public final LocalDateTime getArrangerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ARRANGER);
+    }
+
+   /**
+    * Get The person who arranged the piece. e.g. Ravel..
+    * 
+    * @return The person who arranged the piece. e.g. Ravel..
+    */
+    @Nullable
+    public final LocalTime getArrangerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ARRANGER);
     }
 
    /**
@@ -9296,8 +10367,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The person who oversees the artists and craftspeople who build the sets..
     */
     @Nullable
-    public final LocalDate getArtDirectorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ARTDIRECTOR);
+    public final LocalDateTime getArtDirectorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ARTDIRECTOR);
+    }
+
+   /**
+    * Get The person who oversees the artists and craftspeople who build the sets..
+    * 
+    * @return The person who oversees the artists and craftspeople who build the sets..
+    */
+    @Nullable
+    public final LocalTime getArtDirectorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ARTDIRECTOR);
     }
 
    /**
@@ -9382,8 +10463,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of the Season.
     */
     @Nullable
-    public final LocalDate getSeasonPositionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SEASONPOSITION);
+    public final LocalDateTime getSeasonPositionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SEASONPOSITION);
+    }
+
+   /**
+    * Get Number of the Season.
+    * 
+    * @return Number of the Season.
+    */
+    @Nullable
+    public final LocalTime getSeasonPositionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SEASONPOSITION);
     }
 
    /**
@@ -9468,8 +10559,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of colors requested when digitizing, e.g. 256 for images or 32 bit RGB for video.
     */
     @Nullable
-    public final LocalDate getOriginalSourceFormNumColorsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEFORMNUMCOLORS);
+    public final LocalDateTime getOriginalSourceFormNumColorsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMNUMCOLORS);
+    }
+
+   /**
+    * Get Number of colors requested when digitizing, e.g. 256 for images or 32 bit RGB for video.
+    * 
+    * @return Number of colors requested when digitizing, e.g. 256 for images or 32 bit RGB for video.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceFormNumColorsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMNUMCOLORS);
     }
 
    /**
@@ -9554,8 +10655,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time of the stream in ms.
     */
     @Nullable
-    public final LocalDate getDurationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATION);
+    public final LocalDateTime getDurationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATION);
+    }
+
+   /**
+    * Get Play time of the stream in ms.
+    * 
+    * @return Play time of the stream in ms.
+    */
+    @Nullable
+    public final LocalTime getDurationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATION);
     }
 
    /**
@@ -9640,8 +10751,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Nationality of the main composer of the item, mostly for classical music..
     */
     @Nullable
-    public final LocalDate getComposerNationalityAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMPOSERNATIONALITY);
+    public final LocalDateTime getComposerNationalityAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPOSERNATIONALITY);
+    }
+
+   /**
+    * Get Nationality of the main composer of the item, mostly for classical music..
+    * 
+    * @return Nationality of the main composer of the item, mostly for classical music..
+    */
+    @Nullable
+    public final LocalTime getComposerNationalityAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPOSERNATIONALITY);
     }
 
    /**
@@ -9726,8 +10847,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A hint/popular name for this codec.
     */
     @Nullable
-    public final LocalDate getCodecIDHintAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDHINT);
+    public final LocalDateTime getCodecIDHintAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDHINT);
+    }
+
+   /**
+    * Get A hint/popular name for this codec.
+    * 
+    * @return A hint/popular name for this codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDHintAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDHINT);
     }
 
    /**
@@ -9812,8 +10943,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Service/Url.
     */
     @Nullable
-    public final LocalDate getServiceUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SERVICEURL);
+    public final LocalDateTime getServiceUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SERVICEURL);
+    }
+
+   /**
+    * Get Service/Url.
+    * 
+    * @return Service/Url.
+    */
+    @Nullable
+    public final LocalTime getServiceUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SERVICEURL);
     }
 
    /**
@@ -9898,8 +11039,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the person or organisation that encoded/ripped the audio file..
     */
     @Nullable
-    public final LocalDate getEncodedByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDBY);
+    public final LocalDateTime getEncodedByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDBY);
+    }
+
+   /**
+    * Get Name of the person or organisation that encoded/ripped the audio file..
+    * 
+    * @return Name of the person or organisation that encoded/ripped the audio file..
+    */
+    @Nullable
+    public final LocalTime getEncodedByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDBY);
     }
 
    /**
@@ -9984,8 +11135,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the software package used to create the file, such as Microsoft WaveEdit.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDAPPLICATION);
+    public final LocalDateTime getEncodedApplicationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDAPPLICATION);
+    }
+
+   /**
+    * Get Name of the software package used to create the file, such as Microsoft WaveEdit.
+    * 
+    * @return Name of the software package used to create the file, such as Microsoft WaveEdit.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDAPPLICATION);
     }
 
    /**
@@ -10070,8 +11231,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return ServiceName.
     */
     @Nullable
-    public final LocalDate getServiceNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SERVICENAME);
+    public final LocalDateTime getServiceNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SERVICENAME);
+    }
+
+   /**
+    * Get ServiceName.
+    * 
+    * @return ServiceName.
+    */
+    @Nullable
+    public final LocalTime getServiceNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SERVICENAME);
     }
 
    /**
@@ -10156,8 +11327,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return ServiceProvider.
     */
     @Nullable
-    public final LocalDate getServiceProviderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SERVICEPROVIDER);
+    public final LocalDateTime getServiceProviderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SERVICEPROVIDER);
+    }
+
+   /**
+    * Get ServiceProvider.
+    * 
+    * @return ServiceProvider.
+    */
+    @Nullable
+    public final LocalTime getServiceProviderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SERVICEPROVIDER);
     }
 
    /**
@@ -10242,8 +11423,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Image languages in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getImageLanguageListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.IMAGELANGUAGELIST);
+    public final LocalDateTime getImageLanguageListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.IMAGELANGUAGELIST);
+    }
+
+   /**
+    * Get Image languages in this file, separated by /.
+    * 
+    * @return Image languages in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getImageLanguageListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.IMAGELANGUAGELIST);
     }
 
    /**
@@ -10328,8 +11519,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize/String2.
     */
     @Nullable
-    public final LocalDate getStreamSizeString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZESTRING2);
+    public final LocalDateTime getStreamSizeString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZESTRING2);
+    }
+
+   /**
+    * Get StreamSize/String2.
+    * 
+    * @return StreamSize/String2.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZESTRING2);
     }
 
    /**
@@ -10414,8 +11615,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The artist(s) who performed the work. In classical music this would be the conductor, orchestra, soloists..
     */
     @Nullable
-    public final LocalDate getConductorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CONDUCTOR);
+    public final LocalDateTime getConductorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CONDUCTOR);
+    }
+
+   /**
+    * Get The artist(s) who performed the work. In classical music this would be the conductor, orchestra, soloists..
+    * 
+    * @return The artist(s) who performed the work. In classical music this would be the conductor, orchestra, soloists..
+    */
+    @Nullable
+    public final LocalTime getConductorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CONDUCTOR);
     }
 
    /**
@@ -10500,8 +11711,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time that the file was created on the file system.
     */
     @Nullable
-    public final LocalDate getFileCreatedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILECREATEDDATE);
+    public final LocalDateTime getFileCreatedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILECREATEDDATE);
+    }
+
+   /**
+    * Get The time that the file was created on the file system.
+    * 
+    * @return The time that the file was created on the file system.
+    */
+    @Nullable
+    public final LocalTime getFileCreatedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILECREATEDDATE);
     }
 
    /**
@@ -10586,8 +11807,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Location, where an item is archived, e.eg. Louvre,Paris,France.
     */
     @Nullable
-    public final LocalDate getArchivalLocationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ARCHIVALLOCATION);
+    public final LocalDateTime getArchivalLocationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ARCHIVALLOCATION);
+    }
+
+   /**
+    * Get Location, where an item is archived, e.eg. Louvre,Paris,France.
+    * 
+    * @return Location, where an item is archived, e.eg. Louvre,Paris,France.
+    */
+    @Nullable
+    public final LocalTime getArchivalLocationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ARCHIVALLOCATION);
     }
 
    /**
@@ -10672,8 +11903,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return ServiceProviderr/Url.
     */
     @Nullable
-    public final LocalDate getServiceProviderrUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SERVICEPROVIDERRURL);
+    public final LocalDateTime getServiceProviderrUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SERVICEPROVIDERRURL);
+    }
+
+   /**
+    * Get ServiceProviderr/Url.
+    * 
+    * @return ServiceProviderr/Url.
+    */
+    @Nullable
+    public final LocalTime getServiceProviderrUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SERVICEPROVIDERRURL);
     }
 
    /**
@@ -10758,8 +11999,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize/String1.
     */
     @Nullable
-    public final LocalDate getStreamSizeString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZESTRING1);
+    public final LocalDateTime getStreamSizeString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZESTRING1);
+    }
+
+   /**
+    * Get StreamSize/String1.
+    * 
+    * @return StreamSize/String1.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZESTRING1);
     }
 
    /**
@@ -10844,8 +12095,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize/String4.
     */
     @Nullable
-    public final LocalDate getStreamSizeString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZESTRING4);
+    public final LocalDateTime getStreamSizeString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZESTRING4);
+    }
+
+   /**
+    * Get StreamSize/String4.
+    * 
+    * @return StreamSize/String4.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZESTRING4);
     }
 
    /**
@@ -10930,8 +12191,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Univers movies belong to, e.g. Starwars, Stargate, Buffy, Dragonballs.
     */
     @Nullable
-    public final LocalDate getDomainAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DOMAIN);
+    public final LocalDateTime getDomainAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DOMAIN);
+    }
+
+   /**
+    * Get Univers movies belong to, e.g. Starwars, Stargate, Buffy, Dragonballs.
+    * 
+    * @return Univers movies belong to, e.g. Starwars, Stargate, Buffy, Dragonballs.
+    */
+    @Nullable
+    public final LocalTime getDomainAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DOMAIN);
     }
 
    /**
@@ -11016,8 +12287,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Homepage of the performer/artist.
     */
     @Nullable
-    public final LocalDate getPerformerUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PERFORMERURL);
+    public final LocalDateTime getPerformerUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PERFORMERURL);
+    }
+
+   /**
+    * Get Homepage of the performer/artist.
+    * 
+    * @return Homepage of the performer/artist.
+    */
+    @Nullable
+    public final LocalTime getPerformerUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PERFORMERURL);
     }
 
    /**
@@ -11102,8 +12383,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Minimum Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getOverallBitRateMinimumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATEMINIMUM);
+    public final LocalDateTime getOverallBitRateMinimumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATEMINIMUM);
+    }
+
+   /**
+    * Get Minimum Bit rate in bps.
+    * 
+    * @return Minimum Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateMinimumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATEMINIMUM);
     }
 
    /**
@@ -11188,8 +12479,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize/String3.
     */
     @Nullable
-    public final LocalDate getStreamSizeString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZESTRING3);
+    public final LocalDateTime getStreamSizeString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZESTRING3);
+    }
+
+   /**
+    * Get StreamSize/String3.
+    * 
+    * @return StreamSize/String3.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZESTRING3);
     }
 
    /**
@@ -11274,8 +12575,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Publishers official webpage..
     */
     @Nullable
-    public final LocalDate getPublisherURLAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PUBLISHERURL);
+    public final LocalDateTime getPublisherURLAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PUBLISHERURL);
+    }
+
+   /**
+    * Get Publishers official webpage..
+    * 
+    * @return Publishers official webpage..
+    */
+    @Nullable
+    public final LocalTime getPublisherURLAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PUBLISHERURL);
     }
 
    /**
@@ -11360,8 +12671,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return With proportion.
     */
     @Nullable
-    public final LocalDate getStreamSizeString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZESTRING5);
+    public final LocalDateTime getStreamSizeString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZESTRING5);
+    }
+
+   /**
+    * Get With proportion.
+    * 
+    * @return With proportion.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZESTRING5);
     }
 
    /**
@@ -11446,8 +12767,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Stream type name.
     */
     @Nullable
-    public final LocalDate getStreamKindAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMKIND);
+    public final LocalDateTime getStreamKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMKIND);
+    }
+
+   /**
+    * Get Stream type name.
+    * 
+    * @return Stream type name.
+    */
+    @Nullable
+    public final LocalTime getStreamKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMKIND);
     }
 
    /**
@@ -11532,8 +12863,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Keywords to the item separated by a comma, used for searching..
     */
     @Nullable
-    public final LocalDate getKeywordsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.KEYWORDS);
+    public final LocalDateTime getKeywordsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.KEYWORDS);
+    }
+
+   /**
+    * Get Keywords to the item separated by a comma, used for searching..
+    * 
+    * @return Keywords to the item separated by a comma, used for searching..
+    */
+    @Nullable
+    public final LocalTime getKeywordsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.KEYWORDS);
     }
 
    /**
@@ -11618,8 +12959,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A numeric value defining how much a person likes the song/movie. The number is between 0 and 5 with decimal values possible (e.g. 2.7), 5(.0) being the highest possible rating..
     */
     @Nullable
-    public final LocalDate getRatingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.RATING);
+    public final LocalDateTime getRatingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.RATING);
+    }
+
+   /**
+    * Get A numeric value defining how much a person likes the song/movie. The number is between 0 and 5 with decimal values possible (e.g. 2.7), 5(.0) being the highest possible rating..
+    * 
+    * @return A numeric value defining how much a person likes the song/movie. The number is between 0 and 5 with decimal values possible (e.g. 2.7), 5(.0) being the highest possible rating..
+    */
+    @Nullable
+    public final LocalTime getRatingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.RATING);
     }
 
    /**
@@ -11704,8 +13055,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Maximum Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getOverallBitRateMaximumStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATEMAXIMUMSTRING);
+    public final LocalDateTime getOverallBitRateMaximumStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATEMAXIMUMSTRING);
+    }
+
+   /**
+    * Get Maximum Bit rate (with measurement).
+    * 
+    * @return Maximum Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateMaximumStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATEMAXIMUMSTRING);
     }
 
    /**
@@ -11790,8 +13151,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The date/year that the item was originaly released..
     */
     @Nullable
-    public final LocalDate getOriginalReleasedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALRELEASEDDATE);
+    public final LocalDateTime getOriginalReleasedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALRELEASEDDATE);
+    }
+
+   /**
+    * Get The date/year that the item was originaly released..
+    * 
+    * @return The date/year that the item was originaly released..
+    */
+    @Nullable
+    public final LocalTime getOriginalReleasedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALRELEASEDDATE);
     }
 
    /**
@@ -11876,8 +13247,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Codec ID (found in some containers).
     */
     @Nullable
-    public final LocalDate getCodecIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECID);
+    public final LocalDateTime getCodecIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECID);
+    }
+
+   /**
+    * Get Codec ID (found in some containers).
+    * 
+    * @return Codec ID (found in some containers).
+    */
+    @Nullable
+    public final LocalTime getCodecIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECID);
     }
 
    /**
@@ -11962,8 +13343,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Album/Sort.
     */
     @Nullable
-    public final LocalDate getAlbumSortAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMSORT);
+    public final LocalDateTime getAlbumSortAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMSORT);
+    }
+
+   /**
+    * Get Album/Sort.
+    * 
+    * @return Album/Sort.
+    */
+    @Nullable
+    public final LocalTime getAlbumSortAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMSORT);
     }
 
    /**
@@ -12048,8 +13439,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Audio languages in this file separated by /.
     */
     @Nullable
-    public final LocalDate getAudioLanguageListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.AUDIOLANGUAGELIST);
+    public final LocalDateTime getAudioLanguageListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.AUDIOLANGUAGELIST);
+    }
+
+   /**
+    * Get Audio languages in this file separated by /.
+    * 
+    * @return Audio languages in this file separated by /.
+    */
+    @Nullable
+    public final LocalTime getAudioLanguageListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.AUDIOLANGUAGELIST);
     }
 
    /**
@@ -12134,8 +13535,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The name of a co-producer..
     */
     @Nullable
-    public final LocalDate getCoProducerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COPRODUCER);
+    public final LocalDateTime getCoProducerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COPRODUCER);
+    }
+
+   /**
+    * Get The name of a co-producer..
+    * 
+    * @return The name of a co-producer..
+    */
+    @Nullable
+    public final LocalTime getCoProducerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COPRODUCER);
     }
 
    /**
@@ -12220,8 +13631,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return International Standard Book Number..
     */
     @Nullable
-    public final LocalDate getISBNAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ISBN);
+    public final LocalDateTime getISBNAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ISBN);
+    }
+
+   /**
+    * Get International Standard Book Number..
+    * 
+    * @return International Standard Book Number..
+    */
+    @Nullable
+    public final LocalTime getISBNAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ISBN);
     }
 
    /**
@@ -12306,8 +13727,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The name of the choregrapher..
     */
     @Nullable
-    public final LocalDate getChoregrapherAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CHOREGRAPHER);
+    public final LocalDateTime getChoregrapherAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CHOREGRAPHER);
+    }
+
+   /**
+    * Get The name of the choregrapher..
+    * 
+    * @return The name of the choregrapher..
+    */
+    @Nullable
+    public final LocalTime getChoregrapherAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CHOREGRAPHER);
     }
 
    /**
@@ -12392,8 +13823,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARYSTRING);
+    public final LocalDateTime getEncodedLibraryStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARYSTRING);
+    }
+
+   /**
+    * Get Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    * 
+    * @return Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARYSTRING);
     }
 
    /**
@@ -12478,8 +13919,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Complete name (Folder+Name+Extension).
     */
     @Nullable
-    public final LocalDate getCompleteNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMPLETENAME);
+    public final LocalDateTime getCompleteNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPLETENAME);
+    }
+
+   /**
+    * Get Complete name (Folder+Name+Extension).
+    * 
+    * @return Complete name (Folder+Name+Extension).
+    */
+    @Nullable
+    public final LocalTime getCompleteNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPLETENAME);
     }
 
    /**
@@ -12564,8 +14015,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize/String.
     */
     @Nullable
-    public final LocalDate getStreamSizeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZESTRING);
+    public final LocalDateTime getStreamSizeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZESTRING);
+    }
+
+   /**
+    * Get StreamSize/String.
+    * 
+    * @return StreamSize/String.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZESTRING);
     }
 
    /**
@@ -12650,8 +14111,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The ID for this stream in the original medium of the material.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUMIDSTRING);
+    public final LocalDateTime getOriginalSourceMediumIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUMIDSTRING);
+    }
+
+   /**
+    * Get The ID for this stream in the original medium of the material.
+    * 
+    * @return The ID for this stream in the original medium of the material.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUMIDSTRING);
     }
 
    /**
@@ -12736,8 +14207,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Company the item is mainly distributed by .
     */
     @Nullable
-    public final LocalDate getDistributedByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DISTRIBUTEDBY);
+    public final LocalDateTime getDistributedByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DISTRIBUTEDBY);
+    }
+
+   /**
+    * Get Company the item is mainly distributed by .
+    * 
+    * @return Company the item is mainly distributed by .
+    */
+    @Nullable
+    public final LocalTime getDistributedByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DISTRIBUTEDBY);
     }
 
    /**
@@ -12822,8 +14303,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time that the file was modified on the file system (Warning: this field depends of local configuration, do not use it in an international database).
     */
     @Nullable
-    public final LocalDate getFileModifiedDateLocalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILEMODIFIEDDATELOCAL);
+    public final LocalDateTime getFileModifiedDateLocalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILEMODIFIEDDATELOCAL);
+    }
+
+   /**
+    * Get The time that the file was modified on the file system (Warning: this field depends of local configuration, do not use it in an international database).
+    * 
+    * @return The time that the file was modified on the file system (Warning: this field depends of local configuration, do not use it in an international database).
+    */
+    @Nullable
+    public final LocalTime getFileModifiedDateLocalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILEMODIFIEDDATELOCAL);
     }
 
    /**
@@ -12908,8 +14399,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Frame count (a frame contains a count of samples depends of the format).
     */
     @Nullable
-    public final LocalDate getFrameCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FRAMECOUNT);
+    public final LocalDateTime getFrameCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FRAMECOUNT);
+    }
+
+   /**
+    * Get Frame count (a frame contains a count of samples depends of the format).
+    * 
+    * @return Frame count (a frame contains a count of samples depends of the format).
+    */
+    @Nullable
+    public final LocalTime getFrameCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FRAMECOUNT);
     }
 
    /**
@@ -12994,8 +14495,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption_Length.
     */
     @Nullable
-    public final LocalDate getEncryptionLengthAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTIONLENGTH);
+    public final LocalDateTime getEncryptionLengthAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTIONLENGTH);
+    }
+
+   /**
+    * Get Encryption_Length.
+    * 
+    * @return Encryption_Length.
+    */
+    @Nullable
+    public final LocalTime getEncryptionLengthAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTIONLENGTH);
     }
 
    /**
@@ -13080,8 +14591,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return (Generic)Title of file.
     */
     @Nullable
-    public final LocalDate getTitleAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TITLE);
+    public final LocalDateTime getTitleAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TITLE);
+    }
+
+   /**
+    * Get (Generic)Title of file.
+    * 
+    * @return (Generic)Title of file.
+    */
+    @Nullable
+    public final LocalTime getTitleAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TITLE);
     }
 
    /**
@@ -13166,8 +14687,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The ICRA rating. (Previously RSACi).
     */
     @Nullable
-    public final LocalDate getICRAAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ICRA);
+    public final LocalDateTime getICRAAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ICRA);
+    }
+
+   /**
+    * Get The ICRA rating. (Previously RSACi).
+    * 
+    * @return The ICRA rating. (Previously RSACi).
+    */
+    @Nullable
+    public final LocalTime getICRAAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ICRA);
     }
 
    /**
@@ -13252,8 +14783,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay drop frame.
     */
     @Nullable
-    public final LocalDate getDelayDropFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYDROPFRAME);
+    public final LocalDateTime getDelayDropFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYDROPFRAME);
+    }
+
+   /**
+    * Get Delay drop frame.
+    * 
+    * @return Delay drop frame.
+    */
+    @Nullable
+    public final LocalTime getDelayDropFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYDROPFRAME);
     }
 
    /**
@@ -13338,8 +14879,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return (Generic)Url.
     */
     @Nullable
-    public final LocalDate getTitleUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TITLEURL);
+    public final LocalDateTime getTitleUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TITLEURL);
+    }
+
+   /**
+    * Get (Generic)Url.
+    * 
+    * @return (Generic)Url.
+    */
+    @Nullable
+    public final LocalTime getTitleUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TITLEURL);
     }
 
    /**
@@ -13424,8 +14975,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Describes the topic of the file, such as Aerial view of Seattle...
     */
     @Nullable
-    public final LocalDate getSubjectAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SUBJECT);
+    public final LocalDateTime getSubjectAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SUBJECT);
+    }
+
+   /**
+    * Get Describes the topic of the file, such as Aerial view of Seattle...
+    * 
+    * @return Describes the topic of the file, such as Aerial view of Seattle...
+    */
+    @Nullable
+    public final LocalTime getSubjectAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SUBJECT);
     }
 
    /**
@@ -13510,8 +15071,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return More infos about the movie.
     */
     @Nullable
-    public final LocalDate getMovieMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MOVIEMORE);
+    public final LocalDateTime getMovieMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MOVIEMORE);
+    }
+
+   /**
+    * Get More infos about the movie.
+    * 
+    * @return More infos about the movie.
+    */
+    @Nullable
+    public final LocalTime getMovieMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MOVIEMORE);
     }
 
    /**
@@ -13596,8 +15167,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Bit rate mode of all streams (VBR, CBR).
     */
     @Nullable
-    public final LocalDate getOverallBitRateModeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATEMODE);
+    public final LocalDateTime getOverallBitRateModeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATEMODE);
+    }
+
+   /**
+    * Get Bit rate mode of all streams (VBR, CBR).
+    * 
+    * @return Bit rate mode of all streams (VBR, CBR).
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateModeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATEMODE);
     }
 
    /**
@@ -13682,8 +15263,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The author of the screenplay or scenario (used for movies and TV shows)..
     */
     @Nullable
-    public final LocalDate getScreenplayByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SCREENPLAYBY);
+    public final LocalDateTime getScreenplayByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SCREENPLAYBY);
+    }
+
+   /**
+    * Get The author of the screenplay or scenario (used for movies and TV shows)..
+    * 
+    * @return The author of the screenplay or scenario (used for movies and TV shows)..
+    */
+    @Nullable
+    public final LocalTime getScreenplayByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SCREENPLAYBY);
     }
 
    /**
@@ -13768,8 +15359,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The name of an executive producer..
     */
     @Nullable
-    public final LocalDate getExecutiveProducerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.EXECUTIVEPRODUCER);
+    public final LocalDateTime getExecutiveProducerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.EXECUTIVEPRODUCER);
+    }
+
+   /**
+    * Get The name of an executive producer..
+    * 
+    * @return The name of an executive producer..
+    */
+    @Nullable
+    public final LocalTime getExecutiveProducerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.EXECUTIVEPRODUCER);
     }
 
    /**
@@ -13854,8 +15455,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return International Standard Recording Code, excluding the ISRC prefix and including hyphens..
     */
     @Nullable
-    public final LocalDate getISRCAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ISRC);
+    public final LocalDateTime getISRCAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ISRC);
+    }
+
+   /**
+    * Get International Standard Recording Code, excluding the ISRC prefix and including hyphens..
+    * 
+    * @return International Standard Recording Code, excluding the ISRC prefix and including hyphens..
+    */
+    @Nullable
+    public final LocalTime getISRCAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ISRC);
     }
 
    /**
@@ -13940,8 +15551,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Stream size divided by file size.
     */
     @Nullable
-    public final LocalDate getStreamSizeProportionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEPROPORTION);
+    public final LocalDateTime getStreamSizeProportionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEPROPORTION);
+    }
+
+   /**
+    * Get Stream size divided by file size.
+    * 
+    * @return Stream size divided by file size.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeProportionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEPROPORTION);
     }
 
    /**
@@ -14026,8 +15647,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return HeaderSize.
     */
     @Nullable
-    public final LocalDate getHeaderSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.HEADERSIZE);
+    public final LocalDateTime getHeaderSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.HEADERSIZE);
+    }
+
+   /**
+    * Get HeaderSize.
+    * 
+    * @return HeaderSize.
+    */
+    @Nullable
+    public final LocalTime getHeaderSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.HEADERSIZE);
     }
 
    /**
@@ -14112,8 +15743,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Parameters used by the software.
     */
     @Nullable
-    public final LocalDate getEncodedLibrarySettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARYSETTINGS);
+    public final LocalDateTime getEncodedLibrarySettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARYSETTINGS);
+    }
+
+   /**
+    * Get Parameters used by the software.
+    * 
+    * @return Parameters used by the software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibrarySettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARYSETTINGS);
     }
 
    /**
@@ -14198,8 +15839,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The type of the item. e.g. Documentary, Feature Film, Cartoon, Music Video, Music, Sound FX, etc..
     */
     @Nullable
-    public final LocalDate getContentTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CONTENTTYPE);
+    public final LocalDateTime getContentTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CONTENTTYPE);
+    }
+
+   /**
+    * Get The type of the item. e.g. Documentary, Feature Film, Cartoon, Music Video, Music, Sound FX, etc..
+    * 
+    * @return The type of the item. e.g. Documentary, Feature Film, Cartoon, Music Video, Music, Sound FX, etc..
+    */
+    @Nullable
+    public final LocalTime getContentTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CONTENTTYPE);
     }
 
    /**
@@ -14284,8 +15935,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return short descriptio, e.g. Earth in space.
     */
     @Nullable
-    public final LocalDate getCoverDescriptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COVERDESCRIPTION);
+    public final LocalDateTime getCoverDescriptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COVERDESCRIPTION);
+    }
+
+   /**
+    * Get short descriptio, e.g. Earth in space.
+    * 
+    * @return short descriptio, e.g. Earth in space.
+    */
+    @Nullable
+    public final LocalTime getCoverDescriptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COVERDESCRIPTION);
     }
 
    /**
@@ -14370,8 +16031,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Count of objects available in this stream.
     */
     @Nullable
-    public final LocalDate getCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COUNT);
+    public final LocalDateTime getCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COUNT);
+    }
+
+   /**
+    * Get Count of objects available in this stream.
+    * 
+    * @return Count of objects available in this stream.
+    */
+    @Nullable
+    public final LocalTime getCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COUNT);
     }
 
    /**
@@ -14456,8 +16127,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption.
     */
     @Nullable
-    public final LocalDate getEncryptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTION);
+    public final LocalDateTime getEncryptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTION);
+    }
+
+   /**
+    * Get Encryption.
+    * 
+    * @return Encryption.
+    */
+    @Nullable
+    public final LocalTime getEncryptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTION);
     }
 
    /**
@@ -14542,8 +16223,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Frames per second, numerator.
     */
     @Nullable
-    public final LocalDate getFrameRateNumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FRAMERATENUM);
+    public final LocalDateTime getFrameRateNumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FRAMERATENUM);
+    }
+
+   /**
+    * Get Frames per second, numerator.
+    * 
+    * @return Frames per second, numerator.
+    */
+    @Nullable
+    public final LocalTime getFrameRateNumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FRAMERATENUM);
     }
 
    /**
@@ -14628,8 +16319,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Version of this format.
     */
     @Nullable
-    public final LocalDate getFormatVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATVERSION);
+    public final LocalDateTime getFormatVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATVERSION);
+    }
+
+   /**
+    * Get Version of this format.
+    * 
+    * @return Version of this format.
+    */
+    @Nullable
+    public final LocalTime getFormatVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATVERSION);
     }
 
    /**
@@ -14714,8 +16415,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return When multiple streams, number of the stream (base=1).
     */
     @Nullable
-    public final LocalDate getStreamKindPosAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMKINDPOS);
+    public final LocalDateTime getStreamKindPosAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMKINDPOS);
+    }
+
+   /**
+    * Get When multiple streams, number of the stream (base=1).
+    * 
+    * @return When multiple streams, number of the stream (base=1).
+    */
+    @Nullable
+    public final LocalTime getStreamKindPosAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMKINDPOS);
     }
 
    /**
@@ -14800,8 +16511,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The ID for this stream in the original medium of the material.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUMID);
+    public final LocalDateTime getOriginalSourceMediumIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUMID);
+    }
+
+   /**
+    * Get The ID for this stream in the original medium of the material.
+    * 
+    * @return The ID for this stream in the original medium of the material.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEMEDIUMID);
     }
 
    /**
@@ -14886,8 +16607,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTRING);
+    public final LocalDateTime getDurationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTRING);
+    }
+
+   /**
+    * Get Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTRING);
     }
 
    /**
@@ -14972,8 +16703,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return ServiceType.
     */
     @Nullable
-    public final LocalDate getServiceTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SERVICETYPE);
+    public final LocalDateTime getServiceTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SERVICETYPE);
+    }
+
+   /**
+    * Get ServiceType.
+    * 
+    * @return ServiceType.
+    */
+    @Nullable
+    public final LocalTime getServiceTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SERVICETYPE);
     }
 
    /**
@@ -15058,8 +16799,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Nominal Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getOverallBitRateNominalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATENOMINAL);
+    public final LocalDateTime getOverallBitRateNominalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATENOMINAL);
+    }
+
+   /**
+    * Get Nominal Bit rate in bps.
+    * 
+    * @return Nominal Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateNominalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATENOMINAL);
     }
 
    /**
@@ -15144,8 +16895,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ID);
+    public final LocalDateTime getIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ID);
+    }
+
+   /**
+    * Get The ID for this stream in this file.
+    * 
+    * @return The ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ID);
     }
 
    /**
@@ -15230,8 +16991,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Release date of software.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARYDATE);
+    public final LocalDateTime getEncodedLibraryDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARYDATE);
+    }
+
+   /**
+    * Get Release date of software.
+    * 
+    * @return Release date of software.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARYDATE);
     }
 
    /**
@@ -15316,8 +17087,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The menu ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getMenuIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MENUIDSTRING);
+    public final LocalDateTime getMenuIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MENUIDSTRING);
+    }
+
+   /**
+    * Get The menu ID for this stream in this file.
+    * 
+    * @return The menu ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getMenuIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MENUIDSTRING);
     }
 
    /**
@@ -15402,8 +17183,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return FooterSize.
     */
     @Nullable
-    public final LocalDate getFooterSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FOOTERSIZE);
+    public final LocalDateTime getFooterSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FOOTERSIZE);
+    }
+
+   /**
+    * Get FooterSize.
+    * 
+    * @return FooterSize.
+    */
+    @Nullable
+    public final LocalTime getFooterSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FOOTERSIZE);
     }
 
    /**
@@ -15488,8 +17279,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Software used to tag this file.
     */
     @Nullable
-    public final LocalDate getTaggedApplicationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TAGGEDAPPLICATION);
+    public final LocalDateTime getTaggedApplicationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TAGGEDAPPLICATION);
+    }
+
+   /**
+    * Get Software used to tag this file.
+    * 
+    * @return Software used to tag this file.
+    */
+    @Nullable
+    public final LocalTime getTaggedApplicationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TAGGEDAPPLICATION);
     }
 
    /**
@@ -15574,8 +17375,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return License information, e.g., All Rights Reserved,Any Use Permitted..
     */
     @Nullable
-    public final LocalDate getTermsOfUseAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TERMSOFUSE);
+    public final LocalDateTime getTermsOfUseAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TERMSOFUSE);
+    }
+
+   /**
+    * Get License information, e.g., All Rights Reserved,Any Use Permitted..
+    * 
+    * @return License information, e.g., All Rights Reserved,Any Use Permitted..
+    */
+    @Nullable
+    public final LocalTime getTermsOfUseAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TERMSOFUSE);
     }
 
    /**
@@ -15660,8 +17471,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Bit rate of all streams in bps.
     */
     @Nullable
-    public final LocalDate getOverallBitRateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATE);
+    public final LocalDateTime getOverallBitRateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATE);
+    }
+
+   /**
+    * Get Bit rate of all streams in bps.
+    * 
+    * @return Bit rate of all streams in bps.
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATE);
     }
 
    /**
@@ -15746,8 +17567,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the director..
     */
     @Nullable
-    public final LocalDate getDirectorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DIRECTOR);
+    public final LocalDateTime getDirectorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DIRECTOR);
+    }
+
+   /**
+    * Get Name of the director..
+    * 
+    * @return Name of the director..
+    */
+    @Nullable
+    public final LocalTime getDirectorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DIRECTOR);
     }
 
    /**
@@ -15832,8 +17663,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return iTunes grouping.
     */
     @Nullable
-    public final LocalDate getGroupingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.GROUPING);
+    public final LocalDateTime getGroupingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.GROUPING);
+    }
+
+   /**
+    * Get iTunes grouping.
+    * 
+    * @return iTunes grouping.
+    */
+    @Nullable
+    public final LocalTime getGroupingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.GROUPING);
     }
 
    /**
@@ -15918,8 +17759,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Chapters languages in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getOtherLanguageListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OTHERLANGUAGELIST);
+    public final LocalDateTime getOtherLanguageListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OTHERLANGUAGELIST);
+    }
+
+   /**
+    * Get Chapters languages in this file, separated by /.
+    * 
+    * @return Chapters languages in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getOtherLanguageListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OTHERLANGUAGELIST);
     }
 
    /**
@@ -16004,8 +17855,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Intended to reflect the mood of the item with a few keywords, e.g. Romantic, Sad, Uplifting, etc..
     */
     @Nullable
-    public final LocalDate getMoodAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MOOD);
+    public final LocalDateTime getMoodAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MOOD);
+    }
+
+   /**
+    * Get Intended to reflect the mood of the item with a few keywords, e.g. Romantic, Sad, Uplifting, etc..
+    * 
+    * @return Intended to reflect the mood of the item with a few keywords, e.g. Romantic, Sad, Uplifting, etc..
+    */
+    @Nullable
+    public final LocalTime getMoodAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MOOD);
     }
 
    /**
@@ -16090,8 +17951,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDAPPLICATIONSTRING);
+    public final LocalDateTime getEncodedApplicationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONSTRING);
+    }
+
+   /**
+    * Get Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    * 
+    * @return Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONSTRING);
     }
 
    /**
@@ -16176,8 +18047,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return More infos about the album.
     */
     @Nullable
-    public final LocalDate getAlbumMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMMORE);
+    public final LocalDateTime getAlbumMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMMORE);
+    }
+
+   /**
+    * Get More infos about the album.
+    * 
+    * @return More infos about the album.
+    */
+    @Nullable
+    public final LocalTime getAlbumMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMMORE);
     }
 
    /**
@@ -16262,8 +18143,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return iTunes compilation.
     */
     @Nullable
-    public final LocalDate getCompilationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMPILATIONSTRING);
+    public final LocalDateTime getCompilationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPILATIONSTRING);
+    }
+
+   /**
+    * Get iTunes compilation.
+    * 
+    * @return iTunes compilation.
+    */
+    @Nullable
+    public final LocalTime getCompilationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPILATIONSTRING);
     }
 
    /**
@@ -16348,8 +18239,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Country.
     */
     @Nullable
-    public final LocalDate getCountryAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COUNTRY);
+    public final LocalDateTime getCountryAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COUNTRY);
+    }
+
+   /**
+    * Get Country.
+    * 
+    * @return Country.
+    */
+    @Nullable
+    public final LocalTime getCountryAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COUNTRY);
     }
 
    /**
@@ -16434,8 +18335,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time that the file was created on the file system (Warning: this field depends of local configuration, do not use it in an international database).
     */
     @Nullable
-    public final LocalDate getFileCreatedDateLocalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILECREATEDDATELOCAL);
+    public final LocalDateTime getFileCreatedDateLocalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILECREATEDDATELOCAL);
+    }
+
+   /**
+    * Get The time that the file was created on the file system (Warning: this field depends of local configuration, do not use it in an international database).
+    * 
+    * @return The time that the file was created on the file system (Warning: this field depends of local configuration, do not use it in an international database).
+    */
+    @Nullable
+    public final LocalTime getFileCreatedDateLocalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILECREATEDDATELOCAL);
     }
 
    /**
@@ -16520,8 +18431,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Original lyricist(s)/text writer(s)..
     */
     @Nullable
-    public final LocalDate getOriginalLyricistAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALLYRICIST);
+    public final LocalDateTime getOriginalLyricistAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALLYRICIST);
+    }
+
+   /**
+    * Get Original lyricist(s)/text writer(s)..
+    * 
+    * @return Original lyricist(s)/text writer(s)..
+    */
+    @Nullable
+    public final LocalTime getOriginalLyricistAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALLYRICIST);
     }
 
    /**
@@ -16606,8 +18527,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A short description of the contents, such as Two birds flying..
     */
     @Nullable
-    public final LocalDate getDescriptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DESCRIPTION);
+    public final LocalDateTime getDescriptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DESCRIPTION);
+    }
+
+   /**
+    * Get A short description of the contents, such as Two birds flying..
+    * 
+    * @return A short description of the contents, such as Two birds flying..
+    */
+    @Nullable
+    public final LocalTime getDescriptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DESCRIPTION);
     }
 
    /**
@@ -16692,8 +18623,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Text languages in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getTextLanguageListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TEXTLANGUAGELIST);
+    public final LocalDateTime getTextLanguageListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TEXTLANGUAGELIST);
+    }
+
+   /**
+    * Get Text languages in this file, separated by /.
+    * 
+    * @return Text languages in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getTextLanguageListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TEXTLANGUAGELIST);
     }
 
    /**
@@ -16778,8 +18719,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Describes whether an image has been cropped and, if so, how it was cropped..
     */
     @Nullable
-    public final LocalDate getCroppedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CROPPED);
+    public final LocalDateTime getCroppedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CROPPED);
+    }
+
+   /**
+    * Get Describes whether an image has been cropped and, if so, how it was cropped..
+    * 
+    * @return Describes whether an image has been cropped and, if so, how it was cropped..
+    */
+    @Nullable
+    public final LocalTime getCroppedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CROPPED);
     }
 
    /**
@@ -16864,8 +18815,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Last **Inform** call.
     */
     @Nullable
-    public final LocalDate getInformAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.INFORM);
+    public final LocalDateTime getInformAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.INFORM);
+    }
+
+   /**
+    * Get Last **Inform** call.
+    * 
+    * @return Last **Inform** call.
+    */
+    @Nullable
+    public final LocalTime getInformAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.INFORM);
     }
 
    /**
@@ -16950,8 +18911,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time/date/year that the recording began..
     */
     @Nullable
-    public final LocalDate getRecordedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.RECORDEDDATE);
+    public final LocalDateTime getRecordedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.RECORDEDDATE);
+    }
+
+   /**
+    * Get The time/date/year that the recording began..
+    * 
+    * @return The time/date/year that the recording began..
+    */
+    @Nullable
+    public final LocalTime getRecordedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.RECORDEDDATE);
     }
 
    /**
@@ -17036,8 +19007,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Menu languages in this file, separated by /.
     */
     @Nullable
-    public final LocalDate getMenuLanguageListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MENULANGUAGELIST);
+    public final LocalDateTime getMenuLanguageListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MENULANGUAGELIST);
+    }
+
+   /**
+    * Get Menu languages in this file, separated by /.
+    * 
+    * @return Menu languages in this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getMenuLanguageListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MENULANGUAGELIST);
     }
 
    /**
@@ -17122,8 +19103,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File size (with measure).
     */
     @Nullable
-    public final LocalDate getFileSizeStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILESIZESTRING);
+    public final LocalDateTime getFileSizeStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILESIZESTRING);
+    }
+
+   /**
+    * Get File size (with measure).
+    * 
+    * @return File size (with measure).
+    */
+    @Nullable
+    public final LocalTime getFileSizeStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILESIZESTRING);
     }
 
    /**
@@ -17208,8 +19199,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Reason for the law rating.
     */
     @Nullable
-    public final LocalDate getLawRatingReasonAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LAWRATINGREASON);
+    public final LocalDateTime getLawRatingReasonAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LAWRATINGREASON);
+    }
+
+   /**
+    * Get Reason for the law rating.
+    * 
+    * @return Reason for the law rating.
+    */
+    @Nullable
+    public final LocalTime getLawRatingReasonAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LAWRATINGREASON);
     }
 
    /**
@@ -17294,8 +19295,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Compatible CodecIDs.
     */
     @Nullable
-    public final LocalDate getCodecIDCompatibleAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDCOMPATIBLE);
+    public final LocalDateTime getCodecIDCompatibleAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDCOMPATIBLE);
+    }
+
+   /**
+    * Get Compatible CodecIDs.
+    * 
+    * @return Compatible CodecIDs.
+    */
+    @Nullable
+    public final LocalTime getCodecIDCompatibleAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDCOMPATIBLE);
     }
 
    /**
@@ -17380,8 +19391,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Stores dots per inch setting of the digitizer used to produce the file.
     */
     @Nullable
-    public final LocalDate getDotsPerInchAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DOTSPERINCH);
+    public final LocalDateTime getDotsPerInchAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DOTSPERINCH);
+    }
+
+   /**
+    * Get Stores dots per inch setting of the digitizer used to produce the file.
+    * 
+    * @return Stores dots per inch setting of the digitizer used to produce the file.
+    */
+    @Nullable
+    public final LocalTime getDotsPerInchAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DOTSPERINCH);
     }
 
    /**
@@ -17466,8 +19487,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The date, the owner last played an item.
     */
     @Nullable
-    public final LocalDate getPlayedLastDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PLAYEDLASTDATE);
+    public final LocalDateTime getPlayedLastDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PLAYEDLASTDATE);
+    }
+
+   /**
+    * Get The date, the owner last played an item.
+    * 
+    * @return The date, the owner last played an item.
+    */
+    @Nullable
+    public final LocalTime getPlayedLastDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PLAYEDLASTDATE);
     }
 
    /**
@@ -17552,8 +19583,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Folder name only.
     */
     @Nullable
-    public final LocalDate getFolderNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FOLDERNAME);
+    public final LocalDateTime getFolderNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FOLDERNAME);
+    }
+
+   /**
+    * Get Folder name only.
+    * 
+    * @return Folder name only.
+    */
+    @Nullable
+    public final LocalTime getFolderNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FOLDERNAME);
     }
 
    /**
@@ -17638,8 +19679,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the codirector..
     */
     @Nullable
-    public final LocalDate getCoDirectorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODIRECTOR);
+    public final LocalDateTime getCoDirectorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODIRECTOR);
+    }
+
+   /**
+    * Get Name of the codirector..
+    * 
+    * @return Name of the codirector..
+    */
+    @Nullable
+    public final LocalTime getCoDirectorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODIRECTOR);
     }
 
    /**
@@ -17724,8 +19775,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of times an item was played.
     */
     @Nullable
-    public final LocalDate getPlayedCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PLAYEDCOUNT);
+    public final LocalDateTime getPlayedCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PLAYEDCOUNT);
+    }
+
+   /**
+    * Get Number of times an item was played.
+    * 
+    * @return Number of times an item was played.
+    */
+    @Nullable
+    public final LocalTime getPlayedCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PLAYEDCOUNT);
     }
 
    /**
@@ -17810,8 +19871,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of the stream (base=0).
     */
     @Nullable
-    public final LocalDate getStreamKindIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMKINDID);
+    public final LocalDateTime getStreamKindIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMKINDID);
+    }
+
+   /**
+    * Get Number of the stream (base=0).
+    * 
+    * @return Number of the stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getStreamKindIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMKINDID);
     }
 
    /**
@@ -17896,8 +19967,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Folder name only of the last file (in the case of a sequence of files).
     */
     @Nullable
-    public final LocalDate getFolderNameLastAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FOLDERNAMELAST);
+    public final LocalDateTime getFolderNameLastAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FOLDERNAMELAST);
+    }
+
+   /**
+    * Get Folder name only of the last file (in the case of a sequence of files).
+    * 
+    * @return Folder name only of the last file (in the case of a sequence of files).
+    */
+    @Nullable
+    public final LocalTime getFolderNameLastAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FOLDERNAMELAST);
     }
 
    /**
@@ -17982,8 +20063,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A label-specific catalogue number used to identify the release. e.g. TIC 01..
     */
     @Nullable
-    public final LocalDate getCatalogNumberAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CATALOGNUMBER);
+    public final LocalDateTime getCatalogNumberAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CATALOGNUMBER);
+    }
+
+   /**
+    * Get A label-specific catalogue number used to identify the release. e.g. TIC 01..
+    * 
+    * @return A label-specific catalogue number used to identify the release. e.g. TIC 01..
+    */
+    @Nullable
+    public final LocalTime getCatalogNumberAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CATALOGNUMBER);
     }
 
    /**
@@ -18068,8 +20159,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Location where track was recorded. (See COMPOSITION_LOCATION for format).
     */
     @Nullable
-    public final LocalDate getRecordedLocationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.RECORDEDLOCATION);
+    public final LocalDateTime getRecordedLocationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.RECORDEDLOCATION);
+    }
+
+   /**
+    * Get Location where track was recorded. (See COMPOSITION_LOCATION for format).
+    * 
+    * @return Location where track was recorded. (See COMPOSITION_LOCATION for format).
+    */
+    @Nullable
+    public final LocalTime getRecordedLocationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.RECORDEDLOCATION);
     }
 
    /**
@@ -18154,8 +20255,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File extension only of the last file (in the case of a sequence of files).
     */
     @Nullable
-    public final LocalDate getFileExtensionLastAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILEEXTENSIONLAST);
+    public final LocalDateTime getFileExtensionLastAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILEEXTENSIONLAST);
+    }
+
+   /**
+    * Get File extension only of the last file (in the case of a sequence of files).
+    * 
+    * @return File extension only of the last file (in the case of a sequence of files).
+    */
+    @Nullable
+    public final LocalTime getFileExtensionLastAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILEEXTENSIONLAST);
     }
 
    /**
@@ -18240,8 +20351,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The date, the owner first played an item.
     */
     @Nullable
-    public final LocalDate getPlayedFirstDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PLAYEDFIRSTDATE);
+    public final LocalDateTime getPlayedFirstDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PLAYEDFIRSTDATE);
+    }
+
+   /**
+    * Get The date, the owner first played an item.
+    * 
+    * @return The date, the owner first played an item.
+    */
+    @Nullable
+    public final LocalTime getPlayedFirstDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PLAYEDFIRSTDATE);
     }
 
    /**
@@ -18326,8 +20447,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Link to a description of this format.
     */
     @Nullable
-    public final LocalDate getFormatUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATURL);
+    public final LocalDateTime getFormatUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATURL);
+    }
+
+   /**
+    * Get Link to a description of this format.
+    * 
+    * @return Link to a description of this format.
+    */
+    @Nullable
+    public final LocalTime getFormatUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATURL);
     }
 
    /**
@@ -18412,8 +20543,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Frames per second (with measurement).
     */
     @Nullable
-    public final LocalDate getFrameRateStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FRAMERATESTRING);
+    public final LocalDateTime getFrameRateStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FRAMERATESTRING);
+    }
+
+   /**
+    * Get Frames per second (with measurement).
+    * 
+    * @return Frames per second (with measurement).
+    */
+    @Nullable
+    public final LocalTime getFrameRateStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FRAMERATESTRING);
     }
 
    /**
@@ -18498,8 +20639,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Album/Performer/Sort.
     */
     @Nullable
-    public final LocalDate getAlbumPerformerSortAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMPERFORMERSORT);
+    public final LocalDateTime getAlbumPerformerSortAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMPERFORMERSORT);
+    }
+
+   /**
+    * Get Album/Performer/Sort.
+    * 
+    * @return Album/Performer/Sort.
+    */
+    @Nullable
+    public final LocalTime getAlbumPerformerSortAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMPERFORMERSORT);
     }
 
    /**
@@ -18584,8 +20735,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the movie. Eg : Starwars, a new hope.
     */
     @Nullable
-    public final LocalDate getMovieAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MOVIE);
+    public final LocalDateTime getMovieAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MOVIE);
+    }
+
+   /**
+    * Get Name of the movie. Eg : Starwars, a new hope.
+    * 
+    * @return Name of the movie. Eg : Starwars, a new hope.
+    */
+    @Nullable
+    public final LocalTime getMovieAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MOVIE);
     }
 
    /**
@@ -18670,8 +20831,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the original composer..
     */
     @Nullable
-    public final LocalDate getComposerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMPOSER);
+    public final LocalDateTime getComposerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPOSER);
+    }
+
+   /**
+    * Get Name of the original composer..
+    * 
+    * @return Name of the original composer..
+    */
+    @Nullable
+    public final LocalTime getComposerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPOSER);
     }
 
    /**
@@ -18756,8 +20927,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Describes whether an image has been cropped and, if so, how it was cropped. e.g. 16:9 to 4:3, top and bottom.
     */
     @Nullable
-    public final LocalDate getOriginalSourceFormCroppedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEFORMCROPPED);
+    public final LocalDateTime getOriginalSourceFormCroppedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMCROPPED);
+    }
+
+   /**
+    * Get Describes whether an image has been cropped and, if so, how it was cropped. e.g. 16:9 to 4:3, top and bottom.
+    * 
+    * @return Describes whether an image has been cropped and, if so, how it was cropped. e.g. 16:9 to 4:3, top and bottom.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceFormCroppedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMCROPPED);
     }
 
    /**
@@ -18842,8 +21023,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Track/Sort.
     */
     @Nullable
-    public final LocalDate getTrackSortAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TRACKSORT);
+    public final LocalDateTime getTrackSortAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TRACKSORT);
+    }
+
+   /**
+    * Get Track/Sort.
+    * 
+    * @return Track/Sort.
+    */
+    @Nullable
+    public final LocalTime getTrackSortAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TRACKSORT);
     }
 
    /**
@@ -18928,8 +21119,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Main production studio .
     */
     @Nullable
-    public final LocalDate getProductionStudioAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PRODUCTIONSTUDIO);
+    public final LocalDateTime getProductionStudioAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PRODUCTIONSTUDIO);
+    }
+
+   /**
+    * Get Main production studio .
+    * 
+    * @return Main production studio .
+    */
+    @Nullable
+    public final LocalTime getProductionStudioAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PRODUCTIONSTUDIO);
     }
 
    /**
@@ -19014,8 +21215,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of audio streams.
     */
     @Nullable
-    public final LocalDate getAudioCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.AUDIOCOUNT);
+    public final LocalDateTime getAudioCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.AUDIOCOUNT);
+    }
+
+   /**
+    * Get Number of audio streams.
+    * 
+    * @return Number of audio streams.
+    */
+    @Nullable
+    public final LocalTime getAudioCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.AUDIOCOUNT);
     }
 
    /**
@@ -19100,8 +21311,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the chapter..
     */
     @Nullable
-    public final LocalDate getChapterAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CHAPTER);
+    public final LocalDateTime getChapterAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CHAPTER);
+    }
+
+   /**
+    * Get Name of the chapter..
+    * 
+    * @return Name of the chapter..
+    */
+    @Nullable
+    public final LocalTime getChapterAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CHAPTER);
     }
 
    /**
@@ -19186,8 +21407,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A description of the story line of the item..
     */
     @Nullable
-    public final LocalDate getSynopsisAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SYNOPSIS);
+    public final LocalDateTime getSynopsisAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SYNOPSIS);
+    }
+
+   /**
+    * Get A description of the story line of the item..
+    * 
+    * @return A description of the story line of the item..
+    */
+    @Nullable
+    public final LocalTime getSynopsisAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SYNOPSIS);
     }
 
    /**
@@ -19272,8 +21503,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the product.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDAPPLICATIONNAME);
+    public final LocalDateTime getEncodedApplicationNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONNAME);
+    }
+
+   /**
+    * Get Name of the product.
+    * 
+    * @return Name of the product.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONNAME);
     }
 
    /**
@@ -19358,8 +21599,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The unique ID for this stream, should be copied with stream copy.
     */
     @Nullable
-    public final LocalDate getUniqueIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.UNIQUEIDSTRING);
+    public final LocalDateTime getUniqueIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.UNIQUEIDSTRING);
+    }
+
+   /**
+    * Get The unique ID for this stream, should be copied with stream copy.
+    * 
+    * @return The unique ID for this stream, should be copied with stream copy.
+    */
+    @Nullable
+    public final LocalTime getUniqueIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.UNIQUEIDSTRING);
     }
 
    /**
@@ -19444,8 +21695,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The main genre of the audio or video. e.g. classical, ambient-house, synthpop, sci-fi, drama, etc..
     */
     @Nullable
-    public final LocalDate getGenreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.GENRE);
+    public final LocalDateTime getGenreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.GENRE);
+    }
+
+   /**
+    * Get The main genre of the audio or video. e.g. classical, ambient-house, synthpop, sci-fi, drama, etc..
+    * 
+    * @return The main genre of the audio or video. e.g. classical, ambient-house, synthpop, sci-fi, drama, etc..
+    */
+    @Nullable
+    public final LocalTime getGenreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.GENRE);
     }
 
    /**
@@ -19530,8 +21791,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The time/date/year that the item was tranfered to a digitalmedium..
     */
     @Nullable
-    public final LocalDate getMasteredDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MASTEREDDATE);
+    public final LocalDateTime getMasteredDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MASTEREDDATE);
+    }
+
+   /**
+    * Get The time/date/year that the item was tranfered to a digitalmedium..
+    * 
+    * @return The time/date/year that the item was tranfered to a digitalmedium..
+    */
+    @Nullable
+    public final LocalTime getMasteredDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MASTEREDDATE);
     }
 
    /**
@@ -19616,8 +21887,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Profile of the Format.
     */
     @Nullable
-    public final LocalDate getFormatProfileAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATPROFILE);
+    public final LocalDateTime getFormatProfileAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATPROFILE);
+    }
+
+   /**
+    * Get Profile of the Format.
+    * 
+    * @return Profile of the Format.
+    */
+    @Nullable
+    public final LocalTime getFormatProfileAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATPROFILE);
     }
 
    /**
@@ -19702,8 +21983,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize_Demuxed/String1.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING1);
+    public final LocalDateTime getStreamSizeDemuxedString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING1);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String1.
+    * 
+    * @return StreamSize_Demuxed/String1.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING1);
     }
 
    /**
@@ -19788,8 +22079,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return EPG_Positions_End.
     */
     @Nullable
-    public final LocalDate getEPGPositionsEndAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.EPGPOSITIONSEND);
+    public final LocalDateTime getEPGPositionsEndAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.EPGPOSITIONSEND);
+    }
+
+   /**
+    * Get EPG_Positions_End.
+    * 
+    * @return EPG_Positions_End.
+    */
+    @Nullable
+    public final LocalTime getEPGPositionsEndAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.EPGPOSITIONSEND);
     }
 
    /**
@@ -19874,8 +22175,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize_Demuxed/String2.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING2);
+    public final LocalDateTime getStreamSizeDemuxedString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING2);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String2.
+    * 
+    * @return StreamSize_Demuxed/String2.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING2);
     }
 
    /**
@@ -19960,8 +22271,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize_Demuxed/String3.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING3);
+    public final LocalDateTime getStreamSizeDemuxedString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING3);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String3.
+    * 
+    * @return StreamSize_Demuxed/String3.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING3);
     }
 
    /**
@@ -20046,8 +22367,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize_Demuxed/String4.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING4);
+    public final LocalDateTime getStreamSizeDemuxedString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING4);
+    }
+
+   /**
+    * Get StreamSize_Demuxed/String4.
+    * 
+    * @return StreamSize_Demuxed/String4.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING4);
     }
 
    /**
@@ -20132,8 +22463,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING5);
+    public final LocalDateTime getStreamSizeDemuxedString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING5);
+    }
+
+   /**
+    * Get StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
+    * 
+    * @return StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING5);
     }
 
    /**
@@ -20218,8 +22559,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Encryption_InitializationVector.
     */
     @Nullable
-    public final LocalDate getEncryptionInitializationVectorAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCRYPTIONINITIALIZATIONVECTOR);
+    public final LocalDateTime getEncryptionInitializationVectorAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCRYPTIONINITIALIZATIONVECTOR);
+    }
+
+   /**
+    * Get Encryption_InitializationVector.
+    * 
+    * @return Encryption_InitializationVector.
+    */
+    @Nullable
+    public final LocalTime getEncryptionInitializationVectorAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCRYPTIONINITIALIZATIONVECTOR);
     }
 
    /**
@@ -20304,8 +22655,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The gain to apply to reach 89dB SPL on playback.
     */
     @Nullable
-    public final LocalDate getAlbumReplayGainGainAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMREPLAYGAINGAIN);
+    public final LocalDateTime getAlbumReplayGainGainAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMREPLAYGAINGAIN);
+    }
+
+   /**
+    * Get The gain to apply to reach 89dB SPL on playback.
+    * 
+    * @return The gain to apply to reach 89dB SPL on playback.
+    */
+    @Nullable
+    public final LocalTime getAlbumReplayGainGainAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMREPLAYGAINGAIN);
     }
 
    /**
@@ -20390,8 +22751,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize_Demuxed in with percentage value.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING);
+    public final LocalDateTime getStreamSizeDemuxedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING);
+    }
+
+   /**
+    * Get StreamSize_Demuxed in with percentage value.
+    * 
+    * @return StreamSize_Demuxed in with percentage value.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXEDSTRING);
     }
 
    /**
@@ -20476,8 +22847,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of an audio-album. Eg : The joshua tree.
     */
     @Nullable
-    public final LocalDate getAlbumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUM);
+    public final LocalDateTime getAlbumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUM);
+    }
+
+   /**
+    * Get Name of an audio-album. Eg : The joshua tree.
+    * 
+    * @return Name of an audio-album. Eg : The joshua tree.
+    */
+    @Nullable
+    public final LocalTime getAlbumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUM);
     }
 
    /**
@@ -20562,8 +22943,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Text Codecs in this file with popular name (hint),separated by /.
     */
     @Nullable
-    public final LocalDate getTextFormatWithHintListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TEXTFORMATWITHHINTLIST);
+    public final LocalDateTime getTextFormatWithHintListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TEXTFORMATWITHHINTLIST);
+    }
+
+   /**
+    * Get Text Codecs in this file with popular name (hint),separated by /.
+    * 
+    * @return Text Codecs in this file with popular name (hint),separated by /.
+    */
+    @Nullable
+    public final LocalTime getTextFormatWithHintListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TEXTFORMATWITHHINTLIST);
     }
 
    /**
@@ -20648,8 +23039,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Minimum Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getOverallBitRateMinimumStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATEMINIMUMSTRING);
+    public final LocalDateTime getOverallBitRateMinimumStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATEMINIMUMSTRING);
+    }
+
+   /**
+    * Get Minimum Bit rate (with measurement).
+    * 
+    * @return Minimum Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateMinimumStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATEMINIMUMSTRING);
     }
 
    /**
@@ -20734,8 +23135,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Copyright attribution..
     */
     @Nullable
-    public final LocalDate getCopyrightAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COPYRIGHT);
+    public final LocalDateTime getCopyrightAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COPYRIGHT);
+    }
+
+   /**
+    * Get Copyright attribution..
+    * 
+    * @return Copyright attribution..
+    */
+    @Nullable
+    public final LocalTime getCopyrightAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COPYRIGHT);
     }
 
    /**
@@ -20820,8 +23231,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Count of streams of that kind available.
     */
     @Nullable
-    public final LocalDate getStreamCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMCOUNT);
+    public final LocalDateTime getStreamCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMCOUNT);
+    }
+
+   /**
+    * Get Count of streams of that kind available.
+    * 
+    * @return Count of streams of that kind available.
+    */
+    @Nullable
+    public final LocalTime getStreamCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMCOUNT);
     }
 
    /**
@@ -20906,8 +23327,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The engineer who mastered the content for a physical medium or for digital distribution..
     */
     @Nullable
-    public final LocalDate getMasteredByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MASTEREDBY);
+    public final LocalDateTime getMasteredByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MASTEREDBY);
+    }
+
+   /**
+    * Get The engineer who mastered the content for a physical medium or for digital distribution..
+    * 
+    * @return The engineer who mastered the content for a physical medium or for digital distribution..
+    */
+    @Nullable
+    public final LocalTime getMasteredByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MASTEREDBY);
     }
 
    /**
@@ -20992,8 +23423,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of other streams.
     */
     @Nullable
-    public final LocalDate getOtherCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OTHERCOUNT);
+    public final LocalDateTime getOtherCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OTHERCOUNT);
+    }
+
+   /**
+    * Get Number of other streams.
+    * 
+    * @return Number of other streams.
+    */
+    @Nullable
+    public final LocalTime getOtherCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OTHERCOUNT);
     }
 
    /**
@@ -21078,8 +23519,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of general streams.
     */
     @Nullable
-    public final LocalDate getGeneralCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.GENERALCOUNT);
+    public final LocalDateTime getGeneralCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.GENERALCOUNT);
+    }
+
+   /**
+    * Get Number of general streams.
+    * 
+    * @return Number of general streams.
+    */
+    @Nullable
+    public final LocalTime getGeneralCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.GENERALCOUNT);
     }
 
    /**
@@ -21164,8 +23615,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Link to a site with copyright/legal information..
     */
     @Nullable
-    public final LocalDate getCopyrightUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COPYRIGHTURL);
+    public final LocalDateTime getCopyrightUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COPYRIGHTURL);
+    }
+
+   /**
+    * Get Link to a site with copyright/legal information..
+    * 
+    * @return Link to a site with copyright/legal information..
+    */
+    @Nullable
+    public final LocalTime getCopyrightUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COPYRIGHTURL);
     }
 
    /**
@@ -21250,8 +23711,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Album_ReplayGain_Gain/String.
     */
     @Nullable
-    public final LocalDate getAlbumReplayGainGainStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMREPLAYGAINGAINSTRING);
+    public final LocalDateTime getAlbumReplayGainGainStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMREPLAYGAINGAINSTRING);
+    }
+
+   /**
+    * Get Album_ReplayGain_Gain/String.
+    * 
+    * @return Album_ReplayGain_Gain/String.
+    */
+    @Nullable
+    public final LocalTime getAlbumReplayGainGainStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMREPLAYGAINGAINSTRING);
     }
 
    /**
@@ -21336,8 +23807,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of video streams.
     */
     @Nullable
-    public final LocalDate getVideoCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.VIDEOCOUNT);
+    public final LocalDateTime getVideoCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.VIDEOCOUNT);
+    }
+
+   /**
+    * Get Number of video streams.
+    * 
+    * @return Number of video streams.
+    */
+    @Nullable
+    public final LocalTime getVideoCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.VIDEOCOUNT);
     }
 
    /**
@@ -21422,8 +23903,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTRING2);
+    public final LocalDateTime getDurationString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTRING2);
+    }
+
+   /**
+    * Get Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTRING2);
     }
 
    /**
@@ -21508,8 +23999,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDurationString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTRING3);
+    public final LocalDateTime getDurationString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTRING3);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.MMM.
+    * 
+    * @return Play time in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDurationString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTRING3);
     }
 
    /**
@@ -21594,8 +24095,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTRING1);
+    public final LocalDateTime getDurationString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTRING1);
+    }
+
+   /**
+    * Get Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTRING1);
     }
 
    /**
@@ -21680,8 +24191,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Nominal Bit rate (with measurement).
     */
     @Nullable
-    public final LocalDate getOverallBitRateNominalStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATENOMINALSTRING);
+    public final LocalDateTime getOverallBitRateNominalStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATENOMINALSTRING);
+    }
+
+   /**
+    * Get Nominal Bit rate (with measurement).
+    * 
+    * @return Nominal Bit rate (with measurement).
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateNominalStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATENOMINALSTRING);
     }
 
    /**
@@ -21766,8 +24287,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Describes the period that the piece is from or about. e.g. Renaissance..
     */
     @Nullable
-    public final LocalDate getPeriodAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PERIOD);
+    public final LocalDateTime getPeriodAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PERIOD);
+    }
+
+   /**
+    * Get Describes the period that the piece is from or about. e.g. Renaissance..
+    * 
+    * @return Describes the period that the piece is from or about. e.g. Renaissance..
+    */
+    @Nullable
+    public final LocalTime getPeriodAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PERIOD);
     }
 
    /**
@@ -21852,8 +24383,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDurationString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTRING4);
+    public final LocalDateTime getDurationString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDurationString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTRING4);
     }
 
    /**
@@ -21938,8 +24479,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDurationString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTRING5);
+    public final LocalDateTime getDurationString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDurationString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTRING5);
     }
 
    /**
@@ -22024,8 +24575,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Duration_Start.
     */
     @Nullable
-    public final LocalDate getDurationStartAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONSTART);
+    public final LocalDateTime getDurationStartAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONSTART);
+    }
+
+   /**
+    * Get Duration_Start.
+    * 
+    * @return Duration_Start.
+    */
+    @Nullable
+    public final LocalTime getDurationStartAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONSTART);
     }
 
    /**
@@ -22110,8 +24671,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return OriginalNetworkName.
     */
     @Nullable
-    public final LocalDate getOriginalNetworkNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALNETWORKNAME);
+    public final LocalDateTime getOriginalNetworkNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALNETWORKNAME);
+    }
+
+   /**
+    * Get OriginalNetworkName.
+    * 
+    * @return OriginalNetworkName.
+    */
+    @Nullable
+    public final LocalTime getOriginalNetworkNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALNETWORKNAME);
     }
 
    /**
@@ -22196,8 +24767,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return EPG_Positions_Begin.
     */
     @Nullable
-    public final LocalDate getEPGPositionsBeginAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.EPGPOSITIONSBEGIN);
+    public final LocalDateTime getEPGPositionsBeginAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.EPGPOSITIONSBEGIN);
+    }
+
+   /**
+    * Get EPG_Positions_Begin.
+    * 
+    * @return EPG_Positions_Begin.
+    */
+    @Nullable
+    public final LocalTime getEPGPositionsBeginAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.EPGPOSITIONSBEGIN);
     }
 
    /**
@@ -22282,8 +24863,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Video Codecs in this file with popular name (hint), separated by /.
     */
     @Nullable
-    public final LocalDate getVideoFormatWithHintListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.VIDEOFORMATWITHHINTLIST);
+    public final LocalDateTime getVideoFormatWithHintListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.VIDEOFORMATWITHHINTLIST);
+    }
+
+   /**
+    * Get Video Codecs in this file with popular name (hint), separated by /.
+    * 
+    * @return Video Codecs in this file with popular name (hint), separated by /.
+    */
+    @Nullable
+    public final LocalTime getVideoFormatWithHintListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.VIDEOFORMATWITHHINTLIST);
     }
 
    /**
@@ -22368,8 +24959,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay source (Container or Stream or empty).
     */
     @Nullable
-    public final LocalDate getDelaySourceAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSOURCE);
+    public final LocalDateTime getDelaySourceAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSOURCE);
+    }
+
+   /**
+    * Get Delay source (Container or Stream or empty).
+    * 
+    * @return Delay source (Container or Stream or empty).
+    */
+    @Nullable
+    public final LocalTime getDelaySourceAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSOURCE);
     }
 
    /**
@@ -22454,8 +25055,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Main performer/artist of this file.
     */
     @Nullable
-    public final LocalDate getPerformerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PERFORMER);
+    public final LocalDateTime getPerformerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PERFORMER);
+    }
+
+   /**
+    * Get Main performer/artist of this file.
+    * 
+    * @return Main performer/artist of this file.
+    */
+    @Nullable
+    public final LocalTime getPerformerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PERFORMER);
     }
 
    /**
@@ -22540,8 +25151,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the producer of the movie..
     */
     @Nullable
-    public final LocalDate getProducerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PRODUCER);
+    public final LocalDateTime getProducerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PRODUCER);
+    }
+
+   /**
+    * Get Name of the producer of the movie..
+    * 
+    * @return Name of the producer of the movie..
+    */
+    @Nullable
+    public final LocalTime getProducerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PRODUCER);
     }
 
    /**
@@ -22626,8 +25247,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Place of the season e.g. 2 of 7.
     */
     @Nullable
-    public final LocalDate getSeasonPositionTotalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SEASONPOSITIONTOTAL);
+    public final LocalDateTime getSeasonPositionTotalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SEASONPOSITIONTOTAL);
+    }
+
+   /**
+    * Get Place of the season e.g. 2 of 7.
+    * 
+    * @return Place of the season e.g. 2 of 7.
+    */
+    @Nullable
+    public final LocalTime getSeasonPositionTotalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SEASONPOSITIONTOTAL);
     }
 
    /**
@@ -22712,8 +25343,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the character an actor or actress plays in this movie..
     */
     @Nullable
-    public final LocalDate getActorCharacterAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ACTORCHARACTER);
+    public final LocalDateTime getActorCharacterAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ACTORCHARACTER);
+    }
+
+   /**
+    * Get Name of the character an actor or actress plays in this movie..
+    * 
+    * @return Name of the character an actor or actress plays in this movie..
+    */
+    @Nullable
+    public final LocalTime getActorCharacterAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ACTORCHARACTER);
     }
 
    /**
@@ -22798,8 +25439,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Maximum Bit rate in bps.
     */
     @Nullable
-    public final LocalDate getOverallBitRateMaximumAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATEMAXIMUM);
+    public final LocalDateTime getOverallBitRateMaximumAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATEMAXIMUM);
+    }
+
+   /**
+    * Get Maximum Bit rate in bps.
+    * 
+    * @return Maximum Bit rate in bps.
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateMaximumAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATEMAXIMUM);
     }
 
    /**
@@ -22884,8 +25535,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the series, e.g. Starwars movies, Stargate SG-1, Stargate Atlantis, Buffy, Angel.
     */
     @Nullable
-    public final LocalDate getCollectionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COLLECTION);
+    public final LocalDateTime getCollectionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COLLECTION);
+    }
+
+   /**
+    * Get Name of the series, e.g. Starwars movies, Stargate SG-1, Stargate Atlantis, Buffy, Angel.
+    * 
+    * @return Name of the series, e.g. Starwars movies, Stargate SG-1, Stargate Atlantis, Buffy, Angel.
+    */
+    @Nullable
+    public final LocalTime getCollectionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COLLECTION);
     }
 
    /**
@@ -22970,8 +25631,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return StreamSize in bytes of hte stream after demux.
     */
     @Nullable
-    public final LocalDate getStreamSizeDemuxedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMSIZEDEMUXED);
+    public final LocalDateTime getStreamSizeDemuxedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMSIZEDEMUXED);
+    }
+
+   /**
+    * Get StreamSize in bytes of hte stream after demux.
+    * 
+    * @return StreamSize in bytes of hte stream after demux.
+    */
+    @Nullable
+    public final LocalTime getStreamSizeDemuxedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMSIZEDEMUXED);
     }
 
    /**
@@ -23056,8 +25727,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Menu Codecs in this file with popular name (hint),separated by /.
     */
     @Nullable
-    public final LocalDate getMenuFormatWithHintListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MENUFORMATWITHHINTLIST);
+    public final LocalDateTime getMenuFormatWithHintListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MENUFORMATWITHHINTLIST);
+    }
+
+   /**
+    * Get Menu Codecs in this file with popular name (hint),separated by /.
+    * 
+    * @return Menu Codecs in this file with popular name (hint),separated by /.
+    */
+    @Nullable
+    public final LocalTime getMenuFormatWithHintListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MENUFORMATWITHHINTLIST);
     }
 
    /**
@@ -23142,8 +25823,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Settings needed for decoder used.
     */
     @Nullable
-    public final LocalDate getFormatSettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATSETTINGS);
+    public final LocalDateTime getFormatSettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATSETTINGS);
+    }
+
+   /**
+    * Get Settings needed for decoder used.
+    * 
+    * @return Settings needed for decoder used.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATSETTINGS);
     }
 
    /**
@@ -23228,8 +25919,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File name only of the last file (in the case of a sequence of files).
     */
     @Nullable
-    public final LocalDate getFileNameLastAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILENAMELAST);
+    public final LocalDateTime getFileNameLastAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILENAMELAST);
+    }
+
+   /**
+    * Get File name only of the last file (in the case of a sequence of files).
+    * 
+    * @return File name only of the last file (in the case of a sequence of files).
+    */
+    @Nullable
+    public final LocalTime getFileNameLastAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILENAMELAST);
     }
 
    /**
@@ -23314,8 +26015,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Average number of beats per minute.
     */
     @Nullable
-    public final LocalDate getBPMAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.BPM);
+    public final LocalDateTime getBPMAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.BPM);
+    }
+
+   /**
+    * Get Average number of beats per minute.
+    * 
+    * @return Average number of beats per minute.
+    */
+    @Nullable
+    public final LocalTime getBPMAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.BPM);
     }
 
    /**
@@ -23400,8 +26111,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return File size in bytes.
     */
     @Nullable
-    public final LocalDate getFileSizeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FILESIZE);
+    public final LocalDateTime getFileSizeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FILESIZE);
+    }
+
+   /**
+    * Get File size in bytes.
+    * 
+    * @return File size in bytes.
+    */
+    @Nullable
+    public final LocalTime getFileSizeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FILESIZE);
     }
 
    /**
@@ -23486,8 +26207,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
     */
     @Nullable
-    public final LocalDate getFirstPacketOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FIRSTPACKETORDER);
+    public final LocalDateTime getFirstPacketOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FIRSTPACKETORDER);
+    }
+
+   /**
+    * Get Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    * 
+    * @return Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getFirstPacketOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FIRSTPACKETORDER);
     }
 
    /**
@@ -23572,8 +26303,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return IsStreamable.
     */
     @Nullable
-    public final LocalDate getIsStreamableAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ISSTREAMABLE);
+    public final LocalDateTime getIsStreamableAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ISSTREAMABLE);
+    }
+
+   /**
+    * Get IsStreamable.
+    * 
+    * @return IsStreamable.
+    */
+    @Nullable
+    public final LocalTime getIsStreamableAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ISSTREAMABLE);
     }
 
    /**
@@ -23658,8 +26399,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The person who wrote the lyrics for a musical item..
     */
     @Nullable
-    public final LocalDate getLyricistAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LYRICIST);
+    public final LocalDateTime getLyricistAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LYRICIST);
+    }
+
+   /**
+    * Get The person who wrote the lyrics for a musical item..
+    * 
+    * @return The person who wrote the lyrics for a musical item..
+    */
+    @Nullable
+    public final LocalTime getLyricistAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LYRICIST);
     }
 
    /**
@@ -23744,8 +26495,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Duration_End.
     */
     @Nullable
-    public final LocalDate getDurationEndAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DURATIONEND);
+    public final LocalDateTime getDurationEndAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DURATIONEND);
+    }
+
+   /**
+    * Get Duration_End.
+    * 
+    * @return Duration_End.
+    */
+    @Nullable
+    public final LocalTime getDurationEndAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DURATIONEND);
     }
 
    /**
@@ -23830,8 +26591,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Known extensions of this format.
     */
     @Nullable
-    public final LocalDate getFormatExtensionsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATEXTENSIONS);
+    public final LocalDateTime getFormatExtensionsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATEXTENSIONS);
+    }
+
+   /**
+    * Get Known extensions of this format.
+    * 
+    * @return Known extensions of this format.
+    */
+    @Nullable
+    public final LocalTime getFormatExtensionsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATEXTENSIONS);
     }
 
    /**
@@ -23916,8 +26687,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The copyright information as per the productioncopyright holder..
     */
     @Nullable
-    public final LocalDate getProducerCopyrightAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PRODUCERCOPYRIGHT);
+    public final LocalDateTime getProducerCopyrightAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PRODUCERCOPYRIGHT);
+    }
+
+   /**
+    * Get The copyright information as per the productioncopyright holder..
+    * 
+    * @return The copyright information as per the productioncopyright holder..
+    */
+    @Nullable
+    public final LocalTime getProducerCopyrightAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PRODUCERCOPYRIGHT);
     }
 
    /**
@@ -24002,8 +26783,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return EAN-13 (13-digit European Article Numbering) or UPC-A (12-digit Universal Product Code) bar code identifier..
     */
     @Nullable
-    public final LocalDate getBarCodeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.BARCODE);
+    public final LocalDateTime getBarCodeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.BARCODE);
+    }
+
+   /**
+    * Get EAN-13 (13-digit European Article Numbering) or UPC-A (12-digit Universal Product Code) bar code identifier..
+    * 
+    * @return EAN-13 (13-digit European Article Numbering) or UPC-A (12-digit Universal Product Code) bar code identifier..
+    */
+    @Nullable
+    public final LocalTime getBarCodeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.BARCODE);
     }
 
    /**
@@ -24088,8 +26879,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Bit rate of all streams (with measure).
     */
     @Nullable
-    public final LocalDate getOverallBitRateStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.OVERALLBITRATESTRING);
+    public final LocalDateTime getOverallBitRateStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.OVERALLBITRATESTRING);
+    }
+
+   /**
+    * Get Bit rate of all streams (with measure).
+    * 
+    * @return Bit rate of all streams (with measure).
+    */
+    @Nullable
+    public final LocalTime getOverallBitRateStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.OVERALLBITRATESTRING);
     }
 
    /**
@@ -24174,8 +26975,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of text streams.
     */
     @Nullable
-    public final LocalDate getTextCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TEXTCOUNT);
+    public final LocalDateTime getTextCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TEXTCOUNT);
+    }
+
+   /**
+    * Get Number of text streams.
+    * 
+    * @return Number of text streams.
+    */
+    @Nullable
+    public final LocalTime getTextCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TEXTCOUNT);
     }
 
    /**
@@ -24260,8 +27071,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The name of the sound engineer or sound recordist..
     */
     @Nullable
-    public final LocalDate getSoundEngineerAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SOUNDENGINEER);
+    public final LocalDateTime getSoundEngineerAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SOUNDENGINEER);
+    }
+
+   /**
+    * Get The name of the sound engineer or sound recordist..
+    * 
+    * @return The name of the sound engineer or sound recordist..
+    */
+    @Nullable
+    public final LocalTime getSoundEngineerAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SOUNDENGINEER);
     }
 
    /**
@@ -24346,8 +27167,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A 4-digit or 5-digit number to identify the record label, typically printed as (LC) xxxx or (LC) 0xxxx on CDs medias or covers, with only the number being stored..
     */
     @Nullable
-    public final LocalDate getLabelCodeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.LABELCODE);
+    public final LocalDateTime getLabelCodeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.LABELCODE);
+    }
+
+   /**
+    * Get A 4-digit or 5-digit number to identify the record label, typically printed as (LC) xxxx or (LC) 0xxxx on CDs medias or covers, with only the number being stored..
+    * 
+    * @return A 4-digit or 5-digit number to identify the record label, typically printed as (LC) xxxx or (LC) 0xxxx on CDs medias or covers, with only the number being stored..
+    */
+    @Nullable
+    public final LocalTime getLabelCodeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.LABELCODE);
     }
 
    /**
@@ -24432,8 +27263,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Number of image streams.
     */
     @Nullable
-    public final LocalDate getImageCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.IMAGECOUNT);
+    public final LocalDateTime getImageCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.IMAGECOUNT);
+    }
+
+   /**
+    * Get Number of image streams.
+    * 
+    * @return Number of image streams.
+    */
+    @Nullable
+    public final LocalTime getImageCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.IMAGECOUNT);
     }
 
    /**
@@ -24518,8 +27359,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Format used.
     */
     @Nullable
-    public final LocalDate getFormatAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMAT);
+    public final LocalDateTime getFormatAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMAT);
+    }
+
+   /**
+    * Get Format used.
+    * 
+    * @return Format used.
+    */
+    @Nullable
+    public final LocalTime getFormatAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMAT);
     }
 
    /**
@@ -24604,8 +27455,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The author of the story or script..
     */
     @Nullable
-    public final LocalDate getWrittenByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.WRITTENBY);
+    public final LocalDateTime getWrittenByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.WRITTENBY);
+    }
+
+   /**
+    * Get The author of the story or script..
+    * 
+    * @return The author of the story or script..
+    */
+    @Nullable
+    public final LocalTime getWrittenByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.WRITTENBY);
     }
 
    /**
@@ -24690,8 +27551,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Place of this track, e.g. 3 of 15.
     */
     @Nullable
-    public final LocalDate getTrackPositionTotalAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TRACKPOSITIONTOTAL);
+    public final LocalDateTime getTrackPositionTotalAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TRACKPOSITIONTOTAL);
+    }
+
+   /**
+    * Get Place of this track, e.g. 3 of 15.
+    * 
+    * @return Place of this track, e.g. 3 of 15.
+    */
+    @Nullable
+    public final LocalTime getTrackPositionTotalAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TRACKPOSITIONTOTAL);
     }
 
    /**
@@ -24776,8 +27647,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Country, where the movie was procuced.
     */
     @Nullable
-    public final LocalDate getMovieCountryAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MOVIECOUNTRY);
+    public final LocalDateTime getMovieCountryAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MOVIECOUNTRY);
+    }
+
+   /**
+    * Get Country, where the movie was procuced.
+    * 
+    * @return Country, where the movie was procuced.
+    */
+    @Nullable
+    public final LocalTime getMovieCountryAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MOVIECOUNTRY);
     }
 
    /**
@@ -24862,8 +27743,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Homepage of the album performer/artist.
     */
     @Nullable
-    public final LocalDate getAlbumPerformerUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ALBUMPERFORMERURL);
+    public final LocalDateTime getAlbumPerformerUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ALBUMPERFORMERURL);
+    }
+
+   /**
+    * Get Homepage of the album performer/artist.
+    * 
+    * @return Homepage of the album performer/artist.
+    */
+    @Nullable
+    public final LocalTime getAlbumPerformerUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ALBUMPERFORMERURL);
     }
 
    /**
@@ -24948,8 +27839,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Codec ID (found in some containers).
     */
     @Nullable
-    public final LocalDate getCodecIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.CODECIDSTRING);
+    public final LocalDateTime getCodecIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.CODECIDSTRING);
+    }
+
+   /**
+    * Get Codec ID (found in some containers).
+    * 
+    * @return Codec ID (found in some containers).
+    */
+    @Nullable
+    public final LocalTime getCodecIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.CODECIDSTRING);
     }
 
    /**
@@ -25034,8 +27935,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the company.
     */
     @Nullable
-    public final LocalDate getEncodedLibraryCompanyNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDLIBRARYCOMPANYNAME);
+    public final LocalDateTime getEncodedLibraryCompanyNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDLIBRARYCOMPANYNAME);
+    }
+
+   /**
+    * Get Name of the company.
+    * 
+    * @return Name of the company.
+    */
+    @Nullable
+    public final LocalTime getEncodedLibraryCompanyNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDLIBRARYCOMPANYNAME);
     }
 
    /**
@@ -25120,8 +28031,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the comic..
     */
     @Nullable
-    public final LocalDate getComicAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMIC);
+    public final LocalDateTime getComicAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMIC);
+    }
+
+   /**
+    * Get Name of the comic..
+    * 
+    * @return Name of the comic..
+    */
+    @Nullable
+    public final LocalTime getComicAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMIC);
     }
 
    /**
@@ -25206,8 +28127,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Editors name.
     */
     @Nullable
-    public final LocalDate getEditedByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.EDITEDBY);
+    public final LocalDateTime getEditedByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.EDITEDBY);
+    }
+
+   /**
+    * Get Editors name.
+    * 
+    * @return Editors name.
+    */
+    @Nullable
+    public final LocalTime getEditedByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.EDITEDBY);
     }
 
    /**
@@ -25292,8 +28223,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Commercial name used by vendor for theses setings or Format field if there is no difference.
     */
     @Nullable
-    public final LocalDate getFormatCommercialAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.FORMATCOMMERCIAL);
+    public final LocalDateTime getFormatCommercialAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATCOMMERCIAL);
+    }
+
+   /**
+    * Get Commercial name used by vendor for theses setings or Format field if there is no difference.
+    * 
+    * @return Commercial name used by vendor for theses setings or Format field if there is no difference.
+    */
+    @Nullable
+    public final LocalTime getFormatCommercialAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATCOMMERCIAL);
     }
 
    /**
@@ -25378,8 +28319,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Any comment related to the content..
     */
     @Nullable
-    public final LocalDate getCommentAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.COMMENT);
+    public final LocalDateTime getCommentAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMMENT);
+    }
+
+   /**
+    * Get Any comment related to the content..
+    * 
+    * @return Any comment related to the content..
+    */
+    @Nullable
+    public final LocalTime getCommentAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMMENT);
     }
 
    /**
@@ -25464,8 +28415,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Audio Codecs in this file with popular name (hint), separated by /.
     */
     @Nullable
-    public final LocalDate getAudioFormatWithHintListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.AUDIOFORMATWITHHINTLIST);
+    public final LocalDateTime getAudioFormatWithHintListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.AUDIOFORMATWITHHINTLIST);
+    }
+
+   /**
+    * Get Audio Codecs in this file with popular name (hint), separated by /.
+    * 
+    * @return Audio Codecs in this file with popular name (hint), separated by /.
+    */
+    @Nullable
+    public final LocalTime getAudioFormatWithHintListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.AUDIOFORMATWITHHINTLIST);
     }
 
    /**
@@ -25550,8 +28511,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Delay source (Container or Stream or empty).
     */
     @Nullable
-    public final LocalDate getDelaySourceStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.DELAYSOURCESTRING);
+    public final LocalDateTime getDelaySourceStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.DELAYSOURCESTRING);
+    }
+
+   /**
+    * Get Delay source (Container or Stream or empty).
+    * 
+    * @return Delay source (Container or Stream or empty).
+    */
+    @Nullable
+    public final LocalTime getDelaySourceStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.DELAYSOURCESTRING);
     }
 
    /**
@@ -25636,8 +28607,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the person or organization who supplied the original subject.
     */
     @Nullable
-    public final LocalDate getOriginalSourceFormDistributedByAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ORIGINALSOURCEFORMDISTRIBUTEDBY);
+    public final LocalDateTime getOriginalSourceFormDistributedByAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMDISTRIBUTEDBY);
+    }
+
+   /**
+    * Get Name of the person or organization who supplied the original subject.
+    * 
+    * @return Name of the person or organization who supplied the original subject.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceFormDistributedByAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ORIGINALSOURCEFORMDISTRIBUTEDBY);
     }
 
    /**
@@ -25722,8 +28703,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Date/year the item was added to the owners collection.
     */
     @Nullable
-    public final LocalDate getAddedDateAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ADDEDDATE);
+    public final LocalDateTime getAddedDateAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ADDEDDATE);
+    }
+
+   /**
+    * Get Date/year the item was added to the owners collection.
+    * 
+    * @return Date/year the item was added to the owners collection.
+    */
+    @Nullable
+    public final LocalTime getAddedDateAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ADDEDDATE);
     }
 
    /**
@@ -25808,8 +28799,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Stream type name.
     */
     @Nullable
-    public final LocalDate getStreamKindStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.STREAMKINDSTRING);
+    public final LocalDateTime getStreamKindStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.STREAMKINDSTRING);
+    }
+
+   /**
+    * Get Stream type name.
+    * 
+    * @return Stream type name.
+    */
+    @Nullable
+    public final LocalTime getStreamKindStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.STREAMKINDSTRING);
     }
 
    /**
@@ -25894,8 +28895,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return More infos about the track.
     */
     @Nullable
-    public final LocalDate getTrackMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TRACKMORE);
+    public final LocalDateTime getTrackMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TRACKMORE);
+    }
+
+   /**
+    * Get More infos about the track.
+    * 
+    * @return More infos about the track.
+    */
+    @Nullable
+    public final LocalTime getTrackMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TRACKMORE);
     }
 
    /**
@@ -25980,8 +28991,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Version of the product.
     */
     @Nullable
-    public final LocalDate getEncodedApplicationVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.ENCODEDAPPLICATIONVERSION);
+    public final LocalDateTime getEncodedApplicationVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONVERSION);
+    }
+
+   /**
+    * Get Version of the product.
+    * 
+    * @return Version of the product.
+    */
+    @Nullable
+    public final LocalTime getEncodedApplicationVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.ENCODEDAPPLICATIONVERSION);
     }
 
    /**
@@ -26066,8 +29087,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return The menu ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getMenuIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MENUID);
+    public final LocalDateTime getMenuIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MENUID);
+    }
+
+   /**
+    * Get The menu ID for this stream in this file.
+    * 
+    * @return The menu ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getMenuIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MENUID);
     }
 
    /**
@@ -26152,8 +29183,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Menu Codecsin this file, separated by /.
     */
     @Nullable
-    public final LocalDate getMenuFormatListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MENUFORMATLIST);
+    public final LocalDateTime getMenuFormatListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MENUFORMATLIST);
+    }
+
+   /**
+    * Get Menu Codecsin this file, separated by /.
+    * 
+    * @return Menu Codecsin this file, separated by /.
+    */
+    @Nullable
+    public final LocalTime getMenuFormatListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MENUFORMATLIST);
     }
 
    /**
@@ -26238,8 +29279,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Performer/Sort.
     */
     @Nullable
-    public final LocalDate getPerformerSortAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.PERFORMERSORT);
+    public final LocalDateTime getPerformerSortAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PERFORMERSORT);
+    }
+
+   /**
+    * Get Performer/Sort.
+    * 
+    * @return Performer/Sort.
+    */
+    @Nullable
+    public final LocalTime getPerformerSortAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PERFORMERSORT);
     }
 
    /**
@@ -26324,8 +29375,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Homepage for the movie.
     */
     @Nullable
-    public final LocalDate getMovieUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.MOVIEURL);
+    public final LocalDateTime getMovieUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.MOVIEURL);
+    }
+
+   /**
+    * Get Homepage for the movie.
+    * 
+    * @return Homepage for the movie.
+    */
+    @Nullable
+    public final LocalTime getMovieUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.MOVIEURL);
     }
 
    /**
@@ -26410,8 +29471,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return A plot outline or a summary of the story..
     */
     @Nullable
-    public final LocalDate getSummaryAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.SUMMARY);
+    public final LocalDateTime getSummaryAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.SUMMARY);
+    }
+
+   /**
+    * Get A plot outline or a summary of the story..
+    * 
+    * @return A plot outline or a summary of the story..
+    */
+    @Nullable
+    public final LocalTime getSummaryAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.SUMMARY);
     }
 
    /**
@@ -26496,8 +29567,18 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     * @return Name of the track. e.g. track1, track 2.
     */
     @Nullable
-    public final LocalDate getTrackAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.General, 0, General.TRACK);
+    public final LocalDateTime getTrackAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.TRACK);
+    }
+
+   /**
+    * Get Name of the track. e.g. track1, track 2.
+    * 
+    * @return Name of the track. e.g. track1, track 2.
+    */
+    @Nullable
+    public final LocalTime getTrackAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.TRACK);
     }
 
    /**

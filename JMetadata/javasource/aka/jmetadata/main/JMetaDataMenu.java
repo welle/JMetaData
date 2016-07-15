@@ -2,7 +2,8 @@ package aka.jmetadata.main;
 
 import java.math.BigInteger;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
@@ -55,8 +56,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The unique ID for this stream, should be copied with stream copy.
     */
     @Nullable
-    public final LocalDate getUniqueIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.UNIQUEID);
+    public final LocalDateTime getUniqueIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.UNIQUEID);
+    }
+
+   /**
+    * Get The unique ID for this stream, should be copied with stream copy.
+    * 
+    * @return The unique ID for this stream, should be copied with stream copy.
+    */
+    @Nullable
+    public final LocalTime getUniqueIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.UNIQUEID);
     }
 
    /**
@@ -126,8 +137,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return NetworkName.
     */
     @Nullable
-    public final LocalDate getNetworkNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.NETWORKNAME);
+    public final LocalDateTime getNetworkNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.NETWORKNAME);
+    }
+
+   /**
+    * Get NetworkName.
+    * 
+    * @return NetworkName.
+    */
+    @Nullable
+    public final LocalTime getNetworkNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.NETWORKNAME);
     }
 
    /**
@@ -197,8 +218,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return TimeZones.
     */
     @Nullable
-    public final LocalDate getTimeZonesAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.TIMEZONES);
+    public final LocalDateTime getTimeZonesAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.TIMEZONES);
+    }
+
+   /**
+    * Get TimeZones.
+    * 
+    * @return TimeZones.
+    */
+    @Nullable
+    public final LocalTime getTimeZonesAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.TIMEZONES);
     }
 
    /**
@@ -268,8 +299,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Language (full).
     */
     @Nullable
-    public final LocalDate getLanguageStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING);
+    public final LocalDateTime getLanguageStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING);
+    }
+
+   /**
+    * Get Language (full).
+    * 
+    * @return Language (full).
+    */
+    @Nullable
+    public final LocalTime getLanguageStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING);
     }
 
    /**
@@ -339,8 +380,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDelayString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING3);
+    public final LocalDateTime getDelayString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING3);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS.MMM.
+    * 
+    * @return Delay in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDelayString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING3);
     }
 
    /**
@@ -410,8 +461,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDelayString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING4);
+    public final LocalDateTime getDelayString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING4);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDelayString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING4);
     }
 
    /**
@@ -481,8 +542,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Countries.
     */
     @Nullable
-    public final LocalDate getCountriesAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.COUNTRIES);
+    public final LocalDateTime getCountriesAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.COUNTRIES);
+    }
+
+   /**
+    * Get Countries.
+    * 
+    * @return Countries.
+    */
+    @Nullable
+    public final LocalTime getCountriesAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.COUNTRIES);
     }
 
    /**
@@ -552,8 +623,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Stream order in the file, whatever is the kind of stream (base=0).
     */
     @Nullable
-    public final LocalDate getStreamOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STREAMORDER);
+    public final LocalDateTime getStreamOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMORDER);
+    }
+
+   /**
+    * Get Stream order in the file, whatever is the kind of stream (base=0).
+    * 
+    * @return Stream order in the file, whatever is the kind of stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getStreamOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMORDER);
     }
 
    /**
@@ -623,8 +704,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING1);
+    public final LocalDateTime getDelayString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING1);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING1);
     }
 
    /**
@@ -694,8 +785,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING2);
+    public final LocalDateTime getDelayString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING2);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING2);
     }
 
    /**
@@ -765,8 +866,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDelayString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING5);
+    public final LocalDateTime getDelayString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING5);
+    }
+
+   /**
+    * Get Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDelayString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING5);
     }
 
    /**
@@ -836,8 +947,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getForcedStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORCEDSTRING);
+    public final LocalDateTime getForcedStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORCEDSTRING);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getForcedStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORCEDSTRING);
     }
 
    /**
@@ -907,8 +1028,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Count of objects available in this stream.
     */
     @Nullable
-    public final LocalDate getCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.COUNT);
+    public final LocalDateTime getCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.COUNT);
+    }
+
+   /**
+    * Get Count of objects available in this stream.
+    * 
+    * @return Count of objects available in this stream.
+    */
+    @Nullable
+    public final LocalTime getCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.COUNT);
     }
 
    /**
@@ -978,8 +1109,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay fixed in the stream (relative) IN MS.
     */
     @Nullable
-    public final LocalDate getDelayAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAY);
+    public final LocalDateTime getDelayAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAY);
+    }
+
+   /**
+    * Get Delay fixed in the stream (relative) IN MS.
+    * 
+    * @return Delay fixed in the stream (relative) IN MS.
+    */
+    @Nullable
+    public final LocalTime getDelayAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAY);
     }
 
    /**
@@ -1049,8 +1190,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Count of streams of that kind available.
     */
     @Nullable
-    public final LocalDate getStreamCountAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STREAMCOUNT);
+    public final LocalDateTime getStreamCountAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMCOUNT);
+    }
+
+   /**
+    * Get Count of streams of that kind available.
+    * 
+    * @return Count of streams of that kind available.
+    */
+    @Nullable
+    public final LocalTime getStreamCountAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMCOUNT);
     }
 
    /**
@@ -1120,8 +1271,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Used by third-party developers to know about the end of the chapters list (this position excluded).
     */
     @Nullable
-    public final LocalDate getChaptersPosEndAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CHAPTERSPOSEND);
+    public final LocalDateTime getChaptersPosEndAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CHAPTERSPOSEND);
+    }
+
+   /**
+    * Get Used by third-party developers to know about the end of the chapters list (this position excluded).
+    * 
+    * @return Used by third-party developers to know about the end of the chapters list (this position excluded).
+    */
+    @Nullable
+    public final LocalTime getChaptersPosEndAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CHAPTERSPOSEND);
     }
 
    /**
@@ -1191,8 +1352,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Version of this format.
     */
     @Nullable
-    public final LocalDate getFormatVersionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATVERSION);
+    public final LocalDateTime getFormatVersionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATVERSION);
+    }
+
+   /**
+    * Get Version of this format.
+    * 
+    * @return Version of this format.
+    */
+    @Nullable
+    public final LocalTime getFormatVersionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATVERSION);
     }
 
    /**
@@ -1262,8 +1433,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return When multiple streams, number of the stream (base=1).
     */
     @Nullable
-    public final LocalDate getStreamKindPosAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDPOS);
+    public final LocalDateTime getStreamKindPosAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDPOS);
+    }
+
+   /**
+    * Get When multiple streams, number of the stream (base=1).
+    * 
+    * @return When multiple streams, number of the stream (base=1).
+    */
+    @Nullable
+    public final LocalTime getStreamKindPosAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDPOS);
     }
 
    /**
@@ -1333,8 +1514,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The ID for this stream in the original medium of the material.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALSOURCEMEDIUMID);
+    public final LocalDateTime getOriginalSourceMediumIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALSOURCEMEDIUMID);
+    }
+
+   /**
+    * Get The ID for this stream in the original medium of the material.
+    * 
+    * @return The ID for this stream in the original medium of the material.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALSOURCEMEDIUMID);
     }
 
    /**
@@ -1404,8 +1595,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING);
+    public final LocalDateTime getDurationStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING);
+    }
+
+   /**
+    * Get Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING);
     }
 
    /**
@@ -1475,8 +1676,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return ServiceType.
     */
     @Nullable
-    public final LocalDate getServiceTypeAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.SERVICETYPE);
+    public final LocalDateTime getServiceTypeAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICETYPE);
+    }
+
+   /**
+    * Get ServiceType.
+    * 
+    * @return ServiceType.
+    */
+    @Nullable
+    public final LocalTime getServiceTypeAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICETYPE);
     }
 
    /**
@@ -1546,8 +1757,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Compression method used.
     */
     @Nullable
-    public final LocalDate getFormatCompressionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMPRESSION);
+    public final LocalDateTime getFormatCompressionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMPRESSION);
+    }
+
+   /**
+    * Get Compression method used.
+    * 
+    * @return Compression method used.
+    */
+    @Nullable
+    public final LocalTime getFormatCompressionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMPRESSION);
     }
 
    /**
@@ -1617,8 +1838,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return List of programs available.
     */
     @Nullable
-    public final LocalDate getListAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LIST);
+    public final LocalDateTime getListAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LIST);
+    }
+
+   /**
+    * Get List of programs available.
+    * 
+    * @return List of programs available.
+    */
+    @Nullable
+    public final LocalTime getListAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LIST);
     }
 
    /**
@@ -1688,8 +1919,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.ID);
+    public final LocalDateTime getIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.ID);
+    }
+
+   /**
+    * Get The ID for this stream in this file.
+    * 
+    * @return The ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.ID);
     }
 
    /**
@@ -1759,8 +2000,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay with measurement.
     */
     @Nullable
-    public final LocalDate getDelayStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING);
+    public final LocalDateTime getDelayStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING);
+    }
+
+   /**
+    * Get Delay with measurement.
+    * 
+    * @return Delay with measurement.
+    */
+    @Nullable
+    public final LocalTime getDelayStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSTRING);
     }
 
    /**
@@ -1830,8 +2081,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
     */
     @Nullable
-    public final LocalDate getLawRatingAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LAWRATING);
+    public final LocalDateTime getLawRatingAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LAWRATING);
+    }
+
+   /**
+    * Get Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
+    * 
+    * @return Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
+    */
+    @Nullable
+    public final LocalTime getLawRatingAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LAWRATING);
     }
 
    /**
@@ -1901,8 +2162,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Set if that track should not be used.
     */
     @Nullable
-    public final LocalDate getDisabledAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DISABLED);
+    public final LocalDateTime getDisabledAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DISABLED);
+    }
+
+   /**
+    * Get Set if that track should not be used.
+    * 
+    * @return Set if that track should not be used.
+    */
+    @Nullable
+    public final LocalTime getDisabledAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DISABLED);
     }
 
    /**
@@ -1972,8 +2243,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return List of programs available.
     */
     @Nullable
-    public final LocalDate getListStreamKindAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LISTSTREAMKIND);
+    public final LocalDateTime getListStreamKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LISTSTREAMKIND);
+    }
+
+   /**
+    * Get List of programs available.
+    * 
+    * @return List of programs available.
+    */
+    @Nullable
+    public final LocalTime getListStreamKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LISTSTREAMKIND);
     }
 
    /**
@@ -2043,8 +2324,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Manual description given by the container.
     */
     @Nullable
-    public final LocalDate getCodecIDDescriptionAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CODECIDDESCRIPTION);
+    public final LocalDateTime getCodecIDDescriptionAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDDESCRIPTION);
+    }
+
+   /**
+    * Get Manual description given by the container.
+    * 
+    * @return Manual description given by the container.
+    */
+    @Nullable
+    public final LocalTime getCodecIDDescriptionAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDDESCRIPTION);
     }
 
    /**
@@ -2114,8 +2405,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @Nullable
-    public final LocalDate getStatusAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STATUS);
+    public final LocalDateTime getStatusAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STATUS);
+    }
+
+   /**
+    * Get bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    * 
+    * @return bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    */
+    @Nullable
+    public final LocalTime getStatusAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STATUS);
     }
 
    /**
@@ -2185,8 +2486,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The menu ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getMenuIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.MENUIDSTRING);
+    public final LocalDateTime getMenuIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.MENUIDSTRING);
+    }
+
+   /**
+    * Get The menu ID for this stream in this file.
+    * 
+    * @return The menu ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getMenuIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.MENUIDSTRING);
     }
 
    /**
@@ -2256,8 +2567,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time in format : XXx YYy only, YYy omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING2);
+    public final LocalDateTime getDurationString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING2);
+    }
+
+   /**
+    * Get Play time in format : XXx YYy only, YYy omited if zero.
+    * 
+    * @return Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING2);
     }
 
    /**
@@ -2327,8 +2648,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.MMM.
     */
     @Nullable
-    public final LocalDate getDurationString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING3);
+    public final LocalDateTime getDurationString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING3);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.MMM.
+    * 
+    * @return Play time in format : HH:MM:SS.MMM.
+    */
+    @Nullable
+    public final LocalTime getDurationString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING3);
     }
 
    /**
@@ -2398,8 +2729,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return More info about Language (e.g. Director's Comment).
     */
     @Nullable
-    public final LocalDate getLanguageMoreAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGEMORE);
+    public final LocalDateTime getLanguageMoreAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGEMORE);
+    }
+
+   /**
+    * Get More info about Language (e.g. Director's Comment).
+    * 
+    * @return More info about Language (e.g. Director's Comment).
+    */
+    @Nullable
+    public final LocalTime getLanguageMoreAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGEMORE);
     }
 
    /**
@@ -2469,8 +2810,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @Nullable
-    public final LocalDate getDurationString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING1);
+    public final LocalDateTime getDurationString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING1);
+    }
+
+   /**
+    * Get Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    * 
+    * @return Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @Nullable
+    public final LocalTime getDurationString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING1);
     }
 
    /**
@@ -2540,8 +2891,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time of the stream in ms.
     */
     @Nullable
-    public final LocalDate getDurationAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATION);
+    public final LocalDateTime getDurationAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATION);
+    }
+
+   /**
+    * Get Play time of the stream in ms.
+    * 
+    * @return Play time of the stream in ms.
+    */
+    @Nullable
+    public final LocalTime getDurationAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATION);
     }
 
    /**
@@ -2611,8 +2972,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @Nullable
-    public final LocalDate getDurationString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING4);
+    public final LocalDateTime getDurationString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING4);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    * 
+    * @return Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @Nullable
+    public final LocalTime getDurationString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING4);
     }
 
    /**
@@ -2682,8 +3053,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
     */
     @Nullable
-    public final LocalDate getDurationString5AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING5);
+    public final LocalDateTime getDurationString5AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING5);
+    }
+
+   /**
+    * Get Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    * 
+    * @return Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @Nullable
+    public final LocalTime getDurationString5AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTRING5);
     }
 
    /**
@@ -2753,8 +3134,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Duration_Start.
     */
     @Nullable
-    public final LocalDate getDurationStartAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTART);
+    public final LocalDateTime getDurationStartAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTART);
+    }
+
+   /**
+    * Get Duration_Start.
+    * 
+    * @return Duration_Start.
+    */
+    @Nullable
+    public final LocalTime getDurationStartAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONSTART);
     }
 
    /**
@@ -2824,8 +3215,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return A hint/popular name for this codec.
     */
     @Nullable
-    public final LocalDate getCodecIDHintAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CODECIDHINT);
+    public final LocalDateTime getCodecIDHintAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDHINT);
+    }
+
+   /**
+    * Get A hint/popular name for this codec.
+    * 
+    * @return A hint/popular name for this codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDHintAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDHINT);
     }
 
    /**
@@ -2895,8 +3296,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay source (Container or Stream or empty).
     */
     @Nullable
-    public final LocalDate getDelaySourceAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSOURCE);
+    public final LocalDateTime getDelaySourceAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSOURCE);
+    }
+
+   /**
+    * Get Delay source (Container or Stream or empty).
+    * 
+    * @return Delay source (Container or Stream or empty).
+    */
+    @Nullable
+    public final LocalTime getDelaySourceAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSOURCE);
     }
 
    /**
@@ -2966,8 +3377,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay settings (in case of timecode for example).
     */
     @Nullable
-    public final LocalDate getDelaySettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYSETTINGS);
+    public final LocalDateTime getDelaySettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSETTINGS);
+    }
+
+   /**
+    * Get Delay settings (in case of timecode for example).
+    * 
+    * @return Delay settings (in case of timecode for example).
+    */
+    @Nullable
+    public final LocalTime getDelaySettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYSETTINGS);
     }
 
    /**
@@ -3037,8 +3458,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Service/Url.
     */
     @Nullable
-    public final LocalDate getServiceUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.SERVICEURL);
+    public final LocalDateTime getServiceUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEURL);
+    }
+
+   /**
+    * Get Service/Url.
+    * 
+    * @return Service/Url.
+    */
+    @Nullable
+    public final LocalTime getServiceUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEURL);
     }
 
    /**
@@ -3108,8 +3539,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return List of programs available.
     */
     @Nullable
-    public final LocalDate getListStreamPosAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LISTSTREAMPOS);
+    public final LocalDateTime getListStreamPosAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LISTSTREAMPOS);
+    }
+
+   /**
+    * Get List of programs available.
+    * 
+    * @return List of programs available.
+    */
+    @Nullable
+    public final LocalTime getListStreamPosAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LISTSTREAMPOS);
     }
 
    /**
@@ -3179,8 +3620,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return ServiceName.
     */
     @Nullable
-    public final LocalDate getServiceNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.SERVICENAME);
+    public final LocalDateTime getServiceNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICENAME);
+    }
+
+   /**
+    * Get ServiceName.
+    * 
+    * @return ServiceName.
+    */
+    @Nullable
+    public final LocalTime getServiceNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICENAME);
     }
 
    /**
@@ -3250,8 +3701,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return ServiceProvider.
     */
     @Nullable
-    public final LocalDate getServiceProviderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.SERVICEPROVIDER);
+    public final LocalDateTime getServiceProviderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEPROVIDER);
+    }
+
+   /**
+    * Get ServiceProvider.
+    * 
+    * @return ServiceProvider.
+    */
+    @Nullable
+    public final LocalTime getServiceProviderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEPROVIDER);
     }
 
    /**
@@ -3321,8 +3782,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Used by third-party developers to know about the beginning of the chapters list, to be used by Get(Stream_Menu, x, Pos), where Pos is an Integer between Chapters_Pos_Begin and Chapters_Pos_End.
     */
     @Nullable
-    public final LocalDate getChaptersPosBeginAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CHAPTERSPOSBEGIN);
+    public final LocalDateTime getChaptersPosBeginAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CHAPTERSPOSBEGIN);
+    }
+
+   /**
+    * Get Used by third-party developers to know about the beginning of the chapters list, to be used by Get(Stream_Menu, x, Pos), where Pos is an Integer between Chapters_Pos_Begin and Chapters_Pos_End.
+    * 
+    * @return Used by third-party developers to know about the beginning of the chapters list, to be used by Get(Stream_Menu, x, Pos), where Pos is an Integer between Chapters_Pos_Begin and Chapters_Pos_End.
+    */
+    @Nullable
+    public final LocalTime getChaptersPosBeginAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CHAPTERSPOSBEGIN);
     }
 
    /**
@@ -3392,8 +3863,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return ServiceProviderr/Url.
     */
     @Nullable
-    public final LocalDate getServiceProviderrUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.SERVICEPROVIDERRURL);
+    public final LocalDateTime getServiceProviderrUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEPROVIDERRURL);
+    }
+
+   /**
+    * Get ServiceProviderr/Url.
+    * 
+    * @return ServiceProviderr/Url.
+    */
+    @Nullable
+    public final LocalTime getServiceProviderrUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEPROVIDERRURL);
     }
 
    /**
@@ -3463,8 +3944,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Settings needed for decoder used.
     */
     @Nullable
-    public final LocalDate getFormatSettingsAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATSETTINGS);
+    public final LocalDateTime getFormatSettingsAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATSETTINGS);
+    }
+
+   /**
+    * Get Settings needed for decoder used.
+    * 
+    * @return Settings needed for decoder used.
+    */
+    @Nullable
+    public final LocalTime getFormatSettingsAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATSETTINGS);
     }
 
    /**
@@ -3534,8 +4025,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getForcedAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORCED);
+    public final LocalDateTime getForcedAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORCED);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getForcedAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORCED);
     }
 
    /**
@@ -3605,8 +4106,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
     */
     @Nullable
-    public final LocalDate getFirstPacketOrderAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FIRSTPACKETORDER);
+    public final LocalDateTime getFirstPacketOrderAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FIRSTPACKETORDER);
+    }
+
+   /**
+    * Get Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    * 
+    * @return Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getFirstPacketOrderAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FIRSTPACKETORDER);
     }
 
    /**
@@ -3676,8 +4187,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Duration_End.
     */
     @Nullable
-    public final LocalDate getDurationEndAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DURATIONEND);
+    public final LocalDateTime getDurationEndAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONEND);
+    }
+
+   /**
+    * Get Duration_End.
+    * 
+    * @return Duration_End.
+    */
+    @Nullable
+    public final LocalTime getDurationEndAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DURATIONEND);
     }
 
    /**
@@ -3747,8 +4268,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Stream type name.
     */
     @Nullable
-    public final LocalDate getStreamKindAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STREAMKIND);
+    public final LocalDateTime getStreamKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKIND);
+    }
+
+   /**
+    * Get Stream type name.
+    * 
+    * @return Stream type name.
+    */
+    @Nullable
+    public final LocalTime getStreamKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKIND);
     }
 
    /**
@@ -3818,8 +4349,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Last **Inform** call.
     */
     @Nullable
-    public final LocalDate getInformAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.INFORM);
+    public final LocalDateTime getInformAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.INFORM);
+    }
+
+   /**
+    * Get Last **Inform** call.
+    * 
+    * @return Last **Inform** call.
+    */
+    @Nullable
+    public final LocalTime getInformAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.INFORM);
     }
 
    /**
@@ -3889,8 +4430,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Language (full).
     */
     @Nullable
-    public final LocalDate getLanguageString1AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING1);
+    public final LocalDateTime getLanguageString1AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING1);
+    }
+
+   /**
+    * Get Language (full).
+    * 
+    * @return Language (full).
+    */
+    @Nullable
+    public final LocalTime getLanguageString1AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING1);
     }
 
    /**
@@ -3960,8 +4511,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Reason for the law rating.
     */
     @Nullable
-    public final LocalDate getLawRatingReasonAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LAWRATINGREASON);
+    public final LocalDateTime getLawRatingReasonAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LAWRATINGREASON);
+    }
+
+   /**
+    * Get Reason for the law rating.
+    * 
+    * @return Reason for the law rating.
+    */
+    @Nullable
+    public final LocalTime getLawRatingReasonAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LAWRATINGREASON);
     }
 
    /**
@@ -4031,8 +4592,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Language (2-letter ISO 639-1 if exists, else empty).
     */
     @Nullable
-    public final LocalDate getLanguageString2AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING2);
+    public final LocalDateTime getLanguageString2AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING2);
+    }
+
+   /**
+    * Get Language (2-letter ISO 639-1 if exists, else empty).
+    * 
+    * @return Language (2-letter ISO 639-1 if exists, else empty).
+    */
+    @Nullable
+    public final LocalTime getLanguageString2AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING2);
     }
 
    /**
@@ -4102,8 +4673,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Language (3-letter ISO 639-2 if exists, else empty).
     */
     @Nullable
-    public final LocalDate getLanguageString3AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING3);
+    public final LocalDateTime getLanguageString3AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING3);
+    }
+
+   /**
+    * Get Language (3-letter ISO 639-2 if exists, else empty).
+    * 
+    * @return Language (3-letter ISO 639-2 if exists, else empty).
+    */
+    @Nullable
+    public final LocalTime getLanguageString3AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING3);
     }
 
    /**
@@ -4173,8 +4754,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
     */
     @Nullable
-    public final LocalDate getLanguageString4AsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING4);
+    public final LocalDateTime getLanguageString4AsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING4);
+    }
+
+   /**
+    * Get Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+    * 
+    * @return Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+    */
+    @Nullable
+    public final LocalTime getLanguageString4AsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGESTRING4);
     }
 
    /**
@@ -4244,8 +4835,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Codec ID (found in some containers).
     */
     @Nullable
-    public final LocalDate getCodecIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CODECID);
+    public final LocalDateTime getCodecIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CODECID);
+    }
+
+   /**
+    * Get Codec ID (found in some containers).
+    * 
+    * @return Codec ID (found in some containers).
+    */
+    @Nullable
+    public final LocalTime getCodecIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CODECID);
     }
 
    /**
@@ -4315,8 +4916,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Number of a group in order to provide versions of the same track.
     */
     @Nullable
-    public final LocalDate getAlternateGroupAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.ALTERNATEGROUP);
+    public final LocalDateTime getAlternateGroupAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.ALTERNATEGROUP);
+    }
+
+   /**
+    * Get Number of a group in order to provide versions of the same track.
+    * 
+    * @return Number of a group in order to provide versions of the same track.
+    */
+    @Nullable
+    public final LocalTime getAlternateGroupAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.ALTERNATEGROUP);
     }
 
    /**
@@ -4386,8 +4997,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Number of the stream (base=0).
     */
     @Nullable
-    public final LocalDate getStreamKindIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDID);
+    public final LocalDateTime getStreamKindIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDID);
+    }
+
+   /**
+    * Get Number of the stream (base=0).
+    * 
+    * @return Number of the stream (base=0).
+    */
+    @Nullable
+    public final LocalTime getStreamKindIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDID);
     }
 
    /**
@@ -4457,8 +5078,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Format used.
     */
     @Nullable
-    public final LocalDate getFormatAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMAT);
+    public final LocalDateTime getFormatAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMAT);
+    }
+
+   /**
+    * Get Format used.
+    * 
+    * @return Format used.
+    */
+    @Nullable
+    public final LocalTime getFormatAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMAT);
     }
 
    /**
@@ -4528,8 +5159,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
     */
     @Nullable
-    public final LocalDate getLanguageAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGE);
+    public final LocalDateTime getLanguageAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGE);
+    }
+
+   /**
+    * Get Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+    * 
+    * @return Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+    */
+    @Nullable
+    public final LocalTime getLanguageAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LANGUAGE);
     }
 
    /**
@@ -4599,8 +5240,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Original/NetworkName.
     */
     @Nullable
-    public final LocalDate getOriginalNetworkNameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALNETWORKNAME);
+    public final LocalDateTime getOriginalNetworkNameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALNETWORKNAME);
+    }
+
+   /**
+    * Get Original/NetworkName.
+    * 
+    * @return Original/NetworkName.
+    */
+    @Nullable
+    public final LocalTime getOriginalNetworkNameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALNETWORKNAME);
     }
 
    /**
@@ -4670,8 +5321,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Info about this codec.
     */
     @Nullable
-    public final LocalDate getCodecIDInfoAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CODECIDINFO);
+    public final LocalDateTime getCodecIDInfoAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDINFO);
+    }
+
+   /**
+    * Get Info about this codec.
+    * 
+    * @return Info about this codec.
+    */
+    @Nullable
+    public final LocalTime getCodecIDInfoAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDINFO);
     }
 
    /**
@@ -4741,8 +5402,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Link.
     */
     @Nullable
-    public final LocalDate getFormatUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATURL);
+    public final LocalDateTime getFormatUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATURL);
+    }
+
+   /**
+    * Get Link.
+    * 
+    * @return Link.
+    */
+    @Nullable
+    public final LocalTime getFormatUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATURL);
     }
 
    /**
@@ -4812,8 +5483,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Codec ID (found in some containers).
     */
     @Nullable
-    public final LocalDate getCodecIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CODECIDSTRING);
+    public final LocalDateTime getCodecIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDSTRING);
+    }
+
+   /**
+    * Get Codec ID (found in some containers).
+    * 
+    * @return Codec ID (found in some containers).
+    */
+    @Nullable
+    public final LocalTime getCodecIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDSTRING);
     }
 
    /**
@@ -4883,8 +5564,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getDefaultStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DEFAULTSTRING);
+    public final LocalDateTime getDefaultStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DEFAULTSTRING);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getDefaultStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DEFAULTSTRING);
     }
 
    /**
@@ -4954,8 +5645,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The ID for this stream in the original medium of the material.
     */
     @Nullable
-    public final LocalDate getOriginalSourceMediumIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALSOURCEMEDIUMIDSTRING);
+    public final LocalDateTime getOriginalSourceMediumIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALSOURCEMEDIUMIDSTRING);
+    }
+
+   /**
+    * Get The ID for this stream in the original medium of the material.
+    * 
+    * @return The ID for this stream in the original medium of the material.
+    */
+    @Nullable
+    public final LocalTime getOriginalSourceMediumIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.ORIGINALSOURCEMEDIUMIDSTRING);
     }
 
    /**
@@ -5025,8 +5726,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Commercial name used by vendor for theses setings or Format field if there is no difference.
     */
     @Nullable
-    public final LocalDate getFormatCommercialAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMMERCIAL);
+    public final LocalDateTime getFormatCommercialAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMMERCIAL);
+    }
+
+   /**
+    * Get Commercial name used by vendor for theses setings or Format field if there is no difference.
+    * 
+    * @return Commercial name used by vendor for theses setings or Format field if there is no difference.
+    */
+    @Nullable
+    public final LocalTime getFormatCommercialAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMMERCIAL);
     }
 
    /**
@@ -5096,8 +5807,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Info about Format.
     */
     @Nullable
-    public final LocalDate getFormatInfoAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATINFO);
+    public final LocalDateTime getFormatInfoAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATINFO);
+    }
+
+   /**
+    * Get Info about Format.
+    * 
+    * @return Info about Format.
+    */
+    @Nullable
+    public final LocalTime getFormatInfoAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATINFO);
     }
 
    /**
@@ -5167,8 +5888,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return A link to more details about this codec ID.
     */
     @Nullable
-    public final LocalDate getCodecIDUrlAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.CODECIDURL);
+    public final LocalDateTime getCodecIDUrlAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDURL);
+    }
+
+   /**
+    * Get A link to more details about this codec ID.
+    * 
+    * @return A link to more details about this codec ID.
+    */
+    @Nullable
+    public final LocalTime getCodecIDUrlAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.CODECIDURL);
     }
 
    /**
@@ -5238,8 +5969,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Name of this menu.
     */
     @Nullable
-    public final LocalDate getTitleAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.TITLE);
+    public final LocalDateTime getTitleAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.TITLE);
+    }
+
+   /**
+    * Get Name of this menu.
+    * 
+    * @return Name of this menu.
+    */
+    @Nullable
+    public final LocalTime getTitleAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.TITLE);
     }
 
    /**
@@ -5309,8 +6050,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Stream type name.
     */
     @Nullable
-    public final LocalDate getStreamKindStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDSTRING);
+    public final LocalDateTime getStreamKindStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDSTRING);
+    }
+
+   /**
+    * Get Stream type name.
+    * 
+    * @return Stream type name.
+    */
+    @Nullable
+    public final LocalTime getStreamKindStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.STREAMKINDSTRING);
     }
 
    /**
@@ -5380,8 +6131,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return List of programs available.
     */
     @Nullable
-    public final LocalDate getListStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.LISTSTRING);
+    public final LocalDateTime getListStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.LISTSTRING);
+    }
+
+   /**
+    * Get List of programs available.
+    * 
+    * @return List of programs available.
+    */
+    @Nullable
+    public final LocalTime getListStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.LISTSTRING);
     }
 
    /**
@@ -5451,8 +6212,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Delay drop frame.
     */
     @Nullable
-    public final LocalDate getDelayDropFrameAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DELAYDROPFRAME);
+    public final LocalDateTime getDelayDropFrameAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYDROPFRAME);
+    }
+
+   /**
+    * Get Delay drop frame.
+    * 
+    * @return Delay drop frame.
+    */
+    @Nullable
+    public final LocalTime getDelayDropFrameAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DELAYDROPFRAME);
     }
 
    /**
@@ -5522,8 +6293,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Set if that track should not be used.
     */
     @Nullable
-    public final LocalDate getDisabledStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DISABLEDSTRING);
+    public final LocalDateTime getDisabledStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DISABLEDSTRING);
+    }
+
+   /**
+    * Get Set if that track should not be used.
+    * 
+    * @return Set if that track should not be used.
+    */
+    @Nullable
+    public final LocalTime getDisabledStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DISABLEDSTRING);
     }
 
    /**
@@ -5593,8 +6374,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Set if that track should be used if no language found matches the user preference..
     */
     @Nullable
-    public final LocalDate getDefaultAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.DEFAULT);
+    public final LocalDateTime getDefaultAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.DEFAULT);
+    }
+
+   /**
+    * Get Set if that track should be used if no language found matches the user preference..
+    * 
+    * @return Set if that track should be used if no language found matches the user preference..
+    */
+    @Nullable
+    public final LocalTime getDefaultAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.DEFAULT);
     }
 
    /**
@@ -5664,8 +6455,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The menu ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getMenuIDAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.MENUID);
+    public final LocalDateTime getMenuIDAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.MENUID);
+    }
+
+   /**
+    * Get The menu ID for this stream in this file.
+    * 
+    * @return The menu ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getMenuIDAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.MENUID);
     }
 
    /**
@@ -5735,8 +6536,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The unique ID for this stream, should be copied with stream copy.
     */
     @Nullable
-    public final LocalDate getUniqueIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.UNIQUEIDSTRING);
+    public final LocalDateTime getUniqueIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.UNIQUEIDSTRING);
+    }
+
+   /**
+    * Get The unique ID for this stream, should be copied with stream copy.
+    * 
+    * @return The unique ID for this stream, should be copied with stream copy.
+    */
+    @Nullable
+    public final LocalTime getUniqueIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.UNIQUEIDSTRING);
     }
 
    /**
@@ -5806,8 +6617,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Commercial name used by vendor for theses setings if there is one.
     */
     @Nullable
-    public final LocalDate getFormatCommercialIfAnyAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMMERCIALIFANY);
+    public final LocalDateTime getFormatCommercialIfAnyAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMMERCIALIFANY);
+    }
+
+   /**
+    * Get Commercial name used by vendor for theses setings if there is one.
+    * 
+    * @return Commercial name used by vendor for theses setings if there is one.
+    */
+    @Nullable
+    public final LocalTime getFormatCommercialIfAnyAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATCOMMERCIALIFANY);
     }
 
    /**
@@ -5877,8 +6698,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return The ID for this stream in this file.
     */
     @Nullable
-    public final LocalDate getIDStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.IDSTRING);
+    public final LocalDateTime getIDStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.IDSTRING);
+    }
+
+   /**
+    * Get The ID for this stream in this file.
+    * 
+    * @return The ID for this stream in this file.
+    */
+    @Nullable
+    public final LocalTime getIDStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.IDSTRING);
     }
 
    /**
@@ -5948,8 +6779,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Number of a group in order to provide versions of the same track.
     */
     @Nullable
-    public final LocalDate getAlternateGroupStringAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.ALTERNATEGROUPSTRING);
+    public final LocalDateTime getAlternateGroupStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.ALTERNATEGROUPSTRING);
+    }
+
+   /**
+    * Get Number of a group in order to provide versions of the same track.
+    * 
+    * @return Number of a group in order to provide versions of the same track.
+    */
+    @Nullable
+    public final LocalTime getAlternateGroupStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.ALTERNATEGROUPSTRING);
     }
 
    /**
@@ -6019,8 +6860,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return Profile of the Format.
     */
     @Nullable
-    public final LocalDate getFormatProfileAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.FORMATPROFILE);
+    public final LocalDateTime getFormatProfileAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATPROFILE);
+    }
+
+   /**
+    * Get Profile of the Format.
+    * 
+    * @return Profile of the Format.
+    */
+    @Nullable
+    public final LocalTime getFormatProfileAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.FORMATPROFILE);
     }
 
    /**
@@ -6090,8 +6941,18 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     * @return ServiceChannel.
     */
     @Nullable
-    public final LocalDate getServiceChannelAsLocalDate() {
-        return getMediaInfo().getAsLocalDate(StreamKind.Menu, getStreamNumber(), Menu.SERVICECHANNEL);
+    public final LocalDateTime getServiceChannelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICECHANNEL);
+    }
+
+   /**
+    * Get ServiceChannel.
+    * 
+    * @return ServiceChannel.
+    */
+    @Nullable
+    public final LocalTime getServiceChannelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICECHANNEL);
     }
 
    /**

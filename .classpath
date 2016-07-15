@@ -13,6 +13,6 @@
 	<classpathentry kind="lib" path="libs/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar"/>
 	<classpathentry kind="lib" path="libs/SwissKnife.jar"/>
 	<classpathentry kind="lib" path="libs/tomcat-juli.jar"/>
-	<classpathentry kind="lib" path="libs/opencsv-3.8.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang3-3.1.jar"/>
 	<classpathentry kind="output" path="JMetadata/classes"/>
 </classpath>

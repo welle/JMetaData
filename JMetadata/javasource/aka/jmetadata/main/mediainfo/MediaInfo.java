@@ -7,9 +7,9 @@ import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.jdt.annotation.NonNull;
@@ -25,7 +25,7 @@ import com.sun.jna.WString;
 
 import aka.jmetadata.main.constants.InfoKind;
 import aka.jmetadata.main.constants.StreamKind;
-import aka.jmetadata.main.helper.DateHelper;
+import aka.jmetadata.main.helper.DateTimeHelper;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OSHelperConstants.OS_ARCH;
@@ -203,8 +203,10 @@ public final class MediaInfo {
 
         if ("Yes".equals(value)) {
             return Boolean.TRUE;
+        } else if ("No".equals(value)) {
+            return Boolean.TRUE;
         } else {
-            return Boolean.FALSE;
+            return null;
         }
     }
 
@@ -228,7 +230,7 @@ public final class MediaInfo {
                 try {
                     result = Long.valueOf(value);
                 } catch (final NumberFormatException e) {
-                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsLong", e.getMessage(), e);
+                    // Nothing to do
                 }
             }
         }
@@ -256,7 +258,7 @@ public final class MediaInfo {
                 try {
                     result = Integer.valueOf(value);
                 } catch (final NumberFormatException e) {
-                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsInteger", e.getMessage(), e);
+                    // Nothing to do
                 }
             }
         }
@@ -284,7 +286,7 @@ public final class MediaInfo {
                 try {
                     result = new BigInteger(value);
                 } catch (final NumberFormatException e) {
-                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsBigInteger", e.getMessage(), e);
+                    // Nothing to do
                 }
             }
         }
@@ -309,7 +311,7 @@ public final class MediaInfo {
             try {
                 result = new URL(value);
             } catch (final MalformedURLException e) {
-                LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsURL", e.getMessage(), e);
+                // Nothing to do
             }
         }
 
@@ -336,7 +338,7 @@ public final class MediaInfo {
                 try {
                     result = Double.valueOf(value);
                 } catch (final NumberFormatException e) {
-                    LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsDouble", e.getMessage(), e);
+                    // Nothing to do
                 }
             }
         }
@@ -354,15 +356,39 @@ public final class MediaInfo {
      * @return a Date about information you search, an empty string if there is a problem
      */
     @Nullable
-    public LocalDate getAsLocalDate(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
-        LocalDate result = null;
+    public LocalDateTime getAsLocalDateTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+        LocalDateTime result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             try {
-                result = DateHelper.parse(value);
+                result = DateTimeHelper.parseLocalDateTime(value);
             } catch (final DateTimeParseException e) {
-                LOGGER.logp(Level.SEVERE, "MediaInfo", "getAsLocalDate", e.getMessage(), e);
+                // Nothing to do
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format ("Codec", "Width"...)
+     * @return a Date about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public LocalTime getAsLocalTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+        LocalTime result = null;
+        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            try {
+                result = DateTimeHelper.parseLocalTime(value);
+            } catch (final DateTimeParseException e) {
+                // Nothing to do
             }
         }
         return result;
