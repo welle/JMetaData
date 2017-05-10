@@ -1732,6 +1732,87 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
 
 
    /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Integer getServiceKindStringAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Long getServiceKindStringAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final LocalDateTime getServiceKindStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final LocalTime getServiceKindStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final String getServiceKindStringAsString() {
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Boolean getServiceKindStringAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final BigInteger getServiceKindStringAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final URL getServiceKindStringAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKINDSTRING);
+    }
+
+
+   /**
     * Get How this stream is muxed in the container.
     * 
     * @return How this stream is muxed in the container.
@@ -14773,9 +14854,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
 
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final Integer getFormatProfileAsInteger() {
@@ -14783,9 +14864,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final Long getFormatProfileAsLong() {
@@ -14793,9 +14874,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final LocalDateTime getFormatProfileAsLocalDateTime() {
@@ -14803,9 +14884,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final LocalTime getFormatProfileAsLocalTime() {
@@ -14813,9 +14894,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final String getFormatProfileAsString() {
@@ -14823,9 +14904,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final Boolean getFormatProfileAsBoolean() {
@@ -14833,9 +14914,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final BigInteger getFormatProfileAsBigInteger() {
@@ -14843,9 +14924,9 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of this Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of this Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final URL getFormatProfileAsURL() {
@@ -15741,6 +15822,87 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     @Nullable
     public final URL getStreamSizeEncodedString5AsURL() {
         return getMediaInfo().getAsURL(StreamKind.Audio, getStreamNumber(), Audio.STREAMSIZEENCODEDSTRING5);
+    }
+
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Integer getFormatLevelAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Long getFormatLevelAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalDateTime getFormatLevelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalTime getFormatLevelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final String getFormatLevelAsString() {
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Boolean getFormatLevelAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final BigInteger getFormatLevelAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final URL getFormatLevelAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Audio, getStreamNumber(), Audio.FORMATLEVEL);
     }
 
 
@@ -17604,6 +17766,87 @@ public final class JMetaDataAudio extends AbstractStreamJMetadata {
     @Nullable
     public final URL getFormatSettingsAsURL() {
         return getMediaInfo().getAsURL(StreamKind.Audio, getStreamNumber(), Audio.FORMATSETTINGS);
+    }
+
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Integer getServiceKindAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Long getServiceKindAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final LocalDateTime getServiceKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final LocalTime getServiceKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final String getServiceKindAsString() {
+        return getMediaInfo().getAsString(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Boolean getServiceKindAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final BigInteger getServiceKindAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final URL getServiceKindAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Audio, getStreamNumber(), Audio.SERVICEKIND);
     }
 
 

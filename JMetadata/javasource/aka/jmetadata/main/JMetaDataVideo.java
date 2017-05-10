@@ -1570,9 +1570,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
 
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final Integer getFormatCompressionAsInteger() {
@@ -1580,9 +1580,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final Long getFormatCompressionAsLong() {
@@ -1590,9 +1590,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final LocalDateTime getFormatCompressionAsLocalDateTime() {
@@ -1600,9 +1600,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final LocalTime getFormatCompressionAsLocalTime() {
@@ -1610,9 +1610,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final String getFormatCompressionAsString() {
@@ -1620,9 +1620,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final Boolean getFormatCompressionAsBoolean() {
@@ -1630,9 +1630,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final BigInteger getFormatCompressionAsBigInteger() {
@@ -1640,9 +1640,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Compression mode of the Format.
+    * Get Compression method used.
     * 
-    * @return Compression mode of the Format.
+    * @return Compression method used.
     */
     @Nullable
     public final URL getFormatCompressionAsURL() {
@@ -2214,6 +2214,87 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     @Nullable
     public final URL getFrameRateAsURL() {
         return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.FRAMERATE);
+    }
+
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Integer getServiceKindStringAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Long getServiceKindStringAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final LocalDateTime getServiceKindStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final LocalTime getServiceKindStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final String getServiceKindStringAsString() {
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Boolean getServiceKindStringAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final BigInteger getServiceKindStringAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final URL getServiceKindStringAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.SERVICEKINDSTRING);
     }
 
 
@@ -17122,6 +17203,87 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
 
 
    /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final Integer getFormatTierAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final Long getFormatTierAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalDateTime getFormatTierAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalTime getFormatTierAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final String getFormatTierAsString() {
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final Boolean getFormatTierAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final BigInteger getFormatTierAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+   /**
+    * Get Tier of the Format (only MIXML).
+    * 
+    * @return Tier of the Format (only MIXML).
+    */
+    @Nullable
+    public final URL getFormatTierAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.FORMATTIER);
+    }
+
+
+   /**
     * Get Source Number of frames.
     * 
     * @return Source Number of frames.
@@ -17851,9 +18013,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
 
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final Integer getFormatProfileAsInteger() {
@@ -17861,9 +18023,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final Long getFormatProfileAsLong() {
@@ -17871,9 +18033,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final LocalDateTime getFormatProfileAsLocalDateTime() {
@@ -17881,9 +18043,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final LocalTime getFormatProfileAsLocalTime() {
@@ -17891,9 +18053,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final String getFormatProfileAsString() {
@@ -17901,9 +18063,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final Boolean getFormatProfileAsBoolean() {
@@ -17911,9 +18073,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final BigInteger getFormatProfileAsBigInteger() {
@@ -17921,9 +18083,9 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level@Tier' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @Nullable
     public final URL getFormatProfileAsURL() {
@@ -19062,6 +19224,87 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     @Nullable
     public final URL getStreamSizeEncodedString5AsURL() {
         return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.STREAMSIZEENCODEDSTRING5);
+    }
+
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Integer getFormatLevelAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Long getFormatLevelAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalDateTime getFormatLevelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalTime getFormatLevelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final String getFormatLevelAsString() {
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Boolean getFormatLevelAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final BigInteger getFormatLevelAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final URL getFormatLevelAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.FORMATLEVEL);
     }
 
 
@@ -22059,6 +22302,87 @@ public final class JMetaDataVideo extends AbstractStreamJMetadata {
     @Nullable
     public final URL getFormatSettingsAsURL() {
         return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.FORMATSETTINGS);
+    }
+
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Integer getServiceKindAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Long getServiceKindAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final LocalDateTime getServiceKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final LocalTime getServiceKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final String getServiceKindAsString() {
+        return getMediaInfo().getAsString(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Boolean getServiceKindAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final BigInteger getServiceKindAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final URL getServiceKindAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Video, getStreamNumber(), Video.SERVICEKIND);
     }
 
 

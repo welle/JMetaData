@@ -28,31 +28,10 @@ public final class Text {
     public static final String ENCODEDLIBRARYNAME = "Encoded_Library_Name";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAYSTRING3 = "Video0_Delay/String3";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAYSTRING4 = "Video0_Delay/String4";
-
-   /**
     * Duration of the first frame if it is longer than others, in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @NonNull
     public static final String DURATIONFIRSTFRAMESTRING4 = "Duration_FirstFrame/String4";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAYSTRING5 = "Video0_Delay/String5";
 
    /**
     * Duration of the first frame if it is longer than others, in format : HH:MM:SS.mmm (HH:MM:SS:FF).
@@ -85,31 +64,10 @@ public final class Text {
     public static final String SOURCEDURATIONLASTFRAME = "Source_Duration_LastFrame";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAYSTRING1 = "Video0_Delay/String1";
-
-   /**
     * Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
     */
     @NonNull
     public static final String DURATIONFIRSTFRAMESTRING1 = "Duration_FirstFrame/String1";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAYSTRING2 = "Video0_Delay/String2";
-
-   /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODEC = "Codec";
 
    /**
     * Compression method used.
@@ -142,13 +100,6 @@ public final class Text {
     public static final String CODECIDDESCRIPTION = "CodecID_Description";
 
    /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECINFO = "Codec/Info";
-
-   /**
     * bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @NonNull
@@ -165,6 +116,12 @@ public final class Text {
     */
     @NonNull
     public static final String FRAMERATE = "FrameRate";
+
+   /**
+    * Service kind (full).
+    */
+    @NonNull
+    public static final String SERVICEKINDSTRING = "ServiceKind/String";
 
    /**
     * How this stream is muxed in the container.
@@ -351,13 +308,6 @@ public final class Text {
     */
     @NonNull
     public static final String UNIQUEID = "UniqueID";
-
-   /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSTRING = "Codec/String";
 
    /**
     * Maximum Bit rate (with measurement).
@@ -690,13 +640,6 @@ public final class Text {
     public static final String ENCODEDLIBRARYSTRING = "Encoded_Library/String";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAY = "Video0_Delay";
-
-   /**
     * Streamsize in with percentage value.
     */
     @NonNull
@@ -791,13 +734,6 @@ public final class Text {
     */
     @NonNull
     public static final String ENCODEDLIBRARYSETTINGS = "Encoded_Library_Settings";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String RESOLUTIONSTRING = "Resolution/String";
 
    /**
     * Source Play time of the stream, in ms.
@@ -954,13 +890,6 @@ public final class Text {
     */
     @NonNull
     public static final String DELAYORIGINALSTRING5 = "Delay_Original/String5";
-
-   /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECCC = "Codec/CC";
 
    /**
     * Set if that track should be used if no language found matches the user preference..
@@ -1233,13 +1162,6 @@ public final class Text {
     public static final String DURATIONLASTFRAMESTRING1 = "Duration_LastFrame/String1";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEO0DELAYSTRING = "Video0_Delay/String";
-
-   /**
     * Delay with measurement.
     */
     @NonNull
@@ -1270,11 +1192,10 @@ public final class Text {
     public static final String FORMATSETTINGS = "Format_Settings";
 
    /**
-    * Deprecated, do not use in new projects.
+    * Service kind, e.g. visually impaired, commentary, voice over.
     */
     @NonNull
-    @Deprecated
-    public static final String RESOLUTION = "Resolution";
+    public static final String SERVICEKIND = "ServiceKind";
 
    /**
     * Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
@@ -1389,13 +1310,6 @@ public final class Text {
     */
     @NonNull
     public static final String STREAMKINDSTRING = "StreamKind/String";
-
-   /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECURL = "Codec/Url";
 
    /**
     * ChromaSubsampling.

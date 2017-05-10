@@ -112,20 +112,6 @@ public final class Video {
     public static final String TRANSFERCHARACTERISTICS = "transfer_characteristics";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODEC = "Codec";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECFAMILY = "Codec/Family";
-
-   /**
     * Settings needed for decoder used, detailled (M=x N=y).
     */
     @NonNull
@@ -138,7 +124,7 @@ public final class Video {
     public static final String WIDTHCLEANAPERTURESTRING = "Width_CleanAperture/String";
 
    /**
-    * Compression mode of the Format.
+    * Compression method used.
     */
     @NonNull
     public static final String FORMATCOMPRESSION = "Format_Compression";
@@ -168,13 +154,6 @@ public final class Video {
     public static final String CODECIDDESCRIPTION = "CodecID_Description";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECINFO = "Codec/Info";
-
-   /**
     * bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @NonNull
@@ -193,30 +172,22 @@ public final class Video {
     public static final String FRAMERATE = "FrameRate";
 
    /**
+    * Service kind (full).
+    */
+    @NonNull
+    public static final String SERVICEKINDSTRING = "ServiceKind/String";
+
+   /**
     * How this file is muxed in the container.
     */
     @NonNull
     public static final String MUXINGMODE = "MuxingMode";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECPROFILE = "Codec_Profile";
-
-   /**
     * ScanType_StoreMethod/String.
     */
     @NonNull
     public static final String SCANTYPESTOREMETHODSTRING = "ScanType_StoreMethod/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECDESCRIPTION = "Codec_Description";
 
    /**
     * Delay settings (in case of timecode for example).
@@ -253,13 +224,6 @@ public final class Video {
     */
     @NonNull
     public static final String WIDTHOFFSETSTRING = "Width_Offset/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String COLORIMETRY = "Colorimetry";
 
    /**
     * Settings needed for decoder used, detailled.
@@ -400,13 +364,6 @@ public final class Video {
     public static final String ENCODEDOPERATINGSYSTEM = "Encoded_OperatingSystem";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSCABAC = "Codec_Settings_CABAC";
-
-   /**
     * Sampled height.
     */
     @NonNull
@@ -485,37 +442,16 @@ public final class Video {
     public static final String BITRATEMODE = "BitRate_Mode";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSGMCSTRING = "Codec_Settings_GMC/String";
-
-   /**
     * The unique ID for this stream, should be copied with stream copy.
     */
     @NonNull
     public static final String UNIQUEID = "UniqueID";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSTRING = "Codec/String";
-
-   /**
     * Maximum Bit rate (with measurement).
     */
     @NonNull
     public static final String BITRATEMAXIMUMSTRING = "BitRate_Maximum/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String INTERLACEMENT = "Interlacement";
 
    /**
     * Delay in format : HH:MM:SS.MMM.
@@ -564,13 +500,6 @@ public final class Video {
     */
     @NonNull
     public static final String DELAYSTRING5 = "Delay/String5";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSQPEL = "Codec_Settings_QPel";
 
    /**
     * Delay fixed in the stream (relative) IN MS.
@@ -709,20 +638,6 @@ public final class Video {
     */
     @NonNull
     public static final String SOURCESTREAMSIZEENCODEDSTRING1 = "Source_StreamSize_Encoded/String1";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSREFFRAMES = "Codec_Settings_RefFrames";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSGMC = "Codec_Settings_GMC";
 
    /**
     * ScanOrder_Original.
@@ -905,13 +820,6 @@ public final class Video {
     public static final String ALTERNATEGROUP = "AlternateGroup";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGS = "Codec_Settings";
-
-   /**
     * Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
     */
     @NonNull
@@ -940,13 +848,6 @@ public final class Video {
     */
     @NonNull
     public static final String ENCODEDLIBRARYSTRING = "Encoded_Library/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String INTERLACEMENTSTRING = "Interlacement/String";
 
    /**
     * Settings needed for decoder used, detailled.
@@ -1021,13 +922,6 @@ public final class Video {
     public static final String DISPLAYASPECTRATIOSTRING = "DisplayAspectRatio/String";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSPACKETBITSTREAM = "Codec_Settings_PacketBitStream";
-
-   /**
     * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
     */
     @NonNull
@@ -1094,13 +988,6 @@ public final class Video {
     public static final String ENCODEDLIBRARYSETTINGS = "Encoded_Library_Settings";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String RESOLUTIONSTRING = "Resolution/String";
-
-   /**
     * Source Play time of the stream, in ms.
     */
     @NonNull
@@ -1111,13 +998,6 @@ public final class Video {
     */
     @NonNull
     public static final String FRAMERATEMODE = "FrameRate_Mode";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSMATRIX = "Codec_Settings_Matrix";
 
    /**
     * Offset between original width and displayed width in pixel.
@@ -1312,13 +1192,6 @@ public final class Video {
     public static final String DELAYORIGINALSTRING5 = "Delay_Original/String5";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECCC = "Codec/CC";
-
-   /**
     * Set if that track should be used if no language found matches the user preference..
     */
     @NonNull
@@ -1335,13 +1208,6 @@ public final class Video {
     */
     @NonNull
     public static final String FRAMERATEORIGINALDEN = "FrameRate_Original_Den";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSBVOP = "Codec_Settings_BVOP";
 
    /**
     * Last **Inform** call.
@@ -1416,6 +1282,12 @@ public final class Video {
     public static final String FRAMERATESTRING = "FrameRate/String";
 
    /**
+    * Tier of the Format (only MIXML).
+    */
+    @NonNull
+    public static final String FORMATTIER = "Format_Tier";
+
+   /**
     * Source Number of frames.
     */
     @NonNull
@@ -1470,7 +1342,7 @@ public final class Video {
     public static final String SCANORDER = "ScanOrder";
 
    /**
-    * Profile of the Format.
+    * Profile of the Format (old XML: 'Profile@Level@Tier' format.
     */
     @NonNull
     public static final String FORMATPROFILE = "Format_Profile";
@@ -1558,6 +1430,12 @@ public final class Video {
     */
     @NonNull
     public static final String STREAMSIZEENCODEDSTRING5 = "StreamSize_Encoded/String5";
+
+   /**
+    * Level of the Format (only MIXML).
+    */
+    @NonNull
+    public static final String FORMATLEVEL = "Format_Level";
 
    /**
     * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
@@ -1782,11 +1660,10 @@ public final class Video {
     public static final String FORMATSETTINGS = "Format_Settings";
 
    /**
-    * Deprecated, do not use in new projects.
+    * Service kind, e.g. visually impaired, commentary, voice over.
     */
     @NonNull
-    @Deprecated
-    public static final String RESOLUTION = "Resolution";
+    public static final String SERVICEKIND = "ServiceKind";
 
    /**
     * Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
@@ -1805,13 +1682,6 @@ public final class Video {
     */
     @NonNull
     public static final String TIMESTAMPFIRSTFRAMESTRING1 = "TimeStamp_FirstFrame/String1";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSMATRIXDATA = "Codec_Settings_Matrix_Data";
 
    /**
     * TimeStamp in format : HH:MM:SS.mmm (HH:MM:SS:FF).
@@ -1980,13 +1850,6 @@ public final class Video {
     */
     @NonNull
     public static final String STREAMKINDSTRING = "StreamKind/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECURL = "Codec/Url";
 
    /**
     * ChromaSubsampling.
