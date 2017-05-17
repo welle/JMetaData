@@ -9,7 +9,7 @@ import aka.jmetadata.main.JMetaDataAudio;
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataAudioTest {
+public final class JMetaDataAudio_JUnitTest {
 
    /**
     * Print Audio informations.

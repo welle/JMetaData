@@ -17,7 +17,7 @@ import aka.jmetadata.main.JMetaDataVideo;
 import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
-public class Examples {
+public class Main_JUnitTest {
 
     private static final Logger LOGGER;
 
@@ -110,14 +110,14 @@ public class Examples {
     }
 
     private static void printJMetadata(@NonNull final JMetaData jMetadata) {
-        JMetaDataGeneralTest.printJMetadataGeneral(jMetadata.getGeneral());
+        JMetaDataGeneral_JUnitTest.printJMetadataGeneral(jMetadata.getGeneral());
         final List<JMetaDataVideo> videoStreamList = jMetadata.getVideoStreams();
 
         System.out.println("VIDEOS");
         System.out.println("--------------------");
         for (final JMetaDataVideo jMetadataVideo : videoStreamList) {
             assert jMetadataVideo != null;
-            JMetaDataVideoTest.printJMetadataVideo(jMetadataVideo);
+            JMetaDataVideo_JUnitTest.printJMetadataVideo(jMetadataVideo);
         }
         System.out.println("_________________________________________________________________________________________");
 
@@ -126,7 +126,7 @@ public class Examples {
         final List<JMetaDataAudio> audioStreamList = jMetadata.getAudioStreams();
         for (final JMetaDataAudio jMetadataAudio : audioStreamList) {
             assert jMetadataAudio != null;
-            JMetaDataAudioTest.printJMetadataAudio(jMetadataAudio);
+            JMetaDataAudio_JUnitTest.printJMetadataAudio(jMetadataAudio);
         }
         System.out.println("_________________________________________________________________________________________");
 
@@ -135,7 +135,7 @@ public class Examples {
         final List<JMetaDataText> textStreamList = jMetadata.getSubtitleStreams();
         for (final JMetaDataText jMetadataSubtitle : textStreamList) {
             assert jMetadataSubtitle != null;
-            JMetaDataTextTest.printJMetadataText(jMetadataSubtitle);
+            JMetaDataText_JUnitTest.printJMetadataText(jMetadataSubtitle);
         }
         System.out.println("_________________________________________________________________________________________");
 
@@ -145,7 +145,7 @@ public class Examples {
         final List<JMetaDataMenu> menuStreamList = jMetadata.getMenuStreams();
         for (final JMetaDataMenu jMetadataMenu : menuStreamList) {
             assert jMetadataMenu != null;
-            JMetaDataMenuTest.printJMetadataMenu(jMetadataMenu);
+            JMetaDataMenu_JUnitTest.printJMetadataMenu(jMetadataMenu);
         }
         System.out.println("_________________________________________________________________________________________");
     }

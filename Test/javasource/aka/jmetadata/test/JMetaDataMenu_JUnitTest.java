@@ -9,7 +9,7 @@ import aka.jmetadata.main.JMetaDataMenu;
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataMenuTest {
+public final class JMetaDataMenu_JUnitTest {
 
    /**
     * Print Menu informations.

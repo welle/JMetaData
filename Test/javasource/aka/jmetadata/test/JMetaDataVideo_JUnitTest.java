@@ -9,7 +9,7 @@ import aka.jmetadata.main.JMetaDataVideo;
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataVideoTest {
+public final class JMetaDataVideo_JUnitTest {
 
    /**
     * Print Video informations.

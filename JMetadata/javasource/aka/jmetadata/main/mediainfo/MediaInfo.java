@@ -3,7 +3,6 @@ package aka.jmetadata.main.mediainfo;
 import static java.util.Collections.singletonMap;
 
 import java.io.File;
-import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,7 +27,7 @@ import aka.jmetadata.main.constants.StreamKind;
 import aka.jmetadata.main.helper.DateTimeHelper;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
-import aka.swissknife.os.OSHelperConstants.OS_ARCH;
+import aka.swissknife.os.OS_ARCH;
 
 /**
  * MediaInfo JNA library.
@@ -47,13 +46,10 @@ public final class MediaInfo {
         /**
          * Instance of the media info dll internal.
          */
-        MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, new FunctionMapper() {
-            @Override
-            public String getFunctionName(final NativeLibrary lib, final Method method) {
-                // e.g. MediaInfo_New(), MediaInfo_Open() ...
-                final String methodName = method.getName();
-                return "MediaInfo_" + Character.toUpperCase(methodName.charAt(0)) + methodName.substring(1);
-            }
+        MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, (FunctionMapper) (lib, method) -> {
+            // e.g. MediaInfo_New(), MediaInfo_Open() ...
+            final String methodName = method.getName();
+            return "MediaInfo_" + Character.toUpperCase(methodName.charAt(0)) + methodName.substring(1);
         }));
 
         // Constructor/Destructor

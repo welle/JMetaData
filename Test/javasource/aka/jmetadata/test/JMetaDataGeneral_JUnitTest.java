@@ -9,7 +9,7 @@ import aka.jmetadata.main.JMetaDataGeneral;
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataGeneralTest {
+public final class JMetaDataGeneral_JUnitTest {
 
    /**
     * Print General informations.

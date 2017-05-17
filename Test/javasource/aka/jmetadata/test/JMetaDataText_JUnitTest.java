@@ -9,7 +9,7 @@ import aka.jmetadata.main.JMetaDataText;
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataTextTest {
+public final class JMetaDataText_JUnitTest {
 
    /**
     * Print Text informations.
