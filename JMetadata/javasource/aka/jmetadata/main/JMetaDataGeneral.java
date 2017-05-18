@@ -2278,6 +2278,102 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final Integer getPodcastCategoryAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final Long getPodcastCategoryAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final LocalDateTime getPodcastCategoryAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final LocalTime getPodcastCategoryAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final String getPodcastCategoryAsString() {
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final Boolean getPodcastCategoryAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final BigInteger getPodcastCategoryAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @Nullable
+    public final URL getPodcastCategoryAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.General, 0, General.PODCASTCATEGORY);
+    }
+
+   /**
+    * Get Podcast category.
+    * 
+    * @return Podcast category.
+    */
+    @NonNull
+    public final List<@NonNull String> getPodcastCategoryAsStringList() {
+        List<@NonNull String> result = new ArrayList<>();
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.PODCASTCATEGORY);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null;
+            result = splitValues(value, "/");
+        }
+        return result;
+    }
+
+   /**
     * Get File size (with measure, 1 digit mini).
     * 
     * @return File size (with measure, 1 digit mini).
@@ -14950,6 +15046,102 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final Integer getComposerSortAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final Long getComposerSortAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final LocalDateTime getComposerSortAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final LocalTime getComposerSortAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final String getComposerSortAsString() {
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final Boolean getComposerSortAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final BigInteger getComposerSortAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @Nullable
+    public final URL getComposerSortAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.General, 0, General.COMPOSERSORT);
+    }
+
+   /**
+    * Get Composer/Sort.
+    * 
+    * @return Composer/Sort.
+    */
+    @NonNull
+    public final List<@NonNull String> getComposerSortAsStringList() {
+        List<@NonNull String> result = new ArrayList<>();
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.COMPOSERSORT);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null;
+            result = splitValues(value, "/");
+        }
+        return result;
+    }
+
+   /**
     * Get Describes the topic of the file, such as Aerial view of Seattle...
     * 
     * @return Describes the topic of the file, such as Aerial view of Seattle...
@@ -21862,9 +22054,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final Integer getFormatProfileAsInteger() {
@@ -21872,9 +22064,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final Long getFormatProfileAsLong() {
@@ -21882,9 +22074,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final LocalDateTime getFormatProfileAsLocalDateTime() {
@@ -21892,9 +22084,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final LocalTime getFormatProfileAsLocalTime() {
@@ -21902,9 +22094,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final String getFormatProfileAsString() {
@@ -21912,9 +22104,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final Boolean getFormatProfileAsBoolean() {
@@ -21922,9 +22114,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final BigInteger getFormatProfileAsBigInteger() {
@@ -21932,9 +22124,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @Nullable
     public final URL getFormatProfileAsURL() {
@@ -21942,9 +22134,9 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     }
 
    /**
-    * Get Profile of the Format.
+    * Get Profile of the Format (old XML: 'Profile@Level' format.
     * 
-    * @return Profile of the Format.
+    * @return Profile of the Format (old XML: 'Profile@Level' format.
     */
     @NonNull
     public final List<@NonNull String> getFormatProfileAsStringList() {
@@ -22718,6 +22910,102 @@ public final class JMetaDataGeneral extends AbstractJMetadata {
     public final List<@NonNull String> getAlbumReplayGainGainAsStringList() {
         List<@NonNull String> result = new ArrayList<>();
         final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.ALBUMREPLAYGAINGAIN);
+        if (!TextUtils.isEmpty(value)) {
+            assert value != null;
+            result = splitValues(value, "/");
+        }
+        return result;
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Integer getFormatLevelAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Long getFormatLevelAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalDateTime getFormatLevelAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final LocalTime getFormatLevelAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final String getFormatLevelAsString() {
+        return getMediaInfo().getAsString(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final Boolean getFormatLevelAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final BigInteger getFormatLevelAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @Nullable
+    public final URL getFormatLevelAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.General, 0, General.FORMATLEVEL);
+    }
+
+   /**
+    * Get Level of the Format (only MIXML).
+    * 
+    * @return Level of the Format (only MIXML).
+    */
+    @NonNull
+    public final List<@NonNull String> getFormatLevelAsStringList() {
+        List<@NonNull String> result = new ArrayList<>();
+        final String value = getMediaInfo().getAsString(StreamKind.General, 0, General.FORMATLEVEL);
         if (!TextUtils.isEmpty(value)) {
             assert value != null;
             result = splitValues(value, "/");

@@ -9,7 +9,7 @@ import org.eclipse.jdt.annotation.Nullable;
 /**
  * @author Charlotte
  */
-public final class CodecVideoConstants {
+public class CodecVideoConstants {
 
     /********************************************* ASPECT RATIO ************************************************/
 

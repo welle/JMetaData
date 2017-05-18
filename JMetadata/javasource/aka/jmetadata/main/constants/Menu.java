@@ -16,13 +16,6 @@ public final class Menu {
     public static final String UNIQUEID = "UniqueID";
 
    /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSTRING = "Codec/String";
-
-   /**
     * NetworkName.
     */
     @NonNull
@@ -105,13 +98,6 @@ public final class Menu {
     */
     @NonNull
     public static final String STREAMCOUNT = "StreamCount";
-
-   /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODEC = "Codec";
 
    /**
     * Used by third-party developers to know about the end of the chapters list (this position excluded).
@@ -198,13 +184,6 @@ public final class Menu {
     public static final String CODECIDDESCRIPTION = "CodecID_Description";
 
    /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECINFO = "Codec/Info";
-
-   /**
     * bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @NonNull
@@ -239,6 +218,12 @@ public final class Menu {
     */
     @NonNull
     public static final String DURATIONSTRING1 = "Duration/String1";
+
+   /**
+    * Service kind (full).
+    */
+    @NonNull
+    public static final String SERVICEKINDSTRING = "ServiceKind/String";
 
    /**
     * Play time of the stream in ms.
@@ -323,6 +308,12 @@ public final class Menu {
     */
     @NonNull
     public static final String FORMATSETTINGS = "Format_Settings";
+
+   /**
+    * Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @NonNull
+    public static final String SERVICEKIND = "ServiceKind";
 
    /**
     * Set if that track should be used if no language found matches the user preference..
@@ -479,13 +470,6 @@ public final class Menu {
     */
     @NonNull
     public static final String STREAMKINDSTRING = "StreamKind/String";
-
-   /**
-    * Deprecated.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECURL = "Codec/Url";
 
    /**
     * List of programs available.

@@ -2866,6 +2866,87 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
 
 
    /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Integer getServiceKindStringAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Long getServiceKindStringAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final LocalDateTime getServiceKindStringAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final LocalTime getServiceKindStringAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final String getServiceKindStringAsString() {
+        return getMediaInfo().getAsString(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final Boolean getServiceKindStringAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final BigInteger getServiceKindStringAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+   /**
+    * Get Service kind (full).
+    * 
+    * @return Service kind (full).
+    */
+    @Nullable
+    public final URL getServiceKindStringAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKINDSTRING);
+    }
+
+
+   /**
     * Get Play time of the stream in ms.
     * 
     * @return Play time of the stream in ms.
@@ -3996,6 +4077,87 @@ public final class JMetaDataMenu extends AbstractStreamJMetadata {
     @Nullable
     public final URL getFormatSettingsAsURL() {
         return getMediaInfo().getAsURL(StreamKind.Menu, getStreamNumber(), Menu.FORMATSETTINGS);
+    }
+
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Integer getServiceKindAsInteger() {
+        return getMediaInfo().getAsInteger(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Long getServiceKindAsLong() {
+        return getMediaInfo().getAsLong(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final LocalDateTime getServiceKindAsLocalDateTime() {
+        return getMediaInfo().getAsLocalDateTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final LocalTime getServiceKindAsLocalTime() {
+        return getMediaInfo().getAsLocalTime(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final String getServiceKindAsString() {
+        return getMediaInfo().getAsString(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final Boolean getServiceKindAsBoolean() {
+        return getMediaInfo().getAsBoolean(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final BigInteger getServiceKindAsBigInteger() {
+        return getMediaInfo().getAsBigInteger(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
+    }
+
+   /**
+    * Get Service kind, e.g. visually impaired, commentary, voice over.
+    * 
+    * @return Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @Nullable
+    public final URL getServiceKindAsURL() {
+        return getMediaInfo().getAsURL(StreamKind.Menu, getStreamNumber(), Menu.SERVICEKIND);
     }
 
 

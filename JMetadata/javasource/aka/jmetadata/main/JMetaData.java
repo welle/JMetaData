@@ -210,7 +210,7 @@ public final class JMetaData {
     private void loadDLL(@NonNull final String name) throws IOException {
         try {
             System.loadLibrary(name);
-        } catch (@SuppressWarnings("unused") final UnsatisfiedLinkError e) {
+        } catch (final UnsatisfiedLinkError e) {
             // have to use a stream
             final InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);
             // always write to different location

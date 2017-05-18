@@ -64,13 +64,6 @@ public final class General {
     public static final String LIGHTNESS = "Lightness";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODEC = "Codec";
-
-   /**
     * Identifies the changes in sharpness for the digitizer requiered to produce the file.
     */
     @NonNull
@@ -137,13 +130,6 @@ public final class General {
     public static final String CODECIDDESCRIPTION = "CodecID_Description";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECINFO = "Codec/Info";
-
-   /**
     * bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
     */
     @NonNull
@@ -160,6 +146,12 @@ public final class General {
     */
     @NonNull
     public static final String ORIGINALTRACK = "Original/Track";
+
+   /**
+    * Podcast category.
+    */
+    @NonNull
+    public static final String PODCASTCATEGORY = "PodcastCategory";
 
    /**
     * File size (with measure, 1 digit mini).
@@ -300,13 +292,6 @@ public final class General {
     public static final String SUBTRACK = "SubTrack";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String FORMATSTRING = "Format/String";
-
-   /**
     * Package name i.e. technical flavor of the content.
     */
     @NonNull
@@ -353,13 +338,6 @@ public final class General {
     */
     @NonNull
     public static final String ENCODEDLIBRARYVERSION = "Encoded_Library_Version";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String IMAGECODECLIST = "Image_Codec_List";
 
    /**
     * Info about this codec.
@@ -528,13 +506,6 @@ public final class General {
     */
     @NonNull
     public static final String UNIQUEID = "UniqueID";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSTRING = "Codec/String";
 
    /**
     * format : HH:MM:SS.MMM.
@@ -873,13 +844,6 @@ public final class General {
     public static final String CODECID = "CodecID";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGS = "Codec_Settings";
-
-   /**
     * Album/Sort.
     */
     @NonNull
@@ -926,13 +890,6 @@ public final class General {
     */
     @NonNull
     public static final String STREAMSIZESTRING = "StreamSize/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String TEXTCODECLIST = "Text_Codec_List";
 
    /**
     * The ID for this stream in the original medium of the material.
@@ -989,6 +946,12 @@ public final class General {
     public static final String TITLEURL = "Title/Url";
 
    /**
+    * Composer/Sort.
+    */
+    @NonNull
+    public static final String COMPOSERSORT = "Composer/Sort";
+
+   /**
     * Describes the topic of the file, such as Aerial view of Seattle...
     */
     @NonNull
@@ -1031,20 +994,6 @@ public final class General {
     public static final String STREAMSIZEPROPORTION = "StreamSize_Proportion";
 
    /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String VIDEOCODECLIST = "Video_Codec_List";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String MENUCODECLIST = "Menu_Codec_List";
-
-   /**
     * HeaderSize.
     */
     @NonNull
@@ -1055,13 +1004,6 @@ public final class General {
     */
     @NonNull
     public static final String ENCODEDLIBRARYSETTINGS = "Encoded_Library_Settings";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String AUDIOCODECLIST = "Audio_Codec_List";
 
    /**
     * The type of the item. e.g. Documentary, Feature Film, Cartoon, Music Video, Music, Sound FX, etc..
@@ -1158,13 +1100,6 @@ public final class General {
     */
     @NonNull
     public static final String TAGGEDAPPLICATION = "Tagged_Application";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String OTHERCODECLIST = "Other_Codec_List";
 
    /**
     * License information, e.g., All Rights Reserved,Any Use Permitted..
@@ -1449,7 +1384,7 @@ public final class General {
     public static final String MASTEREDDATE = "Mastered_Date";
 
    /**
-    * Profile of the Format.
+    * Profile of the Format (old XML: 'Profile@Level' format.
     */
     @NonNull
     public static final String FORMATPROFILE = "Format_Profile";
@@ -1501,6 +1436,12 @@ public final class General {
     */
     @NonNull
     public static final String ALBUMREPLAYGAINGAIN = "Album_ReplayGain_Gain";
+
+   /**
+    * Level of the Format (only MIXML).
+    */
+    @NonNull
+    public static final String FORMATLEVEL = "Format_Level";
 
    /**
     * StreamSize_Demuxed in with percentage value.
@@ -1567,13 +1508,6 @@ public final class General {
     */
     @NonNull
     public static final String ALBUMREPLAYGAINGAINSTRING = "Album_ReplayGain_Gain/String";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECEXTENSIONS = "Codec/Extensions";
 
    /**
     * Number of video streams.
@@ -1898,20 +1832,6 @@ public final class General {
     */
     @NonNull
     public static final String TRACKMORE = "Track_More";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECURL = "Codec/Url";
-
-   /**
-    * Deprecated, do not use in new projects.
-    */
-    @NonNull
-    @Deprecated
-    public static final String CODECSETTINGSAUTOMATIC = "Codec_Settings_Automatic";
 
    /**
     * Version of the product.
