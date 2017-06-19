@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
-import aka.jmetadata.main.constants.mediainfo.StreamKind;
+import aka.jmetadata.main.constants.kind.StreamKind;
 import aka.jmetadata.main.constants.mediainfo.Video;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 

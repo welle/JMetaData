@@ -22,8 +22,8 @@ import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
 
-import aka.jmetadata.main.constants.mediainfo.InfoKind;
-import aka.jmetadata.main.constants.mediainfo.StreamKind;
+import aka.jmetadata.main.constants.kind.InfoKind;
+import aka.jmetadata.main.constants.kind.StreamKind;
 import aka.jmetadata.main.helper.DateTimeHelper;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;

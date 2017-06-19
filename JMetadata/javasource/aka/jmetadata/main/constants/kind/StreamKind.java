@@ -1,4 +1,4 @@
-package aka.jmetadata.main.constants.mediainfo;
+package aka.jmetadata.main.constants.kind;
 
 /**
  * Kind of Stream to get.

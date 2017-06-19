@@ -14,7 +14,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 
-import aka.jmetadata.main.constants.mediainfo.StreamKind;
+import aka.jmetadata.main.constants.kind.StreamKind;
 import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
