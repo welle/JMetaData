@@ -19,7 +19,7 @@ import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
-import aka.swissknife.os.OSHelperConstants.OS_ARCH;
+import aka.swissknife.os.OS_ARCH;
 
 /**
  * Main class to use to extract metadata informations. This class contains all useful methods to get all kind of streams that can be present in the file.

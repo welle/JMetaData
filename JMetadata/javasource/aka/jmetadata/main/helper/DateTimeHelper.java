@@ -18,7 +18,7 @@ import org.eclipse.jdt.annotation.Nullable;
 public final class DateTimeHelper {
 
     // Regex patterns
-    private static Pattern absolutePattern = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})\\.((\\d{3}))?");
+    private static Pattern PATTERN_ABSOLUTE = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})\\.((\\d{3}))?");
 
     /**
      * Parses text from the beginning of the given string to produce a date with all DateFormat enum values.<br>
@@ -56,7 +56,7 @@ public final class DateTimeHelper {
     public static LocalTime parseLocalTime(@NonNull final String timeToParse) {
         LocalTime localTime = null;
 
-        final Matcher matcher = absolutePattern.matcher(timeToParse);
+        final Matcher matcher = PATTERN_ABSOLUTE.matcher(timeToParse);
         if (matcher.matches()) {
             try {
                 localTime = LocalTime.parse(timeToParse);

@@ -28,6 +28,9 @@
         <property name="classes" value="JMetadata/classes" />
 
         <ant antfile="buildJars.xml" />
+    	<copy todir="${copy_jars_dest}">
+            <fileset dir="D:/Projets Java/jmetadata/build/" includes="*" />
+        </copy>
     </target>
 
     <target name="javadoc" depends="init">
