@@ -3,5 +3,5 @@
  *
  * @author Charlotte
  */
-package aka.jmetadata.main.constants;
+package aka.jmetadata.main.constants.mediainfo;
 

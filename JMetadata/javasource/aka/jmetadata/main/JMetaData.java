@@ -14,7 +14,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 
-import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.constants.mediainfo.StreamKind;
 import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
@@ -87,10 +87,8 @@ public final class JMetaData {
     /**
      * Called by the garbage collector on an object when garbage collection determines that there are no more references to the object. <br>
      * A subclass overrides the finalize method to dispose of system resources or to perform other cleanup.
-     *
-     * @throws Throwable
      */
-    public void close() throws Throwable {
+    public void close() {
         this.mediaInfo.finalize();
     }
 

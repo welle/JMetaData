@@ -23,8 +23,8 @@ import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
 
-import aka.jmetadata.main.constants.InfoKind;
-import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.constants.mediainfo.InfoKind;
+import aka.jmetadata.main.constants.mediainfo.StreamKind;
 import aka.jmetadata.main.helper.DateTimeHelper;
 import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
@@ -43,7 +43,7 @@ public final class MediaInfo {
 
     private static String libraryName;
 
-    interface MediaInfoDLLInternal extends Library {
+    private interface MediaInfoDLLInternal extends Library {
         /**
          * Instance of the media info dll internal.
          */
@@ -131,7 +131,7 @@ public final class MediaInfo {
     }
 
     @Override
-    public void finalize() throws Throwable {
+    public void finalize() {
         if (this.handlePointer != null) {
             dispose();
         }

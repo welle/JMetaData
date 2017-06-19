@@ -10,8 +10,8 @@ import java.util.List;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
-import aka.jmetadata.main.constants.General;
-import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.constants.mediainfo.General;
+import aka.jmetadata.main.constants.mediainfo.StreamKind;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 import aka.swissknife.data.TextUtils;
 

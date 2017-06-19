@@ -18,7 +18,6 @@ import org.eclipse.jdt.annotation.Nullable;
 public final class DateTimeHelper {
 
     // Regex patterns
-    private static Pattern percentagePattern = Pattern.compile("((\\d{1,2})|(100))%");
     private static Pattern absolutePattern = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})\\.((\\d{3}))?");
 
     /**

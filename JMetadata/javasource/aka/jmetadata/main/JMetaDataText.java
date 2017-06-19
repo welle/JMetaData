@@ -8,8 +8,8 @@ import java.time.LocalTime;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
-import aka.jmetadata.main.constants.Text;
-import aka.jmetadata.main.constants.StreamKind;
+import aka.jmetadata.main.constants.mediainfo.StreamKind;
+import aka.jmetadata.main.constants.mediainfo.Text;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 /**

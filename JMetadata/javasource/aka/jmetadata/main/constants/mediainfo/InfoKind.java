@@ -1,4 +1,4 @@
-package aka.jmetadata.main.constants;
+package aka.jmetadata.main.constants.mediainfo;
 
 /**
  * Kind of informations.
