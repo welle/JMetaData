@@ -73,7 +73,7 @@ public enum AudioProfileEnum {
     /**
      * AC-3+Atmos.
      */
-    AC_3_Atmos("AC-3+Atmos", ""),
+    AC_3_ATMOS("AC-3+Atmos", ""),
 
     /**
      * AC-3.
