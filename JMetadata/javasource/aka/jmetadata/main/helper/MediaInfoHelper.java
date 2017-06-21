@@ -1,5 +1,8 @@
 package aka.jmetadata.main.helper;
 
+import java.text.DecimalFormat;
+
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.video.AspectRatio;
@@ -67,6 +70,25 @@ public class MediaInfoHelper {
 
                 result = w / h;
             }
+        }
+
+        return result;
+    }
+
+    /**
+     * Get readable file size of the given file size.
+     *
+     * @param size
+     * @return readable file size
+     */
+    @NonNull
+    public static String readableFileSize(final long size) {
+        String result = "0";
+
+        if (size > 0) {
+            final String[] units = new String[] { "B", "kB", "MB", "GB", "TB" };
+            final int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+            result = new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
         }
 
         return result;
