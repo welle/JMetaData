@@ -13,7 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  * @author Welle Charlotte
  */
-public enum VideoMatroskaEnum implements CodecEnum {
+public enum VideoMatroskaCodecIdEnum implements CodecEnum {
 
     /**
      * V_DIRAC.
@@ -138,7 +138,7 @@ public enum VideoMatroskaEnum implements CodecEnum {
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    VideoMatroskaEnum(@NonNull final String @NonNull... codecIdParam) {
+    VideoMatroskaCodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -148,18 +148,18 @@ public enum VideoMatroskaEnum implements CodecEnum {
     }
 
     /**
-     * Get VideoMatroskaEnum corresponding to given string.
+     * Get VideoMatroskaCodecIdEnum corresponding to given string.
      *
      * @param param
      * @return corresponding VideoMatroskaEnum
      */
     @Nullable
-    public static final VideoMatroskaEnum getVideoMatroskaEnum(@Nullable final String param) {
-        VideoMatroskaEnum result = null;
+    public static final VideoMatroskaCodecIdEnum getVideoMatroskaCodecIdEnum(@Nullable final String param) {
+        VideoMatroskaCodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final VideoMatroskaEnum codecEnum : VideoMatroskaEnum.values()) {
+                for (final VideoMatroskaCodecIdEnum codecEnum : VideoMatroskaCodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

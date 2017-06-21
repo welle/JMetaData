@@ -13,7 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  * @author Welle Charlotte
  */
-public enum VideoMpeg4Enum implements CodecEnum {
+public enum VideoMpeg4CodecIdEnum implements CodecEnum {
 
     /**
      * 2vuy.
@@ -988,7 +988,7 @@ public enum VideoMpeg4Enum implements CodecEnum {
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    VideoMpeg4Enum(@NonNull final String @NonNull... codecIdParam) {
+    VideoMpeg4CodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -998,18 +998,18 @@ public enum VideoMpeg4Enum implements CodecEnum {
     }
 
     /**
-     * Get VideoMpeg4Enum corresponding to given string.
+     * Get VideoMpeg4CodecIdEnum corresponding to given string.
      *
      * @param param
      * @return corresponding VideoMpeg4Enum
      */
     @Nullable
-    public static final VideoMpeg4Enum getVideoMpeg4Enum(@Nullable final String param) {
-        VideoMpeg4Enum result = null;
+    public static final VideoMpeg4CodecIdEnum getVideoMpeg4CodecIdEnum(@Nullable final String param) {
+        VideoMpeg4CodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final VideoMpeg4Enum codecEnum : VideoMpeg4Enum.values()) {
+                for (final VideoMpeg4CodecIdEnum codecEnum : VideoMpeg4CodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

@@ -9,41 +9,56 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
 /**
- * VideoReal constants parameters.
+ * TextMpeg4 constants parameters.
  *
  * @author Welle Charlotte
  */
-public enum VideoRealEnum implements CodecEnum {
+public enum TextMpeg4CodecIdEnum implements CodecEnum {
 
     /**
-     * RV10.
+     * c608.
      */
-    RV10("RV10", "RealVideo 1", "Based on H.263, Real Player 5"),
+    C608("c608", "EIA-608"),
 
     /**
-     * RV13.
+     * c708.
      */
-    RV13("RV13", "RealVideo 1.3", "Based on H.263, Real Player 5"),
+    C708("c708", "EIA-708"),
 
     /**
-     * RV20.
+     * dfxp.
      */
-    RV20("RV20", "RealVideo 2", "Based on H.263, Real Player 6"),
+    DFXP("dfxp", "TTML"),
 
     /**
-     * RV30.
+     * enct.
      */
-    RV30("RV30", "RealVideo 3", "Between H.263 and AVC (H.264), Real Player 8"),
+    ENCT("enct", "(Encrypted)"),
 
     /**
-     * RV40.
+     * sbtl.
      */
-    RV40("RV40", "RealVideo 4", "Based on AVC (H.264), Real Player 9");
+    SBTL("sbtl", "Apple text", "(iPhone)"),
+
+    /**
+     * subp.
+     */
+    SUBP("subp", "VobSub", "The same subtitle format used on DVDs"),
+
+    /**
+     * text.
+     */
+    TEXT("text", "Apple text"),
+
+    /**
+     * tx3g.
+     */
+    TX3G("tx3g", "Timed text");
 
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    VideoRealEnum(@NonNull final String @NonNull... codecIdParam) {
+    TextMpeg4CodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -53,18 +68,18 @@ public enum VideoRealEnum implements CodecEnum {
     }
 
     /**
-     * Get VideoRealEnum corresponding to given string.
+     * Get TextMpeg4CodecIdEnum corresponding to given string.
      *
      * @param param
-     * @return corresponding VideoRealEnum
+     * @return corresponding TextMpeg4Enum
      */
     @Nullable
-    public static final VideoRealEnum getVideoRealEnum(@Nullable final String param) {
-        VideoRealEnum result = null;
+    public static final TextMpeg4CodecIdEnum getTextMpeg4CodecIdEnum(@Nullable final String param) {
+        TextMpeg4CodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final VideoRealEnum codecEnum : VideoRealEnum.values()) {
+                for (final TextMpeg4CodecIdEnum codecEnum : TextMpeg4CodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

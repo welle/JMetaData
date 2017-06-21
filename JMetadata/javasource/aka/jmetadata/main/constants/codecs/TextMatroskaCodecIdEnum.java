@@ -13,7 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  * @author Welle Charlotte
  */
-public enum TextMatroskaEnum implements CodecEnum {
+public enum TextMatroskaCodecIdEnum implements CodecEnum {
 
     /**
      * S_ASS.
@@ -88,7 +88,7 @@ public enum TextMatroskaEnum implements CodecEnum {
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    TextMatroskaEnum(@NonNull final String @NonNull... codecIdParam) {
+    TextMatroskaCodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -98,18 +98,18 @@ public enum TextMatroskaEnum implements CodecEnum {
     }
 
     /**
-     * Get TextMatroskaEnum corresponding to given string.
+     * Get TextMatroskaCodecIdEnum corresponding to given string.
      *
      * @param param
      * @return corresponding TextMatroskaEnum
      */
     @Nullable
-    public static final TextMatroskaEnum getTextMatroskaEnum(@Nullable final String param) {
-        TextMatroskaEnum result = null;
+    public static final TextMatroskaCodecIdEnum getTextMatroskaCodecIdEnum(@Nullable final String param) {
+        TextMatroskaCodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final TextMatroskaEnum codecEnum : TextMatroskaEnum.values()) {
+                for (final TextMatroskaCodecIdEnum codecEnum : TextMatroskaCodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

@@ -13,7 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  * @author Welle Charlotte
  */
-public enum GeneralMpeg4Enum implements CodecEnum {
+public enum GeneralMpeg4CodecIdEnum implements CodecEnum {
 
     /**
      * 3g2a.
@@ -308,7 +308,7 @@ public enum GeneralMpeg4Enum implements CodecEnum {
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    GeneralMpeg4Enum(@NonNull final String @NonNull... codecIdParam) {
+    GeneralMpeg4CodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -318,18 +318,18 @@ public enum GeneralMpeg4Enum implements CodecEnum {
     }
 
     /**
-     * Get GeneralMpeg4Enum corresponding to given string.
+     * Get GeneralMpeg4CodecIdEnum corresponding to given string.
      *
      * @param param
      * @return corresponding GeneralMpeg4Enum
      */
     @Nullable
-    public static final GeneralMpeg4Enum getGeneralMpeg4Enum(@Nullable final String param) {
-        GeneralMpeg4Enum result = null;
+    public static final GeneralMpeg4CodecIdEnum getGeneralMpeg4CodecIdEnum(@Nullable final String param) {
+        GeneralMpeg4CodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final GeneralMpeg4Enum codecEnum : GeneralMpeg4Enum.values()) {
+                for (final GeneralMpeg4CodecIdEnum codecEnum : GeneralMpeg4CodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

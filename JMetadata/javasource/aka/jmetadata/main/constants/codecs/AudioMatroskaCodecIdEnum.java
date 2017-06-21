@@ -13,7 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  * @author Welle Charlotte
  */
-public enum AudioMatroskaEnum implements CodecEnum {
+public enum AudioMatroskaCodecIdEnum implements CodecEnum {
 
     /**
      * A_AAC.
@@ -198,7 +198,7 @@ public enum AudioMatroskaEnum implements CodecEnum {
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    AudioMatroskaEnum(@NonNull final String @NonNull... codecIdParam) {
+    AudioMatroskaCodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -208,18 +208,18 @@ public enum AudioMatroskaEnum implements CodecEnum {
     }
 
     /**
-     * Get AudioMatroskaEnum corresponding to given string.
+     * Get AudioMatroskaCodecIdEnum corresponding to given string.
      *
      * @param param
      * @return corresponding AudioMatroskaEnum
      */
     @Nullable
-    public static final AudioMatroskaEnum getAudioMatroskaEnum(@Nullable final String param) {
-        AudioMatroskaEnum result = null;
+    public static final AudioMatroskaCodecIdEnum getAudioMatroskaCodecIdEnum(@Nullable final String param) {
+        AudioMatroskaCodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final AudioMatroskaEnum codecEnum : AudioMatroskaEnum.values()) {
+                for (final AudioMatroskaCodecIdEnum codecEnum : AudioMatroskaCodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

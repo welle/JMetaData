@@ -13,7 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  * @author Welle Charlotte
  */
-public enum AudioRealEnum implements CodecEnum {
+public enum AudioRealCodecIdEnum implements CodecEnum {
 
     /**
      * 14.4.
@@ -98,7 +98,7 @@ public enum AudioRealEnum implements CodecEnum {
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    AudioRealEnum(@NonNull final String @NonNull... codecIdParam) {
+    AudioRealCodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -108,18 +108,18 @@ public enum AudioRealEnum implements CodecEnum {
     }
 
     /**
-     * Get AudioRealEnum corresponding to given string.
+     * Get AudioRealCodecIdEnum corresponding to given string.
      *
      * @param param
      * @return corresponding AudioRealEnum
      */
     @Nullable
-    public static final AudioRealEnum getAudioRealEnum(@Nullable final String param) {
-        AudioRealEnum result = null;
+    public static final AudioRealCodecIdEnum getAudioRealCodecIdEnum(@Nullable final String param) {
+        AudioRealCodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final AudioRealEnum codecEnum : AudioRealEnum.values()) {
+                for (final AudioRealCodecIdEnum codecEnum : AudioRealCodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {

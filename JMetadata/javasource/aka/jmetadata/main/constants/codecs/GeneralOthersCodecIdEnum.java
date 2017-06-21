@@ -9,56 +9,26 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
 /**
- * TextMpeg4 constants parameters.
+ * GeneralOthers constants parameters.
  *
  * @author Welle Charlotte
  */
-public enum TextMpeg4Enum implements CodecEnum {
+public enum GeneralOthersCodecIdEnum implements CodecEnum {
 
     /**
-     * c608.
+     * Ovbi.
      */
-    C608("c608", "EIA-608"),
+    OVBI("Ovbi", "Omneon VBI"),
 
     /**
-     * c708.
+     * rtp .
      */
-    C708("c708", "EIA-708"),
-
-    /**
-     * dfxp.
-     */
-    DFXP("dfxp", "TTML"),
-
-    /**
-     * enct.
-     */
-    ENCT("enct", "(Encrypted)"),
-
-    /**
-     * sbtl.
-     */
-    SBTL("sbtl", "Apple text", "(iPhone)"),
-
-    /**
-     * subp.
-     */
-    SUBP("subp", "VobSub", "The same subtitle format used on DVDs"),
-
-    /**
-     * text.
-     */
-    TEXT("text", "Apple text"),
-
-    /**
-     * tx3g.
-     */
-    TX3G("tx3g", "Timed text");
+    RTP_("rtp ", "RTP");
 
     @NonNull
     private final List<@NonNull String> codecIDList;
 
-    TextMpeg4Enum(@NonNull final String @NonNull... codecIdParam) {
+    GeneralOthersCodecIdEnum(@NonNull final String @NonNull... codecIdParam) {
         this.codecIDList = Arrays.asList(codecIdParam);
     }
 
@@ -68,18 +38,18 @@ public enum TextMpeg4Enum implements CodecEnum {
     }
 
     /**
-     * Get TextMpeg4Enum corresponding to given string.
+     * Get GeneralOthersCodecIdEnum corresponding to given string.
      *
      * @param param
-     * @return corresponding TextMpeg4Enum
+     * @return corresponding GeneralOthersEnum
      */
     @Nullable
-    public static final TextMpeg4Enum getTextMpeg4Enum(@Nullable final String param) {
-        TextMpeg4Enum result = null;
+    public static final GeneralOthersCodecIdEnum getGeneralOthersCodecIdEnum(@Nullable final String param) {
+        GeneralOthersCodecIdEnum result = null;
         if (param != null) {
             final String trimmedParam = param.trim().toLowerCase();
             if (trimmedParam.length() > 0) {
-                for (final TextMpeg4Enum codecEnum : TextMpeg4Enum.values()) {
+                for (final GeneralOthersCodecIdEnum codecEnum : GeneralOthersCodecIdEnum.values()) {
                     final List<@NonNull String> values = codecEnum.getValues();
                     for (final String expectedCodec : values) {
                         if (trimmedParam.equals(expectedCodec)) {
