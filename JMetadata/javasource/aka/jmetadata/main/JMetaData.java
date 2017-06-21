@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
@@ -32,13 +34,7 @@ public final class JMetaData {
     private final MediaInfo mediaInfo;
     private static final int BUF_SIZE = 1024;
 
-    /**
-     * Constructor.
-     *
-     * @throws IOException if mediainfo library could not be loaded.
-     * @throws LibNotfoundException if no mediainfo library could be found.
-     */
-    public JMetaData() throws IOException, LibNotfoundException {
+    static {
         String libraryName = null;
 
         if (Platform.isWindows()) {
@@ -55,12 +51,24 @@ public final class JMetaData {
 //            libraryName = "libmediainfo.dylib";
         }
 
-        if (TextUtils.isEmpty(libraryName)) {
-            throw new LibNotfoundException();
-        }
+        try {
+            if (TextUtils.isEmpty(libraryName)) {
+                throw new LibNotfoundException();
+            }
 
-        assert libraryName != null : "As LibNotfoundException was not throwed, it should not be possible.";
-        loadDLL(libraryName);
+            assert libraryName != null : "As LibNotfoundException was not throwed, it should not be possible.";
+            loadDLL(libraryName);
+        } catch (final LibNotfoundException | IOException e) {
+            final Logger logger = Logger.getLogger(JMetaData.class.getPackage().getName());
+            logger.logp(Level.SEVERE, "JMetaData", "Static block", e.getMessage(), e);
+            throw new RuntimeException();
+        }
+    }
+
+    /**
+     * Constructor.
+     */
+    public JMetaData() {
         this.mediaInfo = new MediaInfo();
     }
 
@@ -89,6 +97,8 @@ public final class JMetaData {
      * A subclass overrides the finalize method to dispose of system resources or to perform other cleanup.
      */
     public void close() {
+        // Unload lib
+
         this.mediaInfo.finalize();
     }
 
@@ -205,7 +215,7 @@ public final class JMetaData {
         return result;
     }
 
-    private void loadDLL(@NonNull final String name) throws IOException {
+    private static void loadDLL(@NonNull final String name) throws IOException {
         try {
             System.loadLibrary(name);
         } catch (final UnsatisfiedLinkError e) {

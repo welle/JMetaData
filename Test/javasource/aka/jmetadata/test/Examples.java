@@ -2,7 +2,6 @@ package aka.jmetadata.test;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +10,6 @@ import org.eclipse.jdt.annotation.NonNull;
 
 import aka.jmetadata.main.JMetaData;
 import aka.jmetadata.main.JMetaDataVideo;
-import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
 
 public class Examples {
@@ -54,10 +52,6 @@ public class Examples {
                 }
             }
             jMetadata.close();
-        } catch (final IOException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        } catch (final LibNotfoundException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
         } catch (final Throwable e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
         }
@@ -75,10 +69,6 @@ public class Examples {
                 printJMetadata(jMetadata);
             }
             jMetadata.close();
-        } catch (final IOException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-        } catch (final LibNotfoundException e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
         } catch (final Throwable e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
         }
