@@ -103,7 +103,6 @@ public final class MediaInfo {
             this.handlePointer = MediaInfoDLLInternal.INSTANCE.New();
             LOGGER.info("Loaded " + optionStatic("Info_Version"));
         } catch (final Throwable e) {
-            e.printStackTrace();
             LOGGER.info("Error loading MediaInfo library: " + e.getMessage());
             if (!Platform.isWindows() && !Platform.isMac()) {
                 LOGGER.info("Make sure you have libmediainfo and libzen installed");

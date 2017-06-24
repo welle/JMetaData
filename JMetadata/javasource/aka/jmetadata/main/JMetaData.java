@@ -48,7 +48,7 @@ public final class JMetaData {
         } else {
             // libmediainfo for Linux depends on libzen
             NativeLibrary.getInstance("zen");
-//            libraryName = "libmediainfo.dylib";
+            libraryName = "libmediainfo.dylib";
         }
 
         try {
@@ -97,8 +97,6 @@ public final class JMetaData {
      * A subclass overrides the finalize method to dispose of system resources or to perform other cleanup.
      */
     public void close() {
-        // Unload lib
-
         this.mediaInfo.finalize();
     }
 
@@ -217,8 +215,6 @@ public final class JMetaData {
 
     private static void loadDLL(@NonNull final String name) throws IOException {
         try {
-            System.loadLibrary(name);
-        } catch (final UnsatisfiedLinkError e) {
             // have to use a stream
             final InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);
             // always write to different location
@@ -239,6 +235,8 @@ public final class JMetaData {
             out.close();
             System.setProperty("jna.library.path", tempDir);
             System.load(fileOut.toString());
+        } catch (final UnsatisfiedLinkError e) {
+            Logger.getAnonymousLogger().logp(Level.SEVERE, "JMetaData", "loadDLL", e.getMessage(), e);
         }
     }
 }

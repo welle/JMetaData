@@ -36,20 +36,11 @@ public class Examples {
         try {
             // use internal dll
             final JMetaData jMetadata = new JMetaData();
+            final ClassLoader classLoader = JMetaDataMenu_Test.class.getClassLoader();
+            final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
 
-            final File directory = new File("d:/testvideos/");
-            // final File directory = new
-            // File("e:/downloads/Masters.of.Sex.S02E01.720p.HDTV.x264-IMMERSE/");
-            final File[] children = getFiles(directory);
-            if (children == null) {
-                System.out.println("[test] testWithInternalDLL - no movie found in " + directory.getAbsolutePath());
-            } else {
-                for (final File file : children) {
-                    System.out.println("[test] testWithInternalDLL - " + file.getAbsolutePath());
-                    if (jMetadata.open(file)) {
-                        printJMetadata(jMetadata);
-                    }
-                }
+            if (jMetadata.open(file)) {
+                printJMetadata(jMetadata);
             }
             jMetadata.close();
         } catch (final Throwable e) {
@@ -62,9 +53,9 @@ public class Examples {
             // use internal dll
             final JMetaData jMetadata = new JMetaData();
 
-            final File file = new File("\\\\Leviathan\\Movies\\HD\\Batman v Superman L’Aube de la Justice (2016).mkv");
-//            final File file = new File("\\\\Leviathan\\Movies\\HD\\Prometheus (2012).mkv");
-            System.out.println("[test] testWithInternalDLL - " + file.getAbsolutePath());
+            final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
+
             if (jMetadata.open(file)) {
                 printJMetadata(jMetadata);
             }
@@ -99,7 +90,7 @@ public class Examples {
     private static void printJMetadata(@NonNull final JMetaData jMetadata) {
         final List<JMetaDataVideo> videoStreamList = jMetadata.getVideoStreams();
 
-//        System.out.println("VIDEOS");
+        System.out.println("VIDEOS");
 //        System.out.println("--------------------");
 //        for (final JMetaDataVideo jMetadataVideo : videoStreamList) {
 //            assert jMetadataVideo != null;
