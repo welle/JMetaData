@@ -12,7 +12,7 @@ Current version support windows 32/64 bits and mac OS. Linux is not currently su
 
 In the class aka.jmetadata.test.Examples.java you'll find a comprehensive example of how to use it.
 
-Javadoc is available in bitbucket source folders or you can view it [online](http://jmetadata.hephaistos.be/). 
+Javadoc is available in source folders. 
 
 ### Dependencies ###
 
