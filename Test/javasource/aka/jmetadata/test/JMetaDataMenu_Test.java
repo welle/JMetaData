@@ -38,7 +38,6 @@ public final class JMetaDataMenu_Test {
             final ClassLoader classLoader = JMetaDataAudio_Test.class.getClassLoader();
             final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
             if (jMetaData.open(file)) {
-                jMetaData.open(file);
                 @NonNull
                 final List<@NonNull JMetaDataMenu> menuStreams = jMetaData.getMenuStreams();
                 if (menuStreams.get(0) != null) {

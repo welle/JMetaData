@@ -45,7 +45,6 @@ public final class JMetaDataGeneral_Test {
             final ClassLoader classLoader = JMetaDataGeneral_Test.class.getClassLoader();
             final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
             if (jMetaData.open(file)) {
-                jMetaData.open(file);
                 jMetaDataGeneral = jMetaData.getGeneral();
             }
         } catch (final Throwable e) {
