@@ -1,8 +1,10 @@
 package aka.jmetadata.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.math.BigInteger;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,10 +35,16 @@ public final class JMetaDataMenu_Test {
     public static void beforeUnit() {
         try {
             jMetaData = new JMetaData();
-            final ClassLoader classLoader = JMetaDataMenu_Test.class.getClassLoader();
-            final File file = new File(classLoader.getResource("somefile").getFile());
-            jMetaData.open(file);
-            jMetaDataMenu = null;
+            final ClassLoader classLoader = JMetaDataAudio_Test.class.getClassLoader();
+            final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
+            if (jMetaData.open(file)) {
+                jMetaData.open(file);
+                @NonNull
+                final List<@NonNull JMetaDataMenu> menuStreams = jMetaData.getMenuStreams();
+                if (menuStreams.get(0) != null) {
+                    jMetaDataMenu = menuStreams.get(0);
+                }
+            }
         } catch (final Throwable e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
         }
@@ -54,5636 +62,5628 @@ public final class JMetaDataMenu_Test {
         }
     }
 
-   /**
-    * Test getAlternateGroupAsInteger() method.
-    */
+    /**
+     * Test getAlternateGroupAsInteger() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsInteger());
     }
 
-   /**
-    * Test getAlternateGroupAsLong() method.
-    */
+    /**
+     * Test getAlternateGroupAsLong() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsLong());
     }
 
-   /**
-    * Test getAlternateGroupAsLocalDateTime() method.
-    */
+    /**
+     * Test getAlternateGroupAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsLocalDateTime());
     }
 
-   /**
-    * Test getAlternateGroupAsLocalTime() method.
-    */
+    /**
+     * Test getAlternateGroupAsLocalTime() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsLocalTime());
     }
 
-   /**
-    * Test getAlternateGroupAsString() method.
-    */
+    /**
+     * Test getAlternateGroupAsString() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsString() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsString());
     }
 
-   /**
-    * Test getAlternateGroupAsBoolean() method.
-    */
+    /**
+     * Test getAlternateGroupAsBoolean() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsBoolean());
     }
 
-   /**
-    * Test getAlternateGroupAsBigInteger() method.
-    */
+    /**
+     * Test getAlternateGroupAsBigInteger() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsBigInteger());
     }
 
-   /**
-    * Test getAlternateGroupAsURL() method.
-    */
+    /**
+     * Test getAlternateGroupAsURL() method.
+     */
     @Test
     public void subTestGetAlternateGroupAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsURL());
     }
 
-   /**
-    * Test getAlternateGroupStringAsInteger() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsInteger() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsInteger());
     }
 
-   /**
-    * Test getAlternateGroupStringAsLong() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsLong() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsLong());
     }
 
-   /**
-    * Test getAlternateGroupStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsLocalDateTime());
     }
 
-   /**
-    * Test getAlternateGroupStringAsLocalTime() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsLocalTime());
     }
 
-   /**
-    * Test getAlternateGroupStringAsString() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsString() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsString());
     }
 
-   /**
-    * Test getAlternateGroupStringAsBoolean() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsBoolean() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsBoolean());
     }
 
-   /**
-    * Test getAlternateGroupStringAsBigInteger() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsBigInteger());
     }
 
-   /**
-    * Test getAlternateGroupStringAsURL() method.
-    */
+    /**
+     * Test getAlternateGroupStringAsURL() method.
+     */
     @Test
     public void subTestGetAlternateGroupStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getAlternateGroupStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsURL());
     }
 
-   /**
-    * Test getChaptersPosBeginAsInteger() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsInteger() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsInteger());
+        assertEquals(Integer.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsInteger());
     }
 
-   /**
-    * Test getChaptersPosBeginAsLong() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsLong() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsLong());
+        assertEquals(Long.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLong());
     }
 
-   /**
-    * Test getChaptersPosBeginAsLocalDateTime() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLocalDateTime());
     }
 
-   /**
-    * Test getChaptersPosBeginAsLocalTime() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsLocalTime() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLocalTime());
     }
 
-   /**
-    * Test getChaptersPosBeginAsString() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsString() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsString() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsString());
+        assertEquals("92", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsString());
     }
 
-   /**
-    * Test getChaptersPosBeginAsBoolean() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsBoolean() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBoolean());
     }
 
-   /**
-    * Test getChaptersPosBeginAsBigInteger() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsBigInteger() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
+        assertEquals(BigInteger.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
     }
 
-   /**
-    * Test getChaptersPosBeginAsURL() method.
-    */
+    /**
+     * Test getChaptersPosBeginAsURL() method.
+     */
     @Test
     public void subTestGetChaptersPosBeginAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosBeginAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsURL());
     }
 
-   /**
-    * Test getChaptersPosEndAsInteger() method.
-    */
+    /**
+     * Test getChaptersPosEndAsInteger() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsInteger());
+        assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsInteger());
     }
 
-   /**
-    * Test getChaptersPosEndAsLong() method.
-    */
+    /**
+     * Test getChaptersPosEndAsLong() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsLong());
+        assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLong());
     }
 
-   /**
-    * Test getChaptersPosEndAsLocalDateTime() method.
-    */
+    /**
+     * Test getChaptersPosEndAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLocalDateTime());
     }
 
-   /**
-    * Test getChaptersPosEndAsLocalTime() method.
-    */
+    /**
+     * Test getChaptersPosEndAsLocalTime() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLocalTime());
     }
 
-   /**
-    * Test getChaptersPosEndAsString() method.
-    */
+    /**
+     * Test getChaptersPosEndAsString() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsString() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsString());
+        assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsString());
     }
 
-   /**
-    * Test getChaptersPosEndAsBoolean() method.
-    */
+    /**
+     * Test getChaptersPosEndAsBoolean() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBoolean());
     }
 
-   /**
-    * Test getChaptersPosEndAsBigInteger() method.
-    */
+    /**
+     * Test getChaptersPosEndAsBigInteger() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsBigInteger());
+        assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBigInteger());
     }
 
-   /**
-    * Test getChaptersPosEndAsURL() method.
-    */
+    /**
+     * Test getChaptersPosEndAsURL() method.
+     */
     @Test
     public void subTestGetChaptersPosEndAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getChaptersPosEndAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsURL());
     }
 
-   /**
-    * Test getCodecIDAsInteger() method.
-    */
+    /**
+     * Test getCodecIDAsInteger() method.
+     */
     @Test
     public void subTestGetCodecIDAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsInteger());
     }
 
-   /**
-    * Test getCodecIDAsLong() method.
-    */
+    /**
+     * Test getCodecIDAsLong() method.
+     */
     @Test
     public void subTestGetCodecIDAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsLong());
     }
 
-   /**
-    * Test getCodecIDAsLocalDateTime() method.
-    */
+    /**
+     * Test getCodecIDAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCodecIDAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsLocalDateTime());
     }
 
-   /**
-    * Test getCodecIDAsLocalTime() method.
-    */
+    /**
+     * Test getCodecIDAsLocalTime() method.
+     */
     @Test
     public void subTestGetCodecIDAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsLocalTime());
     }
 
-   /**
-    * Test getCodecIDAsString() method.
-    */
+    /**
+     * Test getCodecIDAsString() method.
+     */
     @Test
     public void subTestGetCodecIDAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsString());
     }
 
-   /**
-    * Test getCodecIDAsBoolean() method.
-    */
+    /**
+     * Test getCodecIDAsBoolean() method.
+     */
     @Test
     public void subTestGetCodecIDAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsBoolean());
     }
 
-   /**
-    * Test getCodecIDAsBigInteger() method.
-    */
+    /**
+     * Test getCodecIDAsBigInteger() method.
+     */
     @Test
     public void subTestGetCodecIDAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsBigInteger());
     }
 
-   /**
-    * Test getCodecIDAsURL() method.
-    */
+    /**
+     * Test getCodecIDAsURL() method.
+     */
     @Test
     public void subTestGetCodecIDAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsURL());
     }
 
-   /**
-    * Test getCodecIDHintAsInteger() method.
-    */
+    /**
+     * Test getCodecIDHintAsInteger() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsInteger());
     }
 
-   /**
-    * Test getCodecIDHintAsLong() method.
-    */
+    /**
+     * Test getCodecIDHintAsLong() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsLong());
     }
 
-   /**
-    * Test getCodecIDHintAsLocalDateTime() method.
-    */
+    /**
+     * Test getCodecIDHintAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsLocalDateTime());
     }
 
-   /**
-    * Test getCodecIDHintAsLocalTime() method.
-    */
+    /**
+     * Test getCodecIDHintAsLocalTime() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsLocalTime());
     }
 
-   /**
-    * Test getCodecIDHintAsString() method.
-    */
+    /**
+     * Test getCodecIDHintAsString() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsString());
     }
 
-   /**
-    * Test getCodecIDHintAsBoolean() method.
-    */
+    /**
+     * Test getCodecIDHintAsBoolean() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsBoolean());
     }
 
-   /**
-    * Test getCodecIDHintAsBigInteger() method.
-    */
+    /**
+     * Test getCodecIDHintAsBigInteger() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsBigInteger());
     }
 
-   /**
-    * Test getCodecIDHintAsURL() method.
-    */
+    /**
+     * Test getCodecIDHintAsURL() method.
+     */
     @Test
     public void subTestGetCodecIDHintAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDHintAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsURL());
     }
 
-   /**
-    * Test getCodecIDInfoAsInteger() method.
-    */
+    /**
+     * Test getCodecIDInfoAsInteger() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsInteger());
     }
 
-   /**
-    * Test getCodecIDInfoAsLong() method.
-    */
+    /**
+     * Test getCodecIDInfoAsLong() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsLong());
     }
 
-   /**
-    * Test getCodecIDInfoAsLocalDateTime() method.
-    */
+    /**
+     * Test getCodecIDInfoAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsLocalDateTime());
     }
 
-   /**
-    * Test getCodecIDInfoAsLocalTime() method.
-    */
+    /**
+     * Test getCodecIDInfoAsLocalTime() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsLocalTime());
     }
 
-   /**
-    * Test getCodecIDInfoAsString() method.
-    */
+    /**
+     * Test getCodecIDInfoAsString() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsString());
     }
 
-   /**
-    * Test getCodecIDInfoAsBoolean() method.
-    */
+    /**
+     * Test getCodecIDInfoAsBoolean() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsBoolean());
     }
 
-   /**
-    * Test getCodecIDInfoAsBigInteger() method.
-    */
+    /**
+     * Test getCodecIDInfoAsBigInteger() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsBigInteger());
     }
 
-   /**
-    * Test getCodecIDInfoAsURL() method.
-    */
+    /**
+     * Test getCodecIDInfoAsURL() method.
+     */
     @Test
     public void subTestGetCodecIDInfoAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDInfoAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsURL());
     }
 
-   /**
-    * Test getCodecIDStringAsInteger() method.
-    */
+    /**
+     * Test getCodecIDStringAsInteger() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsInteger());
     }
 
-   /**
-    * Test getCodecIDStringAsLong() method.
-    */
+    /**
+     * Test getCodecIDStringAsLong() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsLong());
     }
 
-   /**
-    * Test getCodecIDStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getCodecIDStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsLocalDateTime());
     }
 
-   /**
-    * Test getCodecIDStringAsLocalTime() method.
-    */
+    /**
+     * Test getCodecIDStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsLocalTime());
     }
 
-   /**
-    * Test getCodecIDStringAsString() method.
-    */
+    /**
+     * Test getCodecIDStringAsString() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsString());
     }
 
-   /**
-    * Test getCodecIDStringAsBoolean() method.
-    */
+    /**
+     * Test getCodecIDStringAsBoolean() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsBoolean());
     }
 
-   /**
-    * Test getCodecIDStringAsBigInteger() method.
-    */
+    /**
+     * Test getCodecIDStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsBigInteger());
     }
 
-   /**
-    * Test getCodecIDStringAsURL() method.
-    */
+    /**
+     * Test getCodecIDStringAsURL() method.
+     */
     @Test
     public void subTestGetCodecIDStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsURL());
     }
 
-   /**
-    * Test getCodecIDUrlAsInteger() method.
-    */
+    /**
+     * Test getCodecIDUrlAsInteger() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsInteger());
     }
 
-   /**
-    * Test getCodecIDUrlAsLong() method.
-    */
+    /**
+     * Test getCodecIDUrlAsLong() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsLong());
     }
 
-   /**
-    * Test getCodecIDUrlAsLocalDateTime() method.
-    */
+    /**
+     * Test getCodecIDUrlAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsLocalDateTime());
     }
 
-   /**
-    * Test getCodecIDUrlAsLocalTime() method.
-    */
+    /**
+     * Test getCodecIDUrlAsLocalTime() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsLocalTime());
     }
 
-   /**
-    * Test getCodecIDUrlAsString() method.
-    */
+    /**
+     * Test getCodecIDUrlAsString() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsString());
     }
 
-   /**
-    * Test getCodecIDUrlAsBoolean() method.
-    */
+    /**
+     * Test getCodecIDUrlAsBoolean() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsBoolean());
     }
 
-   /**
-    * Test getCodecIDUrlAsBigInteger() method.
-    */
+    /**
+     * Test getCodecIDUrlAsBigInteger() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsBigInteger());
     }
 
-   /**
-    * Test getCodecIDUrlAsURL() method.
-    */
+    /**
+     * Test getCodecIDUrlAsURL() method.
+     */
     @Test
     public void subTestGetCodecIDUrlAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsURL());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsInteger() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsInteger() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsInteger());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsLong() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsLong() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsLong());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsLocalDateTime() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsLocalDateTime());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsLocalTime() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsLocalTime() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsLocalTime());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsString() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsString() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsString());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsBoolean() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsBoolean() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsBoolean());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsBigInteger() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsBigInteger() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsBigInteger());
     }
 
-   /**
-    * Test getCodecIDDescriptionAsURL() method.
-    */
+    /**
+     * Test getCodecIDDescriptionAsURL() method.
+     */
     @Test
     public void subTestGetCodecIDDescriptionAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCodecIDDescriptionAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsURL());
     }
 
-   /**
-    * Test getCountAsInteger() method.
-    */
+    /**
+     * Test getCountAsInteger() method.
+     */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsInteger());
+        assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsInteger());
     }
 
-   /**
-    * Test getCountAsLong() method.
-    */
+    /**
+     * Test getCountAsLong() method.
+     */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsLong());
+        assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsLong());
     }
 
-   /**
-    * Test getCountAsLocalDateTime() method.
-    */
+    /**
+     * Test getCountAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCountAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsLocalDateTime());
     }
 
-   /**
-    * Test getCountAsLocalTime() method.
-    */
+    /**
+     * Test getCountAsLocalTime() method.
+     */
     @Test
     public void subTestGetCountAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsLocalTime());
     }
 
-   /**
-    * Test getCountAsString() method.
-    */
+    /**
+     * Test getCountAsString() method.
+     */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsString());
+        assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getCountAsString());
     }
 
-   /**
-    * Test getCountAsBoolean() method.
-    */
+    /**
+     * Test getCountAsBoolean() method.
+     */
     @Test
     public void subTestGetCountAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsBoolean());
     }
 
-   /**
-    * Test getCountAsBigInteger() method.
-    */
+    /**
+     * Test getCountAsBigInteger() method.
+     */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsBigInteger());
     }
 
-   /**
-    * Test getCountAsURL() method.
-    */
+    /**
+     * Test getCountAsURL() method.
+     */
     @Test
     public void subTestGetCountAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCountAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsURL());
     }
 
-   /**
-    * Test getCountriesAsInteger() method.
-    */
+    /**
+     * Test getCountriesAsInteger() method.
+     */
     @Test
     public void subTestGetCountriesAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsInteger());
     }
 
-   /**
-    * Test getCountriesAsLong() method.
-    */
+    /**
+     * Test getCountriesAsLong() method.
+     */
     @Test
     public void subTestGetCountriesAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsLong());
     }
 
-   /**
-    * Test getCountriesAsLocalDateTime() method.
-    */
+    /**
+     * Test getCountriesAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetCountriesAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsLocalDateTime());
     }
 
-   /**
-    * Test getCountriesAsLocalTime() method.
-    */
+    /**
+     * Test getCountriesAsLocalTime() method.
+     */
     @Test
     public void subTestGetCountriesAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsLocalTime());
     }
 
-   /**
-    * Test getCountriesAsString() method.
-    */
+    /**
+     * Test getCountriesAsString() method.
+     */
     @Test
     public void subTestGetCountriesAsString() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsString());
     }
 
-   /**
-    * Test getCountriesAsBoolean() method.
-    */
+    /**
+     * Test getCountriesAsBoolean() method.
+     */
     @Test
     public void subTestGetCountriesAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsBoolean());
     }
 
-   /**
-    * Test getCountriesAsBigInteger() method.
-    */
+    /**
+     * Test getCountriesAsBigInteger() method.
+     */
     @Test
     public void subTestGetCountriesAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsBigInteger());
     }
 
-   /**
-    * Test getCountriesAsURL() method.
-    */
+    /**
+     * Test getCountriesAsURL() method.
+     */
     @Test
     public void subTestGetCountriesAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getCountriesAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsURL());
     }
 
-   /**
-    * Test getDefaultAsInteger() method.
-    */
+    /**
+     * Test getDefaultAsInteger() method.
+     */
     @Test
     public void subTestGetDefaultAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsInteger());
     }
 
-   /**
-    * Test getDefaultAsLong() method.
-    */
+    /**
+     * Test getDefaultAsLong() method.
+     */
     @Test
     public void subTestGetDefaultAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsLong());
     }
 
-   /**
-    * Test getDefaultAsLocalDateTime() method.
-    */
+    /**
+     * Test getDefaultAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDefaultAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsLocalDateTime());
     }
 
-   /**
-    * Test getDefaultAsLocalTime() method.
-    */
+    /**
+     * Test getDefaultAsLocalTime() method.
+     */
     @Test
     public void subTestGetDefaultAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsLocalTime());
     }
 
-   /**
-    * Test getDefaultAsString() method.
-    */
+    /**
+     * Test getDefaultAsString() method.
+     */
     @Test
     public void subTestGetDefaultAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsString());
     }
 
-   /**
-    * Test getDefaultAsBoolean() method.
-    */
+    /**
+     * Test getDefaultAsBoolean() method.
+     */
     @Test
     public void subTestGetDefaultAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsBoolean());
     }
 
-   /**
-    * Test getDefaultAsBigInteger() method.
-    */
+    /**
+     * Test getDefaultAsBigInteger() method.
+     */
     @Test
     public void subTestGetDefaultAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsBigInteger());
     }
 
-   /**
-    * Test getDefaultAsURL() method.
-    */
+    /**
+     * Test getDefaultAsURL() method.
+     */
     @Test
     public void subTestGetDefaultAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsURL());
     }
 
-   /**
-    * Test getDefaultStringAsInteger() method.
-    */
+    /**
+     * Test getDefaultStringAsInteger() method.
+     */
     @Test
     public void subTestGetDefaultStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsInteger());
     }
 
-   /**
-    * Test getDefaultStringAsLong() method.
-    */
+    /**
+     * Test getDefaultStringAsLong() method.
+     */
     @Test
     public void subTestGetDefaultStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsLong());
     }
 
-   /**
-    * Test getDefaultStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getDefaultStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDefaultStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsLocalDateTime());
     }
 
-   /**
-    * Test getDefaultStringAsLocalTime() method.
-    */
+    /**
+     * Test getDefaultStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetDefaultStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsLocalTime());
     }
 
-   /**
-    * Test getDefaultStringAsString() method.
-    */
+    /**
+     * Test getDefaultStringAsString() method.
+     */
     @Test
     public void subTestGetDefaultStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsString());
     }
 
-   /**
-    * Test getDefaultStringAsBoolean() method.
-    */
+    /**
+     * Test getDefaultStringAsBoolean() method.
+     */
     @Test
     public void subTestGetDefaultStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsBoolean());
     }
 
-   /**
-    * Test getDefaultStringAsBigInteger() method.
-    */
+    /**
+     * Test getDefaultStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetDefaultStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsBigInteger());
     }
 
-   /**
-    * Test getDefaultStringAsURL() method.
-    */
+    /**
+     * Test getDefaultStringAsURL() method.
+     */
     @Test
     public void subTestGetDefaultStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDefaultStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsURL());
     }
 
-   /**
-    * Test getDelayAsInteger() method.
-    */
+    /**
+     * Test getDelayAsInteger() method.
+     */
     @Test
     public void subTestGetDelayAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsInteger());
     }
 
-   /**
-    * Test getDelayAsLong() method.
-    */
+    /**
+     * Test getDelayAsLong() method.
+     */
     @Test
     public void subTestGetDelayAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsLong());
     }
 
-   /**
-    * Test getDelayAsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsLocalDateTime());
     }
 
-   /**
-    * Test getDelayAsLocalTime() method.
-    */
+    /**
+     * Test getDelayAsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsLocalTime());
     }
 
-   /**
-    * Test getDelayAsString() method.
-    */
+    /**
+     * Test getDelayAsString() method.
+     */
     @Test
     public void subTestGetDelayAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayAsString());
     }
 
-   /**
-    * Test getDelayAsBoolean() method.
-    */
+    /**
+     * Test getDelayAsBoolean() method.
+     */
     @Test
     public void subTestGetDelayAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsBoolean());
     }
 
-   /**
-    * Test getDelayAsBigInteger() method.
-    */
+    /**
+     * Test getDelayAsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsBigInteger());
     }
 
-   /**
-    * Test getDelayAsURL() method.
-    */
+    /**
+     * Test getDelayAsURL() method.
+     */
     @Test
     public void subTestGetDelayAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsURL());
     }
 
-   /**
-    * Test getDelayStringAsInteger() method.
-    */
+    /**
+     * Test getDelayStringAsInteger() method.
+     */
     @Test
     public void subTestGetDelayStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsInteger());
     }
 
-   /**
-    * Test getDelayStringAsLong() method.
-    */
+    /**
+     * Test getDelayStringAsLong() method.
+     */
     @Test
     public void subTestGetDelayStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsLong());
     }
 
-   /**
-    * Test getDelayStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsLocalDateTime());
     }
 
-   /**
-    * Test getDelayStringAsLocalTime() method.
-    */
+    /**
+     * Test getDelayStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsLocalTime());
     }
 
-   /**
-    * Test getDelayStringAsString() method.
-    */
+    /**
+     * Test getDelayStringAsString() method.
+     */
     @Test
     public void subTestGetDelayStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsString());
     }
 
-   /**
-    * Test getDelayStringAsBoolean() method.
-    */
+    /**
+     * Test getDelayStringAsBoolean() method.
+     */
     @Test
     public void subTestGetDelayStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsBoolean());
     }
 
-   /**
-    * Test getDelayStringAsBigInteger() method.
-    */
+    /**
+     * Test getDelayStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsBigInteger());
     }
 
-   /**
-    * Test getDelayStringAsURL() method.
-    */
+    /**
+     * Test getDelayStringAsURL() method.
+     */
     @Test
     public void subTestGetDelayStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsURL());
     }
 
-   /**
-    * Test getDelayString1AsInteger() method.
-    */
+    /**
+     * Test getDelayString1AsInteger() method.
+     */
     @Test
     public void subTestGetDelayString1AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsInteger());
     }
 
-   /**
-    * Test getDelayString1AsLong() method.
-    */
+    /**
+     * Test getDelayString1AsLong() method.
+     */
     @Test
     public void subTestGetDelayString1AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsLong());
     }
 
-   /**
-    * Test getDelayString1AsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayString1AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayString1AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsLocalDateTime());
     }
 
-   /**
-    * Test getDelayString1AsLocalTime() method.
-    */
+    /**
+     * Test getDelayString1AsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayString1AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsLocalTime());
     }
 
-   /**
-    * Test getDelayString1AsString() method.
-    */
+    /**
+     * Test getDelayString1AsString() method.
+     */
     @Test
     public void subTestGetDelayString1AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsString());
     }
 
-   /**
-    * Test getDelayString1AsBoolean() method.
-    */
+    /**
+     * Test getDelayString1AsBoolean() method.
+     */
     @Test
     public void subTestGetDelayString1AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsBoolean());
     }
 
-   /**
-    * Test getDelayString1AsBigInteger() method.
-    */
+    /**
+     * Test getDelayString1AsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayString1AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsBigInteger());
     }
 
-   /**
-    * Test getDelayString1AsURL() method.
-    */
+    /**
+     * Test getDelayString1AsURL() method.
+     */
     @Test
     public void subTestGetDelayString1AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString1AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsURL());
     }
 
-   /**
-    * Test getDelayString2AsInteger() method.
-    */
+    /**
+     * Test getDelayString2AsInteger() method.
+     */
     @Test
     public void subTestGetDelayString2AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsInteger());
     }
 
-   /**
-    * Test getDelayString2AsLong() method.
-    */
+    /**
+     * Test getDelayString2AsLong() method.
+     */
     @Test
     public void subTestGetDelayString2AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsLong());
     }
 
-   /**
-    * Test getDelayString2AsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayString2AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayString2AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsLocalDateTime());
     }
 
-   /**
-    * Test getDelayString2AsLocalTime() method.
-    */
+    /**
+     * Test getDelayString2AsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayString2AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsLocalTime());
     }
 
-   /**
-    * Test getDelayString2AsString() method.
-    */
+    /**
+     * Test getDelayString2AsString() method.
+     */
     @Test
     public void subTestGetDelayString2AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsString());
     }
 
-   /**
-    * Test getDelayString2AsBoolean() method.
-    */
+    /**
+     * Test getDelayString2AsBoolean() method.
+     */
     @Test
     public void subTestGetDelayString2AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsBoolean());
     }
 
-   /**
-    * Test getDelayString2AsBigInteger() method.
-    */
+    /**
+     * Test getDelayString2AsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayString2AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsBigInteger());
     }
 
-   /**
-    * Test getDelayString2AsURL() method.
-    */
+    /**
+     * Test getDelayString2AsURL() method.
+     */
     @Test
     public void subTestGetDelayString2AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString2AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsURL());
     }
 
-   /**
-    * Test getDelayString3AsInteger() method.
-    */
+    /**
+     * Test getDelayString3AsInteger() method.
+     */
     @Test
     public void subTestGetDelayString3AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsInteger());
     }
 
-   /**
-    * Test getDelayString3AsLong() method.
-    */
+    /**
+     * Test getDelayString3AsLong() method.
+     */
     @Test
     public void subTestGetDelayString3AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsLong());
     }
 
-   /**
-    * Test getDelayString3AsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayString3AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayString3AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsLocalDateTime());
     }
 
-   /**
-    * Test getDelayString3AsLocalTime() method.
-    */
+    /**
+     * Test getDelayString3AsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayString3AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsLocalTime());
     }
 
-   /**
-    * Test getDelayString3AsString() method.
-    */
+    /**
+     * Test getDelayString3AsString() method.
+     */
     @Test
     public void subTestGetDelayString3AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsString());
     }
 
-   /**
-    * Test getDelayString3AsBoolean() method.
-    */
+    /**
+     * Test getDelayString3AsBoolean() method.
+     */
     @Test
     public void subTestGetDelayString3AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsBoolean());
     }
 
-   /**
-    * Test getDelayString3AsBigInteger() method.
-    */
+    /**
+     * Test getDelayString3AsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayString3AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsBigInteger());
     }
 
-   /**
-    * Test getDelayString3AsURL() method.
-    */
+    /**
+     * Test getDelayString3AsURL() method.
+     */
     @Test
     public void subTestGetDelayString3AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString3AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsURL());
     }
 
-   /**
-    * Test getDelayString4AsInteger() method.
-    */
+    /**
+     * Test getDelayString4AsInteger() method.
+     */
     @Test
     public void subTestGetDelayString4AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsInteger());
     }
 
-   /**
-    * Test getDelayString4AsLong() method.
-    */
+    /**
+     * Test getDelayString4AsLong() method.
+     */
     @Test
     public void subTestGetDelayString4AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsLong());
     }
 
-   /**
-    * Test getDelayString4AsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayString4AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayString4AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsLocalDateTime());
     }
 
-   /**
-    * Test getDelayString4AsLocalTime() method.
-    */
+    /**
+     * Test getDelayString4AsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayString4AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsLocalTime());
     }
 
-   /**
-    * Test getDelayString4AsString() method.
-    */
+    /**
+     * Test getDelayString4AsString() method.
+     */
     @Test
     public void subTestGetDelayString4AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsString());
     }
 
-   /**
-    * Test getDelayString4AsBoolean() method.
-    */
+    /**
+     * Test getDelayString4AsBoolean() method.
+     */
     @Test
     public void subTestGetDelayString4AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsBoolean());
     }
 
-   /**
-    * Test getDelayString4AsBigInteger() method.
-    */
+    /**
+     * Test getDelayString4AsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayString4AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsBigInteger());
     }
 
-   /**
-    * Test getDelayString4AsURL() method.
-    */
+    /**
+     * Test getDelayString4AsURL() method.
+     */
     @Test
     public void subTestGetDelayString4AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString4AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsURL());
     }
 
-   /**
-    * Test getDelayString5AsInteger() method.
-    */
+    /**
+     * Test getDelayString5AsInteger() method.
+     */
     @Test
     public void subTestGetDelayString5AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsInteger());
     }
 
-   /**
-    * Test getDelayString5AsLong() method.
-    */
+    /**
+     * Test getDelayString5AsLong() method.
+     */
     @Test
     public void subTestGetDelayString5AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsLong());
     }
 
-   /**
-    * Test getDelayString5AsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayString5AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayString5AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsLocalDateTime());
     }
 
-   /**
-    * Test getDelayString5AsLocalTime() method.
-    */
+    /**
+     * Test getDelayString5AsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayString5AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsLocalTime());
     }
 
-   /**
-    * Test getDelayString5AsString() method.
-    */
+    /**
+     * Test getDelayString5AsString() method.
+     */
     @Test
     public void subTestGetDelayString5AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsString());
     }
 
-   /**
-    * Test getDelayString5AsBoolean() method.
-    */
+    /**
+     * Test getDelayString5AsBoolean() method.
+     */
     @Test
     public void subTestGetDelayString5AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsBoolean());
     }
 
-   /**
-    * Test getDelayString5AsBigInteger() method.
-    */
+    /**
+     * Test getDelayString5AsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayString5AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsBigInteger());
     }
 
-   /**
-    * Test getDelayString5AsURL() method.
-    */
+    /**
+     * Test getDelayString5AsURL() method.
+     */
     @Test
     public void subTestGetDelayString5AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayString5AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsURL());
     }
 
-   /**
-    * Test getDelayDropFrameAsInteger() method.
-    */
+    /**
+     * Test getDelayDropFrameAsInteger() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsInteger());
     }
 
-   /**
-    * Test getDelayDropFrameAsLong() method.
-    */
+    /**
+     * Test getDelayDropFrameAsLong() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsLong());
     }
 
-   /**
-    * Test getDelayDropFrameAsLocalDateTime() method.
-    */
+    /**
+     * Test getDelayDropFrameAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsLocalDateTime());
     }
 
-   /**
-    * Test getDelayDropFrameAsLocalTime() method.
-    */
+    /**
+     * Test getDelayDropFrameAsLocalTime() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsLocalTime());
     }
 
-   /**
-    * Test getDelayDropFrameAsString() method.
-    */
+    /**
+     * Test getDelayDropFrameAsString() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsString());
     }
 
-   /**
-    * Test getDelayDropFrameAsBoolean() method.
-    */
+    /**
+     * Test getDelayDropFrameAsBoolean() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsBoolean());
     }
 
-   /**
-    * Test getDelayDropFrameAsBigInteger() method.
-    */
+    /**
+     * Test getDelayDropFrameAsBigInteger() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsBigInteger());
     }
 
-   /**
-    * Test getDelayDropFrameAsURL() method.
-    */
+    /**
+     * Test getDelayDropFrameAsURL() method.
+     */
     @Test
     public void subTestGetDelayDropFrameAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelayDropFrameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsURL());
     }
 
-   /**
-    * Test getDelaySettingsAsInteger() method.
-    */
+    /**
+     * Test getDelaySettingsAsInteger() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsInteger());
     }
 
-   /**
-    * Test getDelaySettingsAsLong() method.
-    */
+    /**
+     * Test getDelaySettingsAsLong() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsLong());
     }
 
-   /**
-    * Test getDelaySettingsAsLocalDateTime() method.
-    */
+    /**
+     * Test getDelaySettingsAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsLocalDateTime());
     }
 
-   /**
-    * Test getDelaySettingsAsLocalTime() method.
-    */
+    /**
+     * Test getDelaySettingsAsLocalTime() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsLocalTime());
     }
 
-   /**
-    * Test getDelaySettingsAsString() method.
-    */
+    /**
+     * Test getDelaySettingsAsString() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsString());
     }
 
-   /**
-    * Test getDelaySettingsAsBoolean() method.
-    */
+    /**
+     * Test getDelaySettingsAsBoolean() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsBoolean());
     }
 
-   /**
-    * Test getDelaySettingsAsBigInteger() method.
-    */
+    /**
+     * Test getDelaySettingsAsBigInteger() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsBigInteger());
     }
 
-   /**
-    * Test getDelaySettingsAsURL() method.
-    */
+    /**
+     * Test getDelaySettingsAsURL() method.
+     */
     @Test
     public void subTestGetDelaySettingsAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySettingsAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsURL());
     }
 
-   /**
-    * Test getDelaySourceAsInteger() method.
-    */
+    /**
+     * Test getDelaySourceAsInteger() method.
+     */
     @Test
     public void subTestGetDelaySourceAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsInteger());
     }
 
-   /**
-    * Test getDelaySourceAsLong() method.
-    */
+    /**
+     * Test getDelaySourceAsLong() method.
+     */
     @Test
     public void subTestGetDelaySourceAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsLong());
     }
 
-   /**
-    * Test getDelaySourceAsLocalDateTime() method.
-    */
+    /**
+     * Test getDelaySourceAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDelaySourceAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsLocalDateTime());
     }
 
-   /**
-    * Test getDelaySourceAsLocalTime() method.
-    */
+    /**
+     * Test getDelaySourceAsLocalTime() method.
+     */
     @Test
     public void subTestGetDelaySourceAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsLocalTime());
     }
 
-   /**
-    * Test getDelaySourceAsString() method.
-    */
+    /**
+     * Test getDelaySourceAsString() method.
+     */
     @Test
     public void subTestGetDelaySourceAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsString());
     }
 
-   /**
-    * Test getDelaySourceAsBoolean() method.
-    */
+    /**
+     * Test getDelaySourceAsBoolean() method.
+     */
     @Test
     public void subTestGetDelaySourceAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsBoolean());
     }
 
-   /**
-    * Test getDelaySourceAsBigInteger() method.
-    */
+    /**
+     * Test getDelaySourceAsBigInteger() method.
+     */
     @Test
     public void subTestGetDelaySourceAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsBigInteger());
     }
 
-   /**
-    * Test getDelaySourceAsURL() method.
-    */
+    /**
+     * Test getDelaySourceAsURL() method.
+     */
     @Test
     public void subTestGetDelaySourceAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDelaySourceAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsURL());
     }
 
-   /**
-    * Test getDisabledAsInteger() method.
-    */
+    /**
+     * Test getDisabledAsInteger() method.
+     */
     @Test
     public void subTestGetDisabledAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsInteger());
     }
 
-   /**
-    * Test getDisabledAsLong() method.
-    */
+    /**
+     * Test getDisabledAsLong() method.
+     */
     @Test
     public void subTestGetDisabledAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsLong());
     }
 
-   /**
-    * Test getDisabledAsLocalDateTime() method.
-    */
+    /**
+     * Test getDisabledAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDisabledAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsLocalDateTime());
     }
 
-   /**
-    * Test getDisabledAsLocalTime() method.
-    */
+    /**
+     * Test getDisabledAsLocalTime() method.
+     */
     @Test
     public void subTestGetDisabledAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsLocalTime());
     }
 
-   /**
-    * Test getDisabledAsString() method.
-    */
+    /**
+     * Test getDisabledAsString() method.
+     */
     @Test
     public void subTestGetDisabledAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsString());
     }
 
-   /**
-    * Test getDisabledAsBoolean() method.
-    */
+    /**
+     * Test getDisabledAsBoolean() method.
+     */
     @Test
     public void subTestGetDisabledAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsBoolean());
     }
 
-   /**
-    * Test getDisabledAsBigInteger() method.
-    */
+    /**
+     * Test getDisabledAsBigInteger() method.
+     */
     @Test
     public void subTestGetDisabledAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsBigInteger());
     }
 
-   /**
-    * Test getDisabledAsURL() method.
-    */
+    /**
+     * Test getDisabledAsURL() method.
+     */
     @Test
     public void subTestGetDisabledAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsURL());
     }
 
-   /**
-    * Test getDisabledStringAsInteger() method.
-    */
+    /**
+     * Test getDisabledStringAsInteger() method.
+     */
     @Test
     public void subTestGetDisabledStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsInteger());
     }
 
-   /**
-    * Test getDisabledStringAsLong() method.
-    */
+    /**
+     * Test getDisabledStringAsLong() method.
+     */
     @Test
     public void subTestGetDisabledStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsLong());
     }
 
-   /**
-    * Test getDisabledStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getDisabledStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDisabledStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsLocalDateTime());
     }
 
-   /**
-    * Test getDisabledStringAsLocalTime() method.
-    */
+    /**
+     * Test getDisabledStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetDisabledStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsLocalTime());
     }
 
-   /**
-    * Test getDisabledStringAsString() method.
-    */
+    /**
+     * Test getDisabledStringAsString() method.
+     */
     @Test
     public void subTestGetDisabledStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsString());
     }
 
-   /**
-    * Test getDisabledStringAsBoolean() method.
-    */
+    /**
+     * Test getDisabledStringAsBoolean() method.
+     */
     @Test
     public void subTestGetDisabledStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsBoolean());
     }
 
-   /**
-    * Test getDisabledStringAsBigInteger() method.
-    */
+    /**
+     * Test getDisabledStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetDisabledStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsBigInteger());
     }
 
-   /**
-    * Test getDisabledStringAsURL() method.
-    */
+    /**
+     * Test getDisabledStringAsURL() method.
+     */
     @Test
     public void subTestGetDisabledStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDisabledStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsURL());
     }
 
-   /**
-    * Test getDurationAsInteger() method.
-    */
+    /**
+     * Test getDurationAsInteger() method.
+     */
     @Test
     public void subTestGetDurationAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsInteger());
     }
 
-   /**
-    * Test getDurationAsLong() method.
-    */
+    /**
+     * Test getDurationAsLong() method.
+     */
     @Test
     public void subTestGetDurationAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsLong());
     }
 
-   /**
-    * Test getDurationAsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsLocalDateTime());
     }
 
-   /**
-    * Test getDurationAsLocalTime() method.
-    */
+    /**
+     * Test getDurationAsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsLocalTime());
     }
 
-   /**
-    * Test getDurationAsString() method.
-    */
+    /**
+     * Test getDurationAsString() method.
+     */
     @Test
     public void subTestGetDurationAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationAsString());
     }
 
-   /**
-    * Test getDurationAsBoolean() method.
-    */
+    /**
+     * Test getDurationAsBoolean() method.
+     */
     @Test
     public void subTestGetDurationAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsBoolean());
     }
 
-   /**
-    * Test getDurationAsBigInteger() method.
-    */
+    /**
+     * Test getDurationAsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsBigInteger());
     }
 
-   /**
-    * Test getDurationAsURL() method.
-    */
+    /**
+     * Test getDurationAsURL() method.
+     */
     @Test
     public void subTestGetDurationAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsURL());
     }
 
-   /**
-    * Test getDurationStringAsInteger() method.
-    */
+    /**
+     * Test getDurationStringAsInteger() method.
+     */
     @Test
     public void subTestGetDurationStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsInteger());
     }
 
-   /**
-    * Test getDurationStringAsLong() method.
-    */
+    /**
+     * Test getDurationStringAsLong() method.
+     */
     @Test
     public void subTestGetDurationStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsLong());
     }
 
-   /**
-    * Test getDurationStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsLocalDateTime());
     }
 
-   /**
-    * Test getDurationStringAsLocalTime() method.
-    */
+    /**
+     * Test getDurationStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsLocalTime());
     }
 
-   /**
-    * Test getDurationStringAsString() method.
-    */
+    /**
+     * Test getDurationStringAsString() method.
+     */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsString());
     }
 
-   /**
-    * Test getDurationStringAsBoolean() method.
-    */
+    /**
+     * Test getDurationStringAsBoolean() method.
+     */
     @Test
     public void subTestGetDurationStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsBoolean());
     }
 
-   /**
-    * Test getDurationStringAsBigInteger() method.
-    */
+    /**
+     * Test getDurationStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsBigInteger());
     }
 
-   /**
-    * Test getDurationStringAsURL() method.
-    */
+    /**
+     * Test getDurationStringAsURL() method.
+     */
     @Test
     public void subTestGetDurationStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsURL());
     }
 
-   /**
-    * Test getDurationString1AsInteger() method.
-    */
+    /**
+     * Test getDurationString1AsInteger() method.
+     */
     @Test
     public void subTestGetDurationString1AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsInteger());
     }
 
-   /**
-    * Test getDurationString1AsLong() method.
-    */
+    /**
+     * Test getDurationString1AsLong() method.
+     */
     @Test
     public void subTestGetDurationString1AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsLong());
     }
 
-   /**
-    * Test getDurationString1AsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationString1AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationString1AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsLocalDateTime());
     }
 
-   /**
-    * Test getDurationString1AsLocalTime() method.
-    */
+    /**
+     * Test getDurationString1AsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationString1AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsLocalTime());
     }
 
-   /**
-    * Test getDurationString1AsString() method.
-    */
+    /**
+     * Test getDurationString1AsString() method.
+     */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsString());
     }
 
-   /**
-    * Test getDurationString1AsBoolean() method.
-    */
+    /**
+     * Test getDurationString1AsBoolean() method.
+     */
     @Test
     public void subTestGetDurationString1AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsBoolean());
     }
 
-   /**
-    * Test getDurationString1AsBigInteger() method.
-    */
+    /**
+     * Test getDurationString1AsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationString1AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsBigInteger());
     }
 
-   /**
-    * Test getDurationString1AsURL() method.
-    */
+    /**
+     * Test getDurationString1AsURL() method.
+     */
     @Test
     public void subTestGetDurationString1AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString1AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsURL());
     }
 
-   /**
-    * Test getDurationString2AsInteger() method.
-    */
+    /**
+     * Test getDurationString2AsInteger() method.
+     */
     @Test
     public void subTestGetDurationString2AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsInteger());
     }
 
-   /**
-    * Test getDurationString2AsLong() method.
-    */
+    /**
+     * Test getDurationString2AsLong() method.
+     */
     @Test
     public void subTestGetDurationString2AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsLong());
     }
 
-   /**
-    * Test getDurationString2AsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationString2AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationString2AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsLocalDateTime());
     }
 
-   /**
-    * Test getDurationString2AsLocalTime() method.
-    */
+    /**
+     * Test getDurationString2AsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationString2AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsLocalTime());
     }
 
-   /**
-    * Test getDurationString2AsString() method.
-    */
+    /**
+     * Test getDurationString2AsString() method.
+     */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsString());
     }
 
-   /**
-    * Test getDurationString2AsBoolean() method.
-    */
+    /**
+     * Test getDurationString2AsBoolean() method.
+     */
     @Test
     public void subTestGetDurationString2AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsBoolean());
     }
 
-   /**
-    * Test getDurationString2AsBigInteger() method.
-    */
+    /**
+     * Test getDurationString2AsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationString2AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsBigInteger());
     }
 
-   /**
-    * Test getDurationString2AsURL() method.
-    */
+    /**
+     * Test getDurationString2AsURL() method.
+     */
     @Test
     public void subTestGetDurationString2AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString2AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsURL());
     }
 
-   /**
-    * Test getDurationString3AsInteger() method.
-    */
+    /**
+     * Test getDurationString3AsInteger() method.
+     */
     @Test
     public void subTestGetDurationString3AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsInteger());
     }
 
-   /**
-    * Test getDurationString3AsLong() method.
-    */
+    /**
+     * Test getDurationString3AsLong() method.
+     */
     @Test
     public void subTestGetDurationString3AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsLong());
     }
 
-   /**
-    * Test getDurationString3AsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationString3AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationString3AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsLocalDateTime());
     }
 
-   /**
-    * Test getDurationString3AsLocalTime() method.
-    */
+    /**
+     * Test getDurationString3AsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationString3AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsLocalTime());
     }
 
-   /**
-    * Test getDurationString3AsString() method.
-    */
+    /**
+     * Test getDurationString3AsString() method.
+     */
     @Test
     public void subTestGetDurationString3AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsString());
     }
 
-   /**
-    * Test getDurationString3AsBoolean() method.
-    */
+    /**
+     * Test getDurationString3AsBoolean() method.
+     */
     @Test
     public void subTestGetDurationString3AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsBoolean());
     }
 
-   /**
-    * Test getDurationString3AsBigInteger() method.
-    */
+    /**
+     * Test getDurationString3AsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationString3AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsBigInteger());
     }
 
-   /**
-    * Test getDurationString3AsURL() method.
-    */
+    /**
+     * Test getDurationString3AsURL() method.
+     */
     @Test
     public void subTestGetDurationString3AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString3AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsURL());
     }
 
-   /**
-    * Test getDurationString4AsInteger() method.
-    */
+    /**
+     * Test getDurationString4AsInteger() method.
+     */
     @Test
     public void subTestGetDurationString4AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsInteger());
     }
 
-   /**
-    * Test getDurationString4AsLong() method.
-    */
+    /**
+     * Test getDurationString4AsLong() method.
+     */
     @Test
     public void subTestGetDurationString4AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsLong());
     }
 
-   /**
-    * Test getDurationString4AsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationString4AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationString4AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsLocalDateTime());
     }
 
-   /**
-    * Test getDurationString4AsLocalTime() method.
-    */
+    /**
+     * Test getDurationString4AsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationString4AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsLocalTime());
     }
 
-   /**
-    * Test getDurationString4AsString() method.
-    */
+    /**
+     * Test getDurationString4AsString() method.
+     */
     @Test
     public void subTestGetDurationString4AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsString());
     }
 
-   /**
-    * Test getDurationString4AsBoolean() method.
-    */
+    /**
+     * Test getDurationString4AsBoolean() method.
+     */
     @Test
     public void subTestGetDurationString4AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsBoolean());
     }
 
-   /**
-    * Test getDurationString4AsBigInteger() method.
-    */
+    /**
+     * Test getDurationString4AsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationString4AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsBigInteger());
     }
 
-   /**
-    * Test getDurationString4AsURL() method.
-    */
+    /**
+     * Test getDurationString4AsURL() method.
+     */
     @Test
     public void subTestGetDurationString4AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString4AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsURL());
     }
 
-   /**
-    * Test getDurationString5AsInteger() method.
-    */
+    /**
+     * Test getDurationString5AsInteger() method.
+     */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsInteger());
     }
 
-   /**
-    * Test getDurationString5AsLong() method.
-    */
+    /**
+     * Test getDurationString5AsLong() method.
+     */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsLong());
     }
 
-   /**
-    * Test getDurationString5AsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationString5AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationString5AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsLocalDateTime());
     }
 
-   /**
-    * Test getDurationString5AsLocalTime() method.
-    */
+    /**
+     * Test getDurationString5AsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationString5AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsLocalTime());
     }
 
-   /**
-    * Test getDurationString5AsString() method.
-    */
+    /**
+     * Test getDurationString5AsString() method.
+     */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsString());
     }
 
-   /**
-    * Test getDurationString5AsBoolean() method.
-    */
+    /**
+     * Test getDurationString5AsBoolean() method.
+     */
     @Test
     public void subTestGetDurationString5AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsBoolean());
     }
 
-   /**
-    * Test getDurationString5AsBigInteger() method.
-    */
+    /**
+     * Test getDurationString5AsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsBigInteger());
     }
 
-   /**
-    * Test getDurationString5AsURL() method.
-    */
+    /**
+     * Test getDurationString5AsURL() method.
+     */
     @Test
     public void subTestGetDurationString5AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationString5AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsURL());
     }
 
-   /**
-    * Test getDurationEndAsInteger() method.
-    */
+    /**
+     * Test getDurationEndAsInteger() method.
+     */
     @Test
     public void subTestGetDurationEndAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsInteger());
     }
 
-   /**
-    * Test getDurationEndAsLong() method.
-    */
+    /**
+     * Test getDurationEndAsLong() method.
+     */
     @Test
     public void subTestGetDurationEndAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsLong());
     }
 
-   /**
-    * Test getDurationEndAsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationEndAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationEndAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsLocalDateTime());
     }
 
-   /**
-    * Test getDurationEndAsLocalTime() method.
-    */
+    /**
+     * Test getDurationEndAsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationEndAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsLocalTime());
     }
 
-   /**
-    * Test getDurationEndAsString() method.
-    */
+    /**
+     * Test getDurationEndAsString() method.
+     */
     @Test
     public void subTestGetDurationEndAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsString());
     }
 
-   /**
-    * Test getDurationEndAsBoolean() method.
-    */
+    /**
+     * Test getDurationEndAsBoolean() method.
+     */
     @Test
     public void subTestGetDurationEndAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsBoolean());
     }
 
-   /**
-    * Test getDurationEndAsBigInteger() method.
-    */
+    /**
+     * Test getDurationEndAsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationEndAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsBigInteger());
     }
 
-   /**
-    * Test getDurationEndAsURL() method.
-    */
+    /**
+     * Test getDurationEndAsURL() method.
+     */
     @Test
     public void subTestGetDurationEndAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationEndAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsURL());
     }
 
-   /**
-    * Test getDurationStartAsInteger() method.
-    */
+    /**
+     * Test getDurationStartAsInteger() method.
+     */
     @Test
     public void subTestGetDurationStartAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsInteger());
     }
 
-   /**
-    * Test getDurationStartAsLong() method.
-    */
+    /**
+     * Test getDurationStartAsLong() method.
+     */
     @Test
     public void subTestGetDurationStartAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsLong());
     }
 
-   /**
-    * Test getDurationStartAsLocalDateTime() method.
-    */
+    /**
+     * Test getDurationStartAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetDurationStartAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsLocalDateTime());
     }
 
-   /**
-    * Test getDurationStartAsLocalTime() method.
-    */
+    /**
+     * Test getDurationStartAsLocalTime() method.
+     */
     @Test
     public void subTestGetDurationStartAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsLocalTime());
     }
 
-   /**
-    * Test getDurationStartAsString() method.
-    */
+    /**
+     * Test getDurationStartAsString() method.
+     */
     @Test
     public void subTestGetDurationStartAsString() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsString());
     }
 
-   /**
-    * Test getDurationStartAsBoolean() method.
-    */
+    /**
+     * Test getDurationStartAsBoolean() method.
+     */
     @Test
     public void subTestGetDurationStartAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsBoolean());
     }
 
-   /**
-    * Test getDurationStartAsBigInteger() method.
-    */
+    /**
+     * Test getDurationStartAsBigInteger() method.
+     */
     @Test
     public void subTestGetDurationStartAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsBigInteger());
     }
 
-   /**
-    * Test getDurationStartAsURL() method.
-    */
+    /**
+     * Test getDurationStartAsURL() method.
+     */
     @Test
     public void subTestGetDurationStartAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getDurationStartAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsURL());
     }
 
-   /**
-    * Test getFirstPacketOrderAsInteger() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsInteger() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsInteger());
     }
 
-   /**
-    * Test getFirstPacketOrderAsLong() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsLong() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsLong());
     }
 
-   /**
-    * Test getFirstPacketOrderAsLocalDateTime() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsLocalDateTime());
     }
 
-   /**
-    * Test getFirstPacketOrderAsLocalTime() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsLocalTime() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsLocalTime());
     }
 
-   /**
-    * Test getFirstPacketOrderAsString() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsString() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsString());
     }
 
-   /**
-    * Test getFirstPacketOrderAsBoolean() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsBoolean() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsBoolean());
     }
 
-   /**
-    * Test getFirstPacketOrderAsBigInteger() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsBigInteger() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsBigInteger());
     }
 
-   /**
-    * Test getFirstPacketOrderAsURL() method.
-    */
+    /**
+     * Test getFirstPacketOrderAsURL() method.
+     */
     @Test
     public void subTestGetFirstPacketOrderAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFirstPacketOrderAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsURL());
     }
 
-   /**
-    * Test getForcedAsInteger() method.
-    */
+    /**
+     * Test getForcedAsInteger() method.
+     */
     @Test
     public void subTestGetForcedAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsInteger());
     }
 
-   /**
-    * Test getForcedAsLong() method.
-    */
+    /**
+     * Test getForcedAsLong() method.
+     */
     @Test
     public void subTestGetForcedAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsLong());
     }
 
-   /**
-    * Test getForcedAsLocalDateTime() method.
-    */
+    /**
+     * Test getForcedAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetForcedAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsLocalDateTime());
     }
 
-   /**
-    * Test getForcedAsLocalTime() method.
-    */
+    /**
+     * Test getForcedAsLocalTime() method.
+     */
     @Test
     public void subTestGetForcedAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsLocalTime());
     }
 
-   /**
-    * Test getForcedAsString() method.
-    */
+    /**
+     * Test getForcedAsString() method.
+     */
     @Test
     public void subTestGetForcedAsString() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getForcedAsString());
     }
 
-   /**
-    * Test getForcedAsBoolean() method.
-    */
+    /**
+     * Test getForcedAsBoolean() method.
+     */
     @Test
     public void subTestGetForcedAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsBoolean());
     }
 
-   /**
-    * Test getForcedAsBigInteger() method.
-    */
+    /**
+     * Test getForcedAsBigInteger() method.
+     */
     @Test
     public void subTestGetForcedAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsBigInteger());
     }
 
-   /**
-    * Test getForcedAsURL() method.
-    */
+    /**
+     * Test getForcedAsURL() method.
+     */
     @Test
     public void subTestGetForcedAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getForcedAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsURL());
     }
 
-   /**
-    * Test getForcedStringAsInteger() method.
-    */
+    /**
+     * Test getForcedStringAsInteger() method.
+     */
     @Test
     public void subTestGetForcedStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsInteger());
     }
 
-   /**
-    * Test getForcedStringAsLong() method.
-    */
+    /**
+     * Test getForcedStringAsLong() method.
+     */
     @Test
     public void subTestGetForcedStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsLong());
     }
 
-   /**
-    * Test getForcedStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getForcedStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetForcedStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsLocalDateTime());
     }
 
-   /**
-    * Test getForcedStringAsLocalTime() method.
-    */
+    /**
+     * Test getForcedStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetForcedStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsLocalTime());
     }
 
-   /**
-    * Test getForcedStringAsString() method.
-    */
+    /**
+     * Test getForcedStringAsString() method.
+     */
     @Test
     public void subTestGetForcedStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsString());
     }
 
-   /**
-    * Test getForcedStringAsBoolean() method.
-    */
+    /**
+     * Test getForcedStringAsBoolean() method.
+     */
     @Test
     public void subTestGetForcedStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsBoolean());
     }
 
-   /**
-    * Test getForcedStringAsBigInteger() method.
-    */
+    /**
+     * Test getForcedStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetForcedStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsBigInteger());
     }
 
-   /**
-    * Test getForcedStringAsURL() method.
-    */
+    /**
+     * Test getForcedStringAsURL() method.
+     */
     @Test
     public void subTestGetForcedStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getForcedStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsURL());
     }
 
-   /**
-    * Test getFormatAsInteger() method.
-    */
+    /**
+     * Test getFormatAsInteger() method.
+     */
     @Test
     public void subTestGetFormatAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsInteger());
     }
 
-   /**
-    * Test getFormatAsLong() method.
-    */
+    /**
+     * Test getFormatAsLong() method.
+     */
     @Test
     public void subTestGetFormatAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsLong());
     }
 
-   /**
-    * Test getFormatAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatAsLocalTime() method.
-    */
+    /**
+     * Test getFormatAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsLocalTime());
     }
 
-   /**
-    * Test getFormatAsString() method.
-    */
+    /**
+     * Test getFormatAsString() method.
+     */
     @Test
     public void subTestGetFormatAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatAsString());
     }
 
-   /**
-    * Test getFormatAsBoolean() method.
-    */
+    /**
+     * Test getFormatAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsBoolean());
     }
 
-   /**
-    * Test getFormatAsBigInteger() method.
-    */
+    /**
+     * Test getFormatAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsBigInteger());
     }
 
-   /**
-    * Test getFormatAsURL() method.
-    */
+    /**
+     * Test getFormatAsURL() method.
+     */
     @Test
     public void subTestGetFormatAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsURL());
     }
 
-   /**
-    * Test getFormatInfoAsInteger() method.
-    */
+    /**
+     * Test getFormatInfoAsInteger() method.
+     */
     @Test
     public void subTestGetFormatInfoAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsInteger());
     }
 
-   /**
-    * Test getFormatInfoAsLong() method.
-    */
+    /**
+     * Test getFormatInfoAsLong() method.
+     */
     @Test
     public void subTestGetFormatInfoAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsLong());
     }
 
-   /**
-    * Test getFormatInfoAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatInfoAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatInfoAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatInfoAsLocalTime() method.
-    */
+    /**
+     * Test getFormatInfoAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatInfoAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsLocalTime());
     }
 
-   /**
-    * Test getFormatInfoAsString() method.
-    */
+    /**
+     * Test getFormatInfoAsString() method.
+     */
     @Test
     public void subTestGetFormatInfoAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsString());
     }
 
-   /**
-    * Test getFormatInfoAsBoolean() method.
-    */
+    /**
+     * Test getFormatInfoAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatInfoAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsBoolean());
     }
 
-   /**
-    * Test getFormatInfoAsBigInteger() method.
-    */
+    /**
+     * Test getFormatInfoAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatInfoAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsBigInteger());
     }
 
-   /**
-    * Test getFormatInfoAsURL() method.
-    */
+    /**
+     * Test getFormatInfoAsURL() method.
+     */
     @Test
     public void subTestGetFormatInfoAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatInfoAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsURL());
     }
 
-   /**
-    * Test getFormatUrlAsInteger() method.
-    */
+    /**
+     * Test getFormatUrlAsInteger() method.
+     */
     @Test
     public void subTestGetFormatUrlAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsInteger());
     }
 
-   /**
-    * Test getFormatUrlAsLong() method.
-    */
+    /**
+     * Test getFormatUrlAsLong() method.
+     */
     @Test
     public void subTestGetFormatUrlAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsLong());
     }
 
-   /**
-    * Test getFormatUrlAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatUrlAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatUrlAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatUrlAsLocalTime() method.
-    */
+    /**
+     * Test getFormatUrlAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatUrlAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsLocalTime());
     }
 
-   /**
-    * Test getFormatUrlAsString() method.
-    */
+    /**
+     * Test getFormatUrlAsString() method.
+     */
     @Test
     public void subTestGetFormatUrlAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsString());
     }
 
-   /**
-    * Test getFormatUrlAsBoolean() method.
-    */
+    /**
+     * Test getFormatUrlAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatUrlAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsBoolean());
     }
 
-   /**
-    * Test getFormatUrlAsBigInteger() method.
-    */
+    /**
+     * Test getFormatUrlAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatUrlAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsBigInteger());
     }
 
-   /**
-    * Test getFormatUrlAsURL() method.
-    */
+    /**
+     * Test getFormatUrlAsURL() method.
+     */
     @Test
     public void subTestGetFormatUrlAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsURL());
     }
 
-   /**
-    * Test getFormatCommercialAsInteger() method.
-    */
+    /**
+     * Test getFormatCommercialAsInteger() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsInteger());
     }
 
-   /**
-    * Test getFormatCommercialAsLong() method.
-    */
+    /**
+     * Test getFormatCommercialAsLong() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsLong());
     }
 
-   /**
-    * Test getFormatCommercialAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatCommercialAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatCommercialAsLocalTime() method.
-    */
+    /**
+     * Test getFormatCommercialAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsLocalTime());
     }
 
-   /**
-    * Test getFormatCommercialAsString() method.
-    */
+    /**
+     * Test getFormatCommercialAsString() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsString());
     }
 
-   /**
-    * Test getFormatCommercialAsBoolean() method.
-    */
+    /**
+     * Test getFormatCommercialAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsBoolean());
     }
 
-   /**
-    * Test getFormatCommercialAsBigInteger() method.
-    */
+    /**
+     * Test getFormatCommercialAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsBigInteger());
     }
 
-   /**
-    * Test getFormatCommercialAsURL() method.
-    */
+    /**
+     * Test getFormatCommercialAsURL() method.
+     */
     @Test
     public void subTestGetFormatCommercialAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsURL());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsInteger() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsInteger() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsInteger());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsLong() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsLong() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsLong());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsLocalTime() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsLocalTime());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsString() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsString() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsString());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsBoolean() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsBoolean());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsBigInteger() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsBigInteger());
     }
 
-   /**
-    * Test getFormatCommercialIfAnyAsURL() method.
-    */
+    /**
+     * Test getFormatCommercialIfAnyAsURL() method.
+     */
     @Test
     public void subTestGetFormatCommercialIfAnyAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCommercialIfAnyAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsURL());
     }
 
-   /**
-    * Test getFormatCompressionAsInteger() method.
-    */
+    /**
+     * Test getFormatCompressionAsInteger() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsInteger());
     }
 
-   /**
-    * Test getFormatCompressionAsLong() method.
-    */
+    /**
+     * Test getFormatCompressionAsLong() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsLong());
     }
 
-   /**
-    * Test getFormatCompressionAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatCompressionAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatCompressionAsLocalTime() method.
-    */
+    /**
+     * Test getFormatCompressionAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsLocalTime());
     }
 
-   /**
-    * Test getFormatCompressionAsString() method.
-    */
+    /**
+     * Test getFormatCompressionAsString() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsString());
     }
 
-   /**
-    * Test getFormatCompressionAsBoolean() method.
-    */
+    /**
+     * Test getFormatCompressionAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsBoolean());
     }
 
-   /**
-    * Test getFormatCompressionAsBigInteger() method.
-    */
+    /**
+     * Test getFormatCompressionAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsBigInteger());
     }
 
-   /**
-    * Test getFormatCompressionAsURL() method.
-    */
+    /**
+     * Test getFormatCompressionAsURL() method.
+     */
     @Test
     public void subTestGetFormatCompressionAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatCompressionAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsURL());
     }
 
-   /**
-    * Test getFormatProfileAsInteger() method.
-    */
+    /**
+     * Test getFormatProfileAsInteger() method.
+     */
     @Test
     public void subTestGetFormatProfileAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsInteger());
     }
 
-   /**
-    * Test getFormatProfileAsLong() method.
-    */
+    /**
+     * Test getFormatProfileAsLong() method.
+     */
     @Test
     public void subTestGetFormatProfileAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsLong());
     }
 
-   /**
-    * Test getFormatProfileAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatProfileAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatProfileAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatProfileAsLocalTime() method.
-    */
+    /**
+     * Test getFormatProfileAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatProfileAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsLocalTime());
     }
 
-   /**
-    * Test getFormatProfileAsString() method.
-    */
+    /**
+     * Test getFormatProfileAsString() method.
+     */
     @Test
     public void subTestGetFormatProfileAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsString());
     }
 
-   /**
-    * Test getFormatProfileAsBoolean() method.
-    */
+    /**
+     * Test getFormatProfileAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatProfileAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsBoolean());
     }
 
-   /**
-    * Test getFormatProfileAsBigInteger() method.
-    */
+    /**
+     * Test getFormatProfileAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatProfileAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsBigInteger());
     }
 
-   /**
-    * Test getFormatProfileAsURL() method.
-    */
+    /**
+     * Test getFormatProfileAsURL() method.
+     */
     @Test
     public void subTestGetFormatProfileAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatProfileAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsURL());
     }
 
-   /**
-    * Test getFormatSettingsAsInteger() method.
-    */
+    /**
+     * Test getFormatSettingsAsInteger() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsInteger());
     }
 
-   /**
-    * Test getFormatSettingsAsLong() method.
-    */
+    /**
+     * Test getFormatSettingsAsLong() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsLong());
     }
 
-   /**
-    * Test getFormatSettingsAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatSettingsAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatSettingsAsLocalTime() method.
-    */
+    /**
+     * Test getFormatSettingsAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsLocalTime());
     }
 
-   /**
-    * Test getFormatSettingsAsString() method.
-    */
+    /**
+     * Test getFormatSettingsAsString() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsString());
     }
 
-   /**
-    * Test getFormatSettingsAsBoolean() method.
-    */
+    /**
+     * Test getFormatSettingsAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsBoolean());
     }
 
-   /**
-    * Test getFormatSettingsAsBigInteger() method.
-    */
+    /**
+     * Test getFormatSettingsAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsBigInteger());
     }
 
-   /**
-    * Test getFormatSettingsAsURL() method.
-    */
+    /**
+     * Test getFormatSettingsAsURL() method.
+     */
     @Test
     public void subTestGetFormatSettingsAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatSettingsAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsURL());
     }
 
-   /**
-    * Test getFormatVersionAsInteger() method.
-    */
+    /**
+     * Test getFormatVersionAsInteger() method.
+     */
     @Test
     public void subTestGetFormatVersionAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsInteger());
     }
 
-   /**
-    * Test getFormatVersionAsLong() method.
-    */
+    /**
+     * Test getFormatVersionAsLong() method.
+     */
     @Test
     public void subTestGetFormatVersionAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsLong());
     }
 
-   /**
-    * Test getFormatVersionAsLocalDateTime() method.
-    */
+    /**
+     * Test getFormatVersionAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetFormatVersionAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsLocalDateTime());
     }
 
-   /**
-    * Test getFormatVersionAsLocalTime() method.
-    */
+    /**
+     * Test getFormatVersionAsLocalTime() method.
+     */
     @Test
     public void subTestGetFormatVersionAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsLocalTime());
     }
 
-   /**
-    * Test getFormatVersionAsString() method.
-    */
+    /**
+     * Test getFormatVersionAsString() method.
+     */
     @Test
     public void subTestGetFormatVersionAsString() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsString());
     }
 
-   /**
-    * Test getFormatVersionAsBoolean() method.
-    */
+    /**
+     * Test getFormatVersionAsBoolean() method.
+     */
     @Test
     public void subTestGetFormatVersionAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsBoolean());
     }
 
-   /**
-    * Test getFormatVersionAsBigInteger() method.
-    */
+    /**
+     * Test getFormatVersionAsBigInteger() method.
+     */
     @Test
     public void subTestGetFormatVersionAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsBigInteger());
     }
 
-   /**
-    * Test getFormatVersionAsURL() method.
-    */
+    /**
+     * Test getFormatVersionAsURL() method.
+     */
     @Test
     public void subTestGetFormatVersionAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getFormatVersionAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsURL());
     }
 
-   /**
-    * Test getIDAsInteger() method.
-    */
+    /**
+     * Test getIDAsInteger() method.
+     */
     @Test
     public void subTestGetIDAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsInteger());
     }
 
-   /**
-    * Test getIDAsLong() method.
-    */
+    /**
+     * Test getIDAsLong() method.
+     */
     @Test
     public void subTestGetIDAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsLong());
     }
 
-   /**
-    * Test getIDAsLocalDateTime() method.
-    */
+    /**
+     * Test getIDAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetIDAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsLocalDateTime());
     }
 
-   /**
-    * Test getIDAsLocalTime() method.
-    */
+    /**
+     * Test getIDAsLocalTime() method.
+     */
     @Test
     public void subTestGetIDAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsLocalTime());
     }
 
-   /**
-    * Test getIDAsString() method.
-    */
+    /**
+     * Test getIDAsString() method.
+     */
     @Test
     public void subTestGetIDAsString() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getIDAsString());
     }
 
-   /**
-    * Test getIDAsBoolean() method.
-    */
+    /**
+     * Test getIDAsBoolean() method.
+     */
     @Test
     public void subTestGetIDAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsBoolean());
     }
 
-   /**
-    * Test getIDAsBigInteger() method.
-    */
+    /**
+     * Test getIDAsBigInteger() method.
+     */
     @Test
     public void subTestGetIDAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsBigInteger());
     }
 
-   /**
-    * Test getIDAsURL() method.
-    */
+    /**
+     * Test getIDAsURL() method.
+     */
     @Test
     public void subTestGetIDAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsURL());
     }
 
-   /**
-    * Test getIDStringAsInteger() method.
-    */
+    /**
+     * Test getIDStringAsInteger() method.
+     */
     @Test
     public void subTestGetIDStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsInteger());
     }
 
-   /**
-    * Test getIDStringAsLong() method.
-    */
+    /**
+     * Test getIDStringAsLong() method.
+     */
     @Test
     public void subTestGetIDStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsLong());
     }
 
-   /**
-    * Test getIDStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getIDStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetIDStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsLocalDateTime());
     }
 
-   /**
-    * Test getIDStringAsLocalTime() method.
-    */
+    /**
+     * Test getIDStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetIDStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsLocalTime());
     }
 
-   /**
-    * Test getIDStringAsString() method.
-    */
+    /**
+     * Test getIDStringAsString() method.
+     */
     @Test
     public void subTestGetIDStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsString());
     }
 
-   /**
-    * Test getIDStringAsBoolean() method.
-    */
+    /**
+     * Test getIDStringAsBoolean() method.
+     */
     @Test
     public void subTestGetIDStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsBoolean());
     }
 
-   /**
-    * Test getIDStringAsBigInteger() method.
-    */
+    /**
+     * Test getIDStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetIDStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsBigInteger());
     }
 
-   /**
-    * Test getIDStringAsURL() method.
-    */
+    /**
+     * Test getIDStringAsURL() method.
+     */
     @Test
     public void subTestGetIDStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsURL());
     }
 
-   /**
-    * Test getInformAsInteger() method.
-    */
+    /**
+     * Test getInformAsInteger() method.
+     */
     @Test
     public void subTestGetInformAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsInteger());
     }
 
-   /**
-    * Test getInformAsLong() method.
-    */
+    /**
+     * Test getInformAsLong() method.
+     */
     @Test
     public void subTestGetInformAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsLong());
     }
 
-   /**
-    * Test getInformAsLocalDateTime() method.
-    */
+    /**
+     * Test getInformAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetInformAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsLocalDateTime());
     }
 
-   /**
-    * Test getInformAsLocalTime() method.
-    */
+    /**
+     * Test getInformAsLocalTime() method.
+     */
     @Test
     public void subTestGetInformAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsLocalTime());
     }
 
-   /**
-    * Test getInformAsString() method.
-    */
-    @Test
-    public void subTestGetInformAsString() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsString());
-    }
-
-   /**
-    * Test getInformAsBoolean() method.
-    */
+    /**
+     * Test getInformAsBoolean() method.
+     */
     @Test
     public void subTestGetInformAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsBoolean());
     }
 
-   /**
-    * Test getInformAsBigInteger() method.
-    */
+    /**
+     * Test getInformAsBigInteger() method.
+     */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsBigInteger());
+        assertEquals(new BigInteger("11167000040417000051875000152167000242625000334459000600000000727667000803000001110000001235000"), JMetaDataMenu_Test.jMetaDataMenu.getInformAsBigInteger());
     }
 
-   /**
-    * Test getInformAsURL() method.
-    */
+    /**
+     * Test getInformAsURL() method.
+     */
     @Test
     public void subTestGetInformAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getInformAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsURL());
     }
 
-   /**
-    * Test getLanguageAsInteger() method.
-    */
+    /**
+     * Test getLanguageAsInteger() method.
+     */
     @Test
     public void subTestGetLanguageAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsInteger());
     }
 
-   /**
-    * Test getLanguageAsLong() method.
-    */
+    /**
+     * Test getLanguageAsLong() method.
+     */
     @Test
     public void subTestGetLanguageAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsLong());
     }
 
-   /**
-    * Test getLanguageAsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageAsLocalTime() method.
-    */
+    /**
+     * Test getLanguageAsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsLocalTime());
     }
 
-   /**
-    * Test getLanguageAsString() method.
-    */
+    /**
+     * Test getLanguageAsString() method.
+     */
     @Test
     public void subTestGetLanguageAsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsString());
     }
 
-   /**
-    * Test getLanguageAsBoolean() method.
-    */
+    /**
+     * Test getLanguageAsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsBoolean());
     }
 
-   /**
-    * Test getLanguageAsBigInteger() method.
-    */
+    /**
+     * Test getLanguageAsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsBigInteger());
     }
 
-   /**
-    * Test getLanguageAsURL() method.
-    */
+    /**
+     * Test getLanguageAsURL() method.
+     */
     @Test
     public void subTestGetLanguageAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsURL());
     }
 
-   /**
-    * Test getLanguageStringAsInteger() method.
-    */
+    /**
+     * Test getLanguageStringAsInteger() method.
+     */
     @Test
     public void subTestGetLanguageStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsInteger());
     }
 
-   /**
-    * Test getLanguageStringAsLong() method.
-    */
+    /**
+     * Test getLanguageStringAsLong() method.
+     */
     @Test
     public void subTestGetLanguageStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsLong());
     }
 
-   /**
-    * Test getLanguageStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageStringAsLocalTime() method.
-    */
+    /**
+     * Test getLanguageStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsLocalTime());
     }
 
-   /**
-    * Test getLanguageStringAsString() method.
-    */
+    /**
+     * Test getLanguageStringAsString() method.
+     */
     @Test
     public void subTestGetLanguageStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsString());
     }
 
-   /**
-    * Test getLanguageStringAsBoolean() method.
-    */
+    /**
+     * Test getLanguageStringAsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsBoolean());
     }
 
-   /**
-    * Test getLanguageStringAsBigInteger() method.
-    */
+    /**
+     * Test getLanguageStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsBigInteger());
     }
 
-   /**
-    * Test getLanguageStringAsURL() method.
-    */
+    /**
+     * Test getLanguageStringAsURL() method.
+     */
     @Test
     public void subTestGetLanguageStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsURL());
     }
 
-   /**
-    * Test getLanguageString1AsInteger() method.
-    */
+    /**
+     * Test getLanguageString1AsInteger() method.
+     */
     @Test
     public void subTestGetLanguageString1AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsInteger());
     }
 
-   /**
-    * Test getLanguageString1AsLong() method.
-    */
+    /**
+     * Test getLanguageString1AsLong() method.
+     */
     @Test
     public void subTestGetLanguageString1AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsLong());
     }
 
-   /**
-    * Test getLanguageString1AsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageString1AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageString1AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageString1AsLocalTime() method.
-    */
+    /**
+     * Test getLanguageString1AsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageString1AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsLocalTime());
     }
 
-   /**
-    * Test getLanguageString1AsString() method.
-    */
+    /**
+     * Test getLanguageString1AsString() method.
+     */
     @Test
     public void subTestGetLanguageString1AsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsString());
     }
 
-   /**
-    * Test getLanguageString1AsBoolean() method.
-    */
+    /**
+     * Test getLanguageString1AsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageString1AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsBoolean());
     }
 
-   /**
-    * Test getLanguageString1AsBigInteger() method.
-    */
+    /**
+     * Test getLanguageString1AsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageString1AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsBigInteger());
     }
 
-   /**
-    * Test getLanguageString1AsURL() method.
-    */
+    /**
+     * Test getLanguageString1AsURL() method.
+     */
     @Test
     public void subTestGetLanguageString1AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString1AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsURL());
     }
 
-   /**
-    * Test getLanguageString2AsInteger() method.
-    */
+    /**
+     * Test getLanguageString2AsInteger() method.
+     */
     @Test
     public void subTestGetLanguageString2AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsInteger());
     }
 
-   /**
-    * Test getLanguageString2AsLong() method.
-    */
+    /**
+     * Test getLanguageString2AsLong() method.
+     */
     @Test
     public void subTestGetLanguageString2AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsLong());
     }
 
-   /**
-    * Test getLanguageString2AsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageString2AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageString2AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageString2AsLocalTime() method.
-    */
+    /**
+     * Test getLanguageString2AsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageString2AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsLocalTime());
     }
 
-   /**
-    * Test getLanguageString2AsString() method.
-    */
+    /**
+     * Test getLanguageString2AsString() method.
+     */
     @Test
     public void subTestGetLanguageString2AsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsString());
     }
 
-   /**
-    * Test getLanguageString2AsBoolean() method.
-    */
+    /**
+     * Test getLanguageString2AsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageString2AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsBoolean());
     }
 
-   /**
-    * Test getLanguageString2AsBigInteger() method.
-    */
+    /**
+     * Test getLanguageString2AsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageString2AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsBigInteger());
     }
 
-   /**
-    * Test getLanguageString2AsURL() method.
-    */
+    /**
+     * Test getLanguageString2AsURL() method.
+     */
     @Test
     public void subTestGetLanguageString2AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString2AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsURL());
     }
 
-   /**
-    * Test getLanguageString3AsInteger() method.
-    */
+    /**
+     * Test getLanguageString3AsInteger() method.
+     */
     @Test
     public void subTestGetLanguageString3AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsInteger());
     }
 
-   /**
-    * Test getLanguageString3AsLong() method.
-    */
+    /**
+     * Test getLanguageString3AsLong() method.
+     */
     @Test
     public void subTestGetLanguageString3AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsLong());
     }
 
-   /**
-    * Test getLanguageString3AsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageString3AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageString3AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageString3AsLocalTime() method.
-    */
+    /**
+     * Test getLanguageString3AsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageString3AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsLocalTime());
     }
 
-   /**
-    * Test getLanguageString3AsString() method.
-    */
+    /**
+     * Test getLanguageString3AsString() method.
+     */
     @Test
     public void subTestGetLanguageString3AsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsString());
     }
 
-   /**
-    * Test getLanguageString3AsBoolean() method.
-    */
+    /**
+     * Test getLanguageString3AsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageString3AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsBoolean());
     }
 
-   /**
-    * Test getLanguageString3AsBigInteger() method.
-    */
+    /**
+     * Test getLanguageString3AsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageString3AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsBigInteger());
     }
 
-   /**
-    * Test getLanguageString3AsURL() method.
-    */
+    /**
+     * Test getLanguageString3AsURL() method.
+     */
     @Test
     public void subTestGetLanguageString3AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString3AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsURL());
     }
 
-   /**
-    * Test getLanguageString4AsInteger() method.
-    */
+    /**
+     * Test getLanguageString4AsInteger() method.
+     */
     @Test
     public void subTestGetLanguageString4AsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsInteger());
     }
 
-   /**
-    * Test getLanguageString4AsLong() method.
-    */
+    /**
+     * Test getLanguageString4AsLong() method.
+     */
     @Test
     public void subTestGetLanguageString4AsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsLong());
     }
 
-   /**
-    * Test getLanguageString4AsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageString4AsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageString4AsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageString4AsLocalTime() method.
-    */
+    /**
+     * Test getLanguageString4AsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageString4AsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsLocalTime());
     }
 
-   /**
-    * Test getLanguageString4AsString() method.
-    */
+    /**
+     * Test getLanguageString4AsString() method.
+     */
     @Test
     public void subTestGetLanguageString4AsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsString());
     }
 
-   /**
-    * Test getLanguageString4AsBoolean() method.
-    */
+    /**
+     * Test getLanguageString4AsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageString4AsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsBoolean());
     }
 
-   /**
-    * Test getLanguageString4AsBigInteger() method.
-    */
+    /**
+     * Test getLanguageString4AsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageString4AsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsBigInteger());
     }
 
-   /**
-    * Test getLanguageString4AsURL() method.
-    */
+    /**
+     * Test getLanguageString4AsURL() method.
+     */
     @Test
     public void subTestGetLanguageString4AsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageString4AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsURL());
     }
 
-   /**
-    * Test getLanguageMoreAsInteger() method.
-    */
+    /**
+     * Test getLanguageMoreAsInteger() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsInteger());
     }
 
-   /**
-    * Test getLanguageMoreAsLong() method.
-    */
+    /**
+     * Test getLanguageMoreAsLong() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsLong());
     }
 
-   /**
-    * Test getLanguageMoreAsLocalDateTime() method.
-    */
+    /**
+     * Test getLanguageMoreAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsLocalDateTime());
     }
 
-   /**
-    * Test getLanguageMoreAsLocalTime() method.
-    */
+    /**
+     * Test getLanguageMoreAsLocalTime() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsLocalTime());
     }
 
-   /**
-    * Test getLanguageMoreAsString() method.
-    */
+    /**
+     * Test getLanguageMoreAsString() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsString() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsString());
     }
 
-   /**
-    * Test getLanguageMoreAsBoolean() method.
-    */
+    /**
+     * Test getLanguageMoreAsBoolean() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsBoolean());
     }
 
-   /**
-    * Test getLanguageMoreAsBigInteger() method.
-    */
+    /**
+     * Test getLanguageMoreAsBigInteger() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsBigInteger());
     }
 
-   /**
-    * Test getLanguageMoreAsURL() method.
-    */
+    /**
+     * Test getLanguageMoreAsURL() method.
+     */
     @Test
     public void subTestGetLanguageMoreAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLanguageMoreAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsURL());
     }
 
-   /**
-    * Test getLawRatingAsInteger() method.
-    */
+    /**
+     * Test getLawRatingAsInteger() method.
+     */
     @Test
     public void subTestGetLawRatingAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsInteger());
     }
 
-   /**
-    * Test getLawRatingAsLong() method.
-    */
+    /**
+     * Test getLawRatingAsLong() method.
+     */
     @Test
     public void subTestGetLawRatingAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsLong());
     }
 
-   /**
-    * Test getLawRatingAsLocalDateTime() method.
-    */
+    /**
+     * Test getLawRatingAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLawRatingAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsLocalDateTime());
     }
 
-   /**
-    * Test getLawRatingAsLocalTime() method.
-    */
+    /**
+     * Test getLawRatingAsLocalTime() method.
+     */
     @Test
     public void subTestGetLawRatingAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsLocalTime());
     }
 
-   /**
-    * Test getLawRatingAsString() method.
-    */
+    /**
+     * Test getLawRatingAsString() method.
+     */
     @Test
     public void subTestGetLawRatingAsString() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsString());
     }
 
-   /**
-    * Test getLawRatingAsBoolean() method.
-    */
+    /**
+     * Test getLawRatingAsBoolean() method.
+     */
     @Test
     public void subTestGetLawRatingAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsBoolean());
     }
 
-   /**
-    * Test getLawRatingAsBigInteger() method.
-    */
+    /**
+     * Test getLawRatingAsBigInteger() method.
+     */
     @Test
     public void subTestGetLawRatingAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsBigInteger());
     }
 
-   /**
-    * Test getLawRatingAsURL() method.
-    */
+    /**
+     * Test getLawRatingAsURL() method.
+     */
     @Test
     public void subTestGetLawRatingAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsURL());
     }
 
-   /**
-    * Test getLawRatingReasonAsInteger() method.
-    */
+    /**
+     * Test getLawRatingReasonAsInteger() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsInteger());
     }
 
-   /**
-    * Test getLawRatingReasonAsLong() method.
-    */
+    /**
+     * Test getLawRatingReasonAsLong() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsLong());
     }
 
-   /**
-    * Test getLawRatingReasonAsLocalDateTime() method.
-    */
+    /**
+     * Test getLawRatingReasonAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsLocalDateTime());
     }
 
-   /**
-    * Test getLawRatingReasonAsLocalTime() method.
-    */
+    /**
+     * Test getLawRatingReasonAsLocalTime() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsLocalTime());
     }
 
-   /**
-    * Test getLawRatingReasonAsString() method.
-    */
+    /**
+     * Test getLawRatingReasonAsString() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsString() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsString());
     }
 
-   /**
-    * Test getLawRatingReasonAsBoolean() method.
-    */
+    /**
+     * Test getLawRatingReasonAsBoolean() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsBoolean());
     }
 
-   /**
-    * Test getLawRatingReasonAsBigInteger() method.
-    */
+    /**
+     * Test getLawRatingReasonAsBigInteger() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsBigInteger());
     }
 
-   /**
-    * Test getLawRatingReasonAsURL() method.
-    */
+    /**
+     * Test getLawRatingReasonAsURL() method.
+     */
     @Test
     public void subTestGetLawRatingReasonAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getLawRatingReasonAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsURL());
     }
 
-   /**
-    * Test getListAsInteger() method.
-    */
+    /**
+     * Test getListAsInteger() method.
+     */
     @Test
     public void subTestGetListAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsInteger());
     }
 
-   /**
-    * Test getListAsLong() method.
-    */
+    /**
+     * Test getListAsLong() method.
+     */
     @Test
     public void subTestGetListAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getListAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsLong());
     }
 
-   /**
-    * Test getListAsLocalDateTime() method.
-    */
+    /**
+     * Test getListAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetListAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getListAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsLocalDateTime());
     }
 
-   /**
-    * Test getListAsLocalTime() method.
-    */
+    /**
+     * Test getListAsLocalTime() method.
+     */
     @Test
     public void subTestGetListAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getListAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsLocalTime());
     }
 
-   /**
-    * Test getListAsString() method.
-    */
+    /**
+     * Test getListAsString() method.
+     */
     @Test
     public void subTestGetListAsString() {
-        assertEquals(null, this.jMetaDataMenu.getListAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListAsString());
     }
 
-   /**
-    * Test getListAsBoolean() method.
-    */
+    /**
+     * Test getListAsBoolean() method.
+     */
     @Test
     public void subTestGetListAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getListAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsBoolean());
     }
 
-   /**
-    * Test getListAsBigInteger() method.
-    */
+    /**
+     * Test getListAsBigInteger() method.
+     */
     @Test
     public void subTestGetListAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsBigInteger());
     }
 
-   /**
-    * Test getListAsURL() method.
-    */
+    /**
+     * Test getListAsURL() method.
+     */
     @Test
     public void subTestGetListAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getListAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsURL());
     }
 
-   /**
-    * Test getListStringAsInteger() method.
-    */
+    /**
+     * Test getListStringAsInteger() method.
+     */
     @Test
     public void subTestGetListStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsInteger());
     }
 
-   /**
-    * Test getListStringAsLong() method.
-    */
+    /**
+     * Test getListStringAsLong() method.
+     */
     @Test
     public void subTestGetListStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsLong());
     }
 
-   /**
-    * Test getListStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getListStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetListStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsLocalDateTime());
     }
 
-   /**
-    * Test getListStringAsLocalTime() method.
-    */
+    /**
+     * Test getListStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetListStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsLocalTime());
     }
 
-   /**
-    * Test getListStringAsString() method.
-    */
+    /**
+     * Test getListStringAsString() method.
+     */
     @Test
     public void subTestGetListStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListStringAsString());
     }
 
-   /**
-    * Test getListStringAsBoolean() method.
-    */
+    /**
+     * Test getListStringAsBoolean() method.
+     */
     @Test
     public void subTestGetListStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsBoolean());
     }
 
-   /**
-    * Test getListStringAsBigInteger() method.
-    */
+    /**
+     * Test getListStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetListStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsBigInteger());
     }
 
-   /**
-    * Test getListStringAsURL() method.
-    */
+    /**
+     * Test getListStringAsURL() method.
+     */
     @Test
     public void subTestGetListStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getListStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsURL());
     }
 
-   /**
-    * Test getListStreamKindAsInteger() method.
-    */
+    /**
+     * Test getListStreamKindAsInteger() method.
+     */
     @Test
     public void subTestGetListStreamKindAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsInteger());
     }
 
-   /**
-    * Test getListStreamKindAsLong() method.
-    */
+    /**
+     * Test getListStreamKindAsLong() method.
+     */
     @Test
     public void subTestGetListStreamKindAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsLong());
     }
 
-   /**
-    * Test getListStreamKindAsLocalDateTime() method.
-    */
+    /**
+     * Test getListStreamKindAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetListStreamKindAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsLocalDateTime());
     }
 
-   /**
-    * Test getListStreamKindAsLocalTime() method.
-    */
+    /**
+     * Test getListStreamKindAsLocalTime() method.
+     */
     @Test
     public void subTestGetListStreamKindAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsLocalTime());
     }
 
-   /**
-    * Test getListStreamKindAsString() method.
-    */
+    /**
+     * Test getListStreamKindAsString() method.
+     */
     @Test
     public void subTestGetListStreamKindAsString() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsString());
     }
 
-   /**
-    * Test getListStreamKindAsBoolean() method.
-    */
+    /**
+     * Test getListStreamKindAsBoolean() method.
+     */
     @Test
     public void subTestGetListStreamKindAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsBoolean());
     }
 
-   /**
-    * Test getListStreamKindAsBigInteger() method.
-    */
+    /**
+     * Test getListStreamKindAsBigInteger() method.
+     */
     @Test
     public void subTestGetListStreamKindAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsBigInteger());
     }
 
-   /**
-    * Test getListStreamKindAsURL() method.
-    */
+    /**
+     * Test getListStreamKindAsURL() method.
+     */
     @Test
     public void subTestGetListStreamKindAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamKindAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsURL());
     }
 
-   /**
-    * Test getListStreamPosAsInteger() method.
-    */
+    /**
+     * Test getListStreamPosAsInteger() method.
+     */
     @Test
     public void subTestGetListStreamPosAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsInteger());
     }
 
-   /**
-    * Test getListStreamPosAsLong() method.
-    */
+    /**
+     * Test getListStreamPosAsLong() method.
+     */
     @Test
     public void subTestGetListStreamPosAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsLong());
     }
 
-   /**
-    * Test getListStreamPosAsLocalDateTime() method.
-    */
+    /**
+     * Test getListStreamPosAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetListStreamPosAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsLocalDateTime());
     }
 
-   /**
-    * Test getListStreamPosAsLocalTime() method.
-    */
+    /**
+     * Test getListStreamPosAsLocalTime() method.
+     */
     @Test
     public void subTestGetListStreamPosAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsLocalTime());
     }
 
-   /**
-    * Test getListStreamPosAsString() method.
-    */
+    /**
+     * Test getListStreamPosAsString() method.
+     */
     @Test
     public void subTestGetListStreamPosAsString() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsString());
     }
 
-   /**
-    * Test getListStreamPosAsBoolean() method.
-    */
+    /**
+     * Test getListStreamPosAsBoolean() method.
+     */
     @Test
     public void subTestGetListStreamPosAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsBoolean());
     }
 
-   /**
-    * Test getListStreamPosAsBigInteger() method.
-    */
+    /**
+     * Test getListStreamPosAsBigInteger() method.
+     */
     @Test
     public void subTestGetListStreamPosAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsBigInteger());
     }
 
-   /**
-    * Test getListStreamPosAsURL() method.
-    */
+    /**
+     * Test getListStreamPosAsURL() method.
+     */
     @Test
     public void subTestGetListStreamPosAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getListStreamPosAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsURL());
     }
 
-   /**
-    * Test getMenuIDAsInteger() method.
-    */
+    /**
+     * Test getMenuIDAsInteger() method.
+     */
     @Test
     public void subTestGetMenuIDAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsInteger());
     }
 
-   /**
-    * Test getMenuIDAsLong() method.
-    */
+    /**
+     * Test getMenuIDAsLong() method.
+     */
     @Test
     public void subTestGetMenuIDAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsLong());
     }
 
-   /**
-    * Test getMenuIDAsLocalDateTime() method.
-    */
+    /**
+     * Test getMenuIDAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetMenuIDAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsLocalDateTime());
     }
 
-   /**
-    * Test getMenuIDAsLocalTime() method.
-    */
+    /**
+     * Test getMenuIDAsLocalTime() method.
+     */
     @Test
     public void subTestGetMenuIDAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsLocalTime());
     }
 
-   /**
-    * Test getMenuIDAsString() method.
-    */
+    /**
+     * Test getMenuIDAsString() method.
+     */
     @Test
     public void subTestGetMenuIDAsString() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsString());
     }
 
-   /**
-    * Test getMenuIDAsBoolean() method.
-    */
+    /**
+     * Test getMenuIDAsBoolean() method.
+     */
     @Test
     public void subTestGetMenuIDAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsBoolean());
     }
 
-   /**
-    * Test getMenuIDAsBigInteger() method.
-    */
+    /**
+     * Test getMenuIDAsBigInteger() method.
+     */
     @Test
     public void subTestGetMenuIDAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsBigInteger());
     }
 
-   /**
-    * Test getMenuIDAsURL() method.
-    */
+    /**
+     * Test getMenuIDAsURL() method.
+     */
     @Test
     public void subTestGetMenuIDAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsURL());
     }
 
-   /**
-    * Test getMenuIDStringAsInteger() method.
-    */
+    /**
+     * Test getMenuIDStringAsInteger() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsInteger());
     }
 
-   /**
-    * Test getMenuIDStringAsLong() method.
-    */
+    /**
+     * Test getMenuIDStringAsLong() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsLong());
     }
 
-   /**
-    * Test getMenuIDStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getMenuIDStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsLocalDateTime());
     }
 
-   /**
-    * Test getMenuIDStringAsLocalTime() method.
-    */
+    /**
+     * Test getMenuIDStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsLocalTime());
     }
 
-   /**
-    * Test getMenuIDStringAsString() method.
-    */
+    /**
+     * Test getMenuIDStringAsString() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsString());
     }
 
-   /**
-    * Test getMenuIDStringAsBoolean() method.
-    */
+    /**
+     * Test getMenuIDStringAsBoolean() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsBoolean());
     }
 
-   /**
-    * Test getMenuIDStringAsBigInteger() method.
-    */
+    /**
+     * Test getMenuIDStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsBigInteger());
     }
 
-   /**
-    * Test getMenuIDStringAsURL() method.
-    */
+    /**
+     * Test getMenuIDStringAsURL() method.
+     */
     @Test
     public void subTestGetMenuIDStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getMenuIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsURL());
     }
 
-   /**
-    * Test getNetworkNameAsInteger() method.
-    */
+    /**
+     * Test getNetworkNameAsInteger() method.
+     */
     @Test
     public void subTestGetNetworkNameAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsInteger());
     }
 
-   /**
-    * Test getNetworkNameAsLong() method.
-    */
+    /**
+     * Test getNetworkNameAsLong() method.
+     */
     @Test
     public void subTestGetNetworkNameAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsLong());
     }
 
-   /**
-    * Test getNetworkNameAsLocalDateTime() method.
-    */
+    /**
+     * Test getNetworkNameAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetNetworkNameAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsLocalDateTime());
     }
 
-   /**
-    * Test getNetworkNameAsLocalTime() method.
-    */
+    /**
+     * Test getNetworkNameAsLocalTime() method.
+     */
     @Test
     public void subTestGetNetworkNameAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsLocalTime());
     }
 
-   /**
-    * Test getNetworkNameAsString() method.
-    */
+    /**
+     * Test getNetworkNameAsString() method.
+     */
     @Test
     public void subTestGetNetworkNameAsString() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsString());
     }
 
-   /**
-    * Test getNetworkNameAsBoolean() method.
-    */
+    /**
+     * Test getNetworkNameAsBoolean() method.
+     */
     @Test
     public void subTestGetNetworkNameAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsBoolean());
     }
 
-   /**
-    * Test getNetworkNameAsBigInteger() method.
-    */
+    /**
+     * Test getNetworkNameAsBigInteger() method.
+     */
     @Test
     public void subTestGetNetworkNameAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsBigInteger());
     }
 
-   /**
-    * Test getNetworkNameAsURL() method.
-    */
+    /**
+     * Test getNetworkNameAsURL() method.
+     */
     @Test
     public void subTestGetNetworkNameAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getNetworkNameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsURL());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsInteger() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsInteger() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsInteger());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsLong() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsLong() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsLong());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsLocalDateTime() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsLocalDateTime());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsLocalTime() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsLocalTime() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsLocalTime());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsString() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsString() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsString() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsString());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsBoolean() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsBoolean() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsBoolean());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsBigInteger() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsBigInteger() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsBigInteger());
     }
 
-   /**
-    * Test getOriginalNetworkNameAsURL() method.
-    */
+    /**
+     * Test getOriginalNetworkNameAsURL() method.
+     */
     @Test
     public void subTestGetOriginalNetworkNameAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalNetworkNameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsURL());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsInteger() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsInteger() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsInteger());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsLong() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsLong() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsLong());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsLocalDateTime() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsLocalDateTime());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsLocalTime() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsLocalTime() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsLocalTime());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsString() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsString() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsString() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsString());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsBoolean() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsBoolean() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsBoolean());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsBigInteger() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsBigInteger() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsBigInteger());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDAsURL() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDAsURL() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsURL());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsInteger() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsInteger() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsInteger());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsLong() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsLong() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsLong());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalDateTime());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsLocalTime() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalTime());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsString() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsString() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsString());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsBoolean() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsBoolean() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsBoolean());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsBigInteger() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsBigInteger());
     }
 
-   /**
-    * Test getOriginalSourceMediumIDStringAsURL() method.
-    */
+    /**
+     * Test getOriginalSourceMediumIDStringAsURL() method.
+     */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getOriginalSourceMediumIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsURL());
     }
 
-   /**
-    * Test getServiceUrlAsInteger() method.
-    */
+    /**
+     * Test getServiceUrlAsInteger() method.
+     */
     @Test
     public void subTestGetServiceUrlAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsInteger());
     }
 
-   /**
-    * Test getServiceUrlAsLong() method.
-    */
+    /**
+     * Test getServiceUrlAsLong() method.
+     */
     @Test
     public void subTestGetServiceUrlAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsLong());
     }
 
-   /**
-    * Test getServiceUrlAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceUrlAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceUrlAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceUrlAsLocalTime() method.
-    */
+    /**
+     * Test getServiceUrlAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceUrlAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsLocalTime());
     }
 
-   /**
-    * Test getServiceUrlAsString() method.
-    */
+    /**
+     * Test getServiceUrlAsString() method.
+     */
     @Test
     public void subTestGetServiceUrlAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsString());
     }
 
-   /**
-    * Test getServiceUrlAsBoolean() method.
-    */
+    /**
+     * Test getServiceUrlAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceUrlAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsBoolean());
     }
 
-   /**
-    * Test getServiceUrlAsBigInteger() method.
-    */
+    /**
+     * Test getServiceUrlAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceUrlAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsBigInteger());
     }
 
-   /**
-    * Test getServiceUrlAsURL() method.
-    */
+    /**
+     * Test getServiceUrlAsURL() method.
+     */
     @Test
     public void subTestGetServiceUrlAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsURL());
     }
 
-   /**
-    * Test getServiceChannelAsInteger() method.
-    */
+    /**
+     * Test getServiceChannelAsInteger() method.
+     */
     @Test
     public void subTestGetServiceChannelAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsInteger());
     }
 
-   /**
-    * Test getServiceChannelAsLong() method.
-    */
+    /**
+     * Test getServiceChannelAsLong() method.
+     */
     @Test
     public void subTestGetServiceChannelAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsLong());
     }
 
-   /**
-    * Test getServiceChannelAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceChannelAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceChannelAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceChannelAsLocalTime() method.
-    */
+    /**
+     * Test getServiceChannelAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceChannelAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsLocalTime());
     }
 
-   /**
-    * Test getServiceChannelAsString() method.
-    */
+    /**
+     * Test getServiceChannelAsString() method.
+     */
     @Test
     public void subTestGetServiceChannelAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsString());
     }
 
-   /**
-    * Test getServiceChannelAsBoolean() method.
-    */
+    /**
+     * Test getServiceChannelAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceChannelAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsBoolean());
     }
 
-   /**
-    * Test getServiceChannelAsBigInteger() method.
-    */
+    /**
+     * Test getServiceChannelAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceChannelAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsBigInteger());
     }
 
-   /**
-    * Test getServiceChannelAsURL() method.
-    */
+    /**
+     * Test getServiceChannelAsURL() method.
+     */
     @Test
     public void subTestGetServiceChannelAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceChannelAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsURL());
     }
 
-   /**
-    * Test getServiceKindAsInteger() method.
-    */
+    /**
+     * Test getServiceKindAsInteger() method.
+     */
     @Test
     public void subTestGetServiceKindAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsInteger());
     }
 
-   /**
-    * Test getServiceKindAsLong() method.
-    */
+    /**
+     * Test getServiceKindAsLong() method.
+     */
     @Test
     public void subTestGetServiceKindAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsLong());
     }
 
-   /**
-    * Test getServiceKindAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceKindAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceKindAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceKindAsLocalTime() method.
-    */
+    /**
+     * Test getServiceKindAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceKindAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsLocalTime());
     }
 
-   /**
-    * Test getServiceKindAsString() method.
-    */
+    /**
+     * Test getServiceKindAsString() method.
+     */
     @Test
     public void subTestGetServiceKindAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsString());
     }
 
-   /**
-    * Test getServiceKindAsBoolean() method.
-    */
+    /**
+     * Test getServiceKindAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceKindAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsBoolean());
     }
 
-   /**
-    * Test getServiceKindAsBigInteger() method.
-    */
+    /**
+     * Test getServiceKindAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceKindAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsBigInteger());
     }
 
-   /**
-    * Test getServiceKindAsURL() method.
-    */
+    /**
+     * Test getServiceKindAsURL() method.
+     */
     @Test
     public void subTestGetServiceKindAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsURL());
     }
 
-   /**
-    * Test getServiceKindStringAsInteger() method.
-    */
+    /**
+     * Test getServiceKindStringAsInteger() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsInteger());
     }
 
-   /**
-    * Test getServiceKindStringAsLong() method.
-    */
+    /**
+     * Test getServiceKindStringAsLong() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsLong());
     }
 
-   /**
-    * Test getServiceKindStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceKindStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceKindStringAsLocalTime() method.
-    */
+    /**
+     * Test getServiceKindStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsLocalTime());
     }
 
-   /**
-    * Test getServiceKindStringAsString() method.
-    */
+    /**
+     * Test getServiceKindStringAsString() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsString());
     }
 
-   /**
-    * Test getServiceKindStringAsBoolean() method.
-    */
+    /**
+     * Test getServiceKindStringAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsBoolean());
     }
 
-   /**
-    * Test getServiceKindStringAsBigInteger() method.
-    */
+    /**
+     * Test getServiceKindStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsBigInteger());
     }
 
-   /**
-    * Test getServiceKindStringAsURL() method.
-    */
+    /**
+     * Test getServiceKindStringAsURL() method.
+     */
     @Test
     public void subTestGetServiceKindStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceKindStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsURL());
     }
 
-   /**
-    * Test getServiceNameAsInteger() method.
-    */
+    /**
+     * Test getServiceNameAsInteger() method.
+     */
     @Test
     public void subTestGetServiceNameAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsInteger());
     }
 
-   /**
-    * Test getServiceNameAsLong() method.
-    */
+    /**
+     * Test getServiceNameAsLong() method.
+     */
     @Test
     public void subTestGetServiceNameAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsLong());
     }
 
-   /**
-    * Test getServiceNameAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceNameAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceNameAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceNameAsLocalTime() method.
-    */
+    /**
+     * Test getServiceNameAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceNameAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsLocalTime());
     }
 
-   /**
-    * Test getServiceNameAsString() method.
-    */
+    /**
+     * Test getServiceNameAsString() method.
+     */
     @Test
     public void subTestGetServiceNameAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsString());
     }
 
-   /**
-    * Test getServiceNameAsBoolean() method.
-    */
+    /**
+     * Test getServiceNameAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceNameAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsBoolean());
     }
 
-   /**
-    * Test getServiceNameAsBigInteger() method.
-    */
+    /**
+     * Test getServiceNameAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceNameAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsBigInteger());
     }
 
-   /**
-    * Test getServiceNameAsURL() method.
-    */
+    /**
+     * Test getServiceNameAsURL() method.
+     */
     @Test
     public void subTestGetServiceNameAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceNameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsURL());
     }
 
-   /**
-    * Test getServiceProviderAsInteger() method.
-    */
+    /**
+     * Test getServiceProviderAsInteger() method.
+     */
     @Test
     public void subTestGetServiceProviderAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsInteger());
     }
 
-   /**
-    * Test getServiceProviderAsLong() method.
-    */
+    /**
+     * Test getServiceProviderAsLong() method.
+     */
     @Test
     public void subTestGetServiceProviderAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsLong());
     }
 
-   /**
-    * Test getServiceProviderAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceProviderAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceProviderAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceProviderAsLocalTime() method.
-    */
+    /**
+     * Test getServiceProviderAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceProviderAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsLocalTime());
     }
 
-   /**
-    * Test getServiceProviderAsString() method.
-    */
+    /**
+     * Test getServiceProviderAsString() method.
+     */
     @Test
     public void subTestGetServiceProviderAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsString());
     }
 
-   /**
-    * Test getServiceProviderAsBoolean() method.
-    */
+    /**
+     * Test getServiceProviderAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceProviderAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsBoolean());
     }
 
-   /**
-    * Test getServiceProviderAsBigInteger() method.
-    */
+    /**
+     * Test getServiceProviderAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceProviderAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsBigInteger());
     }
 
-   /**
-    * Test getServiceProviderAsURL() method.
-    */
+    /**
+     * Test getServiceProviderAsURL() method.
+     */
     @Test
     public void subTestGetServiceProviderAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsURL());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsInteger() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsInteger() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsInteger());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsLong() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsLong() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsLong());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsLocalTime() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsLocalTime());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsString() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsString() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsString());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsBoolean() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsBoolean());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsBigInteger() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsBigInteger());
     }
 
-   /**
-    * Test getServiceProviderrUrlAsURL() method.
-    */
+    /**
+     * Test getServiceProviderrUrlAsURL() method.
+     */
     @Test
     public void subTestGetServiceProviderrUrlAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceProviderrUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsURL());
     }
 
-   /**
-    * Test getServiceTypeAsInteger() method.
-    */
+    /**
+     * Test getServiceTypeAsInteger() method.
+     */
     @Test
     public void subTestGetServiceTypeAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsInteger());
     }
 
-   /**
-    * Test getServiceTypeAsLong() method.
-    */
+    /**
+     * Test getServiceTypeAsLong() method.
+     */
     @Test
     public void subTestGetServiceTypeAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsLong());
     }
 
-   /**
-    * Test getServiceTypeAsLocalDateTime() method.
-    */
+    /**
+     * Test getServiceTypeAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetServiceTypeAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsLocalDateTime());
     }
 
-   /**
-    * Test getServiceTypeAsLocalTime() method.
-    */
+    /**
+     * Test getServiceTypeAsLocalTime() method.
+     */
     @Test
     public void subTestGetServiceTypeAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsLocalTime());
     }
 
-   /**
-    * Test getServiceTypeAsString() method.
-    */
+    /**
+     * Test getServiceTypeAsString() method.
+     */
     @Test
     public void subTestGetServiceTypeAsString() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsString());
     }
 
-   /**
-    * Test getServiceTypeAsBoolean() method.
-    */
+    /**
+     * Test getServiceTypeAsBoolean() method.
+     */
     @Test
     public void subTestGetServiceTypeAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsBoolean());
     }
 
-   /**
-    * Test getServiceTypeAsBigInteger() method.
-    */
+    /**
+     * Test getServiceTypeAsBigInteger() method.
+     */
     @Test
     public void subTestGetServiceTypeAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsBigInteger());
     }
 
-   /**
-    * Test getServiceTypeAsURL() method.
-    */
+    /**
+     * Test getServiceTypeAsURL() method.
+     */
     @Test
     public void subTestGetServiceTypeAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getServiceTypeAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsURL());
     }
 
-   /**
-    * Test getStatusAsInteger() method.
-    */
+    /**
+     * Test getStatusAsInteger() method.
+     */
     @Test
     public void subTestGetStatusAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsInteger());
     }
 
-   /**
-    * Test getStatusAsLong() method.
-    */
+    /**
+     * Test getStatusAsLong() method.
+     */
     @Test
     public void subTestGetStatusAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsLong());
     }
 
-   /**
-    * Test getStatusAsLocalDateTime() method.
-    */
+    /**
+     * Test getStatusAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStatusAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsLocalDateTime());
     }
 
-   /**
-    * Test getStatusAsLocalTime() method.
-    */
+    /**
+     * Test getStatusAsLocalTime() method.
+     */
     @Test
     public void subTestGetStatusAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsLocalTime());
     }
 
-   /**
-    * Test getStatusAsString() method.
-    */
+    /**
+     * Test getStatusAsString() method.
+     */
     @Test
     public void subTestGetStatusAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getStatusAsString());
     }
 
-   /**
-    * Test getStatusAsBoolean() method.
-    */
+    /**
+     * Test getStatusAsBoolean() method.
+     */
     @Test
     public void subTestGetStatusAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsBoolean());
     }
 
-   /**
-    * Test getStatusAsBigInteger() method.
-    */
+    /**
+     * Test getStatusAsBigInteger() method.
+     */
     @Test
     public void subTestGetStatusAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsBigInteger());
     }
 
-   /**
-    * Test getStatusAsURL() method.
-    */
+    /**
+     * Test getStatusAsURL() method.
+     */
     @Test
     public void subTestGetStatusAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStatusAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsURL());
     }
 
-   /**
-    * Test getStreamCountAsInteger() method.
-    */
+    /**
+     * Test getStreamCountAsInteger() method.
+     */
     @Test
     public void subTestGetStreamCountAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsInteger());
+        assertEquals(Integer.valueOf(1), JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsInteger());
     }
 
-   /**
-    * Test getStreamCountAsLong() method.
-    */
+    /**
+     * Test getStreamCountAsLong() method.
+     */
     @Test
     public void subTestGetStreamCountAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsLong());
+        assertEquals(Long.valueOf(1), JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsLong());
     }
 
-   /**
-    * Test getStreamCountAsLocalDateTime() method.
-    */
+    /**
+     * Test getStreamCountAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStreamCountAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsLocalDateTime());
     }
 
-   /**
-    * Test getStreamCountAsLocalTime() method.
-    */
+    /**
+     * Test getStreamCountAsLocalTime() method.
+     */
     @Test
     public void subTestGetStreamCountAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsLocalTime());
     }
 
-   /**
-    * Test getStreamCountAsString() method.
-    */
+    /**
+     * Test getStreamCountAsString() method.
+     */
     @Test
     public void subTestGetStreamCountAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsString());
+        assertEquals("1", JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsString());
     }
 
-   /**
-    * Test getStreamCountAsBoolean() method.
-    */
+    /**
+     * Test getStreamCountAsBoolean() method.
+     */
     @Test
     public void subTestGetStreamCountAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsBoolean());
     }
 
-   /**
-    * Test getStreamCountAsBigInteger() method.
-    */
+    /**
+     * Test getStreamCountAsBigInteger() method.
+     */
     @Test
     public void subTestGetStreamCountAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsBigInteger());
     }
 
-   /**
-    * Test getStreamCountAsURL() method.
-    */
+    /**
+     * Test getStreamCountAsURL() method.
+     */
     @Test
     public void subTestGetStreamCountAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStreamCountAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsURL());
     }
 
-   /**
-    * Test getStreamKindAsInteger() method.
-    */
+    /**
+     * Test getStreamKindAsInteger() method.
+     */
     @Test
     public void subTestGetStreamKindAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsInteger());
     }
 
-   /**
-    * Test getStreamKindAsLong() method.
-    */
+    /**
+     * Test getStreamKindAsLong() method.
+     */
     @Test
     public void subTestGetStreamKindAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsLong());
     }
 
-   /**
-    * Test getStreamKindAsLocalDateTime() method.
-    */
+    /**
+     * Test getStreamKindAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStreamKindAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsLocalDateTime());
     }
 
-   /**
-    * Test getStreamKindAsLocalTime() method.
-    */
+    /**
+     * Test getStreamKindAsLocalTime() method.
+     */
     @Test
     public void subTestGetStreamKindAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsLocalTime());
     }
 
-   /**
-    * Test getStreamKindAsString() method.
-    */
+    /**
+     * Test getStreamKindAsString() method.
+     */
     @Test
     public void subTestGetStreamKindAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsString());
+        assertEquals("Menu", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsString());
     }
 
-   /**
-    * Test getStreamKindAsBoolean() method.
-    */
+    /**
+     * Test getStreamKindAsBoolean() method.
+     */
     @Test
     public void subTestGetStreamKindAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsBoolean());
     }
 
-   /**
-    * Test getStreamKindAsBigInteger() method.
-    */
+    /**
+     * Test getStreamKindAsBigInteger() method.
+     */
     @Test
     public void subTestGetStreamKindAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsBigInteger());
     }
 
-   /**
-    * Test getStreamKindAsURL() method.
-    */
+    /**
+     * Test getStreamKindAsURL() method.
+     */
     @Test
     public void subTestGetStreamKindAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsURL());
     }
 
-   /**
-    * Test getStreamKindStringAsInteger() method.
-    */
+    /**
+     * Test getStreamKindStringAsInteger() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsInteger());
     }
 
-   /**
-    * Test getStreamKindStringAsLong() method.
-    */
+    /**
+     * Test getStreamKindStringAsLong() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsLong());
     }
 
-   /**
-    * Test getStreamKindStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getStreamKindStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsLocalDateTime());
     }
 
-   /**
-    * Test getStreamKindStringAsLocalTime() method.
-    */
+    /**
+     * Test getStreamKindStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsLocalTime());
     }
 
-   /**
-    * Test getStreamKindStringAsString() method.
-    */
+    /**
+     * Test getStreamKindStringAsString() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsString());
+        assertEquals("Menu", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsString());
     }
 
-   /**
-    * Test getStreamKindStringAsBoolean() method.
-    */
+    /**
+     * Test getStreamKindStringAsBoolean() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsBoolean());
     }
 
-   /**
-    * Test getStreamKindStringAsBigInteger() method.
-    */
+    /**
+     * Test getStreamKindStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsBigInteger());
     }
 
-   /**
-    * Test getStreamKindStringAsURL() method.
-    */
+    /**
+     * Test getStreamKindStringAsURL() method.
+     */
     @Test
     public void subTestGetStreamKindStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsURL());
     }
 
-   /**
-    * Test getStreamKindIDAsInteger() method.
-    */
+    /**
+     * Test getStreamKindIDAsInteger() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsInteger());
+        assertEquals(Integer.valueOf(0), JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsInteger());
     }
 
-   /**
-    * Test getStreamKindIDAsLong() method.
-    */
+    /**
+     * Test getStreamKindIDAsLong() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsLong());
+        assertEquals(Long.valueOf(0), JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsLong());
     }
 
-   /**
-    * Test getStreamKindIDAsLocalDateTime() method.
-    */
+    /**
+     * Test getStreamKindIDAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsLocalDateTime());
     }
 
-   /**
-    * Test getStreamKindIDAsLocalTime() method.
-    */
+    /**
+     * Test getStreamKindIDAsLocalTime() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsLocalTime());
     }
 
-   /**
-    * Test getStreamKindIDAsString() method.
-    */
+    /**
+     * Test getStreamKindIDAsString() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsString());
+        assertEquals("0", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsString());
     }
 
-   /**
-    * Test getStreamKindIDAsBoolean() method.
-    */
+    /**
+     * Test getStreamKindIDAsBoolean() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsBoolean());
     }
 
-   /**
-    * Test getStreamKindIDAsBigInteger() method.
-    */
+    /**
+     * Test getStreamKindIDAsBigInteger() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(0), JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsBigInteger());
     }
 
-   /**
-    * Test getStreamKindIDAsURL() method.
-    */
+    /**
+     * Test getStreamKindIDAsURL() method.
+     */
     @Test
     public void subTestGetStreamKindIDAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsURL());
     }
 
-   /**
-    * Test getStreamKindPosAsInteger() method.
-    */
+    /**
+     * Test getStreamKindPosAsInteger() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsInteger());
     }
 
-   /**
-    * Test getStreamKindPosAsLong() method.
-    */
+    /**
+     * Test getStreamKindPosAsLong() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsLong());
     }
 
-   /**
-    * Test getStreamKindPosAsLocalDateTime() method.
-    */
+    /**
+     * Test getStreamKindPosAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsLocalDateTime());
     }
 
-   /**
-    * Test getStreamKindPosAsLocalTime() method.
-    */
+    /**
+     * Test getStreamKindPosAsLocalTime() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsLocalTime());
     }
 
-   /**
-    * Test getStreamKindPosAsString() method.
-    */
+    /**
+     * Test getStreamKindPosAsString() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsString());
     }
 
-   /**
-    * Test getStreamKindPosAsBoolean() method.
-    */
+    /**
+     * Test getStreamKindPosAsBoolean() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsBoolean());
     }
 
-   /**
-    * Test getStreamKindPosAsBigInteger() method.
-    */
+    /**
+     * Test getStreamKindPosAsBigInteger() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsBigInteger());
     }
 
-   /**
-    * Test getStreamKindPosAsURL() method.
-    */
+    /**
+     * Test getStreamKindPosAsURL() method.
+     */
     @Test
     public void subTestGetStreamKindPosAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStreamKindPosAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsURL());
     }
 
-   /**
-    * Test getStreamOrderAsInteger() method.
-    */
+    /**
+     * Test getStreamOrderAsInteger() method.
+     */
     @Test
     public void subTestGetStreamOrderAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsInteger());
     }
 
-   /**
-    * Test getStreamOrderAsLong() method.
-    */
+    /**
+     * Test getStreamOrderAsLong() method.
+     */
     @Test
     public void subTestGetStreamOrderAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsLong());
     }
 
-   /**
-    * Test getStreamOrderAsLocalDateTime() method.
-    */
+    /**
+     * Test getStreamOrderAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetStreamOrderAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsLocalDateTime());
     }
 
-   /**
-    * Test getStreamOrderAsLocalTime() method.
-    */
+    /**
+     * Test getStreamOrderAsLocalTime() method.
+     */
     @Test
     public void subTestGetStreamOrderAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsLocalTime());
     }
 
-   /**
-    * Test getStreamOrderAsString() method.
-    */
+    /**
+     * Test getStreamOrderAsString() method.
+     */
     @Test
     public void subTestGetStreamOrderAsString() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsString());
     }
 
-   /**
-    * Test getStreamOrderAsBoolean() method.
-    */
+    /**
+     * Test getStreamOrderAsBoolean() method.
+     */
     @Test
     public void subTestGetStreamOrderAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsBoolean());
     }
 
-   /**
-    * Test getStreamOrderAsBigInteger() method.
-    */
+    /**
+     * Test getStreamOrderAsBigInteger() method.
+     */
     @Test
     public void subTestGetStreamOrderAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsBigInteger());
     }
 
-   /**
-    * Test getStreamOrderAsURL() method.
-    */
+    /**
+     * Test getStreamOrderAsURL() method.
+     */
     @Test
     public void subTestGetStreamOrderAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getStreamOrderAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsURL());
     }
 
-   /**
-    * Test getTimeZonesAsInteger() method.
-    */
+    /**
+     * Test getTimeZonesAsInteger() method.
+     */
     @Test
     public void subTestGetTimeZonesAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsInteger());
     }
 
-   /**
-    * Test getTimeZonesAsLong() method.
-    */
+    /**
+     * Test getTimeZonesAsLong() method.
+     */
     @Test
     public void subTestGetTimeZonesAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsLong());
     }
 
-   /**
-    * Test getTimeZonesAsLocalDateTime() method.
-    */
+    /**
+     * Test getTimeZonesAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetTimeZonesAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsLocalDateTime());
     }
 
-   /**
-    * Test getTimeZonesAsLocalTime() method.
-    */
+    /**
+     * Test getTimeZonesAsLocalTime() method.
+     */
     @Test
     public void subTestGetTimeZonesAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsLocalTime());
     }
 
-   /**
-    * Test getTimeZonesAsString() method.
-    */
+    /**
+     * Test getTimeZonesAsString() method.
+     */
     @Test
     public void subTestGetTimeZonesAsString() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsString());
     }
 
-   /**
-    * Test getTimeZonesAsBoolean() method.
-    */
+    /**
+     * Test getTimeZonesAsBoolean() method.
+     */
     @Test
     public void subTestGetTimeZonesAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsBoolean());
     }
 
-   /**
-    * Test getTimeZonesAsBigInteger() method.
-    */
+    /**
+     * Test getTimeZonesAsBigInteger() method.
+     */
     @Test
     public void subTestGetTimeZonesAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsBigInteger());
     }
 
-   /**
-    * Test getTimeZonesAsURL() method.
-    */
+    /**
+     * Test getTimeZonesAsURL() method.
+     */
     @Test
     public void subTestGetTimeZonesAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getTimeZonesAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsURL());
     }
 
-   /**
-    * Test getTitleAsInteger() method.
-    */
+    /**
+     * Test getTitleAsInteger() method.
+     */
     @Test
     public void subTestGetTitleAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsInteger());
     }
 
-   /**
-    * Test getTitleAsLong() method.
-    */
+    /**
+     * Test getTitleAsLong() method.
+     */
     @Test
     public void subTestGetTitleAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsLong());
     }
 
-   /**
-    * Test getTitleAsLocalDateTime() method.
-    */
+    /**
+     * Test getTitleAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetTitleAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsLocalDateTime());
     }
 
-   /**
-    * Test getTitleAsLocalTime() method.
-    */
+    /**
+     * Test getTitleAsLocalTime() method.
+     */
     @Test
     public void subTestGetTitleAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsLocalTime());
     }
 
-   /**
-    * Test getTitleAsString() method.
-    */
+    /**
+     * Test getTitleAsString() method.
+     */
     @Test
     public void subTestGetTitleAsString() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getTitleAsString());
     }
 
-   /**
-    * Test getTitleAsBoolean() method.
-    */
+    /**
+     * Test getTitleAsBoolean() method.
+     */
     @Test
     public void subTestGetTitleAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsBoolean());
     }
 
-   /**
-    * Test getTitleAsBigInteger() method.
-    */
+    /**
+     * Test getTitleAsBigInteger() method.
+     */
     @Test
     public void subTestGetTitleAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsBigInteger());
     }
 
-   /**
-    * Test getTitleAsURL() method.
-    */
+    /**
+     * Test getTitleAsURL() method.
+     */
     @Test
     public void subTestGetTitleAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getTitleAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsURL());
     }
 
-   /**
-    * Test getUniqueIDAsInteger() method.
-    */
+    /**
+     * Test getUniqueIDAsInteger() method.
+     */
     @Test
     public void subTestGetUniqueIDAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsInteger());
     }
 
-   /**
-    * Test getUniqueIDAsLong() method.
-    */
+    /**
+     * Test getUniqueIDAsLong() method.
+     */
     @Test
     public void subTestGetUniqueIDAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsLong());
     }
 
-   /**
-    * Test getUniqueIDAsLocalDateTime() method.
-    */
+    /**
+     * Test getUniqueIDAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetUniqueIDAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsLocalDateTime());
     }
 
-   /**
-    * Test getUniqueIDAsLocalTime() method.
-    */
+    /**
+     * Test getUniqueIDAsLocalTime() method.
+     */
     @Test
     public void subTestGetUniqueIDAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsLocalTime());
     }
 
-   /**
-    * Test getUniqueIDAsString() method.
-    */
+    /**
+     * Test getUniqueIDAsString() method.
+     */
     @Test
     public void subTestGetUniqueIDAsString() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsString());
     }
 
-   /**
-    * Test getUniqueIDAsBoolean() method.
-    */
+    /**
+     * Test getUniqueIDAsBoolean() method.
+     */
     @Test
     public void subTestGetUniqueIDAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsBoolean());
     }
 
-   /**
-    * Test getUniqueIDAsBigInteger() method.
-    */
+    /**
+     * Test getUniqueIDAsBigInteger() method.
+     */
     @Test
     public void subTestGetUniqueIDAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsBigInteger());
     }
 
-   /**
-    * Test getUniqueIDAsURL() method.
-    */
+    /**
+     * Test getUniqueIDAsURL() method.
+     */
     @Test
     public void subTestGetUniqueIDAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsURL());
     }
 
-   /**
-    * Test getUniqueIDStringAsInteger() method.
-    */
+    /**
+     * Test getUniqueIDStringAsInteger() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsInteger() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsInteger());
     }
 
-   /**
-    * Test getUniqueIDStringAsLong() method.
-    */
+    /**
+     * Test getUniqueIDStringAsLong() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsLong() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsLong());
     }
 
-   /**
-    * Test getUniqueIDStringAsLocalDateTime() method.
-    */
+    /**
+     * Test getUniqueIDStringAsLocalDateTime() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsLocalDateTime() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsLocalDateTime());
     }
 
-   /**
-    * Test getUniqueIDStringAsLocalTime() method.
-    */
+    /**
+     * Test getUniqueIDStringAsLocalTime() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsLocalTime() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsLocalTime());
     }
 
-   /**
-    * Test getUniqueIDStringAsString() method.
-    */
+    /**
+     * Test getUniqueIDStringAsString() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsString() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsString());
     }
 
-   /**
-    * Test getUniqueIDStringAsBoolean() method.
-    */
+    /**
+     * Test getUniqueIDStringAsBoolean() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsBoolean() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsBoolean());
     }
 
-   /**
-    * Test getUniqueIDStringAsBigInteger() method.
-    */
+    /**
+     * Test getUniqueIDStringAsBigInteger() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsBigInteger() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsBigInteger());
     }
 
-   /**
-    * Test getUniqueIDStringAsURL() method.
-    */
+    /**
+     * Test getUniqueIDStringAsURL() method.
+     */
     @Test
     public void subTestGetUniqueIDStringAsURL() {
-        assertEquals(null, this.jMetaDataMenu.getUniqueIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsURL());
     }
 
 }
