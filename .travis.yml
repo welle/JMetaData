@@ -1,5 +1,5 @@
 language: java
-script: ant jars
+script: ant test
 before_script:
   # Ant build tool configuration
   - cp build.properties.sample build.properties
