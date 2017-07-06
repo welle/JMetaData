@@ -3,7 +3,7 @@ script: ant jars
 before_script:
   # Ant build tool configuration
   - cp build.properties.sample build.properties
-  - mkdir ./bin
+  - mkdir ./JMetadata/classes
   - sed -i -e "s,jars_dest =,jars_dest =./," build.properties
 
 env:
