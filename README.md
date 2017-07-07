@@ -1,6 +1,6 @@
 # JMetaData #
-==================
 [![Build Status](https://travis-ci.org/welle/JMetaData.svg?branch=master)](https://travis-ci.org/welle/JMetaData)
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=JMetaData)](https://sonarcloud.io/dashboard/index/JMetaData)
 
 ## Quick summary ##
 
