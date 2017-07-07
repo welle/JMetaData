@@ -51,22 +51,23 @@
 	<property name="test.src.dir" value="Test/javasource" />
 	<property name="dir.report.unittests.xml" value="reports/junit" />
 
-	
+	<path id="JMetadata.classpath">
+		<pathelement location="libTest/junit-4.11.jar" />
+		<pathelement location="libTest/hamcrest-core-1.3.jar" />
+		<pathelement location="${main.build.dir}" />
+		<pathelement location="${test.build.dir}" />
+		<pathelement location="${dir.report.unittests.xml}" />
+		<pathelement location="${test.sample.dir}" />
+	</path>
+
 	<!-- Test and build all files  -->
 	<!-- To run this: use "ant" (default) or "ant run" -->
 	<target name="run" depends="jars">
 		<echo message="Running JUnit tests." />
 		<junit printsummary="on" haltonfailure="yes">
-			<classpath>
-				<pathelement location="libTest/junit-4.11.jar" />
-				<pathelement location="libTest/hamcrest-core-1.3.jar" />
-				<pathelement location="${main.build.dir}" />
-				<pathelement location="${test.build.dir}" />
-				<pathelement location="${dir.report.unittests.xml}" />
-				<pathelement location="${test.sample.dir}" />
-			</classpath>
+			<classpath refid="JMetadata.classpath"/>
 			<formatter type="xml" />
-			<batchtest fork="yes" todir="${dir.report.unittests.xml}">
+			<batchtest todir="${dir.report.unittests.xml}">
 				<fileset dir="${test.src.dir}" includes="**/*Test*.java" />
 			</batchtest>
 		</junit>
