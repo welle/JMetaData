@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="Sonar" default="sonar" basedir="." xmlns:sonar="antlib:org.sonar.ant">
+	<loadproperties>
+      <file file="${basedir}/sonar-project.properties"/>
+    </loadproperties>
+
+	<property name="sonar.host.url" value="https://sonarcloud.io" />
+
+    <!-- Tests -->
+    <property name="sonar.java.test.binaries" value="JMetadata/classes" />
+    <property name="sonar.java.test.libraries" value="libTest/**/*.jar,libs/**/*.jar" />
+    <property name="sonar.junit.reportsPath" value="reports/junit" />
+    <property name="sonar.jacoco.reportPath" value="reports/jacoco/jacoco.exec" />
+
+    <!-- Add the target -->
+    <target name="sonar">
+        <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+            <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+            <classpath path="./libTest/sonarqube-ant-task-2.4.jar" />
+        </taskdef>
+
+        <!-- Execute the SonarQube analysis -->
+        <sonar:sonar />
+    </target>
+</project>

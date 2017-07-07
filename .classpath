@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="libs/tomcat-juli.jar"/>
 	<classpathentry kind="lib" path="libs/commons-lang3-3.1.jar"/>
 	<classpathentry kind="lib" path="libs/SwissKnife-1.0.jar"/>
+	<classpathentry kind="lib" path="libTest/sonarqube-ant-task-2.4.jar"/>
 	<classpathentry kind="output" path="JMetadata/classes"/>
 </classpath>
