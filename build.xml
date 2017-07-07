@@ -55,7 +55,7 @@
 	
 	<!-- Test and build all files  -->
 		<!-- To run this: use "ant" (default) or "ant run" -->
-		<target name="run" depends="jars, sonar">
+		<target name="run" depends="jars">
 			<junit printsummary="on" haltonfailure="yes">
 				<classpath>
 					<path refid="classpath.test" />
