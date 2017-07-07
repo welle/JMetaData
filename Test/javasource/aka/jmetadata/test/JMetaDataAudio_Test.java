@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.management.RuntimeErrorException;
+
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -46,9 +48,12 @@ public final class JMetaDataAudio_Test {
                 if (audioStreams.get(0) != null) {
                     jMetaDataAudio = audioStreams.get(0);
                 }
+            } else {
+                throw new RuntimeErrorException(null, "Can not open file.");
             }
         } catch (final Throwable e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
+            throw new RuntimeErrorException(null, "Can not open file.");
         }
     }
 

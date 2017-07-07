@@ -6,12 +6,6 @@
 
 	<property name="sonar.host.url" value="https://sonarcloud.io" />
 
-    <!-- Tests -->
-    <property name="sonar.java.test.binaries" value="JMetadata/classes" />
-    <property name="sonar.java.test.libraries" value="libTest/**/*.jar,libs/**/*.jar" />
-    <property name="sonar.junit.reportsPath" value="reports/junit" />
-    <property name="sonar.jacoco.reportPath" value="reports/jacoco/jacoco.exec" />
-
     <!-- Add the target -->
     <target name="sonar">
         <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
