@@ -6,8 +6,10 @@ before_script:
   - mkdir ./JMetadata/classes
   - sed -i -e "s,jars_dest =,jars_dest =./," build.properties
 script:
-  - ./runSonarQubeAnalysis.sh
+  # other script steps might be done before running the actual analysis
+  #- sonar-scanner
   - ant test
+  - ./runSonarQubeAnalysis.sh
 env:
   global:
     - classes=JMetadata/classes
@@ -20,6 +22,3 @@ cache:
 addons:
   sonarcloud:
     organization: "welle-github" # the key of the org you chose at step #3
-script:
-  # other script steps might be done before running the actual analysis
-  - sonar-scanner
