@@ -29,7 +29,7 @@
     <property name="target.managers" value="${jars_dest}"/>
     <property name="target.applications" value="${jars_dest}"/>
 
-    <target name="clean">
+    <target name="cleanJar">
         <delete dir="${jars_dest}" />
     </target>
     
@@ -46,8 +46,7 @@
     	             includes="${pkg_base}/**/" 
     	             excludes="${pkg_base}/**/*_JUnitTest.*">
         	<fileset dir="${project}/../lib/"
-                     includes="libmediainfo.dylib, mediainfo.dll, mediainfo64.dll"
-            />
+                     includes="libmediainfo.dylib, mediainfo.dll, mediainfo64.dll" />
             <manifest>
                 <attribute name="version" value="${version}" />
                 <attribute name="time" value="${TODAY_UK}" />
