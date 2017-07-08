@@ -55,7 +55,7 @@
 
 	<!-- Test and build all files  -->
 	<!-- To run this: use "ant" (default) or "ant run" -->
-	<target name="run" depends="report"/>
+	<target name="run" depends="rebuild"/>
 	
 	
 </project>

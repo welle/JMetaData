@@ -33,14 +33,14 @@
         <javac encoding="8859_1" destdir="${result.test-classes.dir}" source="1.8" target="1.8" includeantruntime="false">
             <src path="Test/javasource" />
             <classpath refid="JMetadataTest.classpath" />
-            <classpath path="${classes}" />
+        	<classpath refid="JMetadata.classpath" />
         </javac>
 		<javac srcdir="${src.dir}" destdir="${result.classes.dir}"
 			debug="true" includeantruntime="false" />
 	</target>
 
 
-	<target name="unittest" depends="clean,compile">
+	<target name="unittest">
 	   <mkdir dir="reports/junit/"/>
         <copy file="Test/videosamples/Sintel_DivXPlus_6500kbps.mkv" tofile="${result.classes.dir}/aka/jmetadata/test/Sintel_DivXPlus_6500kbps.mkv" overwrite="false" verbose="true" />
 		<!-- Step 2: Wrap test execution with the JaCoCo coverage task -->
@@ -57,7 +57,12 @@
 				<!-- Specify the name of the coverage data file to use. The value specified 
 					below is the default. -->
 
+				<classpath refid="JMetadata.classpath" />
 				<classpath refid="JMetadataTest.classpath" />
+				<classpath>
+					<pathelement location="${result.test-classes.dir}" />
+					<pathelement location="${result.classes.dir}/aka/jmetadata/test/Sintel_DivXPlus_6500kbps.mkv" />
+				</classpath>
 				<formatter type="xml" />
 
 				<batchtest todir="reports/junit/" haltonfailure="no">
@@ -70,7 +75,7 @@
 		</jacoco:coverage>
 	</target>
 
-	<target name="report" depends="unittest">
+	<target name="report">
 		<!-- Step 3: Create coverage report -->
 		<jacoco:report>
 
@@ -96,6 +101,6 @@
 		</jacoco:report>
 	</target>
 
-	<target name="rebuild" depends="clean,compile,test,report" />
+	<target name="rebuild" depends="clean,compile,unittest,report" />
 
 </project>

@@ -53,7 +53,7 @@ public final class JMetaDataAudio_Test {
             }
         } catch (final Throwable e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
-            throw new RuntimeErrorException(null, "Can not open file.");
+            throw new RuntimeErrorException(null, "Can not find file.");
         }
     }
 

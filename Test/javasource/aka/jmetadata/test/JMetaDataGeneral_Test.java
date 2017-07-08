@@ -15,6 +15,8 @@ import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.management.RuntimeErrorException;
+
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -46,9 +48,12 @@ public final class JMetaDataGeneral_Test {
             final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
             if (jMetaData.open(file)) {
                 jMetaDataGeneral = jMetaData.getGeneral();
+            } else {
+                throw new RuntimeErrorException(null, "Can not open file.");
             }
         } catch (final Throwable e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
+            throw new RuntimeErrorException(null, "Can not find file.");
         }
     }
 
