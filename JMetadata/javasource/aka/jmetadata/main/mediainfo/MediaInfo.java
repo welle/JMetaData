@@ -76,6 +76,7 @@ public final class MediaInfo {
     }
 
     private Pointer handlePointer;
+    private NativeLibrary lib;
 
     /**
      * Constructor
@@ -91,7 +92,7 @@ public final class MediaInfo {
             try {
                 // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
                 // If we do not, the system will look for dependencies, but only in the library path.
-                NativeLibrary.getInstance("mediainfo");
+                this.lib = NativeLibrary.getInstance("mediainfo");
             } catch (final LinkageError e) {
                 LOGGER.warning("Error loading mediainfo: " + e.getMessage());
             }
@@ -121,9 +122,8 @@ public final class MediaInfo {
         }
         MediaInfoDLLInternal.INSTANCE.delete(this.handlePointer);
         this.handlePointer = null;
-        if (!Platform.isWindows() && !Platform.isMac()) {
-            final NativeLibrary lib = NativeLibrary.getInstance("mediainfo");
-            lib.dispose();
+        if (this.lib != null) {
+            this.lib.dispose();
         }
     }
 

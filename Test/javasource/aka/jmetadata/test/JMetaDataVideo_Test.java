@@ -2,26 +2,82 @@ package aka.jmetadata.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.management.RuntimeErrorException;
+
+import org.eclipse.jdt.annotation.NonNull;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import aka.jmetadata.main.JMetaData;
+import aka.jmetadata.main.JMetaDataVideo;
 
 /**
  * This class contains tests methods for Video informations of a specific Video stream.
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataVideo_Test extends AbstractTest {
+public final class JMetaDataVideo_Test {
+
+    private static @NonNull final Logger LOGGER = Logger.getLogger(JMetaDataVideo_Test.class.getName());
+
+    private static JMetaDataVideo jMetaDataVideo;
+    private static JMetaData jMetaData;
+
+    /**
+     * Initialize test.
+     */
+    @BeforeClass
+    public static void beforeUnit() {
+        try {
+            jMetaData = new JMetaData();
+            final String filePath = new File("").getAbsolutePath();
+            System.err.println("[JMetaDataAudio_Test] beforeUnit - " + filePath);
+            final File file = new File(filePath.concat("/Test/videosamples/Sintel_DivXPlus_6500kbps.mkv"));
+            if (jMetaData.open(file)) {
+                @NonNull
+                final List<@NonNull JMetaDataVideo> videoStreams = jMetaData.getVideoStreams();
+                if (videoStreams.get(0) != null) {
+                    jMetaDataVideo = videoStreams.get(0);
+                }
+            } else {
+                throw new RuntimeErrorException(null, "Can not open file.");
+            }
+        } catch (final Throwable e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            throw new RuntimeErrorException(null, "Can not find file.");
+        }
+    }
+
+    /**
+     * Deinitialize test.
+     */
+    @AfterClass
+    public static void afterUnit() {
+        if (jMetaData != null) {
+            try {
+                jMetaData.close();
+            } catch (final Throwable e) {
+                LOGGER.log(Level.SEVERE, e.getMessage());
+            }
+        }
+    }
 
     /**
      * Test getActiveFormatDescriptionAsInteger() method.
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsInteger());
     }
 
     /**
@@ -29,7 +85,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsLong());
     }
 
     /**
@@ -37,7 +93,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsLocalDateTime());
     }
 
     /**
@@ -45,7 +101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsLocalTime());
     }
 
     /**
@@ -53,7 +109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsString());
     }
 
     /**
@@ -61,7 +117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsBoolean());
     }
 
     /**
@@ -69,7 +125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsBigInteger());
     }
 
     /**
@@ -77,7 +133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionAsURL());
     }
 
     /**
@@ -85,7 +141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsInteger());
     }
 
     /**
@@ -93,7 +149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsLong());
     }
 
     /**
@@ -101,7 +157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsLocalDateTime());
     }
 
     /**
@@ -109,7 +165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsLocalTime());
     }
 
     /**
@@ -117,7 +173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsString());
     }
 
     /**
@@ -125,7 +181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsBoolean());
     }
 
     /**
@@ -133,7 +189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsBigInteger());
     }
 
     /**
@@ -141,7 +197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionStringAsURL());
     }
 
     /**
@@ -149,7 +205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsInteger());
     }
 
     /**
@@ -157,7 +213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsLong());
     }
 
     /**
@@ -165,7 +221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsLocalDateTime());
     }
 
     /**
@@ -173,7 +229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsLocalTime());
     }
 
     /**
@@ -181,7 +237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsString());
     }
 
     /**
@@ -189,7 +245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsBoolean());
     }
 
     /**
@@ -197,7 +253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsBigInteger());
     }
 
     /**
@@ -205,7 +261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetActiveFormatDescriptionMuxingModeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getActiveFormatDescriptionMuxingModeAsURL());
     }
 
     /**
@@ -213,7 +269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsInteger());
     }
 
     /**
@@ -221,7 +277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsLong());
     }
 
     /**
@@ -229,7 +285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsLocalDateTime());
     }
 
     /**
@@ -237,7 +293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsLocalTime());
     }
 
     /**
@@ -245,7 +301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getAlignmentAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsString());
     }
 
     /**
@@ -253,7 +309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsBoolean());
     }
 
     /**
@@ -261,7 +317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsBigInteger());
     }
 
     /**
@@ -269,7 +325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentAsURL());
     }
 
     /**
@@ -277,7 +333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsInteger());
     }
 
     /**
@@ -285,7 +341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsLong());
     }
 
     /**
@@ -293,7 +349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsLocalDateTime());
     }
 
     /**
@@ -301,7 +357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsLocalTime());
     }
 
     /**
@@ -309,7 +365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsString());
     }
 
     /**
@@ -317,7 +373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsBoolean());
     }
 
     /**
@@ -325,7 +381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsBigInteger());
     }
 
     /**
@@ -333,7 +389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlignmentStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlignmentStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlignmentStringAsURL());
     }
 
     /**
@@ -341,7 +397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsInteger());
     }
 
     /**
@@ -349,7 +405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsLong());
     }
 
     /**
@@ -357,7 +413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsLocalDateTime());
     }
 
     /**
@@ -365,7 +421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsLocalTime());
     }
 
     /**
@@ -373,7 +429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getAlternateGroupAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsString());
     }
 
     /**
@@ -381,7 +437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsBoolean());
     }
 
     /**
@@ -389,7 +445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsBigInteger());
     }
 
     /**
@@ -397,7 +453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupAsURL());
     }
 
     /**
@@ -405,7 +461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsInteger());
     }
 
     /**
@@ -413,7 +469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsLong());
     }
 
     /**
@@ -421,7 +477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsLocalDateTime());
     }
 
     /**
@@ -429,7 +485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsLocalTime());
     }
 
     /**
@@ -437,7 +493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsString());
     }
 
     /**
@@ -445,7 +501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsBoolean());
     }
 
     /**
@@ -453,7 +509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsBigInteger());
     }
 
     /**
@@ -461,7 +517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getAlternateGroupStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getAlternateGroupStringAsURL());
     }
 
     /**
@@ -469,7 +525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsInteger());
     }
 
     /**
@@ -477,7 +533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsLong());
     }
 
     /**
@@ -485,7 +541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsLocalDateTime());
     }
 
     /**
@@ -493,7 +549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsLocalTime());
     }
 
     /**
@@ -501,7 +557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsString() {
-        assertEquals("8", AbstractTest.jMetaDataVideo.getBitDepthAsString());
+        assertEquals("8", JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsString());
     }
 
     /**
@@ -509,7 +565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsBoolean());
     }
 
     /**
@@ -517,7 +573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataVideo.getBitDepthAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsBigInteger());
     }
 
     /**
@@ -525,7 +581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthAsURL());
     }
 
     /**
@@ -533,7 +589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsInteger() {
-        assertEquals(Integer.valueOf(8), AbstractTest.jMetaDataVideo.getBitDepthStringAsInteger());
+        assertEquals(Integer.valueOf(8), JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsInteger());
     }
 
     /**
@@ -541,7 +597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsLong());
     }
 
     /**
@@ -549,7 +605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsLocalDateTime());
     }
 
     /**
@@ -557,7 +613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsLocalTime());
     }
 
     /**
@@ -565,7 +621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsString());
     }
 
     /**
@@ -573,7 +629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsBoolean());
     }
 
     /**
@@ -581,7 +637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataVideo.getBitDepthStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsBigInteger());
     }
 
     /**
@@ -589,7 +645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitDepthStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitDepthStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitDepthStringAsURL());
     }
 
     /**
@@ -597,7 +653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsInteger());
     }
 
     /**
@@ -605,7 +661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsLong());
     }
 
     /**
@@ -613,7 +669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsLocalDateTime());
     }
 
     /**
@@ -621,7 +677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsLocalTime());
     }
 
     /**
@@ -629,7 +685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsString());
     }
 
     /**
@@ -637,7 +693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsBoolean());
     }
 
     /**
@@ -645,7 +701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsBigInteger());
     }
 
     /**
@@ -653,7 +709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsURL());
     }
 
     /**
@@ -661,7 +717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsInteger());
     }
 
     /**
@@ -669,7 +725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsLong());
     }
 
     /**
@@ -677,7 +733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsLocalDateTime());
     }
 
     /**
@@ -685,7 +741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsLocalTime());
     }
 
     /**
@@ -693,7 +749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsString());
     }
 
     /**
@@ -701,7 +757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsBoolean());
     }
 
     /**
@@ -709,7 +765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsBigInteger());
     }
 
     /**
@@ -717,7 +773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateStringAsURL());
     }
 
     /**
@@ -725,7 +781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsInteger());
     }
 
     /**
@@ -733,7 +789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsLong());
     }
 
     /**
@@ -741,7 +797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsLocalDateTime());
     }
 
     /**
@@ -749,7 +805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsLocalTime());
     }
 
     /**
@@ -757,7 +813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsString());
     }
 
     /**
@@ -765,7 +821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsBoolean());
     }
 
     /**
@@ -773,7 +829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsBigInteger());
     }
 
     /**
@@ -781,7 +837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedAsURL());
     }
 
     /**
@@ -789,7 +845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsInteger());
     }
 
     /**
@@ -797,7 +853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsLong());
     }
 
     /**
@@ -805,7 +861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -813,7 +869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsLocalTime());
     }
 
     /**
@@ -821,7 +877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsString());
     }
 
     /**
@@ -829,7 +885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsBoolean());
     }
 
     /**
@@ -837,7 +893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsBigInteger());
     }
 
     /**
@@ -845,7 +901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateEncodedStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateEncodedStringAsURL());
     }
 
     /**
@@ -853,7 +909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsInteger() {
-        assertEquals(Integer.valueOf(19999744), AbstractTest.jMetaDataVideo.getBitRateMaximumAsInteger());
+        assertEquals(Integer.valueOf(19999744), JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsInteger());
     }
 
     /**
@@ -861,7 +917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsLong() {
-        assertEquals(Long.valueOf(19999744), AbstractTest.jMetaDataVideo.getBitRateMaximumAsLong());
+        assertEquals(Long.valueOf(19999744), JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsLong());
     }
 
     /**
@@ -869,7 +925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsLocalDateTime());
     }
 
     /**
@@ -877,7 +933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsLocalTime());
     }
 
     /**
@@ -885,7 +941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsString());
     }
 
     /**
@@ -893,7 +949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsBoolean());
     }
 
     /**
@@ -901,7 +957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsBigInteger() {
-        assertEquals(BigInteger.valueOf(19999744), AbstractTest.jMetaDataVideo.getBitRateMaximumAsBigInteger());
+        assertEquals(BigInteger.valueOf(19999744), JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsBigInteger());
     }
 
     /**
@@ -909,7 +965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumAsURL());
     }
 
     /**
@@ -917,7 +973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsInteger() {
-        assertEquals(Integer.valueOf(200), AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsInteger());
+        assertEquals(Integer.valueOf(200), JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsInteger());
     }
 
     /**
@@ -925,7 +981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLong() {
-        assertEquals(Long.valueOf(220), AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsLong());
+        assertEquals(Long.valueOf(220), JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsLong());
     }
 
     /**
@@ -933,7 +989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsLocalDateTime());
     }
 
     /**
@@ -941,7 +997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsLocalTime());
     }
 
     /**
@@ -949,7 +1005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsString() {
-        assertEquals("20.0 Mb/s", AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsString());
+        assertEquals("20.0 Mb/s", JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsString());
     }
 
     /**
@@ -957,7 +1013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsBoolean());
     }
 
     /**
@@ -965,7 +1021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(200), AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(200), JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsBigInteger());
     }
 
     /**
@@ -973,7 +1029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMaximumStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsURL());
     }
 
     /**
@@ -981,7 +1037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsInteger());
     }
 
     /**
@@ -989,7 +1045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsLong());
     }
 
     /**
@@ -997,7 +1053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsLocalDateTime());
     }
 
     /**
@@ -1005,7 +1061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsLocalTime());
     }
 
     /**
@@ -1013,7 +1069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsString());
     }
 
     /**
@@ -1021,7 +1077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsBoolean());
     }
 
     /**
@@ -1029,7 +1085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsBigInteger());
     }
 
     /**
@@ -1037,7 +1093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumAsURL());
     }
 
     /**
@@ -1045,7 +1101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsInteger());
     }
 
     /**
@@ -1053,7 +1109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsLong());
     }
 
     /**
@@ -1061,7 +1117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsLocalDateTime());
     }
 
     /**
@@ -1069,7 +1125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsLocalTime());
     }
 
     /**
@@ -1077,7 +1133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsString());
     }
 
     /**
@@ -1085,7 +1141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsBoolean());
     }
 
     /**
@@ -1093,7 +1149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsBigInteger());
     }
 
     /**
@@ -1101,7 +1157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateMinimumStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateMinimumStringAsURL());
     }
 
     /**
@@ -1109,7 +1165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsInteger());
     }
 
     /**
@@ -1117,7 +1173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsLong());
     }
 
     /**
@@ -1125,7 +1181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsLocalDateTime());
     }
 
     /**
@@ -1133,7 +1189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsLocalTime());
     }
 
     /**
@@ -1141,7 +1197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsString());
     }
 
     /**
@@ -1149,7 +1205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsBoolean());
     }
 
     /**
@@ -1157,7 +1213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsBigInteger());
     }
 
     /**
@@ -1165,7 +1221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeAsURL());
     }
 
     /**
@@ -1173,7 +1229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsInteger());
     }
 
     /**
@@ -1181,7 +1237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsLong());
     }
 
     /**
@@ -1189,7 +1245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsLocalDateTime());
     }
 
     /**
@@ -1197,7 +1253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsLocalTime());
     }
 
     /**
@@ -1205,7 +1261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsString() {
-        assertEquals("Variable", AbstractTest.jMetaDataVideo.getBitRateModeStringAsString());
+        assertEquals("Variable", JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsString());
     }
 
     /**
@@ -1213,7 +1269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsBoolean());
     }
 
     /**
@@ -1221,7 +1277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsBigInteger());
     }
 
     /**
@@ -1229,7 +1285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateModeStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateModeStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateModeStringAsURL());
     }
 
     /**
@@ -1237,7 +1293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsInteger());
     }
 
     /**
@@ -1245,7 +1301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsLong());
     }
 
     /**
@@ -1253,7 +1309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsLocalDateTime());
     }
 
     /**
@@ -1261,7 +1317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsLocalTime());
     }
 
     /**
@@ -1269,7 +1325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getBitRateNominalAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsString());
     }
 
     /**
@@ -1277,7 +1333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsBoolean());
     }
 
     /**
@@ -1285,7 +1341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsBigInteger());
     }
 
     /**
@@ -1293,7 +1349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalAsURL());
     }
 
     /**
@@ -1301,7 +1357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsInteger());
     }
 
     /**
@@ -1309,7 +1365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsLong());
     }
 
     /**
@@ -1317,7 +1373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsLocalDateTime());
     }
 
     /**
@@ -1325,7 +1381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsLocalTime());
     }
 
     /**
@@ -1333,7 +1389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsString());
     }
 
     /**
@@ -1341,7 +1397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsBoolean());
     }
 
     /**
@@ -1349,7 +1405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsBigInteger());
     }
 
     /**
@@ -1357,7 +1413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitRateNominalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitRateNominalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateNominalStringAsURL());
     }
 
     /**
@@ -1365,7 +1421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsInteger());
     }
 
     /**
@@ -1373,7 +1429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsLong());
     }
 
     /**
@@ -1381,7 +1437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsLocalDateTime());
     }
 
     /**
@@ -1389,7 +1445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsLocalTime());
     }
 
     /**
@@ -1397,7 +1453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getBitsPixelFrameAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsString());
     }
 
     /**
@@ -1405,7 +1461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsBoolean());
     }
 
     /**
@@ -1413,7 +1469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsBigInteger());
     }
 
     /**
@@ -1421,7 +1477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBitsPixelFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBitsPixelFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitsPixelFrameAsURL());
     }
 
     /**
@@ -1429,7 +1485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsInteger() {
-        assertEquals(Integer.valueOf(24999936), AbstractTest.jMetaDataVideo.getBufferSizeAsInteger());
+        assertEquals(Integer.valueOf(24999936), JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsInteger());
     }
 
     /**
@@ -1437,7 +1493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsLong() {
-        assertEquals(Long.valueOf(24999936), AbstractTest.jMetaDataVideo.getBufferSizeAsLong());
+        assertEquals(Long.valueOf(24999936), JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsLong());
     }
 
     /**
@@ -1445,7 +1501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBufferSizeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsLocalDateTime());
     }
 
     /**
@@ -1453,7 +1509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBufferSizeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsLocalTime());
     }
 
     /**
@@ -1461,7 +1517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBufferSizeAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsString());
     }
 
     /**
@@ -1469,7 +1525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBufferSizeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsBoolean());
     }
 
     /**
@@ -1477,7 +1533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBufferSizeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsBigInteger());
     }
 
     /**
@@ -1485,7 +1541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetBufferSizeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getBufferSizeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBufferSizeAsURL());
     }
 
     /**
@@ -1493,7 +1549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsInteger());
     }
 
     /**
@@ -1501,7 +1557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsLong());
     }
 
     /**
@@ -1509,7 +1565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsLocalDateTime());
     }
 
     /**
@@ -1517,7 +1573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsLocalTime());
     }
 
     /**
@@ -1525,7 +1581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsString());
     }
 
     /**
@@ -1533,7 +1589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsBoolean());
     }
 
     /**
@@ -1541,7 +1597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsBigInteger() {
-        assertEquals(BigInteger.valueOf(420), AbstractTest.jMetaDataVideo.getChromaSubsamplingAsBigInteger());
+        assertEquals(BigInteger.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsBigInteger());
     }
 
     /**
@@ -1549,7 +1605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsURL());
     }
 
     /**
@@ -1557,7 +1613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsInteger());
     }
 
     /**
@@ -1565,7 +1621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsLong());
     }
 
     /**
@@ -1573,7 +1629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsLocalDateTime());
     }
 
     /**
@@ -1581,7 +1637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsLocalTime());
     }
 
     /**
@@ -1589,7 +1645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsString());
     }
 
     /**
@@ -1597,7 +1653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsBoolean());
     }
 
     /**
@@ -1605,7 +1661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsBigInteger());
     }
 
     /**
@@ -1613,7 +1669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsURL());
     }
 
     /**
@@ -1621,7 +1677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsInteger());
     }
 
     /**
@@ -1629,7 +1685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsLong());
     }
 
     /**
@@ -1637,7 +1693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsLocalDateTime());
     }
 
     /**
@@ -1645,7 +1701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsLocalTime());
     }
 
     /**
@@ -1653,7 +1709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsString());
     }
 
     /**
@@ -1661,7 +1717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsBoolean());
     }
 
     /**
@@ -1669,7 +1725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsBigInteger());
     }
 
     /**
@@ -1677,7 +1733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChromaSubsamplingPositionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getChromaSubsamplingPositionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingPositionAsURL());
     }
 
     /**
@@ -1685,7 +1741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsInteger());
     }
 
     /**
@@ -1693,7 +1749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsLong());
     }
 
     /**
@@ -1701,7 +1757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsLocalDateTime());
     }
 
     /**
@@ -1709,7 +1765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsLocalTime());
     }
 
     /**
@@ -1717,7 +1773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsString());
     }
 
     /**
@@ -1725,7 +1781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsBoolean());
     }
 
     /**
@@ -1733,7 +1789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsBigInteger());
     }
 
     /**
@@ -1741,7 +1797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDAsURL());
     }
 
     /**
@@ -1749,7 +1805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsInteger());
     }
 
     /**
@@ -1757,7 +1813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsLong());
     }
 
     /**
@@ -1765,7 +1821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsLocalDateTime());
     }
 
     /**
@@ -1773,7 +1829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsLocalTime());
     }
 
     /**
@@ -1781,7 +1837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsString());
     }
 
     /**
@@ -1789,7 +1845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsBoolean());
     }
 
     /**
@@ -1797,7 +1853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsBigInteger());
     }
 
     /**
@@ -1805,7 +1861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDHintAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDHintAsURL());
     }
 
     /**
@@ -1813,7 +1869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsInteger());
     }
 
     /**
@@ -1821,7 +1877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsLong());
     }
 
     /**
@@ -1829,7 +1885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsLocalDateTime());
     }
 
     /**
@@ -1837,7 +1893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsLocalTime());
     }
 
     /**
@@ -1845,7 +1901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsString());
     }
 
     /**
@@ -1853,7 +1909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsBoolean());
     }
 
     /**
@@ -1861,7 +1917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsBigInteger());
     }
 
     /**
@@ -1869,7 +1925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDInfoAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDInfoAsURL());
     }
 
     /**
@@ -1877,7 +1933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsInteger());
     }
 
     /**
@@ -1885,7 +1941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsLong());
     }
 
     /**
@@ -1893,7 +1949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsLocalDateTime());
     }
 
     /**
@@ -1901,7 +1957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsLocalTime());
     }
 
     /**
@@ -1909,7 +1965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getCodecIDStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsString());
     }
 
     /**
@@ -1917,7 +1973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsBoolean());
     }
 
     /**
@@ -1925,7 +1981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsBigInteger());
     }
 
     /**
@@ -1933,7 +1989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDStringAsURL());
     }
 
     /**
@@ -1941,7 +1997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsInteger());
     }
 
     /**
@@ -1949,7 +2005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsLong());
     }
 
     /**
@@ -1957,7 +2013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsLocalDateTime());
     }
 
     /**
@@ -1965,7 +2021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsLocalTime());
     }
 
     /**
@@ -1973,7 +2029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsString());
     }
 
     /**
@@ -1981,7 +2037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsBoolean());
     }
 
     /**
@@ -1989,7 +2045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsBigInteger());
     }
 
     /**
@@ -1997,7 +2053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDUrlAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDUrlAsURL());
     }
 
     /**
@@ -2005,7 +2061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsInteger());
     }
 
     /**
@@ -2013,7 +2069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsLong());
     }
 
     /**
@@ -2021,7 +2077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsLocalDateTime());
     }
 
     /**
@@ -2029,7 +2085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsLocalTime());
     }
 
     /**
@@ -2037,7 +2093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsString());
     }
 
     /**
@@ -2045,7 +2101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsBoolean());
     }
 
     /**
@@ -2053,7 +2109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsBigInteger());
     }
 
     /**
@@ -2061,7 +2117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCodecIDDescriptionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCodecIDDescriptionAsURL());
     }
 
     /**
@@ -2069,7 +2125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsInteger());
     }
 
     /**
@@ -2077,7 +2133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsLong());
     }
 
     /**
@@ -2085,7 +2141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsLocalDateTime());
     }
 
     /**
@@ -2093,7 +2149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsLocalTime());
     }
 
     /**
@@ -2101,7 +2157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsString() {
-        assertEquals("YUV", AbstractTest.jMetaDataVideo.getColorSpaceAsString());
+        assertEquals("YUV", JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsString());
     }
 
     /**
@@ -2109,7 +2165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsBoolean());
     }
 
     /**
@@ -2117,7 +2173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsBigInteger());
     }
 
     /**
@@ -2125,7 +2181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetColorSpaceAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getColorSpaceAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getColorSpaceAsURL());
     }
 
     /**
@@ -2133,7 +2189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsInteger());
     }
 
     /**
@@ -2141,7 +2197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsLong());
     }
 
     /**
@@ -2149,7 +2205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsLocalDateTime());
     }
 
     /**
@@ -2157,7 +2213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsLocalTime());
     }
 
     /**
@@ -2165,7 +2221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsString());
     }
 
     /**
@@ -2173,7 +2229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsBoolean() {
-        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsBoolean());
+        assertEquals(Boolean.TRUE, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsBoolean());
     }
 
     /**
@@ -2181,7 +2237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsBigInteger());
     }
 
     /**
@@ -2189,7 +2245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentAsURL());
     }
 
     /**
@@ -2197,7 +2253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsInteger());
     }
 
     /**
@@ -2205,7 +2261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsLong());
     }
 
     /**
@@ -2213,7 +2269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsLocalDateTime());
     }
 
     /**
@@ -2221,7 +2277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsLocalTime());
     }
 
     /**
@@ -2229,7 +2285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsString());
     }
 
     /**
@@ -2237,7 +2293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsBoolean());
     }
 
     /**
@@ -2245,7 +2301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsBigInteger());
     }
 
     /**
@@ -2253,7 +2309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourdescriptionpresentOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourdescriptionpresentOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourdescriptionpresentOriginalAsURL());
     }
 
     /**
@@ -2261,7 +2317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsInteger());
     }
 
     /**
@@ -2269,7 +2325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsLong());
     }
 
     /**
@@ -2277,7 +2333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsLocalDateTime());
     }
 
     /**
@@ -2285,7 +2341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsLocalTime());
     }
 
     /**
@@ -2293,7 +2349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsString());
     }
 
     /**
@@ -2301,7 +2357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsBoolean());
     }
 
     /**
@@ -2309,7 +2365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsBigInteger() {
-        assertEquals(BigInteger.valueOf(709), AbstractTest.jMetaDataVideo.getcolourprimariesAsBigInteger());
+        assertEquals(BigInteger.valueOf(709), JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsBigInteger());
     }
 
     /**
@@ -2317,7 +2373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesAsURL());
     }
 
     /**
@@ -2325,7 +2381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsInteger());
     }
 
     /**
@@ -2333,7 +2389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsLong());
     }
 
     /**
@@ -2341,7 +2397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsLocalDateTime());
     }
 
     /**
@@ -2349,7 +2405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsLocalTime());
     }
 
     /**
@@ -2357,7 +2413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsString());
     }
 
     /**
@@ -2365,7 +2421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsBoolean());
     }
 
     /**
@@ -2373,7 +2429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsBigInteger());
     }
 
     /**
@@ -2381,7 +2437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourprimariesOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourprimariesOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourprimariesOriginalAsURL());
     }
 
     /**
@@ -2389,7 +2445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsInteger());
     }
 
     /**
@@ -2397,7 +2453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsLong());
     }
 
     /**
@@ -2405,7 +2461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsLocalDateTime());
     }
 
     /**
@@ -2413,7 +2469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsLocalTime());
     }
 
     /**
@@ -2421,7 +2477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsString() {
-        assertEquals("Limited", AbstractTest.jMetaDataVideo.getcolourrangeAsString());
+        assertEquals("Limited", JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsString());
     }
 
     /**
@@ -2429,7 +2485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsBoolean());
     }
 
     /**
@@ -2437,7 +2493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsBigInteger());
     }
 
     /**
@@ -2445,7 +2501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetcolourrangeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getcolourrangeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsURL());
     }
 
     /**
@@ -2453,7 +2509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsInteger());
     }
 
     /**
@@ -2461,7 +2517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsLong());
     }
 
     /**
@@ -2469,7 +2525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsLocalDateTime());
     }
 
     /**
@@ -2477,7 +2533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsLocalTime());
     }
 
     /**
@@ -2485,7 +2541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getCompressionModeAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsString());
     }
 
     /**
@@ -2493,7 +2549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsBoolean());
     }
 
     /**
@@ -2501,7 +2557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsBigInteger());
     }
 
     /**
@@ -2509,7 +2565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeAsURL());
     }
 
     /**
@@ -2517,7 +2573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsInteger());
     }
 
     /**
@@ -2525,7 +2581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsLong());
     }
 
     /**
@@ -2533,7 +2589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsLocalDateTime());
     }
 
     /**
@@ -2541,7 +2597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsLocalTime());
     }
 
     /**
@@ -2549,7 +2605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsString());
     }
 
     /**
@@ -2557,7 +2613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsBoolean());
     }
 
     /**
@@ -2565,7 +2621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsBigInteger());
     }
 
     /**
@@ -2573,7 +2629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionModeStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionModeStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionModeStringAsURL());
     }
 
     /**
@@ -2581,7 +2637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsInteger());
     }
 
     /**
@@ -2589,7 +2645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsLong());
     }
 
     /**
@@ -2597,7 +2653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsLocalDateTime());
     }
 
     /**
@@ -2605,7 +2661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsLocalTime());
     }
 
     /**
@@ -2613,7 +2669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsString());
     }
 
     /**
@@ -2621,7 +2677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsBoolean());
     }
 
     /**
@@ -2629,7 +2685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsBigInteger());
     }
 
     /**
@@ -2637,7 +2693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCompressionRatioAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCompressionRatioAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCompressionRatioAsURL());
     }
 
     /**
@@ -2645,7 +2701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsInteger());
     }
 
     /**
@@ -2653,7 +2709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsLong());
     }
 
     /**
@@ -2661,7 +2717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsLocalDateTime());
     }
 
     /**
@@ -2669,7 +2725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsLocalTime());
     }
 
     /**
@@ -2677,7 +2733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsString());
     }
 
     /**
@@ -2685,7 +2741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsBoolean());
     }
 
     /**
@@ -2693,7 +2749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsBigInteger());
     }
 
     /**
@@ -2701,7 +2757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getCountAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsURL());
     }
 
     /**
@@ -2709,7 +2765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsInteger());
     }
 
     /**
@@ -2717,7 +2773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsLong());
     }
 
     /**
@@ -2725,7 +2781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsLocalDateTime());
     }
 
     /**
@@ -2733,7 +2789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsLocalTime());
     }
 
     /**
@@ -2741,7 +2797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsString());
     }
 
     /**
@@ -2749,7 +2805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsBoolean() {
-        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataVideo.getDefaultAsBoolean());
+        assertEquals(Boolean.TRUE, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsBoolean());
     }
 
     /**
@@ -2757,7 +2813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsBigInteger());
     }
 
     /**
@@ -2765,7 +2821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultAsURL());
     }
 
     /**
@@ -2773,7 +2829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsInteger());
     }
 
     /**
@@ -2781,7 +2837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsLong());
     }
 
     /**
@@ -2789,7 +2845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsLocalDateTime());
     }
 
     /**
@@ -2797,7 +2853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsLocalTime());
     }
 
     /**
@@ -2805,7 +2861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsString());
     }
 
     /**
@@ -2813,7 +2869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsBoolean());
     }
 
     /**
@@ -2821,7 +2877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsBigInteger());
     }
 
     /**
@@ -2829,7 +2885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDefaultStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDefaultStringAsURL());
     }
 
     /**
@@ -2837,7 +2893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsInteger());
     }
 
     /**
@@ -2845,7 +2901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsLong() {
-        assertEquals(Long.valueOf(0), AbstractTest.jMetaDataVideo.getDelayAsLong());
+        assertEquals(Long.valueOf(0), JMetaDataVideo_Test.jMetaDataVideo.getDelayAsLong());
     }
 
     /**
@@ -2853,7 +2909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsLocalDateTime());
     }
 
     /**
@@ -2861,7 +2917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsLocalTime());
     }
 
     /**
@@ -2869,7 +2925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsString());
     }
 
     /**
@@ -2877,7 +2933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsBoolean());
     }
 
     /**
@@ -2885,7 +2941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsBigInteger());
     }
 
     /**
@@ -2893,7 +2949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayAsURL());
     }
 
     /**
@@ -2901,7 +2957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsInteger());
     }
 
     /**
@@ -2909,7 +2965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsLong());
     }
 
     /**
@@ -2917,7 +2973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsLocalDateTime());
     }
 
     /**
@@ -2925,7 +2981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsLocalTime());
     }
 
     /**
@@ -2933,7 +2989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsString());
     }
 
     /**
@@ -2941,7 +2997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsBoolean());
     }
 
     /**
@@ -2949,7 +3005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsBigInteger());
     }
 
     /**
@@ -2957,7 +3013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayStringAsURL());
     }
 
     /**
@@ -2965,7 +3021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsInteger());
     }
 
     /**
@@ -2973,7 +3029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsLong());
     }
 
     /**
@@ -2981,7 +3037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsLocalDateTime());
     }
 
     /**
@@ -2989,7 +3045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsLocalTime());
     }
 
     /**
@@ -2997,7 +3053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsString());
     }
 
     /**
@@ -3005,7 +3061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsBoolean());
     }
 
     /**
@@ -3013,7 +3069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsBigInteger());
     }
 
     /**
@@ -3021,7 +3077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString1AsURL());
     }
 
     /**
@@ -3029,7 +3085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsInteger());
     }
 
     /**
@@ -3037,7 +3093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsLong());
     }
 
     /**
@@ -3045,7 +3101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsLocalDateTime());
     }
 
     /**
@@ -3053,7 +3109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsLocalTime());
     }
 
     /**
@@ -3061,7 +3117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayString2AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsString());
     }
 
     /**
@@ -3069,7 +3125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsBoolean());
     }
 
     /**
@@ -3077,7 +3133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsBigInteger());
     }
 
     /**
@@ -3085,7 +3141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString2AsURL());
     }
 
     /**
@@ -3093,7 +3149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsInteger() {
-        assertEquals(Integer.valueOf(0), AbstractTest.jMetaDataVideo.getDelayString3AsInteger());
+        assertEquals(Integer.valueOf(0), JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsInteger());
     }
 
     /**
@@ -3101,7 +3157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsLong());
     }
 
     /**
@@ -3109,7 +3165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsLocalDateTime());
     }
 
     /**
@@ -3117,7 +3173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsLocalTime() {
-        assertEquals(LocalTime.of(0, 0), AbstractTest.jMetaDataVideo.getDelayString3AsLocalTime());
+        assertEquals(LocalTime.of(0, 0), JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsLocalTime());
     }
 
     /**
@@ -3125,7 +3181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsString());
     }
 
     /**
@@ -3133,7 +3189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsBoolean());
     }
 
     /**
@@ -3141,7 +3197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsBigInteger());
     }
 
     /**
@@ -3149,7 +3205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString3AsURL());
     }
 
     /**
@@ -3157,7 +3213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsInteger());
     }
 
     /**
@@ -3165,7 +3221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsLong());
     }
 
     /**
@@ -3173,7 +3229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsLocalDateTime());
     }
 
     /**
@@ -3181,7 +3237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsLocalTime());
     }
 
     /**
@@ -3189,7 +3245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsString());
     }
 
     /**
@@ -3197,7 +3253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsBoolean());
     }
 
     /**
@@ -3205,7 +3261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsBigInteger());
     }
 
     /**
@@ -3213,7 +3269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString4AsURL());
     }
 
     /**
@@ -3221,7 +3277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsInteger());
     }
 
     /**
@@ -3229,7 +3285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsLong());
     }
 
     /**
@@ -3237,7 +3293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsLocalDateTime());
     }
 
     /**
@@ -3245,7 +3301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsLocalTime());
     }
 
     /**
@@ -3253,7 +3309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayString5AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsString());
     }
 
     /**
@@ -3261,7 +3317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsBoolean());
     }
 
     /**
@@ -3269,7 +3325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsBigInteger());
     }
 
     /**
@@ -3277,7 +3333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayString5AsURL());
     }
 
     /**
@@ -3285,7 +3341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsInteger());
     }
 
     /**
@@ -3293,7 +3349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsLong());
     }
 
     /**
@@ -3301,7 +3357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsLocalDateTime());
     }
 
     /**
@@ -3309,7 +3365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsLocalTime());
     }
 
     /**
@@ -3317,7 +3373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsString());
     }
 
     /**
@@ -3325,7 +3381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsBoolean());
     }
 
     /**
@@ -3333,7 +3389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsBigInteger());
     }
 
     /**
@@ -3341,7 +3397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayDropFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayDropFrameAsURL());
     }
 
     /**
@@ -3349,7 +3405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsInteger());
     }
 
     /**
@@ -3357,7 +3413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsLong());
     }
 
     /**
@@ -3365,7 +3421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsLocalDateTime());
     }
 
     /**
@@ -3373,7 +3429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsLocalTime());
     }
 
     /**
@@ -3381,7 +3437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayOriginalAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsString());
     }
 
     /**
@@ -3389,7 +3445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsBoolean());
     }
 
     /**
@@ -3397,7 +3453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsBigInteger());
     }
 
     /**
@@ -3405,7 +3461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalAsURL());
     }
 
     /**
@@ -3413,7 +3469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsInteger());
     }
 
     /**
@@ -3421,7 +3477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsLong());
     }
 
     /**
@@ -3429,7 +3485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -3437,7 +3493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsLocalTime());
     }
 
     /**
@@ -3445,7 +3501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayOriginalStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsString());
     }
 
     /**
@@ -3453,7 +3509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsBoolean());
     }
 
     /**
@@ -3461,7 +3517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsBigInteger());
     }
 
     /**
@@ -3469,7 +3525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalStringAsURL());
     }
 
     /**
@@ -3477,7 +3533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsInteger());
     }
 
     /**
@@ -3485,7 +3541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsLong());
     }
 
     /**
@@ -3493,7 +3549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsLocalDateTime());
     }
 
     /**
@@ -3501,7 +3557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsLocalTime());
     }
 
     /**
@@ -3509,7 +3565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsString());
     }
 
     /**
@@ -3517,7 +3573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsBoolean());
     }
 
     /**
@@ -3525,7 +3581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsBigInteger());
     }
 
     /**
@@ -3533,7 +3589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString1AsURL());
     }
 
     /**
@@ -3541,7 +3597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsInteger());
     }
 
     /**
@@ -3549,7 +3605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsLong());
     }
 
     /**
@@ -3557,7 +3613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsLocalDateTime());
     }
 
     /**
@@ -3565,7 +3621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsLocalTime());
     }
 
     /**
@@ -3573,7 +3629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayOriginalString2AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsString());
     }
 
     /**
@@ -3581,7 +3637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsBoolean());
     }
 
     /**
@@ -3589,7 +3645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsBigInteger());
     }
 
     /**
@@ -3597,7 +3653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString2AsURL());
     }
 
     /**
@@ -3605,7 +3661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsInteger());
     }
 
     /**
@@ -3613,7 +3669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsLong());
     }
 
     /**
@@ -3621,7 +3677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsLocalDateTime());
     }
 
     /**
@@ -3629,7 +3685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsLocalTime());
     }
 
     /**
@@ -3637,7 +3693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsString());
     }
 
     /**
@@ -3645,7 +3701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsBoolean());
     }
 
     /**
@@ -3653,7 +3709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsBigInteger());
     }
 
     /**
@@ -3661,7 +3717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString3AsURL());
     }
 
     /**
@@ -3669,7 +3725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsInteger());
     }
 
     /**
@@ -3677,7 +3733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsLong());
     }
 
     /**
@@ -3685,7 +3741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsLocalDateTime());
     }
 
     /**
@@ -3693,7 +3749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsLocalTime());
     }
 
     /**
@@ -3701,7 +3757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayOriginalString4AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsString());
     }
 
     /**
@@ -3709,7 +3765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsBoolean());
     }
 
     /**
@@ -3717,7 +3773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsBigInteger());
     }
 
     /**
@@ -3725,7 +3781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString4AsURL());
     }
 
     /**
@@ -3733,7 +3789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsInteger());
     }
 
     /**
@@ -3741,7 +3797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsLong());
     }
 
     /**
@@ -3749,7 +3805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsLocalDateTime());
     }
 
     /**
@@ -3757,7 +3813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsLocalTime());
     }
 
     /**
@@ -3765,7 +3821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsString());
     }
 
     /**
@@ -3773,7 +3829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsBoolean());
     }
 
     /**
@@ -3781,7 +3837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsBigInteger());
     }
 
     /**
@@ -3789,7 +3845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalString5AsURL());
     }
 
     /**
@@ -3797,7 +3853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsInteger());
     }
 
     /**
@@ -3805,7 +3861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsLong());
     }
 
     /**
@@ -3813,7 +3869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsLocalDateTime());
     }
 
     /**
@@ -3821,7 +3877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsLocalTime());
     }
 
     /**
@@ -3829,7 +3885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsString());
     }
 
     /**
@@ -3837,7 +3893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsBoolean());
     }
 
     /**
@@ -3845,7 +3901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsBigInteger());
     }
 
     /**
@@ -3853,7 +3909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalDropFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalDropFrameAsURL());
     }
 
     /**
@@ -3861,7 +3917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsInteger());
     }
 
     /**
@@ -3869,7 +3925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsLong());
     }
 
     /**
@@ -3877,7 +3933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsLocalDateTime());
     }
 
     /**
@@ -3885,7 +3941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsLocalTime());
     }
 
     /**
@@ -3893,7 +3949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsString());
     }
 
     /**
@@ -3901,7 +3957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsBoolean());
     }
 
     /**
@@ -3909,7 +3965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsBigInteger());
     }
 
     /**
@@ -3917,7 +3973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSettingsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSettingsAsURL());
     }
 
     /**
@@ -3925,7 +3981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsInteger());
     }
 
     /**
@@ -3933,7 +3989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsLong());
     }
 
     /**
@@ -3941,7 +3997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsLocalDateTime());
     }
 
     /**
@@ -3949,7 +4005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsLocalTime());
     }
 
     /**
@@ -3957,7 +4013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsString());
     }
 
     /**
@@ -3965,7 +4021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsBoolean());
     }
 
     /**
@@ -3973,7 +4029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsBigInteger());
     }
 
     /**
@@ -3981,7 +4037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelayOriginalSourceAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelayOriginalSourceAsURL());
     }
 
     /**
@@ -3989,7 +4045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsInteger());
     }
 
     /**
@@ -3997,7 +4053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsLong());
     }
 
     /**
@@ -4005,7 +4061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsLocalDateTime());
     }
 
     /**
@@ -4013,7 +4069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsLocalTime());
     }
 
     /**
@@ -4021,7 +4077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsString());
     }
 
     /**
@@ -4029,7 +4085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsBoolean());
     }
 
     /**
@@ -4037,7 +4093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsBigInteger());
     }
 
     /**
@@ -4045,7 +4101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySettingsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySettingsAsURL());
     }
 
     /**
@@ -4053,7 +4109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsInteger());
     }
 
     /**
@@ -4061,7 +4117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsLong());
     }
 
     /**
@@ -4069,7 +4125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsLocalDateTime());
     }
 
     /**
@@ -4077,7 +4133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsLocalTime());
     }
 
     /**
@@ -4085,7 +4141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsString());
     }
 
     /**
@@ -4093,7 +4149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsBoolean());
     }
 
     /**
@@ -4101,7 +4157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsBigInteger());
     }
 
     /**
@@ -4109,7 +4165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceAsURL());
     }
 
     /**
@@ -4117,7 +4173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsInteger());
     }
 
     /**
@@ -4125,7 +4181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsLong());
     }
 
     /**
@@ -4133,7 +4189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsLocalDateTime());
     }
 
     /**
@@ -4141,7 +4197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsLocalTime());
     }
 
     /**
@@ -4149,7 +4205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsString());
     }
 
     /**
@@ -4157,7 +4213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsBoolean());
     }
 
     /**
@@ -4165,7 +4221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsBigInteger());
     }
 
     /**
@@ -4173,7 +4229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDelaySourceStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDelaySourceStringAsURL());
     }
 
     /**
@@ -4181,7 +4237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsInteger());
     }
 
     /**
@@ -4189,7 +4245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsLong());
     }
 
     /**
@@ -4197,7 +4253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsLocalDateTime());
     }
 
     /**
@@ -4205,7 +4261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsLocalTime());
     }
 
     /**
@@ -4213,7 +4269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDisabledAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsString());
     }
 
     /**
@@ -4221,7 +4277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsBoolean());
     }
 
     /**
@@ -4229,7 +4285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsBigInteger());
     }
 
     /**
@@ -4237,7 +4293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledAsURL());
     }
 
     /**
@@ -4245,7 +4301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsInteger());
     }
 
     /**
@@ -4253,7 +4309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsLong());
     }
 
     /**
@@ -4261,7 +4317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsLocalDateTime());
     }
 
     /**
@@ -4269,7 +4325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsLocalTime());
     }
 
     /**
@@ -4277,7 +4333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDisabledStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsString());
     }
 
     /**
@@ -4285,7 +4341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsBoolean());
     }
 
     /**
@@ -4293,7 +4349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsBigInteger());
     }
 
     /**
@@ -4301,7 +4357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisabledStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisabledStringAsURL());
     }
 
     /**
@@ -4309,7 +4365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsInteger() {
-        assertEquals(Integer.valueOf(2202), AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsInteger());
+        assertEquals(Integer.valueOf(2202), JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsInteger());
     }
 
     /**
@@ -4317,7 +4373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsLong());
     }
 
     /**
@@ -4325,7 +4381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsLocalDateTime());
     }
 
     /**
@@ -4333,7 +4389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsLocalTime());
     }
 
     /**
@@ -4341,7 +4397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsString());
     }
 
     /**
@@ -4349,7 +4405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsBoolean());
     }
 
     /**
@@ -4357,7 +4413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsBigInteger());
     }
 
     /**
@@ -4365,7 +4421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioAsURL());
     }
 
     /**
@@ -4373,7 +4429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsInteger() {
-        assertEquals(Integer.valueOf(221), AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsInteger());
+        assertEquals(Integer.valueOf(221), JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsInteger());
     }
 
     /**
@@ -4381,7 +4437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsLong());
     }
 
     /**
@@ -4389,7 +4445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsLocalDateTime());
     }
 
     /**
@@ -4397,7 +4453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsLocalTime());
     }
 
     /**
@@ -4405,7 +4461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsString() {
-        assertEquals("2.2:1", AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsString());
+        assertEquals("2.2:1", JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsString());
     }
 
     /**
@@ -4413,7 +4469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsBoolean());
     }
 
     /**
@@ -4421,7 +4477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsBigInteger());
     }
 
     /**
@@ -4429,7 +4485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioStringAsURL());
     }
 
     /**
@@ -4437,7 +4493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsInteger());
     }
 
     /**
@@ -4445,7 +4501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsLong());
     }
 
     /**
@@ -4453,7 +4509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsLocalDateTime());
     }
 
     /**
@@ -4461,7 +4517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsLocalTime());
     }
 
     /**
@@ -4469,7 +4525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsString());
     }
 
     /**
@@ -4477,7 +4533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsBoolean());
     }
 
     /**
@@ -4485,7 +4541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsBigInteger());
     }
 
     /**
@@ -4493,7 +4549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureAsURL());
     }
 
     /**
@@ -4501,7 +4557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsInteger());
     }
 
     /**
@@ -4509,7 +4565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsLong());
     }
 
     /**
@@ -4517,7 +4573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsLocalDateTime());
     }
 
     /**
@@ -4525,7 +4581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsLocalTime());
     }
 
     /**
@@ -4533,7 +4589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsString());
     }
 
     /**
@@ -4541,7 +4597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsBoolean());
     }
 
     /**
@@ -4549,7 +4605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsBigInteger());
     }
 
     /**
@@ -4557,7 +4613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioCleanApertureStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioCleanApertureStringAsURL());
     }
 
     /**
@@ -4565,7 +4621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsInteger());
     }
 
     /**
@@ -4573,7 +4629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsLong());
     }
 
     /**
@@ -4581,7 +4637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsLocalDateTime());
     }
 
     /**
@@ -4589,7 +4645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsLocalTime());
     }
 
     /**
@@ -4597,7 +4653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsString());
     }
 
     /**
@@ -4605,7 +4661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsBoolean());
     }
 
     /**
@@ -4613,7 +4669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsBigInteger());
     }
 
     /**
@@ -4621,7 +4677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalAsURL());
     }
 
     /**
@@ -4629,7 +4685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsInteger());
     }
 
     /**
@@ -4637,7 +4693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsLong());
     }
 
     /**
@@ -4645,7 +4701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -4653,7 +4709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsLocalTime());
     }
 
     /**
@@ -4661,7 +4717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsString());
     }
 
     /**
@@ -4669,7 +4725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsBoolean());
     }
 
     /**
@@ -4677,7 +4733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsBigInteger());
     }
 
     /**
@@ -4685,7 +4741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisplayAspectRatioOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDisplayAspectRatioOriginalStringAsURL());
     }
 
     /**
@@ -4693,7 +4749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationAsInteger());
     }
 
     /**
@@ -4701,7 +4757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsLong() {
-        assertEquals(Long.valueOf(898167), AbstractTest.jMetaDataVideo.getDurationAsLong());
+        assertEquals(Long.valueOf(898167), JMetaDataVideo_Test.jMetaDataVideo.getDurationAsLong());
     }
 
     /**
@@ -4709,7 +4765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationAsLocalDateTime());
     }
 
     /**
@@ -4717,7 +4773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationAsLocalTime());
     }
 
     /**
@@ -4725,7 +4781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationAsString());
     }
 
     /**
@@ -4733,7 +4789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationAsBoolean());
     }
 
     /**
@@ -4741,7 +4797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsBigInteger() {
-        assertEquals(BigInteger.valueOf(898167), AbstractTest.jMetaDataVideo.getDurationAsBigInteger());
+        assertEquals(BigInteger.valueOf(898167), JMetaDataVideo_Test.jMetaDataVideo.getDurationAsBigInteger());
     }
 
     /**
@@ -4749,7 +4805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationAsURL());
     }
 
     /**
@@ -4757,7 +4813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsInteger());
     }
 
     /**
@@ -4765,7 +4821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsLong());
     }
 
     /**
@@ -4773,7 +4829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsLocalDateTime());
     }
 
     /**
@@ -4781,7 +4837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsLocalTime());
     }
 
     /**
@@ -4789,7 +4845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsString());
     }
 
     /**
@@ -4797,7 +4853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsBoolean());
     }
 
     /**
@@ -4805,7 +4861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsBigInteger());
     }
 
     /**
@@ -4813,7 +4869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationStringAsURL());
     }
 
     /**
@@ -4821,7 +4877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsInteger());
     }
 
     /**
@@ -4829,7 +4885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsLong());
     }
 
     /**
@@ -4837,7 +4893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsLocalDateTime());
     }
 
     /**
@@ -4845,7 +4901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsLocalTime());
     }
 
     /**
@@ -4853,7 +4909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsString());
     }
 
     /**
@@ -4861,7 +4917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsBoolean());
     }
 
     /**
@@ -4869,7 +4925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsBigInteger());
     }
 
     /**
@@ -4877,7 +4933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString1AsURL());
     }
 
     /**
@@ -4885,7 +4941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsInteger() {
-        assertEquals(Integer.valueOf(1458), AbstractTest.jMetaDataVideo.getDurationString2AsInteger());
+        assertEquals(Integer.valueOf(1458), JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsInteger());
     }
 
     /**
@@ -4893,7 +4949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsLong());
     }
 
     /**
@@ -4901,7 +4957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsLocalDateTime());
     }
 
     /**
@@ -4909,7 +4965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsLocalTime());
     }
 
     /**
@@ -4917,7 +4973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("14 min 58 s", AbstractTest.jMetaDataVideo.getDurationString2AsString());
+        assertEquals("14 min 58 s", JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsString());
     }
 
     /**
@@ -4925,7 +4981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsBoolean());
     }
 
     /**
@@ -4933,7 +4989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsBigInteger());
     }
 
     /**
@@ -4941,7 +4997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsURL());
     }
 
     /**
@@ -4949,7 +5005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsInteger() {
-        assertEquals(Integer.valueOf(1458167), AbstractTest.jMetaDataVideo.getDurationString3AsInteger());
+        assertEquals(Integer.valueOf(1458167), JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsInteger());
     }
 
     /**
@@ -4957,7 +5013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsLong() {
-        assertEquals(Long.valueOf(1458167), AbstractTest.jMetaDataVideo.getDurationString3AsLong());
+        assertEquals(Long.valueOf(1458167), JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsLong());
     }
 
     /**
@@ -4965,7 +5021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsLocalDateTime());
     }
 
     /**
@@ -4973,7 +5029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsLocalTime());
     }
 
     /**
@@ -4981,7 +5037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsString());
     }
 
     /**
@@ -4989,7 +5045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsBoolean());
     }
 
     /**
@@ -4997,7 +5053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsBigInteger());
     }
 
     /**
@@ -5005,7 +5061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString3AsURL());
     }
 
     /**
@@ -5013,7 +5069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsInteger() {
-        assertEquals(Integer.valueOf(145804), AbstractTest.jMetaDataVideo.getDurationString4AsInteger());
+        assertEquals(Integer.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsInteger());
     }
 
     /**
@@ -5021,7 +5077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsLong() {
-        assertEquals(Long.valueOf(145804), AbstractTest.jMetaDataVideo.getDurationString4AsLong());
+        assertEquals(Long.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsLong());
     }
 
     /**
@@ -5029,7 +5085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsLocalDateTime());
     }
 
     /**
@@ -5037,7 +5093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsLocalTime());
     }
 
     /**
@@ -5045,7 +5101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsString() {
-        assertEquals("00:14:58.04", AbstractTest.jMetaDataVideo.getDurationString4AsString());
+        assertEquals("00:14:58.04", JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsString());
     }
 
     /**
@@ -5053,7 +5109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsBoolean());
     }
 
     /**
@@ -5061,7 +5117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsBigInteger());
     }
 
     /**
@@ -5069,7 +5125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsURL());
     }
 
     /**
@@ -5077,7 +5133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsInteger());
     }
 
     /**
@@ -5085,7 +5141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsLong());
     }
 
     /**
@@ -5093,7 +5149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsLocalDateTime());
     }
 
     /**
@@ -5101,7 +5157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsLocalTime());
     }
 
     /**
@@ -5109,7 +5165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsString());
     }
 
     /**
@@ -5117,7 +5173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsBoolean());
     }
 
     /**
@@ -5125,7 +5181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsBigInteger());
     }
 
     /**
@@ -5133,7 +5189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsURL());
     }
 
     /**
@@ -5141,7 +5197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsInteger());
     }
 
     /**
@@ -5149,7 +5205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsLong());
     }
 
     /**
@@ -5157,7 +5213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -5165,7 +5221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsLocalTime());
     }
 
     /**
@@ -5173,7 +5229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDurationFirstFrameAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsString());
     }
 
     /**
@@ -5181,7 +5237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsBoolean());
     }
 
     /**
@@ -5189,7 +5245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsBigInteger());
     }
 
     /**
@@ -5197,7 +5253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameAsURL());
     }
 
     /**
@@ -5205,7 +5261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsInteger());
     }
 
     /**
@@ -5213,7 +5269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsLong());
     }
 
     /**
@@ -5221,7 +5277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -5229,7 +5285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -5237,7 +5293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsString());
     }
 
     /**
@@ -5245,7 +5301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsBoolean());
     }
 
     /**
@@ -5253,7 +5309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -5261,7 +5317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameStringAsURL());
     }
 
     /**
@@ -5269,7 +5325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsInteger());
     }
 
     /**
@@ -5277,7 +5333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsLong());
     }
 
     /**
@@ -5285,7 +5341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -5293,7 +5349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -5301,7 +5357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsString());
     }
 
     /**
@@ -5309,7 +5365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsBoolean());
     }
 
     /**
@@ -5317,7 +5373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -5325,7 +5381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString1AsURL());
     }
 
     /**
@@ -5333,7 +5389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsInteger());
     }
 
     /**
@@ -5341,7 +5397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsLong());
     }
 
     /**
@@ -5349,7 +5405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -5357,7 +5413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -5365,7 +5421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsString());
     }
 
     /**
@@ -5373,7 +5429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsBoolean());
     }
 
     /**
@@ -5381,7 +5437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -5389,7 +5445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString2AsURL());
     }
 
     /**
@@ -5397,7 +5453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsInteger());
     }
 
     /**
@@ -5405,7 +5461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsLong());
     }
 
     /**
@@ -5413,7 +5469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -5421,7 +5477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -5429,7 +5485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsString());
     }
 
     /**
@@ -5437,7 +5493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsBoolean());
     }
 
     /**
@@ -5445,7 +5501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -5453,7 +5509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString3AsURL());
     }
 
     /**
@@ -5461,7 +5517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsInteger());
     }
 
     /**
@@ -5469,7 +5525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsLong());
     }
 
     /**
@@ -5477,7 +5533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -5485,7 +5541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -5493,7 +5549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsString());
     }
 
     /**
@@ -5501,7 +5557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsBoolean());
     }
 
     /**
@@ -5509,7 +5565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -5517,7 +5573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString4AsURL());
     }
 
     /**
@@ -5525,7 +5581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsInteger());
     }
 
     /**
@@ -5533,7 +5589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsLong());
     }
 
     /**
@@ -5541,7 +5597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -5549,7 +5605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -5557,7 +5613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsString());
     }
 
     /**
@@ -5565,7 +5621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsBoolean());
     }
 
     /**
@@ -5573,7 +5629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -5581,7 +5637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationFirstFrameString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationFirstFrameString5AsURL());
     }
 
     /**
@@ -5589,7 +5645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsInteger());
     }
 
     /**
@@ -5597,7 +5653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsLong());
     }
 
     /**
@@ -5605,7 +5661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsLocalDateTime());
     }
 
     /**
@@ -5613,7 +5669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsLocalTime());
     }
 
     /**
@@ -5621,7 +5677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsString());
     }
 
     /**
@@ -5629,7 +5685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsBoolean());
     }
 
     /**
@@ -5637,7 +5693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsBigInteger());
     }
 
     /**
@@ -5645,7 +5701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameAsURL());
     }
 
     /**
@@ -5653,7 +5709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsInteger());
     }
 
     /**
@@ -5661,7 +5717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsLong());
     }
 
     /**
@@ -5669,7 +5725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsLocalDateTime());
     }
 
     /**
@@ -5677,7 +5733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsLocalTime());
     }
 
     /**
@@ -5685,7 +5741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsString());
     }
 
     /**
@@ -5693,7 +5749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsBoolean());
     }
 
     /**
@@ -5701,7 +5757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsBigInteger());
     }
 
     /**
@@ -5709,7 +5765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameStringAsURL());
     }
 
     /**
@@ -5717,7 +5773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsInteger());
     }
 
     /**
@@ -5725,7 +5781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsLong());
     }
 
     /**
@@ -5733,7 +5789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsLocalDateTime());
     }
 
     /**
@@ -5741,7 +5797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsLocalTime());
     }
 
     /**
@@ -5749,7 +5805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsString());
     }
 
     /**
@@ -5757,7 +5813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsBoolean());
     }
 
     /**
@@ -5765,7 +5821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsBigInteger());
     }
 
     /**
@@ -5773,7 +5829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString1AsURL());
     }
 
     /**
@@ -5781,7 +5837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsInteger());
     }
 
     /**
@@ -5789,7 +5845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsLong());
     }
 
     /**
@@ -5797,7 +5853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsLocalDateTime());
     }
 
     /**
@@ -5805,7 +5861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsLocalTime());
     }
 
     /**
@@ -5813,7 +5869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsString());
     }
 
     /**
@@ -5821,7 +5877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsBoolean());
     }
 
     /**
@@ -5829,7 +5885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsBigInteger());
     }
 
     /**
@@ -5837,7 +5893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString2AsURL());
     }
 
     /**
@@ -5845,7 +5901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsInteger());
     }
 
     /**
@@ -5853,7 +5909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsLong());
     }
 
     /**
@@ -5861,7 +5917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsLocalDateTime());
     }
 
     /**
@@ -5869,7 +5925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsLocalTime());
     }
 
     /**
@@ -5877,7 +5933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsString());
     }
 
     /**
@@ -5885,7 +5941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsBoolean());
     }
 
     /**
@@ -5893,7 +5949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsBigInteger());
     }
 
     /**
@@ -5901,7 +5957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString3AsURL());
     }
 
     /**
@@ -5909,7 +5965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsInteger());
     }
 
     /**
@@ -5917,7 +5973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsLong());
     }
 
     /**
@@ -5925,7 +5981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsLocalDateTime());
     }
 
     /**
@@ -5933,7 +5989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsLocalTime());
     }
 
     /**
@@ -5941,7 +5997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsString());
     }
 
     /**
@@ -5949,7 +6005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsBoolean());
     }
 
     /**
@@ -5957,7 +6013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsBigInteger());
     }
 
     /**
@@ -5965,7 +6021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString4AsURL());
     }
 
     /**
@@ -5973,7 +6029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsInteger());
     }
 
     /**
@@ -5981,7 +6037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsLong());
     }
 
     /**
@@ -5989,7 +6045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsLocalDateTime());
     }
 
     /**
@@ -5997,7 +6053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsLocalTime());
     }
 
     /**
@@ -6005,7 +6061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsString());
     }
 
     /**
@@ -6013,7 +6069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsBoolean());
     }
 
     /**
@@ -6021,7 +6077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsBigInteger());
     }
 
     /**
@@ -6029,7 +6085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getDurationLastFrameString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationLastFrameString5AsURL());
     }
 
     /**
@@ -6037,7 +6093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsInteger());
     }
 
     /**
@@ -6045,7 +6101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsLong());
     }
 
     /**
@@ -6053,7 +6109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsLocalDateTime());
     }
 
     /**
@@ -6061,7 +6117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsLocalTime());
     }
 
     /**
@@ -6069,7 +6125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsString());
     }
 
     /**
@@ -6077,7 +6133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsBoolean());
     }
 
     /**
@@ -6085,7 +6141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsBigInteger());
     }
 
     /**
@@ -6093,7 +6149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationAsURL());
     }
 
     /**
@@ -6101,7 +6157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsInteger());
     }
 
     /**
@@ -6109,7 +6165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsLong());
     }
 
     /**
@@ -6117,7 +6173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsLocalDateTime());
     }
 
     /**
@@ -6125,7 +6181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsLocalTime());
     }
 
     /**
@@ -6133,7 +6189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsString());
     }
 
     /**
@@ -6141,7 +6197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsBoolean());
     }
 
     /**
@@ -6149,7 +6205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsBigInteger());
     }
 
     /**
@@ -6157,7 +6213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationStringAsURL());
     }
 
     /**
@@ -6165,7 +6221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsInteger());
     }
 
     /**
@@ -6173,7 +6229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsLong());
     }
 
     /**
@@ -6181,7 +6237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsLocalDateTime());
     }
 
     /**
@@ -6189,7 +6245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsLocalTime());
     }
 
     /**
@@ -6197,7 +6253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsString());
     }
 
     /**
@@ -6205,7 +6261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsBoolean());
     }
 
     /**
@@ -6213,7 +6269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsBigInteger());
     }
 
     /**
@@ -6221,7 +6277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationCompanyNameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationCompanyNameAsURL());
     }
 
     /**
@@ -6229,7 +6285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsInteger());
     }
 
     /**
@@ -6237,7 +6293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsLong());
     }
 
     /**
@@ -6245,7 +6301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsLocalDateTime());
     }
 
     /**
@@ -6253,7 +6309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsLocalTime());
     }
 
     /**
@@ -6261,7 +6317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsString());
     }
 
     /**
@@ -6269,7 +6325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsBoolean());
     }
 
     /**
@@ -6277,7 +6333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsBigInteger());
     }
 
     /**
@@ -6285,7 +6341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationNameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationNameAsURL());
     }
 
     /**
@@ -6293,7 +6349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsInteger());
     }
 
     /**
@@ -6301,7 +6357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsLong());
     }
 
     /**
@@ -6309,7 +6365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsLocalDateTime());
     }
 
     /**
@@ -6317,7 +6373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsLocalTime());
     }
 
     /**
@@ -6325,7 +6381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsString());
     }
 
     /**
@@ -6333,7 +6389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsBoolean());
     }
 
     /**
@@ -6341,7 +6397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsBigInteger());
     }
 
     /**
@@ -6349,7 +6405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationUrlAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationUrlAsURL());
     }
 
     /**
@@ -6357,7 +6413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsInteger());
     }
 
     /**
@@ -6365,7 +6421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsLong());
     }
 
     /**
@@ -6373,7 +6429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsLocalDateTime());
     }
 
     /**
@@ -6381,7 +6437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsLocalTime());
     }
 
     /**
@@ -6389,7 +6445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsString());
     }
 
     /**
@@ -6397,7 +6453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsBoolean());
     }
 
     /**
@@ -6405,7 +6461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsBigInteger());
     }
 
     /**
@@ -6413,7 +6469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedApplicationVersionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedApplicationVersionAsURL());
     }
 
     /**
@@ -6421,7 +6477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsInteger());
     }
 
     /**
@@ -6429,7 +6485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsLong());
     }
 
     /**
@@ -6437,7 +6493,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsLocalDateTime());
     }
 
     /**
@@ -6445,7 +6501,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsLocalTime());
     }
 
     /**
@@ -6453,7 +6509,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsString());
     }
 
     /**
@@ -6461,7 +6517,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsBoolean());
     }
 
     /**
@@ -6469,7 +6525,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsBigInteger());
     }
 
     /**
@@ -6477,7 +6533,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedDateAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedDateAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedDateAsURL());
     }
 
     /**
@@ -6485,7 +6541,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsInteger());
     }
 
     /**
@@ -6493,7 +6549,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsLong());
     }
 
     /**
@@ -6501,7 +6557,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsLocalDateTime());
     }
 
     /**
@@ -6509,7 +6565,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsLocalTime());
     }
 
     /**
@@ -6517,7 +6573,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsString());
     }
 
     /**
@@ -6525,7 +6581,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsBoolean());
     }
 
     /**
@@ -6533,7 +6589,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsBigInteger());
     }
 
     /**
@@ -6541,7 +6597,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryAsURL());
     }
 
     /**
@@ -6549,7 +6605,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsInteger());
     }
 
     /**
@@ -6557,7 +6613,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsLong());
     }
 
     /**
@@ -6565,7 +6621,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsLocalDateTime());
     }
 
     /**
@@ -6573,7 +6629,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsLocalTime());
     }
 
     /**
@@ -6581,7 +6637,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsString());
     }
 
     /**
@@ -6589,7 +6645,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsBoolean());
     }
 
     /**
@@ -6597,7 +6653,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsBigInteger());
     }
 
     /**
@@ -6605,7 +6661,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryStringAsURL());
     }
 
     /**
@@ -6613,7 +6669,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsInteger());
     }
 
     /**
@@ -6621,7 +6677,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsLong());
     }
 
     /**
@@ -6629,7 +6685,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsLocalDateTime());
     }
 
     /**
@@ -6637,7 +6693,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsLocalTime());
     }
 
     /**
@@ -6645,7 +6701,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsString());
     }
 
     /**
@@ -6653,7 +6709,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsBoolean());
     }
 
     /**
@@ -6661,7 +6717,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsBigInteger());
     }
 
     /**
@@ -6669,7 +6725,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryCompanyNameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryCompanyNameAsURL());
     }
 
     /**
@@ -6677,7 +6733,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsInteger());
     }
 
     /**
@@ -6685,7 +6741,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsLong());
     }
 
     /**
@@ -6693,7 +6749,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsLocalDateTime());
     }
 
     /**
@@ -6701,7 +6757,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsLocalTime());
     }
 
     /**
@@ -6709,7 +6765,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsString());
     }
 
     /**
@@ -6717,7 +6773,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsBoolean());
     }
 
     /**
@@ -6725,7 +6781,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsBigInteger());
     }
 
     /**
@@ -6733,7 +6789,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryDateAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryDateAsURL());
     }
 
     /**
@@ -6741,7 +6797,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsInteger());
     }
 
     /**
@@ -6749,7 +6805,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsLong());
     }
 
     /**
@@ -6757,7 +6813,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsLocalDateTime());
     }
 
     /**
@@ -6765,7 +6821,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsLocalTime());
     }
 
     /**
@@ -6773,7 +6829,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsString());
     }
 
     /**
@@ -6781,7 +6837,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsBoolean());
     }
 
     /**
@@ -6789,7 +6845,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsBigInteger());
     }
 
     /**
@@ -6797,7 +6853,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryNameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryNameAsURL());
     }
 
     /**
@@ -6805,7 +6861,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsInteger());
     }
 
     /**
@@ -6813,7 +6869,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsLong());
     }
 
     /**
@@ -6821,7 +6877,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsLocalDateTime());
     }
 
     /**
@@ -6829,7 +6885,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsLocalTime());
     }
 
     /**
@@ -6837,7 +6893,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsString());
     }
 
     /**
@@ -6845,7 +6901,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsBoolean());
     }
 
     /**
@@ -6853,7 +6909,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsBigInteger());
     }
 
     /**
@@ -6861,7 +6917,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibrarySettingsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibrarySettingsAsURL());
     }
 
     /**
@@ -6869,7 +6925,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsInteger());
     }
 
     /**
@@ -6877,7 +6933,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsLong());
     }
 
     /**
@@ -6885,7 +6941,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsLocalDateTime());
     }
 
     /**
@@ -6893,7 +6949,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsLocalTime());
     }
 
     /**
@@ -6901,7 +6957,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsString());
     }
 
     /**
@@ -6909,7 +6965,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsBoolean());
     }
 
     /**
@@ -6917,7 +6973,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsBigInteger());
     }
 
     /**
@@ -6925,7 +6981,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedLibraryVersionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedLibraryVersionAsURL());
     }
 
     /**
@@ -6933,7 +6989,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsInteger());
     }
 
     /**
@@ -6941,7 +6997,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsLong());
     }
 
     /**
@@ -6949,7 +7005,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsLocalDateTime());
     }
 
     /**
@@ -6957,7 +7013,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsLocalTime());
     }
 
     /**
@@ -6965,7 +7021,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsString());
     }
 
     /**
@@ -6973,7 +7029,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsBoolean());
     }
 
     /**
@@ -6981,7 +7037,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsBigInteger());
     }
 
     /**
@@ -6989,7 +7045,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncodedOperatingSystemAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncodedOperatingSystemAsURL());
     }
 
     /**
@@ -6997,7 +7053,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsInteger());
     }
 
     /**
@@ -7005,7 +7061,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsLong());
     }
 
     /**
@@ -7013,7 +7069,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsLocalDateTime());
     }
 
     /**
@@ -7021,7 +7077,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsLocalTime());
     }
 
     /**
@@ -7029,7 +7085,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getEncryptionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsString());
     }
 
     /**
@@ -7037,7 +7093,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsBoolean());
     }
 
     /**
@@ -7045,7 +7101,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsBigInteger());
     }
 
     /**
@@ -7053,7 +7109,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetEncryptionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getEncryptionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getEncryptionAsURL());
     }
 
     /**
@@ -7061,7 +7117,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsInteger());
     }
 
     /**
@@ -7069,7 +7125,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsLong());
     }
 
     /**
@@ -7077,7 +7133,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsLocalDateTime());
     }
 
     /**
@@ -7085,7 +7141,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsLocalTime());
     }
 
     /**
@@ -7093,7 +7149,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsString());
     }
 
     /**
@@ -7101,7 +7157,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsBoolean());
     }
 
     /**
@@ -7109,7 +7165,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsBigInteger());
     }
 
     /**
@@ -7117,7 +7173,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFirstPacketOrderAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFirstPacketOrderAsURL());
     }
 
     /**
@@ -7125,7 +7181,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsInteger());
     }
 
     /**
@@ -7133,7 +7189,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsLong());
     }
 
     /**
@@ -7141,7 +7197,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsLocalDateTime());
     }
 
     /**
@@ -7149,7 +7205,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsLocalTime());
     }
 
     /**
@@ -7157,7 +7213,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsString());
     }
 
     /**
@@ -7165,7 +7221,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsBoolean() {
-        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataVideo.getForcedAsBoolean());
+        assertEquals(Boolean.TRUE, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsBoolean());
     }
 
     /**
@@ -7173,7 +7229,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsBigInteger());
     }
 
     /**
@@ -7181,7 +7237,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedAsURL());
     }
 
     /**
@@ -7189,7 +7245,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsInteger());
     }
 
     /**
@@ -7197,7 +7253,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsLong());
     }
 
     /**
@@ -7205,7 +7261,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsLocalDateTime());
     }
 
     /**
@@ -7213,7 +7269,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsLocalTime());
     }
 
     /**
@@ -7221,7 +7277,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsString() {
-        assertEquals("No", AbstractTest.jMetaDataVideo.getForcedStringAsString());
+        assertEquals("No", JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsString());
     }
 
     /**
@@ -7229,7 +7285,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsBoolean() {
-        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataVideo.getForcedStringAsBoolean());
+        assertEquals(Boolean.TRUE, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsBoolean());
     }
 
     /**
@@ -7237,7 +7293,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsBigInteger());
     }
 
     /**
@@ -7245,7 +7301,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getForcedStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getForcedStringAsURL());
     }
 
     /**
@@ -7253,7 +7309,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsInteger());
     }
 
     /**
@@ -7261,7 +7317,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsLong());
     }
 
     /**
@@ -7269,7 +7325,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsLocalDateTime());
     }
 
     /**
@@ -7277,7 +7333,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsLocalTime());
     }
 
     /**
@@ -7285,7 +7341,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsString() {
-        assertEquals("AVC", AbstractTest.jMetaDataVideo.getFormatAsString());
+        assertEquals("AVC", JMetaDataVideo_Test.jMetaDataVideo.getFormatAsString());
     }
 
     /**
@@ -7293,7 +7349,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsBoolean());
     }
 
     /**
@@ -7301,7 +7357,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsBigInteger());
     }
 
     /**
@@ -7309,7 +7365,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatAsURL());
     }
 
     /**
@@ -7317,7 +7373,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsInteger());
     }
 
     /**
@@ -7325,7 +7381,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsLong());
     }
 
     /**
@@ -7333,7 +7389,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsLocalDateTime());
     }
 
     /**
@@ -7341,7 +7397,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsLocalTime());
     }
 
     /**
@@ -7349,7 +7405,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsString());
     }
 
     /**
@@ -7357,7 +7413,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsBoolean());
     }
 
     /**
@@ -7365,7 +7421,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsBigInteger());
     }
 
     /**
@@ -7373,7 +7429,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatInfoAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatInfoAsURL());
     }
 
     /**
@@ -7381,7 +7437,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsInteger() {
-        assertEquals(Integer.valueOf(264), AbstractTest.jMetaDataVideo.getFormatUrlAsInteger());
+        assertEquals(Integer.valueOf(264), JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsInteger());
     }
 
     /**
@@ -7389,7 +7445,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsLong() {
-        assertEquals(Long.valueOf(264), AbstractTest.jMetaDataVideo.getFormatUrlAsLong());
+        assertEquals(Long.valueOf(264), JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsLong());
     }
 
     /**
@@ -7397,7 +7453,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsLocalDateTime());
     }
 
     /**
@@ -7405,7 +7461,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatUrlAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsLocalTime());
     }
 
     /**
@@ -7413,7 +7469,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsString() {
-        assertEquals("http://developers.videolan.org/x264.html", AbstractTest.jMetaDataVideo.getFormatUrlAsString());
+        assertEquals("http://developers.videolan.org/x264.html", JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsString());
     }
 
     /**
@@ -7421,7 +7477,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatUrlAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsBoolean());
     }
 
     /**
@@ -7429,7 +7485,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsBigInteger() {
-        assertEquals(BigInteger.valueOf(264), AbstractTest.jMetaDataVideo.getFormatUrlAsBigInteger());
+        assertEquals(BigInteger.valueOf(264), JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsBigInteger());
     }
 
     /**
@@ -7438,7 +7494,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
     @Test
     public void subTestGetFormatUrlAsURL() {
         try {
-            assertEquals(new URL("http://developers.videolan.org/x264.html"), AbstractTest.jMetaDataVideo.getFormatUrlAsURL());
+            assertEquals(new URL("http://developers.videolan.org/x264.html"), JMetaDataVideo_Test.jMetaDataVideo.getFormatUrlAsURL());
         } catch (final MalformedURLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -7450,7 +7506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsInteger());
     }
 
     /**
@@ -7458,7 +7514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsLong());
     }
 
     /**
@@ -7466,7 +7522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsLocalDateTime());
     }
 
     /**
@@ -7474,7 +7530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsLocalTime());
     }
 
     /**
@@ -7482,7 +7538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsString());
     }
 
     /**
@@ -7490,7 +7546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsBoolean());
     }
 
     /**
@@ -7498,7 +7554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsBigInteger());
     }
 
     /**
@@ -7506,7 +7562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialAsURL());
     }
 
     /**
@@ -7514,7 +7570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsInteger());
     }
 
     /**
@@ -7522,7 +7578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsLong());
     }
 
     /**
@@ -7530,7 +7586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsLocalDateTime());
     }
 
     /**
@@ -7538,7 +7594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsLocalTime());
     }
 
     /**
@@ -7546,7 +7602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsString());
     }
 
     /**
@@ -7554,7 +7610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsBoolean());
     }
 
     /**
@@ -7562,7 +7618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsBigInteger());
     }
 
     /**
@@ -7570,7 +7626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCommercialIfAnyAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCommercialIfAnyAsURL());
     }
 
     /**
@@ -7578,7 +7634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsInteger());
     }
 
     /**
@@ -7586,7 +7642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsLong());
     }
 
     /**
@@ -7594,7 +7650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsLocalDateTime());
     }
 
     /**
@@ -7602,7 +7658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsLocalTime());
     }
 
     /**
@@ -7610,7 +7666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatCompressionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsString());
     }
 
     /**
@@ -7618,7 +7674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsBoolean());
     }
 
     /**
@@ -7626,7 +7682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsBigInteger());
     }
 
     /**
@@ -7634,7 +7690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatCompressionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatCompressionAsURL());
     }
 
     /**
@@ -7642,7 +7698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsInteger());
     }
 
     /**
@@ -7650,7 +7706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsLong());
     }
 
     /**
@@ -7658,7 +7714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsLocalDateTime());
     }
 
     /**
@@ -7666,7 +7722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsLocalTime());
     }
 
     /**
@@ -7674,7 +7730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatLevelAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsString());
     }
 
     /**
@@ -7682,7 +7738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsBoolean());
     }
 
     /**
@@ -7690,7 +7746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsBigInteger());
     }
 
     /**
@@ -7698,7 +7754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatLevelAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatLevelAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatLevelAsURL());
     }
 
     /**
@@ -7706,7 +7762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatProfileAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsInteger());
     }
 
     /**
@@ -7714,7 +7770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatProfileAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsLong());
     }
 
     /**
@@ -7722,7 +7778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatProfileAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsLocalDateTime());
     }
 
     /**
@@ -7730,7 +7786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatProfileAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsLocalTime());
     }
 
     /**
@@ -7738,7 +7794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsString() {
-        assertEquals("High@L4", AbstractTest.jMetaDataVideo.getFormatProfileAsString());
+        assertEquals("High@L4", JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsString());
     }
 
     /**
@@ -7746,7 +7802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatProfileAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsBoolean());
     }
 
     /**
@@ -7754,7 +7810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsBigInteger() {
-        assertEquals(BigInteger.valueOf(4), AbstractTest.jMetaDataVideo.getFormatProfileAsBigInteger());
+        assertEquals(BigInteger.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsBigInteger());
     }
 
     /**
@@ -7762,7 +7818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatProfileAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsURL());
     }
 
     /**
@@ -7770,7 +7826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsInteger() {
-        assertEquals(Integer.valueOf(4), AbstractTest.jMetaDataVideo.getFormatSettingsAsInteger());
+        assertEquals(Integer.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsInteger());
     }
 
     /**
@@ -7778,7 +7834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsLong());
     }
 
     /**
@@ -7786,7 +7842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsLocalDateTime());
     }
 
     /**
@@ -7794,7 +7850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsLocalTime());
     }
 
     /**
@@ -7802,7 +7858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsString());
     }
 
     /**
@@ -7810,7 +7866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsBoolean());
     }
 
     /**
@@ -7818,7 +7874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsBigInteger() {
-        assertEquals(BigInteger.valueOf(4), AbstractTest.jMetaDataVideo.getFormatSettingsAsBigInteger());
+        assertEquals(BigInteger.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsBigInteger());
     }
 
     /**
@@ -7826,7 +7882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsAsURL());
     }
 
     /**
@@ -7834,7 +7890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsInteger());
     }
 
     /**
@@ -7842,7 +7898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsLong());
     }
 
     /**
@@ -7850,7 +7906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsLocalDateTime());
     }
 
     /**
@@ -7858,7 +7914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsLocalTime());
     }
 
     /**
@@ -7866,7 +7922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsString());
     }
 
     /**
@@ -7874,7 +7930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsBoolean());
     }
 
     /**
@@ -7882,7 +7938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsBigInteger());
     }
 
     /**
@@ -7890,7 +7946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPAsURL());
     }
 
     /**
@@ -7898,7 +7954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsInteger());
     }
 
     /**
@@ -7906,7 +7962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsLong());
     }
 
     /**
@@ -7914,7 +7970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsLocalDateTime());
     }
 
     /**
@@ -7922,7 +7978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsLocalTime());
     }
 
     /**
@@ -7930,7 +7986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsString());
     }
 
     /**
@@ -7938,7 +7994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsBoolean());
     }
 
     /**
@@ -7946,7 +8002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsBigInteger());
     }
 
     /**
@@ -7954,7 +8010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsBVOPStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsBVOPStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsBVOPStringAsURL());
     }
 
     /**
@@ -7962,7 +8018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsInteger());
     }
 
     /**
@@ -7970,7 +8026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsLong());
     }
 
     /**
@@ -7978,7 +8034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsLocalDateTime());
     }
 
     /**
@@ -7986,7 +8042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsLocalTime());
     }
 
     /**
@@ -7994,7 +8050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsString());
     }
 
     /**
@@ -8002,7 +8058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsBoolean() {
-        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsBoolean());
+        assertEquals(Boolean.TRUE, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsBoolean());
     }
 
     /**
@@ -8010,7 +8066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsBigInteger());
     }
 
     /**
@@ -8018,7 +8074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACAsURL());
     }
 
     /**
@@ -8026,7 +8082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsInteger());
     }
 
     /**
@@ -8034,7 +8090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsLong());
     }
 
     /**
@@ -8042,7 +8098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsLocalDateTime());
     }
 
     /**
@@ -8050,7 +8106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsLocalTime());
     }
 
     /**
@@ -8058,7 +8114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsString() {
-        assertEquals("Yes", AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsString());
+        assertEquals("Yes", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsString());
     }
 
     /**
@@ -8066,7 +8122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsBoolean());
     }
 
     /**
@@ -8074,7 +8130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsBigInteger());
     }
 
     /**
@@ -8082,7 +8138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsCABACStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsCABACStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsCABACStringAsURL());
     }
 
     /**
@@ -8090,7 +8146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsInteger());
     }
 
     /**
@@ -8098,7 +8154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsLong());
     }
 
     /**
@@ -8106,7 +8162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsLocalDateTime());
     }
 
     /**
@@ -8114,7 +8170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsLocalTime());
     }
 
     /**
@@ -8122,7 +8178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsString());
     }
 
     /**
@@ -8130,7 +8186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsBoolean());
     }
 
     /**
@@ -8138,7 +8194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsBigInteger());
     }
 
     /**
@@ -8146,7 +8202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsFrameModeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsFrameModeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsFrameModeAsURL());
     }
 
     /**
@@ -8154,7 +8210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsInteger());
     }
 
     /**
@@ -8162,7 +8218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsLong());
     }
 
     /**
@@ -8170,7 +8226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsLocalDateTime());
     }
 
     /**
@@ -8178,7 +8234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsLocalTime());
     }
 
     /**
@@ -8186,7 +8242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsString());
     }
 
     /**
@@ -8194,7 +8250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsBoolean());
     }
 
     /**
@@ -8202,7 +8258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsBigInteger());
     }
 
     /**
@@ -8210,7 +8266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCAsURL());
     }
 
     /**
@@ -8218,7 +8274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsInteger());
     }
 
     /**
@@ -8226,7 +8282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsLong());
     }
 
     /**
@@ -8234,7 +8290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsLocalDateTime());
     }
 
     /**
@@ -8242,7 +8298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsLocalTime());
     }
 
     /**
@@ -8250,7 +8306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsString());
     }
 
     /**
@@ -8258,7 +8314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsBoolean());
     }
 
     /**
@@ -8266,7 +8322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsBigInteger());
     }
 
     /**
@@ -8274,7 +8330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGMCStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGMCStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGMCStringAsURL());
     }
 
     /**
@@ -8282,7 +8338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsInteger());
     }
 
     /**
@@ -8290,7 +8346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsLong());
     }
 
     /**
@@ -8298,7 +8354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsLocalDateTime());
     }
 
     /**
@@ -8306,7 +8362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsLocalTime());
     }
 
     /**
@@ -8314,7 +8370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsString());
     }
 
     /**
@@ -8322,7 +8378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsBoolean());
     }
 
     /**
@@ -8330,7 +8386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsBigInteger());
     }
 
     /**
@@ -8338,7 +8394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsGOPAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsGOPAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsGOPAsURL());
     }
 
     /**
@@ -8346,7 +8402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsInteger());
     }
 
     /**
@@ -8354,7 +8410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsLong());
     }
 
     /**
@@ -8362,7 +8418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsLocalDateTime());
     }
 
     /**
@@ -8370,7 +8426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsLocalTime());
     }
 
     /**
@@ -8378,7 +8434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsString());
     }
 
     /**
@@ -8386,7 +8442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsBoolean());
     }
 
     /**
@@ -8394,7 +8450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsBigInteger());
     }
 
     /**
@@ -8402,7 +8458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixAsURL());
     }
 
     /**
@@ -8410,7 +8466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsInteger());
     }
 
     /**
@@ -8418,7 +8474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsLong());
     }
 
     /**
@@ -8426,7 +8482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsLocalDateTime());
     }
 
     /**
@@ -8434,7 +8490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsLocalTime());
     }
 
     /**
@@ -8442,7 +8498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsString());
     }
 
     /**
@@ -8450,7 +8506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsBoolean());
     }
 
     /**
@@ -8458,7 +8514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsBigInteger());
     }
 
     /**
@@ -8466,7 +8522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixStringAsURL());
     }
 
     /**
@@ -8474,7 +8530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsInteger());
     }
 
     /**
@@ -8482,7 +8538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsLong());
     }
 
     /**
@@ -8490,7 +8546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsLocalDateTime());
     }
 
     /**
@@ -8498,7 +8554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsLocalTime());
     }
 
     /**
@@ -8506,7 +8562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsString());
     }
 
     /**
@@ -8514,7 +8570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsBoolean());
     }
 
     /**
@@ -8522,7 +8578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsBigInteger());
     }
 
     /**
@@ -8530,7 +8586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsMatrixDataAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsMatrixDataAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsMatrixDataAsURL());
     }
 
     /**
@@ -8538,7 +8594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsInteger());
     }
 
     /**
@@ -8546,7 +8602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsLong());
     }
 
     /**
@@ -8554,7 +8610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsLocalDateTime());
     }
 
     /**
@@ -8562,7 +8618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsLocalTime());
     }
 
     /**
@@ -8570,7 +8626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsString());
     }
 
     /**
@@ -8578,7 +8634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsBoolean());
     }
 
     /**
@@ -8586,7 +8642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsBigInteger());
     }
 
     /**
@@ -8594,7 +8650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPictureStructureAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPictureStructureAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPictureStructureAsURL());
     }
 
     /**
@@ -8602,7 +8658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsInteger());
     }
 
     /**
@@ -8610,7 +8666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsLong());
     }
 
     /**
@@ -8618,7 +8674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsLocalDateTime());
     }
 
     /**
@@ -8626,7 +8682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsLocalTime());
     }
 
     /**
@@ -8634,7 +8690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsString());
     }
 
     /**
@@ -8642,7 +8698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsBoolean());
     }
 
     /**
@@ -8650,7 +8706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsBigInteger());
     }
 
     /**
@@ -8658,7 +8714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsPulldownAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsPulldownAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsPulldownAsURL());
     }
 
     /**
@@ -8666,7 +8722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsInteger());
     }
 
     /**
@@ -8674,7 +8730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsLong());
     }
 
     /**
@@ -8682,7 +8738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsLocalDateTime());
     }
 
     /**
@@ -8690,7 +8746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsLocalTime());
     }
 
     /**
@@ -8698,7 +8754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsString());
     }
 
     /**
@@ -8706,7 +8762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsBoolean());
     }
 
     /**
@@ -8714,7 +8770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsBigInteger());
     }
 
     /**
@@ -8722,7 +8778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelAsURL());
     }
 
     /**
@@ -8730,7 +8786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsInteger());
     }
 
     /**
@@ -8738,7 +8794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsLong());
     }
 
     /**
@@ -8746,7 +8802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsLocalDateTime());
     }
 
     /**
@@ -8754,7 +8810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsLocalTime());
     }
 
     /**
@@ -8762,7 +8818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsString());
     }
 
     /**
@@ -8770,7 +8826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsBoolean());
     }
 
     /**
@@ -8778,7 +8834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsBigInteger());
     }
 
     /**
@@ -8786,7 +8842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsQPelStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsQPelStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsQPelStringAsURL());
     }
 
     /**
@@ -8794,7 +8850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsInteger());
     }
 
     /**
@@ -8802,7 +8858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsLong());
     }
 
     /**
@@ -8810,7 +8866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsLocalDateTime());
     }
 
     /**
@@ -8818,7 +8874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsLocalTime());
     }
 
     /**
@@ -8826,7 +8882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsString() {
-        assertEquals("4", AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsString());
+        assertEquals("4", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsString());
     }
 
     /**
@@ -8834,7 +8890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsBoolean());
     }
 
     /**
@@ -8842,7 +8898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsBigInteger());
     }
 
     /**
@@ -8850,7 +8906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesAsURL());
     }
 
     /**
@@ -8858,7 +8914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsInteger() {
-        assertEquals(Integer.valueOf(4), AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsInteger());
+        assertEquals(Integer.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsInteger());
     }
 
     /**
@@ -8866,7 +8922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsLong());
     }
 
     /**
@@ -8874,7 +8930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsLocalDateTime());
     }
 
     /**
@@ -8882,7 +8938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsLocalTime());
     }
 
     /**
@@ -8890,7 +8946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsString() {
-        assertEquals("4 frames", AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsString());
+        assertEquals("4 frames", JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsString());
     }
 
     /**
@@ -8898,7 +8954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsBoolean());
     }
 
     /**
@@ -8906,7 +8962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsBigInteger());
     }
 
     /**
@@ -8914,7 +8970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsRefFramesStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsRefFramesStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsRefFramesStringAsURL());
     }
 
     /**
@@ -8922,7 +8978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsInteger());
     }
 
     /**
@@ -8930,7 +8986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsLong());
     }
 
     /**
@@ -8938,7 +8994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsLocalDateTime());
     }
 
     /**
@@ -8946,7 +9002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsLocalTime());
     }
 
     /**
@@ -8954,7 +9010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsString());
     }
 
     /**
@@ -8962,7 +9018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsBoolean());
     }
 
     /**
@@ -8970,7 +9026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsBigInteger());
     }
 
     /**
@@ -8978,7 +9034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatSettingsWrappingAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatSettingsWrappingAsURL());
     }
 
     /**
@@ -8986,7 +9042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsInteger());
     }
 
     /**
@@ -8994,7 +9050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsLong());
     }
 
     /**
@@ -9002,7 +9058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsLocalDateTime());
     }
 
     /**
@@ -9010,7 +9066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsLocalTime());
     }
 
     /**
@@ -9018,7 +9074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsString());
     }
 
     /**
@@ -9026,7 +9082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsBoolean());
     }
 
     /**
@@ -9034,7 +9090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsBigInteger());
     }
 
     /**
@@ -9042,7 +9098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatTierAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatTierAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatTierAsURL());
     }
 
     /**
@@ -9050,7 +9106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsInteger());
     }
 
     /**
@@ -9058,7 +9114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsLong());
     }
 
     /**
@@ -9066,7 +9122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsLocalDateTime());
     }
 
     /**
@@ -9074,7 +9130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsLocalTime());
     }
 
     /**
@@ -9082,7 +9138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFormatVersionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsString());
     }
 
     /**
@@ -9090,7 +9146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsBoolean());
     }
 
     /**
@@ -9098,7 +9154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsBigInteger());
     }
 
     /**
@@ -9106,7 +9162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFormatVersionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFormatVersionAsURL());
     }
 
     /**
@@ -9114,7 +9170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameCountAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsInteger());
     }
 
     /**
@@ -9122,7 +9178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsLong() {
-        assertEquals(Long.valueOf(21556), AbstractTest.jMetaDataVideo.getFrameCountAsLong());
+        assertEquals(Long.valueOf(21556), JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsLong());
     }
 
     /**
@@ -9130,7 +9186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameCountAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsLocalDateTime());
     }
 
     /**
@@ -9138,7 +9194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameCountAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsLocalTime());
     }
 
     /**
@@ -9146,7 +9202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsString() {
-        assertEquals("21556", AbstractTest.jMetaDataVideo.getFrameCountAsString());
+        assertEquals("21556", JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsString());
     }
 
     /**
@@ -9154,7 +9210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameCountAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsBoolean());
     }
 
     /**
@@ -9162,7 +9218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(21556), AbstractTest.jMetaDataVideo.getFrameCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(21556), JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsBigInteger());
     }
 
     /**
@@ -9170,7 +9226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameCountAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameCountAsURL());
     }
 
     /**
@@ -9178,7 +9234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsInteger());
     }
 
     /**
@@ -9186,7 +9242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsLong() {
-        assertEquals(Long.valueOf(24000), AbstractTest.jMetaDataVideo.getFrameRateAsLong());
+        assertEquals(Long.valueOf(24000), JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsLong());
     }
 
     /**
@@ -9194,7 +9250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsLocalDateTime());
     }
 
     /**
@@ -9202,7 +9258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsLocalTime());
     }
 
     /**
@@ -9210,7 +9266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsString() {
-        assertEquals("24.000", AbstractTest.jMetaDataVideo.getFrameRateAsString());
+        assertEquals("24.000", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsString());
     }
 
     /**
@@ -9218,7 +9274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsBoolean());
     }
 
     /**
@@ -9226,7 +9282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsBigInteger());
     }
 
     /**
@@ -9234,7 +9290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateAsURL());
     }
 
     /**
@@ -9242,7 +9298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsInteger() {
-        assertEquals(Integer.valueOf(24000), AbstractTest.jMetaDataVideo.getFrameRateStringAsInteger());
+        assertEquals(Integer.valueOf(24000), JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsInteger());
     }
 
     /**
@@ -9250,7 +9306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsLong());
     }
 
     /**
@@ -9258,7 +9314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsLocalDateTime());
     }
 
     /**
@@ -9266,7 +9322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsLocalTime());
     }
 
     /**
@@ -9274,7 +9330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsString() {
-        assertEquals("24.000 FPS", AbstractTest.jMetaDataVideo.getFrameRateStringAsString());
+        assertEquals("24.000 FPS", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsString());
     }
 
     /**
@@ -9282,7 +9338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsBoolean());
     }
 
     /**
@@ -9290,7 +9346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(24000), AbstractTest.jMetaDataVideo.getFrameRateStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(24000), JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsBigInteger());
     }
 
     /**
@@ -9298,7 +9354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsURL());
     }
 
     /**
@@ -9306,7 +9362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsInteger());
     }
 
     /**
@@ -9314,7 +9370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsLong());
     }
 
     /**
@@ -9322,7 +9378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsLocalDateTime());
     }
 
     /**
@@ -9330,7 +9386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsLocalTime());
     }
 
     /**
@@ -9338,7 +9394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateDenAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsString());
     }
 
     /**
@@ -9346,7 +9402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsBoolean());
     }
 
     /**
@@ -9354,7 +9410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsBigInteger());
     }
 
     /**
@@ -9362,7 +9418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateDenAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateDenAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateDenAsURL());
     }
 
     /**
@@ -9370,7 +9426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsInteger());
     }
 
     /**
@@ -9378,7 +9434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsLong());
     }
 
     /**
@@ -9386,7 +9442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsLocalDateTime());
     }
 
     /**
@@ -9394,7 +9450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsLocalTime());
     }
 
     /**
@@ -9402,7 +9458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateMaximumAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsString());
     }
 
     /**
@@ -9410,7 +9466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsBoolean());
     }
 
     /**
@@ -9418,7 +9474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsBigInteger());
     }
 
     /**
@@ -9426,7 +9482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumAsURL());
     }
 
     /**
@@ -9434,7 +9490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsInteger());
     }
 
     /**
@@ -9442,7 +9498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsLong());
     }
 
     /**
@@ -9450,7 +9506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsLocalDateTime());
     }
 
     /**
@@ -9458,7 +9514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsLocalTime());
     }
 
     /**
@@ -9466,7 +9522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsString());
     }
 
     /**
@@ -9474,7 +9530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsBoolean());
     }
 
     /**
@@ -9482,7 +9538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsBigInteger());
     }
 
     /**
@@ -9490,7 +9546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMaximumStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMaximumStringAsURL());
     }
 
     /**
@@ -9498,7 +9554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsInteger());
     }
 
     /**
@@ -9506,7 +9562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsLong());
     }
 
     /**
@@ -9514,7 +9570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsLocalDateTime());
     }
 
     /**
@@ -9522,7 +9578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsLocalTime());
     }
 
     /**
@@ -9530,7 +9586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateMinimumAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsString());
     }
 
     /**
@@ -9538,7 +9594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsBoolean());
     }
 
     /**
@@ -9546,7 +9602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsBigInteger());
     }
 
     /**
@@ -9554,7 +9610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumAsURL());
     }
 
     /**
@@ -9562,7 +9618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsInteger());
     }
 
     /**
@@ -9570,7 +9626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsLong());
     }
 
     /**
@@ -9578,7 +9634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsLocalDateTime());
     }
 
     /**
@@ -9586,7 +9642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsLocalTime());
     }
 
     /**
@@ -9594,7 +9650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsString());
     }
 
     /**
@@ -9602,7 +9658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsBoolean());
     }
 
     /**
@@ -9610,7 +9666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsBigInteger());
     }
 
     /**
@@ -9618,7 +9674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateMinimumStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateMinimumStringAsURL());
     }
 
     /**
@@ -9626,7 +9682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsInteger());
     }
 
     /**
@@ -9634,7 +9690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsLong());
     }
 
     /**
@@ -9642,7 +9698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsLocalDateTime());
     }
 
     /**
@@ -9650,7 +9706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsLocalTime());
     }
 
     /**
@@ -9658,7 +9714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsString() {
-        assertEquals("CFR", AbstractTest.jMetaDataVideo.getFrameRateModeAsString());
+        assertEquals("CFR", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsString());
     }
 
     /**
@@ -9666,7 +9722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsBoolean());
     }
 
     /**
@@ -9674,7 +9730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsBigInteger());
     }
 
     /**
@@ -9682,7 +9738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeAsURL());
     }
 
     /**
@@ -9690,7 +9746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsInteger());
     }
 
     /**
@@ -9698,7 +9754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsLong());
     }
 
     /**
@@ -9706,7 +9762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsLocalDateTime());
     }
 
     /**
@@ -9714,7 +9770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsLocalTime());
     }
 
     /**
@@ -9722,7 +9778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsString() {
-        assertEquals("Constant", AbstractTest.jMetaDataVideo.getFrameRateModeStringAsString());
+        assertEquals("Constant", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsString());
     }
 
     /**
@@ -9730,7 +9786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsBoolean());
     }
 
     /**
@@ -9738,7 +9794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsBigInteger());
     }
 
     /**
@@ -9746,7 +9802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeStringAsURL());
     }
 
     /**
@@ -9754,7 +9810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsInteger());
     }
 
     /**
@@ -9762,7 +9818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsLong());
     }
 
     /**
@@ -9770,7 +9826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsLocalDateTime());
     }
 
     /**
@@ -9778,7 +9834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsLocalTime());
     }
 
     /**
@@ -9786,7 +9842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsString());
     }
 
     /**
@@ -9794,7 +9850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsBoolean());
     }
 
     /**
@@ -9802,7 +9858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsBigInteger());
     }
 
     /**
@@ -9810,7 +9866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalAsURL());
     }
 
     /**
@@ -9818,7 +9874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsInteger());
     }
 
     /**
@@ -9826,7 +9882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsLong());
     }
 
     /**
@@ -9834,7 +9890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -9842,7 +9898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsLocalTime());
     }
 
     /**
@@ -9850,7 +9906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsString());
     }
 
     /**
@@ -9858,7 +9914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsBoolean());
     }
 
     /**
@@ -9866,7 +9922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsBigInteger());
     }
 
     /**
@@ -9874,7 +9930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateModeOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateModeOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateModeOriginalStringAsURL());
     }
 
     /**
@@ -9882,7 +9938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsInteger());
     }
 
     /**
@@ -9890,7 +9946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsLong());
     }
 
     /**
@@ -9898,7 +9954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsLocalDateTime());
     }
 
     /**
@@ -9906,7 +9962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsLocalTime());
     }
 
     /**
@@ -9914,7 +9970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsString());
     }
 
     /**
@@ -9922,7 +9978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsBoolean());
     }
 
     /**
@@ -9930,7 +9986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsBigInteger());
     }
 
     /**
@@ -9938,7 +9994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalAsURL());
     }
 
     /**
@@ -9946,7 +10002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsInteger());
     }
 
     /**
@@ -9954,7 +10010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsLong());
     }
 
     /**
@@ -9962,7 +10018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsLocalDateTime());
     }
 
     /**
@@ -9970,7 +10026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsLocalTime());
     }
 
     /**
@@ -9978,7 +10034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsString());
     }
 
     /**
@@ -9986,7 +10042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsBoolean());
     }
 
     /**
@@ -9994,7 +10050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsBigInteger());
     }
 
     /**
@@ -10002,7 +10058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNominalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNominalStringAsURL());
     }
 
     /**
@@ -10010,7 +10066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsInteger());
     }
 
     /**
@@ -10018,7 +10074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsLong());
     }
 
     /**
@@ -10026,7 +10082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsLocalDateTime());
     }
 
     /**
@@ -10034,7 +10090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsLocalTime());
     }
 
     /**
@@ -10042,7 +10098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsString());
     }
 
     /**
@@ -10050,7 +10106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsBoolean());
     }
 
     /**
@@ -10058,7 +10114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsBigInteger());
     }
 
     /**
@@ -10066,7 +10122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateNumAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateNumAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateNumAsURL());
     }
 
     /**
@@ -10074,7 +10130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsInteger());
     }
 
     /**
@@ -10082,7 +10138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsLong());
     }
 
     /**
@@ -10090,7 +10146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsLocalDateTime());
     }
 
     /**
@@ -10098,7 +10154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsLocalTime());
     }
 
     /**
@@ -10106,7 +10162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateOriginalAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsString());
     }
 
     /**
@@ -10114,7 +10170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsBoolean());
     }
 
     /**
@@ -10122,7 +10178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsBigInteger());
     }
 
     /**
@@ -10130,7 +10186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalAsURL());
     }
 
     /**
@@ -10138,7 +10194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsInteger());
     }
 
     /**
@@ -10146,7 +10202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsLong());
     }
 
     /**
@@ -10154,7 +10210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -10162,7 +10218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsLocalTime());
     }
 
     /**
@@ -10170,7 +10226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsString());
     }
 
     /**
@@ -10178,7 +10234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsBoolean());
     }
 
     /**
@@ -10186,7 +10242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsBigInteger());
     }
 
     /**
@@ -10194,7 +10250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalStringAsURL());
     }
 
     /**
@@ -10202,7 +10258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsInteger());
     }
 
     /**
@@ -10210,7 +10266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsLong());
     }
 
     /**
@@ -10218,7 +10274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsLocalDateTime());
     }
 
     /**
@@ -10226,7 +10282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsLocalTime());
     }
 
     /**
@@ -10234,7 +10290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsString());
     }
 
     /**
@@ -10242,7 +10298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsBoolean());
     }
 
     /**
@@ -10250,7 +10306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsBigInteger());
     }
 
     /**
@@ -10258,7 +10314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalDenAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalDenAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalDenAsURL());
     }
 
     /**
@@ -10266,7 +10322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsInteger());
     }
 
     /**
@@ -10274,7 +10330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsLong());
     }
 
     /**
@@ -10282,7 +10338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsLocalDateTime());
     }
 
     /**
@@ -10290,7 +10346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsLocalTime());
     }
 
     /**
@@ -10298,7 +10354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsString());
     }
 
     /**
@@ -10306,7 +10362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsBoolean());
     }
 
     /**
@@ -10314,7 +10370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsBigInteger());
     }
 
     /**
@@ -10322,7 +10378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFrameRateOriginalNumAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getFrameRateOriginalNumAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getFrameRateOriginalNumAsURL());
     }
 
     /**
@@ -10330,7 +10386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsInteger());
     }
 
     /**
@@ -10338,7 +10394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsLong());
     }
 
     /**
@@ -10346,7 +10402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsLocalDateTime());
     }
 
     /**
@@ -10354,7 +10410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsLocalTime());
     }
 
     /**
@@ -10362,7 +10418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getGopOpenClosedAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsString());
     }
 
     /**
@@ -10370,7 +10426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsBoolean());
     }
 
     /**
@@ -10378,7 +10434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsBigInteger());
     }
 
     /**
@@ -10386,7 +10442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedAsURL());
     }
 
     /**
@@ -10394,7 +10450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsInteger());
     }
 
     /**
@@ -10402,7 +10458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsLong());
     }
 
     /**
@@ -10410,7 +10466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsLocalDateTime());
     }
 
     /**
@@ -10418,7 +10474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsLocalTime());
     }
 
     /**
@@ -10426,7 +10482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsString());
     }
 
     /**
@@ -10434,7 +10490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsBoolean());
     }
 
     /**
@@ -10442,7 +10498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsBigInteger());
     }
 
     /**
@@ -10450,7 +10506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedStringAsURL());
     }
 
     /**
@@ -10458,7 +10514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsInteger());
     }
 
     /**
@@ -10466,7 +10522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsLong());
     }
 
     /**
@@ -10474,7 +10530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -10482,7 +10538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsLocalTime());
     }
 
     /**
@@ -10490,7 +10546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsString());
     }
 
     /**
@@ -10498,7 +10554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsBoolean());
     }
 
     /**
@@ -10506,7 +10562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsBigInteger());
     }
 
     /**
@@ -10514,7 +10570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameAsURL());
     }
 
     /**
@@ -10522,7 +10578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsInteger());
     }
 
     /**
@@ -10530,7 +10586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsLong());
     }
 
     /**
@@ -10538,7 +10594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -10546,7 +10602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -10554,7 +10610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsString());
     }
 
     /**
@@ -10562,7 +10618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsBoolean());
     }
 
     /**
@@ -10570,7 +10626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -10578,7 +10634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetGopOpenClosedFirstFrameStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getGopOpenClosedFirstFrameStringAsURL());
     }
 
     /**
@@ -10586,7 +10642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsInteger() {
-        assertEquals(Integer.valueOf(872), AbstractTest.jMetaDataVideo.getHeightAsInteger());
+        assertEquals(Integer.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getHeightAsInteger());
     }
 
     /**
@@ -10594,7 +10650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightAsLong());
     }
 
     /**
@@ -10602,7 +10658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightAsLocalDateTime());
     }
 
     /**
@@ -10610,7 +10666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightAsLocalTime());
     }
 
     /**
@@ -10618,7 +10674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsString() {
-        assertEquals("872", AbstractTest.jMetaDataVideo.getHeightAsString());
+        assertEquals("872", JMetaDataVideo_Test.jMetaDataVideo.getHeightAsString());
     }
 
     /**
@@ -10626,7 +10682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightAsBoolean());
     }
 
     /**
@@ -10634,7 +10690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightAsBigInteger());
     }
 
     /**
@@ -10642,7 +10698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightAsURL());
     }
 
     /**
@@ -10650,7 +10706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsInteger());
     }
 
     /**
@@ -10658,7 +10714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsLong());
     }
 
     /**
@@ -10666,7 +10722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsLocalDateTime());
     }
 
     /**
@@ -10674,7 +10730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsLocalTime());
     }
 
     /**
@@ -10682,7 +10738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsString());
     }
 
     /**
@@ -10690,7 +10746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsBoolean());
     }
 
     /**
@@ -10698,7 +10754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsBigInteger());
     }
 
     /**
@@ -10706,7 +10762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightStringAsURL());
     }
 
     /**
@@ -10714,7 +10770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsInteger());
     }
 
     /**
@@ -10722,7 +10778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsLong());
     }
 
     /**
@@ -10730,7 +10786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsLocalDateTime());
     }
 
     /**
@@ -10738,7 +10794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsLocalTime());
     }
 
     /**
@@ -10746,7 +10802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsString());
     }
 
     /**
@@ -10754,7 +10810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsBoolean());
     }
 
     /**
@@ -10762,7 +10818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsBigInteger());
     }
 
     /**
@@ -10770,7 +10826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureAsURL());
     }
 
     /**
@@ -10778,7 +10834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsInteger());
     }
 
     /**
@@ -10786,7 +10842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsLong());
     }
 
     /**
@@ -10794,7 +10850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsLocalDateTime());
     }
 
     /**
@@ -10802,7 +10858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsLocalTime());
     }
 
     /**
@@ -10810,7 +10866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsString());
     }
 
     /**
@@ -10818,7 +10874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsBoolean());
     }
 
     /**
@@ -10826,7 +10882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsBigInteger());
     }
 
     /**
@@ -10834,7 +10890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightCleanApertureStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightCleanApertureStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightCleanApertureStringAsURL());
     }
 
     /**
@@ -10842,7 +10898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsInteger());
     }
 
     /**
@@ -10850,7 +10906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsLong());
     }
 
     /**
@@ -10858,7 +10914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsLocalDateTime());
     }
 
     /**
@@ -10866,7 +10922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsLocalTime());
     }
 
     /**
@@ -10874,7 +10930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getHeightOffsetAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsString());
     }
 
     /**
@@ -10882,7 +10938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsBoolean());
     }
 
     /**
@@ -10890,7 +10946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsBigInteger());
     }
 
     /**
@@ -10898,7 +10954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetAsURL());
     }
 
     /**
@@ -10906,7 +10962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsInteger());
     }
 
     /**
@@ -10914,7 +10970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsLong());
     }
 
     /**
@@ -10922,7 +10978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsLocalDateTime());
     }
 
     /**
@@ -10930,7 +10986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsLocalTime());
     }
 
     /**
@@ -10938,7 +10994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsString());
     }
 
     /**
@@ -10946,7 +11002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsBoolean());
     }
 
     /**
@@ -10954,7 +11010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsBigInteger());
     }
 
     /**
@@ -10962,7 +11018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOffsetStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOffsetStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOffsetStringAsURL());
     }
 
     /**
@@ -10970,7 +11026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsInteger());
     }
 
     /**
@@ -10978,7 +11034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsLong());
     }
 
     /**
@@ -10986,7 +11042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsLocalDateTime());
     }
 
     /**
@@ -10994,7 +11050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsLocalTime());
     }
 
     /**
@@ -11002,7 +11058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsString());
     }
 
     /**
@@ -11010,7 +11066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsBoolean());
     }
 
     /**
@@ -11018,7 +11074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsBigInteger());
     }
 
     /**
@@ -11026,7 +11082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalAsURL());
     }
 
     /**
@@ -11034,7 +11090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsInteger());
     }
 
     /**
@@ -11042,7 +11098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsLong());
     }
 
     /**
@@ -11050,7 +11106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -11058,7 +11114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsLocalTime());
     }
 
     /**
@@ -11066,7 +11122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsString());
     }
 
     /**
@@ -11074,7 +11130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsBoolean());
     }
 
     /**
@@ -11082,7 +11138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsBigInteger());
     }
 
     /**
@@ -11090,7 +11146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetHeightOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getHeightOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getHeightOriginalStringAsURL());
     }
 
     /**
@@ -11098,7 +11154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsInteger() {
-        assertEquals(Integer.valueOf(1), AbstractTest.jMetaDataVideo.getIDAsInteger());
+        assertEquals(Integer.valueOf(1), JMetaDataVideo_Test.jMetaDataVideo.getIDAsInteger());
     }
 
     /**
@@ -11106,7 +11162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsLong());
     }
 
     /**
@@ -11114,7 +11170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsLocalDateTime());
     }
 
     /**
@@ -11122,7 +11178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsLocalTime());
     }
 
     /**
@@ -11130,7 +11186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsString());
     }
 
     /**
@@ -11138,7 +11194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsBoolean());
     }
 
     /**
@@ -11146,7 +11202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsBigInteger());
     }
 
     /**
@@ -11154,7 +11210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDAsURL());
     }
 
     /**
@@ -11162,7 +11218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsInteger());
     }
 
     /**
@@ -11170,7 +11226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsLong() {
-        assertEquals(Long.valueOf(1), AbstractTest.jMetaDataVideo.getIDStringAsLong());
+        assertEquals(Long.valueOf(1), JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsLong());
     }
 
     /**
@@ -11178,7 +11234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsLocalDateTime());
     }
 
     /**
@@ -11186,7 +11242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsLocalTime());
     }
 
     /**
@@ -11194,7 +11250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsString() {
-        assertEquals("1", AbstractTest.jMetaDataVideo.getIDStringAsString());
+        assertEquals("1", JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsString());
     }
 
     /**
@@ -11202,7 +11258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsBoolean());
     }
 
     /**
@@ -11210,7 +11266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataVideo.getIDStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsBigInteger());
     }
 
     /**
@@ -11218,7 +11274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getIDStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getIDStringAsURL());
     }
 
     /**
@@ -11226,7 +11282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsInteger());
     }
 
     /**
@@ -11234,7 +11290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsLong());
     }
 
     /**
@@ -11242,7 +11298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsLocalDateTime());
     }
 
     /**
@@ -11250,7 +11306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsLocalTime());
     }
 
     /**
@@ -11258,7 +11314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsString());
     }
 
     /**
@@ -11266,7 +11322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsBoolean());
     }
 
     /**
@@ -11274,7 +11330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(new BigInteger("144414582001920872221240004208709709709"), AbstractTest.jMetaDataVideo.getInformAsBigInteger());
+        assertEquals(new BigInteger("144414582001920872221240004208709709709"), JMetaDataVideo_Test.jMetaDataVideo.getInformAsBigInteger());
     }
 
     /**
@@ -11282,7 +11338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInformAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInformAsURL());
     }
 
     /**
@@ -11290,7 +11346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInternetMediaTypeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsInteger());
     }
 
     /**
@@ -11298,7 +11354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLong() {
-        assertEquals(Long.valueOf(264), AbstractTest.jMetaDataVideo.getInternetMediaTypeAsLong());
+        assertEquals(Long.valueOf(264), JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsLong());
     }
 
     /**
@@ -11306,7 +11362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInternetMediaTypeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsLocalDateTime());
     }
 
     /**
@@ -11314,7 +11370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInternetMediaTypeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsLocalTime());
     }
 
     /**
@@ -11322,7 +11378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInternetMediaTypeAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsString());
     }
 
     /**
@@ -11330,7 +11386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInternetMediaTypeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsBoolean());
     }
 
     /**
@@ -11338,7 +11394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsBigInteger() {
-        assertEquals(BigInteger.valueOf(264), AbstractTest.jMetaDataVideo.getInternetMediaTypeAsBigInteger());
+        assertEquals(BigInteger.valueOf(264), JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsBigInteger());
     }
 
     /**
@@ -11346,7 +11402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInternetMediaTypeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getInternetMediaTypeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsURL());
     }
 
     /**
@@ -11354,7 +11410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsInteger());
     }
 
     /**
@@ -11362,7 +11418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsLong());
     }
 
     /**
@@ -11370,7 +11426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsLocalDateTime());
     }
 
     /**
@@ -11378,7 +11434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsLocalTime());
     }
 
     /**
@@ -11386,7 +11442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsString() {
-        assertEquals("en", AbstractTest.jMetaDataVideo.getLanguageAsString());
+        assertEquals("en", JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsString());
     }
 
     /**
@@ -11394,7 +11450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsBoolean());
     }
 
     /**
@@ -11402,7 +11458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsBigInteger());
     }
 
     /**
@@ -11410,7 +11466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageAsURL());
     }
 
     /**
@@ -11418,7 +11474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsInteger());
     }
 
     /**
@@ -11426,7 +11482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsLong());
     }
 
     /**
@@ -11434,7 +11490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsLocalDateTime());
     }
 
     /**
@@ -11442,7 +11498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsLocalTime());
     }
 
     /**
@@ -11450,7 +11506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsString());
     }
 
     /**
@@ -11458,7 +11514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsBoolean());
     }
 
     /**
@@ -11466,7 +11522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsBigInteger());
     }
 
     /**
@@ -11474,7 +11530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageStringAsURL());
     }
 
     /**
@@ -11482,7 +11538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsInteger());
     }
 
     /**
@@ -11490,7 +11546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsLong());
     }
 
     /**
@@ -11498,7 +11554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsLocalDateTime());
     }
 
     /**
@@ -11506,7 +11562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsLocalTime());
     }
 
     /**
@@ -11514,7 +11570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsString());
     }
 
     /**
@@ -11522,7 +11578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsBoolean());
     }
 
     /**
@@ -11530,7 +11586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsBigInteger());
     }
 
     /**
@@ -11538,7 +11594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString1AsURL());
     }
 
     /**
@@ -11546,7 +11602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsInteger());
     }
 
     /**
@@ -11554,7 +11610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsLong());
     }
 
     /**
@@ -11562,7 +11618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsLocalDateTime());
     }
 
     /**
@@ -11570,7 +11626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsLocalTime());
     }
 
     /**
@@ -11578,7 +11634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsString());
     }
 
     /**
@@ -11586,7 +11642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsBoolean());
     }
 
     /**
@@ -11594,7 +11650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsBigInteger());
     }
 
     /**
@@ -11602,7 +11658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString2AsURL());
     }
 
     /**
@@ -11610,7 +11666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsInteger());
     }
 
     /**
@@ -11618,7 +11674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsLong());
     }
 
     /**
@@ -11626,7 +11682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsLocalDateTime());
     }
 
     /**
@@ -11634,7 +11690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsLocalTime());
     }
 
     /**
@@ -11642,7 +11698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsString() {
-        assertEquals("eng", AbstractTest.jMetaDataVideo.getLanguageString3AsString());
+        assertEquals("eng", JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsString());
     }
 
     /**
@@ -11650,7 +11706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsBoolean());
     }
 
     /**
@@ -11658,7 +11714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsBigInteger());
     }
 
     /**
@@ -11666,7 +11722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString3AsURL());
     }
 
     /**
@@ -11674,7 +11730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsInteger());
     }
 
     /**
@@ -11682,7 +11738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsLong());
     }
 
     /**
@@ -11690,7 +11746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsLocalDateTime());
     }
 
     /**
@@ -11698,7 +11754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsLocalTime());
     }
 
     /**
@@ -11706,7 +11762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsString());
     }
 
     /**
@@ -11714,7 +11770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsBoolean());
     }
 
     /**
@@ -11722,7 +11778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsBigInteger());
     }
 
     /**
@@ -11730,7 +11786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageString4AsURL());
     }
 
     /**
@@ -11738,7 +11794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsInteger());
     }
 
     /**
@@ -11746,7 +11802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsLong());
     }
 
     /**
@@ -11754,7 +11810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsLocalDateTime());
     }
 
     /**
@@ -11762,7 +11818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsLocalTime());
     }
 
     /**
@@ -11770,7 +11826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getLanguageMoreAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsString());
     }
 
     /**
@@ -11778,7 +11834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsBoolean());
     }
 
     /**
@@ -11786,7 +11842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsBigInteger());
     }
 
     /**
@@ -11794,7 +11850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getLanguageMoreAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getLanguageMoreAsURL());
     }
 
     /**
@@ -11802,7 +11858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsInteger());
     }
 
     /**
@@ -11810,7 +11866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsLong());
     }
 
     /**
@@ -11818,7 +11874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsLocalDateTime());
     }
 
     /**
@@ -11826,7 +11882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsLocalTime());
     }
 
     /**
@@ -11834,7 +11890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsString() {
-        assertEquals("BT.709", AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsString());
+        assertEquals("BT.709", JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsString());
     }
 
     /**
@@ -11842,7 +11898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsBoolean());
     }
 
     /**
@@ -11850,7 +11906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsBigInteger());
     }
 
     /**
@@ -11858,7 +11914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsAsURL());
     }
 
     /**
@@ -11866,7 +11922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsInteger());
     }
 
     /**
@@ -11874,7 +11930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsLong());
     }
 
     /**
@@ -11882,7 +11938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsLocalDateTime());
     }
 
     /**
@@ -11890,7 +11946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsLocalTime());
     }
 
     /**
@@ -11898,7 +11954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsString());
     }
 
     /**
@@ -11906,7 +11962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsBoolean());
     }
 
     /**
@@ -11914,7 +11970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsBigInteger());
     }
 
     /**
@@ -11922,7 +11978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetmatrixcoefficientsOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getmatrixcoefficientsOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getmatrixcoefficientsOriginalAsURL());
     }
 
     /**
@@ -11930,7 +11986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsInteger());
     }
 
     /**
@@ -11938,7 +11994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsLong());
     }
 
     /**
@@ -11946,7 +12002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsLocalDateTime());
     }
 
     /**
@@ -11954,7 +12010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsLocalTime());
     }
 
     /**
@@ -11962,7 +12018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsString());
     }
 
     /**
@@ -11970,7 +12026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsBoolean());
     }
 
     /**
@@ -11978,7 +12034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsBigInteger());
     }
 
     /**
@@ -11986,7 +12042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDAsURL());
     }
 
     /**
@@ -11994,7 +12050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsInteger());
     }
 
     /**
@@ -12002,7 +12058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsLong());
     }
 
     /**
@@ -12010,7 +12066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsLocalDateTime());
     }
 
     /**
@@ -12018,7 +12074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsLocalTime());
     }
 
     /**
@@ -12026,7 +12082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getMenuIDStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsString());
     }
 
     /**
@@ -12034,7 +12090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsBoolean());
     }
 
     /**
@@ -12042,7 +12098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsBigInteger());
     }
 
     /**
@@ -12050,7 +12106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMenuIDStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMenuIDStringAsURL());
     }
 
     /**
@@ -12058,7 +12114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsInteger());
     }
 
     /**
@@ -12066,7 +12122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsLong());
     }
 
     /**
@@ -12074,7 +12130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsLocalDateTime());
     }
 
     /**
@@ -12082,7 +12138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsLocalTime());
     }
 
     /**
@@ -12090,7 +12146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsString());
     }
 
     /**
@@ -12098,7 +12154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsBoolean());
     }
 
     /**
@@ -12106,7 +12162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsBigInteger());
     }
 
     /**
@@ -12114,7 +12170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewBaseProfileAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewBaseProfileAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewBaseProfileAsURL());
     }
 
     /**
@@ -12122,7 +12178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsInteger());
     }
 
     /**
@@ -12130,7 +12186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsLong());
     }
 
     /**
@@ -12138,7 +12194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsLocalDateTime());
     }
 
     /**
@@ -12146,7 +12202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsLocalTime());
     }
 
     /**
@@ -12154,7 +12210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getMultiViewCountAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsString());
     }
 
     /**
@@ -12162,7 +12218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsBoolean());
     }
 
     /**
@@ -12170,7 +12226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsBigInteger());
     }
 
     /**
@@ -12178,7 +12234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewCountAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewCountAsURL());
     }
 
     /**
@@ -12186,7 +12242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsInteger());
     }
 
     /**
@@ -12194,7 +12250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsLong());
     }
 
     /**
@@ -12202,7 +12258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsLocalDateTime());
     }
 
     /**
@@ -12210,7 +12266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsLocalTime());
     }
 
     /**
@@ -12218,7 +12274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsString());
     }
 
     /**
@@ -12226,7 +12282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsBoolean());
     }
 
     /**
@@ -12234,7 +12290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsBigInteger());
     }
 
     /**
@@ -12242,7 +12298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMultiViewLayoutAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMultiViewLayoutAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMultiViewLayoutAsURL());
     }
 
     /**
@@ -12250,7 +12306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsInteger());
     }
 
     /**
@@ -12258,7 +12314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsLong());
     }
 
     /**
@@ -12266,7 +12322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsLocalDateTime());
     }
 
     /**
@@ -12274,7 +12330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsLocalTime());
     }
 
     /**
@@ -12282,7 +12338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getMuxingModeAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsString());
     }
 
     /**
@@ -12290,7 +12346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsBoolean());
     }
 
     /**
@@ -12298,7 +12354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsBigInteger());
     }
 
     /**
@@ -12306,7 +12362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMuxingModeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getMuxingModeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getMuxingModeAsURL());
     }
 
     /**
@@ -12314,7 +12370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsInteger());
     }
 
     /**
@@ -12322,7 +12378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsLong());
     }
 
     /**
@@ -12330,7 +12386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsLocalDateTime());
     }
 
     /**
@@ -12338,7 +12394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsLocalTime());
     }
 
     /**
@@ -12346,7 +12402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsString());
     }
 
     /**
@@ -12354,7 +12410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsBoolean());
     }
 
     /**
@@ -12362,7 +12418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsBigInteger());
     }
 
     /**
@@ -12370,7 +12426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDAsURL());
     }
 
     /**
@@ -12378,7 +12434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsInteger());
     }
 
     /**
@@ -12386,7 +12442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsLong());
     }
 
     /**
@@ -12394,7 +12450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsLocalDateTime());
     }
 
     /**
@@ -12402,7 +12458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsLocalTime());
     }
 
     /**
@@ -12410,7 +12466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsString());
     }
 
     /**
@@ -12418,7 +12474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsBoolean());
     }
 
     /**
@@ -12426,7 +12482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsBigInteger());
     }
 
     /**
@@ -12434,7 +12490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getOriginalSourceMediumIDStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getOriginalSourceMediumIDStringAsURL());
     }
 
     /**
@@ -12442,7 +12498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsInteger());
     }
 
     /**
@@ -12450,7 +12506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsLong());
     }
 
     /**
@@ -12458,7 +12514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsLocalDateTime());
     }
 
     /**
@@ -12466,7 +12522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsLocalTime());
     }
 
     /**
@@ -12474,7 +12530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsString() {
-        assertEquals("1.000", AbstractTest.jMetaDataVideo.getPixelAspectRatioAsString());
+        assertEquals("1.000", JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsString());
     }
 
     /**
@@ -12482,7 +12538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsBoolean());
     }
 
     /**
@@ -12490,7 +12546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1000), AbstractTest.jMetaDataVideo.getPixelAspectRatioAsBigInteger());
+        assertEquals(BigInteger.valueOf(1000), JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsBigInteger());
     }
 
     /**
@@ -12498,7 +12554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioAsURL());
     }
 
     /**
@@ -12506,7 +12562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsInteger());
     }
 
     /**
@@ -12514,7 +12570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsLong());
     }
 
     /**
@@ -12522,7 +12578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsLocalDateTime());
     }
 
     /**
@@ -12530,7 +12586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsLocalTime());
     }
 
     /**
@@ -12538,7 +12594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsString());
     }
 
     /**
@@ -12546,7 +12602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsBoolean());
     }
 
     /**
@@ -12554,7 +12610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsBigInteger());
     }
 
     /**
@@ -12562,7 +12618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioStringAsURL());
     }
 
     /**
@@ -12570,7 +12626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsInteger());
     }
 
     /**
@@ -12578,7 +12634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsLong());
     }
 
     /**
@@ -12586,7 +12642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsLocalDateTime());
     }
 
     /**
@@ -12594,7 +12650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsLocalTime());
     }
 
     /**
@@ -12602,7 +12658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsString());
     }
 
     /**
@@ -12610,7 +12666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsBoolean());
     }
 
     /**
@@ -12618,7 +12674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsBigInteger());
     }
 
     /**
@@ -12626,7 +12682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureAsURL());
     }
 
     /**
@@ -12634,7 +12690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsInteger());
     }
 
     /**
@@ -12642,7 +12698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsLong());
     }
 
     /**
@@ -12650,7 +12706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsLocalDateTime());
     }
 
     /**
@@ -12658,7 +12714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsLocalTime());
     }
 
     /**
@@ -12666,7 +12722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsString());
     }
 
     /**
@@ -12674,7 +12730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsBoolean());
     }
 
     /**
@@ -12682,7 +12738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsBigInteger());
     }
 
     /**
@@ -12690,7 +12746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioCleanApertureStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioCleanApertureStringAsURL());
     }
 
     /**
@@ -12698,7 +12754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsInteger());
     }
 
     /**
@@ -12706,7 +12762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsLong());
     }
 
     /**
@@ -12714,7 +12770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsLocalDateTime());
     }
 
     /**
@@ -12722,7 +12778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsLocalTime());
     }
 
     /**
@@ -12730,7 +12786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsString());
     }
 
     /**
@@ -12738,7 +12794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsBoolean());
     }
 
     /**
@@ -12746,7 +12802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsBigInteger());
     }
 
     /**
@@ -12754,7 +12810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalAsURL());
     }
 
     /**
@@ -12762,7 +12818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsInteger());
     }
 
     /**
@@ -12770,7 +12826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsLong());
     }
 
     /**
@@ -12778,7 +12834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -12786,7 +12842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsLocalTime());
     }
 
     /**
@@ -12794,7 +12850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsString());
     }
 
     /**
@@ -12802,7 +12858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsBoolean());
     }
 
     /**
@@ -12810,7 +12866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsBigInteger());
     }
 
     /**
@@ -12818,7 +12874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetPixelAspectRatioOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getPixelAspectRatioOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getPixelAspectRatioOriginalStringAsURL());
     }
 
     /**
@@ -12826,7 +12882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsInteger());
     }
 
     /**
@@ -12834,7 +12890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsLong());
     }
 
     /**
@@ -12842,7 +12898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsLocalDateTime());
     }
 
     /**
@@ -12850,7 +12906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsLocalTime());
     }
 
     /**
@@ -12858,7 +12914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsString());
     }
 
     /**
@@ -12866,7 +12922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsBoolean());
     }
 
     /**
@@ -12874,7 +12930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsBigInteger());
     }
 
     /**
@@ -12882,7 +12938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationAsURL());
     }
 
     /**
@@ -12890,7 +12946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsInteger());
     }
 
     /**
@@ -12898,7 +12954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsLong());
     }
 
     /**
@@ -12906,7 +12962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsLocalDateTime());
     }
 
     /**
@@ -12914,7 +12970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsLocalTime());
     }
 
     /**
@@ -12922,7 +12978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsString());
     }
 
     /**
@@ -12930,7 +12986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsBoolean());
     }
 
     /**
@@ -12938,7 +12994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsBigInteger());
     }
 
     /**
@@ -12946,7 +13002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetRotationStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getRotationStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getRotationStringAsURL());
     }
 
     /**
@@ -12954,7 +13010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsInteger() {
-        assertEquals(Integer.valueOf(872), AbstractTest.jMetaDataVideo.getSampledHeightAsInteger());
+        assertEquals(Integer.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsInteger());
     }
 
     /**
@@ -12962,7 +13018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsLong() {
-        assertEquals(Long.valueOf(872), AbstractTest.jMetaDataVideo.getSampledHeightAsLong());
+        assertEquals(Long.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsLong());
     }
 
     /**
@@ -12970,7 +13026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledHeightAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsLocalDateTime());
     }
 
     /**
@@ -12978,7 +13034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledHeightAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsLocalTime());
     }
 
     /**
@@ -12986,7 +13042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsString() {
-        assertEquals("872", AbstractTest.jMetaDataVideo.getSampledHeightAsString());
+        assertEquals("872", JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsString());
     }
 
     /**
@@ -12994,7 +13050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledHeightAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsBoolean());
     }
 
     /**
@@ -13002,7 +13058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsBigInteger() {
-        assertEquals(BigInteger.valueOf(872), AbstractTest.jMetaDataVideo.getSampledHeightAsBigInteger());
+        assertEquals(BigInteger.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsBigInteger());
     }
 
     /**
@@ -13010,7 +13066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledHeightAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledHeightAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsURL());
     }
 
     /**
@@ -13018,7 +13074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsInteger());
     }
 
     /**
@@ -13026,7 +13082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsLong());
     }
 
     /**
@@ -13034,7 +13090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsLocalDateTime());
     }
 
     /**
@@ -13042,7 +13098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsLocalTime());
     }
 
     /**
@@ -13050,7 +13106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsString());
     }
 
     /**
@@ -13058,7 +13114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsBoolean());
     }
 
     /**
@@ -13066,7 +13122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1920), AbstractTest.jMetaDataVideo.getSampledWidthAsBigInteger());
+        assertEquals(BigInteger.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsBigInteger());
     }
 
     /**
@@ -13074,7 +13130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSampledWidthAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSampledWidthAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsURL());
     }
 
     /**
@@ -13082,7 +13138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsInteger());
     }
 
     /**
@@ -13090,7 +13146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsLong());
     }
 
     /**
@@ -13098,7 +13154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsLocalDateTime());
     }
 
     /**
@@ -13106,7 +13162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsLocalTime());
     }
 
     /**
@@ -13114,7 +13170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsString());
     }
 
     /**
@@ -13122,7 +13178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsBoolean());
     }
 
     /**
@@ -13130,7 +13186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsBigInteger());
     }
 
     /**
@@ -13138,7 +13194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderAsURL());
     }
 
     /**
@@ -13146,7 +13202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsInteger());
     }
 
     /**
@@ -13154,7 +13210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsLong());
     }
 
     /**
@@ -13162,7 +13218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsLocalDateTime());
     }
 
     /**
@@ -13170,7 +13226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsLocalTime());
     }
 
     /**
@@ -13178,7 +13234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getScanOrderStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsString());
     }
 
     /**
@@ -13186,7 +13242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsBoolean());
     }
 
     /**
@@ -13194,7 +13250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsBigInteger());
     }
 
     /**
@@ -13202,7 +13258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStringAsURL());
     }
 
     /**
@@ -13210,7 +13266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsInteger());
     }
 
     /**
@@ -13218,7 +13274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsLong());
     }
 
     /**
@@ -13226,7 +13282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsLocalDateTime());
     }
 
     /**
@@ -13234,7 +13290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsLocalTime());
     }
 
     /**
@@ -13242,7 +13298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsString());
     }
 
     /**
@@ -13250,7 +13306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsBoolean());
     }
 
     /**
@@ -13258,7 +13314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsBigInteger());
     }
 
     /**
@@ -13266,7 +13322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalAsURL());
     }
 
     /**
@@ -13274,7 +13330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsInteger());
     }
 
     /**
@@ -13282,7 +13338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsLong());
     }
 
     /**
@@ -13290,7 +13346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -13298,7 +13354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsLocalTime());
     }
 
     /**
@@ -13306,7 +13362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsString());
     }
 
     /**
@@ -13314,7 +13370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsBoolean());
     }
 
     /**
@@ -13322,7 +13378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsBigInteger());
     }
 
     /**
@@ -13330,7 +13386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderOriginalStringAsURL());
     }
 
     /**
@@ -13338,7 +13394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsInteger());
     }
 
     /**
@@ -13346,7 +13402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsLong());
     }
 
     /**
@@ -13354,7 +13410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsLocalDateTime());
     }
 
     /**
@@ -13362,7 +13418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsLocalTime());
     }
 
     /**
@@ -13370,7 +13426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getScanOrderStoredAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsString());
     }
 
     /**
@@ -13378,7 +13434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsBoolean());
     }
 
     /**
@@ -13386,7 +13442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsBigInteger());
     }
 
     /**
@@ -13394,7 +13450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredAsURL());
     }
 
     /**
@@ -13402,7 +13458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsInteger());
     }
 
     /**
@@ -13410,7 +13466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsLong());
     }
 
     /**
@@ -13418,7 +13474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsLocalDateTime());
     }
 
     /**
@@ -13426,7 +13482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsLocalTime());
     }
 
     /**
@@ -13434,7 +13490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsString());
     }
 
     /**
@@ -13442,7 +13498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsBoolean());
     }
 
     /**
@@ -13450,7 +13506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsBigInteger());
     }
 
     /**
@@ -13458,7 +13514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredStringAsURL());
     }
 
     /**
@@ -13466,7 +13522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsInteger());
     }
 
     /**
@@ -13474,7 +13530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsLong());
     }
 
     /**
@@ -13482,7 +13538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsLocalDateTime());
     }
 
     /**
@@ -13490,7 +13546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsLocalTime());
     }
 
     /**
@@ -13498,7 +13554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsString());
     }
 
     /**
@@ -13506,7 +13562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsBoolean());
     }
 
     /**
@@ -13514,7 +13570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsBigInteger());
     }
 
     /**
@@ -13522,7 +13578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanOrderStoredDisplayedInvertedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanOrderStoredDisplayedInvertedAsURL());
     }
 
     /**
@@ -13530,7 +13586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsInteger());
     }
 
     /**
@@ -13538,7 +13594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsLong());
     }
 
     /**
@@ -13546,7 +13602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsLocalDateTime());
     }
 
     /**
@@ -13554,7 +13610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsLocalTime());
     }
 
     /**
@@ -13562,7 +13618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsString());
     }
 
     /**
@@ -13570,7 +13626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsBoolean());
     }
 
     /**
@@ -13578,7 +13634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsBigInteger());
     }
 
     /**
@@ -13586,7 +13642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeAsURL());
     }
 
     /**
@@ -13594,7 +13650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsInteger());
     }
 
     /**
@@ -13602,7 +13658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsLong());
     }
 
     /**
@@ -13610,7 +13666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsLocalDateTime());
     }
 
     /**
@@ -13618,7 +13674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsLocalTime());
     }
 
     /**
@@ -13626,7 +13682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsString() {
-        assertEquals("Progressive", AbstractTest.jMetaDataVideo.getScanTypeStringAsString());
+        assertEquals("Progressive", JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsString());
     }
 
     /**
@@ -13634,7 +13690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsBoolean());
     }
 
     /**
@@ -13642,7 +13698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsBigInteger());
     }
 
     /**
@@ -13650,7 +13706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStringAsURL());
     }
 
     /**
@@ -13658,7 +13714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsInteger());
     }
 
     /**
@@ -13666,7 +13722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsLong());
     }
 
     /**
@@ -13674,7 +13730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsLocalDateTime());
     }
 
     /**
@@ -13682,7 +13738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsLocalTime());
     }
 
     /**
@@ -13690,7 +13746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getScanTypeOriginalAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsString());
     }
 
     /**
@@ -13698,7 +13754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsBoolean());
     }
 
     /**
@@ -13706,7 +13762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsBigInteger());
     }
 
     /**
@@ -13714,7 +13770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalAsURL());
     }
 
     /**
@@ -13722,7 +13778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsInteger());
     }
 
     /**
@@ -13730,7 +13786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsLong());
     }
 
     /**
@@ -13738,7 +13794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -13746,7 +13802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsLocalTime());
     }
 
     /**
@@ -13754,7 +13810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsString());
     }
 
     /**
@@ -13762,7 +13818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsBoolean());
     }
 
     /**
@@ -13770,7 +13826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsBigInteger());
     }
 
     /**
@@ -13778,7 +13834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeOriginalStringAsURL());
     }
 
     /**
@@ -13786,7 +13842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsInteger());
     }
 
     /**
@@ -13794,7 +13850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsLong());
     }
 
     /**
@@ -13802,7 +13858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsLocalDateTime());
     }
 
     /**
@@ -13810,7 +13866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsLocalTime());
     }
 
     /**
@@ -13818,7 +13874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsString());
     }
 
     /**
@@ -13826,7 +13882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsBoolean());
     }
 
     /**
@@ -13834,7 +13890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsBigInteger());
     }
 
     /**
@@ -13842,7 +13898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodAsURL());
     }
 
     /**
@@ -13850,7 +13906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsInteger());
     }
 
     /**
@@ -13858,7 +13914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsLong());
     }
 
     /**
@@ -13866,7 +13922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsLocalDateTime());
     }
 
     /**
@@ -13874,7 +13930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsLocalTime());
     }
 
     /**
@@ -13882,7 +13938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsString());
     }
 
     /**
@@ -13890,7 +13946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsBoolean());
     }
 
     /**
@@ -13898,7 +13954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsBigInteger());
     }
 
     /**
@@ -13906,7 +13962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodStringAsURL());
     }
 
     /**
@@ -13914,7 +13970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsInteger());
     }
 
     /**
@@ -13922,7 +13978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsLong());
     }
 
     /**
@@ -13930,7 +13986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsLocalDateTime());
     }
 
     /**
@@ -13938,7 +13994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsLocalTime());
     }
 
     /**
@@ -13946,7 +14002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsString());
     }
 
     /**
@@ -13954,7 +14010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsBoolean());
     }
 
     /**
@@ -13962,7 +14018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsBigInteger());
     }
 
     /**
@@ -13970,7 +14026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetScanTypeStoreMethodFieldsPerBlockAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getScanTypeStoreMethodFieldsPerBlockAsURL());
     }
 
     /**
@@ -13978,7 +14034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsInteger());
     }
 
     /**
@@ -13986,7 +14042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsLong());
     }
 
     /**
@@ -13994,7 +14050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsLocalDateTime());
     }
 
     /**
@@ -14002,7 +14058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsLocalTime());
     }
 
     /**
@@ -14010,7 +14066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsString());
     }
 
     /**
@@ -14018,7 +14074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsBoolean());
     }
 
     /**
@@ -14026,7 +14082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsBigInteger());
     }
 
     /**
@@ -14034,7 +14090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindAsURL());
     }
 
     /**
@@ -14042,7 +14098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsInteger());
     }
 
     /**
@@ -14050,7 +14106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsLong());
     }
 
     /**
@@ -14058,7 +14114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsLocalDateTime());
     }
 
     /**
@@ -14066,7 +14122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsLocalTime());
     }
 
     /**
@@ -14074,7 +14130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsString());
     }
 
     /**
@@ -14082,7 +14138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsBoolean());
     }
 
     /**
@@ -14090,7 +14146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsBigInteger());
     }
 
     /**
@@ -14098,7 +14154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getServiceKindStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getServiceKindStringAsURL());
     }
 
     /**
@@ -14106,7 +14162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsInteger());
     }
 
     /**
@@ -14114,7 +14170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsLong());
     }
 
     /**
@@ -14122,7 +14178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsLocalDateTime());
     }
 
     /**
@@ -14130,7 +14186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsLocalTime());
     }
 
     /**
@@ -14138,7 +14194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsString());
     }
 
     /**
@@ -14146,7 +14202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsBoolean());
     }
 
     /**
@@ -14154,7 +14210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsBigInteger());
     }
 
     /**
@@ -14162,7 +14218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationAsURL());
     }
 
     /**
@@ -14170,7 +14226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsInteger());
     }
 
     /**
@@ -14178,7 +14234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsLong());
     }
 
     /**
@@ -14186,7 +14242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsLocalDateTime());
     }
 
     /**
@@ -14194,7 +14250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsLocalTime());
     }
 
     /**
@@ -14202,7 +14258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsString());
     }
 
     /**
@@ -14210,7 +14266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsBoolean());
     }
 
     /**
@@ -14218,7 +14274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsBigInteger());
     }
 
     /**
@@ -14226,7 +14282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationStringAsURL());
     }
 
     /**
@@ -14234,7 +14290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsInteger());
     }
 
     /**
@@ -14242,7 +14298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsLong());
     }
 
     /**
@@ -14250,7 +14306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsLocalDateTime());
     }
 
     /**
@@ -14258,7 +14314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsLocalTime());
     }
 
     /**
@@ -14266,7 +14322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsString());
     }
 
     /**
@@ -14274,7 +14330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsBoolean());
     }
 
     /**
@@ -14282,7 +14338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsBigInteger());
     }
 
     /**
@@ -14290,7 +14346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString1AsURL());
     }
 
     /**
@@ -14298,7 +14354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsInteger());
     }
 
     /**
@@ -14306,7 +14362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsLong());
     }
 
     /**
@@ -14314,7 +14370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsLocalDateTime());
     }
 
     /**
@@ -14322,7 +14378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsLocalTime());
     }
 
     /**
@@ -14330,7 +14386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceDurationString2AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsString());
     }
 
     /**
@@ -14338,7 +14394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsBoolean());
     }
 
     /**
@@ -14346,7 +14402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsBigInteger());
     }
 
     /**
@@ -14354,7 +14410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString2AsURL());
     }
 
     /**
@@ -14362,7 +14418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsInteger());
     }
 
     /**
@@ -14370,7 +14426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsLong());
     }
 
     /**
@@ -14378,7 +14434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsLocalDateTime());
     }
 
     /**
@@ -14386,7 +14442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsLocalTime());
     }
 
     /**
@@ -14394,7 +14450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsString());
     }
 
     /**
@@ -14402,7 +14458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsBoolean());
     }
 
     /**
@@ -14410,7 +14466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsBigInteger());
     }
 
     /**
@@ -14418,7 +14474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString3AsURL());
     }
 
     /**
@@ -14426,7 +14482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsInteger());
     }
 
     /**
@@ -14434,7 +14490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsLong());
     }
 
     /**
@@ -14442,7 +14498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsLocalDateTime());
     }
 
     /**
@@ -14450,7 +14506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsLocalTime());
     }
 
     /**
@@ -14458,7 +14514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceDurationString4AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsString());
     }
 
     /**
@@ -14466,7 +14522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsBoolean());
     }
 
     /**
@@ -14474,7 +14530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsBigInteger());
     }
 
     /**
@@ -14482,7 +14538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString4AsURL());
     }
 
     /**
@@ -14490,7 +14546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsInteger());
     }
 
     /**
@@ -14498,7 +14554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsLong());
     }
 
     /**
@@ -14506,7 +14562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsLocalDateTime());
     }
 
     /**
@@ -14514,7 +14570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsLocalTime());
     }
 
     /**
@@ -14522,7 +14578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsString());
     }
 
     /**
@@ -14530,7 +14586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsBoolean());
     }
 
     /**
@@ -14538,7 +14594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsBigInteger());
     }
 
     /**
@@ -14546,7 +14602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationString5AsURL());
     }
 
     /**
@@ -14554,7 +14610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsInteger());
     }
 
     /**
@@ -14562,7 +14618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsLong());
     }
 
     /**
@@ -14570,7 +14626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -14578,7 +14634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsLocalTime());
     }
 
     /**
@@ -14586,7 +14642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsString());
     }
 
     /**
@@ -14594,7 +14650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsBoolean());
     }
 
     /**
@@ -14602,7 +14658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsBigInteger());
     }
 
     /**
@@ -14610,7 +14666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameAsURL());
     }
 
     /**
@@ -14618,7 +14674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsInteger());
     }
 
     /**
@@ -14626,7 +14682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsLong());
     }
 
     /**
@@ -14634,7 +14690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -14642,7 +14698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -14650,7 +14706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsString());
     }
 
     /**
@@ -14658,7 +14714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsBoolean());
     }
 
     /**
@@ -14666,7 +14722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -14674,7 +14730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameStringAsURL());
     }
 
     /**
@@ -14682,7 +14738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsInteger());
     }
 
     /**
@@ -14690,7 +14746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsLong());
     }
 
     /**
@@ -14698,7 +14754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -14706,7 +14762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -14714,7 +14770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsString());
     }
 
     /**
@@ -14722,7 +14778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsBoolean());
     }
 
     /**
@@ -14730,7 +14786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -14738,7 +14794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString1AsURL());
     }
 
     /**
@@ -14746,7 +14802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsInteger());
     }
 
     /**
@@ -14754,7 +14810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsLong());
     }
 
     /**
@@ -14762,7 +14818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -14770,7 +14826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -14778,7 +14834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsString());
     }
 
     /**
@@ -14786,7 +14842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsBoolean());
     }
 
     /**
@@ -14794,7 +14850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -14802,7 +14858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString2AsURL());
     }
 
     /**
@@ -14810,7 +14866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsInteger());
     }
 
     /**
@@ -14818,7 +14874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsLong());
     }
 
     /**
@@ -14826,7 +14882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -14834,7 +14890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -14842,7 +14898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsString());
     }
 
     /**
@@ -14850,7 +14906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsBoolean());
     }
 
     /**
@@ -14858,7 +14914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -14866,7 +14922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString3AsURL());
     }
 
     /**
@@ -14874,7 +14930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsInteger());
     }
 
     /**
@@ -14882,7 +14938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsLong());
     }
 
     /**
@@ -14890,7 +14946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -14898,7 +14954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -14906,7 +14962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsString());
     }
 
     /**
@@ -14914,7 +14970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsBoolean());
     }
 
     /**
@@ -14922,7 +14978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -14930,7 +14986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString4AsURL());
     }
 
     /**
@@ -14938,7 +14994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsInteger());
     }
 
     /**
@@ -14946,7 +15002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsLong());
     }
 
     /**
@@ -14954,7 +15010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -14962,7 +15018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -14970,7 +15026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsString());
     }
 
     /**
@@ -14978,7 +15034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsBoolean());
     }
 
     /**
@@ -14986,7 +15042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -14994,7 +15050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationFirstFrameString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationFirstFrameString5AsURL());
     }
 
     /**
@@ -15002,7 +15058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsInteger());
     }
 
     /**
@@ -15010,7 +15066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsLong());
     }
 
     /**
@@ -15018,7 +15074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsLocalDateTime());
     }
 
     /**
@@ -15026,7 +15082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsLocalTime());
     }
 
     /**
@@ -15034,7 +15090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsString());
     }
 
     /**
@@ -15042,7 +15098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsBoolean());
     }
 
     /**
@@ -15050,7 +15106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsBigInteger());
     }
 
     /**
@@ -15058,7 +15114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameAsURL());
     }
 
     /**
@@ -15066,7 +15122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsInteger());
     }
 
     /**
@@ -15074,7 +15130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsLong());
     }
 
     /**
@@ -15082,7 +15138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsLocalDateTime());
     }
 
     /**
@@ -15090,7 +15146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsLocalTime());
     }
 
     /**
@@ -15098,7 +15154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsString());
     }
 
     /**
@@ -15106,7 +15162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsBoolean());
     }
 
     /**
@@ -15114,7 +15170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsBigInteger());
     }
 
     /**
@@ -15122,7 +15178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameStringAsURL());
     }
 
     /**
@@ -15130,7 +15186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsInteger());
     }
 
     /**
@@ -15138,7 +15194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsLong());
     }
 
     /**
@@ -15146,7 +15202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsLocalDateTime());
     }
 
     /**
@@ -15154,7 +15210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsLocalTime());
     }
 
     /**
@@ -15162,7 +15218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsString());
     }
 
     /**
@@ -15170,7 +15226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsBoolean());
     }
 
     /**
@@ -15178,7 +15234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsBigInteger());
     }
 
     /**
@@ -15186,7 +15242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString1AsURL());
     }
 
     /**
@@ -15194,7 +15250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsInteger());
     }
 
     /**
@@ -15202,7 +15258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsLong());
     }
 
     /**
@@ -15210,7 +15266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsLocalDateTime());
     }
 
     /**
@@ -15218,7 +15274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsLocalTime());
     }
 
     /**
@@ -15226,7 +15282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsString());
     }
 
     /**
@@ -15234,7 +15290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsBoolean());
     }
 
     /**
@@ -15242,7 +15298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsBigInteger());
     }
 
     /**
@@ -15250,7 +15306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString2AsURL());
     }
 
     /**
@@ -15258,7 +15314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsInteger());
     }
 
     /**
@@ -15266,7 +15322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsLong());
     }
 
     /**
@@ -15274,7 +15330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsLocalDateTime());
     }
 
     /**
@@ -15282,7 +15338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsLocalTime());
     }
 
     /**
@@ -15290,7 +15346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsString());
     }
 
     /**
@@ -15298,7 +15354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsBoolean());
     }
 
     /**
@@ -15306,7 +15362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsBigInteger());
     }
 
     /**
@@ -15314,7 +15370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString3AsURL());
     }
 
     /**
@@ -15322,7 +15378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsInteger());
     }
 
     /**
@@ -15330,7 +15386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsLong());
     }
 
     /**
@@ -15338,7 +15394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsLocalDateTime());
     }
 
     /**
@@ -15346,7 +15402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsLocalTime());
     }
 
     /**
@@ -15354,7 +15410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsString());
     }
 
     /**
@@ -15362,7 +15418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsBoolean());
     }
 
     /**
@@ -15370,7 +15426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsBigInteger());
     }
 
     /**
@@ -15378,7 +15434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString4AsURL());
     }
 
     /**
@@ -15386,7 +15442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsInteger());
     }
 
     /**
@@ -15394,7 +15450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsLong());
     }
 
     /**
@@ -15402,7 +15458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsLocalDateTime());
     }
 
     /**
@@ -15410,7 +15466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsLocalTime());
     }
 
     /**
@@ -15418,7 +15474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsString());
     }
 
     /**
@@ -15426,7 +15482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsBoolean());
     }
 
     /**
@@ -15434,7 +15490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsBigInteger());
     }
 
     /**
@@ -15442,7 +15498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceDurationLastFrameString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceDurationLastFrameString5AsURL());
     }
 
     /**
@@ -15450,7 +15506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsInteger());
     }
 
     /**
@@ -15458,7 +15514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsLong());
     }
 
     /**
@@ -15466,7 +15522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsLocalDateTime());
     }
 
     /**
@@ -15474,7 +15530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsLocalTime());
     }
 
     /**
@@ -15482,7 +15538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceFrameCountAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsString());
     }
 
     /**
@@ -15490,7 +15546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsBoolean());
     }
 
     /**
@@ -15498,7 +15554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsBigInteger());
     }
 
     /**
@@ -15506,7 +15562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceFrameCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceFrameCountAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceFrameCountAsURL());
     }
 
     /**
@@ -15514,7 +15570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsInteger());
     }
 
     /**
@@ -15522,7 +15578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsLong());
     }
 
     /**
@@ -15530,7 +15586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsLocalDateTime());
     }
 
     /**
@@ -15538,7 +15594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsLocalTime());
     }
 
     /**
@@ -15546,7 +15602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsString());
     }
 
     /**
@@ -15554,7 +15610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsBoolean());
     }
 
     /**
@@ -15562,7 +15618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsBigInteger());
     }
 
     /**
@@ -15570,7 +15626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeAsURL());
     }
 
     /**
@@ -15578,7 +15634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsInteger());
     }
 
     /**
@@ -15586,7 +15642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsLong());
     }
 
     /**
@@ -15594,7 +15650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsLocalDateTime());
     }
 
     /**
@@ -15602,7 +15658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsLocalTime());
     }
 
     /**
@@ -15610,7 +15666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsString());
     }
 
     /**
@@ -15618,7 +15674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsBoolean());
     }
 
     /**
@@ -15626,7 +15682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsBigInteger());
     }
 
     /**
@@ -15634,7 +15690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeStringAsURL());
     }
 
     /**
@@ -15642,7 +15698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsInteger());
     }
 
     /**
@@ -15650,7 +15706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsLong());
     }
 
     /**
@@ -15658,7 +15714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsLocalDateTime());
     }
 
     /**
@@ -15666,7 +15722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsLocalTime());
     }
 
     /**
@@ -15674,7 +15730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsString());
     }
 
     /**
@@ -15682,7 +15738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsBoolean());
     }
 
     /**
@@ -15690,7 +15746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsBigInteger());
     }
 
     /**
@@ -15698,7 +15754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString1AsURL());
     }
 
     /**
@@ -15706,7 +15762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsInteger());
     }
 
     /**
@@ -15714,7 +15770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsLong());
     }
 
     /**
@@ -15722,7 +15778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsLocalDateTime());
     }
 
     /**
@@ -15730,7 +15786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsLocalTime());
     }
 
     /**
@@ -15738,7 +15794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsString());
     }
 
     /**
@@ -15746,7 +15802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsBoolean());
     }
 
     /**
@@ -15754,7 +15810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsBigInteger());
     }
 
     /**
@@ -15762,7 +15818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString2AsURL());
     }
 
     /**
@@ -15770,7 +15826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsInteger());
     }
 
     /**
@@ -15778,7 +15834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsLong());
     }
 
     /**
@@ -15786,7 +15842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsLocalDateTime());
     }
 
     /**
@@ -15794,7 +15850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsLocalTime());
     }
 
     /**
@@ -15802,7 +15858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsString());
     }
 
     /**
@@ -15810,7 +15866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsBoolean());
     }
 
     /**
@@ -15818,7 +15874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsBigInteger());
     }
 
     /**
@@ -15826,7 +15882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString3AsURL());
     }
 
     /**
@@ -15834,7 +15890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsInteger());
     }
 
     /**
@@ -15842,7 +15898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsLong());
     }
 
     /**
@@ -15850,7 +15906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsLocalDateTime());
     }
 
     /**
@@ -15858,7 +15914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsLocalTime());
     }
 
     /**
@@ -15866,7 +15922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsString());
     }
 
     /**
@@ -15874,7 +15930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsBoolean());
     }
 
     /**
@@ -15882,7 +15938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsBigInteger());
     }
 
     /**
@@ -15890,7 +15946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString4AsURL());
     }
 
     /**
@@ -15898,7 +15954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsInteger());
     }
 
     /**
@@ -15906,7 +15962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsLong());
     }
 
     /**
@@ -15914,7 +15970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsLocalDateTime());
     }
 
     /**
@@ -15922,7 +15978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsLocalTime());
     }
 
     /**
@@ -15930,7 +15986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsString());
     }
 
     /**
@@ -15938,7 +15994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsBoolean());
     }
 
     /**
@@ -15946,7 +16002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsBigInteger());
     }
 
     /**
@@ -15954,7 +16010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeString5AsURL());
     }
 
     /**
@@ -15962,7 +16018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsInteger());
     }
 
     /**
@@ -15970,7 +16026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsLong());
     }
 
     /**
@@ -15978,7 +16034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsLocalDateTime());
     }
 
     /**
@@ -15986,7 +16042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsLocalTime());
     }
 
     /**
@@ -15994,7 +16050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsString());
     }
 
     /**
@@ -16002,7 +16058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsBoolean());
     }
 
     /**
@@ -16010,7 +16066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsBigInteger());
     }
 
     /**
@@ -16018,7 +16074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedAsURL());
     }
 
     /**
@@ -16026,7 +16082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsInteger());
     }
 
     /**
@@ -16034,7 +16090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsLong());
     }
 
     /**
@@ -16042,7 +16098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -16050,7 +16106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsLocalTime());
     }
 
     /**
@@ -16058,7 +16114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsString());
     }
 
     /**
@@ -16066,7 +16122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsBoolean());
     }
 
     /**
@@ -16074,7 +16130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsBigInteger());
     }
 
     /**
@@ -16082,7 +16138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedStringAsURL());
     }
 
     /**
@@ -16090,7 +16146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsInteger());
     }
 
     /**
@@ -16098,7 +16154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsLong());
     }
 
     /**
@@ -16106,7 +16162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsLocalDateTime());
     }
 
     /**
@@ -16114,7 +16170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsLocalTime());
     }
 
     /**
@@ -16122,7 +16178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsString());
     }
 
     /**
@@ -16130,7 +16186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsBoolean());
     }
 
     /**
@@ -16138,7 +16194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsBigInteger());
     }
 
     /**
@@ -16146,7 +16202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString1AsURL());
     }
 
     /**
@@ -16154,7 +16210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsInteger());
     }
 
     /**
@@ -16162,7 +16218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsLong());
     }
 
     /**
@@ -16170,7 +16226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsLocalDateTime());
     }
 
     /**
@@ -16178,7 +16234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsLocalTime());
     }
 
     /**
@@ -16186,7 +16242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsString());
     }
 
     /**
@@ -16194,7 +16250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsBoolean());
     }
 
     /**
@@ -16202,7 +16258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsBigInteger());
     }
 
     /**
@@ -16210,7 +16266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString2AsURL());
     }
 
     /**
@@ -16218,7 +16274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsInteger());
     }
 
     /**
@@ -16226,7 +16282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsLong());
     }
 
     /**
@@ -16234,7 +16290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsLocalDateTime());
     }
 
     /**
@@ -16242,7 +16298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsLocalTime());
     }
 
     /**
@@ -16250,7 +16306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsString());
     }
 
     /**
@@ -16258,7 +16314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsBoolean());
     }
 
     /**
@@ -16266,7 +16322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsBigInteger());
     }
 
     /**
@@ -16274,7 +16330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString3AsURL());
     }
 
     /**
@@ -16282,7 +16338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsInteger());
     }
 
     /**
@@ -16290,7 +16346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsLong());
     }
 
     /**
@@ -16298,7 +16354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsLocalDateTime());
     }
 
     /**
@@ -16306,7 +16362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsLocalTime());
     }
 
     /**
@@ -16314,7 +16370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsString());
     }
 
     /**
@@ -16322,7 +16378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsBoolean());
     }
 
     /**
@@ -16330,7 +16386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsBigInteger());
     }
 
     /**
@@ -16338,7 +16394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString4AsURL());
     }
 
     /**
@@ -16346,7 +16402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsInteger());
     }
 
     /**
@@ -16354,7 +16410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsLong());
     }
 
     /**
@@ -16362,7 +16418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsLocalDateTime());
     }
 
     /**
@@ -16370,7 +16426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsLocalTime());
     }
 
     /**
@@ -16378,7 +16434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsString());
     }
 
     /**
@@ -16386,7 +16442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsBoolean());
     }
 
     /**
@@ -16394,7 +16450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsBigInteger());
     }
 
     /**
@@ -16402,7 +16458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedString5AsURL());
     }
 
     /**
@@ -16410,7 +16466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsInteger());
     }
 
     /**
@@ -16418,7 +16474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsLong());
     }
 
     /**
@@ -16426,7 +16482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsLocalDateTime());
     }
 
     /**
@@ -16434,7 +16490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsLocalTime());
     }
 
     /**
@@ -16442,7 +16498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsString());
     }
 
     /**
@@ -16450,7 +16506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsBoolean());
     }
 
     /**
@@ -16458,7 +16514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsBigInteger());
     }
 
     /**
@@ -16466,7 +16522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeEncodedProportionAsURL());
     }
 
     /**
@@ -16474,7 +16530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsInteger());
     }
 
     /**
@@ -16482,7 +16538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsLong());
     }
 
     /**
@@ -16490,7 +16546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsLocalDateTime());
     }
 
     /**
@@ -16498,7 +16554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsLocalTime());
     }
 
     /**
@@ -16506,7 +16562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsString());
     }
 
     /**
@@ -16514,7 +16570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsBoolean());
     }
 
     /**
@@ -16522,7 +16578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsBigInteger());
     }
 
     /**
@@ -16530,7 +16586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getSourceStreamSizeProportionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSourceStreamSizeProportionAsURL());
     }
 
     /**
@@ -16538,7 +16594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsInteger());
     }
 
     /**
@@ -16546,7 +16602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsLong());
     }
 
     /**
@@ -16554,7 +16610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsLocalDateTime());
     }
 
     /**
@@ -16562,7 +16618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsLocalTime());
     }
 
     /**
@@ -16570,7 +16626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsString());
     }
 
     /**
@@ -16578,7 +16634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsBoolean());
     }
 
     /**
@@ -16586,7 +16642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsBigInteger());
     }
 
     /**
@@ -16594,7 +16650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStandardAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStandardAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStandardAsURL());
     }
 
     /**
@@ -16602,7 +16658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsInteger());
     }
 
     /**
@@ -16610,7 +16666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsLong());
     }
 
     /**
@@ -16618,7 +16674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsLocalDateTime());
     }
 
     /**
@@ -16626,7 +16682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsLocalTime());
     }
 
     /**
@@ -16634,7 +16690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStatusAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStatusAsString());
     }
 
     /**
@@ -16642,7 +16698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsBoolean());
     }
 
     /**
@@ -16650,7 +16706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsBigInteger());
     }
 
     /**
@@ -16658,7 +16714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStatusAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStatusAsURL());
     }
 
     /**
@@ -16666,7 +16722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsInteger() {
-        assertEquals(Integer.valueOf(880), AbstractTest.jMetaDataVideo.getStoredHeightAsInteger());
+        assertEquals(Integer.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsInteger());
     }
 
     /**
@@ -16674,7 +16730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredHeightAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsLong());
     }
 
     /**
@@ -16682,7 +16738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredHeightAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsLocalDateTime());
     }
 
     /**
@@ -16690,7 +16746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredHeightAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsLocalTime());
     }
 
     /**
@@ -16698,7 +16754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsString() {
-        assertEquals("880", AbstractTest.jMetaDataVideo.getStoredHeightAsString());
+        assertEquals("880", JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsString());
     }
 
     /**
@@ -16706,7 +16762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredHeightAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsBoolean());
     }
 
     /**
@@ -16714,7 +16770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsBigInteger() {
-        assertEquals(BigInteger.valueOf(880), AbstractTest.jMetaDataVideo.getStoredHeightAsBigInteger());
+        assertEquals(BigInteger.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsBigInteger());
     }
 
     /**
@@ -16722,7 +16778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredHeightAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredHeightAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsURL());
     }
 
     /**
@@ -16730,7 +16786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsInteger());
     }
 
     /**
@@ -16738,7 +16794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsLong());
     }
 
     /**
@@ -16746,7 +16802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsLocalDateTime());
     }
 
     /**
@@ -16754,7 +16810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsLocalTime());
     }
 
     /**
@@ -16762,7 +16818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStoredWidthAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsString());
     }
 
     /**
@@ -16770,7 +16826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsBoolean());
     }
 
     /**
@@ -16778,7 +16834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsBigInteger());
     }
 
     /**
@@ -16786,7 +16842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStoredWidthAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStoredWidthAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredWidthAsURL());
     }
 
     /**
@@ -16794,7 +16850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsInteger());
     }
 
     /**
@@ -16802,7 +16858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsLong());
     }
 
     /**
@@ -16810,7 +16866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsLocalDateTime());
     }
 
     /**
@@ -16818,7 +16874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsLocalTime());
     }
 
     /**
@@ -16826,7 +16882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsString());
     }
 
     /**
@@ -16834,7 +16890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsBoolean());
     }
 
     /**
@@ -16842,7 +16898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataVideo.getStreamCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsBigInteger());
     }
 
     /**
@@ -16850,7 +16906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamCountAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamCountAsURL());
     }
 
     /**
@@ -16858,7 +16914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsInteger());
     }
 
     /**
@@ -16866,7 +16922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsLong());
     }
 
     /**
@@ -16874,7 +16930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsLocalDateTime());
     }
 
     /**
@@ -16882,7 +16938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsLocalTime());
     }
 
     /**
@@ -16890,7 +16946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsString() {
-        assertEquals("Video", AbstractTest.jMetaDataVideo.getStreamKindAsString());
+        assertEquals("Video", JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsString());
     }
 
     /**
@@ -16898,7 +16954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsBoolean());
     }
 
     /**
@@ -16906,7 +16962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsBigInteger());
     }
 
     /**
@@ -16914,7 +16970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindAsURL());
     }
 
     /**
@@ -16922,7 +16978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsInteger());
     }
 
     /**
@@ -16930,7 +16986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsLong());
     }
 
     /**
@@ -16938,7 +16994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsLocalDateTime());
     }
 
     /**
@@ -16946,7 +17002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsLocalTime());
     }
 
     /**
@@ -16954,7 +17010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsString());
     }
 
     /**
@@ -16962,7 +17018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsBoolean());
     }
 
     /**
@@ -16970,7 +17026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsBigInteger());
     }
 
     /**
@@ -16978,7 +17034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindStringAsURL());
     }
 
     /**
@@ -16986,7 +17042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsInteger());
     }
 
     /**
@@ -16994,7 +17050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsLong());
     }
 
     /**
@@ -17002,7 +17058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsLocalDateTime());
     }
 
     /**
@@ -17010,7 +17066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsLocalTime());
     }
 
     /**
@@ -17018,7 +17074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsString() {
-        assertEquals("0", AbstractTest.jMetaDataVideo.getStreamKindIDAsString());
+        assertEquals("0", JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsString());
     }
 
     /**
@@ -17026,7 +17082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsBoolean());
     }
 
     /**
@@ -17034,7 +17090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsBigInteger());
     }
 
     /**
@@ -17042,7 +17098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindIDAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindIDAsURL());
     }
 
     /**
@@ -17050,7 +17106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsInteger());
     }
 
     /**
@@ -17058,7 +17114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsLong());
     }
 
     /**
@@ -17066,7 +17122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsLocalDateTime());
     }
 
     /**
@@ -17074,7 +17130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsLocalTime());
     }
 
     /**
@@ -17082,7 +17138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsString());
     }
 
     /**
@@ -17090,7 +17146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsBoolean());
     }
 
     /**
@@ -17098,7 +17154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsBigInteger());
     }
 
     /**
@@ -17106,7 +17162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamKindPosAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamKindPosAsURL());
     }
 
     /**
@@ -17114,7 +17170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsInteger());
     }
 
     /**
@@ -17122,7 +17178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsLong() {
-        assertEquals(Long.valueOf(0), AbstractTest.jMetaDataVideo.getStreamOrderAsLong());
+        assertEquals(Long.valueOf(0), JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsLong());
     }
 
     /**
@@ -17130,7 +17186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsLocalDateTime());
     }
 
     /**
@@ -17138,7 +17194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsLocalTime());
     }
 
     /**
@@ -17146,7 +17202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsString());
     }
 
     /**
@@ -17154,7 +17210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsBoolean());
     }
 
     /**
@@ -17162,7 +17218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsBigInteger());
     }
 
     /**
@@ -17170,7 +17226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamOrderAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamOrderAsURL());
     }
 
     /**
@@ -17178,7 +17234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsInteger());
     }
 
     /**
@@ -17186,7 +17242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsLong());
     }
 
     /**
@@ -17194,7 +17250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsLocalDateTime());
     }
 
     /**
@@ -17202,7 +17258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsLocalTime());
     }
 
     /**
@@ -17210,7 +17266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsString());
     }
 
     /**
@@ -17218,7 +17274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsBoolean());
     }
 
     /**
@@ -17226,7 +17282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsBigInteger());
     }
 
     /**
@@ -17234,7 +17290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeAsURL());
     }
 
     /**
@@ -17242,7 +17298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsInteger());
     }
 
     /**
@@ -17250,7 +17306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsLong());
     }
 
     /**
@@ -17258,7 +17314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsLocalDateTime());
     }
 
     /**
@@ -17266,7 +17322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsLocalTime());
     }
 
     /**
@@ -17274,7 +17330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsString());
     }
 
     /**
@@ -17282,7 +17338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsBoolean());
     }
 
     /**
@@ -17290,7 +17346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsBigInteger());
     }
 
     /**
@@ -17298,7 +17354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeStringAsURL());
     }
 
     /**
@@ -17306,7 +17362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsInteger());
     }
 
     /**
@@ -17314,7 +17370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsLong());
     }
 
     /**
@@ -17322,7 +17378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsLocalDateTime());
     }
 
     /**
@@ -17330,7 +17386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsLocalTime());
     }
 
     /**
@@ -17338,7 +17394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsString());
     }
 
     /**
@@ -17346,7 +17402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsBoolean());
     }
 
     /**
@@ -17354,7 +17410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsBigInteger());
     }
 
     /**
@@ -17362,7 +17418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString1AsURL());
     }
 
     /**
@@ -17370,7 +17426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsInteger());
     }
 
     /**
@@ -17378,7 +17434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsLong());
     }
 
     /**
@@ -17386,7 +17442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsLocalDateTime());
     }
 
     /**
@@ -17394,7 +17450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsLocalTime());
     }
 
     /**
@@ -17402,7 +17458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsString());
     }
 
     /**
@@ -17410,7 +17466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsBoolean());
     }
 
     /**
@@ -17418,7 +17474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsBigInteger());
     }
 
     /**
@@ -17426,7 +17482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString2AsURL());
     }
 
     /**
@@ -17434,7 +17490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsInteger());
     }
 
     /**
@@ -17442,7 +17498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsLong());
     }
 
     /**
@@ -17450,7 +17506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsLocalDateTime());
     }
 
     /**
@@ -17458,7 +17514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsLocalTime());
     }
 
     /**
@@ -17466,7 +17522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeString3AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsString());
     }
 
     /**
@@ -17474,7 +17530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsBoolean());
     }
 
     /**
@@ -17482,7 +17538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsBigInteger());
     }
 
     /**
@@ -17490,7 +17546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString3AsURL());
     }
 
     /**
@@ -17498,7 +17554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsInteger());
     }
 
     /**
@@ -17506,7 +17562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsLong());
     }
 
     /**
@@ -17514,7 +17570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsLocalDateTime());
     }
 
     /**
@@ -17522,7 +17578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsLocalTime());
     }
 
     /**
@@ -17530,7 +17586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsString());
     }
 
     /**
@@ -17538,7 +17594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsBoolean());
     }
 
     /**
@@ -17546,7 +17602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsBigInteger());
     }
 
     /**
@@ -17554,7 +17610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString4AsURL());
     }
 
     /**
@@ -17562,7 +17618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsInteger());
     }
 
     /**
@@ -17570,7 +17626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsLong());
     }
 
     /**
@@ -17578,7 +17634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsLocalDateTime());
     }
 
     /**
@@ -17586,7 +17642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsLocalTime());
     }
 
     /**
@@ -17594,7 +17650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeString5AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsString());
     }
 
     /**
@@ -17602,7 +17658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsBoolean());
     }
 
     /**
@@ -17610,7 +17666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsBigInteger());
     }
 
     /**
@@ -17618,7 +17674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeString5AsURL());
     }
 
     /**
@@ -17626,7 +17682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsInteger());
     }
 
     /**
@@ -17634,7 +17690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsLong());
     }
 
     /**
@@ -17642,7 +17698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsLocalDateTime());
     }
 
     /**
@@ -17650,7 +17706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsLocalTime());
     }
 
     /**
@@ -17658,7 +17714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsString());
     }
 
     /**
@@ -17666,7 +17722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsBoolean());
     }
 
     /**
@@ -17674,7 +17730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsBigInteger());
     }
 
     /**
@@ -17682,7 +17738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedAsURL());
     }
 
     /**
@@ -17690,7 +17746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsInteger());
     }
 
     /**
@@ -17698,7 +17754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsLong());
     }
 
     /**
@@ -17706,7 +17762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsLocalDateTime());
     }
 
     /**
@@ -17714,7 +17770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsLocalTime());
     }
 
     /**
@@ -17722,7 +17778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsString());
     }
 
     /**
@@ -17730,7 +17786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsBoolean());
     }
 
     /**
@@ -17738,7 +17794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsBigInteger());
     }
 
     /**
@@ -17746,7 +17802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedStringAsURL());
     }
 
     /**
@@ -17754,7 +17810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsInteger());
     }
 
     /**
@@ -17762,7 +17818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsLong());
     }
 
     /**
@@ -17770,7 +17826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsLocalDateTime());
     }
 
     /**
@@ -17778,7 +17834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsLocalTime());
     }
 
     /**
@@ -17786,7 +17842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsString());
     }
 
     /**
@@ -17794,7 +17850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsBoolean());
     }
 
     /**
@@ -17802,7 +17858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsBigInteger());
     }
 
     /**
@@ -17810,7 +17866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString1AsURL());
     }
 
     /**
@@ -17818,7 +17874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsInteger());
     }
 
     /**
@@ -17826,7 +17882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsLong());
     }
 
     /**
@@ -17834,7 +17890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsLocalDateTime());
     }
 
     /**
@@ -17842,7 +17898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsLocalTime());
     }
 
     /**
@@ -17850,7 +17906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsString());
     }
 
     /**
@@ -17858,7 +17914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsBoolean());
     }
 
     /**
@@ -17866,7 +17922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsBigInteger());
     }
 
     /**
@@ -17874,7 +17930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString2AsURL());
     }
 
     /**
@@ -17882,7 +17938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsInteger());
     }
 
     /**
@@ -17890,7 +17946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsLong());
     }
 
     /**
@@ -17898,7 +17954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsLocalDateTime());
     }
 
     /**
@@ -17906,7 +17962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsLocalTime());
     }
 
     /**
@@ -17914,7 +17970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsString());
     }
 
     /**
@@ -17922,7 +17978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsBoolean());
     }
 
     /**
@@ -17930,7 +17986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsBigInteger());
     }
 
     /**
@@ -17938,7 +17994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString3AsURL());
     }
 
     /**
@@ -17946,7 +18002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsInteger());
     }
 
     /**
@@ -17954,7 +18010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsLong());
     }
 
     /**
@@ -17962,7 +18018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsLocalDateTime());
     }
 
     /**
@@ -17970,7 +18026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsLocalTime());
     }
 
     /**
@@ -17978,7 +18034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsString());
     }
 
     /**
@@ -17986,7 +18042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsBoolean());
     }
 
     /**
@@ -17994,7 +18050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsBigInteger());
     }
 
     /**
@@ -18002,7 +18058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString4AsURL());
     }
 
     /**
@@ -18010,7 +18066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsInteger());
     }
 
     /**
@@ -18018,7 +18074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsLong());
     }
 
     /**
@@ -18026,7 +18082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsLocalDateTime());
     }
 
     /**
@@ -18034,7 +18090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsLocalTime());
     }
 
     /**
@@ -18042,7 +18098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsString());
     }
 
     /**
@@ -18050,7 +18106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsBoolean());
     }
 
     /**
@@ -18058,7 +18114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsBigInteger());
     }
 
     /**
@@ -18066,7 +18122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeDemuxedString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeDemuxedString5AsURL());
     }
 
     /**
@@ -18074,7 +18130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsInteger());
     }
 
     /**
@@ -18082,7 +18138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsLong());
     }
 
     /**
@@ -18090,7 +18146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsLocalDateTime());
     }
 
     /**
@@ -18098,7 +18154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsLocalTime());
     }
 
     /**
@@ -18106,7 +18162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsString());
     }
 
     /**
@@ -18114,7 +18170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsBoolean());
     }
 
     /**
@@ -18122,7 +18178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsBigInteger());
     }
 
     /**
@@ -18130,7 +18186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedAsURL());
     }
 
     /**
@@ -18138,7 +18194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsInteger());
     }
 
     /**
@@ -18146,7 +18202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsLong());
     }
 
     /**
@@ -18154,7 +18210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -18162,7 +18218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsLocalTime());
     }
 
     /**
@@ -18170,7 +18226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsString());
     }
 
     /**
@@ -18178,7 +18234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsBoolean());
     }
 
     /**
@@ -18186,7 +18242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsBigInteger());
     }
 
     /**
@@ -18194,7 +18250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedStringAsURL());
     }
 
     /**
@@ -18202,7 +18258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsInteger());
     }
 
     /**
@@ -18210,7 +18266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsLong());
     }
 
     /**
@@ -18218,7 +18274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsLocalDateTime());
     }
 
     /**
@@ -18226,7 +18282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsLocalTime());
     }
 
     /**
@@ -18234,7 +18290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsString());
     }
 
     /**
@@ -18242,7 +18298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsBoolean());
     }
 
     /**
@@ -18250,7 +18306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsBigInteger());
     }
 
     /**
@@ -18258,7 +18314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString1AsURL());
     }
 
     /**
@@ -18266,7 +18322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsInteger());
     }
 
     /**
@@ -18274,7 +18330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsLong());
     }
 
     /**
@@ -18282,7 +18338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsLocalDateTime());
     }
 
     /**
@@ -18290,7 +18346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsLocalTime());
     }
 
     /**
@@ -18298,7 +18354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsString());
     }
 
     /**
@@ -18306,7 +18362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsBoolean());
     }
 
     /**
@@ -18314,7 +18370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsBigInteger());
     }
 
     /**
@@ -18322,7 +18378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString2AsURL());
     }
 
     /**
@@ -18330,7 +18386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsInteger());
     }
 
     /**
@@ -18338,7 +18394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsLong());
     }
 
     /**
@@ -18346,7 +18402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsLocalDateTime());
     }
 
     /**
@@ -18354,7 +18410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsLocalTime());
     }
 
     /**
@@ -18362,7 +18418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsString());
     }
 
     /**
@@ -18370,7 +18426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsBoolean());
     }
 
     /**
@@ -18378,7 +18434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsBigInteger());
     }
 
     /**
@@ -18386,7 +18442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString3AsURL());
     }
 
     /**
@@ -18394,7 +18450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsInteger());
     }
 
     /**
@@ -18402,7 +18458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsLong());
     }
 
     /**
@@ -18410,7 +18466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsLocalDateTime());
     }
 
     /**
@@ -18418,7 +18474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsLocalTime());
     }
 
     /**
@@ -18426,7 +18482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsString());
     }
 
     /**
@@ -18434,7 +18490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsBoolean());
     }
 
     /**
@@ -18442,7 +18498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsBigInteger());
     }
 
     /**
@@ -18450,7 +18506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString4AsURL());
     }
 
     /**
@@ -18458,7 +18514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsInteger());
     }
 
     /**
@@ -18466,7 +18522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsLong());
     }
 
     /**
@@ -18474,7 +18530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsLocalDateTime());
     }
 
     /**
@@ -18482,7 +18538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsLocalTime());
     }
 
     /**
@@ -18490,7 +18546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsString());
     }
 
     /**
@@ -18498,7 +18554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsBoolean());
     }
 
     /**
@@ -18506,7 +18562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsBigInteger());
     }
 
     /**
@@ -18514,7 +18570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedString5AsURL());
     }
 
     /**
@@ -18522,7 +18578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsInteger());
     }
 
     /**
@@ -18530,7 +18586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsLong());
     }
 
     /**
@@ -18538,7 +18594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsLocalDateTime());
     }
 
     /**
@@ -18546,7 +18602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsLocalTime());
     }
 
     /**
@@ -18554,7 +18610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsString());
     }
 
     /**
@@ -18562,7 +18618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsBoolean());
     }
 
     /**
@@ -18570,7 +18626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsBigInteger());
     }
 
     /**
@@ -18578,7 +18634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeEncodedProportionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeEncodedProportionAsURL());
     }
 
     /**
@@ -18586,7 +18642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsInteger());
     }
 
     /**
@@ -18594,7 +18650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsLong());
     }
 
     /**
@@ -18602,7 +18658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsLocalDateTime());
     }
 
     /**
@@ -18610,7 +18666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsLocalTime());
     }
 
     /**
@@ -18618,7 +18674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsString());
     }
 
     /**
@@ -18626,7 +18682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsBoolean());
     }
 
     /**
@@ -18634,7 +18690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsBigInteger());
     }
 
     /**
@@ -18642,7 +18698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamSizeProportionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getStreamSizeProportionAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStreamSizeProportionAsURL());
     }
 
     /**
@@ -18650,7 +18706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsInteger());
     }
 
     /**
@@ -18658,7 +18714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsLong());
     }
 
     /**
@@ -18666,7 +18722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsLocalDateTime());
     }
 
     /**
@@ -18674,7 +18730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsLocalTime());
     }
 
     /**
@@ -18682,7 +18738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsString());
     }
 
     /**
@@ -18690,7 +18746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsBoolean());
     }
 
     /**
@@ -18698,7 +18754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsBigInteger());
     }
 
     /**
@@ -18706,7 +18762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTaggedDateAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTaggedDateAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTaggedDateAsURL());
     }
 
     /**
@@ -18714,7 +18770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsInteger());
     }
 
     /**
@@ -18722,7 +18778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsLong());
     }
 
     /**
@@ -18730,7 +18786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -18738,7 +18794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsLocalTime());
     }
 
     /**
@@ -18746,7 +18802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsString());
     }
 
     /**
@@ -18754,7 +18810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsBoolean());
     }
 
     /**
@@ -18762,7 +18818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsBigInteger());
     }
 
     /**
@@ -18770,7 +18826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeFirstFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeFirstFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeFirstFrameAsURL());
     }
 
     /**
@@ -18778,7 +18834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsInteger());
     }
 
     /**
@@ -18786,7 +18842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsLong());
     }
 
     /**
@@ -18794,7 +18850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsLocalDateTime());
     }
 
     /**
@@ -18802,7 +18858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsLocalTime());
     }
 
     /**
@@ -18810,7 +18866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsString());
     }
 
     /**
@@ -18818,7 +18874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsBoolean());
     }
 
     /**
@@ -18826,7 +18882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsBigInteger());
     }
 
     /**
@@ -18834,7 +18890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSettingsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSettingsAsURL());
     }
 
     /**
@@ -18842,7 +18898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsInteger());
     }
 
     /**
@@ -18850,7 +18906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsLong());
     }
 
     /**
@@ -18858,7 +18914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsLocalDateTime());
     }
 
     /**
@@ -18866,7 +18922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsLocalTime());
     }
 
     /**
@@ -18874,7 +18930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsString());
     }
 
     /**
@@ -18882,7 +18938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsBoolean());
     }
 
     /**
@@ -18890,7 +18946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsBigInteger());
     }
 
     /**
@@ -18898,7 +18954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeCodeSourceAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeCodeSourceAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeCodeSourceAsURL());
     }
 
     /**
@@ -18906,7 +18962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsInteger());
     }
 
     /**
@@ -18914,7 +18970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsLong());
     }
 
     /**
@@ -18922,7 +18978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -18930,7 +18986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsLocalTime());
     }
 
     /**
@@ -18938,7 +18994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsString());
     }
 
     /**
@@ -18946,7 +19002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsBoolean());
     }
 
     /**
@@ -18954,7 +19010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsBigInteger());
     }
 
     /**
@@ -18962,7 +19018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameAsURL());
     }
 
     /**
@@ -18970,7 +19026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsInteger());
     }
 
     /**
@@ -18978,7 +19034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsLong());
     }
 
     /**
@@ -18986,7 +19042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -18994,7 +19050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -19002,7 +19058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsString());
     }
 
     /**
@@ -19010,7 +19066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsBoolean());
     }
 
     /**
@@ -19018,7 +19074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -19026,7 +19082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameStringAsURL());
     }
 
     /**
@@ -19034,7 +19090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsInteger());
     }
 
     /**
@@ -19042,7 +19098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsLong());
     }
 
     /**
@@ -19050,7 +19106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -19058,7 +19114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -19066,7 +19122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsString());
     }
 
     /**
@@ -19074,7 +19130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsBoolean());
     }
 
     /**
@@ -19082,7 +19138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -19090,7 +19146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString1AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString1AsURL());
     }
 
     /**
@@ -19098,7 +19154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsInteger());
     }
 
     /**
@@ -19106,7 +19162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsLong());
     }
 
     /**
@@ -19114,7 +19170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -19122,7 +19178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -19130,7 +19186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsString());
     }
 
     /**
@@ -19138,7 +19194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsBoolean());
     }
 
     /**
@@ -19146,7 +19202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -19154,7 +19210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString2AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString2AsURL());
     }
 
     /**
@@ -19162,7 +19218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsInteger());
     }
 
     /**
@@ -19170,7 +19226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsLong());
     }
 
     /**
@@ -19178,7 +19234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -19186,7 +19242,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -19194,7 +19250,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsString());
     }
 
     /**
@@ -19202,7 +19258,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsBoolean());
     }
 
     /**
@@ -19210,7 +19266,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -19218,7 +19274,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString3AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString3AsURL());
     }
 
     /**
@@ -19226,7 +19282,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsInteger());
     }
 
     /**
@@ -19234,7 +19290,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsLong());
     }
 
     /**
@@ -19242,7 +19298,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -19250,7 +19306,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -19258,7 +19314,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsString());
     }
 
     /**
@@ -19266,7 +19322,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsBoolean());
     }
 
     /**
@@ -19274,7 +19330,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -19282,7 +19338,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString4AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString4AsURL());
     }
 
     /**
@@ -19290,7 +19346,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsInteger());
     }
 
     /**
@@ -19298,7 +19354,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsLong());
     }
 
     /**
@@ -19306,7 +19362,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -19314,7 +19370,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -19322,7 +19378,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsString());
     }
 
     /**
@@ -19330,7 +19386,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsBoolean());
     }
 
     /**
@@ -19338,7 +19394,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -19346,7 +19402,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeStampFirstFrameString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTimeStampFirstFrameString5AsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTimeStampFirstFrameString5AsURL());
     }
 
     /**
@@ -19354,7 +19410,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsInteger());
     }
 
     /**
@@ -19362,7 +19418,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsLong());
     }
 
     /**
@@ -19370,7 +19426,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsLocalDateTime());
     }
 
     /**
@@ -19378,7 +19434,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsLocalTime());
     }
 
     /**
@@ -19386,7 +19442,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsString() {
-        assertEquals("Sintel", AbstractTest.jMetaDataVideo.getTitleAsString());
+        assertEquals("Sintel", JMetaDataVideo_Test.jMetaDataVideo.getTitleAsString());
     }
 
     /**
@@ -19394,7 +19450,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsBoolean());
     }
 
     /**
@@ -19402,7 +19458,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsBigInteger());
     }
 
     /**
@@ -19410,7 +19466,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getTitleAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getTitleAsURL());
     }
 
     /**
@@ -19418,7 +19474,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsInteger());
     }
 
     /**
@@ -19426,7 +19482,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsLong() {
-        assertEquals(Long.valueOf(709), AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsLong());
+        assertEquals(Long.valueOf(709), JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsLong());
     }
 
     /**
@@ -19434,7 +19490,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsLocalDateTime());
     }
 
     /**
@@ -19442,7 +19498,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsLocalTime());
     }
 
     /**
@@ -19450,7 +19506,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsString() {
-        assertEquals("BT.709", AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsString());
+        assertEquals("BT.709", JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsString());
     }
 
     /**
@@ -19458,7 +19514,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsBoolean());
     }
 
     /**
@@ -19466,7 +19522,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsBigInteger());
     }
 
     /**
@@ -19474,7 +19530,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsAsURL());
     }
 
     /**
@@ -19482,7 +19538,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsInteger());
     }
 
     /**
@@ -19490,7 +19546,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsLong());
     }
 
     /**
@@ -19498,7 +19554,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsLocalDateTime());
     }
 
     /**
@@ -19506,7 +19562,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsLocalTime());
     }
 
     /**
@@ -19514,7 +19570,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsString());
     }
 
     /**
@@ -19522,7 +19578,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsBoolean());
     }
 
     /**
@@ -19530,7 +19586,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsBigInteger());
     }
 
     /**
@@ -19538,7 +19594,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGettransfercharacteristicsOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.gettransfercharacteristicsOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.gettransfercharacteristicsOriginalAsURL());
     }
 
     /**
@@ -19546,7 +19602,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsInteger());
     }
 
     /**
@@ -19554,7 +19610,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsLong() {
-        assertEquals(new Long("1940764431286751011"), AbstractTest.jMetaDataVideo.getUniqueIDAsLong());
+        assertEquals(new Long("1940764431286751011"), JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsLong());
     }
 
     /**
@@ -19562,7 +19618,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsLocalDateTime());
     }
 
     /**
@@ -19570,7 +19626,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsLocalTime());
     }
 
     /**
@@ -19578,7 +19634,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsString() {
-        assertEquals("1940764431286751011", AbstractTest.jMetaDataVideo.getUniqueIDAsString());
+        assertEquals("1940764431286751011", JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsString());
     }
 
     /**
@@ -19586,7 +19642,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsBoolean());
     }
 
     /**
@@ -19594,7 +19650,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsBigInteger());
     }
 
     /**
@@ -19602,7 +19658,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDAsURL());
     }
 
     /**
@@ -19610,7 +19666,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsInteger());
     }
 
     /**
@@ -19618,7 +19674,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsLong());
     }
 
     /**
@@ -19626,7 +19682,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsLocalDateTime());
     }
 
     /**
@@ -19634,7 +19690,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsLocalTime());
     }
 
     /**
@@ -19642,7 +19698,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsString());
     }
 
     /**
@@ -19650,7 +19706,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsBoolean());
     }
 
     /**
@@ -19658,7 +19714,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsBigInteger());
     }
 
     /**
@@ -19666,7 +19722,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getUniqueIDStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getUniqueIDStringAsURL());
     }
 
     /**
@@ -19674,7 +19730,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsInteger());
     }
 
     /**
@@ -19682,7 +19738,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsLong());
     }
 
     /**
@@ -19690,7 +19746,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsLocalDateTime());
     }
 
     /**
@@ -19698,7 +19754,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsLocalTime());
     }
 
     /**
@@ -19706,7 +19762,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsString());
     }
 
     /**
@@ -19714,7 +19770,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsBoolean());
     }
 
     /**
@@ -19722,7 +19778,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1920), AbstractTest.jMetaDataVideo.getWidthAsBigInteger());
+        assertEquals(BigInteger.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getWidthAsBigInteger());
     }
 
     /**
@@ -19730,7 +19786,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthAsURL());
     }
 
     /**
@@ -19738,7 +19794,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsInteger() {
-        assertEquals(Integer.valueOf(1920), AbstractTest.jMetaDataVideo.getWidthStringAsInteger());
+        assertEquals(Integer.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsInteger());
     }
 
     /**
@@ -19746,7 +19802,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsLong());
     }
 
     /**
@@ -19754,7 +19810,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsLocalDateTime());
     }
 
     /**
@@ -19762,7 +19818,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsLocalTime());
     }
 
     /**
@@ -19770,7 +19826,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsString() {
-        assertEquals("1 920 pixels", AbstractTest.jMetaDataVideo.getWidthStringAsString());
+        assertEquals("1 920 pixels", JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsString());
     }
 
     /**
@@ -19778,7 +19834,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsBoolean());
     }
 
     /**
@@ -19786,7 +19842,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsBigInteger());
     }
 
     /**
@@ -19794,7 +19850,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthStringAsURL());
     }
 
     /**
@@ -19802,7 +19858,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsInteger());
     }
 
     /**
@@ -19810,7 +19866,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsLong());
     }
 
     /**
@@ -19818,7 +19874,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsLocalDateTime());
     }
 
     /**
@@ -19826,7 +19882,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsLocalTime());
     }
 
     /**
@@ -19834,7 +19890,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsString());
     }
 
     /**
@@ -19842,7 +19898,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsBoolean());
     }
 
     /**
@@ -19850,7 +19906,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsBigInteger());
     }
 
     /**
@@ -19858,7 +19914,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureAsURL());
     }
 
     /**
@@ -19866,7 +19922,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsInteger());
     }
 
     /**
@@ -19874,7 +19930,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsLong());
     }
 
     /**
@@ -19882,7 +19938,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsLocalDateTime());
     }
 
     /**
@@ -19890,7 +19946,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsLocalTime());
     }
 
     /**
@@ -19898,7 +19954,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsString());
     }
 
     /**
@@ -19906,7 +19962,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsBoolean());
     }
 
     /**
@@ -19914,7 +19970,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsBigInteger());
     }
 
     /**
@@ -19922,7 +19978,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthCleanApertureStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthCleanApertureStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthCleanApertureStringAsURL());
     }
 
     /**
@@ -19930,7 +19986,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsInteger());
     }
 
     /**
@@ -19938,7 +19994,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsLong());
     }
 
     /**
@@ -19946,7 +20002,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsLocalDateTime());
     }
 
     /**
@@ -19954,7 +20010,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsLocalTime());
     }
 
     /**
@@ -19962,7 +20018,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsString());
     }
 
     /**
@@ -19970,7 +20026,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsBoolean());
     }
 
     /**
@@ -19978,7 +20034,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsBigInteger());
     }
 
     /**
@@ -19986,7 +20042,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetAsURL());
     }
 
     /**
@@ -19994,7 +20050,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsInteger());
     }
 
     /**
@@ -20002,7 +20058,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsLong());
     }
 
     /**
@@ -20010,7 +20066,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsLocalDateTime());
     }
 
     /**
@@ -20018,7 +20074,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsLocalTime());
     }
 
     /**
@@ -20026,7 +20082,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsString());
     }
 
     /**
@@ -20034,7 +20090,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsBoolean());
     }
 
     /**
@@ -20042,7 +20098,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsBigInteger());
     }
 
     /**
@@ -20050,7 +20106,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOffsetStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOffsetStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOffsetStringAsURL());
     }
 
     /**
@@ -20058,7 +20114,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsInteger());
     }
 
     /**
@@ -20066,7 +20122,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsLong());
     }
 
     /**
@@ -20074,7 +20130,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsLocalDateTime());
     }
 
     /**
@@ -20082,7 +20138,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsLocalTime());
     }
 
     /**
@@ -20090,7 +20146,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsString() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsString());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsString());
     }
 
     /**
@@ -20098,7 +20154,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsBoolean());
     }
 
     /**
@@ -20106,7 +20162,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsBigInteger());
     }
 
     /**
@@ -20114,7 +20170,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalAsURL());
     }
 
     /**
@@ -20122,7 +20178,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsInteger());
     }
 
     /**
@@ -20130,7 +20186,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsLong());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsLong());
     }
 
     /**
@@ -20138,7 +20194,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsLocalDateTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -20146,7 +20202,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsLocalTime());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsLocalTime());
     }
 
     /**
@@ -20154,7 +20210,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataVideo.getWidthOriginalStringAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsString());
     }
 
     /**
@@ -20162,7 +20218,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsBoolean());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsBoolean());
     }
 
     /**
@@ -20170,7 +20226,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsBigInteger());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsBigInteger());
     }
 
     /**
@@ -20178,7 +20234,7 @@ public final class JMetaDataVideo_Test extends AbstractTest {
      */
     @Test
     public void subTestGetWidthOriginalStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataVideo.getWidthOriginalStringAsURL());
+        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getWidthOriginalStringAsURL());
     }
 
 }

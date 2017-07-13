@@ -2,23 +2,78 @@ package aka.jmetadata.test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.math.BigInteger;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.management.RuntimeErrorException;
+
+import org.eclipse.jdt.annotation.NonNull;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import aka.jmetadata.main.JMetaData;
+import aka.jmetadata.main.JMetaDataMenu;
 
 /**
  * This class contains tests methods for Menu informations of a specific Menu stream.
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataMenu_Test extends AbstractTest {
+public final class JMetaDataMenu_Test {
+
+    private static @NonNull final Logger LOGGER = Logger.getLogger(JMetaDataMenu_Test.class.getName());
+
+    private static JMetaDataMenu jMetaDataMenu;
+    private static JMetaData jMetaData;
+
+    /**
+     * Initialize test.
+     */
+    @BeforeClass
+    public static void beforeUnit() {
+        try {
+            jMetaData = new JMetaData();
+            final String filePath = new File("").getAbsolutePath();
+            final File file = new File(filePath.concat("/Test/videosamples/Sintel_DivXPlus_6500kbps.mkv"));
+            if (jMetaData.open(file)) {
+                @NonNull
+                final List<@NonNull JMetaDataMenu> menuStreams = jMetaData.getMenuStreams();
+                if (menuStreams.get(0) != null) {
+                    jMetaDataMenu = menuStreams.get(0);
+                }
+            } else {
+                throw new RuntimeErrorException(null, "Can not open file.");
+            }
+        } catch (final Throwable e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            throw new RuntimeErrorException(null, "Can not find file.");
+        }
+    }
+
+    /**
+     * Deinitialize test.
+     */
+    @AfterClass
+    public static void afterUnit() {
+        if (jMetaData != null) {
+            try {
+                jMetaData.close();
+            } catch (final Throwable e) {
+                LOGGER.log(Level.SEVERE, e.getMessage());
+            }
+        }
+    }
 
     /**
      * Test getAlternateGroupAsInteger() method.
      */
     @Test
     public void subTestGetAlternateGroupAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsInteger());
     }
 
     /**
@@ -26,7 +81,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsLong());
     }
 
     /**
@@ -34,7 +89,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsLocalDateTime());
     }
 
     /**
@@ -42,7 +97,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsLocalTime());
     }
 
     /**
@@ -50,7 +105,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getAlternateGroupAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsString());
     }
 
     /**
@@ -58,7 +113,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsBoolean());
     }
 
     /**
@@ -66,7 +121,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsBigInteger());
     }
 
     /**
@@ -74,7 +129,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupAsURL());
     }
 
     /**
@@ -82,7 +137,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsInteger());
     }
 
     /**
@@ -90,7 +145,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsLong());
     }
 
     /**
@@ -98,7 +153,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsLocalDateTime());
     }
 
     /**
@@ -106,7 +161,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsLocalTime());
     }
 
     /**
@@ -114,7 +169,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getAlternateGroupStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsString());
     }
 
     /**
@@ -122,7 +177,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsBoolean());
     }
 
     /**
@@ -130,7 +185,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsBigInteger());
     }
 
     /**
@@ -138,7 +193,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetAlternateGroupStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getAlternateGroupStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getAlternateGroupStringAsURL());
     }
 
     /**
@@ -146,7 +201,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsInteger() {
-        assertEquals(Integer.valueOf(92), AbstractTest.jMetaDataMenu.getChaptersPosBeginAsInteger());
+        assertEquals(Integer.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsInteger());
     }
 
     /**
@@ -154,7 +209,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsLong() {
-        assertEquals(Long.valueOf(92), AbstractTest.jMetaDataMenu.getChaptersPosBeginAsLong());
+        assertEquals(Long.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLong());
     }
 
     /**
@@ -162,7 +217,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosBeginAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLocalDateTime());
     }
 
     /**
@@ -170,7 +225,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosBeginAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLocalTime());
     }
 
     /**
@@ -178,7 +233,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsString() {
-        assertEquals("92", AbstractTest.jMetaDataMenu.getChaptersPosBeginAsString());
+        assertEquals("92", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsString());
     }
 
     /**
@@ -186,7 +241,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosBeginAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBoolean());
     }
 
     /**
@@ -194,7 +249,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsBigInteger() {
-        assertEquals(BigInteger.valueOf(92), AbstractTest.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
+        assertEquals(BigInteger.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
     }
 
     /**
@@ -202,7 +257,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosBeginAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosBeginAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsURL());
     }
 
     /**
@@ -210,7 +265,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsInteger() {
-        assertEquals(Integer.valueOf(103), AbstractTest.jMetaDataMenu.getChaptersPosEndAsInteger());
+        assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsInteger());
     }
 
     /**
@@ -218,7 +273,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsLong() {
-        assertEquals(Long.valueOf(103), AbstractTest.jMetaDataMenu.getChaptersPosEndAsLong());
+        assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLong());
     }
 
     /**
@@ -226,7 +281,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosEndAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLocalDateTime());
     }
 
     /**
@@ -234,7 +289,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosEndAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLocalTime());
     }
 
     /**
@@ -242,7 +297,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsString() {
-        assertEquals("103", AbstractTest.jMetaDataMenu.getChaptersPosEndAsString());
+        assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsString());
     }
 
     /**
@@ -250,7 +305,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosEndAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBoolean());
     }
 
     /**
@@ -258,7 +313,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsBigInteger() {
-        assertEquals(BigInteger.valueOf(103), AbstractTest.jMetaDataMenu.getChaptersPosEndAsBigInteger());
+        assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBigInteger());
     }
 
     /**
@@ -266,7 +321,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetChaptersPosEndAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getChaptersPosEndAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsURL());
     }
 
     /**
@@ -274,7 +329,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsInteger());
     }
 
     /**
@@ -282,7 +337,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsLong());
     }
 
     /**
@@ -290,7 +345,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsLocalDateTime());
     }
 
     /**
@@ -298,7 +353,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsLocalTime());
     }
 
     /**
@@ -306,7 +361,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCodecIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsString());
     }
 
     /**
@@ -314,7 +369,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsBoolean());
     }
 
     /**
@@ -322,7 +377,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsBigInteger());
     }
 
     /**
@@ -330,7 +385,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDAsURL());
     }
 
     /**
@@ -338,7 +393,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsInteger());
     }
 
     /**
@@ -346,7 +401,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsLong());
     }
 
     /**
@@ -354,7 +409,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsLocalDateTime());
     }
 
     /**
@@ -362,7 +417,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsLocalTime());
     }
 
     /**
@@ -370,7 +425,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCodecIDHintAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsString());
     }
 
     /**
@@ -378,7 +433,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsBoolean());
     }
 
     /**
@@ -386,7 +441,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsBigInteger());
     }
 
     /**
@@ -394,7 +449,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDHintAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDHintAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDHintAsURL());
     }
 
     /**
@@ -402,7 +457,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsInteger());
     }
 
     /**
@@ -410,7 +465,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsLong());
     }
 
     /**
@@ -418,7 +473,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsLocalDateTime());
     }
 
     /**
@@ -426,7 +481,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsLocalTime());
     }
 
     /**
@@ -434,7 +489,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCodecIDInfoAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsString());
     }
 
     /**
@@ -442,7 +497,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsBoolean());
     }
 
     /**
@@ -450,7 +505,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsBigInteger());
     }
 
     /**
@@ -458,7 +513,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDInfoAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDInfoAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDInfoAsURL());
     }
 
     /**
@@ -466,7 +521,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsInteger());
     }
 
     /**
@@ -474,7 +529,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsLong());
     }
 
     /**
@@ -482,7 +537,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsLocalDateTime());
     }
 
     /**
@@ -490,7 +545,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsLocalTime());
     }
 
     /**
@@ -498,7 +553,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCodecIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsString());
     }
 
     /**
@@ -506,7 +561,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsBoolean());
     }
 
     /**
@@ -514,7 +569,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsBigInteger());
     }
 
     /**
@@ -522,7 +577,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDStringAsURL());
     }
 
     /**
@@ -530,7 +585,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsInteger());
     }
 
     /**
@@ -538,7 +593,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsLong());
     }
 
     /**
@@ -546,7 +601,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsLocalDateTime());
     }
 
     /**
@@ -554,7 +609,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsLocalTime());
     }
 
     /**
@@ -562,7 +617,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCodecIDUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsString());
     }
 
     /**
@@ -570,7 +625,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsBoolean());
     }
 
     /**
@@ -578,7 +633,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsBigInteger());
     }
 
     /**
@@ -586,7 +641,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDUrlAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDUrlAsURL());
     }
 
     /**
@@ -594,7 +649,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsInteger());
     }
 
     /**
@@ -602,7 +657,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsLong());
     }
 
     /**
@@ -610,7 +665,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsLocalDateTime());
     }
 
     /**
@@ -618,7 +673,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsLocalTime());
     }
 
     /**
@@ -626,7 +681,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsString());
     }
 
     /**
@@ -634,7 +689,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsBoolean());
     }
 
     /**
@@ -642,7 +697,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsBigInteger());
     }
 
     /**
@@ -650,7 +705,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCodecIDDescriptionAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCodecIDDescriptionAsURL());
     }
 
     /**
@@ -658,7 +713,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(103), AbstractTest.jMetaDataMenu.getCountAsInteger());
+        assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsInteger());
     }
 
     /**
@@ -666,7 +721,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(103), AbstractTest.jMetaDataMenu.getCountAsLong());
+        assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsLong());
     }
 
     /**
@@ -674,7 +729,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsLocalDateTime());
     }
 
     /**
@@ -682,7 +737,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsLocalTime());
     }
 
     /**
@@ -690,7 +745,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("103", AbstractTest.jMetaDataMenu.getCountAsString());
+        assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getCountAsString());
     }
 
     /**
@@ -698,7 +753,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsBoolean());
     }
 
     /**
@@ -706,7 +761,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(103), AbstractTest.jMetaDataMenu.getCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsBigInteger());
     }
 
     /**
@@ -714,7 +769,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountAsURL());
     }
 
     /**
@@ -722,7 +777,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsInteger());
     }
 
     /**
@@ -730,7 +785,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsLong());
     }
 
     /**
@@ -738,7 +793,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsLocalDateTime());
     }
 
     /**
@@ -746,7 +801,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsLocalTime());
     }
 
     /**
@@ -754,7 +809,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getCountriesAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsString());
     }
 
     /**
@@ -762,7 +817,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsBoolean());
     }
 
     /**
@@ -770,7 +825,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsBigInteger());
     }
 
     /**
@@ -778,7 +833,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetCountriesAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getCountriesAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getCountriesAsURL());
     }
 
     /**
@@ -786,7 +841,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsInteger());
     }
 
     /**
@@ -794,7 +849,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsLong());
     }
 
     /**
@@ -802,7 +857,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsLocalDateTime());
     }
 
     /**
@@ -810,7 +865,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsLocalTime());
     }
 
     /**
@@ -818,7 +873,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDefaultAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsString());
     }
 
     /**
@@ -826,7 +881,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsBoolean());
     }
 
     /**
@@ -834,7 +889,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsBigInteger());
     }
 
     /**
@@ -842,7 +897,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultAsURL());
     }
 
     /**
@@ -850,7 +905,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsInteger());
     }
 
     /**
@@ -858,7 +913,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsLong());
     }
 
     /**
@@ -866,7 +921,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsLocalDateTime());
     }
 
     /**
@@ -874,7 +929,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsLocalTime());
     }
 
     /**
@@ -882,7 +937,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDefaultStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsString());
     }
 
     /**
@@ -890,7 +945,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsBoolean());
     }
 
     /**
@@ -898,7 +953,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsBigInteger());
     }
 
     /**
@@ -906,7 +961,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDefaultStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDefaultStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDefaultStringAsURL());
     }
 
     /**
@@ -914,7 +969,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsInteger());
     }
 
     /**
@@ -922,7 +977,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsLong());
     }
 
     /**
@@ -930,7 +985,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsLocalDateTime());
     }
 
     /**
@@ -938,7 +993,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsLocalTime());
     }
 
     /**
@@ -946,7 +1001,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayAsString());
     }
 
     /**
@@ -954,7 +1009,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsBoolean());
     }
 
     /**
@@ -962,7 +1017,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsBigInteger());
     }
 
     /**
@@ -970,7 +1025,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayAsURL());
     }
 
     /**
@@ -978,7 +1033,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsInteger());
     }
 
     /**
@@ -986,7 +1041,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsLong());
     }
 
     /**
@@ -994,7 +1049,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsLocalDateTime());
     }
 
     /**
@@ -1002,7 +1057,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsLocalTime());
     }
 
     /**
@@ -1010,7 +1065,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsString());
     }
 
     /**
@@ -1018,7 +1073,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsBoolean());
     }
 
     /**
@@ -1026,7 +1081,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsBigInteger());
     }
 
     /**
@@ -1034,7 +1089,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayStringAsURL());
     }
 
     /**
@@ -1042,7 +1097,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsInteger());
     }
 
     /**
@@ -1050,7 +1105,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsLong());
     }
 
     /**
@@ -1058,7 +1113,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsLocalDateTime());
     }
 
     /**
@@ -1066,7 +1121,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsLocalTime());
     }
 
     /**
@@ -1074,7 +1129,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayString1AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsString());
     }
 
     /**
@@ -1082,7 +1137,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsBoolean());
     }
 
     /**
@@ -1090,7 +1145,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsBigInteger());
     }
 
     /**
@@ -1098,7 +1153,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString1AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString1AsURL());
     }
 
     /**
@@ -1106,7 +1161,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsInteger());
     }
 
     /**
@@ -1114,7 +1169,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsLong());
     }
 
     /**
@@ -1122,7 +1177,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsLocalDateTime());
     }
 
     /**
@@ -1130,7 +1185,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsLocalTime());
     }
 
     /**
@@ -1138,7 +1193,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayString2AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsString());
     }
 
     /**
@@ -1146,7 +1201,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsBoolean());
     }
 
     /**
@@ -1154,7 +1209,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsBigInteger());
     }
 
     /**
@@ -1162,7 +1217,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString2AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString2AsURL());
     }
 
     /**
@@ -1170,7 +1225,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsInteger());
     }
 
     /**
@@ -1178,7 +1233,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsLong());
     }
 
     /**
@@ -1186,7 +1241,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsLocalDateTime());
     }
 
     /**
@@ -1194,7 +1249,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsLocalTime());
     }
 
     /**
@@ -1202,7 +1257,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayString3AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsString());
     }
 
     /**
@@ -1210,7 +1265,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsBoolean());
     }
 
     /**
@@ -1218,7 +1273,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsBigInteger());
     }
 
     /**
@@ -1226,7 +1281,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString3AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString3AsURL());
     }
 
     /**
@@ -1234,7 +1289,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsInteger());
     }
 
     /**
@@ -1242,7 +1297,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsLong());
     }
 
     /**
@@ -1250,7 +1305,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsLocalDateTime());
     }
 
     /**
@@ -1258,7 +1313,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsLocalTime());
     }
 
     /**
@@ -1266,7 +1321,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayString4AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsString());
     }
 
     /**
@@ -1274,7 +1329,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsBoolean());
     }
 
     /**
@@ -1282,7 +1337,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsBigInteger());
     }
 
     /**
@@ -1290,7 +1345,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString4AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString4AsURL());
     }
 
     /**
@@ -1298,7 +1353,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsInteger());
     }
 
     /**
@@ -1306,7 +1361,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsLong());
     }
 
     /**
@@ -1314,7 +1369,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsLocalDateTime());
     }
 
     /**
@@ -1322,7 +1377,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsLocalTime());
     }
 
     /**
@@ -1330,7 +1385,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayString5AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsString());
     }
 
     /**
@@ -1338,7 +1393,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsBoolean());
     }
 
     /**
@@ -1346,7 +1401,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsBigInteger());
     }
 
     /**
@@ -1354,7 +1409,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayString5AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayString5AsURL());
     }
 
     /**
@@ -1362,7 +1417,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsInteger());
     }
 
     /**
@@ -1370,7 +1425,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsLong());
     }
 
     /**
@@ -1378,7 +1433,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsLocalDateTime());
     }
 
     /**
@@ -1386,7 +1441,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsLocalTime());
     }
 
     /**
@@ -1394,7 +1449,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelayDropFrameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsString());
     }
 
     /**
@@ -1402,7 +1457,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsBoolean());
     }
 
     /**
@@ -1410,7 +1465,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsBigInteger());
     }
 
     /**
@@ -1418,7 +1473,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelayDropFrameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelayDropFrameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelayDropFrameAsURL());
     }
 
     /**
@@ -1426,7 +1481,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsInteger());
     }
 
     /**
@@ -1434,7 +1489,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsLong());
     }
 
     /**
@@ -1442,7 +1497,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsLocalDateTime());
     }
 
     /**
@@ -1450,7 +1505,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsLocalTime());
     }
 
     /**
@@ -1458,7 +1513,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelaySettingsAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsString());
     }
 
     /**
@@ -1466,7 +1521,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsBoolean());
     }
 
     /**
@@ -1474,7 +1529,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsBigInteger());
     }
 
     /**
@@ -1482,7 +1537,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySettingsAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySettingsAsURL());
     }
 
     /**
@@ -1490,7 +1545,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsInteger());
     }
 
     /**
@@ -1498,7 +1553,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsLong());
     }
 
     /**
@@ -1506,7 +1561,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsLocalDateTime());
     }
 
     /**
@@ -1514,7 +1569,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsLocalTime());
     }
 
     /**
@@ -1522,7 +1577,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDelaySourceAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsString());
     }
 
     /**
@@ -1530,7 +1585,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsBoolean());
     }
 
     /**
@@ -1538,7 +1593,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsBigInteger());
     }
 
     /**
@@ -1546,7 +1601,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDelaySourceAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDelaySourceAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDelaySourceAsURL());
     }
 
     /**
@@ -1554,7 +1609,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsInteger());
     }
 
     /**
@@ -1562,7 +1617,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsLong());
     }
 
     /**
@@ -1570,7 +1625,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsLocalDateTime());
     }
 
     /**
@@ -1578,7 +1633,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsLocalTime());
     }
 
     /**
@@ -1586,7 +1641,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDisabledAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsString());
     }
 
     /**
@@ -1594,7 +1649,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsBoolean());
     }
 
     /**
@@ -1602,7 +1657,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsBigInteger());
     }
 
     /**
@@ -1610,7 +1665,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledAsURL());
     }
 
     /**
@@ -1618,7 +1673,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsInteger());
     }
 
     /**
@@ -1626,7 +1681,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsLong());
     }
 
     /**
@@ -1634,7 +1689,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsLocalDateTime());
     }
 
     /**
@@ -1642,7 +1697,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsLocalTime());
     }
 
     /**
@@ -1650,7 +1705,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDisabledStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsString());
     }
 
     /**
@@ -1658,7 +1713,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsBoolean());
     }
 
     /**
@@ -1666,7 +1721,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsBigInteger());
     }
 
     /**
@@ -1674,7 +1729,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDisabledStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDisabledStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDisabledStringAsURL());
     }
 
     /**
@@ -1682,7 +1737,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsInteger());
     }
 
     /**
@@ -1690,7 +1745,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsLong());
     }
 
     /**
@@ -1698,7 +1753,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsLocalDateTime());
     }
 
     /**
@@ -1706,7 +1761,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsLocalTime());
     }
 
     /**
@@ -1714,7 +1769,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationAsString());
     }
 
     /**
@@ -1722,7 +1777,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsBoolean());
     }
 
     /**
@@ -1730,7 +1785,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsBigInteger());
     }
 
     /**
@@ -1738,7 +1793,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationAsURL());
     }
 
     /**
@@ -1746,7 +1801,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsInteger());
     }
 
     /**
@@ -1754,7 +1809,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsLong());
     }
 
     /**
@@ -1762,7 +1817,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsLocalDateTime());
     }
 
     /**
@@ -1770,7 +1825,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsLocalTime());
     }
 
     /**
@@ -1778,7 +1833,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsString());
     }
 
     /**
@@ -1786,7 +1841,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsBoolean());
     }
 
     /**
@@ -1794,7 +1849,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsBigInteger());
     }
 
     /**
@@ -1802,7 +1857,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStringAsURL());
     }
 
     /**
@@ -1810,7 +1865,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsInteger());
     }
 
     /**
@@ -1818,7 +1873,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsLong());
     }
 
     /**
@@ -1826,7 +1881,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsLocalDateTime());
     }
 
     /**
@@ -1834,7 +1889,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsLocalTime());
     }
 
     /**
@@ -1842,7 +1897,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationString1AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsString());
     }
 
     /**
@@ -1850,7 +1905,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsBoolean());
     }
 
     /**
@@ -1858,7 +1913,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsBigInteger());
     }
 
     /**
@@ -1866,7 +1921,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString1AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString1AsURL());
     }
 
     /**
@@ -1874,7 +1929,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsInteger());
     }
 
     /**
@@ -1882,7 +1937,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsLong());
     }
 
     /**
@@ -1890,7 +1945,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsLocalDateTime());
     }
 
     /**
@@ -1898,7 +1953,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsLocalTime());
     }
 
     /**
@@ -1906,7 +1961,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationString2AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsString());
     }
 
     /**
@@ -1914,7 +1969,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsBoolean());
     }
 
     /**
@@ -1922,7 +1977,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsBigInteger());
     }
 
     /**
@@ -1930,7 +1985,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString2AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString2AsURL());
     }
 
     /**
@@ -1938,7 +1993,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsInteger());
     }
 
     /**
@@ -1946,7 +2001,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsLong());
     }
 
     /**
@@ -1954,7 +2009,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsLocalDateTime());
     }
 
     /**
@@ -1962,7 +2017,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsLocalTime());
     }
 
     /**
@@ -1970,7 +2025,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationString3AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsString());
     }
 
     /**
@@ -1978,7 +2033,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsBoolean());
     }
 
     /**
@@ -1986,7 +2041,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsBigInteger());
     }
 
     /**
@@ -1994,7 +2049,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString3AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString3AsURL());
     }
 
     /**
@@ -2002,7 +2057,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsInteger());
     }
 
     /**
@@ -2010,7 +2065,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsLong());
     }
 
     /**
@@ -2018,7 +2073,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsLocalDateTime());
     }
 
     /**
@@ -2026,7 +2081,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsLocalTime());
     }
 
     /**
@@ -2034,7 +2089,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationString4AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsString());
     }
 
     /**
@@ -2042,7 +2097,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsBoolean());
     }
 
     /**
@@ -2050,7 +2105,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsBigInteger());
     }
 
     /**
@@ -2058,7 +2113,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString4AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString4AsURL());
     }
 
     /**
@@ -2066,7 +2121,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsInteger());
     }
 
     /**
@@ -2074,7 +2129,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsLong());
     }
 
     /**
@@ -2082,7 +2137,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsLocalDateTime());
     }
 
     /**
@@ -2090,7 +2145,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsLocalTime());
     }
 
     /**
@@ -2098,7 +2153,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationString5AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsString());
     }
 
     /**
@@ -2106,7 +2161,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsBoolean());
     }
 
     /**
@@ -2114,7 +2169,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsBigInteger());
     }
 
     /**
@@ -2122,7 +2177,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationString5AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationString5AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationString5AsURL());
     }
 
     /**
@@ -2130,7 +2185,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsInteger());
     }
 
     /**
@@ -2138,7 +2193,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsLong());
     }
 
     /**
@@ -2146,7 +2201,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsLocalDateTime());
     }
 
     /**
@@ -2154,7 +2209,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsLocalTime());
     }
 
     /**
@@ -2162,7 +2217,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationEndAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsString());
     }
 
     /**
@@ -2170,7 +2225,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsBoolean());
     }
 
     /**
@@ -2178,7 +2233,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsBigInteger());
     }
 
     /**
@@ -2186,7 +2241,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationEndAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationEndAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationEndAsURL());
     }
 
     /**
@@ -2194,7 +2249,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsInteger());
     }
 
     /**
@@ -2202,7 +2257,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsLong());
     }
 
     /**
@@ -2210,7 +2265,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsLocalDateTime());
     }
 
     /**
@@ -2218,7 +2273,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsLocalTime());
     }
 
     /**
@@ -2226,7 +2281,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getDurationStartAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsString());
     }
 
     /**
@@ -2234,7 +2289,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsBoolean());
     }
 
     /**
@@ -2242,7 +2297,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsBigInteger());
     }
 
     /**
@@ -2250,7 +2305,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetDurationStartAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getDurationStartAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getDurationStartAsURL());
     }
 
     /**
@@ -2258,7 +2313,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsInteger());
     }
 
     /**
@@ -2266,7 +2321,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsLong());
     }
 
     /**
@@ -2274,7 +2329,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsLocalDateTime());
     }
 
     /**
@@ -2282,7 +2337,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsLocalTime());
     }
 
     /**
@@ -2290,7 +2345,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFirstPacketOrderAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsString());
     }
 
     /**
@@ -2298,7 +2353,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsBoolean());
     }
 
     /**
@@ -2306,7 +2361,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsBigInteger());
     }
 
     /**
@@ -2314,7 +2369,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFirstPacketOrderAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFirstPacketOrderAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFirstPacketOrderAsURL());
     }
 
     /**
@@ -2322,7 +2377,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsInteger());
     }
 
     /**
@@ -2330,7 +2385,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsLong());
     }
 
     /**
@@ -2338,7 +2393,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsLocalDateTime());
     }
 
     /**
@@ -2346,7 +2401,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsLocalTime());
     }
 
     /**
@@ -2354,7 +2409,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getForcedAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getForcedAsString());
     }
 
     /**
@@ -2362,7 +2417,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsBoolean());
     }
 
     /**
@@ -2370,7 +2425,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsBigInteger());
     }
 
     /**
@@ -2378,7 +2433,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedAsURL());
     }
 
     /**
@@ -2386,7 +2441,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsInteger());
     }
 
     /**
@@ -2394,7 +2449,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsLong());
     }
 
     /**
@@ -2402,7 +2457,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsLocalDateTime());
     }
 
     /**
@@ -2410,7 +2465,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsLocalTime());
     }
 
     /**
@@ -2418,7 +2473,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getForcedStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsString());
     }
 
     /**
@@ -2426,7 +2481,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsBoolean());
     }
 
     /**
@@ -2434,7 +2489,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsBigInteger());
     }
 
     /**
@@ -2442,7 +2497,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetForcedStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getForcedStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getForcedStringAsURL());
     }
 
     /**
@@ -2450,7 +2505,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsInteger());
     }
 
     /**
@@ -2458,7 +2513,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsLong());
     }
 
     /**
@@ -2466,7 +2521,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsLocalDateTime());
     }
 
     /**
@@ -2474,7 +2529,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsLocalTime());
     }
 
     /**
@@ -2482,7 +2537,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatAsString());
     }
 
     /**
@@ -2490,7 +2545,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsBoolean());
     }
 
     /**
@@ -2498,7 +2553,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsBigInteger());
     }
 
     /**
@@ -2506,7 +2561,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatAsURL());
     }
 
     /**
@@ -2514,7 +2569,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsInteger());
     }
 
     /**
@@ -2522,7 +2577,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsLong());
     }
 
     /**
@@ -2530,7 +2585,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsLocalDateTime());
     }
 
     /**
@@ -2538,7 +2593,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsLocalTime());
     }
 
     /**
@@ -2546,7 +2601,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatInfoAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsString());
     }
 
     /**
@@ -2554,7 +2609,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsBoolean());
     }
 
     /**
@@ -2562,7 +2617,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsBigInteger());
     }
 
     /**
@@ -2570,7 +2625,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatInfoAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatInfoAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatInfoAsURL());
     }
 
     /**
@@ -2578,7 +2633,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsInteger());
     }
 
     /**
@@ -2586,7 +2641,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsLong());
     }
 
     /**
@@ -2594,7 +2649,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsLocalDateTime());
     }
 
     /**
@@ -2602,7 +2657,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsLocalTime());
     }
 
     /**
@@ -2610,7 +2665,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsString());
     }
 
     /**
@@ -2618,7 +2673,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsBoolean());
     }
 
     /**
@@ -2626,7 +2681,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsBigInteger());
     }
 
     /**
@@ -2634,7 +2689,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatUrlAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatUrlAsURL());
     }
 
     /**
@@ -2642,7 +2697,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsInteger());
     }
 
     /**
@@ -2650,7 +2705,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsLong());
     }
 
     /**
@@ -2658,7 +2713,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsLocalDateTime());
     }
 
     /**
@@ -2666,7 +2721,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsLocalTime());
     }
 
     /**
@@ -2674,7 +2729,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatCommercialAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsString());
     }
 
     /**
@@ -2682,7 +2737,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsBoolean());
     }
 
     /**
@@ -2690,7 +2745,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsBigInteger());
     }
 
     /**
@@ -2698,7 +2753,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialAsURL());
     }
 
     /**
@@ -2706,7 +2761,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsInteger());
     }
 
     /**
@@ -2714,7 +2769,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsLong());
     }
 
     /**
@@ -2722,7 +2777,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsLocalDateTime());
     }
 
     /**
@@ -2730,7 +2785,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsLocalTime());
     }
 
     /**
@@ -2738,7 +2793,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsString());
     }
 
     /**
@@ -2746,7 +2801,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsBoolean());
     }
 
     /**
@@ -2754,7 +2809,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsBigInteger());
     }
 
     /**
@@ -2762,7 +2817,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCommercialIfAnyAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCommercialIfAnyAsURL());
     }
 
     /**
@@ -2770,7 +2825,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsInteger());
     }
 
     /**
@@ -2778,7 +2833,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsLong());
     }
 
     /**
@@ -2786,7 +2841,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsLocalDateTime());
     }
 
     /**
@@ -2794,7 +2849,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsLocalTime());
     }
 
     /**
@@ -2802,7 +2857,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatCompressionAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsString());
     }
 
     /**
@@ -2810,7 +2865,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsBoolean());
     }
 
     /**
@@ -2818,7 +2873,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsBigInteger());
     }
 
     /**
@@ -2826,7 +2881,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatCompressionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatCompressionAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatCompressionAsURL());
     }
 
     /**
@@ -2834,7 +2889,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsInteger());
     }
 
     /**
@@ -2842,7 +2897,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsLong());
     }
 
     /**
@@ -2850,7 +2905,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsLocalDateTime());
     }
 
     /**
@@ -2858,7 +2913,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsLocalTime());
     }
 
     /**
@@ -2866,7 +2921,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatProfileAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsString());
     }
 
     /**
@@ -2874,7 +2929,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsBoolean());
     }
 
     /**
@@ -2882,7 +2937,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsBigInteger());
     }
 
     /**
@@ -2890,7 +2945,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatProfileAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatProfileAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatProfileAsURL());
     }
 
     /**
@@ -2898,7 +2953,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsInteger());
     }
 
     /**
@@ -2906,7 +2961,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsLong());
     }
 
     /**
@@ -2914,7 +2969,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsLocalDateTime());
     }
 
     /**
@@ -2922,7 +2977,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsLocalTime());
     }
 
     /**
@@ -2930,7 +2985,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatSettingsAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsString());
     }
 
     /**
@@ -2938,7 +2993,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsBoolean());
     }
 
     /**
@@ -2946,7 +3001,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsBigInteger());
     }
 
     /**
@@ -2954,7 +3009,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatSettingsAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatSettingsAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatSettingsAsURL());
     }
 
     /**
@@ -2962,7 +3017,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsInteger());
     }
 
     /**
@@ -2970,7 +3025,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsLong());
     }
 
     /**
@@ -2978,7 +3033,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsLocalDateTime());
     }
 
     /**
@@ -2986,7 +3041,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsLocalTime());
     }
 
     /**
@@ -2994,7 +3049,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getFormatVersionAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsString());
     }
 
     /**
@@ -3002,7 +3057,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsBoolean());
     }
 
     /**
@@ -3010,7 +3065,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsBigInteger());
     }
 
     /**
@@ -3018,7 +3073,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetFormatVersionAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getFormatVersionAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getFormatVersionAsURL());
     }
 
     /**
@@ -3026,7 +3081,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsInteger());
     }
 
     /**
@@ -3034,7 +3089,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsLong());
     }
 
     /**
@@ -3042,7 +3097,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsLocalDateTime());
     }
 
     /**
@@ -3050,7 +3105,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsLocalTime());
     }
 
     /**
@@ -3058,7 +3113,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getIDAsString());
     }
 
     /**
@@ -3066,7 +3121,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsBoolean());
     }
 
     /**
@@ -3074,7 +3129,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsBigInteger());
     }
 
     /**
@@ -3082,7 +3137,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDAsURL());
     }
 
     /**
@@ -3090,7 +3145,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsInteger());
     }
 
     /**
@@ -3098,7 +3153,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsLong());
     }
 
     /**
@@ -3106,7 +3161,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsLocalDateTime());
     }
 
     /**
@@ -3114,7 +3169,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsLocalTime());
     }
 
     /**
@@ -3122,7 +3177,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsString());
     }
 
     /**
@@ -3130,7 +3185,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsBoolean());
     }
 
     /**
@@ -3138,7 +3193,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsBigInteger());
     }
 
     /**
@@ -3146,7 +3201,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getIDStringAsURL());
     }
 
     /**
@@ -3154,7 +3209,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getInformAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsInteger());
     }
 
     /**
@@ -3162,7 +3217,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getInformAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsLong());
     }
 
     /**
@@ -3170,7 +3225,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getInformAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsLocalDateTime());
     }
 
     /**
@@ -3178,7 +3233,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getInformAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsLocalTime());
     }
 
     /**
@@ -3186,7 +3241,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getInformAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsBoolean());
     }
 
     /**
@@ -3194,7 +3249,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(new BigInteger("11167000040417000051875000152167000242625000334459000600000000727667000803000001110000001235000"), AbstractTest.jMetaDataMenu.getInformAsBigInteger());
+        assertEquals(new BigInteger("11167000040417000051875000152167000242625000334459000600000000727667000803000001110000001235000"), JMetaDataMenu_Test.jMetaDataMenu.getInformAsBigInteger());
     }
 
     /**
@@ -3202,7 +3257,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetInformAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getInformAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getInformAsURL());
     }
 
     /**
@@ -3210,7 +3265,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsInteger());
     }
 
     /**
@@ -3218,7 +3273,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsLong());
     }
 
     /**
@@ -3226,7 +3281,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsLocalDateTime());
     }
 
     /**
@@ -3234,7 +3289,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsLocalTime());
     }
 
     /**
@@ -3242,7 +3297,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsString());
     }
 
     /**
@@ -3250,7 +3305,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsBoolean());
     }
 
     /**
@@ -3258,7 +3313,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsBigInteger());
     }
 
     /**
@@ -3266,7 +3321,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageAsURL());
     }
 
     /**
@@ -3274,7 +3329,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsInteger());
     }
 
     /**
@@ -3282,7 +3337,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsLong());
     }
 
     /**
@@ -3290,7 +3345,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsLocalDateTime());
     }
 
     /**
@@ -3298,7 +3353,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsLocalTime());
     }
 
     /**
@@ -3306,7 +3361,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsString());
     }
 
     /**
@@ -3314,7 +3369,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsBoolean());
     }
 
     /**
@@ -3322,7 +3377,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsBigInteger());
     }
 
     /**
@@ -3330,7 +3385,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageStringAsURL());
     }
 
     /**
@@ -3338,7 +3393,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsInteger());
     }
 
     /**
@@ -3346,7 +3401,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsLong());
     }
 
     /**
@@ -3354,7 +3409,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsLocalDateTime());
     }
 
     /**
@@ -3362,7 +3417,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsLocalTime());
     }
 
     /**
@@ -3370,7 +3425,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageString1AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsString());
     }
 
     /**
@@ -3378,7 +3433,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsBoolean());
     }
 
     /**
@@ -3386,7 +3441,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsBigInteger());
     }
 
     /**
@@ -3394,7 +3449,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString1AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString1AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString1AsURL());
     }
 
     /**
@@ -3402,7 +3457,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsInteger());
     }
 
     /**
@@ -3410,7 +3465,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsLong());
     }
 
     /**
@@ -3418,7 +3473,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsLocalDateTime());
     }
 
     /**
@@ -3426,7 +3481,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsLocalTime());
     }
 
     /**
@@ -3434,7 +3489,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageString2AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsString());
     }
 
     /**
@@ -3442,7 +3497,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsBoolean());
     }
 
     /**
@@ -3450,7 +3505,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsBigInteger());
     }
 
     /**
@@ -3458,7 +3513,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString2AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString2AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString2AsURL());
     }
 
     /**
@@ -3466,7 +3521,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsInteger());
     }
 
     /**
@@ -3474,7 +3529,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsLong());
     }
 
     /**
@@ -3482,7 +3537,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsLocalDateTime());
     }
 
     /**
@@ -3490,7 +3545,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsLocalTime());
     }
 
     /**
@@ -3498,7 +3553,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageString3AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsString());
     }
 
     /**
@@ -3506,7 +3561,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsBoolean());
     }
 
     /**
@@ -3514,7 +3569,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsBigInteger());
     }
 
     /**
@@ -3522,7 +3577,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString3AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString3AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString3AsURL());
     }
 
     /**
@@ -3530,7 +3585,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsInteger());
     }
 
     /**
@@ -3538,7 +3593,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsLong());
     }
 
     /**
@@ -3546,7 +3601,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsLocalDateTime());
     }
 
     /**
@@ -3554,7 +3609,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsLocalTime());
     }
 
     /**
@@ -3562,7 +3617,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageString4AsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsString());
     }
 
     /**
@@ -3570,7 +3625,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsBoolean());
     }
 
     /**
@@ -3578,7 +3633,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsBigInteger());
     }
 
     /**
@@ -3586,7 +3641,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageString4AsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageString4AsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageString4AsURL());
     }
 
     /**
@@ -3594,7 +3649,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsInteger());
     }
 
     /**
@@ -3602,7 +3657,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsLong());
     }
 
     /**
@@ -3610,7 +3665,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsLocalDateTime());
     }
 
     /**
@@ -3618,7 +3673,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsLocalTime());
     }
 
     /**
@@ -3626,7 +3681,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLanguageMoreAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsString());
     }
 
     /**
@@ -3634,7 +3689,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsBoolean());
     }
 
     /**
@@ -3642,7 +3697,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsBigInteger());
     }
 
     /**
@@ -3650,7 +3705,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLanguageMoreAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLanguageMoreAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLanguageMoreAsURL());
     }
 
     /**
@@ -3658,7 +3713,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsInteger());
     }
 
     /**
@@ -3666,7 +3721,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsLong());
     }
 
     /**
@@ -3674,7 +3729,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsLocalDateTime());
     }
 
     /**
@@ -3682,7 +3737,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsLocalTime());
     }
 
     /**
@@ -3690,7 +3745,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLawRatingAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsString());
     }
 
     /**
@@ -3698,7 +3753,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsBoolean());
     }
 
     /**
@@ -3706,7 +3761,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsBigInteger());
     }
 
     /**
@@ -3714,7 +3769,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingAsURL());
     }
 
     /**
@@ -3722,7 +3777,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsInteger());
     }
 
     /**
@@ -3730,7 +3785,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsLong());
     }
 
     /**
@@ -3738,7 +3793,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsLocalDateTime());
     }
 
     /**
@@ -3746,7 +3801,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsLocalTime());
     }
 
     /**
@@ -3754,7 +3809,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getLawRatingReasonAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsString());
     }
 
     /**
@@ -3762,7 +3817,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsBoolean());
     }
 
     /**
@@ -3770,7 +3825,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsBigInteger());
     }
 
     /**
@@ -3778,7 +3833,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetLawRatingReasonAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getLawRatingReasonAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getLawRatingReasonAsURL());
     }
 
     /**
@@ -3786,7 +3841,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsInteger());
     }
 
     /**
@@ -3794,7 +3849,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsLong());
     }
 
     /**
@@ -3802,7 +3857,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsLocalDateTime());
     }
 
     /**
@@ -3810,7 +3865,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsLocalTime());
     }
 
     /**
@@ -3818,7 +3873,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getListAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListAsString());
     }
 
     /**
@@ -3826,7 +3881,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsBoolean());
     }
 
     /**
@@ -3834,7 +3889,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsBigInteger());
     }
 
     /**
@@ -3842,7 +3897,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListAsURL());
     }
 
     /**
@@ -3850,7 +3905,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsInteger());
     }
 
     /**
@@ -3858,7 +3913,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsLong());
     }
 
     /**
@@ -3866,7 +3921,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsLocalDateTime());
     }
 
     /**
@@ -3874,7 +3929,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsLocalTime());
     }
 
     /**
@@ -3882,7 +3937,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getListStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListStringAsString());
     }
 
     /**
@@ -3890,7 +3945,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsBoolean());
     }
 
     /**
@@ -3898,7 +3953,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsBigInteger());
     }
 
     /**
@@ -3906,7 +3961,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStringAsURL());
     }
 
     /**
@@ -3914,7 +3969,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsInteger());
     }
 
     /**
@@ -3922,7 +3977,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsLong());
     }
 
     /**
@@ -3930,7 +3985,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsLocalDateTime());
     }
 
     /**
@@ -3938,7 +3993,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsLocalTime());
     }
 
     /**
@@ -3946,7 +4001,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getListStreamKindAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsString());
     }
 
     /**
@@ -3954,7 +4009,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsBoolean());
     }
 
     /**
@@ -3962,7 +4017,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsBigInteger());
     }
 
     /**
@@ -3970,7 +4025,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamKindAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamKindAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamKindAsURL());
     }
 
     /**
@@ -3978,7 +4033,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsInteger());
     }
 
     /**
@@ -3986,7 +4041,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsLong());
     }
 
     /**
@@ -3994,7 +4049,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsLocalDateTime());
     }
 
     /**
@@ -4002,7 +4057,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsLocalTime());
     }
 
     /**
@@ -4010,7 +4065,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getListStreamPosAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsString());
     }
 
     /**
@@ -4018,7 +4073,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsBoolean());
     }
 
     /**
@@ -4026,7 +4081,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsBigInteger());
     }
 
     /**
@@ -4034,7 +4089,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetListStreamPosAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getListStreamPosAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getListStreamPosAsURL());
     }
 
     /**
@@ -4042,7 +4097,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsInteger());
     }
 
     /**
@@ -4050,7 +4105,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsLong());
     }
 
     /**
@@ -4058,7 +4113,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsLocalDateTime());
     }
 
     /**
@@ -4066,7 +4121,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsLocalTime());
     }
 
     /**
@@ -4074,7 +4129,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getMenuIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsString());
     }
 
     /**
@@ -4082,7 +4137,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsBoolean());
     }
 
     /**
@@ -4090,7 +4145,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsBigInteger());
     }
 
     /**
@@ -4098,7 +4153,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDAsURL());
     }
 
     /**
@@ -4106,7 +4161,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsInteger());
     }
 
     /**
@@ -4114,7 +4169,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsLong());
     }
 
     /**
@@ -4122,7 +4177,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsLocalDateTime());
     }
 
     /**
@@ -4130,7 +4185,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsLocalTime());
     }
 
     /**
@@ -4138,7 +4193,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getMenuIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsString());
     }
 
     /**
@@ -4146,7 +4201,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsBoolean());
     }
 
     /**
@@ -4154,7 +4209,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsBigInteger());
     }
 
     /**
@@ -4162,7 +4217,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetMenuIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getMenuIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getMenuIDStringAsURL());
     }
 
     /**
@@ -4170,7 +4225,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsInteger());
     }
 
     /**
@@ -4178,7 +4233,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsLong());
     }
 
     /**
@@ -4186,7 +4241,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsLocalDateTime());
     }
 
     /**
@@ -4194,7 +4249,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsLocalTime());
     }
 
     /**
@@ -4202,7 +4257,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getNetworkNameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsString());
     }
 
     /**
@@ -4210,7 +4265,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsBoolean());
     }
 
     /**
@@ -4218,7 +4273,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsBigInteger());
     }
 
     /**
@@ -4226,7 +4281,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetNetworkNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getNetworkNameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getNetworkNameAsURL());
     }
 
     /**
@@ -4234,7 +4289,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsInteger());
     }
 
     /**
@@ -4242,7 +4297,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsLong());
     }
 
     /**
@@ -4250,7 +4305,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsLocalDateTime());
     }
 
     /**
@@ -4258,7 +4313,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsLocalTime());
     }
 
     /**
@@ -4266,7 +4321,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsString());
     }
 
     /**
@@ -4274,7 +4329,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsBoolean());
     }
 
     /**
@@ -4282,7 +4337,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsBigInteger());
     }
 
     /**
@@ -4290,7 +4345,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalNetworkNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalNetworkNameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalNetworkNameAsURL());
     }
 
     /**
@@ -4298,7 +4353,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsInteger());
     }
 
     /**
@@ -4306,7 +4361,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsLong());
     }
 
     /**
@@ -4314,7 +4369,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsLocalDateTime());
     }
 
     /**
@@ -4322,7 +4377,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsLocalTime());
     }
 
     /**
@@ -4330,7 +4385,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsString());
     }
 
     /**
@@ -4338,7 +4393,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsBoolean());
     }
 
     /**
@@ -4346,7 +4401,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsBigInteger());
     }
 
     /**
@@ -4354,7 +4409,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDAsURL());
     }
 
     /**
@@ -4362,7 +4417,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsInteger());
     }
 
     /**
@@ -4370,7 +4425,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsLong());
     }
 
     /**
@@ -4378,7 +4433,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalDateTime());
     }
 
     /**
@@ -4386,7 +4441,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsLocalTime());
     }
 
     /**
@@ -4394,7 +4449,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsString());
     }
 
     /**
@@ -4402,7 +4457,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsBoolean());
     }
 
     /**
@@ -4410,7 +4465,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsBigInteger());
     }
 
     /**
@@ -4418,7 +4473,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getOriginalSourceMediumIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getOriginalSourceMediumIDStringAsURL());
     }
 
     /**
@@ -4426,7 +4481,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsInteger());
     }
 
     /**
@@ -4434,7 +4489,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsLong());
     }
 
     /**
@@ -4442,7 +4497,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsLocalDateTime());
     }
 
     /**
@@ -4450,7 +4505,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsLocalTime());
     }
 
     /**
@@ -4458,7 +4513,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsString());
     }
 
     /**
@@ -4466,7 +4521,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsBoolean());
     }
 
     /**
@@ -4474,7 +4529,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsBigInteger());
     }
 
     /**
@@ -4482,7 +4537,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceUrlAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceUrlAsURL());
     }
 
     /**
@@ -4490,7 +4545,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsInteger());
     }
 
     /**
@@ -4498,7 +4553,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsLong());
     }
 
     /**
@@ -4506,7 +4561,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsLocalDateTime());
     }
 
     /**
@@ -4514,7 +4569,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsLocalTime());
     }
 
     /**
@@ -4522,7 +4577,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceChannelAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsString());
     }
 
     /**
@@ -4530,7 +4585,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsBoolean());
     }
 
     /**
@@ -4538,7 +4593,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsBigInteger());
     }
 
     /**
@@ -4546,7 +4601,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceChannelAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceChannelAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceChannelAsURL());
     }
 
     /**
@@ -4554,7 +4609,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsInteger());
     }
 
     /**
@@ -4562,7 +4617,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsLong());
     }
 
     /**
@@ -4570,7 +4625,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsLocalDateTime());
     }
 
     /**
@@ -4578,7 +4633,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsLocalTime());
     }
 
     /**
@@ -4586,7 +4641,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceKindAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsString());
     }
 
     /**
@@ -4594,7 +4649,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsBoolean());
     }
 
     /**
@@ -4602,7 +4657,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsBigInteger());
     }
 
     /**
@@ -4610,7 +4665,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindAsURL());
     }
 
     /**
@@ -4618,7 +4673,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsInteger());
     }
 
     /**
@@ -4626,7 +4681,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsLong());
     }
 
     /**
@@ -4634,7 +4689,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsLocalDateTime());
     }
 
     /**
@@ -4642,7 +4697,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsLocalTime());
     }
 
     /**
@@ -4650,7 +4705,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceKindStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsString());
     }
 
     /**
@@ -4658,7 +4713,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsBoolean());
     }
 
     /**
@@ -4666,7 +4721,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsBigInteger());
     }
 
     /**
@@ -4674,7 +4729,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceKindStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceKindStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceKindStringAsURL());
     }
 
     /**
@@ -4682,7 +4737,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsInteger());
     }
 
     /**
@@ -4690,7 +4745,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsLong());
     }
 
     /**
@@ -4698,7 +4753,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsLocalDateTime());
     }
 
     /**
@@ -4706,7 +4761,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsLocalTime());
     }
 
     /**
@@ -4714,7 +4769,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceNameAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsString());
     }
 
     /**
@@ -4722,7 +4777,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsBoolean());
     }
 
     /**
@@ -4730,7 +4785,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsBigInteger());
     }
 
     /**
@@ -4738,7 +4793,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceNameAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceNameAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceNameAsURL());
     }
 
     /**
@@ -4746,7 +4801,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsInteger());
     }
 
     /**
@@ -4754,7 +4809,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsLong());
     }
 
     /**
@@ -4762,7 +4817,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsLocalDateTime());
     }
 
     /**
@@ -4770,7 +4825,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsLocalTime());
     }
 
     /**
@@ -4778,7 +4833,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceProviderAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsString());
     }
 
     /**
@@ -4786,7 +4841,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsBoolean());
     }
 
     /**
@@ -4794,7 +4849,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsBigInteger());
     }
 
     /**
@@ -4802,7 +4857,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderAsURL());
     }
 
     /**
@@ -4810,7 +4865,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsInteger());
     }
 
     /**
@@ -4818,7 +4873,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsLong());
     }
 
     /**
@@ -4826,7 +4881,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsLocalDateTime());
     }
 
     /**
@@ -4834,7 +4889,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsLocalTime());
     }
 
     /**
@@ -4842,7 +4897,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsString());
     }
 
     /**
@@ -4850,7 +4905,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsBoolean());
     }
 
     /**
@@ -4858,7 +4913,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsBigInteger());
     }
 
     /**
@@ -4866,7 +4921,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceProviderrUrlAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceProviderrUrlAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceProviderrUrlAsURL());
     }
 
     /**
@@ -4874,7 +4929,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsInteger());
     }
 
     /**
@@ -4882,7 +4937,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsLong());
     }
 
     /**
@@ -4890,7 +4945,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsLocalDateTime());
     }
 
     /**
@@ -4898,7 +4953,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsLocalTime());
     }
 
     /**
@@ -4906,7 +4961,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getServiceTypeAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsString());
     }
 
     /**
@@ -4914,7 +4969,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsBoolean());
     }
 
     /**
@@ -4922,7 +4977,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsBigInteger());
     }
 
     /**
@@ -4930,7 +4985,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetServiceTypeAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getServiceTypeAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getServiceTypeAsURL());
     }
 
     /**
@@ -4938,7 +4993,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsInteger());
     }
 
     /**
@@ -4946,7 +5001,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsLong());
     }
 
     /**
@@ -4954,7 +5009,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsLocalDateTime());
     }
 
     /**
@@ -4962,7 +5017,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsLocalTime());
     }
 
     /**
@@ -4970,7 +5025,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getStatusAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getStatusAsString());
     }
 
     /**
@@ -4978,7 +5033,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsBoolean());
     }
 
     /**
@@ -4986,7 +5041,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsBigInteger());
     }
 
     /**
@@ -4994,7 +5049,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStatusAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStatusAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStatusAsURL());
     }
 
     /**
@@ -5002,7 +5057,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsInteger() {
-        assertEquals(Integer.valueOf(1), AbstractTest.jMetaDataMenu.getStreamCountAsInteger());
+        assertEquals(Integer.valueOf(1), JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsInteger());
     }
 
     /**
@@ -5010,7 +5065,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsLong() {
-        assertEquals(Long.valueOf(1), AbstractTest.jMetaDataMenu.getStreamCountAsLong());
+        assertEquals(Long.valueOf(1), JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsLong());
     }
 
     /**
@@ -5018,7 +5073,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamCountAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsLocalDateTime());
     }
 
     /**
@@ -5026,7 +5081,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamCountAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsLocalTime());
     }
 
     /**
@@ -5034,7 +5089,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsString() {
-        assertEquals("1", AbstractTest.jMetaDataMenu.getStreamCountAsString());
+        assertEquals("1", JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsString());
     }
 
     /**
@@ -5042,7 +5097,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamCountAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsBoolean());
     }
 
     /**
@@ -5050,7 +5105,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataMenu.getStreamCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsBigInteger());
     }
 
     /**
@@ -5058,7 +5113,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamCountAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamCountAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamCountAsURL());
     }
 
     /**
@@ -5066,7 +5121,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsInteger());
     }
 
     /**
@@ -5074,7 +5129,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsLong());
     }
 
     /**
@@ -5082,7 +5137,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsLocalDateTime());
     }
 
     /**
@@ -5090,7 +5145,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsLocalTime());
     }
 
     /**
@@ -5098,7 +5153,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsString() {
-        assertEquals("Menu", AbstractTest.jMetaDataMenu.getStreamKindAsString());
+        assertEquals("Menu", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsString());
     }
 
     /**
@@ -5106,7 +5161,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsBoolean());
     }
 
     /**
@@ -5114,7 +5169,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsBigInteger());
     }
 
     /**
@@ -5122,7 +5177,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindAsURL());
     }
 
     /**
@@ -5130,7 +5185,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsInteger());
     }
 
     /**
@@ -5138,7 +5193,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsLong());
     }
 
     /**
@@ -5146,7 +5201,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsLocalDateTime());
     }
 
     /**
@@ -5154,7 +5209,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsLocalTime());
     }
 
     /**
@@ -5162,7 +5217,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsString() {
-        assertEquals("Menu", AbstractTest.jMetaDataMenu.getStreamKindStringAsString());
+        assertEquals("Menu", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsString());
     }
 
     /**
@@ -5170,7 +5225,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsBoolean());
     }
 
     /**
@@ -5178,7 +5233,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsBigInteger());
     }
 
     /**
@@ -5186,7 +5241,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindStringAsURL());
     }
 
     /**
@@ -5194,7 +5249,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsInteger() {
-        assertEquals(Integer.valueOf(0), AbstractTest.jMetaDataMenu.getStreamKindIDAsInteger());
+        assertEquals(Integer.valueOf(0), JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsInteger());
     }
 
     /**
@@ -5202,7 +5257,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsLong() {
-        assertEquals(Long.valueOf(0), AbstractTest.jMetaDataMenu.getStreamKindIDAsLong());
+        assertEquals(Long.valueOf(0), JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsLong());
     }
 
     /**
@@ -5210,7 +5265,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsLocalDateTime());
     }
 
     /**
@@ -5218,7 +5273,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsLocalTime());
     }
 
     /**
@@ -5226,7 +5281,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsString() {
-        assertEquals("0", AbstractTest.jMetaDataMenu.getStreamKindIDAsString());
+        assertEquals("0", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsString());
     }
 
     /**
@@ -5234,7 +5289,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsBoolean());
     }
 
     /**
@@ -5242,7 +5297,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(0), AbstractTest.jMetaDataMenu.getStreamKindIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(0), JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsBigInteger());
     }
 
     /**
@@ -5250,7 +5305,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindIDAsURL());
     }
 
     /**
@@ -5258,7 +5313,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsInteger());
     }
 
     /**
@@ -5266,7 +5321,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsLong());
     }
 
     /**
@@ -5274,7 +5329,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsLocalDateTime());
     }
 
     /**
@@ -5282,7 +5337,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsLocalTime());
     }
 
     /**
@@ -5290,7 +5345,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getStreamKindPosAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsString());
     }
 
     /**
@@ -5298,7 +5353,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsBoolean());
     }
 
     /**
@@ -5306,7 +5361,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsBigInteger());
     }
 
     /**
@@ -5314,7 +5369,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamKindPosAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamKindPosAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamKindPosAsURL());
     }
 
     /**
@@ -5322,7 +5377,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsInteger());
     }
 
     /**
@@ -5330,7 +5385,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsLong());
     }
 
     /**
@@ -5338,7 +5393,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsLocalDateTime());
     }
 
     /**
@@ -5346,7 +5401,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsLocalTime());
     }
 
     /**
@@ -5354,7 +5409,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getStreamOrderAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsString());
     }
 
     /**
@@ -5362,7 +5417,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsBoolean());
     }
 
     /**
@@ -5370,7 +5425,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsBigInteger());
     }
 
     /**
@@ -5378,7 +5433,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetStreamOrderAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getStreamOrderAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getStreamOrderAsURL());
     }
 
     /**
@@ -5386,7 +5441,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsInteger());
     }
 
     /**
@@ -5394,7 +5449,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsLong());
     }
 
     /**
@@ -5402,7 +5457,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsLocalDateTime());
     }
 
     /**
@@ -5410,7 +5465,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsLocalTime());
     }
 
     /**
@@ -5418,7 +5473,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getTimeZonesAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsString());
     }
 
     /**
@@ -5426,7 +5481,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsBoolean());
     }
 
     /**
@@ -5434,7 +5489,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsBigInteger());
     }
 
     /**
@@ -5442,7 +5497,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTimeZonesAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTimeZonesAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTimeZonesAsURL());
     }
 
     /**
@@ -5450,7 +5505,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsInteger());
     }
 
     /**
@@ -5458,7 +5513,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsLong());
     }
 
     /**
@@ -5466,7 +5521,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsLocalDateTime());
     }
 
     /**
@@ -5474,7 +5529,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsLocalTime());
     }
 
     /**
@@ -5482,7 +5537,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getTitleAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getTitleAsString());
     }
 
     /**
@@ -5490,7 +5545,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsBoolean());
     }
 
     /**
@@ -5498,7 +5553,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsBigInteger());
     }
 
     /**
@@ -5506,7 +5561,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetTitleAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getTitleAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getTitleAsURL());
     }
 
     /**
@@ -5514,7 +5569,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsInteger());
     }
 
     /**
@@ -5522,7 +5577,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsLong());
     }
 
     /**
@@ -5530,7 +5585,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsLocalDateTime());
     }
 
     /**
@@ -5538,7 +5593,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsLocalTime());
     }
 
     /**
@@ -5546,7 +5601,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getUniqueIDAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsString());
     }
 
     /**
@@ -5554,7 +5609,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsBoolean());
     }
 
     /**
@@ -5562,7 +5617,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsBigInteger());
     }
 
     /**
@@ -5570,7 +5625,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDAsURL());
     }
 
     /**
@@ -5578,7 +5633,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsInteger());
     }
 
     /**
@@ -5586,7 +5641,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsLong() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsLong());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsLong());
     }
 
     /**
@@ -5594,7 +5649,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalDateTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsLocalDateTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsLocalDateTime());
     }
 
     /**
@@ -5602,7 +5657,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalTime() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsLocalTime());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsLocalTime());
     }
 
     /**
@@ -5610,7 +5665,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsString() {
-        assertEquals("", AbstractTest.jMetaDataMenu.getUniqueIDStringAsString());
+        assertEquals("", JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsString());
     }
 
     /**
@@ -5618,7 +5673,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsBoolean() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsBoolean());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsBoolean());
     }
 
     /**
@@ -5626,7 +5681,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsBigInteger() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsBigInteger());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsBigInteger());
     }
 
     /**
@@ -5634,7 +5689,7 @@ public final class JMetaDataMenu_Test extends AbstractTest {
      */
     @Test
     public void subTestGetUniqueIDStringAsURL() {
-        assertEquals(null, AbstractTest.jMetaDataMenu.getUniqueIDStringAsURL());
+        assertEquals(null, JMetaDataMenu_Test.jMetaDataMenu.getUniqueIDStringAsURL());
     }
 
 }

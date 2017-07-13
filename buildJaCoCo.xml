@@ -36,7 +36,7 @@
 	<target name="unittest">
 		<path id="JUnit.classpath">
 			<pathelement location="${result.test-classes.dir}" />
-
+			<pathelement location="Test/videosamples/" />
 			<path refid="JMetadataTest.classpath" />
 		</path>
 		<delete dir="reports/junit/" />
