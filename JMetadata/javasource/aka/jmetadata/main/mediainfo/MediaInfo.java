@@ -93,6 +93,7 @@ public final class MediaInfo {
                 // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
                 // If we do not, the system will look for dependencies, but only in the library path.
                 this.lib = NativeLibrary.getInstance("mediainfo");
+                MediaInfo.libraryName = "mediainfo";
             } catch (final LinkageError e) {
                 LOGGER.warning("Error loading mediainfo: " + e.getMessage());
             }
