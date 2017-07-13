@@ -92,7 +92,7 @@ public final class MediaInfo {
             try {
                 // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
                 // If we do not, the system will look for dependencies, but only in the library path.
-                NativeLibrary.getInstance("zen");
+                NativeLibrary.getInstance("mediainfo");
             } catch (final LinkageError e) {
                 LOGGER.warning("Error loading libzen: " + e.getMessage());
             }
