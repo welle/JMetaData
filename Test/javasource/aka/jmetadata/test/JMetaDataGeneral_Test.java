@@ -44,8 +44,7 @@ public final class JMetaDataGeneral_Test {
     public static void beforeUnit() {
         try {
             jMetaData = new JMetaData();
-            final String filePath = new File("").getAbsolutePath();
-            final File file = new File(filePath.concat("/Test/videosamples/Sintel_DivXPlus_6500kbps.mkv"));
+            final File file = new File(ClassLoader.getSystemClassLoader().getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
             if (jMetaData.open(file)) {
                 jMetaDataGeneral = jMetaData.getGeneral();
             } else {

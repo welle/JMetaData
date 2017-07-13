@@ -105,7 +105,7 @@ public final class MediaInfo {
         } catch (final Throwable e) {
             LOGGER.info("Error loading MediaInfo library: " + e.getMessage());
             if (!Platform.isWindows() && !Platform.isMac()) {
-                LOGGER.info("Make sure you have libmediainfo and libzen installed");
+                LOGGER.info("Make sure you have libmediainfo and libzen are installed!");
             }
         }
     }
@@ -117,6 +117,7 @@ public final class MediaInfo {
 
     @SuppressWarnings("javadoc")
     public void dispose() {
+        close();
         if (this.handlePointer == null) {
             throw new IllegalStateException();
         }
