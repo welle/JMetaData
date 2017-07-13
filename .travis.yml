@@ -7,9 +7,8 @@ before_script:
   - sed -i -e "s,jars_dest =,jars_dest =./," build.properties
 script:
   # other script steps might be done before running the actual analysis
-  #- sonar-scanner
   - ant run
-  - bash <(curl -s https://codecov.io/bash)
+  - sonar-scanner
 env:
   global:
     - classes=JMetadata/classes
