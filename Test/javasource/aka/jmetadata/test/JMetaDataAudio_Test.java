@@ -2,81 +2,26 @@ package aka.jmetadata.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.management.RuntimeErrorException;
-
-import org.eclipse.jdt.annotation.NonNull;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import aka.jmetadata.main.JMetaData;
-import aka.jmetadata.main.JMetaDataAudio;
 
 /**
  * This class contains tests methods for Audio informations of a specific Audio stream.
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataAudio_Test {
-
-    private static @NonNull final Logger LOGGER = Logger.getLogger(JMetaDataAudio_Test.class.getName());
-
-    private static JMetaDataAudio jMetaDataAudio;
-    private static JMetaData jMetaData;
-
-    /**
-     * Initialize test.
-     */
-    @BeforeClass
-    public static void beforeUnit() {
-        try {
-            jMetaData = new JMetaData();
-            final String filePath = new File("").getAbsolutePath();
-            final File file = new File(filePath.concat("/Test/videosamples/Sintel_DivXPlus_6500kbps.mkv"));
-            if (jMetaData.open(file)) {
-                @NonNull
-                final List<@NonNull JMetaDataAudio> audioStreams = jMetaData.getAudioStreams();
-                if (audioStreams.get(0) != null) {
-                    jMetaDataAudio = audioStreams.get(0);
-                }
-            } else {
-                throw new RuntimeErrorException(null, "Can not open file.");
-            }
-        } catch (final Throwable e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-            throw new RuntimeErrorException(null, "Can not find file.");
-        }
-    }
-
-    /**
-     * Deinitialize test.
-     */
-    @AfterClass
-    public static void afterUnit() {
-        if (jMetaData != null) {
-            try {
-                jMetaData.close();
-            } catch (final Throwable e) {
-                LOGGER.log(Level.SEVERE, e.getMessage());
-            }
-        }
-    }
+public final class JMetaDataAudio_Test extends AbstractTest {
 
     /**
      * Test getDelayOriginalSourceAsInteger() method.
      */
     @Test
     public void subTestGetDelayOriginalSourceAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsInteger());
     }
 
     /**
@@ -84,7 +29,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsLong());
     }
 
     /**
@@ -92,7 +37,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsLocalDateTime());
     }
 
     /**
@@ -100,7 +45,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsLocalTime());
     }
 
     /**
@@ -108,7 +53,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsString());
     }
 
     /**
@@ -116,7 +61,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsBoolean());
     }
 
     /**
@@ -124,7 +69,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsBigInteger());
     }
 
     /**
@@ -132,7 +77,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSourceAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSourceAsURL());
     }
 
     /**
@@ -140,7 +85,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsInteger());
     }
 
     /**
@@ -148,7 +93,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsLong());
     }
 
     /**
@@ -156,7 +101,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsLocalDateTime());
     }
 
     /**
@@ -164,7 +109,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsLocalTime());
     }
 
     /**
@@ -172,7 +117,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getInterleaveDurationAsString());
     }
 
     /**
@@ -180,7 +125,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsBoolean());
     }
 
     /**
@@ -188,7 +133,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsBigInteger());
     }
 
     /**
@@ -196,7 +141,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationAsURL());
     }
 
     /**
@@ -204,7 +149,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsInteger() {
-        assertEquals(Integer.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsInteger());
+        assertEquals(Integer.valueOf(1), AbstractTest.jMetaDataAudio.getStreamOrderAsInteger());
     }
 
     /**
@@ -212,7 +157,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsLong() {
-        assertEquals(Long.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsLong());
+        assertEquals(Long.valueOf(1), AbstractTest.jMetaDataAudio.getStreamOrderAsLong());
     }
 
     /**
@@ -220,7 +165,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamOrderAsLocalDateTime());
     }
 
     /**
@@ -228,7 +173,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamOrderAsLocalTime());
     }
 
     /**
@@ -236,7 +181,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsString() {
-        assertEquals("1", JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsString());
+        assertEquals("1", AbstractTest.jMetaDataAudio.getStreamOrderAsString());
     }
 
     /**
@@ -244,7 +189,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamOrderAsBoolean());
     }
 
     /**
@@ -252,7 +197,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataAudio.getStreamOrderAsBigInteger());
     }
 
     /**
@@ -260,7 +205,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamOrderAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamOrderAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamOrderAsURL());
     }
 
     /**
@@ -268,7 +213,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsInteger());
     }
 
     /**
@@ -276,7 +221,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsLong());
     }
 
     /**
@@ -284,7 +229,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsLocalDateTime());
     }
 
     /**
@@ -292,7 +237,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsLocalTime());
     }
 
     /**
@@ -300,7 +245,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsString());
     }
 
     /**
@@ -308,7 +253,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsBoolean());
     }
 
     /**
@@ -316,7 +261,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsBigInteger());
     }
 
     /**
@@ -324,7 +269,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryNameAsURL());
     }
 
     /**
@@ -332,7 +277,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsInteger());
     }
 
     /**
@@ -340,7 +285,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsLong());
     }
 
     /**
@@ -348,7 +293,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -356,7 +301,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -364,7 +309,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsString());
     }
 
     /**
@@ -372,7 +317,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsBoolean());
     }
 
     /**
@@ -380,7 +325,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -388,7 +333,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString4AsURL());
     }
 
     /**
@@ -396,7 +341,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsInteger());
     }
 
     /**
@@ -404,7 +349,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsLong());
     }
 
     /**
@@ -412,7 +357,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -420,7 +365,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -428,7 +373,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsString());
     }
 
     /**
@@ -436,7 +381,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsBoolean());
     }
 
     /**
@@ -444,7 +389,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -452,7 +397,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString5AsURL());
     }
 
     /**
@@ -460,7 +405,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsInteger());
     }
 
     /**
@@ -468,7 +413,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsLong());
     }
 
     /**
@@ -476,7 +421,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -484,7 +429,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -492,7 +437,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsString());
     }
 
     /**
@@ -500,7 +445,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsBoolean());
     }
 
     /**
@@ -508,7 +453,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -516,7 +461,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString2AsURL());
     }
 
     /**
@@ -524,7 +469,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsInteger());
     }
 
     /**
@@ -532,7 +477,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsLong());
     }
 
     /**
@@ -540,7 +485,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -548,7 +493,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -556,7 +501,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsString());
     }
 
     /**
@@ -564,7 +509,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsBoolean());
     }
 
     /**
@@ -572,7 +517,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -580,7 +525,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameStringAsURL());
     }
 
     /**
@@ -588,7 +533,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsInteger());
     }
 
     /**
@@ -596,7 +541,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsLong());
     }
 
     /**
@@ -604,7 +549,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -612,7 +557,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -620,7 +565,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsString());
     }
 
     /**
@@ -628,7 +573,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsBoolean());
     }
 
     /**
@@ -636,7 +581,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -644,7 +589,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString3AsURL());
     }
 
     /**
@@ -652,7 +597,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsInteger());
     }
 
     /**
@@ -660,7 +605,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsLong());
     }
 
     /**
@@ -668,7 +613,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsLocalDateTime());
     }
 
     /**
@@ -676,7 +621,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsLocalTime());
     }
 
     /**
@@ -684,7 +629,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsString());
     }
 
     /**
@@ -692,7 +637,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsBoolean());
     }
 
     /**
@@ -700,7 +645,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsBigInteger());
     }
 
     /**
@@ -708,7 +653,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameAsURL());
     }
 
     /**
@@ -716,7 +661,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsInteger());
     }
 
     /**
@@ -724,7 +669,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsLong());
     }
 
     /**
@@ -732,7 +677,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -740,7 +685,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -748,7 +693,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsString());
     }
 
     /**
@@ -756,7 +701,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsBoolean());
     }
 
     /**
@@ -764,7 +709,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -772,7 +717,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameString1AsURL());
     }
 
     /**
@@ -780,7 +725,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsInteger());
     }
 
     /**
@@ -788,7 +733,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsLong());
     }
 
     /**
@@ -796,7 +741,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsLocalDateTime());
     }
 
     /**
@@ -804,7 +749,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsLocalTime());
     }
 
     /**
@@ -812,7 +757,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsString());
     }
 
     /**
@@ -820,7 +765,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsBoolean());
     }
 
     /**
@@ -828,7 +773,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsBigInteger());
     }
 
     /**
@@ -836,7 +781,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadStringAsURL());
     }
 
     /**
@@ -844,7 +789,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsInteger());
     }
 
     /**
@@ -852,7 +797,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsLong());
     }
 
     /**
@@ -860,7 +805,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsLocalDateTime());
     }
 
     /**
@@ -868,7 +813,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsLocalTime());
     }
 
     /**
@@ -876,7 +821,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatCompressionAsString());
     }
 
     /**
@@ -884,7 +829,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsBoolean());
     }
 
     /**
@@ -892,7 +837,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsBigInteger());
     }
 
     /**
@@ -900,7 +845,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCompressionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCompressionAsURL());
     }
 
     /**
@@ -908,7 +853,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsInteger());
     }
 
     /**
@@ -916,7 +861,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsLong());
     }
 
     /**
@@ -924,7 +869,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsLocalDateTime());
     }
 
     /**
@@ -932,7 +877,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsLocalTime());
     }
 
     /**
@@ -940,7 +885,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getAlignmentStringAsString());
     }
 
     /**
@@ -948,7 +893,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsBoolean());
     }
 
     /**
@@ -956,7 +901,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsBigInteger());
     }
 
     /**
@@ -964,7 +909,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentStringAsURL());
     }
 
     /**
@@ -972,7 +917,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getDelayStringAsInteger());
     }
 
     /**
@@ -980,7 +925,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getDelayStringAsLong());
     }
 
     /**
@@ -988,7 +933,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayStringAsLocalDateTime());
     }
 
     /**
@@ -996,7 +941,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayStringAsLocalTime());
     }
 
     /**
@@ -1004,7 +949,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsString());
+        assertEquals("170 ms", AbstractTest.jMetaDataAudio.getDelayStringAsString());
     }
 
     /**
@@ -1012,7 +957,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayStringAsBoolean());
     }
 
     /**
@@ -1020,7 +965,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getDelayStringAsBigInteger());
     }
 
     /**
@@ -1028,7 +973,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayStringAsURL());
     }
 
     /**
@@ -1036,7 +981,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsInteger());
     }
 
     /**
@@ -1044,7 +989,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsLong());
     }
 
     /**
@@ -1052,7 +997,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsLocalDateTime());
     }
 
     /**
@@ -1060,7 +1005,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsLocalTime());
     }
 
     /**
@@ -1068,7 +1013,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsString());
     }
 
     /**
@@ -1076,7 +1021,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsBoolean());
     }
 
     /**
@@ -1084,7 +1029,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsBigInteger());
     }
 
     /**
@@ -1092,7 +1037,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeMoreInfoAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeMoreInfoAsURL());
     }
 
     /**
@@ -1100,7 +1045,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsInteger());
     }
 
     /**
@@ -1108,7 +1053,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsLong());
     }
 
     /**
@@ -1116,7 +1061,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -1124,7 +1069,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsLocalTime());
     }
 
     /**
@@ -1132,7 +1077,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsString());
     }
 
     /**
@@ -1140,7 +1085,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsBoolean());
     }
 
     /**
@@ -1148,7 +1093,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsBigInteger());
     }
 
     /**
@@ -1156,7 +1101,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedStringAsURL());
     }
 
     /**
@@ -1164,7 +1109,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsInteger());
     }
 
     /**
@@ -1172,7 +1117,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsLong());
     }
 
     /**
@@ -1180,7 +1125,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsLocalDateTime());
     }
 
     /**
@@ -1188,7 +1133,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsLocalTime());
     }
 
     /**
@@ -1196,7 +1141,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsString());
     }
 
     /**
@@ -1204,7 +1149,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsBoolean());
     }
 
     /**
@@ -1212,7 +1157,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsBigInteger());
     }
 
     /**
@@ -1220,7 +1165,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDDescriptionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDDescriptionAsURL());
     }
 
     /**
@@ -1228,7 +1173,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsInteger());
     }
 
     /**
@@ -1236,7 +1181,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsLong());
     }
 
     /**
@@ -1244,7 +1189,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsLocalDateTime());
     }
 
     /**
@@ -1252,7 +1197,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsLocalTime());
     }
 
     /**
@@ -1260,7 +1205,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStatusAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStatusAsString());
     }
 
     /**
@@ -1268,7 +1213,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsBoolean());
     }
 
     /**
@@ -1276,7 +1221,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsBigInteger());
     }
 
     /**
@@ -1284,7 +1229,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStatusAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStatusAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStatusAsURL());
     }
 
     /**
@@ -1292,7 +1237,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsInteger());
     }
 
     /**
@@ -1300,7 +1245,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsLong());
     }
 
     /**
@@ -1308,7 +1253,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -1316,7 +1261,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -1324,7 +1269,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsString());
     }
 
     /**
@@ -1332,7 +1277,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsBoolean());
     }
 
     /**
@@ -1340,7 +1285,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -1348,7 +1293,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameStringAsURL());
     }
 
     /**
@@ -1356,7 +1301,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsInteger());
     }
 
     /**
@@ -1364,7 +1309,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsLong());
     }
 
     /**
@@ -1372,7 +1317,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsLocalDateTime());
     }
 
     /**
@@ -1380,7 +1325,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsLocalTime());
     }
 
     /**
@@ -1388,7 +1333,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFrameRateAsString());
     }
 
     /**
@@ -1396,7 +1341,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsBoolean());
     }
 
     /**
@@ -1404,7 +1349,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsBigInteger());
     }
 
     /**
@@ -1412,7 +1357,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateAsURL());
     }
 
     /**
@@ -1420,7 +1365,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsInteger());
     }
 
     /**
@@ -1428,7 +1373,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsLong());
     }
 
     /**
@@ -1436,7 +1381,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsLocalDateTime());
     }
 
     /**
@@ -1444,7 +1389,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsLocalTime());
     }
 
     /**
@@ -1452,7 +1397,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getServiceKindStringAsString());
     }
 
     /**
@@ -1460,7 +1405,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsBoolean());
     }
 
     /**
@@ -1468,7 +1413,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsBigInteger());
     }
 
     /**
@@ -1476,7 +1421,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindStringAsURL());
     }
 
     /**
@@ -1484,7 +1429,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsInteger());
     }
 
     /**
@@ -1492,7 +1437,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsLong());
     }
 
     /**
@@ -1500,7 +1445,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsLocalDateTime());
     }
 
     /**
@@ -1508,7 +1453,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsLocalTime());
     }
 
     /**
@@ -1516,7 +1461,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMuxingModeAsString());
     }
 
     /**
@@ -1524,7 +1469,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsBoolean());
     }
 
     /**
@@ -1532,7 +1477,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsBigInteger());
     }
 
     /**
@@ -1540,7 +1485,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMuxingModeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMuxingModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMuxingModeAsURL());
     }
 
     /**
@@ -1548,7 +1493,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsInteger());
     }
 
     /**
@@ -1556,7 +1501,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsLong());
     }
 
     /**
@@ -1564,7 +1509,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsLocalDateTime());
     }
 
     /**
@@ -1572,7 +1517,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsLocalTime());
     }
 
     /**
@@ -1580,7 +1525,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelaySettingsAsString());
     }
 
     /**
@@ -1588,7 +1533,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsBoolean());
     }
 
     /**
@@ -1596,7 +1541,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsBigInteger());
     }
 
     /**
@@ -1604,7 +1549,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySettingsAsURL());
     }
 
     /**
@@ -1612,7 +1557,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsInteger());
     }
 
     /**
@@ -1620,7 +1565,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsLong());
     }
 
     /**
@@ -1628,7 +1573,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsLocalDateTime());
     }
 
     /**
@@ -1636,7 +1581,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsLocalTime());
     }
 
     /**
@@ -1644,7 +1589,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsString());
     }
 
     /**
@@ -1652,7 +1597,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsBoolean());
     }
 
     /**
@@ -1660,7 +1605,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsBigInteger());
     }
 
     /**
@@ -1668,7 +1613,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedAsURL());
     }
 
     /**
@@ -1676,7 +1621,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsInteger());
     }
 
     /**
@@ -1684,7 +1629,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsLong());
     }
 
     /**
@@ -1692,7 +1637,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsLocalDateTime());
     }
 
     /**
@@ -1700,7 +1645,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsLocalTime());
     }
 
     /**
@@ -1708,7 +1653,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsITUAsString());
     }
 
     /**
@@ -1716,7 +1661,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsBoolean());
     }
 
     /**
@@ -1724,7 +1669,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsBigInteger());
     }
 
     /**
@@ -1732,7 +1677,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsITUAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsITUAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsITUAsURL());
     }
 
     /**
@@ -1740,7 +1685,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsInteger());
     }
 
     /**
@@ -1748,7 +1693,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsLong());
     }
 
     /**
@@ -1756,7 +1701,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -1764,7 +1709,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsLocalTime());
     }
 
     /**
@@ -1772,7 +1717,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsString());
     }
 
     /**
@@ -1780,7 +1725,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsBoolean());
     }
 
     /**
@@ -1788,7 +1733,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsBigInteger());
     }
 
     /**
@@ -1796,7 +1741,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalStringAsURL());
     }
 
     /**
@@ -1804,7 +1749,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsInteger());
     }
 
     /**
@@ -1812,7 +1757,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsLong());
     }
 
     /**
@@ -1820,7 +1765,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsLocalDateTime());
     }
 
     /**
@@ -1828,7 +1773,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsLocalTime());
     }
 
     /**
@@ -1836,7 +1781,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsString());
     }
 
     /**
@@ -1844,7 +1789,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsBoolean());
     }
 
     /**
@@ -1852,7 +1797,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsBigInteger());
     }
 
     /**
@@ -1860,7 +1805,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeExtensionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeExtensionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeExtensionAsURL());
     }
 
     /**
@@ -1868,7 +1813,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsInteger());
     }
 
     /**
@@ -1876,7 +1821,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsLong());
     }
 
     /**
@@ -1884,7 +1829,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsLocalDateTime());
     }
 
     /**
@@ -1892,7 +1837,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsLocalTime());
     }
 
     /**
@@ -1900,7 +1845,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsString());
     }
 
     /**
@@ -1908,7 +1853,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsBoolean());
     }
 
     /**
@@ -1916,7 +1861,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsBigInteger());
     }
 
     /**
@@ -1924,7 +1869,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFirmAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFirmAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFirmAsURL());
     }
 
     /**
@@ -1932,7 +1877,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsInteger());
     }
 
     /**
@@ -1940,7 +1885,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsLong());
     }
 
     /**
@@ -1948,7 +1893,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsLocalDateTime());
     }
 
     /**
@@ -1956,7 +1901,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsLocalTime());
     }
 
     /**
@@ -1964,7 +1909,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsString() {
-        assertEquals("Constant", JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsString());
+        assertEquals("Constant", AbstractTest.jMetaDataAudio.getBitRateModeStringAsString());
     }
 
     /**
@@ -1972,7 +1917,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsBoolean());
     }
 
     /**
@@ -1980,7 +1925,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsBigInteger());
     }
 
     /**
@@ -1988,7 +1933,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeStringAsURL());
     }
 
     /**
@@ -1996,7 +1941,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsInteger());
     }
 
     /**
@@ -2004,7 +1949,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsLong());
     }
 
     /**
@@ -2012,7 +1957,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsLocalDateTime());
     }
 
     /**
@@ -2020,7 +1965,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsLocalTime());
     }
 
     /**
@@ -2028,7 +1973,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getReplayGainPeakAsString());
     }
 
     /**
@@ -2036,7 +1981,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsBoolean());
     }
 
     /**
@@ -2044,7 +1989,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsBigInteger());
     }
 
     /**
@@ -2052,7 +1997,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainPeakAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainPeakAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainPeakAsURL());
     }
 
     /**
@@ -2060,7 +2005,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsInteger());
     }
 
     /**
@@ -2068,7 +2013,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsLong());
     }
 
     /**
@@ -2076,7 +2021,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsLocalDateTime());
     }
 
     /**
@@ -2084,7 +2029,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsLocalTime());
     }
 
     /**
@@ -2092,7 +2037,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getChannelLayoutIDAsString());
     }
 
     /**
@@ -2100,7 +2045,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsBoolean());
     }
 
     /**
@@ -2108,7 +2053,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsBigInteger());
     }
 
     /**
@@ -2116,7 +2061,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutIDAsURL());
     }
 
     /**
@@ -2124,7 +2069,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsInteger());
     }
 
     /**
@@ -2132,7 +2077,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsLong());
     }
 
     /**
@@ -2140,7 +2085,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsLocalDateTime());
     }
 
     /**
@@ -2148,7 +2093,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsLocalTime());
     }
 
     /**
@@ -2156,7 +2101,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceSamplingCountAsString());
     }
 
     /**
@@ -2164,7 +2109,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsBoolean());
     }
 
     /**
@@ -2172,7 +2117,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsBigInteger());
     }
 
     /**
@@ -2180,7 +2125,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceSamplingCountAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceSamplingCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceSamplingCountAsURL());
     }
 
     /**
@@ -2188,7 +2133,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsInteger());
     }
 
     /**
@@ -2196,7 +2141,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsLong());
     }
 
     /**
@@ -2204,7 +2149,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsLocalDateTime());
     }
 
     /**
@@ -2212,7 +2157,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsLocalTime());
     }
 
     /**
@@ -2220,7 +2165,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsString());
     }
 
     /**
@@ -2228,7 +2173,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsBoolean());
     }
 
     /**
@@ -2236,7 +2181,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsBigInteger());
     }
 
     /**
@@ -2244,7 +2189,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryVersionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryVersionAsURL());
     }
 
     /**
@@ -2252,7 +2197,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsInteger() {
-        assertEquals(Integer.valueOf(43112016), JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsInteger());
+        assertEquals(Integer.valueOf(43112016), AbstractTest.jMetaDataAudio.getSamplingCountAsInteger());
     }
 
     /**
@@ -2260,7 +2205,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsLong() {
-        assertEquals(Long.valueOf(43112016), JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsLong());
+        assertEquals(Long.valueOf(43112016), AbstractTest.jMetaDataAudio.getSamplingCountAsLong());
     }
 
     /**
@@ -2268,7 +2213,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingCountAsLocalDateTime());
     }
 
     /**
@@ -2276,7 +2221,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingCountAsLocalTime());
     }
 
     /**
@@ -2284,7 +2229,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsString() {
-        assertEquals("43112016", JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsString());
+        assertEquals("43112016", AbstractTest.jMetaDataAudio.getSamplingCountAsString());
     }
 
     /**
@@ -2292,7 +2237,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingCountAsBoolean());
     }
 
     /**
@@ -2300,7 +2245,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(43112016), JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(43112016), AbstractTest.jMetaDataAudio.getSamplingCountAsBigInteger());
     }
 
     /**
@@ -2308,7 +2253,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingCountAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingCountAsURL());
     }
 
     /**
@@ -2316,7 +2261,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsInteger());
     }
 
     /**
@@ -2324,7 +2269,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsLong());
     }
 
     /**
@@ -2332,7 +2277,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsLocalDateTime());
     }
 
     /**
@@ -2340,7 +2285,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsLocalTime());
     }
 
     /**
@@ -2348,7 +2293,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsString());
     }
 
     /**
@@ -2356,7 +2301,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsBoolean());
     }
 
     /**
@@ -2364,7 +2309,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsBigInteger());
     }
 
     /**
@@ -2372,7 +2317,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameStringAsURL());
     }
 
     /**
@@ -2380,7 +2325,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsInteger());
     }
 
     /**
@@ -2388,7 +2333,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsLong());
     }
 
     /**
@@ -2396,7 +2341,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsLocalDateTime());
     }
 
     /**
@@ -2404,7 +2349,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsLocalTime());
     }
 
     /**
@@ -2412,7 +2357,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getCodecIDInfoAsString());
     }
 
     /**
@@ -2420,7 +2365,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsBoolean());
     }
 
     /**
@@ -2428,7 +2373,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsBigInteger());
     }
 
     /**
@@ -2436,7 +2381,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDInfoAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDInfoAsURL());
     }
 
     /**
@@ -2444,7 +2389,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsInteger() {
-        assertEquals(Integer.valueOf(21556008), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsInteger());
+        assertEquals(Integer.valueOf(21556008), AbstractTest.jMetaDataAudio.getStreamSizeAsInteger());
     }
 
     /**
@@ -2452,7 +2397,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsLong() {
-        assertEquals(Long.valueOf(21556008), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsLong());
+        assertEquals(Long.valueOf(21556008), AbstractTest.jMetaDataAudio.getStreamSizeAsLong());
     }
 
     /**
@@ -2460,7 +2405,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeAsLocalDateTime());
     }
 
     /**
@@ -2468,7 +2413,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeAsLocalTime());
     }
 
     /**
@@ -2476,7 +2421,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsString() {
-        assertEquals("21556008", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsString());
+        assertEquals("21556008", AbstractTest.jMetaDataAudio.getStreamSizeAsString());
     }
 
     /**
@@ -2484,7 +2429,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeAsBoolean());
     }
 
     /**
@@ -2492,7 +2437,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsBigInteger() {
-        assertEquals(BigInteger.valueOf(21556008), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsBigInteger());
+        assertEquals(BigInteger.valueOf(21556008), AbstractTest.jMetaDataAudio.getStreamSizeAsBigInteger());
     }
 
     /**
@@ -2500,7 +2445,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeAsURL());
     }
 
     /**
@@ -2508,7 +2453,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsInteger());
     }
 
     /**
@@ -2516,7 +2461,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsLong());
     }
 
     /**
@@ -2524,7 +2469,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsLocalDateTime());
     }
 
     /**
@@ -2532,7 +2477,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsLocalTime());
     }
 
     /**
@@ -2540,7 +2485,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatInfoAsString());
     }
 
     /**
@@ -2548,7 +2493,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsBoolean());
     }
 
     /**
@@ -2556,7 +2501,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsBigInteger());
     }
 
     /**
@@ -2564,7 +2509,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatInfoAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatInfoAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatInfoAsURL());
     }
 
     /**
@@ -2572,7 +2517,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsInteger());
     }
 
     /**
@@ -2580,7 +2525,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsLong());
     }
 
     /**
@@ -2588,7 +2533,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsLocalDateTime());
     }
 
     /**
@@ -2596,7 +2541,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsLocalTime());
     }
 
     /**
@@ -2604,7 +2549,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsString());
     }
 
     /**
@@ -2612,7 +2557,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsBoolean());
     }
 
     /**
@@ -2620,7 +2565,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsBigInteger());
     }
 
     /**
@@ -2628,7 +2573,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString1AsURL());
     }
 
     /**
@@ -2636,7 +2581,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsInteger());
     }
 
     /**
@@ -2644,7 +2589,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsLong());
     }
 
     /**
@@ -2652,7 +2597,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsLocalDateTime());
     }
 
     /**
@@ -2660,7 +2605,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsLocalTime());
     }
 
     /**
@@ -2668,7 +2613,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsString());
     }
 
     /**
@@ -2676,7 +2621,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsBoolean());
     }
 
     /**
@@ -2684,7 +2629,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsBigInteger());
     }
 
     /**
@@ -2692,7 +2637,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeProportionAsURL());
     }
 
     /**
@@ -2700,7 +2645,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDUrlAsInteger());
     }
 
     /**
@@ -2708,7 +2653,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDUrlAsLong());
     }
 
     /**
@@ -2716,7 +2661,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDUrlAsLocalDateTime());
     }
 
     /**
@@ -2724,7 +2669,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDUrlAsLocalTime());
     }
 
     /**
@@ -2732,7 +2677,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsString() {
-        assertEquals("http://www.iis.fraunhofer.de/amm/index.html", JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsString());
+        assertEquals("http://www.iis.fraunhofer.de/amm/index.html", AbstractTest.jMetaDataAudio.getCodecIDUrlAsString());
     }
 
     /**
@@ -2740,7 +2685,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDUrlAsBoolean());
     }
 
     /**
@@ -2748,7 +2693,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDUrlAsBigInteger());
     }
 
     /**
@@ -2757,7 +2702,7 @@ public final class JMetaDataAudio_Test {
     @Test
     public void subTestGetCodecIDUrlAsURL() {
         try {
-            assertEquals(new URL("http://www.iis.fraunhofer.de/amm/index.html"), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDUrlAsURL());
+            assertEquals(new URL("http://www.iis.fraunhofer.de/amm/index.html"), AbstractTest.jMetaDataAudio.getCodecIDUrlAsURL());
         } catch (final MalformedURLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -2769,7 +2714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsInteger());
     }
 
     /**
@@ -2777,7 +2722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsLong());
     }
 
     /**
@@ -2785,7 +2730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsLocalDateTime());
     }
 
     /**
@@ -2793,7 +2738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsLocalTime());
     }
 
     /**
@@ -2801,7 +2746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsString());
     }
 
     /**
@@ -2809,7 +2754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsBoolean());
     }
 
     /**
@@ -2817,7 +2762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsBigInteger());
     }
 
     /**
@@ -2825,7 +2770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString2AsURL());
     }
 
     /**
@@ -2833,7 +2778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsInteger());
     }
 
     /**
@@ -2841,7 +2786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsLong());
     }
 
     /**
@@ -2849,7 +2794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsLocalDateTime());
     }
 
     /**
@@ -2857,7 +2802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsLocalTime());
     }
 
     /**
@@ -2865,7 +2810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsString());
     }
 
     /**
@@ -2873,7 +2818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsBoolean());
     }
 
     /**
@@ -2881,7 +2826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsBigInteger());
     }
 
     /**
@@ -2889,7 +2834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString5AsURL());
     }
 
     /**
@@ -2897,7 +2842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsInteger());
     }
 
     /**
@@ -2905,7 +2850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsLong());
     }
 
     /**
@@ -2913,7 +2858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsLocalDateTime());
     }
 
     /**
@@ -2921,7 +2866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsLocalTime());
     }
 
     /**
@@ -2929,7 +2874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsString());
     }
 
     /**
@@ -2937,7 +2882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsBoolean());
     }
 
     /**
@@ -2945,7 +2890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsBigInteger());
     }
 
     /**
@@ -2953,7 +2898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString3AsURL());
     }
 
     /**
@@ -2961,7 +2906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsInteger());
     }
 
     /**
@@ -2969,7 +2914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsLong());
     }
 
     /**
@@ -2977,7 +2922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsLocalDateTime());
     }
 
     /**
@@ -2985,7 +2930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsLocalTime());
     }
 
     /**
@@ -2993,7 +2938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsString());
     }
 
     /**
@@ -3001,7 +2946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsBoolean());
     }
 
     /**
@@ -3009,7 +2954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsBigInteger());
     }
 
     /**
@@ -3017,7 +2962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeString4AsURL());
     }
 
     /**
@@ -3025,7 +2970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsInteger());
     }
 
     /**
@@ -3033,7 +2978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsLong());
     }
 
     /**
@@ -3041,7 +2986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsLocalDateTime());
     }
 
     /**
@@ -3049,7 +2994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsLocalTime());
     }
 
     /**
@@ -3057,7 +3002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDisabledStringAsString());
     }
 
     /**
@@ -3065,7 +3010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsBoolean());
     }
 
     /**
@@ -3073,7 +3018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsBigInteger());
     }
 
     /**
@@ -3081,7 +3026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledStringAsURL());
     }
 
     /**
@@ -3089,7 +3034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsInteger());
     }
 
     /**
@@ -3097,7 +3042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsLong());
     }
 
     /**
@@ -3105,7 +3050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsLocalDateTime());
     }
 
     /**
@@ -3113,7 +3058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsLocalTime());
     }
 
     /**
@@ -3121,7 +3066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsString());
     }
 
     /**
@@ -3129,7 +3074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsBoolean());
     }
 
     /**
@@ -3137,7 +3082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsBigInteger());
     }
 
     /**
@@ -3145,7 +3090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedOperatingSystemAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedOperatingSystemAsURL());
     }
 
     /**
@@ -3153,7 +3098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsInteger());
     }
 
     /**
@@ -3161,7 +3106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsLong());
     }
 
     /**
@@ -3169,7 +3114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsLocalDateTime());
     }
 
     /**
@@ -3177,7 +3122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsLocalTime());
     }
 
     /**
@@ -3185,7 +3130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsString());
     }
 
     /**
@@ -3193,7 +3138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsBoolean());
     }
 
     /**
@@ -3201,7 +3146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsBigInteger());
     }
 
     /**
@@ -3209,7 +3154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationCompanyNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationCompanyNameAsURL());
     }
 
     /**
@@ -3217,7 +3162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsInteger());
     }
 
     /**
@@ -3225,7 +3170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsLong());
     }
 
     /**
@@ -3233,7 +3178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsLocalDateTime());
     }
 
     /**
@@ -3241,7 +3186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsLocalTime());
     }
 
     /**
@@ -3249,7 +3194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getCompressionRatioAsString());
     }
 
     /**
@@ -3257,7 +3202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsBoolean());
     }
 
     /**
@@ -3265,7 +3210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsBigInteger());
     }
 
     /**
@@ -3273,7 +3218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionRatioAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionRatioAsURL());
     }
 
     /**
@@ -3281,7 +3226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsInteger());
     }
 
     /**
@@ -3289,7 +3234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsLong());
     }
 
     /**
@@ -3297,7 +3242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsLocalDateTime());
     }
 
     /**
@@ -3305,7 +3250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsLocalTime());
     }
 
     /**
@@ -3313,7 +3258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsString());
     }
 
     /**
@@ -3321,7 +3266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsBoolean());
     }
 
     /**
@@ -3329,7 +3274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsBigInteger());
     }
 
     /**
@@ -3337,7 +3282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialIfAnyAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialIfAnyAsURL());
     }
 
     /**
@@ -3345,7 +3290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsInteger());
     }
 
     /**
@@ -3353,7 +3298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsLong());
     }
 
     /**
@@ -3361,7 +3306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsLocalDateTime());
     }
 
     /**
@@ -3369,7 +3314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsLocalTime());
     }
 
     /**
@@ -3377,7 +3322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getTaggedDateAsString());
     }
 
     /**
@@ -3385,7 +3330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsBoolean());
     }
 
     /**
@@ -3393,7 +3338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsBigInteger());
     }
 
     /**
@@ -3401,7 +3346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTaggedDateAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTaggedDateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTaggedDateAsURL());
     }
 
     /**
@@ -3409,7 +3354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsInteger() {
-        assertEquals(Integer.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsInteger());
+        assertEquals(Integer.valueOf(2), AbstractTest.jMetaDataAudio.getIDStringAsInteger());
     }
 
     /**
@@ -3417,7 +3362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsLong() {
-        assertEquals(Long.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsLong());
+        assertEquals(Long.valueOf(2), AbstractTest.jMetaDataAudio.getIDStringAsLong());
     }
 
     /**
@@ -3425,7 +3370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDStringAsLocalDateTime());
     }
 
     /**
@@ -3433,7 +3378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDStringAsLocalTime());
     }
 
     /**
@@ -3441,7 +3386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsString() {
-        assertEquals("2", JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsString());
+        assertEquals("2", AbstractTest.jMetaDataAudio.getIDStringAsString());
     }
 
     /**
@@ -3449,7 +3394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDStringAsBoolean());
     }
 
     /**
@@ -3457,7 +3402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(2), AbstractTest.jMetaDataAudio.getIDStringAsBigInteger());
     }
 
     /**
@@ -3465,7 +3410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDStringAsURL());
     }
 
     /**
@@ -3473,7 +3418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsInteger());
     }
 
     /**
@@ -3481,7 +3426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsLong());
     }
 
     /**
@@ -3489,7 +3434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsLocalDateTime());
     }
 
     /**
@@ -3497,7 +3442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsLocalTime());
     }
 
     /**
@@ -3505,7 +3450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsString() {
-        assertEquals("Lossy", JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsString());
+        assertEquals("Lossy", AbstractTest.jMetaDataAudio.getCompressionModeAsString());
     }
 
     /**
@@ -3513,7 +3458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsBoolean());
     }
 
     /**
@@ -3521,7 +3466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsBigInteger());
     }
 
     /**
@@ -3529,7 +3474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeAsURL());
     }
 
     /**
@@ -3537,7 +3482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsInteger() {
-        assertEquals(Integer.valueOf(192000), JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsInteger());
+        assertEquals(Integer.valueOf(192000), AbstractTest.jMetaDataAudio.getBitRateAsInteger());
     }
 
     /**
@@ -3545,7 +3490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsLong() {
-        assertEquals(Long.valueOf(192000), JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsLong());
+        assertEquals(Long.valueOf(192000), AbstractTest.jMetaDataAudio.getBitRateAsLong());
     }
 
     /**
@@ -3553,7 +3498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateAsLocalDateTime());
     }
 
     /**
@@ -3561,7 +3506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateAsLocalTime());
     }
 
     /**
@@ -3569,7 +3514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsString() {
-        assertEquals("192000", JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsString());
+        assertEquals("192000", AbstractTest.jMetaDataAudio.getBitRateAsString());
     }
 
     /**
@@ -3577,7 +3522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateAsBoolean());
     }
 
     /**
@@ -3585,7 +3530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsBigInteger() {
-        assertEquals(BigInteger.valueOf(192000), JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsBigInteger());
+        assertEquals(BigInteger.valueOf(192000), AbstractTest.jMetaDataAudio.getBitRateAsBigInteger());
     }
 
     /**
@@ -3593,7 +3538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateAsURL());
     }
 
     /**
@@ -3601,7 +3546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsInteger());
     }
 
     /**
@@ -3609,7 +3554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsLong());
     }
 
     /**
@@ -3617,7 +3562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsLocalDateTime());
     }
 
     /**
@@ -3625,7 +3570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsLocalTime());
     }
 
     /**
@@ -3633,7 +3578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedDateAsString());
     }
 
     /**
@@ -3641,7 +3586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsBoolean());
     }
 
     /**
@@ -3649,7 +3594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsBigInteger());
     }
 
     /**
@@ -3657,7 +3602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedDateAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedDateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedDateAsURL());
     }
 
     /**
@@ -3665,7 +3610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsInteger());
     }
 
     /**
@@ -3673,7 +3618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsLong());
     }
 
     /**
@@ -3681,7 +3626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsLocalDateTime());
     }
 
     /**
@@ -3689,7 +3634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsLocalTime());
     }
 
     /**
@@ -3697,7 +3642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsString() {
-        assertEquals("CBR", JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsString());
+        assertEquals("CBR", AbstractTest.jMetaDataAudio.getBitRateModeAsString());
     }
 
     /**
@@ -3705,7 +3650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsBoolean());
     }
 
     /**
@@ -3713,7 +3658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsBigInteger());
     }
 
     /**
@@ -3721,7 +3666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateModeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateModeAsURL());
     }
 
     /**
@@ -3729,7 +3674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDAsInteger());
     }
 
     /**
@@ -3737,7 +3682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsLong() {
-        assertEquals(Long.valueOf("2771729987860187580"), JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsLong());
+        assertEquals(Long.valueOf("2771729987860187580"), AbstractTest.jMetaDataAudio.getUniqueIDAsLong());
     }
 
     /**
@@ -3745,7 +3690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDAsLocalDateTime());
     }
 
     /**
@@ -3753,7 +3698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDAsLocalTime());
     }
 
     /**
@@ -3761,7 +3706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsString() {
-        assertEquals("2771729987860187580", JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsString());
+        assertEquals("2771729987860187580", AbstractTest.jMetaDataAudio.getUniqueIDAsString());
     }
 
     /**
@@ -3769,7 +3714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDAsBoolean());
     }
 
     /**
@@ -3777,7 +3722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsBigInteger() {
-        assertEquals(new BigInteger("2771729987860187580"), JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsBigInteger());
+        assertEquals(new BigInteger("2771729987860187580"), AbstractTest.jMetaDataAudio.getUniqueIDAsBigInteger());
     }
 
     /**
@@ -3785,7 +3730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDAsURL());
     }
 
     /**
@@ -3793,7 +3738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsInteger());
     }
 
     /**
@@ -3801,7 +3746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsLong());
     }
 
     /**
@@ -3809,7 +3754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsLocalDateTime());
     }
 
     /**
@@ -3817,7 +3762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsLocalTime());
     }
 
     /**
@@ -3825,7 +3770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsString());
     }
 
     /**
@@ -3833,7 +3778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsBoolean());
     }
 
     /**
@@ -3841,7 +3786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsBigInteger());
     }
 
     /**
@@ -3849,7 +3794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumStringAsURL());
     }
 
     /**
@@ -3857,7 +3802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString3AsInteger());
     }
 
     /**
@@ -3865,7 +3810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString3AsLong());
     }
 
     /**
@@ -3873,7 +3818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString3AsLocalDateTime());
     }
 
     /**
@@ -3881,7 +3826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsLocalTime() {
-        assertEquals(LocalTime.of(0, 0, 0, 170000000), JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsLocalTime());
+        assertEquals(LocalTime.of(0, 0, 0, 170000000), AbstractTest.jMetaDataAudio.getDelayString3AsLocalTime());
     }
 
     /**
@@ -3889,7 +3834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsString() {
-        assertEquals("00:00:00.170", JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsString());
+        assertEquals("00:00:00.170", AbstractTest.jMetaDataAudio.getDelayString3AsString());
     }
 
     /**
@@ -3897,7 +3842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString3AsBoolean());
     }
 
     /**
@@ -3905,7 +3850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString3AsBigInteger());
     }
 
     /**
@@ -3913,7 +3858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString3AsURL());
     }
 
     /**
@@ -3921,7 +3866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayStringAsInteger());
     }
 
     /**
@@ -3929,7 +3874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayStringAsLong());
     }
 
     /**
@@ -3937,7 +3882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayStringAsLocalDateTime());
     }
 
     /**
@@ -3945,7 +3890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayStringAsLocalTime());
     }
 
     /**
@@ -3953,7 +3898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsString());
+        assertEquals("170 ms", AbstractTest.jMetaDataAudio.getVideoDelayStringAsString());
     }
 
     /**
@@ -3961,7 +3906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayStringAsBoolean());
     }
 
     /**
@@ -3969,7 +3914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayStringAsBigInteger());
     }
 
     /**
@@ -3977,7 +3922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayStringAsURL());
     }
 
     /**
@@ -3985,7 +3930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsInteger());
     }
 
     /**
@@ -3993,7 +3938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsLong());
     }
 
     /**
@@ -4001,7 +3946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsLocalDateTime());
     }
 
     /**
@@ -4009,7 +3954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsLocalTime());
     }
 
     /**
@@ -4017,7 +3962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayString4AsString());
     }
 
     /**
@@ -4025,7 +3970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsBoolean());
     }
 
     /**
@@ -4033,7 +3978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsBigInteger());
     }
 
     /**
@@ -4041,7 +3986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString4AsURL());
     }
 
     /**
@@ -4049,7 +3994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString1AsInteger());
     }
 
     /**
@@ -4057,7 +4002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString1AsLong());
     }
 
     /**
@@ -4065,7 +4010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString1AsLocalDateTime());
     }
 
     /**
@@ -4073,7 +4018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString1AsLocalTime());
     }
 
     /**
@@ -4081,7 +4026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsString());
+        assertEquals("170 ms", AbstractTest.jMetaDataAudio.getDelayString1AsString());
     }
 
     /**
@@ -4089,7 +4034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString1AsBoolean());
     }
 
     /**
@@ -4097,7 +4042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString1AsBigInteger());
     }
 
     /**
@@ -4105,7 +4050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString1AsURL());
     }
 
     /**
@@ -4113,7 +4058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString2AsInteger());
     }
 
     /**
@@ -4121,7 +4066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString2AsLong());
     }
 
     /**
@@ -4129,7 +4074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString2AsLocalDateTime());
     }
 
     /**
@@ -4137,7 +4082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString2AsLocalTime());
     }
 
     /**
@@ -4145,7 +4090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsString());
+        assertEquals("170 ms", AbstractTest.jMetaDataAudio.getDelayString2AsString());
     }
 
     /**
@@ -4153,7 +4098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString2AsBoolean());
     }
 
     /**
@@ -4161,7 +4106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getDelayString2AsBigInteger());
     }
 
     /**
@@ -4169,7 +4114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString2AsURL());
     }
 
     /**
@@ -4177,7 +4122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsInteger() {
-        assertEquals(Integer.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsInteger());
+        assertEquals(Integer.valueOf(2), AbstractTest.jMetaDataAudio.getChannelsStringAsInteger());
     }
 
     /**
@@ -4185,7 +4130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsLong() {
-        assertEquals(Long.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsLong());
+        assertEquals(Long.valueOf(2), AbstractTest.jMetaDataAudio.getChannelsStringAsLong());
     }
 
     /**
@@ -4193,7 +4138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsStringAsLocalDateTime());
     }
 
     /**
@@ -4201,7 +4146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsStringAsLocalTime());
     }
 
     /**
@@ -4209,7 +4154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsString() {
-        assertEquals("2 channels", JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsString());
+        assertEquals("2 channels", AbstractTest.jMetaDataAudio.getChannelsStringAsString());
     }
 
     /**
@@ -4217,7 +4162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsStringAsBoolean());
     }
 
     /**
@@ -4225,7 +4170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(2), AbstractTest.jMetaDataAudio.getChannelsStringAsBigInteger());
     }
 
     /**
@@ -4233,7 +4178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsStringAsURL());
     }
 
     /**
@@ -4241,7 +4186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsInteger());
     }
 
     /**
@@ -4249,7 +4194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsLong());
     }
 
     /**
@@ -4257,7 +4202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsLocalDateTime());
     }
 
     /**
@@ -4265,7 +4210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsLocalTime());
     }
 
     /**
@@ -4273,7 +4218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayString5AsString());
     }
 
     /**
@@ -4281,7 +4226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsBoolean());
     }
 
     /**
@@ -4289,7 +4234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsBigInteger());
     }
 
     /**
@@ -4297,7 +4242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayString5AsURL());
     }
 
     /**
@@ -4305,7 +4250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsInteger());
     }
 
     /**
@@ -4313,7 +4258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsLong());
     }
 
     /**
@@ -4321,7 +4266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsLocalDateTime());
     }
 
     /**
@@ -4329,7 +4274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsLocalTime());
     }
 
     /**
@@ -4337,7 +4282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getInterleavePreloadAsString());
     }
 
     /**
@@ -4345,7 +4290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsBoolean());
     }
 
     /**
@@ -4353,7 +4298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsBigInteger());
     }
 
     /**
@@ -4361,7 +4306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleavePreloadAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleavePreloadAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleavePreloadAsURL());
     }
 
     /**
@@ -4369,7 +4314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsInteger());
     }
 
     /**
@@ -4377,7 +4322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsLong());
     }
 
     /**
@@ -4385,7 +4330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsLocalDateTime());
     }
 
     /**
@@ -4393,7 +4338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsLocalTime());
     }
 
     /**
@@ -4401,7 +4346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsString());
     }
 
     /**
@@ -4409,7 +4354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsBoolean());
     }
 
     /**
@@ -4417,7 +4362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsBigInteger());
     }
 
     /**
@@ -4425,7 +4370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsString2AsURL());
     }
 
     /**
@@ -4433,7 +4378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsInteger());
     }
 
     /**
@@ -4441,7 +4386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsLong());
     }
 
     /**
@@ -4449,7 +4394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsLocalDateTime());
     }
 
     /**
@@ -4457,7 +4402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsLocalTime());
     }
 
     /**
@@ -4465,7 +4410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsString());
     }
 
     /**
@@ -4473,7 +4418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsBoolean());
     }
 
     /**
@@ -4481,7 +4426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsBigInteger());
     }
 
     /**
@@ -4489,7 +4434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRAsURL());
     }
 
     /**
@@ -4497,7 +4442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayAsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getDelayAsInteger());
     }
 
     /**
@@ -4505,7 +4450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayAsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getDelayAsLong());
     }
 
     /**
@@ -4513,7 +4458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayAsLocalDateTime());
     }
 
     /**
@@ -4521,7 +4466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayAsLocalTime());
     }
 
     /**
@@ -4529,7 +4474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsString() {
-        assertEquals("170", JMetaDataAudio_Test.jMetaDataAudio.getDelayAsString());
+        assertEquals("170", AbstractTest.jMetaDataAudio.getDelayAsString());
     }
 
     /**
@@ -4537,7 +4482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayAsBoolean());
     }
 
     /**
@@ -4545,7 +4490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getDelayAsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getDelayAsBigInteger());
     }
 
     /**
@@ -4553,7 +4498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayAsURL());
     }
 
     /**
@@ -4561,7 +4506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsInteger());
     }
 
     /**
@@ -4569,7 +4514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsLong());
     }
 
     /**
@@ -4577,7 +4522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsLocalDateTime());
     }
 
     /**
@@ -4585,7 +4530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsLocalTime());
     }
 
     /**
@@ -4593,7 +4538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsString());
     }
 
     /**
@@ -4601,7 +4546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsBoolean());
     }
 
     /**
@@ -4609,7 +4554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsBigInteger());
     }
 
     /**
@@ -4617,7 +4562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationUrlAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationUrlAsURL());
     }
 
     /**
@@ -4625,7 +4570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsInteger());
     }
 
     /**
@@ -4633,7 +4578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsLong());
     }
 
     /**
@@ -4641,7 +4586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsLocalDateTime());
     }
 
     /**
@@ -4649,7 +4594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsLocalTime());
     }
 
     /**
@@ -4657,7 +4602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsString());
     }
 
     /**
@@ -4665,7 +4610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsBoolean());
     }
 
     /**
@@ -4673,7 +4618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsBigInteger());
     }
 
     /**
@@ -4681,7 +4626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString4AsURL());
     }
 
     /**
@@ -4689,7 +4634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsInteger());
     }
 
     /**
@@ -4697,7 +4642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsLong());
     }
 
     /**
@@ -4705,7 +4650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsLocalDateTime());
     }
 
     /**
@@ -4713,7 +4658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsLocalTime());
     }
 
     /**
@@ -4721,7 +4666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsString());
     }
 
     /**
@@ -4729,7 +4674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsBoolean());
     }
 
     /**
@@ -4737,7 +4682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsBigInteger());
     }
 
     /**
@@ -4745,7 +4690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString5AsURL());
     }
 
     /**
@@ -4753,7 +4698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsInteger());
     }
 
     /**
@@ -4761,7 +4706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsLong());
     }
 
     /**
@@ -4769,7 +4714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -4777,7 +4722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -4785,7 +4730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsString());
     }
 
     /**
@@ -4793,7 +4738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsBoolean());
     }
 
     /**
@@ -4801,7 +4746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -4809,7 +4754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString1AsURL());
     }
 
     /**
@@ -4817,7 +4762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsInteger());
     }
 
     /**
@@ -4825,7 +4770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsLong());
     }
 
     /**
@@ -4833,7 +4778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -4841,7 +4786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -4849,7 +4794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsString());
     }
 
     /**
@@ -4857,7 +4802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsBoolean());
     }
 
     /**
@@ -4865,7 +4810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -4873,7 +4818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString2AsURL());
     }
 
     /**
@@ -4881,7 +4826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsInteger());
     }
 
     /**
@@ -4889,7 +4834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsLong());
     }
 
     /**
@@ -4897,7 +4842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -4905,7 +4850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -4913,7 +4858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsString());
     }
 
     /**
@@ -4921,7 +4866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsBoolean());
     }
 
     /**
@@ -4929,7 +4874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -4937,7 +4882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString3AsURL());
     }
 
     /**
@@ -4945,7 +4890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsInteger() {
-        assertEquals(Integer.valueOf(3903), JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsInteger());
+        assertEquals(Integer.valueOf(3903), AbstractTest.jMetaDataAudio.getEncodedLibraryAsInteger());
     }
 
     /**
@@ -4953,7 +4898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsLong() {
-        assertEquals(Long.valueOf(3903), JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsLong());
+        assertEquals(Long.valueOf(3903), AbstractTest.jMetaDataAudio.getEncodedLibraryAsLong());
     }
 
     /**
@@ -4961,7 +4906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryAsLocalDateTime());
     }
 
     /**
@@ -4969,7 +4914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryAsLocalTime());
     }
 
     /**
@@ -4977,7 +4922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsString() {
-        assertEquals("LAME3.90.3", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsString());
+        assertEquals("LAME3.90.3", AbstractTest.jMetaDataAudio.getEncodedLibraryAsString());
     }
 
     /**
@@ -4985,7 +4930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryAsBoolean());
     }
 
     /**
@@ -4993,7 +4938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3903), JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsBigInteger());
+        assertEquals(BigInteger.valueOf(3903), AbstractTest.jMetaDataAudio.getEncodedLibraryAsBigInteger());
     }
 
     /**
@@ -5001,7 +4946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryAsURL());
     }
 
     /**
@@ -5009,7 +4954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsInteger());
     }
 
     /**
@@ -5017,7 +4962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsLong());
     }
 
     /**
@@ -5025,7 +4970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -5033,7 +4978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -5041,7 +4986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsString());
     }
 
     /**
@@ -5049,7 +4994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsBoolean());
     }
 
     /**
@@ -5057,7 +5002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -5065,7 +5010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString4AsURL());
     }
 
     /**
@@ -5073,7 +5018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsInteger());
     }
 
     /**
@@ -5081,7 +5026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsLong());
     }
 
     /**
@@ -5089,7 +5034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -5097,7 +5042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -5105,7 +5050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsString());
     }
 
     /**
@@ -5113,7 +5058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsBoolean());
     }
 
     /**
@@ -5121,7 +5066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -5129,7 +5074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameString5AsURL());
     }
 
     /**
@@ -5137,7 +5082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsInteger());
     }
 
     /**
@@ -5145,7 +5090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsLong());
     }
 
     /**
@@ -5153,7 +5098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsLocalDateTime());
     }
 
     /**
@@ -5161,7 +5106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsLocalTime());
     }
 
     /**
@@ -5169,7 +5114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsString() {
-        assertEquals("audio/mpeg", JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsString());
+        assertEquals("audio/mpeg", AbstractTest.jMetaDataAudio.getInternetMediaTypeAsString());
     }
 
     /**
@@ -5177,7 +5122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsBoolean());
     }
 
     /**
@@ -5185,7 +5130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsBigInteger());
     }
 
     /**
@@ -5193,7 +5138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInternetMediaTypeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInternetMediaTypeAsURL());
     }
 
     /**
@@ -5201,7 +5146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsInteger());
     }
 
     /**
@@ -5209,7 +5154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsLong());
     }
 
     /**
@@ -5217,7 +5162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsLocalDateTime());
     }
 
     /**
@@ -5225,7 +5170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsLocalTime());
     }
 
     /**
@@ -5233,7 +5178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsString());
     }
 
     /**
@@ -5241,7 +5186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsBoolean());
     }
 
     /**
@@ -5249,7 +5194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsBigInteger());
     }
 
     /**
@@ -5257,7 +5202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString2AsURL());
     }
 
     /**
@@ -5265,7 +5210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsInteger());
     }
 
     /**
@@ -5273,7 +5218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsLong());
     }
 
     /**
@@ -5281,7 +5226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsLocalDateTime());
     }
 
     /**
@@ -5289,7 +5234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsLocalTime());
     }
 
     /**
@@ -5297,7 +5242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDisabledAsString());
     }
 
     /**
@@ -5305,7 +5250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsBoolean());
     }
 
     /**
@@ -5313,7 +5258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsBigInteger());
     }
 
     /**
@@ -5321,7 +5266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDisabledAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDisabledAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDisabledAsURL());
     }
 
     /**
@@ -5329,7 +5274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsInteger());
     }
 
     /**
@@ -5337,7 +5282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsLong());
     }
 
     /**
@@ -5345,7 +5290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsLocalDateTime());
     }
 
     /**
@@ -5353,7 +5298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsLocalTime());
     }
 
     /**
@@ -5361,7 +5306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getChannelsOriginalAsString());
     }
 
     /**
@@ -5369,7 +5314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsBoolean());
     }
 
     /**
@@ -5377,7 +5322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsBigInteger());
     }
 
     /**
@@ -5385,7 +5330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsOriginalAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsOriginalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsOriginalAsURL());
     }
 
     /**
@@ -5393,7 +5338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsInteger());
     }
 
     /**
@@ -5401,7 +5346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsLong());
     }
 
     /**
@@ -5409,7 +5354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsLocalDateTime());
     }
 
     /**
@@ -5417,7 +5362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsLocalTime());
     }
 
     /**
@@ -5425,7 +5370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFrameRateDenAsString());
     }
 
     /**
@@ -5433,7 +5378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsBoolean());
     }
 
     /**
@@ -5441,7 +5386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsBigInteger());
     }
 
     /**
@@ -5449,7 +5394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateDenAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateDenAsURL());
     }
 
     /**
@@ -5457,7 +5402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsInteger());
     }
 
     /**
@@ -5465,7 +5410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsLong());
     }
 
     /**
@@ -5473,7 +5418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsLocalDateTime());
     }
 
     /**
@@ -5481,7 +5426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsLocalTime());
     }
 
     /**
@@ -5489,7 +5434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsString());
     }
 
     /**
@@ -5497,7 +5442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsBoolean());
     }
 
     /**
@@ -5505,7 +5450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsBigInteger());
     }
 
     /**
@@ -5513,7 +5458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString3AsURL());
     }
 
     /**
@@ -5521,7 +5466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsInteger());
     }
 
     /**
@@ -5529,7 +5474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsLong());
     }
 
     /**
@@ -5537,7 +5482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsLocalDateTime());
     }
 
     /**
@@ -5545,7 +5490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsLocalTime());
     }
 
     /**
@@ -5553,7 +5498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsString());
     }
 
     /**
@@ -5561,7 +5506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsBoolean());
     }
 
     /**
@@ -5569,7 +5514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsBigInteger());
     }
 
     /**
@@ -5577,7 +5522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedProportionAsURL());
     }
 
     /**
@@ -5585,7 +5530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsInteger());
     }
 
     /**
@@ -5593,7 +5538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsLong());
     }
 
     /**
@@ -5601,7 +5546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsLocalDateTime());
     }
 
     /**
@@ -5609,7 +5554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsLocalTime());
     }
 
     /**
@@ -5617,7 +5562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsString());
     }
 
     /**
@@ -5625,7 +5570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsBoolean());
     }
 
     /**
@@ -5633,7 +5578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsBigInteger());
     }
 
     /**
@@ -5641,7 +5586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedString1AsURL());
     }
 
     /**
@@ -5649,7 +5594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsInteger());
     }
 
     /**
@@ -5657,7 +5602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsLong());
     }
 
     /**
@@ -5665,7 +5610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsLocalDateTime());
     }
 
     /**
@@ -5673,7 +5618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsLocalTime());
     }
 
     /**
@@ -5681,7 +5626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getChannelPositionsAsString());
     }
 
     /**
@@ -5689,7 +5634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsBoolean());
     }
 
     /**
@@ -5697,7 +5642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsBigInteger());
     }
 
     /**
@@ -5705,7 +5650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsAsURL());
     }
 
     /**
@@ -5713,7 +5658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsInteger() {
-        assertEquals(Integer.valueOf(898167), JMetaDataAudio_Test.jMetaDataAudio.getDurationAsInteger());
+        assertEquals(Integer.valueOf(898167), AbstractTest.jMetaDataAudio.getDurationAsInteger());
     }
 
     /**
@@ -5721,7 +5666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsLong() {
-        assertEquals(Long.valueOf(898167), JMetaDataAudio_Test.jMetaDataAudio.getDurationAsLong());
+        assertEquals(Long.valueOf(898167), AbstractTest.jMetaDataAudio.getDurationAsLong());
     }
 
     /**
@@ -5729,7 +5674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationAsLocalDateTime());
     }
 
     /**
@@ -5737,7 +5682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationAsLocalTime());
     }
 
     /**
@@ -5745,7 +5690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsString() {
-        assertEquals("898167", JMetaDataAudio_Test.jMetaDataAudio.getDurationAsString());
+        assertEquals("898167", AbstractTest.jMetaDataAudio.getDurationAsString());
     }
 
     /**
@@ -5753,7 +5698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationAsBoolean());
     }
 
     /**
@@ -5761,7 +5706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsBigInteger() {
-        assertEquals(BigInteger.valueOf(898167), JMetaDataAudio_Test.jMetaDataAudio.getDurationAsBigInteger());
+        assertEquals(BigInteger.valueOf(898167), AbstractTest.jMetaDataAudio.getDurationAsBigInteger());
     }
 
     /**
@@ -5769,7 +5714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationAsURL());
     }
 
     /**
@@ -5777,7 +5722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsInteger());
     }
 
     /**
@@ -5785,7 +5730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsLong());
     }
 
     /**
@@ -5793,7 +5738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsLocalDateTime());
     }
 
     /**
@@ -5801,7 +5746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsLocalTime());
     }
 
     /**
@@ -5809,7 +5754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationString5AsString());
     }
 
     /**
@@ -5817,7 +5762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsBoolean());
     }
 
     /**
@@ -5825,7 +5770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsBigInteger());
     }
 
     /**
@@ -5833,7 +5778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString5AsURL());
     }
 
     /**
@@ -5841,7 +5786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsInteger());
     }
 
     /**
@@ -5849,7 +5794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsLong());
     }
 
     /**
@@ -5857,7 +5802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsLocalDateTime());
     }
 
     /**
@@ -5865,7 +5810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsLocalTime());
     }
 
     /**
@@ -5873,7 +5818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsString());
     }
 
     /**
@@ -5881,7 +5826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsBoolean());
     }
 
     /**
@@ -5889,7 +5834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsBigInteger());
     }
 
     /**
@@ -5897,7 +5842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameStringAsURL());
     }
 
     /**
@@ -5905,7 +5850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsInteger());
     }
 
     /**
@@ -5913,7 +5858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsLong());
     }
 
     /**
@@ -5921,7 +5866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsLocalDateTime());
     }
 
     /**
@@ -5929,7 +5874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsLocalTime());
     }
 
     /**
@@ -5937,7 +5882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationString4AsString());
     }
 
     /**
@@ -5945,7 +5890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsBoolean());
     }
 
     /**
@@ -5953,7 +5898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsBigInteger());
     }
 
     /**
@@ -5961,7 +5906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString4AsURL());
     }
 
     /**
@@ -5969,7 +5914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsInteger());
     }
 
     /**
@@ -5977,7 +5922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsLong());
     }
 
     /**
@@ -5985,7 +5930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsLocalDateTime());
     }
 
     /**
@@ -5993,7 +5938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsLocalTime());
     }
 
     /**
@@ -6001,7 +5946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationString3AsString());
     }
 
     /**
@@ -6009,7 +5954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsBoolean());
     }
 
     /**
@@ -6017,7 +5962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsBigInteger());
     }
 
     /**
@@ -6025,7 +5970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString3AsURL());
     }
 
     /**
@@ -6033,7 +5978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsInteger());
     }
 
     /**
@@ -6041,7 +5986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsLong());
     }
 
     /**
@@ -6049,7 +5994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsLocalDateTime());
     }
 
     /**
@@ -6057,7 +6002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsLocalTime());
     }
 
     /**
@@ -6065,7 +6010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationString2AsString());
     }
 
     /**
@@ -6073,7 +6018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsBoolean());
     }
 
     /**
@@ -6081,7 +6026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsBigInteger());
     }
 
     /**
@@ -6089,7 +6034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString2AsURL());
     }
 
     /**
@@ -6097,7 +6042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsInteger());
     }
 
     /**
@@ -6105,7 +6050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsLong());
     }
 
     /**
@@ -6113,7 +6058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsLocalDateTime());
     }
 
     /**
@@ -6121,7 +6066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsLocalTime());
     }
 
     /**
@@ -6129,7 +6074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationString1AsString());
     }
 
     /**
@@ -6137,7 +6082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsBoolean());
     }
 
     /**
@@ -6145,7 +6090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsBigInteger());
     }
 
     /**
@@ -6153,7 +6098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationString1AsURL());
     }
 
     /**
@@ -6161,7 +6106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsInteger() {
-        assertEquals(Integer.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsInteger());
+        assertEquals(Integer.valueOf(3), AbstractTest.jMetaDataAudio.getCodecIDHintAsInteger());
     }
 
     /**
@@ -6169,7 +6114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsLong() {
-        assertEquals(Long.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsLong());
+        assertEquals(Long.valueOf(3), AbstractTest.jMetaDataAudio.getCodecIDHintAsLong());
     }
 
     /**
@@ -6177,7 +6122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDHintAsLocalDateTime());
     }
 
     /**
@@ -6185,7 +6130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDHintAsLocalTime());
     }
 
     /**
@@ -6193,7 +6138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsString() {
-        assertEquals("MP3", JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsString());
+        assertEquals("MP3", AbstractTest.jMetaDataAudio.getCodecIDHintAsString());
     }
 
     /**
@@ -6201,7 +6146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDHintAsBoolean());
     }
 
     /**
@@ -6209,7 +6154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsBigInteger());
+        assertEquals(BigInteger.valueOf(3), AbstractTest.jMetaDataAudio.getCodecIDHintAsBigInteger());
     }
 
     /**
@@ -6217,7 +6162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDHintAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDHintAsURL());
     }
 
     /**
@@ -6225,7 +6170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsInteger());
     }
 
     /**
@@ -6233,7 +6178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsLong());
     }
 
     /**
@@ -6241,7 +6186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsLocalDateTime());
     }
 
     /**
@@ -6249,7 +6194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsLocalTime());
     }
 
     /**
@@ -6257,7 +6202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMatrixChannelsAsString());
     }
 
     /**
@@ -6265,7 +6210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsBoolean());
     }
 
     /**
@@ -6273,7 +6218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsBigInteger());
     }
 
     /**
@@ -6281,7 +6226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsAsURL());
     }
 
     /**
@@ -6289,7 +6234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsInteger());
     }
 
     /**
@@ -6297,7 +6242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsLong());
     }
 
     /**
@@ -6305,7 +6250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsLocalDateTime());
     }
 
     /**
@@ -6313,7 +6258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsLocalTime());
     }
 
     /**
@@ -6321,7 +6266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedApplicationAsString());
     }
 
     /**
@@ -6329,7 +6274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsBoolean());
     }
 
     /**
@@ -6337,7 +6282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsBigInteger());
     }
 
     /**
@@ -6345,7 +6290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationAsURL());
     }
 
     /**
@@ -6353,7 +6298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsInteger());
     }
 
     /**
@@ -6361,7 +6306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsLong());
     }
 
     /**
@@ -6369,7 +6314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsLocalDateTime());
     }
 
     /**
@@ -6377,7 +6322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsLocalTime());
     }
 
     /**
@@ -6385,7 +6330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsString() {
-        assertEquals("Lossy", JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsString());
+        assertEquals("Lossy", AbstractTest.jMetaDataAudio.getCompressionModeStringAsString());
     }
 
     /**
@@ -6393,7 +6338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsBoolean());
     }
 
     /**
@@ -6401,7 +6346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsBigInteger());
     }
 
     /**
@@ -6409,7 +6354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCompressionModeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCompressionModeStringAsURL());
     }
 
     /**
@@ -6417,7 +6362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsInteger() {
-        assertEquals(Integer.valueOf(21), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsInteger());
+        assertEquals(Integer.valueOf(21), AbstractTest.jMetaDataAudio.getStreamSizeString2AsInteger());
     }
 
     /**
@@ -6425,7 +6370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsLong() {
-        assertEquals(Long.valueOf(21), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsLong());
+        assertEquals(Long.valueOf(21), AbstractTest.jMetaDataAudio.getStreamSizeString2AsLong());
     }
 
     /**
@@ -6433,7 +6378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString2AsLocalDateTime());
     }
 
     /**
@@ -6441,7 +6386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString2AsLocalTime());
     }
 
     /**
@@ -6449,7 +6394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsString() {
-        assertEquals("21 MiB", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsString());
+        assertEquals("21 MiB", AbstractTest.jMetaDataAudio.getStreamSizeString2AsString());
     }
 
     /**
@@ -6457,7 +6402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString2AsBoolean());
     }
 
     /**
@@ -6465,7 +6410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsBigInteger() {
-        assertEquals(BigInteger.valueOf(21), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsBigInteger());
+        assertEquals(BigInteger.valueOf(21), AbstractTest.jMetaDataAudio.getStreamSizeString2AsBigInteger());
     }
 
     /**
@@ -6473,7 +6418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString2AsURL());
     }
 
     /**
@@ -6481,7 +6426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsInteger() {
-        assertEquals(Integer.valueOf(21), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsInteger());
+        assertEquals(Integer.valueOf(21), AbstractTest.jMetaDataAudio.getStreamSizeString1AsInteger());
     }
 
     /**
@@ -6489,7 +6434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsLong() {
-        assertEquals(Long.valueOf(21), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsLong());
+        assertEquals(Long.valueOf(21), AbstractTest.jMetaDataAudio.getStreamSizeString1AsLong());
     }
 
     /**
@@ -6497,7 +6442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString1AsLocalDateTime());
     }
 
     /**
@@ -6505,7 +6450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString1AsLocalTime());
     }
 
     /**
@@ -6513,7 +6458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsString() {
-        assertEquals("21 MiB", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsString());
+        assertEquals("21 MiB", AbstractTest.jMetaDataAudio.getStreamSizeString1AsString());
     }
 
     /**
@@ -6521,7 +6466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString1AsBoolean());
     }
 
     /**
@@ -6529,7 +6474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsBigInteger() {
-        assertEquals(BigInteger.valueOf(21), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsBigInteger());
+        assertEquals(BigInteger.valueOf(21), AbstractTest.jMetaDataAudio.getStreamSizeString1AsBigInteger());
     }
 
     /**
@@ -6537,7 +6482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString1AsURL());
     }
 
     /**
@@ -6545,7 +6490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsInteger() {
-        assertEquals(Integer.valueOf(2056), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsInteger());
+        assertEquals(Integer.valueOf(2056), AbstractTest.jMetaDataAudio.getStreamSizeString4AsInteger());
     }
 
     /**
@@ -6553,7 +6498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsLong() {
-        assertEquals(Long.valueOf(2056), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsLong());
+        assertEquals(Long.valueOf(2056), AbstractTest.jMetaDataAudio.getStreamSizeString4AsLong());
     }
 
     /**
@@ -6561,7 +6506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString4AsLocalDateTime());
     }
 
     /**
@@ -6569,7 +6514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString4AsLocalTime());
     }
 
     /**
@@ -6577,7 +6522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsString() {
-        assertEquals("20.56 MiB", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsString());
+        assertEquals("20.56 MiB", AbstractTest.jMetaDataAudio.getStreamSizeString4AsString());
     }
 
     /**
@@ -6585,7 +6530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString4AsBoolean());
     }
 
     /**
@@ -6593,7 +6538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsBigInteger() {
-        assertEquals(BigInteger.valueOf(2056), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsBigInteger());
+        assertEquals(BigInteger.valueOf(2056), AbstractTest.jMetaDataAudio.getStreamSizeString4AsBigInteger());
     }
 
     /**
@@ -6601,7 +6546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString4AsURL());
     }
 
     /**
@@ -6609,7 +6554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsInteger() {
-        assertEquals(Integer.valueOf(206), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsInteger());
+        assertEquals(Integer.valueOf(206), AbstractTest.jMetaDataAudio.getStreamSizeString3AsInteger());
     }
 
     /**
@@ -6617,7 +6562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsLong() {
-        assertEquals(Long.valueOf(206), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsLong());
+        assertEquals(Long.valueOf(206), AbstractTest.jMetaDataAudio.getStreamSizeString3AsLong());
     }
 
     /**
@@ -6625,7 +6570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString3AsLocalDateTime());
     }
 
     /**
@@ -6633,7 +6578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString3AsLocalTime());
     }
 
     /**
@@ -6641,7 +6586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsString() {
-        assertEquals("20.6 MiB", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsString());
+        assertEquals("20.6 MiB", AbstractTest.jMetaDataAudio.getStreamSizeString3AsString());
     }
 
     /**
@@ -6649,7 +6594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString3AsBoolean());
     }
 
     /**
@@ -6657,7 +6602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsBigInteger() {
-        assertEquals(BigInteger.valueOf(206), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsBigInteger());
+        assertEquals(BigInteger.valueOf(206), AbstractTest.jMetaDataAudio.getStreamSizeString3AsBigInteger());
     }
 
     /**
@@ -6665,7 +6610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString3AsURL());
     }
 
     /**
@@ -6673,7 +6618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsInteger());
     }
 
     /**
@@ -6681,7 +6626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsLong());
     }
 
     /**
@@ -6689,7 +6634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsLocalDateTime());
     }
 
     /**
@@ -6697,7 +6642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsLocalTime());
     }
 
     /**
@@ -6705,7 +6650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeString5AsString());
     }
 
     /**
@@ -6713,7 +6658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsBoolean());
     }
 
     /**
@@ -6721,7 +6666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsBigInteger());
     }
 
     /**
@@ -6729,7 +6674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeString5AsURL());
     }
 
     /**
@@ -6737,7 +6682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsInteger());
     }
 
     /**
@@ -6745,7 +6690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsLong());
     }
 
     /**
@@ -6753,7 +6698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsLocalDateTime());
     }
 
     /**
@@ -6761,7 +6706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsLocalTime());
     }
 
     /**
@@ -6769,7 +6714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getReplayGainGainStringAsString());
     }
 
     /**
@@ -6777,7 +6722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsBoolean());
     }
 
     /**
@@ -6785,7 +6730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsBigInteger());
     }
 
     /**
@@ -6793,7 +6738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainStringAsURL());
     }
 
     /**
@@ -6801,7 +6746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsInteger());
     }
 
     /**
@@ -6809,7 +6754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsLong());
     }
 
     /**
@@ -6817,7 +6762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsLocalDateTime());
     }
 
     /**
@@ -6825,7 +6770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsLocalTime());
     }
 
     /**
@@ -6833,7 +6778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsString() {
-        assertEquals("Audio", JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsString());
+        assertEquals("Audio", AbstractTest.jMetaDataAudio.getStreamKindAsString());
     }
 
     /**
@@ -6841,7 +6786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsBoolean());
     }
 
     /**
@@ -6849,7 +6794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsBigInteger());
     }
 
     /**
@@ -6857,7 +6802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindAsURL());
     }
 
     /**
@@ -6865,7 +6810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsInteger() {
-        assertEquals(Integer.valueOf(192), JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsInteger());
+        assertEquals(Integer.valueOf(192), AbstractTest.jMetaDataAudio.getBitRateStringAsInteger());
     }
 
     /**
@@ -6873,7 +6818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsLong() {
-        assertEquals(Long.valueOf(192), JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsLong());
+        assertEquals(Long.valueOf(192), AbstractTest.jMetaDataAudio.getBitRateStringAsLong());
     }
 
     /**
@@ -6881,7 +6826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateStringAsLocalDateTime());
     }
 
     /**
@@ -6889,7 +6834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateStringAsLocalTime());
     }
 
     /**
@@ -6897,7 +6842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsString() {
-        assertEquals("192 kb/s", JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsString());
+        assertEquals("192 kb/s", AbstractTest.jMetaDataAudio.getBitRateStringAsString());
     }
 
     /**
@@ -6905,7 +6850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateStringAsBoolean());
     }
 
     /**
@@ -6913,7 +6858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(192), JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(192), AbstractTest.jMetaDataAudio.getBitRateStringAsBigInteger());
     }
 
     /**
@@ -6921,7 +6866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateStringAsURL());
     }
 
     /**
@@ -6929,7 +6874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsInteger());
     }
 
     /**
@@ -6937,7 +6882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsLong());
     }
 
     /**
@@ -6945,7 +6890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsLocalDateTime());
     }
 
     /**
@@ -6953,7 +6898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsLocalTime());
     }
 
     /**
@@ -6961,7 +6906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsSignAsString());
     }
 
     /**
@@ -6969,7 +6914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsBoolean());
     }
 
     /**
@@ -6977,7 +6922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsBigInteger());
     }
 
     /**
@@ -6985,7 +6930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSignAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSignAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSignAsURL());
     }
 
     /**
@@ -6993,7 +6938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsInteger());
     }
 
     /**
@@ -7001,7 +6946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsLong());
     }
 
     /**
@@ -7009,7 +6954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsLocalDateTime());
     }
 
     /**
@@ -7017,7 +6962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsLocalTime());
     }
 
     /**
@@ -7025,7 +6970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsString() {
-        assertEquals("English", JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsString());
+        assertEquals("English", AbstractTest.jMetaDataAudio.getLanguageString1AsString());
     }
 
     /**
@@ -7033,7 +6978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsBoolean());
     }
 
     /**
@@ -7041,7 +6986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsBigInteger());
     }
 
     /**
@@ -7049,7 +6994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString1AsURL());
     }
 
     /**
@@ -7057,7 +7002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsInteger());
     }
 
     /**
@@ -7065,7 +7010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsLong());
     }
 
     /**
@@ -7073,7 +7018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsLocalDateTime());
     }
 
     /**
@@ -7081,7 +7026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsLocalTime());
     }
 
     /**
@@ -7089,7 +7034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsString() {
-        assertEquals("en", JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsString());
+        assertEquals("en", AbstractTest.jMetaDataAudio.getLanguageString2AsString());
     }
 
     /**
@@ -7097,7 +7042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsBoolean());
     }
 
     /**
@@ -7105,7 +7050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsBigInteger());
     }
 
     /**
@@ -7113,7 +7058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString2AsURL());
     }
 
     /**
@@ -7121,7 +7066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsInteger());
     }
 
     /**
@@ -7129,7 +7074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsLong());
     }
 
     /**
@@ -7137,7 +7082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsLocalDateTime());
     }
 
     /**
@@ -7145,7 +7090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsLocalTime());
     }
 
     /**
@@ -7153,7 +7098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsString() {
-        assertEquals("eng", JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsString());
+        assertEquals("eng", AbstractTest.jMetaDataAudio.getLanguageString3AsString());
     }
 
     /**
@@ -7161,7 +7106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsBoolean());
     }
 
     /**
@@ -7169,7 +7114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsBigInteger());
     }
 
     /**
@@ -7177,7 +7122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString3AsURL());
     }
 
     /**
@@ -7185,7 +7130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsInteger());
     }
 
     /**
@@ -7193,7 +7138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsLong());
     }
 
     /**
@@ -7201,7 +7146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsLocalDateTime());
     }
 
     /**
@@ -7209,7 +7154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsLocalTime());
     }
 
     /**
@@ -7217,7 +7162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsString());
     }
 
     /**
@@ -7225,7 +7170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsBoolean());
     }
 
     /**
@@ -7233,7 +7178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsBigInteger());
     }
 
     /**
@@ -7241,7 +7186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelPositionsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelPositionsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelPositionsAsURL());
     }
 
     /**
@@ -7249,7 +7194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsInteger());
     }
 
     /**
@@ -7257,7 +7202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsLong());
     }
 
     /**
@@ -7265,7 +7210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsLocalDateTime());
     }
 
     /**
@@ -7273,7 +7218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsLocalTime());
     }
 
     /**
@@ -7281,7 +7226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsString() {
-        assertEquals("en", JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsString());
+        assertEquals("en", AbstractTest.jMetaDataAudio.getLanguageString4AsString());
     }
 
     /**
@@ -7289,7 +7234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsBoolean());
     }
 
     /**
@@ -7297,7 +7242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsBigInteger());
     }
 
     /**
@@ -7305,7 +7250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageString4AsURL());
     }
 
     /**
@@ -7313,7 +7258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsInteger() {
-        assertEquals(Integer.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsInteger());
+        assertEquals(Integer.valueOf(3), AbstractTest.jMetaDataAudio.getCodecIDAsInteger());
     }
 
     /**
@@ -7321,7 +7266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsLong() {
-        assertEquals(Long.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsLong());
+        assertEquals(Long.valueOf(3), AbstractTest.jMetaDataAudio.getCodecIDAsLong());
     }
 
     /**
@@ -7329,7 +7274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDAsLocalDateTime());
     }
 
     /**
@@ -7337,7 +7282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDAsLocalTime());
     }
 
     /**
@@ -7345,7 +7290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsString() {
-        assertEquals("A_MPEG/L3", JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsString());
+        assertEquals("A_MPEG/L3", AbstractTest.jMetaDataAudio.getCodecIDAsString());
     }
 
     /**
@@ -7353,7 +7298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDAsBoolean());
     }
 
     /**
@@ -7361,7 +7306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(3), AbstractTest.jMetaDataAudio.getCodecIDAsBigInteger());
     }
 
     /**
@@ -7369,7 +7314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDAsURL());
     }
 
     /**
@@ -7377,7 +7322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsInteger());
     }
 
     /**
@@ -7385,7 +7330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsLong());
     }
 
     /**
@@ -7393,7 +7338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsLocalDateTime());
     }
 
     /**
@@ -7401,7 +7346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsLocalTime());
     }
 
     /**
@@ -7409,7 +7354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getAlternateGroupAsString());
     }
 
     /**
@@ -7417,7 +7362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsBoolean());
     }
 
     /**
@@ -7425,7 +7370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsBigInteger());
     }
 
     /**
@@ -7433,7 +7378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupAsURL());
     }
 
     /**
@@ -7441,7 +7386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsInteger());
     }
 
     /**
@@ -7449,7 +7394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsLong());
     }
 
     /**
@@ -7457,7 +7402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsLocalDateTime());
     }
 
     /**
@@ -7465,7 +7410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsLocalTime());
     }
 
     /**
@@ -7473,7 +7418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsString());
     }
 
     /**
@@ -7481,7 +7426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsBoolean());
     }
 
     /**
@@ -7489,7 +7434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsBigInteger());
     }
 
     /**
@@ -7497,7 +7442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveVideoFramesAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveVideoFramesAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveVideoFramesAsURL());
     }
 
     /**
@@ -7505,7 +7450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsInteger());
     }
 
     /**
@@ -7513,7 +7458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsLong());
     }
 
     /**
@@ -7521,7 +7466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsLocalDateTime());
     }
 
     /**
@@ -7529,7 +7474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsLocalTime());
     }
 
     /**
@@ -7537,7 +7482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMatrixFormatAsString());
     }
 
     /**
@@ -7545,7 +7490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsBoolean());
     }
 
     /**
@@ -7553,7 +7498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsBigInteger());
     }
 
     /**
@@ -7561,7 +7506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixFormatAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixFormatAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixFormatAsURL());
     }
 
     /**
@@ -7569,7 +7514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsInteger());
     }
 
     /**
@@ -7577,7 +7522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsLong());
     }
 
     /**
@@ -7585,7 +7530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsLocalDateTime());
     }
 
     /**
@@ -7593,7 +7538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsLocalTime());
     }
 
     /**
@@ -7601,7 +7546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsString() {
-        assertEquals("en", JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsString());
+        assertEquals("en", AbstractTest.jMetaDataAudio.getLanguageAsString());
     }
 
     /**
@@ -7609,7 +7554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsBoolean());
     }
 
     /**
@@ -7617,7 +7562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsBigInteger());
     }
 
     /**
@@ -7625,7 +7570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageAsURL());
     }
 
     /**
@@ -7633,7 +7578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsInteger());
     }
 
     /**
@@ -7641,7 +7586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsLong());
     }
 
     /**
@@ -7649,7 +7594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsLocalDateTime());
     }
 
     /**
@@ -7657,7 +7602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsLocalTime());
     }
 
     /**
@@ -7665,7 +7610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameAsString());
     }
 
     /**
@@ -7673,7 +7618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsBoolean());
     }
 
     /**
@@ -7681,7 +7626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsBigInteger());
     }
 
     /**
@@ -7689,7 +7634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameAsURL());
     }
 
     /**
@@ -7697,7 +7642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsInteger() {
-        assertEquals(Integer.valueOf(3903), JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsInteger());
+        assertEquals(Integer.valueOf(3903), AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsInteger());
     }
 
     /**
@@ -7705,7 +7650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLong() {
-        assertEquals(Long.valueOf(3903), JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsLong());
+        assertEquals(Long.valueOf(3903), AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsLong());
     }
 
     /**
@@ -7713,7 +7658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsLocalDateTime());
     }
 
     /**
@@ -7721,7 +7666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsLocalTime());
     }
 
     /**
@@ -7729,7 +7674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsString() {
-        assertEquals("LAME3.90.3", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsString());
+        assertEquals("LAME3.90.3", AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsString());
     }
 
     /**
@@ -7737,7 +7682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsBoolean());
     }
 
     /**
@@ -7745,7 +7690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3903), JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(3903), AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsBigInteger());
     }
 
     /**
@@ -7753,7 +7698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryStringAsURL());
     }
 
     /**
@@ -7761,7 +7706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsInteger() {
-        assertEquals(Integer.valueOf(480), JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsInteger());
+        assertEquals(Integer.valueOf(480), AbstractTest.jMetaDataAudio.getSamplingRateStringAsInteger());
     }
 
     /**
@@ -7769,7 +7714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsLong() {
-        assertEquals(Long.valueOf(480), JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsLong());
+        assertEquals(Long.valueOf(480), AbstractTest.jMetaDataAudio.getSamplingRateStringAsLong());
     }
 
     /**
@@ -7777,7 +7722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateStringAsLocalDateTime());
     }
 
     /**
@@ -7785,7 +7730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateStringAsLocalTime());
     }
 
     /**
@@ -7793,7 +7738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsString() {
-        assertEquals("48.0 kHz", JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsString());
+        assertEquals("48.0 kHz", AbstractTest.jMetaDataAudio.getSamplingRateStringAsString());
     }
 
     /**
@@ -7801,7 +7746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateStringAsBoolean());
     }
 
     /**
@@ -7809,7 +7754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(480), JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(480), AbstractTest.jMetaDataAudio.getSamplingRateStringAsBigInteger());
     }
 
     /**
@@ -7817,7 +7762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateStringAsURL());
     }
 
     /**
@@ -7825,7 +7770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsInteger() {
-        assertEquals(Integer.valueOf(206), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsInteger());
+        assertEquals(Integer.valueOf(206), AbstractTest.jMetaDataAudio.getStreamSizeStringAsInteger());
     }
 
     /**
@@ -7833,7 +7778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsLong() {
-        assertEquals(Long.valueOf(206), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsLong());
+        assertEquals(Long.valueOf(206), AbstractTest.jMetaDataAudio.getStreamSizeStringAsLong());
     }
 
     /**
@@ -7841,7 +7786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeStringAsLocalDateTime());
     }
 
     /**
@@ -7849,7 +7794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeStringAsLocalTime());
     }
 
     /**
@@ -7857,7 +7802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsString() {
-        assertEquals("20.6 MiB", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsString());
+        assertEquals("20.6 MiB", AbstractTest.jMetaDataAudio.getStreamSizeStringAsString());
     }
 
     /**
@@ -7865,7 +7810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeStringAsBoolean());
     }
 
     /**
@@ -7873,7 +7818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(206), JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(206), AbstractTest.jMetaDataAudio.getStreamSizeStringAsBigInteger());
     }
 
     /**
@@ -7881,7 +7826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeStringAsURL());
     }
 
     /**
@@ -7889,7 +7834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultStringAsInteger());
     }
 
     /**
@@ -7897,7 +7842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultStringAsLong());
     }
 
     /**
@@ -7905,7 +7850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultStringAsLocalDateTime());
     }
 
     /**
@@ -7913,7 +7858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultStringAsLocalTime());
     }
 
     /**
@@ -7921,7 +7866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsString() {
-        assertEquals("Yes", JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsString());
+        assertEquals("Yes", AbstractTest.jMetaDataAudio.getDefaultStringAsString());
     }
 
     /**
@@ -7929,7 +7874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataAudio.getDefaultStringAsBoolean());
     }
 
     /**
@@ -7937,7 +7882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultStringAsBigInteger());
     }
 
     /**
@@ -7945,7 +7890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultStringAsURL());
     }
 
     /**
@@ -7953,7 +7898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsInteger());
     }
 
     /**
@@ -7961,7 +7906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsLong());
     }
 
     /**
@@ -7969,7 +7914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsLocalDateTime());
     }
 
     /**
@@ -7977,7 +7922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsLocalTime());
     }
 
     /**
@@ -7985,7 +7930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsString());
     }
 
     /**
@@ -7993,7 +7938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsBoolean());
     }
 
     /**
@@ -8001,7 +7946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsBigInteger());
     }
 
     /**
@@ -8009,7 +7954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDStringAsURL());
     }
 
     /**
@@ -8017,7 +7962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsInteger());
     }
 
     /**
@@ -8025,7 +7970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsLong());
     }
 
     /**
@@ -8033,7 +7978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsLocalDateTime());
     }
 
     /**
@@ -8041,7 +7986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsLocalTime());
     }
 
     /**
@@ -8049,7 +7994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsString());
     }
 
     /**
@@ -8057,7 +8002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsBoolean());
     }
 
     /**
@@ -8065,7 +8010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsBigInteger());
     }
 
     /**
@@ -8073,7 +8018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString1AsURL());
     }
 
     /**
@@ -8081,7 +8026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsInteger());
     }
 
     /**
@@ -8089,7 +8034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsLong());
     }
 
     /**
@@ -8097,7 +8042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsLocalDateTime());
     }
 
     /**
@@ -8105,7 +8050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsLocalTime());
     }
 
     /**
@@ -8113,7 +8058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsString() {
-        assertEquals("Joint stereo", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsString());
+        assertEquals("Joint stereo", AbstractTest.jMetaDataAudio.getFormatSettingsModeAsString());
     }
 
     /**
@@ -8121,7 +8066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsBoolean());
     }
 
     /**
@@ -8129,7 +8074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsBigInteger());
     }
 
     /**
@@ -8137,7 +8082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsModeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsModeAsURL());
     }
 
     /**
@@ -8145,7 +8090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsInteger());
     }
 
     /**
@@ -8153,7 +8098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsLong());
     }
 
     /**
@@ -8161,7 +8106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsLocalDateTime());
     }
 
     /**
@@ -8169,7 +8114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsLocalTime());
     }
 
     /**
@@ -8177,7 +8122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsString());
     }
 
     /**
@@ -8185,7 +8130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsBoolean());
     }
 
     /**
@@ -8193,7 +8138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsBigInteger());
     }
 
     /**
@@ -8201,7 +8146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString3AsURL());
     }
 
     /**
@@ -8209,7 +8154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsInteger());
     }
 
     /**
@@ -8217,7 +8162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsLong());
     }
 
     /**
@@ -8225,7 +8170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsLocalDateTime());
     }
 
     /**
@@ -8233,7 +8178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsLocalTime());
     }
 
     /**
@@ -8241,7 +8186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsString());
     }
 
     /**
@@ -8249,7 +8194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsBoolean());
     }
 
     /**
@@ -8257,7 +8202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsBigInteger());
     }
 
     /**
@@ -8265,7 +8210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString2AsURL());
     }
 
     /**
@@ -8273,7 +8218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsInteger());
     }
 
     /**
@@ -8281,7 +8226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsLong());
     }
 
     /**
@@ -8289,7 +8234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsLocalDateTime());
     }
 
     /**
@@ -8297,7 +8242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsLocalTime());
     }
 
     /**
@@ -8305,7 +8250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsString());
     }
 
     /**
@@ -8313,7 +8258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsBoolean());
     }
 
     /**
@@ -8321,7 +8266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsBigInteger());
     }
 
     /**
@@ -8329,7 +8274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString5AsURL());
     }
 
     /**
@@ -8337,7 +8282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsInteger());
     }
 
     /**
@@ -8345,7 +8290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsLong());
     }
 
     /**
@@ -8353,7 +8298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsLocalDateTime());
     }
 
     /**
@@ -8361,7 +8306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsLocalTime());
     }
 
     /**
@@ -8369,7 +8314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsString());
     }
 
     /**
@@ -8377,7 +8322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsBoolean());
     }
 
     /**
@@ -8385,7 +8330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsBigInteger());
     }
 
     /**
@@ -8393,7 +8338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationLastFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationLastFrameString4AsURL());
     }
 
     /**
@@ -8401,7 +8346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsInteger());
     }
 
     /**
@@ -8409,7 +8354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsLong());
     }
 
     /**
@@ -8417,7 +8362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsLocalDateTime());
     }
 
     /**
@@ -8425,7 +8370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsLocalTime());
     }
 
     /**
@@ -8433,7 +8378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitDepthStringAsString());
     }
 
     /**
@@ -8441,7 +8386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsBoolean());
     }
 
     /**
@@ -8449,7 +8394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsBigInteger());
     }
 
     /**
@@ -8457,7 +8402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStringAsURL());
     }
 
     /**
@@ -8465,7 +8410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsInteger());
     }
 
     /**
@@ -8473,7 +8418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsLong());
     }
 
     /**
@@ -8481,7 +8426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsLocalDateTime());
     }
 
     /**
@@ -8489,7 +8434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsLocalTime());
     }
 
     /**
@@ -8497,7 +8442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFrameCountAsString());
     }
 
     /**
@@ -8505,7 +8450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsBoolean());
     }
 
     /**
@@ -8513,7 +8458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsBigInteger());
     }
 
     /**
@@ -8521,7 +8466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameCountAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameCountAsURL());
     }
 
     /**
@@ -8529,7 +8474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsInteger() {
-        assertEquals(Integer.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getTitleAsInteger());
+        assertEquals(Integer.valueOf(3), AbstractTest.jMetaDataAudio.getTitleAsInteger());
     }
 
     /**
@@ -8537,7 +8482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsLong() {
-        assertEquals(Long.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getTitleAsLong());
+        assertEquals(Long.valueOf(3), AbstractTest.jMetaDataAudio.getTitleAsLong());
     }
 
     /**
@@ -8545,7 +8490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTitleAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTitleAsLocalDateTime());
     }
 
     /**
@@ -8553,7 +8498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTitleAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTitleAsLocalTime());
     }
 
     /**
@@ -8561,7 +8506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsString() {
-        assertEquals("MP3 Stereo", JMetaDataAudio_Test.jMetaDataAudio.getTitleAsString());
+        assertEquals("MP3 Stereo", AbstractTest.jMetaDataAudio.getTitleAsString());
     }
 
     /**
@@ -8569,7 +8514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTitleAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTitleAsBoolean());
     }
 
     /**
@@ -8577,7 +8522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getTitleAsBigInteger());
+        assertEquals(BigInteger.valueOf(3), AbstractTest.jMetaDataAudio.getTitleAsBigInteger());
     }
 
     /**
@@ -8585,7 +8530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetTitleAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getTitleAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getTitleAsURL());
     }
 
     /**
@@ -8593,7 +8538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsInteger());
     }
 
     /**
@@ -8601,7 +8546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsLong());
     }
 
     /**
@@ -8609,7 +8554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsLocalDateTime());
     }
 
     /**
@@ -8617,7 +8562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsLocalTime());
     }
 
     /**
@@ -8625,7 +8570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayDropFrameAsString());
     }
 
     /**
@@ -8633,7 +8578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsBoolean());
     }
 
     /**
@@ -8641,7 +8586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsBigInteger());
     }
 
     /**
@@ -8649,7 +8594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayDropFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayDropFrameAsURL());
     }
 
     /**
@@ -8657,7 +8602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsInteger() {
-        assertEquals(Integer.valueOf(48000), JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsInteger());
+        assertEquals(Integer.valueOf(48000), AbstractTest.jMetaDataAudio.getSamplingRateAsInteger());
     }
 
     /**
@@ -8665,7 +8610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsLong() {
-        assertEquals(Long.valueOf(48000), JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsLong());
+        assertEquals(Long.valueOf(48000), AbstractTest.jMetaDataAudio.getSamplingRateAsLong());
     }
 
     /**
@@ -8673,7 +8618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateAsLocalDateTime());
     }
 
     /**
@@ -8681,7 +8626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateAsLocalTime());
     }
 
     /**
@@ -8689,7 +8634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsString() {
-        assertEquals("48000", JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsString());
+        assertEquals("48000", AbstractTest.jMetaDataAudio.getSamplingRateAsString());
     }
 
     /**
@@ -8697,7 +8642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateAsBoolean());
     }
 
     /**
@@ -8705,7 +8650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsBigInteger() {
-        assertEquals(BigInteger.valueOf(48000), JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsBigInteger());
+        assertEquals(BigInteger.valueOf(48000), AbstractTest.jMetaDataAudio.getSamplingRateAsBigInteger());
     }
 
     /**
@@ -8713,7 +8658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplingRateAsURL());
     }
 
     /**
@@ -8721,7 +8666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsInteger());
     }
 
     /**
@@ -8729,7 +8674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsLong());
     }
 
     /**
@@ -8737,7 +8682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsLocalDateTime());
     }
 
     /**
@@ -8745,7 +8690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsLocalTime());
     }
 
     /**
@@ -8753,7 +8698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateMaximumAsString());
     }
 
     /**
@@ -8761,7 +8706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsBoolean());
     }
 
     /**
@@ -8769,7 +8714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsBigInteger());
     }
 
     /**
@@ -8777,7 +8722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMaximumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMaximumAsURL());
     }
 
     /**
@@ -8785,7 +8730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsInteger());
     }
 
     /**
@@ -8793,7 +8738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsLong());
     }
 
     /**
@@ -8801,7 +8746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsLocalDateTime());
     }
 
     /**
@@ -8809,7 +8754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsLocalTime());
     }
 
     /**
@@ -8817,7 +8762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsString());
     }
 
     /**
@@ -8825,7 +8770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsBoolean());
     }
 
     /**
@@ -8833,7 +8778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsBigInteger());
     }
 
     /**
@@ -8841,7 +8786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEmphasisAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEmphasisAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEmphasisAsURL());
     }
 
     /**
@@ -8849,7 +8794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsInteger());
     }
 
     /**
@@ -8857,7 +8802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsLong());
     }
 
     /**
@@ -8865,7 +8810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsLocalDateTime());
     }
 
     /**
@@ -8873,7 +8818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsLocalTime());
     }
 
     /**
@@ -8881,7 +8826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeProportionAsString());
     }
 
     /**
@@ -8889,7 +8834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsBoolean());
     }
 
     /**
@@ -8897,7 +8842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsBigInteger());
     }
 
     /**
@@ -8905,7 +8850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeProportionAsURL());
     }
 
     /**
@@ -8913,7 +8858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsInteger());
     }
 
     /**
@@ -8921,7 +8866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsLong());
     }
 
     /**
@@ -8929,7 +8874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsLocalDateTime());
     }
 
     /**
@@ -8937,7 +8882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsLocalTime());
     }
 
     /**
@@ -8945,7 +8890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsString());
     }
 
     /**
@@ -8953,7 +8898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsBoolean());
     }
 
     /**
@@ -8961,7 +8906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsBigInteger());
     }
 
     /**
@@ -8969,7 +8914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeEncodedProportionAsURL());
     }
 
     /**
@@ -8977,7 +8922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsInteger());
     }
 
     /**
@@ -8985,7 +8930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsLong());
     }
 
     /**
@@ -8993,7 +8938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsLocalDateTime());
     }
 
     /**
@@ -9001,7 +8946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsLocalTime());
     }
 
     /**
@@ -9009,7 +8954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsString());
     }
 
     /**
@@ -9017,7 +8962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsBoolean());
     }
 
     /**
@@ -9025,7 +8970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsBigInteger());
     }
 
     /**
@@ -9033,7 +8978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibrarySettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibrarySettingsAsURL());
     }
 
     /**
@@ -9041,7 +8986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsInteger());
     }
 
     /**
@@ -9049,7 +8994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsLong());
     }
 
     /**
@@ -9057,7 +9002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsLocalDateTime());
     }
 
     /**
@@ -9065,7 +9010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsLocalTime());
     }
 
     /**
@@ -9073,7 +9018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationAsString());
     }
 
     /**
@@ -9081,7 +9026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsBoolean());
     }
 
     /**
@@ -9089,7 +9034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsBigInteger());
     }
 
     /**
@@ -9097,7 +9042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationAsURL());
     }
 
     /**
@@ -9105,7 +9050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsInteger());
     }
 
     /**
@@ -9113,7 +9058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsLong());
     }
 
     /**
@@ -9121,7 +9066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsLocalDateTime());
     }
 
     /**
@@ -9129,7 +9074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsLocalTime());
     }
 
     /**
@@ -9137,7 +9082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsString());
     }
 
     /**
@@ -9145,7 +9090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsBoolean());
     }
 
     /**
@@ -9153,7 +9098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsBigInteger());
     }
 
     /**
@@ -9161,7 +9106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSStringAsURL());
     }
 
     /**
@@ -9169,7 +9114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsInteger());
     }
 
     /**
@@ -9177,7 +9122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsLong());
     }
 
     /**
@@ -9185,7 +9130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsLocalDateTime());
     }
 
     /**
@@ -9193,7 +9138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsLocalTime());
     }
 
     /**
@@ -9201,7 +9146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalString1AsString());
     }
 
     /**
@@ -9209,7 +9154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsBoolean());
     }
 
     /**
@@ -9217,7 +9162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsBigInteger());
     }
 
     /**
@@ -9225,7 +9170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString1AsURL());
     }
 
     /**
@@ -9233,7 +9178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsInteger());
+        assertEquals(Integer.valueOf(275), AbstractTest.jMetaDataAudio.getCountAsInteger());
     }
 
     /**
@@ -9241,7 +9186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsLong());
+        assertEquals(Long.valueOf(275), AbstractTest.jMetaDataAudio.getCountAsLong());
     }
 
     /**
@@ -9249,7 +9194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCountAsLocalDateTime());
     }
 
     /**
@@ -9257,7 +9202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCountAsLocalTime());
     }
 
     /**
@@ -9265,7 +9210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("275", JMetaDataAudio_Test.jMetaDataAudio.getCountAsString());
+        assertEquals("275", AbstractTest.jMetaDataAudio.getCountAsString());
     }
 
     /**
@@ -9273,7 +9218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCountAsBoolean());
     }
 
     /**
@@ -9281,7 +9226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(275), AbstractTest.jMetaDataAudio.getCountAsBigInteger());
     }
 
     /**
@@ -9289,7 +9234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCountAsURL());
     }
 
     /**
@@ -9297,7 +9242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsInteger());
     }
 
     /**
@@ -9305,7 +9250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsLong());
     }
 
     /**
@@ -9313,7 +9258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsLocalDateTime());
     }
 
     /**
@@ -9321,7 +9266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsLocalTime());
     }
 
     /**
@@ -9329,7 +9274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsString());
     }
 
     /**
@@ -9337,7 +9282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsBoolean());
     }
 
     /**
@@ -9345,7 +9290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsBigInteger());
     }
 
     /**
@@ -9353,7 +9298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsWrappingAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsWrappingAsURL());
     }
 
     /**
@@ -9361,7 +9306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsInteger());
     }
 
     /**
@@ -9369,7 +9314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsLong());
     }
 
     /**
@@ -9377,7 +9322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsLocalDateTime());
     }
 
     /**
@@ -9385,7 +9330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsLocalTime());
     }
 
     /**
@@ -9393,7 +9338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalString2AsString());
     }
 
     /**
@@ -9401,7 +9346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsBoolean());
     }
 
     /**
@@ -9409,7 +9354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsBigInteger());
     }
 
     /**
@@ -9417,7 +9362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString2AsURL());
     }
 
     /**
@@ -9425,7 +9370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsInteger());
     }
 
     /**
@@ -9433,7 +9378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsLong());
     }
 
     /**
@@ -9441,7 +9386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsLocalDateTime());
     }
 
     /**
@@ -9449,7 +9394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsLocalTime());
     }
 
     /**
@@ -9457,7 +9402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncryptionAsString());
     }
 
     /**
@@ -9465,7 +9410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsBoolean());
     }
 
     /**
@@ -9473,7 +9418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsBigInteger());
     }
 
     /**
@@ -9481,7 +9426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncryptionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncryptionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncryptionAsURL());
     }
 
     /**
@@ -9489,7 +9434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsInteger());
     }
 
     /**
@@ -9497,7 +9442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsLong());
     }
 
     /**
@@ -9505,7 +9450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsLocalDateTime());
     }
 
     /**
@@ -9513,7 +9458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsLocalTime());
     }
 
     /**
@@ -9521,7 +9466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalAsString());
     }
 
     /**
@@ -9529,7 +9474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsBoolean());
     }
 
     /**
@@ -9537,7 +9482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsBigInteger());
     }
 
     /**
@@ -9545,7 +9490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalAsURL());
     }
 
     /**
@@ -9553,7 +9498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsInteger());
     }
 
     /**
@@ -9561,7 +9506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsLong());
     }
 
     /**
@@ -9569,7 +9514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsLocalDateTime());
     }
 
     /**
@@ -9577,7 +9522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsLocalTime());
     }
 
     /**
@@ -9585,7 +9530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFrameRateNumAsString());
     }
 
     /**
@@ -9593,7 +9538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsBoolean());
     }
 
     /**
@@ -9601,7 +9546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsBigInteger());
     }
 
     /**
@@ -9609,7 +9554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateNumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateNumAsURL());
     }
 
     /**
@@ -9617,7 +9562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsInteger());
     }
 
     /**
@@ -9625,7 +9570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsLong());
     }
 
     /**
@@ -9633,7 +9578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsLocalDateTime());
     }
 
     /**
@@ -9641,7 +9586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsLocalTime());
     }
 
     /**
@@ -9649,7 +9594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getAlignmentAsString());
     }
 
     /**
@@ -9657,7 +9602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsBoolean());
     }
 
     /**
@@ -9665,7 +9610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsBigInteger());
     }
 
     /**
@@ -9673,7 +9618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlignmentAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlignmentAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlignmentAsURL());
     }
 
     /**
@@ -9681,7 +9626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsInteger() {
-        assertEquals(Integer.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsInteger());
+        assertEquals(Integer.valueOf(1), AbstractTest.jMetaDataAudio.getFormatVersionAsInteger());
     }
 
     /**
@@ -9689,7 +9634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsLong() {
-        assertEquals(Long.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsLong());
+        assertEquals(Long.valueOf(1), AbstractTest.jMetaDataAudio.getFormatVersionAsLong());
     }
 
     /**
@@ -9697,7 +9642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatVersionAsLocalDateTime());
     }
 
     /**
@@ -9705,7 +9650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatVersionAsLocalTime());
     }
 
     /**
@@ -9713,7 +9658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsString() {
-        assertEquals("Version 1", JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsString());
+        assertEquals("Version 1", AbstractTest.jMetaDataAudio.getFormatVersionAsString());
     }
 
     /**
@@ -9721,7 +9666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatVersionAsBoolean());
     }
 
     /**
@@ -9729,7 +9674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataAudio.getFormatVersionAsBigInteger());
     }
 
     /**
@@ -9737,7 +9682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatVersionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatVersionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatVersionAsURL());
     }
 
     /**
@@ -9745,7 +9690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsInteger() {
-        assertEquals(Integer.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsInteger());
+        assertEquals(Integer.valueOf(1), AbstractTest.jMetaDataAudio.getStreamKindPosAsInteger());
     }
 
     /**
@@ -9753,7 +9698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsLong() {
-        assertEquals(Long.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsLong());
+        assertEquals(Long.valueOf(1), AbstractTest.jMetaDataAudio.getStreamKindPosAsLong());
     }
 
     /**
@@ -9761,7 +9706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindPosAsLocalDateTime());
     }
 
     /**
@@ -9769,7 +9714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindPosAsLocalTime());
     }
 
     /**
@@ -9777,7 +9722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsString() {
-        assertEquals("1", JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsString());
+        assertEquals("1", AbstractTest.jMetaDataAudio.getStreamKindPosAsString());
     }
 
     /**
@@ -9785,7 +9730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindPosAsBoolean());
     }
 
     /**
@@ -9793,7 +9738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataAudio.getStreamKindPosAsBigInteger());
     }
 
     /**
@@ -9801,7 +9746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindPosAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindPosAsURL());
     }
 
     /**
@@ -9809,7 +9754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsInteger());
     }
 
     /**
@@ -9817,7 +9762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsLong());
     }
 
     /**
@@ -9825,7 +9770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsLocalDateTime());
     }
 
     /**
@@ -9833,7 +9778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsLocalTime());
     }
 
     /**
@@ -9841,7 +9786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsString());
     }
 
     /**
@@ -9849,7 +9794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsBoolean());
     }
 
     /**
@@ -9857,7 +9802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsBigInteger());
     }
 
     /**
@@ -9865,7 +9810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getOriginalSourceMediumIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getOriginalSourceMediumIDAsURL());
     }
 
     /**
@@ -9873,7 +9818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsInteger() {
-        assertEquals(Integer.valueOf(1458), JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsInteger());
+        assertEquals(Integer.valueOf(1458), AbstractTest.jMetaDataAudio.getDurationStringAsInteger());
     }
 
     /**
@@ -9881,7 +9826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsLong() {
-        assertEquals(Long.valueOf(1458), JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsLong());
+        assertEquals(Long.valueOf(1458), AbstractTest.jMetaDataAudio.getDurationStringAsLong());
     }
 
     /**
@@ -9889,7 +9834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationStringAsLocalDateTime());
     }
 
     /**
@@ -9897,7 +9842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationStringAsLocalTime());
     }
 
     /**
@@ -9905,7 +9850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals("14 min 58 s", JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsString());
+        assertEquals("14 min 58 s", AbstractTest.jMetaDataAudio.getDurationStringAsString());
     }
 
     /**
@@ -9913,7 +9858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationStringAsBoolean());
     }
 
     /**
@@ -9921,7 +9866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458), JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(1458), AbstractTest.jMetaDataAudio.getDurationStringAsBigInteger());
     }
 
     /**
@@ -9929,7 +9874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationStringAsURL());
     }
 
     /**
@@ -9937,7 +9882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsInteger() {
-        assertEquals(Integer.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getIDAsInteger());
+        assertEquals(Integer.valueOf(2), AbstractTest.jMetaDataAudio.getIDAsInteger());
     }
 
     /**
@@ -9945,7 +9890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsLong() {
-        assertEquals(Long.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getIDAsLong());
+        assertEquals(Long.valueOf(2), AbstractTest.jMetaDataAudio.getIDAsLong());
     }
 
     /**
@@ -9953,7 +9898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDAsLocalDateTime());
     }
 
     /**
@@ -9961,7 +9906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDAsLocalTime());
     }
 
     /**
@@ -9969,7 +9914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsString() {
-        assertEquals("2", JMetaDataAudio_Test.jMetaDataAudio.getIDAsString());
+        assertEquals("2", AbstractTest.jMetaDataAudio.getIDAsString());
     }
 
     /**
@@ -9977,7 +9922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDAsBoolean());
     }
 
     /**
@@ -9985,7 +9930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(2), AbstractTest.jMetaDataAudio.getIDAsBigInteger());
     }
 
     /**
@@ -9993,7 +9938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getIDAsURL());
     }
 
     /**
@@ -10001,7 +9946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayAsInteger());
     }
 
     /**
@@ -10009,7 +9954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayAsLong());
     }
 
     /**
@@ -10017,7 +9962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayAsLocalDateTime());
     }
 
     /**
@@ -10025,7 +9970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayAsLocalTime());
     }
 
     /**
@@ -10033,7 +9978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsString() {
-        assertEquals("170", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsString());
+        assertEquals("170", AbstractTest.jMetaDataAudio.getVideoDelayAsString());
     }
 
     /**
@@ -10041,7 +9986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayAsBoolean());
     }
 
     /**
@@ -10049,7 +9994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayAsBigInteger());
     }
 
     /**
@@ -10057,7 +10002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayAsURL());
     }
 
     /**
@@ -10065,7 +10010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsInteger());
     }
 
     /**
@@ -10073,7 +10018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsLong());
     }
 
     /**
@@ -10081,7 +10026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsLocalDateTime());
     }
 
     /**
@@ -10089,7 +10034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsLocalTime());
     }
 
     /**
@@ -10097,7 +10042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getReplayGainGainAsString());
     }
 
     /**
@@ -10105,7 +10050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsBoolean());
     }
 
     /**
@@ -10113,7 +10058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsBigInteger());
     }
 
     /**
@@ -10121,7 +10066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetReplayGainGainAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getReplayGainGainAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getReplayGainGainAsURL());
     }
 
     /**
@@ -10129,7 +10074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsInteger());
     }
 
     /**
@@ -10137,7 +10082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsLong());
     }
 
     /**
@@ -10145,7 +10090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsLocalDateTime());
     }
 
     /**
@@ -10153,7 +10098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsLocalTime());
     }
 
     /**
@@ -10161,7 +10106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsString());
     }
 
     /**
@@ -10169,7 +10114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsBoolean());
     }
 
     /**
@@ -10177,7 +10122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsBigInteger());
     }
 
     /**
@@ -10185,7 +10130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryDateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryDateAsURL());
     }
 
     /**
@@ -10193,7 +10138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsInteger());
     }
 
     /**
@@ -10201,7 +10146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsLong());
     }
 
     /**
@@ -10209,7 +10154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsLocalDateTime());
     }
 
     /**
@@ -10217,7 +10162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsLocalTime());
     }
 
     /**
@@ -10225,7 +10170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMenuIDStringAsString());
     }
 
     /**
@@ -10233,7 +10178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsBoolean());
     }
 
     /**
@@ -10241,7 +10186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsBigInteger());
     }
 
     /**
@@ -10249,7 +10194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDStringAsURL());
     }
 
     /**
@@ -10257,7 +10202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsInteger());
     }
 
     /**
@@ -10265,7 +10210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsLong());
     }
 
     /**
@@ -10273,7 +10218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsLocalDateTime());
     }
 
     /**
@@ -10281,7 +10226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsLocalTime());
     }
 
     /**
@@ -10289,7 +10234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getLanguageMoreAsString());
     }
 
     /**
@@ -10297,7 +10242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsBoolean());
     }
 
     /**
@@ -10305,7 +10250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsBigInteger());
     }
 
     /**
@@ -10313,7 +10258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageMoreAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageMoreAsURL());
     }
 
     /**
@@ -10321,7 +10266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsInteger());
     }
 
     /**
@@ -10329,7 +10274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsLong());
     }
 
     /**
@@ -10337,7 +10282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsLocalDateTime());
     }
 
     /**
@@ -10345,7 +10290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsLocalTime());
     }
 
     /**
@@ -10353,7 +10298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsString());
     }
 
     /**
@@ -10361,7 +10306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsBoolean());
     }
 
     /**
@@ -10369,7 +10314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsBigInteger());
     }
 
     /**
@@ -10377,7 +10322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeStringAsURL());
     }
 
     /**
@@ -10385,7 +10330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsInteger());
     }
 
     /**
@@ -10393,7 +10338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsLong());
     }
 
     /**
@@ -10401,7 +10346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsLocalDateTime());
     }
 
     /**
@@ -10409,7 +10354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsLocalTime());
     }
 
     /**
@@ -10417,7 +10362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsLawAsString());
     }
 
     /**
@@ -10425,7 +10370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsBoolean());
     }
 
     /**
@@ -10433,7 +10378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsBigInteger());
     }
 
     /**
@@ -10441,7 +10386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsLawAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsLawAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsLawAsURL());
     }
 
     /**
@@ -10449,7 +10394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsInteger());
     }
 
     /**
@@ -10457,7 +10402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsLong());
     }
 
     /**
@@ -10465,7 +10410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -10473,7 +10418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsLocalTime());
     }
 
     /**
@@ -10481,7 +10426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationFirstFrameAsString());
     }
 
     /**
@@ -10489,7 +10434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsBoolean());
     }
 
     /**
@@ -10497,7 +10442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsBigInteger());
     }
 
     /**
@@ -10505,7 +10450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationFirstFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationFirstFrameAsURL());
     }
 
     /**
@@ -10513,7 +10458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsInteger());
     }
 
     /**
@@ -10521,7 +10466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsLong());
     }
 
     /**
@@ -10529,7 +10474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsLocalDateTime());
     }
 
     /**
@@ -10537,7 +10482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsLocalTime());
     }
 
     /**
@@ -10545,7 +10490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalString3AsString());
     }
 
     /**
@@ -10553,7 +10498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsBoolean());
     }
 
     /**
@@ -10561,7 +10506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsBigInteger());
     }
 
     /**
@@ -10569,7 +10514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString3AsURL());
     }
 
     /**
@@ -10577,7 +10522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsInteger());
     }
 
     /**
@@ -10585,7 +10530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsLong());
     }
 
     /**
@@ -10593,7 +10538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsLocalDateTime());
     }
 
     /**
@@ -10601,7 +10546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsLocalTime());
     }
 
     /**
@@ -10609,7 +10554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsString());
     }
 
     /**
@@ -10617,7 +10562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsBoolean());
     }
 
     /**
@@ -10625,7 +10570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsBigInteger());
     }
 
     /**
@@ -10633,7 +10578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationStringAsURL());
     }
 
     /**
@@ -10641,7 +10586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsInteger());
     }
 
     /**
@@ -10649,7 +10594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsLong());
     }
 
     /**
@@ -10657,7 +10602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsLocalDateTime());
     }
 
     /**
@@ -10665,7 +10610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsLocalTime());
     }
 
     /**
@@ -10673,7 +10618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalString4AsString());
     }
 
     /**
@@ -10681,7 +10626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsBoolean());
     }
 
     /**
@@ -10689,7 +10634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsBigInteger());
     }
 
     /**
@@ -10697,7 +10642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString4AsURL());
     }
 
     /**
@@ -10705,7 +10650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsInteger());
     }
 
     /**
@@ -10713,7 +10658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsLong());
     }
 
     /**
@@ -10721,7 +10666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsLocalDateTime());
     }
 
     /**
@@ -10729,7 +10674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsLocalTime());
     }
 
     /**
@@ -10737,7 +10682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalString5AsString());
     }
 
     /**
@@ -10745,7 +10690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsBoolean());
     }
 
     /**
@@ -10753,7 +10698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsBigInteger());
     }
 
     /**
@@ -10761,7 +10706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalString5AsURL());
     }
 
     /**
@@ -10769,7 +10714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsInteger());
     }
 
     /**
@@ -10777,7 +10722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsLong());
     }
 
     /**
@@ -10785,7 +10730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsLocalDateTime());
     }
 
     /**
@@ -10793,7 +10738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsLocalTime());
     }
 
     /**
@@ -10801,7 +10746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsPSAsString());
     }
 
     /**
@@ -10809,7 +10754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsBoolean());
     }
 
     /**
@@ -10817,7 +10762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsBigInteger());
     }
 
     /**
@@ -10825,7 +10770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsPSAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsPSAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsPSAsURL());
     }
 
     /**
@@ -10833,7 +10778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedAsInteger());
     }
 
     /**
@@ -10841,7 +10786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedAsLong());
     }
 
     /**
@@ -10849,7 +10794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedAsLocalDateTime());
     }
 
     /**
@@ -10857,7 +10802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedAsLocalTime());
     }
 
     /**
@@ -10865,7 +10810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsString() {
-        assertEquals("No", JMetaDataAudio_Test.jMetaDataAudio.getForcedAsString());
+        assertEquals("No", AbstractTest.jMetaDataAudio.getForcedAsString());
     }
 
     /**
@@ -10873,7 +10818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataAudio.getForcedAsBoolean());
     }
 
     /**
@@ -10881,7 +10826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedAsBigInteger());
     }
 
     /**
@@ -10889,7 +10834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedAsURL());
     }
 
     /**
@@ -10897,7 +10842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsInteger());
     }
 
     /**
@@ -10905,7 +10850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsLong());
     }
 
     /**
@@ -10913,7 +10858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsLocalDateTime());
     }
 
     /**
@@ -10921,7 +10866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsLocalTime());
     }
 
     /**
@@ -10929,7 +10874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsString());
     }
 
     /**
@@ -10937,7 +10882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsBoolean());
     }
 
     /**
@@ -10945,7 +10890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsBigInteger());
     }
 
     /**
@@ -10953,7 +10898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMatrixChannelsStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMatrixChannelsStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMatrixChannelsStringAsURL());
     }
 
     /**
@@ -10961,7 +10906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInformAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInformAsInteger());
     }
 
     /**
@@ -10969,7 +10914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInformAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInformAsLong());
     }
 
     /**
@@ -10977,7 +10922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInformAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInformAsLocalDateTime());
     }
 
     /**
@@ -10985,7 +10930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInformAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInformAsLocalTime());
     }
 
     /**
@@ -10993,7 +10938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInformAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInformAsBoolean());
     }
 
     /**
@@ -11001,7 +10946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(new BigInteger("213331458192248017020633903"), JMetaDataAudio_Test.jMetaDataAudio.getInformAsBigInteger());
+        assertEquals(new BigInteger("213331458192248017020633903"), AbstractTest.jMetaDataAudio.getInformAsBigInteger());
     }
 
     /**
@@ -11009,7 +10954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInformAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInformAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInformAsURL());
     }
 
     /**
@@ -11017,7 +10962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsInteger());
     }
 
     /**
@@ -11025,7 +10970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsLong());
     }
 
     /**
@@ -11033,7 +10978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -11041,7 +10986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsLocalTime());
     }
 
     /**
@@ -11049,7 +10994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsString());
     }
 
     /**
@@ -11057,7 +11002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsBoolean());
     }
 
     /**
@@ -11065,7 +11010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsBigInteger());
     }
 
     /**
@@ -11073,7 +11018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationFirstFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationFirstFrameAsURL());
     }
 
     /**
@@ -11081,7 +11026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsInteger() {
-        assertEquals(Integer.valueOf(0), JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsInteger());
+        assertEquals(Integer.valueOf(0), AbstractTest.jMetaDataAudio.getStreamKindIDAsInteger());
     }
 
     /**
@@ -11089,7 +11034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsLong() {
-        assertEquals(Long.valueOf(0), JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsLong());
+        assertEquals(Long.valueOf(0), AbstractTest.jMetaDataAudio.getStreamKindIDAsLong());
     }
 
     /**
@@ -11097,7 +11042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindIDAsLocalDateTime());
     }
 
     /**
@@ -11105,7 +11050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindIDAsLocalTime());
     }
 
     /**
@@ -11113,7 +11058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsString() {
-        assertEquals("0", JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsString());
+        assertEquals("0", AbstractTest.jMetaDataAudio.getStreamKindIDAsString());
     }
 
     /**
@@ -11121,7 +11066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindIDAsBoolean());
     }
 
     /**
@@ -11129,7 +11074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(0), JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(0), AbstractTest.jMetaDataAudio.getStreamKindIDAsBigInteger());
     }
 
     /**
@@ -11137,7 +11082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindIDAsURL());
     }
 
     /**
@@ -11145,7 +11090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsInteger());
     }
 
     /**
@@ -11153,7 +11098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsLong());
     }
 
     /**
@@ -11161,7 +11106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsLocalDateTime());
     }
 
     /**
@@ -11169,7 +11114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsLocalTime());
     }
 
     /**
@@ -11177,7 +11122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsString());
     }
 
     /**
@@ -11185,7 +11130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsBoolean());
     }
 
     /**
@@ -11193,7 +11138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsBigInteger());
     }
 
     /**
@@ -11201,7 +11146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsFloorAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsFloorAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsFloorAsURL());
     }
 
     /**
@@ -11209,7 +11154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsInteger());
     }
 
     /**
@@ -11217,7 +11162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsLong());
     }
 
     /**
@@ -11225,7 +11170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsLocalDateTime());
     }
 
     /**
@@ -11233,7 +11178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsLocalTime());
     }
 
     /**
@@ -11241,7 +11186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatUrlAsString());
     }
 
     /**
@@ -11249,7 +11194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsBoolean());
     }
 
     /**
@@ -11257,7 +11202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsBigInteger());
     }
 
     /**
@@ -11265,7 +11210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatUrlAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatUrlAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatUrlAsURL());
     }
 
     /**
@@ -11273,7 +11218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsInteger());
     }
 
     /**
@@ -11281,7 +11226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsLong());
     }
 
     /**
@@ -11289,7 +11234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsLocalDateTime());
     }
 
     /**
@@ -11297,7 +11242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsLocalTime());
     }
 
     /**
@@ -11305,7 +11250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsString());
     }
 
     /**
@@ -11313,7 +11258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsBoolean());
     }
 
     /**
@@ -11321,7 +11266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsBigInteger());
     }
 
     /**
@@ -11329,7 +11274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumStringAsURL());
     }
 
     /**
@@ -11337,7 +11282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsInteger());
     }
 
     /**
@@ -11345,7 +11290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsLong());
     }
 
     /**
@@ -11353,7 +11298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsLocalDateTime());
     }
 
     /**
@@ -11361,7 +11306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsLocalTime());
     }
 
     /**
@@ -11369,7 +11314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFrameRateStringAsString());
     }
 
     /**
@@ -11377,7 +11322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsBoolean());
     }
 
     /**
@@ -11385,7 +11330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsBigInteger());
     }
 
     /**
@@ -11393,7 +11338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFrameRateStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFrameRateStringAsURL());
     }
 
     /**
@@ -11401,7 +11346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsInteger());
     }
 
     /**
@@ -11409,7 +11354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsLong());
     }
 
     /**
@@ -11417,7 +11362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsLocalDateTime());
     }
 
     /**
@@ -11425,7 +11370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsLocalTime());
     }
 
     /**
@@ -11433,7 +11378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceFrameCountAsString());
     }
 
     /**
@@ -11441,7 +11386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsBoolean());
     }
 
     /**
@@ -11449,7 +11394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsBigInteger());
     }
 
     /**
@@ -11457,7 +11402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceFrameCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceFrameCountAsURL());
     }
 
     /**
@@ -11465,7 +11410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultAsInteger());
     }
 
     /**
@@ -11473,7 +11418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultAsLong());
     }
 
     /**
@@ -11481,7 +11426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultAsLocalDateTime());
     }
 
     /**
@@ -11489,7 +11434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultAsLocalTime());
     }
 
     /**
@@ -11497,7 +11442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsString() {
-        assertEquals("Yes", JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsString());
+        assertEquals("Yes", AbstractTest.jMetaDataAudio.getDefaultAsString());
     }
 
     /**
@@ -11505,7 +11450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataAudio.getDefaultAsBoolean());
     }
 
     /**
@@ -11513,7 +11458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultAsBigInteger());
     }
 
     /**
@@ -11521,7 +11466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDefaultAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDefaultAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDefaultAsURL());
     }
 
     /**
@@ -11529,7 +11474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsInteger());
     }
 
     /**
@@ -11537,7 +11482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsLong());
     }
 
     /**
@@ -11545,7 +11490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsLocalDateTime());
     }
 
     /**
@@ -11553,7 +11498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsLocalTime());
     }
 
     /**
@@ -11561,7 +11506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsString());
     }
 
     /**
@@ -11569,7 +11514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsBoolean());
     }
 
     /**
@@ -11577,7 +11522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsBigInteger());
     }
 
     /**
@@ -11585,7 +11530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalSettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalSettingsAsURL());
     }
 
     /**
@@ -11593,7 +11538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsInteger());
     }
 
     /**
@@ -11601,7 +11546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsLong());
     }
 
     /**
@@ -11609,7 +11554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsLocalDateTime());
     }
 
     /**
@@ -11617,7 +11562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsLocalTime());
     }
 
     /**
@@ -11625,7 +11570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsString());
     }
 
     /**
@@ -11633,7 +11578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsBoolean());
     }
 
     /**
@@ -11641,7 +11586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsBigInteger());
     }
 
     /**
@@ -11649,7 +11594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationNameAsURL());
     }
 
     /**
@@ -11657,7 +11602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsInteger());
     }
 
     /**
@@ -11665,7 +11610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsLong());
     }
 
     /**
@@ -11673,7 +11618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsLocalDateTime());
     }
 
     /**
@@ -11681,7 +11626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsLocalTime());
     }
 
     /**
@@ -11689,7 +11634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getUniqueIDStringAsString());
     }
 
     /**
@@ -11697,7 +11642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsBoolean());
     }
 
     /**
@@ -11705,7 +11650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsBigInteger());
     }
 
     /**
@@ -11713,7 +11658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getUniqueIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getUniqueIDStringAsURL());
     }
 
     /**
@@ -11721,7 +11666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsInteger());
     }
 
     /**
@@ -11729,7 +11674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsLong());
     }
 
     /**
@@ -11737,7 +11682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsLocalDateTime());
     }
 
     /**
@@ -11745,7 +11690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsLocalTime());
     }
 
     /**
@@ -11753,7 +11698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitDepthDetectedAsString());
     }
 
     /**
@@ -11761,7 +11706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsBoolean());
     }
 
     /**
@@ -11769,7 +11714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsBigInteger());
     }
 
     /**
@@ -11777,7 +11722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedAsURL());
     }
 
     /**
@@ -11785,7 +11730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsInteger() {
-        assertEquals(Integer.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsInteger());
+        assertEquals(Integer.valueOf(3), AbstractTest.jMetaDataAudio.getFormatProfileAsInteger());
     }
 
     /**
@@ -11793,7 +11738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLong() {
-        assertEquals(Long.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsLong());
+        assertEquals(Long.valueOf(3), AbstractTest.jMetaDataAudio.getFormatProfileAsLong());
     }
 
     /**
@@ -11801,7 +11746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatProfileAsLocalDateTime());
     }
 
     /**
@@ -11809,7 +11754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatProfileAsLocalTime());
     }
 
     /**
@@ -11817,7 +11762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsString() {
-        assertEquals("Layer 3", JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsString());
+        assertEquals("Layer 3", AbstractTest.jMetaDataAudio.getFormatProfileAsString());
     }
 
     /**
@@ -11825,7 +11770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatProfileAsBoolean());
     }
 
     /**
@@ -11833,7 +11778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3), JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsBigInteger());
+        assertEquals(BigInteger.valueOf(3), AbstractTest.jMetaDataAudio.getFormatProfileAsBigInteger());
     }
 
     /**
@@ -11841,7 +11786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatProfileAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatProfileAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatProfileAsURL());
     }
 
     /**
@@ -11849,7 +11794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsInteger());
     }
 
     /**
@@ -11857,7 +11802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsLong());
     }
 
     /**
@@ -11865,7 +11810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsLocalDateTime());
     }
 
     /**
@@ -11873,7 +11818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsLocalTime());
     }
 
     /**
@@ -11881,7 +11826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsString());
     }
 
     /**
@@ -11889,7 +11834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsBoolean());
     }
 
     /**
@@ -11897,7 +11842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsBigInteger());
     }
 
     /**
@@ -11905,7 +11850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString2AsURL());
     }
 
     /**
@@ -11913,7 +11858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsInteger());
     }
 
     /**
@@ -11921,7 +11866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsLong());
     }
 
     /**
@@ -11929,7 +11874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsLocalDateTime());
     }
 
     /**
@@ -11937,7 +11882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsLocalTime());
     }
 
     /**
@@ -11945,7 +11890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsString());
     }
 
     /**
@@ -11953,7 +11898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsBoolean());
     }
 
     /**
@@ -11961,7 +11906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsBigInteger());
     }
 
     /**
@@ -11969,7 +11914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString1AsURL());
     }
 
     /**
@@ -11977,7 +11922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsInteger());
     }
 
     /**
@@ -11985,7 +11930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsLong());
     }
 
     /**
@@ -11993,7 +11938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsLocalDateTime());
     }
 
     /**
@@ -12001,7 +11946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsLocalTime());
     }
 
     /**
@@ -12009,7 +11954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsString());
     }
 
     /**
@@ -12017,7 +11962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsBoolean());
     }
 
     /**
@@ -12025,7 +11970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsBigInteger());
     }
 
     /**
@@ -12033,7 +11978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString3AsURL());
     }
 
     /**
@@ -12041,7 +11986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsInteger());
     }
 
     /**
@@ -12049,7 +11994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsLong());
     }
 
     /**
@@ -12057,7 +12002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsLocalDateTime());
     }
 
     /**
@@ -12065,7 +12010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsLocalTime());
     }
 
     /**
@@ -12073,7 +12018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsString());
     }
 
     /**
@@ -12081,7 +12026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsBoolean());
     }
 
     /**
@@ -12089,7 +12034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsBigInteger());
     }
 
     /**
@@ -12097,7 +12042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString2AsURL());
     }
 
     /**
@@ -12105,7 +12050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsInteger());
     }
 
     /**
@@ -12113,7 +12058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsLong());
     }
 
     /**
@@ -12121,7 +12066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsLocalDateTime());
     }
 
     /**
@@ -12129,7 +12074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsLocalTime());
     }
 
     /**
@@ -12137,7 +12082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsString());
     }
 
     /**
@@ -12145,7 +12090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsBoolean());
     }
 
     /**
@@ -12153,7 +12098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsBigInteger());
     }
 
     /**
@@ -12161,7 +12106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString3AsURL());
     }
 
     /**
@@ -12169,7 +12114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsInteger());
     }
 
     /**
@@ -12177,7 +12122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsLong());
     }
 
     /**
@@ -12185,7 +12130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsLocalDateTime());
     }
 
     /**
@@ -12193,7 +12138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsLocalTime());
     }
 
     /**
@@ -12201,7 +12146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsString());
     }
 
     /**
@@ -12209,7 +12154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsBoolean());
     }
 
     /**
@@ -12217,7 +12162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsBigInteger());
     }
 
     /**
@@ -12225,7 +12170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString1AsURL());
     }
 
     /**
@@ -12233,7 +12178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsInteger());
     }
 
     /**
@@ -12241,7 +12186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsLong());
     }
 
     /**
@@ -12249,7 +12194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsLocalDateTime());
     }
 
     /**
@@ -12257,7 +12202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsLocalTime());
     }
 
     /**
@@ -12265,7 +12210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsString() {
-        assertEquals("English", JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsString());
+        assertEquals("English", AbstractTest.jMetaDataAudio.getLanguageStringAsString());
     }
 
     /**
@@ -12273,7 +12218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsBoolean());
     }
 
     /**
@@ -12281,7 +12226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsBigInteger());
     }
 
     /**
@@ -12289,7 +12234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetLanguageStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getLanguageStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getLanguageStringAsURL());
     }
 
     /**
@@ -12297,7 +12242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsInteger());
     }
 
     /**
@@ -12305,7 +12250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsLong());
     }
 
     /**
@@ -12313,7 +12258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsLocalDateTime());
     }
 
     /**
@@ -12321,7 +12266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsLocalTime());
     }
 
     /**
@@ -12329,7 +12274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsString());
     }
 
     /**
@@ -12337,7 +12282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsBoolean());
     }
 
     /**
@@ -12345,7 +12290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsBigInteger());
     }
 
     /**
@@ -12353,7 +12298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString4AsURL());
     }
 
     /**
@@ -12361,7 +12306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsInteger());
     }
 
     /**
@@ -12369,7 +12314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsLong());
     }
 
     /**
@@ -12377,7 +12322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsLocalDateTime());
     }
 
     /**
@@ -12385,7 +12330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsLocalTime());
     }
 
     /**
@@ -12393,7 +12338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsString());
     }
 
     /**
@@ -12401,7 +12346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsBoolean());
     }
 
     /**
@@ -12409,7 +12354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsBigInteger());
     }
 
     /**
@@ -12417,7 +12362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedString5AsURL());
     }
 
     /**
@@ -12425,7 +12370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsInteger());
     }
 
     /**
@@ -12433,7 +12378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsLong());
     }
 
     /**
@@ -12441,7 +12386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsLocalDateTime());
     }
 
     /**
@@ -12449,7 +12394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsLocalTime());
     }
 
     /**
@@ -12457,7 +12402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsString());
     }
 
     /**
@@ -12465,7 +12410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsBoolean());
     }
 
     /**
@@ -12473,7 +12418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsBigInteger());
     }
 
     /**
@@ -12481,7 +12426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString4AsURL());
     }
 
     /**
@@ -12489,7 +12434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsInteger());
     }
 
     /**
@@ -12497,7 +12442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsLong());
     }
 
     /**
@@ -12505,7 +12450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsLocalDateTime());
     }
 
     /**
@@ -12513,7 +12458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsLocalTime());
     }
 
     /**
@@ -12521,7 +12466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsString());
     }
 
     /**
@@ -12529,7 +12474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsBoolean());
     }
 
     /**
@@ -12537,7 +12482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsBigInteger());
     }
 
     /**
@@ -12545,7 +12490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedString5AsURL());
     }
 
     /**
@@ -12553,7 +12498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsInteger());
     }
 
     /**
@@ -12561,7 +12506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsLong());
     }
 
     /**
@@ -12569,7 +12514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsLocalDateTime());
     }
 
     /**
@@ -12577,7 +12522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsLocalTime());
     }
 
     /**
@@ -12585,7 +12530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatLevelAsString());
     }
 
     /**
@@ -12593,7 +12538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsBoolean());
     }
 
     /**
@@ -12601,7 +12546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsBigInteger());
     }
 
     /**
@@ -12609,7 +12554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatLevelAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatLevelAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatLevelAsURL());
     }
 
     /**
@@ -12617,7 +12562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsInteger());
     }
 
     /**
@@ -12625,7 +12570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsLong());
     }
 
     /**
@@ -12633,7 +12578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsLocalDateTime());
     }
 
     /**
@@ -12641,7 +12586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsLocalTime());
     }
 
     /**
@@ -12649,7 +12594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsString());
     }
 
     /**
@@ -12657,7 +12602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsBoolean());
     }
 
     /**
@@ -12665,7 +12610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsBigInteger());
     }
 
     /**
@@ -12673,7 +12618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString5AsURL());
     }
 
     /**
@@ -12681,7 +12626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsInteger());
     }
 
     /**
@@ -12689,7 +12634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsLong());
     }
 
     /**
@@ -12697,7 +12642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsLocalDateTime());
     }
 
     /**
@@ -12705,7 +12650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsLocalTime());
     }
 
     /**
@@ -12713,7 +12658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsString());
     }
 
     /**
@@ -12721,7 +12666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsBoolean());
     }
 
     /**
@@ -12729,7 +12674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsBigInteger());
     }
 
     /**
@@ -12737,7 +12682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString4AsURL());
     }
 
     /**
@@ -12745,7 +12690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsInteger());
     }
 
     /**
@@ -12753,7 +12698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsLong());
     }
 
     /**
@@ -12761,7 +12706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsLocalDateTime());
     }
 
     /**
@@ -12769,7 +12714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsLocalTime());
     }
 
     /**
@@ -12777,7 +12722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsString());
     }
 
     /**
@@ -12785,7 +12730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsBoolean());
     }
 
     /**
@@ -12793,7 +12738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsBigInteger());
     }
 
     /**
@@ -12801,7 +12746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedStringAsURL());
     }
 
     /**
@@ -12809,7 +12754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedStringAsInteger());
     }
 
     /**
@@ -12817,7 +12762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedStringAsLong());
     }
 
     /**
@@ -12825,7 +12770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedStringAsLocalDateTime());
     }
 
     /**
@@ -12833,7 +12778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedStringAsLocalTime());
     }
 
     /**
@@ -12841,7 +12786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsString() {
-        assertEquals("No", JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsString());
+        assertEquals("No", AbstractTest.jMetaDataAudio.getForcedStringAsString());
     }
 
     /**
@@ -12849,7 +12794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataAudio.getForcedStringAsBoolean());
     }
 
     /**
@@ -12857,7 +12802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedStringAsBigInteger());
     }
 
     /**
@@ -12865,7 +12810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetForcedStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getForcedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getForcedStringAsURL());
     }
 
     /**
@@ -12873,7 +12818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsInteger());
     }
 
     /**
@@ -12881,7 +12826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsLong());
     }
 
     /**
@@ -12889,7 +12834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsLocalDateTime());
     }
 
     /**
@@ -12897,7 +12842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsLocalTime());
     }
 
     /**
@@ -12905,7 +12850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitDepthAsString());
     }
 
     /**
@@ -12913,7 +12858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsBoolean());
     }
 
     /**
@@ -12921,7 +12866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsBigInteger());
     }
 
     /**
@@ -12929,7 +12874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthAsURL());
     }
 
     /**
@@ -12937,7 +12882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsInteger());
     }
 
     /**
@@ -12945,7 +12890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsLong());
     }
 
     /**
@@ -12953,7 +12898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsLocalDateTime());
     }
 
     /**
@@ -12961,7 +12906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsLocalTime());
     }
 
     /**
@@ -12969,7 +12914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsString());
     }
 
     /**
@@ -12977,7 +12922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsBoolean());
     }
 
     /**
@@ -12985,7 +12930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsBigInteger());
     }
 
     /**
@@ -12993,7 +12938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedAsURL());
     }
 
     /**
@@ -13001,7 +12946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsInteger() {
-        assertEquals(Integer.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsInteger());
+        assertEquals(Integer.valueOf(2), AbstractTest.jMetaDataAudio.getStreamCountAsInteger());
     }
 
     /**
@@ -13009,7 +12954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsLong() {
-        assertEquals(Long.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsLong());
+        assertEquals(Long.valueOf(2), AbstractTest.jMetaDataAudio.getStreamCountAsLong());
     }
 
     /**
@@ -13017,7 +12962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamCountAsLocalDateTime());
     }
 
     /**
@@ -13025,7 +12970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamCountAsLocalTime());
     }
 
     /**
@@ -13033,7 +12978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsString() {
-        assertEquals("2", JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsString());
+        assertEquals("2", AbstractTest.jMetaDataAudio.getStreamCountAsString());
     }
 
     /**
@@ -13041,7 +12986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamCountAsBoolean());
     }
 
     /**
@@ -13049,7 +12994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(2), AbstractTest.jMetaDataAudio.getStreamCountAsBigInteger());
     }
 
     /**
@@ -13057,7 +13002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamCountAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamCountAsURL());
     }
 
     /**
@@ -13065,7 +13010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsInteger());
     }
 
     /**
@@ -13073,7 +13018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsLong());
     }
 
     /**
@@ -13081,7 +13026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -13089,7 +13034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsLocalTime());
     }
 
     /**
@@ -13097,7 +13042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsString());
     }
 
     /**
@@ -13105,7 +13050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsBoolean());
     }
 
     /**
@@ -13113,7 +13058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsBigInteger());
     }
 
     /**
@@ -13121,7 +13066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeEncodedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeEncodedStringAsURL());
     }
 
     /**
@@ -13129,7 +13074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsInteger() {
-        assertEquals(Integer.valueOf(1458), JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsInteger());
+        assertEquals(Integer.valueOf(1458), AbstractTest.jMetaDataAudio.getDurationString2AsInteger());
     }
 
     /**
@@ -13137,7 +13082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsLong() {
-        assertEquals(Long.valueOf(1458), JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsLong());
+        assertEquals(Long.valueOf(1458), AbstractTest.jMetaDataAudio.getDurationString2AsLong());
     }
 
     /**
@@ -13145,7 +13090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString2AsLocalDateTime());
     }
 
     /**
@@ -13153,7 +13098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString2AsLocalTime());
     }
 
     /**
@@ -13161,7 +13106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("14 min 58 s", JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsString());
+        assertEquals("14 min 58 s", AbstractTest.jMetaDataAudio.getDurationString2AsString());
     }
 
     /**
@@ -13169,7 +13114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString2AsBoolean());
     }
 
     /**
@@ -13177,7 +13122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458), JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsBigInteger());
+        assertEquals(BigInteger.valueOf(1458), AbstractTest.jMetaDataAudio.getDurationString2AsBigInteger());
     }
 
     /**
@@ -13185,7 +13130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString2AsURL());
     }
 
     /**
@@ -13193,7 +13138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsInteger() {
-        assertEquals(Integer.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsInteger());
+        assertEquals(Integer.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString3AsInteger());
     }
 
     /**
@@ -13201,7 +13146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsLong() {
-        assertEquals(Long.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsLong());
+        assertEquals(Long.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString3AsLong());
     }
 
     /**
@@ -13209,7 +13154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString3AsLocalDateTime());
     }
 
     /**
@@ -13217,7 +13162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsLocalTime() {
-        assertEquals(LocalTime.of(0, 14, 58, 167000000), JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsLocalTime());
+        assertEquals(LocalTime.of(0, 14, 58, 167000000), AbstractTest.jMetaDataAudio.getDurationString3AsLocalTime());
     }
 
     /**
@@ -13225,7 +13170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsString() {
-        assertEquals("00:14:58.167", JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsString());
+        assertEquals("00:14:58.167", AbstractTest.jMetaDataAudio.getDurationString3AsString());
     }
 
     /**
@@ -13233,7 +13178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString3AsBoolean());
     }
 
     /**
@@ -13241,7 +13186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsBigInteger());
+        assertEquals(BigInteger.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString3AsBigInteger());
     }
 
     /**
@@ -13249,7 +13194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString3AsURL());
     }
 
     /**
@@ -13257,7 +13202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsInteger());
     }
 
     /**
@@ -13265,7 +13210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsLong());
     }
 
     /**
@@ -13273,7 +13218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsLocalDateTime());
     }
 
     /**
@@ -13281,7 +13226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsLocalTime());
     }
 
     /**
@@ -13289,7 +13234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getChannelLayoutAsString());
     }
 
     /**
@@ -13297,7 +13242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsBoolean());
     }
 
     /**
@@ -13305,7 +13250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsBigInteger());
     }
 
     /**
@@ -13313,7 +13258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelLayoutAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelLayoutAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelLayoutAsURL());
     }
 
     /**
@@ -13321,7 +13266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsInteger() {
-        assertEquals(Integer.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsInteger());
+        assertEquals(Integer.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString1AsInteger());
     }
 
     /**
@@ -13329,7 +13274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsLong() {
-        assertEquals(Long.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsLong());
+        assertEquals(Long.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString1AsLong());
     }
 
     /**
@@ -13337,7 +13282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString1AsLocalDateTime());
     }
 
     /**
@@ -13345,7 +13290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString1AsLocalTime());
     }
 
     /**
@@ -13353,7 +13298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals("14 min 58 s 167 ms", JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsString());
+        assertEquals("14 min 58 s 167 ms", AbstractTest.jMetaDataAudio.getDurationString1AsString());
     }
 
     /**
@@ -13361,7 +13306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString1AsBoolean());
     }
 
     /**
@@ -13369,7 +13314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsBigInteger());
+        assertEquals(BigInteger.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString1AsBigInteger());
     }
 
     /**
@@ -13377,7 +13322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString1AsURL());
     }
 
     /**
@@ -13385,7 +13330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsInteger());
     }
 
     /**
@@ -13393,7 +13338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsLong());
     }
 
     /**
@@ -13401,7 +13346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsLocalDateTime());
     }
 
     /**
@@ -13409,7 +13354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsLocalTime());
     }
 
     /**
@@ -13417,7 +13362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationString4AsString());
     }
 
     /**
@@ -13425,7 +13370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsBoolean());
     }
 
     /**
@@ -13433,7 +13378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsBigInteger());
     }
 
     /**
@@ -13441,7 +13386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString4AsURL());
     }
 
     /**
@@ -13449,7 +13394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(Integer.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsInteger());
+        assertEquals(Integer.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString5AsInteger());
     }
 
     /**
@@ -13457,7 +13402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(Long.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsLong());
+        assertEquals(Long.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString5AsLong());
     }
 
     /**
@@ -13465,7 +13410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString5AsLocalDateTime());
     }
 
     /**
@@ -13473,7 +13418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsLocalTime() {
-        assertEquals(LocalTime.of(0, 14, 58, 167000000), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsLocalTime());
+        assertEquals(LocalTime.of(0, 14, 58, 167000000), AbstractTest.jMetaDataAudio.getDurationString5AsLocalTime());
     }
 
     /**
@@ -13481,7 +13426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals("00:14:58.167", JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsString());
+        assertEquals("00:14:58.167", AbstractTest.jMetaDataAudio.getDurationString5AsString());
     }
 
     /**
@@ -13489,7 +13434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString5AsBoolean());
     }
 
     /**
@@ -13497,7 +13442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsBigInteger());
+        assertEquals(BigInteger.valueOf(1458167), AbstractTest.jMetaDataAudio.getDurationString5AsBigInteger());
     }
 
     /**
@@ -13505,7 +13450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationString5AsURL());
     }
 
     /**
@@ -13513,7 +13458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsInteger());
     }
 
     /**
@@ -13521,7 +13466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsLong());
     }
 
     /**
@@ -13529,7 +13474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsLocalDateTime());
     }
 
     /**
@@ -13537,7 +13482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsLocalTime());
     }
 
     /**
@@ -13545,7 +13490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateEncodedAsString());
     }
 
     /**
@@ -13553,7 +13498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsBoolean());
     }
 
     /**
@@ -13561,7 +13506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsBigInteger());
     }
 
     /**
@@ -13569,7 +13514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedAsURL());
     }
 
     /**
@@ -13577,7 +13522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsInteger());
     }
 
     /**
@@ -13585,7 +13530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsLong());
     }
 
     /**
@@ -13593,7 +13538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsLocalDateTime());
     }
 
     /**
@@ -13601,7 +13546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsLocalTime());
     }
 
     /**
@@ -13609,7 +13554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsString() {
-        assertEquals("Container", JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsString());
+        assertEquals("Container", AbstractTest.jMetaDataAudio.getDelaySourceAsString());
     }
 
     /**
@@ -13617,7 +13562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsBoolean());
     }
 
     /**
@@ -13625,7 +13570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsBigInteger());
     }
 
     /**
@@ -13633,7 +13578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceAsURL());
     }
 
     /**
@@ -13641,7 +13586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsInteger());
     }
 
     /**
@@ -13649,7 +13594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsLong());
     }
 
     /**
@@ -13657,7 +13602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsLocalDateTime());
     }
 
     /**
@@ -13665,7 +13610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsLocalTime());
     }
 
     /**
@@ -13673,7 +13618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsString());
     }
 
     /**
@@ -13681,7 +13626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsBoolean());
     }
 
     /**
@@ -13689,7 +13634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsBigInteger());
     }
 
     /**
@@ -13697,7 +13642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalDropFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalDropFrameAsURL());
     }
 
     /**
@@ -13705,7 +13650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsInteger());
     }
 
     /**
@@ -13713,7 +13658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsLong());
     }
 
     /**
@@ -13721,7 +13666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsLocalDateTime());
     }
 
     /**
@@ -13729,7 +13674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsLocalTime());
     }
 
     /**
@@ -13737,7 +13682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsString());
     }
 
     /**
@@ -13745,7 +13690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsBoolean());
     }
 
     /**
@@ -13753,7 +13698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsBigInteger());
     }
 
     /**
@@ -13761,7 +13706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString1AsURL());
     }
 
     /**
@@ -13769,7 +13714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsInteger());
     }
 
     /**
@@ -13777,7 +13722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsLong());
     }
 
     /**
@@ -13785,7 +13730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -13793,7 +13738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsLocalTime());
     }
 
     /**
@@ -13801,7 +13746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDelayOriginalStringAsString());
     }
 
     /**
@@ -13809,7 +13754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsBoolean());
     }
 
     /**
@@ -13817,7 +13762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsBigInteger());
     }
 
     /**
@@ -13825,7 +13770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelayOriginalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelayOriginalStringAsURL());
     }
 
     /**
@@ -13833,7 +13778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsInteger());
     }
 
     /**
@@ -13841,7 +13786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsLong());
     }
 
     /**
@@ -13849,7 +13794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsLocalDateTime());
     }
 
     /**
@@ -13857,7 +13802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsLocalTime());
     }
 
     /**
@@ -13865,7 +13810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsString());
     }
 
     /**
@@ -13873,7 +13818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsBoolean());
     }
 
     /**
@@ -13881,7 +13826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsBigInteger());
     }
 
     /**
@@ -13889,7 +13834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString3AsURL());
     }
 
     /**
@@ -13897,7 +13842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsInteger());
     }
 
     /**
@@ -13905,7 +13850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsLong());
     }
 
     /**
@@ -13913,7 +13858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsLocalDateTime());
     }
 
     /**
@@ -13921,7 +13866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsLocalTime());
     }
 
     /**
@@ -13929,7 +13874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsString());
     }
 
     /**
@@ -13937,7 +13882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsBoolean());
     }
 
     /**
@@ -13945,7 +13890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsBigInteger());
     }
 
     /**
@@ -13953,7 +13898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationLastFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDurationLastFrameString2AsURL());
     }
 
     /**
@@ -13961,7 +13906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsInteger());
     }
 
     /**
@@ -13969,7 +13914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsLong());
     }
 
     /**
@@ -13977,7 +13922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsLocalDateTime());
     }
 
     /**
@@ -13985,7 +13930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsLocalTime());
     }
 
     /**
@@ -13993,7 +13938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsString());
     }
 
     /**
@@ -14001,7 +13946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsBoolean());
     }
 
     /**
@@ -14009,7 +13954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsBigInteger());
     }
 
     /**
@@ -14017,7 +13962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamSizeDemuxedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamSizeDemuxedAsURL());
     }
 
     /**
@@ -14025,7 +13970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsInteger());
     }
 
     /**
@@ -14033,7 +13978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsLong());
     }
 
     /**
@@ -14041,7 +13986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsLocalDateTime());
     }
 
     /**
@@ -14049,7 +13994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsLocalTime());
     }
 
     /**
@@ -14057,7 +14002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsString() {
-        assertEquals("Joint stereo", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsString());
+        assertEquals("Joint stereo", AbstractTest.jMetaDataAudio.getFormatSettingsAsString());
     }
 
     /**
@@ -14065,7 +14010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsBoolean());
     }
 
     /**
@@ -14073,7 +14018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsBigInteger());
     }
 
     /**
@@ -14081,7 +14026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsAsURL());
     }
 
     /**
@@ -14089,7 +14034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsInteger());
     }
 
     /**
@@ -14097,7 +14042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsLong());
     }
 
     /**
@@ -14105,7 +14050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsLocalDateTime());
     }
 
     /**
@@ -14113,7 +14058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsLocalTime());
     }
 
     /**
@@ -14121,7 +14066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getServiceKindAsString());
     }
 
     /**
@@ -14129,7 +14074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsBoolean());
     }
 
     /**
@@ -14137,7 +14082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsBigInteger());
     }
 
     /**
@@ -14145,7 +14090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetServiceKindAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getServiceKindAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getServiceKindAsURL());
     }
 
     /**
@@ -14153,7 +14098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsInteger());
     }
 
     /**
@@ -14161,7 +14106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsLong());
     }
 
     /**
@@ -14169,7 +14114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsLocalDateTime());
     }
 
     /**
@@ -14177,7 +14122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsLocalTime());
     }
 
     /**
@@ -14185,7 +14130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFirstPacketOrderAsString());
     }
 
     /**
@@ -14193,7 +14138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsBoolean());
     }
 
     /**
@@ -14201,7 +14146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsBigInteger());
     }
 
     /**
@@ -14209,7 +14154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFirstPacketOrderAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFirstPacketOrderAsURL());
     }
 
     /**
@@ -14217,7 +14162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsInteger() {
-        assertEquals(Integer.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsInteger());
+        assertEquals(Integer.valueOf(2), AbstractTest.jMetaDataAudio.getChannelsAsInteger());
     }
 
     /**
@@ -14225,7 +14170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsLong() {
-        assertEquals(Long.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsLong());
+        assertEquals(Long.valueOf(2), AbstractTest.jMetaDataAudio.getChannelsAsLong());
     }
 
     /**
@@ -14233,7 +14178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsAsLocalDateTime());
     }
 
     /**
@@ -14241,7 +14186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsAsLocalTime());
     }
 
     /**
@@ -14249,7 +14194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsString() {
-        assertEquals("2", JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsString());
+        assertEquals("2", AbstractTest.jMetaDataAudio.getChannelsAsString());
     }
 
     /**
@@ -14257,7 +14202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsAsBoolean());
     }
 
     /**
@@ -14265,7 +14210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsBigInteger() {
-        assertEquals(BigInteger.valueOf(2), JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsBigInteger());
+        assertEquals(BigInteger.valueOf(2), AbstractTest.jMetaDataAudio.getChannelsAsBigInteger());
     }
 
     /**
@@ -14273,7 +14218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelsAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelsAsURL());
     }
 
     /**
@@ -14281,7 +14226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsInteger());
     }
 
     /**
@@ -14289,7 +14234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsLong());
     }
 
     /**
@@ -14297,7 +14242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsLocalDateTime());
     }
 
     /**
@@ -14305,7 +14250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsLocalTime());
     }
 
     /**
@@ -14313,7 +14258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsString());
     }
 
     /**
@@ -14321,7 +14266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsBoolean());
     }
 
     /**
@@ -14329,7 +14274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsBigInteger());
     }
 
     /**
@@ -14337,7 +14282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsEndiannessAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsEndiannessAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsEndiannessAsURL());
     }
 
     /**
@@ -14345,7 +14290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsInteger());
     }
 
     /**
@@ -14353,7 +14298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsLong());
     }
 
     /**
@@ -14361,7 +14306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsLocalDateTime());
     }
 
     /**
@@ -14369,7 +14314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsLocalTime());
     }
 
     /**
@@ -14377,7 +14322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getVideoDelayString5AsString());
     }
 
     /**
@@ -14385,7 +14330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsBoolean());
     }
 
     /**
@@ -14393,7 +14338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsBigInteger());
     }
 
     /**
@@ -14401,7 +14346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString5AsURL());
     }
 
     /**
@@ -14409,7 +14354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString1AsInteger());
     }
 
     /**
@@ -14417,7 +14362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString1AsLong());
     }
 
     /**
@@ -14425,7 +14370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString1AsLocalDateTime());
     }
 
     /**
@@ -14433,7 +14378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString1AsLocalTime());
     }
 
     /**
@@ -14441,7 +14386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsString());
+        assertEquals("170 ms", AbstractTest.jMetaDataAudio.getVideoDelayString1AsString());
     }
 
     /**
@@ -14449,7 +14394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString1AsBoolean());
     }
 
     /**
@@ -14457,7 +14402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString1AsBigInteger());
     }
 
     /**
@@ -14465,7 +14410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString1AsURL());
     }
 
     /**
@@ -14473,7 +14418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString2AsInteger());
     }
 
     /**
@@ -14481,7 +14426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString2AsLong());
     }
 
     /**
@@ -14489,7 +14434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString2AsLocalDateTime());
     }
 
     /**
@@ -14497,7 +14442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString2AsLocalTime());
     }
 
     /**
@@ -14505,7 +14450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsString());
+        assertEquals("170 ms", AbstractTest.jMetaDataAudio.getVideoDelayString2AsString());
     }
 
     /**
@@ -14513,7 +14458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString2AsBoolean());
     }
 
     /**
@@ -14521,7 +14466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString2AsBigInteger());
     }
 
     /**
@@ -14529,7 +14474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString2AsURL());
     }
 
     /**
@@ -14537,7 +14482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsInteger() {
-        assertEquals(Integer.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsInteger());
+        assertEquals(Integer.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString3AsInteger());
     }
 
     /**
@@ -14545,7 +14490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsLong() {
-        assertEquals(Long.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsLong());
+        assertEquals(Long.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString3AsLong());
     }
 
     /**
@@ -14553,7 +14498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString3AsLocalDateTime());
     }
 
     /**
@@ -14561,7 +14506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsLocalTime() {
-        assertEquals(LocalTime.of(0, 0, 0, 170000000), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsLocalTime());
+        assertEquals(LocalTime.of(0, 0, 0, 170000000), AbstractTest.jMetaDataAudio.getVideoDelayString3AsLocalTime());
     }
 
     /**
@@ -14569,7 +14514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsString() {
-        assertEquals("00:00:00.170", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsString());
+        assertEquals("00:00:00.170", AbstractTest.jMetaDataAudio.getVideoDelayString3AsString());
     }
 
     /**
@@ -14577,7 +14522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString3AsBoolean());
     }
 
     /**
@@ -14585,7 +14530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsBigInteger() {
-        assertEquals(BigInteger.valueOf(170), JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsBigInteger());
+        assertEquals(BigInteger.valueOf(170), AbstractTest.jMetaDataAudio.getVideoDelayString3AsBigInteger());
     }
 
     /**
@@ -14593,7 +14538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString3AsURL());
     }
 
     /**
@@ -14601,7 +14546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsInteger());
     }
 
     /**
@@ -14609,7 +14554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsLong());
     }
 
     /**
@@ -14617,7 +14562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsLocalDateTime());
     }
 
     /**
@@ -14625,7 +14570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsLocalTime());
     }
 
     /**
@@ -14633,7 +14578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getVideoDelayString4AsString());
     }
 
     /**
@@ -14641,7 +14586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsBoolean());
     }
 
     /**
@@ -14649,7 +14594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsBigInteger());
     }
 
     /**
@@ -14657,7 +14602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getVideoDelayString4AsURL());
     }
 
     /**
@@ -14665,7 +14610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsInteger());
     }
 
     /**
@@ -14673,7 +14618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsLong());
     }
 
     /**
@@ -14681,7 +14626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsLocalDateTime());
     }
 
     /**
@@ -14689,7 +14634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsLocalTime());
     }
 
     /**
@@ -14697,7 +14642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateNominalStringAsString());
     }
 
     /**
@@ -14705,7 +14650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsBoolean());
     }
 
     /**
@@ -14713,7 +14658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsBigInteger());
     }
 
     /**
@@ -14721,7 +14666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalStringAsURL());
     }
 
     /**
@@ -14729,7 +14674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsInteger());
     }
 
     /**
@@ -14737,7 +14682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsLong());
     }
 
     /**
@@ -14745,7 +14690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsLocalDateTime());
     }
 
     /**
@@ -14753,7 +14698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsLocalTime());
     }
 
     /**
@@ -14761,7 +14706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsString());
     }
 
     /**
@@ -14769,7 +14714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsBoolean());
     }
 
     /**
@@ -14777,7 +14722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsBigInteger());
     }
 
     /**
@@ -14785,7 +14730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthDetectedStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthDetectedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthDetectedStringAsURL());
     }
 
     /**
@@ -14793,7 +14738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsInteger());
     }
 
     /**
@@ -14801,7 +14746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsLong());
     }
 
     /**
@@ -14809,7 +14754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsLocalDateTime());
     }
 
     /**
@@ -14817,7 +14762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsLocalTime());
     }
 
     /**
@@ -14825,7 +14770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsString() {
-        assertEquals("MPEG Audio", JMetaDataAudio_Test.jMetaDataAudio.getFormatAsString());
+        assertEquals("MPEG Audio", AbstractTest.jMetaDataAudio.getFormatAsString());
     }
 
     /**
@@ -14833,7 +14778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsBoolean());
     }
 
     /**
@@ -14841,7 +14786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsBigInteger());
     }
 
     /**
@@ -14849,7 +14794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatAsURL());
     }
 
     /**
@@ -14857,7 +14802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsInteger());
     }
 
     /**
@@ -14865,7 +14810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsLong());
     }
 
     /**
@@ -14873,7 +14818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsLocalDateTime());
     }
 
     /**
@@ -14881,7 +14826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsLocalTime());
     }
 
     /**
@@ -14889,7 +14834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitDepthStoredAsString());
     }
 
     /**
@@ -14897,7 +14842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsBoolean());
     }
 
     /**
@@ -14905,7 +14850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsBigInteger());
     }
 
     /**
@@ -14913,7 +14858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredAsURL());
     }
 
     /**
@@ -14921,7 +14866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsInteger());
     }
 
     /**
@@ -14929,7 +14874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsLong());
     }
 
     /**
@@ -14937,7 +14882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsLocalDateTime());
     }
 
     /**
@@ -14945,7 +14890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsLocalTime());
     }
 
     /**
@@ -14953,7 +14898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsString());
     }
 
     /**
@@ -14961,7 +14906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsBoolean());
     }
 
     /**
@@ -14969,7 +14914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsBigInteger());
     }
 
     /**
@@ -14977,7 +14922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitDepthStoredStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitDepthStoredStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitDepthStoredStringAsURL());
     }
 
     /**
@@ -14985,7 +14930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsInteger());
     }
 
     /**
@@ -14993,7 +14938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsLong());
     }
 
     /**
@@ -15001,7 +14946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsLocalDateTime());
     }
 
     /**
@@ -15009,7 +14954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsLocalTime());
     }
 
     /**
@@ -15017,7 +14962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getCodecIDStringAsString());
     }
 
     /**
@@ -15025,7 +14970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsBoolean());
     }
 
     /**
@@ -15033,7 +14978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsBigInteger());
     }
 
     /**
@@ -15041,7 +14986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getCodecIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getCodecIDStringAsURL());
     }
 
     /**
@@ -15049,7 +14994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsInteger());
     }
 
     /**
@@ -15057,7 +15002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsLong());
     }
 
     /**
@@ -15065,7 +15010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsLocalDateTime());
     }
 
     /**
@@ -15073,7 +15018,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsLocalTime());
     }
 
     /**
@@ -15081,7 +15026,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsString());
     }
 
     /**
@@ -15089,7 +15034,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsBoolean());
     }
 
     /**
@@ -15097,7 +15042,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsBigInteger());
     }
 
     /**
@@ -15105,7 +15050,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedLibraryCompanyNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedLibraryCompanyNameAsURL());
     }
 
     /**
@@ -15113,7 +15058,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsInteger());
     }
 
     /**
@@ -15121,7 +15066,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsLong());
     }
 
     /**
@@ -15129,7 +15074,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsLocalDateTime());
     }
 
     /**
@@ -15137,7 +15082,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsLocalTime());
     }
 
     /**
@@ -15145,7 +15090,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceStreamSizeAsString());
     }
 
     /**
@@ -15153,7 +15098,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsBoolean());
     }
 
     /**
@@ -15161,7 +15106,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsBigInteger());
     }
 
     /**
@@ -15169,7 +15114,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceStreamSizeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceStreamSizeAsURL());
     }
 
     /**
@@ -15177,7 +15122,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsInteger());
     }
 
     /**
@@ -15185,7 +15130,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsLong());
     }
 
     /**
@@ -15193,7 +15138,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsLocalDateTime());
     }
 
     /**
@@ -15201,7 +15146,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsLocalTime());
     }
 
     /**
@@ -15209,7 +15154,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsString() {
-        assertEquals("MPEG Audio", JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsString());
+        assertEquals("MPEG Audio", AbstractTest.jMetaDataAudio.getFormatCommercialAsString());
     }
 
     /**
@@ -15217,7 +15162,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsBoolean());
     }
 
     /**
@@ -15225,7 +15170,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsBigInteger());
     }
 
     /**
@@ -15233,7 +15178,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatCommercialAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatCommercialAsURL());
     }
 
     /**
@@ -15241,7 +15186,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsInteger());
     }
 
     /**
@@ -15249,7 +15194,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsLong());
     }
 
     /**
@@ -15257,7 +15202,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsLocalDateTime());
     }
 
     /**
@@ -15265,7 +15210,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsLocalTime());
     }
 
     /**
@@ -15273,7 +15218,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsString() {
-        assertEquals("Container", JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsString());
+        assertEquals("Container", AbstractTest.jMetaDataAudio.getDelaySourceStringAsString());
     }
 
     /**
@@ -15281,7 +15226,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsBoolean());
     }
 
     /**
@@ -15289,7 +15234,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsBigInteger());
     }
 
     /**
@@ -15297,7 +15242,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDelaySourceStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getDelaySourceStringAsURL());
     }
 
     /**
@@ -15305,7 +15250,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsInteger());
     }
 
     /**
@@ -15313,7 +15258,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsLong());
     }
 
     /**
@@ -15321,7 +15266,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsLocalDateTime());
     }
 
     /**
@@ -15329,7 +15274,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsLocalTime());
     }
 
     /**
@@ -15337,7 +15282,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateNominalAsString());
     }
 
     /**
@@ -15345,7 +15290,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsBoolean());
     }
 
     /**
@@ -15353,7 +15298,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsBigInteger());
     }
 
     /**
@@ -15361,7 +15306,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateNominalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateNominalAsURL());
     }
 
     /**
@@ -15369,7 +15314,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsInteger());
     }
 
     /**
@@ -15377,7 +15322,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsLong());
     }
 
     /**
@@ -15385,7 +15330,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsLocalDateTime());
     }
 
     /**
@@ -15393,7 +15338,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsLocalTime());
     }
 
     /**
@@ -15401,7 +15346,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateMinimumAsString());
     }
 
     /**
@@ -15409,7 +15354,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsBoolean());
     }
 
     /**
@@ -15417,7 +15362,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsBigInteger());
     }
 
     /**
@@ -15425,7 +15370,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateMinimumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateMinimumAsURL());
     }
 
     /**
@@ -15433,7 +15378,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsInteger());
     }
 
     /**
@@ -15441,7 +15386,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsLong());
     }
 
     /**
@@ -15449,7 +15394,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsLocalDateTime());
     }
 
     /**
@@ -15457,7 +15402,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsLocalTime());
     }
 
     /**
@@ -15465,7 +15410,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsString());
     }
 
     /**
@@ -15473,7 +15418,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsBoolean());
     }
 
     /**
@@ -15481,7 +15426,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsBigInteger());
     }
 
     /**
@@ -15489,7 +15434,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetFormatSettingsSBRStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getFormatSettingsSBRStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getFormatSettingsSBRStringAsURL());
     }
 
     /**
@@ -15497,7 +15442,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsInteger());
     }
 
     /**
@@ -15505,7 +15450,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsLong());
     }
 
     /**
@@ -15513,7 +15458,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsLocalDateTime());
     }
 
     /**
@@ -15521,7 +15466,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsLocalTime());
     }
 
     /**
@@ -15529,7 +15474,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSourceDurationStringAsString());
     }
 
     /**
@@ -15537,7 +15482,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsBoolean());
     }
 
     /**
@@ -15545,7 +15490,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsBigInteger());
     }
 
     /**
@@ -15553,7 +15498,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSourceDurationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSourceDurationStringAsURL());
     }
 
     /**
@@ -15561,7 +15506,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsInteger());
     }
 
     /**
@@ -15569,7 +15514,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsLong());
     }
 
     /**
@@ -15577,7 +15522,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -15585,7 +15530,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsLocalTime());
     }
 
     /**
@@ -15593,7 +15538,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsString());
     }
 
     /**
@@ -15601,7 +15546,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsBoolean());
     }
 
     /**
@@ -15609,7 +15554,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsBigInteger());
     }
 
     /**
@@ -15617,7 +15562,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getBitRateEncodedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getBitRateEncodedStringAsURL());
     }
 
     /**
@@ -15625,7 +15570,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsInteger());
     }
 
     /**
@@ -15633,7 +15578,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsLong());
     }
 
     /**
@@ -15641,7 +15586,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsLocalDateTime());
     }
 
     /**
@@ -15649,7 +15594,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsLocalTime());
     }
 
     /**
@@ -15657,7 +15602,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsString() {
-        assertEquals("Audio", JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsString());
+        assertEquals("Audio", AbstractTest.jMetaDataAudio.getStreamKindStringAsString());
     }
 
     /**
@@ -15665,7 +15610,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsBoolean());
     }
 
     /**
@@ -15673,7 +15618,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsBigInteger());
     }
 
     /**
@@ -15681,7 +15626,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getStreamKindStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getStreamKindStringAsURL());
     }
 
     /**
@@ -15689,7 +15634,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsInteger());
     }
 
     /**
@@ -15697,7 +15642,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsLong());
     }
 
     /**
@@ -15705,7 +15650,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsLocalDateTime());
     }
 
     /**
@@ -15713,7 +15658,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsLocalTime());
     }
 
     /**
@@ -15721,7 +15666,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getChannelPositionsString2AsString());
     }
 
     /**
@@ -15729,7 +15674,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsBoolean());
     }
 
     /**
@@ -15737,7 +15682,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsBigInteger());
     }
 
     /**
@@ -15745,7 +15690,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetChannelPositionsString2AsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getChannelPositionsString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getChannelPositionsString2AsURL());
     }
 
     /**
@@ -15753,7 +15698,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsInteger());
     }
 
     /**
@@ -15761,7 +15706,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsLong());
     }
 
     /**
@@ -15769,7 +15714,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsLocalDateTime());
     }
 
     /**
@@ -15777,7 +15722,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsLocalTime());
     }
 
     /**
@@ -15785,7 +15730,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsString());
     }
 
     /**
@@ -15793,7 +15738,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsBoolean());
     }
 
     /**
@@ -15801,7 +15746,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsBigInteger());
     }
 
     /**
@@ -15809,7 +15754,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getEncodedApplicationVersionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getEncodedApplicationVersionAsURL());
     }
 
     /**
@@ -15817,7 +15762,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsInteger());
     }
 
     /**
@@ -15825,7 +15770,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsLong());
     }
 
     /**
@@ -15833,7 +15778,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsLocalDateTime());
     }
 
     /**
@@ -15841,7 +15786,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsLocalTime());
     }
 
     /**
@@ -15849,7 +15794,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getMenuIDAsString());
     }
 
     /**
@@ -15857,7 +15802,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsBoolean());
     }
 
     /**
@@ -15865,7 +15810,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsBigInteger());
     }
 
     /**
@@ -15873,7 +15818,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetMenuIDAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getMenuIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getMenuIDAsURL());
     }
 
     /**
@@ -15881,7 +15826,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsInteger());
     }
 
     /**
@@ -15889,7 +15834,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsLong());
     }
 
     /**
@@ -15897,7 +15842,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsLocalDateTime());
     }
 
     /**
@@ -15905,7 +15850,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsLocalTime());
     }
 
     /**
@@ -15913,7 +15858,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getSamplesPerFrameAsString());
     }
 
     /**
@@ -15921,7 +15866,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsBoolean());
     }
 
     /**
@@ -15929,7 +15874,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsBigInteger());
     }
 
     /**
@@ -15937,7 +15882,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplesPerFrameAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getSamplesPerFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getSamplesPerFrameAsURL());
     }
 
     /**
@@ -15945,7 +15890,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsInteger());
     }
 
     /**
@@ -15953,7 +15898,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsLong());
     }
 
     /**
@@ -15961,7 +15906,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsLocalDateTime());
     }
 
     /**
@@ -15969,7 +15914,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsLocalTime());
     }
 
     /**
@@ -15977,7 +15922,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsString());
     }
 
     /**
@@ -15985,7 +15930,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsBoolean());
     }
 
     /**
@@ -15993,7 +15938,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsBigInteger());
     }
 
     /**
@@ -16001,7 +15946,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetInterleaveDurationStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getInterleaveDurationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getInterleaveDurationStringAsURL());
     }
 
     /**
@@ -16009,7 +15954,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsInteger());
     }
 
     /**
@@ -16017,7 +15962,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLong() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsLong());
     }
 
     /**
@@ -16025,7 +15970,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsLocalDateTime());
     }
 
     /**
@@ -16033,7 +15978,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalTime() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsLocalTime());
     }
 
     /**
@@ -16041,7 +15986,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsString() {
-        assertEquals("", JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsString());
+        assertEquals("", AbstractTest.jMetaDataAudio.getAlternateGroupStringAsString());
     }
 
     /**
@@ -16049,7 +15994,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBoolean() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsBoolean());
     }
 
     /**
@@ -16057,7 +16002,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBigInteger() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsBigInteger());
     }
 
     /**
@@ -16065,7 +16010,7 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsURL() {
-        assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getAlternateGroupStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataAudio.getAlternateGroupStringAsURL());
     }
 
 }

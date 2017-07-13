@@ -2,78 +2,23 @@ package aka.jmetadata.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.math.BigInteger;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.management.RuntimeErrorException;
-
-import org.eclipse.jdt.annotation.NonNull;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import aka.jmetadata.main.JMetaData;
-import aka.jmetadata.main.JMetaDataText;
 
 /**
  * This class contains tests methods for Text informations of a specific Text stream.
  *
  * @author Welle Charlotte
  */
-public final class JMetaDataText_Test {
-
-    private static @NonNull final Logger LOGGER = Logger.getLogger(JMetaDataText_Test.class.getName());
-
-    private static JMetaDataText jMetaDataText;
-    private static JMetaData jMetaData;
-
-    /**
-     * Initialize test.
-     */
-    @BeforeClass
-    public static void beforeUnit() {
-        try {
-            jMetaData = new JMetaData();
-            final String filePath = new File("").getAbsolutePath();
-            final File file = new File(filePath.concat("/Test/videosamples/Sintel_DivXPlus_6500kbps.mkv"));
-            if (jMetaData.open(file)) {
-                @NonNull
-                final List<@NonNull JMetaDataText> textStreams = jMetaData.getSubtitleStreams();
-                if (textStreams.get(0) != null) {
-                    jMetaDataText = textStreams.get(0);
-                }
-            } else {
-                throw new RuntimeErrorException(null, "Can not open file.");
-            }
-        } catch (final Throwable e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
-            throw new RuntimeErrorException(null, "Can not find file.");
-        }
-    }
-
-    /**
-     * Deinitialize test.
-     */
-    @AfterClass
-    public static void afterUnit() {
-        if (jMetaData != null) {
-            try {
-                jMetaData.close();
-            } catch (final Throwable e) {
-                LOGGER.log(Level.SEVERE, e.getMessage());
-            }
-        }
-    }
+public final class JMetaDataText_Test extends AbstractTest {
 
     /**
      * Test getAlternateGroupAsInteger() method.
      */
     @Test
     public void subTestGetAlternateGroupAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsInteger());
     }
 
     /**
@@ -81,7 +26,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsLong());
     }
 
     /**
@@ -89,7 +34,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsLocalDateTime());
     }
 
     /**
@@ -97,7 +42,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsLocalTime());
     }
 
     /**
@@ -105,7 +50,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getAlternateGroupAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getAlternateGroupAsString());
     }
 
     /**
@@ -113,7 +58,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsBoolean());
     }
 
     /**
@@ -121,7 +66,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsBigInteger());
     }
 
     /**
@@ -129,7 +74,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupAsURL());
     }
 
     /**
@@ -137,7 +82,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsInteger());
     }
 
     /**
@@ -145,7 +90,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsLong());
     }
 
     /**
@@ -153,7 +98,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsLocalDateTime());
     }
 
     /**
@@ -161,7 +106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsLocalTime());
     }
 
     /**
@@ -169,7 +114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getAlternateGroupStringAsString());
     }
 
     /**
@@ -177,7 +122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsBoolean());
     }
 
     /**
@@ -185,7 +130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsBigInteger());
     }
 
     /**
@@ -193,7 +138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetAlternateGroupStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getAlternateGroupStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getAlternateGroupStringAsURL());
     }
 
     /**
@@ -201,7 +146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsInteger());
     }
 
     /**
@@ -209,7 +154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsLong());
     }
 
     /**
@@ -217,7 +162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsLocalDateTime());
     }
 
     /**
@@ -225,7 +170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsLocalTime());
     }
 
     /**
@@ -233,7 +178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitDepthAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitDepthAsString());
     }
 
     /**
@@ -241,7 +186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsBoolean());
     }
 
     /**
@@ -249,7 +194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsBigInteger());
     }
 
     /**
@@ -257,7 +202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthAsURL());
     }
 
     /**
@@ -265,7 +210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsInteger());
     }
 
     /**
@@ -273,7 +218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsLong());
     }
 
     /**
@@ -281,7 +226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsLocalDateTime());
     }
 
     /**
@@ -289,7 +234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsLocalTime());
     }
 
     /**
@@ -297,7 +242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitDepthStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitDepthStringAsString());
     }
 
     /**
@@ -305,7 +250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsBoolean());
     }
 
     /**
@@ -313,7 +258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsBigInteger());
     }
 
     /**
@@ -321,7 +266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitDepthStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitDepthStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitDepthStringAsURL());
     }
 
     /**
@@ -329,7 +274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsInteger());
     }
 
     /**
@@ -337,7 +282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsLong());
     }
 
     /**
@@ -345,7 +290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsLocalDateTime());
     }
 
     /**
@@ -353,7 +298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsLocalTime());
     }
 
     /**
@@ -361,7 +306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateAsString());
     }
 
     /**
@@ -369,7 +314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsBoolean());
     }
 
     /**
@@ -377,7 +322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsBigInteger());
     }
 
     /**
@@ -385,7 +330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateAsURL());
     }
 
     /**
@@ -393,7 +338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsInteger());
     }
 
     /**
@@ -401,7 +346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsLong());
     }
 
     /**
@@ -409,7 +354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsLocalDateTime());
     }
 
     /**
@@ -417,7 +362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsLocalTime());
     }
 
     /**
@@ -425,7 +370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateStringAsString());
     }
 
     /**
@@ -433,7 +378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsBoolean());
     }
 
     /**
@@ -441,7 +386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsBigInteger());
     }
 
     /**
@@ -449,7 +394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateStringAsURL());
     }
 
     /**
@@ -457,7 +402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsInteger());
     }
 
     /**
@@ -465,7 +410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsLong());
     }
 
     /**
@@ -473,7 +418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsLocalDateTime());
     }
 
     /**
@@ -481,7 +426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsLocalTime());
     }
 
     /**
@@ -489,7 +434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateEncodedAsString());
     }
 
     /**
@@ -497,7 +442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsBoolean());
     }
 
     /**
@@ -505,7 +450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsBigInteger());
     }
 
     /**
@@ -513,7 +458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedAsURL());
     }
 
     /**
@@ -521,7 +466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsInteger());
     }
 
     /**
@@ -529,7 +474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsLong());
     }
 
     /**
@@ -537,7 +482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -545,7 +490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsLocalTime());
     }
 
     /**
@@ -553,7 +498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateEncodedStringAsString());
     }
 
     /**
@@ -561,7 +506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsBoolean());
     }
 
     /**
@@ -569,7 +514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsBigInteger());
     }
 
     /**
@@ -577,7 +522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateEncodedStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateEncodedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateEncodedStringAsURL());
     }
 
     /**
@@ -585,7 +530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsInteger());
     }
 
     /**
@@ -593,7 +538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsLong());
     }
 
     /**
@@ -601,7 +546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsLocalDateTime());
     }
 
     /**
@@ -609,7 +554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsLocalTime());
     }
 
     /**
@@ -617,7 +562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateMaximumAsString());
     }
 
     /**
@@ -625,7 +570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsBoolean());
     }
 
     /**
@@ -633,7 +578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsBigInteger());
     }
 
     /**
@@ -641,7 +586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumAsURL());
     }
 
     /**
@@ -649,7 +594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsInteger());
     }
 
     /**
@@ -657,7 +602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsLong());
     }
 
     /**
@@ -665,7 +610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsLocalDateTime());
     }
 
     /**
@@ -673,7 +618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsLocalTime());
     }
 
     /**
@@ -681,7 +626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateMaximumStringAsString());
     }
 
     /**
@@ -689,7 +634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsBoolean());
     }
 
     /**
@@ -697,7 +642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsBigInteger());
     }
 
     /**
@@ -705,7 +650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMaximumStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMaximumStringAsURL());
     }
 
     /**
@@ -713,7 +658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsInteger());
     }
 
     /**
@@ -721,7 +666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsLong());
     }
 
     /**
@@ -729,7 +674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsLocalDateTime());
     }
 
     /**
@@ -737,7 +682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsLocalTime());
     }
 
     /**
@@ -745,7 +690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateMinimumAsString());
     }
 
     /**
@@ -753,7 +698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsBoolean());
     }
 
     /**
@@ -761,7 +706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsBigInteger());
     }
 
     /**
@@ -769,7 +714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumAsURL());
     }
 
     /**
@@ -777,7 +722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsInteger());
     }
 
     /**
@@ -785,7 +730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsLong());
     }
 
     /**
@@ -793,7 +738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsLocalDateTime());
     }
 
     /**
@@ -801,7 +746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsLocalTime());
     }
 
     /**
@@ -809,7 +754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateMinimumStringAsString());
     }
 
     /**
@@ -817,7 +762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsBoolean());
     }
 
     /**
@@ -825,7 +770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsBigInteger());
     }
 
     /**
@@ -833,7 +778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateMinimumStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateMinimumStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateMinimumStringAsURL());
     }
 
     /**
@@ -841,7 +786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsInteger());
     }
 
     /**
@@ -849,7 +794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsLong());
     }
 
     /**
@@ -857,7 +802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsLocalDateTime());
     }
 
     /**
@@ -865,7 +810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsLocalTime());
     }
 
     /**
@@ -873,7 +818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateModeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateModeAsString());
     }
 
     /**
@@ -881,7 +826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsBoolean());
     }
 
     /**
@@ -889,7 +834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsBigInteger());
     }
 
     /**
@@ -897,7 +842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeAsURL());
     }
 
     /**
@@ -905,7 +850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsInteger());
     }
 
     /**
@@ -913,7 +858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsLong());
     }
 
     /**
@@ -921,7 +866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsLocalDateTime());
     }
 
     /**
@@ -929,7 +874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsLocalTime());
     }
 
     /**
@@ -937,7 +882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateModeStringAsString());
     }
 
     /**
@@ -945,7 +890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsBoolean());
     }
 
     /**
@@ -953,7 +898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsBigInteger());
     }
 
     /**
@@ -961,7 +906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateModeStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateModeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateModeStringAsURL());
     }
 
     /**
@@ -969,7 +914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsInteger());
     }
 
     /**
@@ -977,7 +922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsLong());
     }
 
     /**
@@ -985,7 +930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsLocalDateTime());
     }
 
     /**
@@ -993,7 +938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsLocalTime());
     }
 
     /**
@@ -1001,7 +946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateNominalAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateNominalAsString());
     }
 
     /**
@@ -1009,7 +954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsBoolean());
     }
 
     /**
@@ -1017,7 +962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsBigInteger());
     }
 
     /**
@@ -1025,7 +970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalAsURL());
     }
 
     /**
@@ -1033,7 +978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsInteger());
     }
 
     /**
@@ -1041,7 +986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsLong());
     }
 
     /**
@@ -1049,7 +994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsLocalDateTime());
     }
 
     /**
@@ -1057,7 +1002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsLocalTime());
     }
 
     /**
@@ -1065,7 +1010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getBitRateNominalStringAsString());
     }
 
     /**
@@ -1073,7 +1018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsBoolean());
     }
 
     /**
@@ -1081,7 +1026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsBigInteger());
     }
 
     /**
@@ -1089,7 +1034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetBitRateNominalStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getBitRateNominalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getBitRateNominalStringAsURL());
     }
 
     /**
@@ -1097,7 +1042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsInteger());
     }
 
     /**
@@ -1105,7 +1050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsLong());
     }
 
     /**
@@ -1113,7 +1058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsLocalDateTime());
     }
 
     /**
@@ -1121,7 +1066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsLocalTime());
     }
 
     /**
@@ -1129,7 +1074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getChromaSubsamplingAsString());
     }
 
     /**
@@ -1137,7 +1082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsBoolean());
     }
 
     /**
@@ -1145,7 +1090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsBigInteger());
     }
 
     /**
@@ -1153,7 +1098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getChromaSubsamplingAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getChromaSubsamplingAsURL());
     }
 
     /**
@@ -1161,7 +1106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsInteger() {
-        assertEquals(Integer.valueOf(8), JMetaDataText_Test.jMetaDataText.getCodecIDAsInteger());
+        assertEquals(Integer.valueOf(8), AbstractTest.jMetaDataText.getCodecIDAsInteger());
     }
 
     /**
@@ -1169,7 +1114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsLong() {
-        assertEquals(Long.valueOf(8), JMetaDataText_Test.jMetaDataText.getCodecIDAsLong());
+        assertEquals(Long.valueOf(8), AbstractTest.jMetaDataText.getCodecIDAsLong());
     }
 
     /**
@@ -1177,7 +1122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDAsLocalDateTime());
     }
 
     /**
@@ -1185,7 +1130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDAsLocalTime());
     }
 
     /**
@@ -1193,7 +1138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsString() {
-        assertEquals("S_TEXT/UTF8", JMetaDataText_Test.jMetaDataText.getCodecIDAsString());
+        assertEquals("S_TEXT/UTF8", AbstractTest.jMetaDataText.getCodecIDAsString());
     }
 
     /**
@@ -1201,7 +1146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDAsBoolean());
     }
 
     /**
@@ -1209,7 +1154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), JMetaDataText_Test.jMetaDataText.getCodecIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataText.getCodecIDAsBigInteger());
     }
 
     /**
@@ -1217,7 +1162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDAsURL());
     }
 
     /**
@@ -1225,7 +1170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsInteger());
     }
 
     /**
@@ -1233,7 +1178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsLong());
     }
 
     /**
@@ -1241,7 +1186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsLocalDateTime());
     }
 
     /**
@@ -1249,7 +1194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsLocalTime());
     }
 
     /**
@@ -1257,7 +1202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCodecIDHintAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCodecIDHintAsString());
     }
 
     /**
@@ -1265,7 +1210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsBoolean());
     }
 
     /**
@@ -1273,7 +1218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsBigInteger());
     }
 
     /**
@@ -1281,7 +1226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDHintAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDHintAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDHintAsURL());
     }
 
     /**
@@ -1289,7 +1234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsInteger() {
-        assertEquals(Integer.valueOf(8), JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsInteger());
+        assertEquals(Integer.valueOf(8), AbstractTest.jMetaDataText.getCodecIDInfoAsInteger());
     }
 
     /**
@@ -1297,7 +1242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsLong() {
-        assertEquals(Long.valueOf(8), JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsLong());
+        assertEquals(Long.valueOf(8), AbstractTest.jMetaDataText.getCodecIDInfoAsLong());
     }
 
     /**
@@ -1305,7 +1250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDInfoAsLocalDateTime());
     }
 
     /**
@@ -1313,7 +1258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDInfoAsLocalTime());
     }
 
     /**
@@ -1321,7 +1266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsString() {
-        assertEquals("UTF-8 Plain Text", JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsString());
+        assertEquals("UTF-8 Plain Text", AbstractTest.jMetaDataText.getCodecIDInfoAsString());
     }
 
     /**
@@ -1329,7 +1274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDInfoAsBoolean());
     }
 
     /**
@@ -1337,7 +1282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataText.getCodecIDInfoAsBigInteger());
     }
 
     /**
@@ -1345,7 +1290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDInfoAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDInfoAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDInfoAsURL());
     }
 
     /**
@@ -1353,7 +1298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsInteger());
     }
 
     /**
@@ -1361,7 +1306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsLong());
     }
 
     /**
@@ -1369,7 +1314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsLocalDateTime());
     }
 
     /**
@@ -1377,7 +1322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsLocalTime());
     }
 
     /**
@@ -1385,7 +1330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCodecIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCodecIDStringAsString());
     }
 
     /**
@@ -1393,7 +1338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsBoolean());
     }
 
     /**
@@ -1401,7 +1346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsBigInteger());
     }
 
     /**
@@ -1409,7 +1354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDStringAsURL());
     }
 
     /**
@@ -1417,7 +1362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsInteger());
     }
 
     /**
@@ -1425,7 +1370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsLong());
     }
 
     /**
@@ -1433,7 +1378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsLocalDateTime());
     }
 
     /**
@@ -1441,7 +1386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsLocalTime());
     }
 
     /**
@@ -1449,7 +1394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCodecIDUrlAsString());
     }
 
     /**
@@ -1457,7 +1402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsBoolean());
     }
 
     /**
@@ -1465,7 +1410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsBigInteger());
     }
 
     /**
@@ -1473,7 +1418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDUrlAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDUrlAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDUrlAsURL());
     }
 
     /**
@@ -1481,7 +1426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsInteger());
     }
 
     /**
@@ -1489,7 +1434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsLong());
     }
 
     /**
@@ -1497,7 +1442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsLocalDateTime());
     }
 
     /**
@@ -1505,7 +1450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsLocalTime());
     }
 
     /**
@@ -1513,7 +1458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCodecIDDescriptionAsString());
     }
 
     /**
@@ -1521,7 +1466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsBoolean());
     }
 
     /**
@@ -1529,7 +1474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsBigInteger());
     }
 
     /**
@@ -1537,7 +1482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCodecIDDescriptionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCodecIDDescriptionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCodecIDDescriptionAsURL());
     }
 
     /**
@@ -1545,7 +1490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsInteger());
     }
 
     /**
@@ -1553,7 +1498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsLong());
     }
 
     /**
@@ -1561,7 +1506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsLocalDateTime());
     }
 
     /**
@@ -1569,7 +1514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsLocalTime());
     }
 
     /**
@@ -1577,7 +1522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getColorSpaceAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getColorSpaceAsString());
     }
 
     /**
@@ -1585,7 +1530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsBoolean());
     }
 
     /**
@@ -1593,7 +1538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsBigInteger());
     }
 
     /**
@@ -1601,7 +1546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetColorSpaceAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getColorSpaceAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getColorSpaceAsURL());
     }
 
     /**
@@ -1609,7 +1554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsInteger());
     }
 
     /**
@@ -1617,7 +1562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsLong());
     }
 
     /**
@@ -1625,7 +1570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsLocalDateTime());
     }
 
     /**
@@ -1633,7 +1578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsLocalTime());
     }
 
     /**
@@ -1641,7 +1586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCompressionModeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCompressionModeAsString());
     }
 
     /**
@@ -1649,7 +1594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsBoolean());
     }
 
     /**
@@ -1657,7 +1602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsBigInteger());
     }
 
     /**
@@ -1665,7 +1610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeAsURL());
     }
 
     /**
@@ -1673,7 +1618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsInteger());
     }
 
     /**
@@ -1681,7 +1626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsLong());
     }
 
     /**
@@ -1689,7 +1634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsLocalDateTime());
     }
 
     /**
@@ -1697,7 +1642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsLocalTime());
     }
 
     /**
@@ -1705,7 +1650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCompressionModeStringAsString());
     }
 
     /**
@@ -1713,7 +1658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsBoolean());
     }
 
     /**
@@ -1721,7 +1666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsBigInteger());
     }
 
     /**
@@ -1729,7 +1674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionModeStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionModeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionModeStringAsURL());
     }
 
     /**
@@ -1737,7 +1682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsInteger());
     }
 
     /**
@@ -1745,7 +1690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsLong());
     }
 
     /**
@@ -1753,7 +1698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsLocalDateTime());
     }
 
     /**
@@ -1761,7 +1706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsLocalTime());
     }
 
     /**
@@ -1769,7 +1714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getCompressionRatioAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getCompressionRatioAsString());
     }
 
     /**
@@ -1777,7 +1722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsBoolean());
     }
 
     /**
@@ -1785,7 +1730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsBigInteger());
     }
 
     /**
@@ -1793,7 +1738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCompressionRatioAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCompressionRatioAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCompressionRatioAsURL());
     }
 
     /**
@@ -1801,7 +1746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsInteger());
+        assertEquals(Integer.valueOf(236), AbstractTest.jMetaDataText.getCountAsInteger());
     }
 
     /**
@@ -1809,7 +1754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsLong());
+        assertEquals(Long.valueOf(236), AbstractTest.jMetaDataText.getCountAsLong());
     }
 
     /**
@@ -1817,7 +1762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCountAsLocalDateTime());
     }
 
     /**
@@ -1825,7 +1770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getCountAsLocalTime());
     }
 
     /**
@@ -1833,7 +1778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("236", JMetaDataText_Test.jMetaDataText.getCountAsString());
+        assertEquals("236", AbstractTest.jMetaDataText.getCountAsString());
     }
 
     /**
@@ -1841,7 +1786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getCountAsBoolean());
     }
 
     /**
@@ -1849,7 +1794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(236), AbstractTest.jMetaDataText.getCountAsBigInteger());
     }
 
     /**
@@ -1857,7 +1802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getCountAsURL());
     }
 
     /**
@@ -1865,7 +1810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultAsInteger());
     }
 
     /**
@@ -1873,7 +1818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultAsLong());
     }
 
     /**
@@ -1881,7 +1826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultAsLocalDateTime());
     }
 
     /**
@@ -1889,7 +1834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultAsLocalTime());
     }
 
     /**
@@ -1897,7 +1842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsString() {
-        assertEquals("Yes", JMetaDataText_Test.jMetaDataText.getDefaultAsString());
+        assertEquals("Yes", AbstractTest.jMetaDataText.getDefaultAsString());
     }
 
     /**
@@ -1905,7 +1850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataText_Test.jMetaDataText.getDefaultAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataText.getDefaultAsBoolean());
     }
 
     /**
@@ -1913,7 +1858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultAsBigInteger());
     }
 
     /**
@@ -1921,7 +1866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultAsURL());
     }
 
     /**
@@ -1929,7 +1874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultStringAsInteger());
     }
 
     /**
@@ -1937,7 +1882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultStringAsLong());
     }
 
     /**
@@ -1945,7 +1890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultStringAsLocalDateTime());
     }
 
     /**
@@ -1953,7 +1898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultStringAsLocalTime());
     }
 
     /**
@@ -1961,7 +1906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsString() {
-        assertEquals("Yes", JMetaDataText_Test.jMetaDataText.getDefaultStringAsString());
+        assertEquals("Yes", AbstractTest.jMetaDataText.getDefaultStringAsString());
     }
 
     /**
@@ -1969,7 +1914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataText_Test.jMetaDataText.getDefaultStringAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataText.getDefaultStringAsBoolean());
     }
 
     /**
@@ -1977,7 +1922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultStringAsBigInteger());
     }
 
     /**
@@ -1985,7 +1930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDefaultStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDefaultStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDefaultStringAsURL());
     }
 
     /**
@@ -1993,7 +1938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsInteger());
     }
 
     /**
@@ -2001,7 +1946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsLong());
     }
 
     /**
@@ -2009,7 +1954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsLocalDateTime());
     }
 
     /**
@@ -2017,7 +1962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsLocalTime());
     }
 
     /**
@@ -2025,7 +1970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayAsString());
     }
 
     /**
@@ -2033,7 +1978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsBoolean());
     }
 
     /**
@@ -2041,7 +1986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsBigInteger());
     }
 
     /**
@@ -2049,7 +1994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayAsURL());
     }
 
     /**
@@ -2057,7 +2002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsInteger());
     }
 
     /**
@@ -2065,7 +2010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsLong());
     }
 
     /**
@@ -2073,7 +2018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsLocalDateTime());
     }
 
     /**
@@ -2081,7 +2026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsLocalTime());
     }
 
     /**
@@ -2089,7 +2034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayStringAsString());
     }
 
     /**
@@ -2097,7 +2042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsBoolean());
     }
 
     /**
@@ -2105,7 +2050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsBigInteger());
     }
 
     /**
@@ -2113,7 +2058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayStringAsURL());
     }
 
     /**
@@ -2121,7 +2066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsInteger());
     }
 
     /**
@@ -2129,7 +2074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsLong());
     }
 
     /**
@@ -2137,7 +2082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsLocalDateTime());
     }
 
     /**
@@ -2145,7 +2090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsLocalTime());
     }
 
     /**
@@ -2153,7 +2098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayString1AsString());
     }
 
     /**
@@ -2161,7 +2106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsBoolean());
     }
 
     /**
@@ -2169,7 +2114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsBigInteger());
     }
 
     /**
@@ -2177,7 +2122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString1AsURL());
     }
 
     /**
@@ -2185,7 +2130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsInteger());
     }
 
     /**
@@ -2193,7 +2138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsLong());
     }
 
     /**
@@ -2201,7 +2146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsLocalDateTime());
     }
 
     /**
@@ -2209,7 +2154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsLocalTime());
     }
 
     /**
@@ -2217,7 +2162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayString2AsString());
     }
 
     /**
@@ -2225,7 +2170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsBoolean());
     }
 
     /**
@@ -2233,7 +2178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsBigInteger());
     }
 
     /**
@@ -2241,7 +2186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString2AsURL());
     }
 
     /**
@@ -2249,7 +2194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsInteger());
     }
 
     /**
@@ -2257,7 +2202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsLong());
     }
 
     /**
@@ -2265,7 +2210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsLocalDateTime());
     }
 
     /**
@@ -2273,7 +2218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsLocalTime());
     }
 
     /**
@@ -2281,7 +2226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayString3AsString());
     }
 
     /**
@@ -2289,7 +2234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsBoolean());
     }
 
     /**
@@ -2297,7 +2242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsBigInteger());
     }
 
     /**
@@ -2305,7 +2250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString3AsURL());
     }
 
     /**
@@ -2313,7 +2258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsInteger());
     }
 
     /**
@@ -2321,7 +2266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsLong());
     }
 
     /**
@@ -2329,7 +2274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsLocalDateTime());
     }
 
     /**
@@ -2337,7 +2282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsLocalTime());
     }
 
     /**
@@ -2345,7 +2290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayString4AsString());
     }
 
     /**
@@ -2353,7 +2298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsBoolean());
     }
 
     /**
@@ -2361,7 +2306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsBigInteger());
     }
 
     /**
@@ -2369,7 +2314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString4AsURL());
     }
 
     /**
@@ -2377,7 +2322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsInteger());
     }
 
     /**
@@ -2385,7 +2330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsLong());
     }
 
     /**
@@ -2393,7 +2338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsLocalDateTime());
     }
 
     /**
@@ -2401,7 +2346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsLocalTime());
     }
 
     /**
@@ -2409,7 +2354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayString5AsString());
     }
 
     /**
@@ -2417,7 +2362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsBoolean());
     }
 
     /**
@@ -2425,7 +2370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsBigInteger());
     }
 
     /**
@@ -2433,7 +2378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayString5AsURL());
     }
 
     /**
@@ -2441,7 +2386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsInteger());
     }
 
     /**
@@ -2449,7 +2394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsLong());
     }
 
     /**
@@ -2457,7 +2402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsLocalDateTime());
     }
 
     /**
@@ -2465,7 +2410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsLocalTime());
     }
 
     /**
@@ -2473,7 +2418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayDropFrameAsString());
     }
 
     /**
@@ -2481,7 +2426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsBoolean());
     }
 
     /**
@@ -2489,7 +2434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsBigInteger());
     }
 
     /**
@@ -2497,7 +2442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayDropFrameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayDropFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayDropFrameAsURL());
     }
 
     /**
@@ -2505,7 +2450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsInteger());
     }
 
     /**
@@ -2513,7 +2458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsLong());
     }
 
     /**
@@ -2521,7 +2466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsLocalDateTime());
     }
 
     /**
@@ -2529,7 +2474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsLocalTime());
     }
 
     /**
@@ -2537,7 +2482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalAsString());
     }
 
     /**
@@ -2545,7 +2490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsBoolean());
     }
 
     /**
@@ -2553,7 +2498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsBigInteger());
     }
 
     /**
@@ -2561,7 +2506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalAsURL());
     }
 
     /**
@@ -2569,7 +2514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsInteger());
     }
 
     /**
@@ -2577,7 +2522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsLong());
     }
 
     /**
@@ -2585,7 +2530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -2593,7 +2538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsLocalTime());
     }
 
     /**
@@ -2601,7 +2546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalStringAsString());
     }
 
     /**
@@ -2609,7 +2554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsBoolean());
     }
 
     /**
@@ -2617,7 +2562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsBigInteger());
     }
 
     /**
@@ -2625,7 +2570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalStringAsURL());
     }
 
     /**
@@ -2633,7 +2578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsInteger());
     }
 
     /**
@@ -2641,7 +2586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsLong());
     }
 
     /**
@@ -2649,7 +2594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsLocalDateTime());
     }
 
     /**
@@ -2657,7 +2602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsLocalTime());
     }
 
     /**
@@ -2665,7 +2610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalString1AsString());
     }
 
     /**
@@ -2673,7 +2618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsBoolean());
     }
 
     /**
@@ -2681,7 +2626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsBigInteger());
     }
 
     /**
@@ -2689,7 +2634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString1AsURL());
     }
 
     /**
@@ -2697,7 +2642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsInteger());
     }
 
     /**
@@ -2705,7 +2650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsLong());
     }
 
     /**
@@ -2713,7 +2658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsLocalDateTime());
     }
 
     /**
@@ -2721,7 +2666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsLocalTime());
     }
 
     /**
@@ -2729,7 +2674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalString2AsString());
     }
 
     /**
@@ -2737,7 +2682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsBoolean());
     }
 
     /**
@@ -2745,7 +2690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsBigInteger());
     }
 
     /**
@@ -2753,7 +2698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString2AsURL());
     }
 
     /**
@@ -2761,7 +2706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsInteger());
     }
 
     /**
@@ -2769,7 +2714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsLong());
     }
 
     /**
@@ -2777,7 +2722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsLocalDateTime());
     }
 
     /**
@@ -2785,7 +2730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsLocalTime());
     }
 
     /**
@@ -2793,7 +2738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalString3AsString());
     }
 
     /**
@@ -2801,7 +2746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsBoolean());
     }
 
     /**
@@ -2809,7 +2754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsBigInteger());
     }
 
     /**
@@ -2817,7 +2762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString3AsURL());
     }
 
     /**
@@ -2825,7 +2770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsInteger());
     }
 
     /**
@@ -2833,7 +2778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsLong());
     }
 
     /**
@@ -2841,7 +2786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsLocalDateTime());
     }
 
     /**
@@ -2849,7 +2794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsLocalTime());
     }
 
     /**
@@ -2857,7 +2802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalString4AsString());
     }
 
     /**
@@ -2865,7 +2810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsBoolean());
     }
 
     /**
@@ -2873,7 +2818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsBigInteger());
     }
 
     /**
@@ -2881,7 +2826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString4AsURL());
     }
 
     /**
@@ -2889,7 +2834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsInteger());
     }
 
     /**
@@ -2897,7 +2842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsLong());
     }
 
     /**
@@ -2905,7 +2850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsLocalDateTime());
     }
 
     /**
@@ -2913,7 +2858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsLocalTime());
     }
 
     /**
@@ -2921,7 +2866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalString5AsString());
     }
 
     /**
@@ -2929,7 +2874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsBoolean());
     }
 
     /**
@@ -2937,7 +2882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsBigInteger());
     }
 
     /**
@@ -2945,7 +2890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalString5AsURL());
     }
 
     /**
@@ -2953,7 +2898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsInteger());
     }
 
     /**
@@ -2961,7 +2906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsLong());
     }
 
     /**
@@ -2969,7 +2914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsLocalDateTime());
     }
 
     /**
@@ -2977,7 +2922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsLocalTime());
     }
 
     /**
@@ -2985,7 +2930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsString());
     }
 
     /**
@@ -2993,7 +2938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsBoolean());
     }
 
     /**
@@ -3001,7 +2946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsBigInteger());
     }
 
     /**
@@ -3009,7 +2954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalDropFrameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalDropFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalDropFrameAsURL());
     }
 
     /**
@@ -3017,7 +2962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsInteger());
     }
 
     /**
@@ -3025,7 +2970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsLong());
     }
 
     /**
@@ -3033,7 +2978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsLocalDateTime());
     }
 
     /**
@@ -3041,7 +2986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsLocalTime());
     }
 
     /**
@@ -3049,7 +2994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalSettingsAsString());
     }
 
     /**
@@ -3057,7 +3002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsBoolean());
     }
 
     /**
@@ -3065,7 +3010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsBigInteger());
     }
 
     /**
@@ -3073,7 +3018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSettingsAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSettingsAsURL());
     }
 
     /**
@@ -3081,7 +3026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsInteger());
     }
 
     /**
@@ -3089,7 +3034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsLong());
     }
 
     /**
@@ -3097,7 +3042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsLocalDateTime());
     }
 
     /**
@@ -3105,7 +3050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsLocalTime());
     }
 
     /**
@@ -3113,7 +3058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelayOriginalSourceAsString());
     }
 
     /**
@@ -3121,7 +3066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsBoolean());
     }
 
     /**
@@ -3129,7 +3074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsBigInteger());
     }
 
     /**
@@ -3137,7 +3082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelayOriginalSourceAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelayOriginalSourceAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelayOriginalSourceAsURL());
     }
 
     /**
@@ -3145,7 +3090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsInteger());
     }
 
     /**
@@ -3153,7 +3098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsLong());
     }
 
     /**
@@ -3161,7 +3106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsLocalDateTime());
     }
 
     /**
@@ -3169,7 +3114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsLocalTime());
     }
 
     /**
@@ -3177,7 +3122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelaySettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelaySettingsAsString());
     }
 
     /**
@@ -3185,7 +3130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsBoolean());
     }
 
     /**
@@ -3193,7 +3138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsBigInteger());
     }
 
     /**
@@ -3201,7 +3146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySettingsAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySettingsAsURL());
     }
 
     /**
@@ -3209,7 +3154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsInteger());
     }
 
     /**
@@ -3217,7 +3162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsLong());
     }
 
     /**
@@ -3225,7 +3170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsLocalDateTime());
     }
 
     /**
@@ -3233,7 +3178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsLocalTime());
     }
 
     /**
@@ -3241,7 +3186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelaySourceAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelaySourceAsString());
     }
 
     /**
@@ -3249,7 +3194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsBoolean());
     }
 
     /**
@@ -3257,7 +3202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsBigInteger());
     }
 
     /**
@@ -3265,7 +3210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceAsURL());
     }
 
     /**
@@ -3273,7 +3218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsInteger());
     }
 
     /**
@@ -3281,7 +3226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsLong());
     }
 
     /**
@@ -3289,7 +3234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsLocalDateTime());
     }
 
     /**
@@ -3297,7 +3242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsLocalTime());
     }
 
     /**
@@ -3305,7 +3250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDelaySourceStringAsString());
     }
 
     /**
@@ -3313,7 +3258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsBoolean());
     }
 
     /**
@@ -3321,7 +3266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsBigInteger());
     }
 
     /**
@@ -3329,7 +3274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDelaySourceStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDelaySourceStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDelaySourceStringAsURL());
     }
 
     /**
@@ -3337,7 +3282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsInteger());
     }
 
     /**
@@ -3345,7 +3290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsLong());
     }
 
     /**
@@ -3353,7 +3298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsLocalDateTime());
     }
 
     /**
@@ -3361,7 +3306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsLocalTime());
     }
 
     /**
@@ -3369,7 +3314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDisabledAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDisabledAsString());
     }
 
     /**
@@ -3377,7 +3322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsBoolean());
     }
 
     /**
@@ -3385,7 +3330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsBigInteger());
     }
 
     /**
@@ -3393,7 +3338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledAsURL());
     }
 
     /**
@@ -3401,7 +3346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsInteger());
     }
 
     /**
@@ -3409,7 +3354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsLong());
     }
 
     /**
@@ -3417,7 +3362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsLocalDateTime());
     }
 
     /**
@@ -3425,7 +3370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsLocalTime());
     }
 
     /**
@@ -3433,7 +3378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDisabledStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDisabledStringAsString());
     }
 
     /**
@@ -3441,7 +3386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsBoolean());
     }
 
     /**
@@ -3449,7 +3394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsBigInteger());
     }
 
     /**
@@ -3457,7 +3402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDisabledStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDisabledStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDisabledStringAsURL());
     }
 
     /**
@@ -3465,7 +3410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsInteger());
     }
 
     /**
@@ -3473,7 +3418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsLong());
     }
 
     /**
@@ -3481,7 +3426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsLocalDateTime());
     }
 
     /**
@@ -3489,7 +3434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsLocalTime());
     }
 
     /**
@@ -3497,7 +3442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationAsString());
     }
 
     /**
@@ -3505,7 +3450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsBoolean());
     }
 
     /**
@@ -3513,7 +3458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsBigInteger());
     }
 
     /**
@@ -3521,7 +3466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationAsURL());
     }
 
     /**
@@ -3529,7 +3474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsInteger());
     }
 
     /**
@@ -3537,7 +3482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsLong());
     }
 
     /**
@@ -3545,7 +3490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsLocalDateTime());
     }
 
     /**
@@ -3553,7 +3498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsLocalTime());
     }
 
     /**
@@ -3561,7 +3506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationStringAsString());
     }
 
     /**
@@ -3569,7 +3514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsBoolean());
     }
 
     /**
@@ -3577,7 +3522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsBigInteger());
     }
 
     /**
@@ -3585,7 +3530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationStringAsURL());
     }
 
     /**
@@ -3593,7 +3538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsInteger());
     }
 
     /**
@@ -3601,7 +3546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsLong());
     }
 
     /**
@@ -3609,7 +3554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsLocalDateTime());
     }
 
     /**
@@ -3617,7 +3562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsLocalTime());
     }
 
     /**
@@ -3625,7 +3570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationString1AsString());
     }
 
     /**
@@ -3633,7 +3578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsBoolean());
     }
 
     /**
@@ -3641,7 +3586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsBigInteger());
     }
 
     /**
@@ -3649,7 +3594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString1AsURL());
     }
 
     /**
@@ -3657,7 +3602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsInteger());
     }
 
     /**
@@ -3665,7 +3610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsLong());
     }
 
     /**
@@ -3673,7 +3618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsLocalDateTime());
     }
 
     /**
@@ -3681,7 +3626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsLocalTime());
     }
 
     /**
@@ -3689,7 +3634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationString2AsString());
     }
 
     /**
@@ -3697,7 +3642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsBoolean());
     }
 
     /**
@@ -3705,7 +3650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsBigInteger());
     }
 
     /**
@@ -3713,7 +3658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString2AsURL());
     }
 
     /**
@@ -3721,7 +3666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsInteger());
     }
 
     /**
@@ -3729,7 +3674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsLong());
     }
 
     /**
@@ -3737,7 +3682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsLocalDateTime());
     }
 
     /**
@@ -3745,7 +3690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsLocalTime());
     }
 
     /**
@@ -3753,7 +3698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationString3AsString());
     }
 
     /**
@@ -3761,7 +3706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsBoolean());
     }
 
     /**
@@ -3769,7 +3714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsBigInteger());
     }
 
     /**
@@ -3777,7 +3722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString3AsURL());
     }
 
     /**
@@ -3785,7 +3730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsInteger());
     }
 
     /**
@@ -3793,7 +3738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsLong());
     }
 
     /**
@@ -3801,7 +3746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsLocalDateTime());
     }
 
     /**
@@ -3809,7 +3754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsLocalTime());
     }
 
     /**
@@ -3817,7 +3762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationString4AsString());
     }
 
     /**
@@ -3825,7 +3770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsBoolean());
     }
 
     /**
@@ -3833,7 +3778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsBigInteger());
     }
 
     /**
@@ -3841,7 +3786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString4AsURL());
     }
 
     /**
@@ -3849,7 +3794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsInteger());
     }
 
     /**
@@ -3857,7 +3802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsLong());
     }
 
     /**
@@ -3865,7 +3810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsLocalDateTime());
     }
 
     /**
@@ -3873,7 +3818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsLocalTime());
     }
 
     /**
@@ -3881,7 +3826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationString5AsString());
     }
 
     /**
@@ -3889,7 +3834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsBoolean());
     }
 
     /**
@@ -3897,7 +3842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsBigInteger());
     }
 
     /**
@@ -3905,7 +3850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationString5AsURL());
     }
 
     /**
@@ -3913,7 +3858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsInteger());
     }
 
     /**
@@ -3921,7 +3866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsLong());
     }
 
     /**
@@ -3929,7 +3874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -3937,7 +3882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsLocalTime());
     }
 
     /**
@@ -3945,7 +3890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameAsString());
     }
 
     /**
@@ -3953,7 +3898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsBoolean());
     }
 
     /**
@@ -3961,7 +3906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsBigInteger());
     }
 
     /**
@@ -3969,7 +3914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameAsURL());
     }
 
     /**
@@ -3977,7 +3922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsInteger());
     }
 
     /**
@@ -3985,7 +3930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsLong());
     }
 
     /**
@@ -3993,7 +3938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -4001,7 +3946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -4009,7 +3954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameStringAsString());
     }
 
     /**
@@ -4017,7 +3962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsBoolean());
     }
 
     /**
@@ -4025,7 +3970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -4033,7 +3978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameStringAsURL());
     }
 
     /**
@@ -4041,7 +3986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsInteger());
     }
 
     /**
@@ -4049,7 +3994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsLong());
     }
 
     /**
@@ -4057,7 +4002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -4065,7 +4010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -4073,7 +4018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameString1AsString());
     }
 
     /**
@@ -4081,7 +4026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsBoolean());
     }
 
     /**
@@ -4089,7 +4034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -4097,7 +4042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString1AsURL());
     }
 
     /**
@@ -4105,7 +4050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsInteger());
     }
 
     /**
@@ -4113,7 +4058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsLong());
     }
 
     /**
@@ -4121,7 +4066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -4129,7 +4074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -4137,7 +4082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameString2AsString());
     }
 
     /**
@@ -4145,7 +4090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsBoolean());
     }
 
     /**
@@ -4153,7 +4098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -4161,7 +4106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString2AsURL());
     }
 
     /**
@@ -4169,7 +4114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsInteger());
     }
 
     /**
@@ -4177,7 +4122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsLong());
     }
 
     /**
@@ -4185,7 +4130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -4193,7 +4138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -4201,7 +4146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameString3AsString());
     }
 
     /**
@@ -4209,7 +4154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsBoolean());
     }
 
     /**
@@ -4217,7 +4162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -4225,7 +4170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString3AsURL());
     }
 
     /**
@@ -4233,7 +4178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsInteger());
     }
 
     /**
@@ -4241,7 +4186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsLong());
     }
 
     /**
@@ -4249,7 +4194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -4257,7 +4202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -4265,7 +4210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameString4AsString());
     }
 
     /**
@@ -4273,7 +4218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsBoolean());
     }
 
     /**
@@ -4281,7 +4226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -4289,7 +4234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString4AsURL());
     }
 
     /**
@@ -4297,7 +4242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsInteger());
     }
 
     /**
@@ -4305,7 +4250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsLong());
     }
 
     /**
@@ -4313,7 +4258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -4321,7 +4266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -4329,7 +4274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationFirstFrameString5AsString());
     }
 
     /**
@@ -4337,7 +4282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsBoolean());
     }
 
     /**
@@ -4345,7 +4290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -4353,7 +4298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationFirstFrameString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationFirstFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationFirstFrameString5AsURL());
     }
 
     /**
@@ -4361,7 +4306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsInteger());
     }
 
     /**
@@ -4369,7 +4314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsLong());
     }
 
     /**
@@ -4377,7 +4322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsLocalDateTime());
     }
 
     /**
@@ -4385,7 +4330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsLocalTime());
     }
 
     /**
@@ -4393,7 +4338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameAsString());
     }
 
     /**
@@ -4401,7 +4346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsBoolean());
     }
 
     /**
@@ -4409,7 +4354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsBigInteger());
     }
 
     /**
@@ -4417,7 +4362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameAsURL());
     }
 
     /**
@@ -4425,7 +4370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsInteger());
     }
 
     /**
@@ -4433,7 +4378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsLong());
     }
 
     /**
@@ -4441,7 +4386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsLocalDateTime());
     }
 
     /**
@@ -4449,7 +4394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsLocalTime());
     }
 
     /**
@@ -4457,7 +4402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameStringAsString());
     }
 
     /**
@@ -4465,7 +4410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsBoolean());
     }
 
     /**
@@ -4473,7 +4418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsBigInteger());
     }
 
     /**
@@ -4481,7 +4426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameStringAsURL());
     }
 
     /**
@@ -4489,7 +4434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsInteger());
     }
 
     /**
@@ -4497,7 +4442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsLong());
     }
 
     /**
@@ -4505,7 +4450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsLocalDateTime());
     }
 
     /**
@@ -4513,7 +4458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsLocalTime());
     }
 
     /**
@@ -4521,7 +4466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameString1AsString());
     }
 
     /**
@@ -4529,7 +4474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsBoolean());
     }
 
     /**
@@ -4537,7 +4482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsBigInteger());
     }
 
     /**
@@ -4545,7 +4490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString1AsURL());
     }
 
     /**
@@ -4553,7 +4498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsInteger());
     }
 
     /**
@@ -4561,7 +4506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsLong());
     }
 
     /**
@@ -4569,7 +4514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsLocalDateTime());
     }
 
     /**
@@ -4577,7 +4522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsLocalTime());
     }
 
     /**
@@ -4585,7 +4530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameString2AsString());
     }
 
     /**
@@ -4593,7 +4538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsBoolean());
     }
 
     /**
@@ -4601,7 +4546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsBigInteger());
     }
 
     /**
@@ -4609,7 +4554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString2AsURL());
     }
 
     /**
@@ -4617,7 +4562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsInteger());
     }
 
     /**
@@ -4625,7 +4570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsLong());
     }
 
     /**
@@ -4633,7 +4578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsLocalDateTime());
     }
 
     /**
@@ -4641,7 +4586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsLocalTime());
     }
 
     /**
@@ -4649,7 +4594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameString3AsString());
     }
 
     /**
@@ -4657,7 +4602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsBoolean());
     }
 
     /**
@@ -4665,7 +4610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsBigInteger());
     }
 
     /**
@@ -4673,7 +4618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString3AsURL());
     }
 
     /**
@@ -4681,7 +4626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsInteger());
     }
 
     /**
@@ -4689,7 +4634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsLong());
     }
 
     /**
@@ -4697,7 +4642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsLocalDateTime());
     }
 
     /**
@@ -4705,7 +4650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsLocalTime());
     }
 
     /**
@@ -4713,7 +4658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameString4AsString());
     }
 
     /**
@@ -4721,7 +4666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsBoolean());
     }
 
     /**
@@ -4729,7 +4674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsBigInteger());
     }
 
     /**
@@ -4737,7 +4682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString4AsURL());
     }
 
     /**
@@ -4745,7 +4690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsInteger());
     }
 
     /**
@@ -4753,7 +4698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsLong());
     }
 
     /**
@@ -4761,7 +4706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsLocalDateTime());
     }
 
     /**
@@ -4769,7 +4714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsLocalTime());
     }
 
     /**
@@ -4777,7 +4722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getDurationLastFrameString5AsString());
     }
 
     /**
@@ -4785,7 +4730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsBoolean());
     }
 
     /**
@@ -4793,7 +4738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsBigInteger());
     }
 
     /**
@@ -4801,7 +4746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetDurationLastFrameString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getDurationLastFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getDurationLastFrameString5AsURL());
     }
 
     /**
@@ -4809,7 +4754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsInteger());
     }
 
     /**
@@ -4817,7 +4762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsLong());
     }
 
     /**
@@ -4825,7 +4770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsLocalDateTime());
     }
 
     /**
@@ -4833,7 +4778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsLocalTime());
     }
 
     /**
@@ -4841,7 +4786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getElementCountAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getElementCountAsString());
     }
 
     /**
@@ -4849,7 +4794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsBoolean());
     }
 
     /**
@@ -4857,7 +4802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsBigInteger());
     }
 
     /**
@@ -4865,7 +4810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetElementCountAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getElementCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getElementCountAsURL());
     }
 
     /**
@@ -4873,7 +4818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsInteger());
     }
 
     /**
@@ -4881,7 +4826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsLong());
     }
 
     /**
@@ -4889,7 +4834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsLocalDateTime());
     }
 
     /**
@@ -4897,7 +4842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsLocalTime());
     }
 
     /**
@@ -4905,7 +4850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedApplicationAsString());
     }
 
     /**
@@ -4913,7 +4858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsBoolean());
     }
 
     /**
@@ -4921,7 +4866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsBigInteger());
     }
 
     /**
@@ -4929,7 +4874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationAsURL());
     }
 
     /**
@@ -4937,7 +4882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsInteger());
     }
 
     /**
@@ -4945,7 +4890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsLong());
     }
 
     /**
@@ -4953,7 +4898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsLocalDateTime());
     }
 
     /**
@@ -4961,7 +4906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsLocalTime());
     }
 
     /**
@@ -4969,7 +4914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedApplicationStringAsString());
     }
 
     /**
@@ -4977,7 +4922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsBoolean());
     }
 
     /**
@@ -4985,7 +4930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsBigInteger());
     }
 
     /**
@@ -4993,7 +4938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationStringAsURL());
     }
 
     /**
@@ -5001,7 +4946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsInteger());
     }
 
     /**
@@ -5009,7 +4954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsLong());
     }
 
     /**
@@ -5017,7 +4962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsLocalDateTime());
     }
 
     /**
@@ -5025,7 +4970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsLocalTime());
     }
 
     /**
@@ -5033,7 +4978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsString());
     }
 
     /**
@@ -5041,7 +4986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsBoolean());
     }
 
     /**
@@ -5049,7 +4994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsBigInteger());
     }
 
     /**
@@ -5057,7 +5002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationCompanyNameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationCompanyNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationCompanyNameAsURL());
     }
 
     /**
@@ -5065,7 +5010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsInteger());
     }
 
     /**
@@ -5073,7 +5018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsLong());
     }
 
     /**
@@ -5081,7 +5026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsLocalDateTime());
     }
 
     /**
@@ -5089,7 +5034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsLocalTime());
     }
 
     /**
@@ -5097,7 +5042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedApplicationNameAsString());
     }
 
     /**
@@ -5105,7 +5050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsBoolean());
     }
 
     /**
@@ -5113,7 +5058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsBigInteger());
     }
 
     /**
@@ -5121,7 +5066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationNameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationNameAsURL());
     }
 
     /**
@@ -5129,7 +5074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsInteger());
     }
 
     /**
@@ -5137,7 +5082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsLong());
     }
 
     /**
@@ -5145,7 +5090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsLocalDateTime());
     }
 
     /**
@@ -5153,7 +5098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsLocalTime());
     }
 
     /**
@@ -5161,7 +5106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedApplicationUrlAsString());
     }
 
     /**
@@ -5169,7 +5114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsBoolean());
     }
 
     /**
@@ -5177,7 +5122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsBigInteger());
     }
 
     /**
@@ -5185,7 +5130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationUrlAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationUrlAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationUrlAsURL());
     }
 
     /**
@@ -5193,7 +5138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsInteger());
     }
 
     /**
@@ -5201,7 +5146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsLong());
     }
 
     /**
@@ -5209,7 +5154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsLocalDateTime());
     }
 
     /**
@@ -5217,7 +5162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsLocalTime());
     }
 
     /**
@@ -5225,7 +5170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedApplicationVersionAsString());
     }
 
     /**
@@ -5233,7 +5178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsBoolean());
     }
 
     /**
@@ -5241,7 +5186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsBigInteger());
     }
 
     /**
@@ -5249,7 +5194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedApplicationVersionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedApplicationVersionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedApplicationVersionAsURL());
     }
 
     /**
@@ -5257,7 +5202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsInteger());
     }
 
     /**
@@ -5265,7 +5210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsLong());
     }
 
     /**
@@ -5273,7 +5218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsLocalDateTime());
     }
 
     /**
@@ -5281,7 +5226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsLocalTime());
     }
 
     /**
@@ -5289,7 +5234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedDateAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedDateAsString());
     }
 
     /**
@@ -5297,7 +5242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsBoolean());
     }
 
     /**
@@ -5305,7 +5250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsBigInteger());
     }
 
     /**
@@ -5313,7 +5258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedDateAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedDateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedDateAsURL());
     }
 
     /**
@@ -5321,7 +5266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsInteger());
     }
 
     /**
@@ -5329,7 +5274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsLong());
     }
 
     /**
@@ -5337,7 +5282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsLocalDateTime());
     }
 
     /**
@@ -5345,7 +5290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsLocalTime());
     }
 
     /**
@@ -5353,7 +5298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibraryAsString());
     }
 
     /**
@@ -5361,7 +5306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsBoolean());
     }
 
     /**
@@ -5369,7 +5314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsBigInteger());
     }
 
     /**
@@ -5377,7 +5322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryAsURL());
     }
 
     /**
@@ -5385,7 +5330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsInteger());
     }
 
     /**
@@ -5393,7 +5338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsLong());
     }
 
     /**
@@ -5401,7 +5346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsLocalDateTime());
     }
 
     /**
@@ -5409,7 +5354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsLocalTime());
     }
 
     /**
@@ -5417,7 +5362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibraryStringAsString());
     }
 
     /**
@@ -5425,7 +5370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsBoolean());
     }
 
     /**
@@ -5433,7 +5378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsBigInteger());
     }
 
     /**
@@ -5441,7 +5386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryStringAsURL());
     }
 
     /**
@@ -5449,7 +5394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsInteger());
     }
 
     /**
@@ -5457,7 +5402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsLong());
     }
 
     /**
@@ -5465,7 +5410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsLocalDateTime());
     }
 
     /**
@@ -5473,7 +5418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsLocalTime());
     }
 
     /**
@@ -5481,7 +5426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsString());
     }
 
     /**
@@ -5489,7 +5434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsBoolean());
     }
 
     /**
@@ -5497,7 +5442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsBigInteger());
     }
 
     /**
@@ -5505,7 +5450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryCompanyNameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryCompanyNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryCompanyNameAsURL());
     }
 
     /**
@@ -5513,7 +5458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsInteger());
     }
 
     /**
@@ -5521,7 +5466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsLong());
     }
 
     /**
@@ -5529,7 +5474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsLocalDateTime());
     }
 
     /**
@@ -5537,7 +5482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsLocalTime());
     }
 
     /**
@@ -5545,7 +5490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibraryDateAsString());
     }
 
     /**
@@ -5553,7 +5498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsBoolean());
     }
 
     /**
@@ -5561,7 +5506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsBigInteger());
     }
 
     /**
@@ -5569,7 +5514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryDateAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryDateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryDateAsURL());
     }
 
     /**
@@ -5577,7 +5522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsInteger());
     }
 
     /**
@@ -5585,7 +5530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsLong());
     }
 
     /**
@@ -5593,7 +5538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsLocalDateTime());
     }
 
     /**
@@ -5601,7 +5546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsLocalTime());
     }
 
     /**
@@ -5609,7 +5554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibraryNameAsString());
     }
 
     /**
@@ -5617,7 +5562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsBoolean());
     }
 
     /**
@@ -5625,7 +5570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsBigInteger());
     }
 
     /**
@@ -5633,7 +5578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryNameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryNameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryNameAsURL());
     }
 
     /**
@@ -5641,7 +5586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsInteger());
     }
 
     /**
@@ -5649,7 +5594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsLong());
     }
 
     /**
@@ -5657,7 +5602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsLocalDateTime());
     }
 
     /**
@@ -5665,7 +5610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsLocalTime());
     }
 
     /**
@@ -5673,7 +5618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsString());
     }
 
     /**
@@ -5681,7 +5626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsBoolean());
     }
 
     /**
@@ -5689,7 +5634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsBigInteger());
     }
 
     /**
@@ -5697,7 +5642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibrarySettingsAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibrarySettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibrarySettingsAsURL());
     }
 
     /**
@@ -5705,7 +5650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsInteger());
     }
 
     /**
@@ -5713,7 +5658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsLong());
     }
 
     /**
@@ -5721,7 +5666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsLocalDateTime());
     }
 
     /**
@@ -5729,7 +5674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsLocalTime());
     }
 
     /**
@@ -5737,7 +5682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedLibraryVersionAsString());
     }
 
     /**
@@ -5745,7 +5690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsBoolean());
     }
 
     /**
@@ -5753,7 +5698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsBigInteger());
     }
 
     /**
@@ -5761,7 +5706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedLibraryVersionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedLibraryVersionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedLibraryVersionAsURL());
     }
 
     /**
@@ -5769,7 +5714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsInteger());
     }
 
     /**
@@ -5777,7 +5722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsLong());
     }
 
     /**
@@ -5785,7 +5730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsLocalDateTime());
     }
 
     /**
@@ -5793,7 +5738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsLocalTime());
     }
 
     /**
@@ -5801,7 +5746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncodedOperatingSystemAsString());
     }
 
     /**
@@ -5809,7 +5754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsBoolean());
     }
 
     /**
@@ -5817,7 +5762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsBigInteger());
     }
 
     /**
@@ -5825,7 +5770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncodedOperatingSystemAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncodedOperatingSystemAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncodedOperatingSystemAsURL());
     }
 
     /**
@@ -5833,7 +5778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsInteger());
     }
 
     /**
@@ -5841,7 +5786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsLong());
     }
 
     /**
@@ -5849,7 +5794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsLocalDateTime());
     }
 
     /**
@@ -5857,7 +5802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsLocalTime());
     }
 
     /**
@@ -5865,7 +5810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getEncryptionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getEncryptionAsString());
     }
 
     /**
@@ -5873,7 +5818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsBoolean());
     }
 
     /**
@@ -5881,7 +5826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsBigInteger());
     }
 
     /**
@@ -5889,7 +5834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetEncryptionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getEncryptionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getEncryptionAsURL());
     }
 
     /**
@@ -5897,7 +5842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsInteger());
     }
 
     /**
@@ -5905,7 +5850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsLong());
     }
 
     /**
@@ -5913,7 +5858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsLocalDateTime());
     }
 
     /**
@@ -5921,7 +5866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsLocalTime());
     }
 
     /**
@@ -5929,7 +5874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFirstPacketOrderAsString());
     }
 
     /**
@@ -5937,7 +5882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsBoolean());
     }
 
     /**
@@ -5945,7 +5890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsBigInteger());
     }
 
     /**
@@ -5953,7 +5898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFirstPacketOrderAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFirstPacketOrderAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFirstPacketOrderAsURL());
     }
 
     /**
@@ -5961,7 +5906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedAsInteger());
     }
 
     /**
@@ -5969,7 +5914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedAsLong());
     }
 
     /**
@@ -5977,7 +5922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedAsLocalDateTime());
     }
 
     /**
@@ -5985,7 +5930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedAsLocalTime());
     }
 
     /**
@@ -5993,7 +5938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsString() {
-        assertEquals("No", JMetaDataText_Test.jMetaDataText.getForcedAsString());
+        assertEquals("No", AbstractTest.jMetaDataText.getForcedAsString());
     }
 
     /**
@@ -6001,7 +5946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataText_Test.jMetaDataText.getForcedAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataText.getForcedAsBoolean());
     }
 
     /**
@@ -6009,7 +5954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedAsBigInteger());
     }
 
     /**
@@ -6017,7 +5962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedAsURL());
     }
 
     /**
@@ -6025,7 +5970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedStringAsInteger());
     }
 
     /**
@@ -6033,7 +5978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedStringAsLong());
     }
 
     /**
@@ -6041,7 +5986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedStringAsLocalDateTime());
     }
 
     /**
@@ -6049,7 +5994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedStringAsLocalTime());
     }
 
     /**
@@ -6057,7 +6002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsString() {
-        assertEquals("No", JMetaDataText_Test.jMetaDataText.getForcedStringAsString());
+        assertEquals("No", AbstractTest.jMetaDataText.getForcedStringAsString());
     }
 
     /**
@@ -6065,7 +6010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsBoolean() {
-        assertEquals(Boolean.TRUE, JMetaDataText_Test.jMetaDataText.getForcedStringAsBoolean());
+        assertEquals(Boolean.TRUE, AbstractTest.jMetaDataText.getForcedStringAsBoolean());
     }
 
     /**
@@ -6073,7 +6018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedStringAsBigInteger());
     }
 
     /**
@@ -6081,7 +6026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetForcedStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getForcedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getForcedStringAsURL());
     }
 
     /**
@@ -6089,7 +6034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsInteger() {
-        assertEquals(Integer.valueOf(8), JMetaDataText_Test.jMetaDataText.getFormatAsInteger());
+        assertEquals(Integer.valueOf(8), AbstractTest.jMetaDataText.getFormatAsInteger());
     }
 
     /**
@@ -6097,7 +6042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsLong() {
-        assertEquals(Long.valueOf(8), JMetaDataText_Test.jMetaDataText.getFormatAsLong());
+        assertEquals(Long.valueOf(8), AbstractTest.jMetaDataText.getFormatAsLong());
     }
 
     /**
@@ -6105,7 +6050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatAsLocalDateTime());
     }
 
     /**
@@ -6113,7 +6058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatAsLocalTime());
     }
 
     /**
@@ -6121,7 +6066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsString() {
-        assertEquals("UTF-8", JMetaDataText_Test.jMetaDataText.getFormatAsString());
+        assertEquals("UTF-8", AbstractTest.jMetaDataText.getFormatAsString());
     }
 
     /**
@@ -6129,7 +6074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatAsBoolean());
     }
 
     /**
@@ -6137,7 +6082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), JMetaDataText_Test.jMetaDataText.getFormatAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataText.getFormatAsBigInteger());
     }
 
     /**
@@ -6145,7 +6090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatAsURL());
     }
 
     /**
@@ -6153,7 +6098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsInteger());
     }
 
     /**
@@ -6161,7 +6106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsLong());
     }
 
     /**
@@ -6169,7 +6114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsLocalDateTime());
     }
 
     /**
@@ -6177,7 +6122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsLocalTime());
     }
 
     /**
@@ -6185,7 +6130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatInfoAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatInfoAsString());
     }
 
     /**
@@ -6193,7 +6138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsBoolean());
     }
 
     /**
@@ -6201,7 +6146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsBigInteger());
     }
 
     /**
@@ -6209,7 +6154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatInfoAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatInfoAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatInfoAsURL());
     }
 
     /**
@@ -6217,7 +6162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsInteger());
     }
 
     /**
@@ -6225,7 +6170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsLong());
     }
 
     /**
@@ -6233,7 +6178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsLocalDateTime());
     }
 
     /**
@@ -6241,7 +6186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsLocalTime());
     }
 
     /**
@@ -6249,7 +6194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatUrlAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatUrlAsString());
     }
 
     /**
@@ -6257,7 +6202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsBoolean());
     }
 
     /**
@@ -6265,7 +6210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsBigInteger());
     }
 
     /**
@@ -6273,7 +6218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatUrlAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatUrlAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatUrlAsURL());
     }
 
     /**
@@ -6281,7 +6226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsInteger() {
-        assertEquals(Integer.valueOf(8), JMetaDataText_Test.jMetaDataText.getFormatCommercialAsInteger());
+        assertEquals(Integer.valueOf(8), AbstractTest.jMetaDataText.getFormatCommercialAsInteger());
     }
 
     /**
@@ -6289,7 +6234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsLong() {
-        assertEquals(Long.valueOf(8), JMetaDataText_Test.jMetaDataText.getFormatCommercialAsLong());
+        assertEquals(Long.valueOf(8), AbstractTest.jMetaDataText.getFormatCommercialAsLong());
     }
 
     /**
@@ -6297,7 +6242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialAsLocalDateTime());
     }
 
     /**
@@ -6305,7 +6250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialAsLocalTime());
     }
 
     /**
@@ -6313,7 +6258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsString() {
-        assertEquals("UTF-8", JMetaDataText_Test.jMetaDataText.getFormatCommercialAsString());
+        assertEquals("UTF-8", AbstractTest.jMetaDataText.getFormatCommercialAsString());
     }
 
     /**
@@ -6321,7 +6266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialAsBoolean());
     }
 
     /**
@@ -6329,7 +6274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), JMetaDataText_Test.jMetaDataText.getFormatCommercialAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataText.getFormatCommercialAsBigInteger());
     }
 
     /**
@@ -6337,7 +6282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialAsURL());
     }
 
     /**
@@ -6345,7 +6290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsInteger());
     }
 
     /**
@@ -6353,7 +6298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsLong());
     }
 
     /**
@@ -6361,7 +6306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsLocalDateTime());
     }
 
     /**
@@ -6369,7 +6314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsLocalTime());
     }
 
     /**
@@ -6377,7 +6322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsString());
     }
 
     /**
@@ -6385,7 +6330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsBoolean());
     }
 
     /**
@@ -6393,7 +6338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsBigInteger());
     }
 
     /**
@@ -6401,7 +6346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCommercialIfAnyAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCommercialIfAnyAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCommercialIfAnyAsURL());
     }
 
     /**
@@ -6409,7 +6354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsInteger());
     }
 
     /**
@@ -6417,7 +6362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsLong());
     }
 
     /**
@@ -6425,7 +6370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsLocalDateTime());
     }
 
     /**
@@ -6433,7 +6378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsLocalTime());
     }
 
     /**
@@ -6441,7 +6386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatCompressionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatCompressionAsString());
     }
 
     /**
@@ -6449,7 +6394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsBoolean());
     }
 
     /**
@@ -6457,7 +6402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsBigInteger());
     }
 
     /**
@@ -6465,7 +6410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatCompressionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatCompressionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatCompressionAsURL());
     }
 
     /**
@@ -6473,7 +6418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsInteger());
     }
 
     /**
@@ -6481,7 +6426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsLong());
     }
 
     /**
@@ -6489,7 +6434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsLocalDateTime());
     }
 
     /**
@@ -6497,7 +6442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsLocalTime());
     }
 
     /**
@@ -6505,7 +6450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatProfileAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatProfileAsString());
     }
 
     /**
@@ -6513,7 +6458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsBoolean());
     }
 
     /**
@@ -6521,7 +6466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsBigInteger());
     }
 
     /**
@@ -6529,7 +6474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatProfileAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatProfileAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatProfileAsURL());
     }
 
     /**
@@ -6537,7 +6482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsInteger());
     }
 
     /**
@@ -6545,7 +6490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsLong());
     }
 
     /**
@@ -6553,7 +6498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsLocalDateTime());
     }
 
     /**
@@ -6561,7 +6506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsLocalTime());
     }
 
     /**
@@ -6569,7 +6514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatSettingsAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatSettingsAsString());
     }
 
     /**
@@ -6577,7 +6522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsBoolean());
     }
 
     /**
@@ -6585,7 +6530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsBigInteger());
     }
 
     /**
@@ -6593,7 +6538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsAsURL());
     }
 
     /**
@@ -6601,7 +6546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsInteger());
     }
 
     /**
@@ -6609,7 +6554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsLong());
     }
 
     /**
@@ -6617,7 +6562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsLocalDateTime());
     }
 
     /**
@@ -6625,7 +6570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsLocalTime());
     }
 
     /**
@@ -6633,7 +6578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatSettingsWrappingAsString());
     }
 
     /**
@@ -6641,7 +6586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsBoolean());
     }
 
     /**
@@ -6649,7 +6594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsBigInteger());
     }
 
     /**
@@ -6657,7 +6602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatSettingsWrappingAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatSettingsWrappingAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatSettingsWrappingAsURL());
     }
 
     /**
@@ -6665,7 +6610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsInteger());
     }
 
     /**
@@ -6673,7 +6618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsLong());
     }
 
     /**
@@ -6681,7 +6626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsLocalDateTime());
     }
 
     /**
@@ -6689,7 +6634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsLocalTime());
     }
 
     /**
@@ -6697,7 +6642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFormatVersionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFormatVersionAsString());
     }
 
     /**
@@ -6705,7 +6650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsBoolean());
     }
 
     /**
@@ -6713,7 +6658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsBigInteger());
     }
 
     /**
@@ -6721,7 +6666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFormatVersionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFormatVersionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFormatVersionAsURL());
     }
 
     /**
@@ -6729,7 +6674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsInteger());
     }
 
     /**
@@ -6737,7 +6682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsLong());
     }
 
     /**
@@ -6745,7 +6690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsLocalDateTime());
     }
 
     /**
@@ -6753,7 +6698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsLocalTime());
     }
 
     /**
@@ -6761,7 +6706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameCountAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameCountAsString());
     }
 
     /**
@@ -6769,7 +6714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsBoolean());
     }
 
     /**
@@ -6777,7 +6722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsBigInteger());
     }
 
     /**
@@ -6785,7 +6730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameCountAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameCountAsURL());
     }
 
     /**
@@ -6793,7 +6738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsInteger());
     }
 
     /**
@@ -6801,7 +6746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsLong());
     }
 
     /**
@@ -6809,7 +6754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsLocalDateTime());
     }
 
     /**
@@ -6817,7 +6762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsLocalTime());
     }
 
     /**
@@ -6825,7 +6770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateAsString());
     }
 
     /**
@@ -6833,7 +6778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsBoolean());
     }
 
     /**
@@ -6841,7 +6786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsBigInteger());
     }
 
     /**
@@ -6849,7 +6794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateAsURL());
     }
 
     /**
@@ -6857,7 +6802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsInteger());
     }
 
     /**
@@ -6865,7 +6810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsLong());
     }
 
     /**
@@ -6873,7 +6818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsLocalDateTime());
     }
 
     /**
@@ -6881,7 +6826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsLocalTime());
     }
 
     /**
@@ -6889,7 +6834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateStringAsString());
     }
 
     /**
@@ -6897,7 +6842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsBoolean());
     }
 
     /**
@@ -6905,7 +6850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsBigInteger());
     }
 
     /**
@@ -6913,7 +6858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateStringAsURL());
     }
 
     /**
@@ -6921,7 +6866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsInteger());
     }
 
     /**
@@ -6929,7 +6874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsLong());
     }
 
     /**
@@ -6937,7 +6882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsLocalDateTime());
     }
 
     /**
@@ -6945,7 +6890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsLocalTime());
     }
 
     /**
@@ -6953,7 +6898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateDenAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateDenAsString());
     }
 
     /**
@@ -6961,7 +6906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsBoolean());
     }
 
     /**
@@ -6969,7 +6914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsBigInteger());
     }
 
     /**
@@ -6977,7 +6922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateDenAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateDenAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateDenAsURL());
     }
 
     /**
@@ -6985,7 +6930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsInteger());
     }
 
     /**
@@ -6993,7 +6938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsLong());
     }
 
     /**
@@ -7001,7 +6946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsLocalDateTime());
     }
 
     /**
@@ -7009,7 +6954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsLocalTime());
     }
 
     /**
@@ -7017,7 +6962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateMaximumAsString());
     }
 
     /**
@@ -7025,7 +6970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsBoolean());
     }
 
     /**
@@ -7033,7 +6978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsBigInteger());
     }
 
     /**
@@ -7041,7 +6986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumAsURL());
     }
 
     /**
@@ -7049,7 +6994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsInteger());
     }
 
     /**
@@ -7057,7 +7002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsLong());
     }
 
     /**
@@ -7065,7 +7010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsLocalDateTime());
     }
 
     /**
@@ -7073,7 +7018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsLocalTime());
     }
 
     /**
@@ -7081,7 +7026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateMaximumStringAsString());
     }
 
     /**
@@ -7089,7 +7034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsBoolean());
     }
 
     /**
@@ -7097,7 +7042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsBigInteger());
     }
 
     /**
@@ -7105,7 +7050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMaximumStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMaximumStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMaximumStringAsURL());
     }
 
     /**
@@ -7113,7 +7058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsInteger());
     }
 
     /**
@@ -7121,7 +7066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsLong());
     }
 
     /**
@@ -7129,7 +7074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsLocalDateTime());
     }
 
     /**
@@ -7137,7 +7082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsLocalTime());
     }
 
     /**
@@ -7145,7 +7090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateMinimumAsString());
     }
 
     /**
@@ -7153,7 +7098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsBoolean());
     }
 
     /**
@@ -7161,7 +7106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsBigInteger());
     }
 
     /**
@@ -7169,7 +7114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumAsURL());
     }
 
     /**
@@ -7177,7 +7122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsInteger());
     }
 
     /**
@@ -7185,7 +7130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsLong());
     }
 
     /**
@@ -7193,7 +7138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsLocalDateTime());
     }
 
     /**
@@ -7201,7 +7146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsLocalTime());
     }
 
     /**
@@ -7209,7 +7154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateMinimumStringAsString());
     }
 
     /**
@@ -7217,7 +7162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsBoolean());
     }
 
     /**
@@ -7225,7 +7170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsBigInteger());
     }
 
     /**
@@ -7233,7 +7178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateMinimumStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateMinimumStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateMinimumStringAsURL());
     }
 
     /**
@@ -7241,7 +7186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsInteger());
     }
 
     /**
@@ -7249,7 +7194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsLong());
     }
 
     /**
@@ -7257,7 +7202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsLocalDateTime());
     }
 
     /**
@@ -7265,7 +7210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsLocalTime());
     }
 
     /**
@@ -7273,7 +7218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateModeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateModeAsString());
     }
 
     /**
@@ -7281,7 +7226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsBoolean());
     }
 
     /**
@@ -7289,7 +7234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsBigInteger());
     }
 
     /**
@@ -7297,7 +7242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeAsURL());
     }
 
     /**
@@ -7305,7 +7250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsInteger());
     }
 
     /**
@@ -7313,7 +7258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsLong());
     }
 
     /**
@@ -7321,7 +7266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsLocalDateTime());
     }
 
     /**
@@ -7329,7 +7274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsLocalTime());
     }
 
     /**
@@ -7337,7 +7282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateModeStringAsString());
     }
 
     /**
@@ -7345,7 +7290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsBoolean());
     }
 
     /**
@@ -7353,7 +7298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsBigInteger());
     }
 
     /**
@@ -7361,7 +7306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateModeStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateModeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateModeStringAsURL());
     }
 
     /**
@@ -7369,7 +7314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsInteger());
     }
 
     /**
@@ -7377,7 +7322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsLong());
     }
 
     /**
@@ -7385,7 +7330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsLocalDateTime());
     }
 
     /**
@@ -7393,7 +7338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsLocalTime());
     }
 
     /**
@@ -7401,7 +7346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateNominalAsString());
     }
 
     /**
@@ -7409,7 +7354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsBoolean());
     }
 
     /**
@@ -7417,7 +7362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsBigInteger());
     }
 
     /**
@@ -7425,7 +7370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalAsURL());
     }
 
     /**
@@ -7433,7 +7378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsInteger());
     }
 
     /**
@@ -7441,7 +7386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsLong());
     }
 
     /**
@@ -7449,7 +7394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsLocalDateTime());
     }
 
     /**
@@ -7457,7 +7402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsLocalTime());
     }
 
     /**
@@ -7465,7 +7410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateNominalStringAsString());
     }
 
     /**
@@ -7473,7 +7418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsBoolean());
     }
 
     /**
@@ -7481,7 +7426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsBigInteger());
     }
 
     /**
@@ -7489,7 +7434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNominalStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNominalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNominalStringAsURL());
     }
 
     /**
@@ -7497,7 +7442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsInteger());
     }
 
     /**
@@ -7505,7 +7450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsLong());
     }
 
     /**
@@ -7513,7 +7458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsLocalDateTime());
     }
 
     /**
@@ -7521,7 +7466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsLocalTime());
     }
 
     /**
@@ -7529,7 +7474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateNumAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateNumAsString());
     }
 
     /**
@@ -7537,7 +7482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsBoolean());
     }
 
     /**
@@ -7545,7 +7490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsBigInteger());
     }
 
     /**
@@ -7553,7 +7498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateNumAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateNumAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateNumAsURL());
     }
 
     /**
@@ -7561,7 +7506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsInteger());
     }
 
     /**
@@ -7569,7 +7514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsLong());
     }
 
     /**
@@ -7577,7 +7522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsLocalDateTime());
     }
 
     /**
@@ -7585,7 +7530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsLocalTime());
     }
 
     /**
@@ -7593,7 +7538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateOriginalAsString());
     }
 
     /**
@@ -7601,7 +7546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsBoolean());
     }
 
     /**
@@ -7609,7 +7554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsBigInteger());
     }
 
     /**
@@ -7617,7 +7562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalAsURL());
     }
 
     /**
@@ -7625,7 +7570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsInteger());
     }
 
     /**
@@ -7633,7 +7578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsLong());
     }
 
     /**
@@ -7641,7 +7586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsLocalDateTime());
     }
 
     /**
@@ -7649,7 +7594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsLocalTime());
     }
 
     /**
@@ -7657,7 +7602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getFrameRateOriginalStringAsString());
     }
 
     /**
@@ -7665,7 +7610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsBoolean());
     }
 
     /**
@@ -7673,7 +7618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsBigInteger());
     }
 
     /**
@@ -7681,7 +7626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetFrameRateOriginalStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getFrameRateOriginalStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getFrameRateOriginalStringAsURL());
     }
 
     /**
@@ -7689,7 +7634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsInteger());
     }
 
     /**
@@ -7697,7 +7642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsLong());
     }
 
     /**
@@ -7705,7 +7650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsLocalDateTime());
     }
 
     /**
@@ -7713,7 +7658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsLocalTime());
     }
 
     /**
@@ -7721,7 +7666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getHeightAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getHeightAsString());
     }
 
     /**
@@ -7729,7 +7674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsBoolean());
     }
 
     /**
@@ -7737,7 +7682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsBigInteger());
     }
 
     /**
@@ -7745,7 +7690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightAsURL());
     }
 
     /**
@@ -7753,7 +7698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsInteger());
     }
 
     /**
@@ -7761,7 +7706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsLong());
     }
 
     /**
@@ -7769,7 +7714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsLocalDateTime());
     }
 
     /**
@@ -7777,7 +7722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsLocalTime());
     }
 
     /**
@@ -7785,7 +7730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getHeightStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getHeightStringAsString());
     }
 
     /**
@@ -7793,7 +7738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsBoolean());
     }
 
     /**
@@ -7801,7 +7746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsBigInteger());
     }
 
     /**
@@ -7809,7 +7754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetHeightStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getHeightStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getHeightStringAsURL());
     }
 
     /**
@@ -7817,7 +7762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsInteger() {
-        assertEquals(Integer.valueOf(4), JMetaDataText_Test.jMetaDataText.getIDAsInteger());
+        assertEquals(Integer.valueOf(4), AbstractTest.jMetaDataText.getIDAsInteger());
     }
 
     /**
@@ -7825,7 +7770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsLong() {
-        assertEquals(Long.valueOf(4), JMetaDataText_Test.jMetaDataText.getIDAsLong());
+        assertEquals(Long.valueOf(4), AbstractTest.jMetaDataText.getIDAsLong());
     }
 
     /**
@@ -7833,7 +7778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDAsLocalDateTime());
     }
 
     /**
@@ -7841,7 +7786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDAsLocalTime());
     }
 
     /**
@@ -7849,7 +7794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsString() {
-        assertEquals("4", JMetaDataText_Test.jMetaDataText.getIDAsString());
+        assertEquals("4", AbstractTest.jMetaDataText.getIDAsString());
     }
 
     /**
@@ -7857,7 +7802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDAsBoolean());
     }
 
     /**
@@ -7865,7 +7810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(4), JMetaDataText_Test.jMetaDataText.getIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(4), AbstractTest.jMetaDataText.getIDAsBigInteger());
     }
 
     /**
@@ -7873,7 +7818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDAsURL());
     }
 
     /**
@@ -7881,7 +7826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsInteger() {
-        assertEquals(Integer.valueOf(4), JMetaDataText_Test.jMetaDataText.getIDStringAsInteger());
+        assertEquals(Integer.valueOf(4), AbstractTest.jMetaDataText.getIDStringAsInteger());
     }
 
     /**
@@ -7889,7 +7834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsLong() {
-        assertEquals(Long.valueOf(4), JMetaDataText_Test.jMetaDataText.getIDStringAsLong());
+        assertEquals(Long.valueOf(4), AbstractTest.jMetaDataText.getIDStringAsLong());
     }
 
     /**
@@ -7897,7 +7842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDStringAsLocalDateTime());
     }
 
     /**
@@ -7905,7 +7850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDStringAsLocalTime());
     }
 
     /**
@@ -7913,7 +7858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsString() {
-        assertEquals("4", JMetaDataText_Test.jMetaDataText.getIDStringAsString());
+        assertEquals("4", AbstractTest.jMetaDataText.getIDStringAsString());
     }
 
     /**
@@ -7921,7 +7866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDStringAsBoolean());
     }
 
     /**
@@ -7929,7 +7874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(4), JMetaDataText_Test.jMetaDataText.getIDStringAsBigInteger());
+        assertEquals(BigInteger.valueOf(4), AbstractTest.jMetaDataText.getIDStringAsBigInteger());
     }
 
     /**
@@ -7937,7 +7882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetIDStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getIDStringAsURL());
     }
 
     /**
@@ -7945,7 +7890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsInteger() {
-        assertEquals(Integer.valueOf(4888), JMetaDataText_Test.jMetaDataText.getInformAsInteger());
+        assertEquals(Integer.valueOf(4888), AbstractTest.jMetaDataText.getInformAsInteger());
     }
 
     /**
@@ -7953,7 +7898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsLong() {
-        assertEquals(Long.valueOf(4888), JMetaDataText_Test.jMetaDataText.getInformAsLong());
+        assertEquals(Long.valueOf(4888), AbstractTest.jMetaDataText.getInformAsLong());
     }
 
     /**
@@ -7961,7 +7906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInformAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getInformAsLocalDateTime());
     }
 
     /**
@@ -7969,7 +7914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInformAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getInformAsLocalTime());
     }
 
     /**
@@ -7977,7 +7922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInformAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getInformAsBoolean());
     }
 
     /**
@@ -7985,7 +7930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(BigInteger.valueOf(4888), JMetaDataText_Test.jMetaDataText.getInformAsBigInteger());
+        assertEquals(BigInteger.valueOf(4888), AbstractTest.jMetaDataText.getInformAsBigInteger());
     }
 
     /**
@@ -7993,7 +7938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInformAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInformAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getInformAsURL());
     }
 
     /**
@@ -8001,7 +7946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsInteger());
     }
 
     /**
@@ -8009,7 +7954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsLong());
     }
 
     /**
@@ -8017,7 +7962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsLocalDateTime());
     }
 
     /**
@@ -8025,7 +7970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsLocalTime());
     }
 
     /**
@@ -8033,7 +7978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getInternetMediaTypeAsString());
     }
 
     /**
@@ -8041,7 +7986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsBoolean());
     }
 
     /**
@@ -8049,7 +7994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsBigInteger());
     }
 
     /**
@@ -8057,7 +8002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getInternetMediaTypeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getInternetMediaTypeAsURL());
     }
 
     /**
@@ -8065,7 +8010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsInteger());
     }
 
     /**
@@ -8073,7 +8018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsLong());
     }
 
     /**
@@ -8081,7 +8026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsLocalDateTime());
     }
 
     /**
@@ -8089,7 +8034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsLocalTime());
     }
 
     /**
@@ -8097,7 +8042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsString() {
-        assertEquals("en", JMetaDataText_Test.jMetaDataText.getLanguageAsString());
+        assertEquals("en", AbstractTest.jMetaDataText.getLanguageAsString());
     }
 
     /**
@@ -8105,7 +8050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsBoolean());
     }
 
     /**
@@ -8113,7 +8058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsBigInteger());
     }
 
     /**
@@ -8121,7 +8066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageAsURL());
     }
 
     /**
@@ -8129,7 +8074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsInteger());
     }
 
     /**
@@ -8137,7 +8082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsLong());
     }
 
     /**
@@ -8145,7 +8090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsLocalDateTime());
     }
 
     /**
@@ -8153,7 +8098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsLocalTime());
     }
 
     /**
@@ -8161,7 +8106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsString() {
-        assertEquals("English", JMetaDataText_Test.jMetaDataText.getLanguageStringAsString());
+        assertEquals("English", AbstractTest.jMetaDataText.getLanguageStringAsString());
     }
 
     /**
@@ -8169,7 +8114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsBoolean());
     }
 
     /**
@@ -8177,7 +8122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsBigInteger());
     }
 
     /**
@@ -8185,7 +8130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageStringAsURL());
     }
 
     /**
@@ -8193,7 +8138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsInteger());
     }
 
     /**
@@ -8201,7 +8146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsLong());
     }
 
     /**
@@ -8209,7 +8154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsLocalDateTime());
     }
 
     /**
@@ -8217,7 +8162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsLocalTime());
     }
 
     /**
@@ -8225,7 +8170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsString() {
-        assertEquals("English", JMetaDataText_Test.jMetaDataText.getLanguageString1AsString());
+        assertEquals("English", AbstractTest.jMetaDataText.getLanguageString1AsString());
     }
 
     /**
@@ -8233,7 +8178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsBoolean());
     }
 
     /**
@@ -8241,7 +8186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsBigInteger());
     }
 
     /**
@@ -8249,7 +8194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString1AsURL());
     }
 
     /**
@@ -8257,7 +8202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsInteger());
     }
 
     /**
@@ -8265,7 +8210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsLong());
     }
 
     /**
@@ -8273,7 +8218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsLocalDateTime());
     }
 
     /**
@@ -8281,7 +8226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsLocalTime());
     }
 
     /**
@@ -8289,7 +8234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsString() {
-        assertEquals("en", JMetaDataText_Test.jMetaDataText.getLanguageString2AsString());
+        assertEquals("en", AbstractTest.jMetaDataText.getLanguageString2AsString());
     }
 
     /**
@@ -8297,7 +8242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsBoolean());
     }
 
     /**
@@ -8305,7 +8250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsBigInteger());
     }
 
     /**
@@ -8313,7 +8258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString2AsURL());
     }
 
     /**
@@ -8321,7 +8266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsInteger());
     }
 
     /**
@@ -8329,7 +8274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsLong());
     }
 
     /**
@@ -8337,7 +8282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsLocalDateTime());
     }
 
     /**
@@ -8345,7 +8290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsLocalTime());
     }
 
     /**
@@ -8353,7 +8298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsString() {
-        assertEquals("eng", JMetaDataText_Test.jMetaDataText.getLanguageString3AsString());
+        assertEquals("eng", AbstractTest.jMetaDataText.getLanguageString3AsString());
     }
 
     /**
@@ -8361,7 +8306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsBoolean());
     }
 
     /**
@@ -8369,7 +8314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsBigInteger());
     }
 
     /**
@@ -8377,7 +8322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString3AsURL());
     }
 
     /**
@@ -8385,7 +8330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsInteger());
     }
 
     /**
@@ -8393,7 +8338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsLong());
     }
 
     /**
@@ -8401,7 +8346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsLocalDateTime());
     }
 
     /**
@@ -8409,7 +8354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsLocalTime());
     }
 
     /**
@@ -8417,7 +8362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsString() {
-        assertEquals("en", JMetaDataText_Test.jMetaDataText.getLanguageString4AsString());
+        assertEquals("en", AbstractTest.jMetaDataText.getLanguageString4AsString());
     }
 
     /**
@@ -8425,7 +8370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsBoolean());
     }
 
     /**
@@ -8433,7 +8378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsBigInteger());
     }
 
     /**
@@ -8441,7 +8386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageString4AsURL());
     }
 
     /**
@@ -8449,7 +8394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsInteger());
     }
 
     /**
@@ -8457,7 +8402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsLong());
     }
 
     /**
@@ -8465,7 +8410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsLocalDateTime());
     }
 
     /**
@@ -8473,7 +8418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsLocalTime());
     }
 
     /**
@@ -8481,7 +8426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getLanguageMoreAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getLanguageMoreAsString());
     }
 
     /**
@@ -8489,7 +8434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsBoolean());
     }
 
     /**
@@ -8497,7 +8442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsBigInteger());
     }
 
     /**
@@ -8505,7 +8450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetLanguageMoreAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getLanguageMoreAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getLanguageMoreAsURL());
     }
 
     /**
@@ -8513,7 +8458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsInteger());
     }
 
     /**
@@ -8521,7 +8466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsLong());
     }
 
     /**
@@ -8529,7 +8474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsLocalDateTime());
     }
 
     /**
@@ -8537,7 +8482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsLocalTime());
     }
 
     /**
@@ -8545,7 +8490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getMenuIDAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getMenuIDAsString());
     }
 
     /**
@@ -8553,7 +8498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsBoolean());
     }
 
     /**
@@ -8561,7 +8506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsBigInteger());
     }
 
     /**
@@ -8569,7 +8514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDAsURL());
     }
 
     /**
@@ -8577,7 +8522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsInteger());
     }
 
     /**
@@ -8585,7 +8530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsLong());
     }
 
     /**
@@ -8593,7 +8538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsLocalDateTime());
     }
 
     /**
@@ -8601,7 +8546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsLocalTime());
     }
 
     /**
@@ -8609,7 +8554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getMenuIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getMenuIDStringAsString());
     }
 
     /**
@@ -8617,7 +8562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsBoolean());
     }
 
     /**
@@ -8625,7 +8570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsBigInteger());
     }
 
     /**
@@ -8633,7 +8578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMenuIDStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMenuIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getMenuIDStringAsURL());
     }
 
     /**
@@ -8641,7 +8586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsInteger());
     }
 
     /**
@@ -8649,7 +8594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsLong());
     }
 
     /**
@@ -8657,7 +8602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsLocalDateTime());
     }
 
     /**
@@ -8665,7 +8610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsLocalTime());
     }
 
     /**
@@ -8673,7 +8618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getMuxingModeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getMuxingModeAsString());
     }
 
     /**
@@ -8681,7 +8626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsBoolean());
     }
 
     /**
@@ -8689,7 +8634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsBigInteger());
     }
 
     /**
@@ -8697,7 +8642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeAsURL());
     }
 
     /**
@@ -8705,7 +8650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsInteger());
     }
 
     /**
@@ -8713,7 +8658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsLong());
     }
 
     /**
@@ -8721,7 +8666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsLocalDateTime());
     }
 
     /**
@@ -8729,7 +8674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsLocalTime());
     }
 
     /**
@@ -8737,7 +8682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsString());
     }
 
     /**
@@ -8745,7 +8690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsBoolean());
     }
 
     /**
@@ -8753,7 +8698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsBigInteger());
     }
 
     /**
@@ -8761,7 +8706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetMuxingModeMoreInfoAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getMuxingModeMoreInfoAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getMuxingModeMoreInfoAsURL());
     }
 
     /**
@@ -8769,7 +8714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsInteger());
     }
 
     /**
@@ -8777,7 +8722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsLong());
     }
 
     /**
@@ -8785,7 +8730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsLocalDateTime());
     }
 
     /**
@@ -8793,7 +8738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsLocalTime());
     }
 
     /**
@@ -8801,7 +8746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsString());
     }
 
     /**
@@ -8809,7 +8754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsBoolean());
     }
 
     /**
@@ -8817,7 +8762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsBigInteger());
     }
 
     /**
@@ -8825,7 +8770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDAsURL());
     }
 
     /**
@@ -8833,7 +8778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsInteger());
     }
 
     /**
@@ -8841,7 +8786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsLong());
     }
 
     /**
@@ -8849,7 +8794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsLocalDateTime());
     }
 
     /**
@@ -8857,7 +8802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsLocalTime());
     }
 
     /**
@@ -8865,7 +8810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsString());
     }
 
     /**
@@ -8873,7 +8818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsBoolean());
     }
 
     /**
@@ -8881,7 +8826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsBigInteger());
     }
 
     /**
@@ -8889,7 +8834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetOriginalSourceMediumIDStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getOriginalSourceMediumIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getOriginalSourceMediumIDStringAsURL());
     }
 
     /**
@@ -8897,7 +8842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsInteger());
     }
 
     /**
@@ -8905,7 +8850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsLong());
     }
 
     /**
@@ -8913,7 +8858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsLocalDateTime());
     }
 
     /**
@@ -8921,7 +8866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsLocalTime());
     }
 
     /**
@@ -8929,7 +8874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getServiceKindAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getServiceKindAsString());
     }
 
     /**
@@ -8937,7 +8882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsBoolean());
     }
 
     /**
@@ -8945,7 +8890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsBigInteger());
     }
 
     /**
@@ -8953,7 +8898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindAsURL());
     }
 
     /**
@@ -8961,7 +8906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsInteger());
     }
 
     /**
@@ -8969,7 +8914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsLong());
     }
 
     /**
@@ -8977,7 +8922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsLocalDateTime());
     }
 
     /**
@@ -8985,7 +8930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsLocalTime());
     }
 
     /**
@@ -8993,7 +8938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getServiceKindStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getServiceKindStringAsString());
     }
 
     /**
@@ -9001,7 +8946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsBoolean());
     }
 
     /**
@@ -9009,7 +8954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsBigInteger());
     }
 
     /**
@@ -9017,7 +8962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetServiceKindStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getServiceKindStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getServiceKindStringAsURL());
     }
 
     /**
@@ -9025,7 +8970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsInteger());
     }
 
     /**
@@ -9033,7 +8978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsLong());
     }
 
     /**
@@ -9041,7 +8986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsLocalDateTime());
     }
 
     /**
@@ -9049,7 +8994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsLocalTime());
     }
 
     /**
@@ -9057,7 +9002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationAsString());
     }
 
     /**
@@ -9065,7 +9010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsBoolean());
     }
 
     /**
@@ -9073,7 +9018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsBigInteger());
     }
 
     /**
@@ -9081,7 +9026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationAsURL());
     }
 
     /**
@@ -9089,7 +9034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsInteger());
     }
 
     /**
@@ -9097,7 +9042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsLong());
     }
 
     /**
@@ -9105,7 +9050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsLocalDateTime());
     }
 
     /**
@@ -9113,7 +9058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsLocalTime());
     }
 
     /**
@@ -9121,7 +9066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationStringAsString());
     }
 
     /**
@@ -9129,7 +9074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsBoolean());
     }
 
     /**
@@ -9137,7 +9082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsBigInteger());
     }
 
     /**
@@ -9145,7 +9090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationStringAsURL());
     }
 
     /**
@@ -9153,7 +9098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsInteger());
     }
 
     /**
@@ -9161,7 +9106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsLong());
     }
 
     /**
@@ -9169,7 +9114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsLocalDateTime());
     }
 
     /**
@@ -9177,7 +9122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsLocalTime());
     }
 
     /**
@@ -9185,7 +9130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationString1AsString());
     }
 
     /**
@@ -9193,7 +9138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsBoolean());
     }
 
     /**
@@ -9201,7 +9146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsBigInteger());
     }
 
     /**
@@ -9209,7 +9154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString1AsURL());
     }
 
     /**
@@ -9217,7 +9162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsInteger());
     }
 
     /**
@@ -9225,7 +9170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsLong());
     }
 
     /**
@@ -9233,7 +9178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsLocalDateTime());
     }
 
     /**
@@ -9241,7 +9186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsLocalTime());
     }
 
     /**
@@ -9249,7 +9194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationString2AsString());
     }
 
     /**
@@ -9257,7 +9202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsBoolean());
     }
 
     /**
@@ -9265,7 +9210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsBigInteger());
     }
 
     /**
@@ -9273,7 +9218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString2AsURL());
     }
 
     /**
@@ -9281,7 +9226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsInteger());
     }
 
     /**
@@ -9289,7 +9234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsLong());
     }
 
     /**
@@ -9297,7 +9242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsLocalDateTime());
     }
 
     /**
@@ -9305,7 +9250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsLocalTime());
     }
 
     /**
@@ -9313,7 +9258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationString3AsString());
     }
 
     /**
@@ -9321,7 +9266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsBoolean());
     }
 
     /**
@@ -9329,7 +9274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsBigInteger());
     }
 
     /**
@@ -9337,7 +9282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString3AsURL());
     }
 
     /**
@@ -9345,7 +9290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsInteger());
     }
 
     /**
@@ -9353,7 +9298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsLong());
     }
 
     /**
@@ -9361,7 +9306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsLocalDateTime());
     }
 
     /**
@@ -9369,7 +9314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsLocalTime());
     }
 
     /**
@@ -9377,7 +9322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationString4AsString());
     }
 
     /**
@@ -9385,7 +9330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsBoolean());
     }
 
     /**
@@ -9393,7 +9338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsBigInteger());
     }
 
     /**
@@ -9401,7 +9346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString4AsURL());
     }
 
     /**
@@ -9409,7 +9354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsInteger());
     }
 
     /**
@@ -9417,7 +9362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsLong());
     }
 
     /**
@@ -9425,7 +9370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsLocalDateTime());
     }
 
     /**
@@ -9433,7 +9378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsLocalTime());
     }
 
     /**
@@ -9441,7 +9386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationString5AsString());
     }
 
     /**
@@ -9449,7 +9394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsBoolean());
     }
 
     /**
@@ -9457,7 +9402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsBigInteger());
     }
 
     /**
@@ -9465,7 +9410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationString5AsURL());
     }
 
     /**
@@ -9473,7 +9418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsInteger());
     }
 
     /**
@@ -9481,7 +9426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsLong());
     }
 
     /**
@@ -9489,7 +9434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsLocalDateTime());
     }
 
     /**
@@ -9497,7 +9442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsLocalTime());
     }
 
     /**
@@ -9505,7 +9450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsString());
     }
 
     /**
@@ -9513,7 +9458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsBoolean());
     }
 
     /**
@@ -9521,7 +9466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsBigInteger());
     }
 
     /**
@@ -9529,7 +9474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameAsURL());
     }
 
     /**
@@ -9537,7 +9482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsInteger());
     }
 
     /**
@@ -9545,7 +9490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsLong());
     }
 
     /**
@@ -9553,7 +9498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsLocalDateTime());
     }
 
     /**
@@ -9561,7 +9506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsLocalTime());
     }
 
     /**
@@ -9569,7 +9514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsString());
     }
 
     /**
@@ -9577,7 +9522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsBoolean());
     }
 
     /**
@@ -9585,7 +9530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsBigInteger());
     }
 
     /**
@@ -9593,7 +9538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameStringAsURL());
     }
 
     /**
@@ -9601,7 +9546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsInteger());
     }
 
     /**
@@ -9609,7 +9554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsLong());
     }
 
     /**
@@ -9617,7 +9562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsLocalDateTime());
     }
 
     /**
@@ -9625,7 +9570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsLocalTime());
     }
 
     /**
@@ -9633,7 +9578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsString());
     }
 
     /**
@@ -9641,7 +9586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsBoolean());
     }
 
     /**
@@ -9649,7 +9594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsBigInteger());
     }
 
     /**
@@ -9657,7 +9602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString1AsURL());
     }
 
     /**
@@ -9665,7 +9610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsInteger());
     }
 
     /**
@@ -9673,7 +9618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsLong());
     }
 
     /**
@@ -9681,7 +9626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsLocalDateTime());
     }
 
     /**
@@ -9689,7 +9634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsLocalTime());
     }
 
     /**
@@ -9697,7 +9642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsString());
     }
 
     /**
@@ -9705,7 +9650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsBoolean());
     }
 
     /**
@@ -9713,7 +9658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsBigInteger());
     }
 
     /**
@@ -9721,7 +9666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString2AsURL());
     }
 
     /**
@@ -9729,7 +9674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsInteger());
     }
 
     /**
@@ -9737,7 +9682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsLong());
     }
 
     /**
@@ -9745,7 +9690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsLocalDateTime());
     }
 
     /**
@@ -9753,7 +9698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsLocalTime());
     }
 
     /**
@@ -9761,7 +9706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsString());
     }
 
     /**
@@ -9769,7 +9714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsBoolean());
     }
 
     /**
@@ -9777,7 +9722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsBigInteger());
     }
 
     /**
@@ -9785,7 +9730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString3AsURL());
     }
 
     /**
@@ -9793,7 +9738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsInteger());
     }
 
     /**
@@ -9801,7 +9746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsLong());
     }
 
     /**
@@ -9809,7 +9754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsLocalDateTime());
     }
 
     /**
@@ -9817,7 +9762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsLocalTime());
     }
 
     /**
@@ -9825,7 +9770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsString());
     }
 
     /**
@@ -9833,7 +9778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsBoolean());
     }
 
     /**
@@ -9841,7 +9786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsBigInteger());
     }
 
     /**
@@ -9849,7 +9794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString4AsURL());
     }
 
     /**
@@ -9857,7 +9802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsInteger());
     }
 
     /**
@@ -9865,7 +9810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsLong());
     }
 
     /**
@@ -9873,7 +9818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsLocalDateTime());
     }
 
     /**
@@ -9881,7 +9826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsLocalTime());
     }
 
     /**
@@ -9889,7 +9834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsString());
     }
 
     /**
@@ -9897,7 +9842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsBoolean());
     }
 
     /**
@@ -9905,7 +9850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsBigInteger());
     }
 
     /**
@@ -9913,7 +9858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationFirstFrameString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationFirstFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationFirstFrameString5AsURL());
     }
 
     /**
@@ -9921,7 +9866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsInteger());
     }
 
     /**
@@ -9929,7 +9874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsLong());
     }
 
     /**
@@ -9937,7 +9882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsLocalDateTime());
     }
 
     /**
@@ -9945,7 +9890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsLocalTime());
     }
 
     /**
@@ -9953,7 +9898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameAsString());
     }
 
     /**
@@ -9961,7 +9906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsBoolean());
     }
 
     /**
@@ -9969,7 +9914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsBigInteger());
     }
 
     /**
@@ -9977,7 +9922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameAsURL());
     }
 
     /**
@@ -9985,7 +9930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsInteger());
     }
 
     /**
@@ -9993,7 +9938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsLong());
     }
 
     /**
@@ -10001,7 +9946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsLocalDateTime());
     }
 
     /**
@@ -10009,7 +9954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsLocalTime());
     }
 
     /**
@@ -10017,7 +9962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsString());
     }
 
     /**
@@ -10025,7 +9970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsBoolean());
     }
 
     /**
@@ -10033,7 +9978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsBigInteger());
     }
 
     /**
@@ -10041,7 +9986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameStringAsURL());
     }
 
     /**
@@ -10049,7 +9994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsInteger());
     }
 
     /**
@@ -10057,7 +10002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsLong());
     }
 
     /**
@@ -10065,7 +10010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsLocalDateTime());
     }
 
     /**
@@ -10073,7 +10018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsLocalTime());
     }
 
     /**
@@ -10081,7 +10026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsString());
     }
 
     /**
@@ -10089,7 +10034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsBoolean());
     }
 
     /**
@@ -10097,7 +10042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsBigInteger());
     }
 
     /**
@@ -10105,7 +10050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString1AsURL());
     }
 
     /**
@@ -10113,7 +10058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsInteger());
     }
 
     /**
@@ -10121,7 +10066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsLong());
     }
 
     /**
@@ -10129,7 +10074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsLocalDateTime());
     }
 
     /**
@@ -10137,7 +10082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsLocalTime());
     }
 
     /**
@@ -10145,7 +10090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsString());
     }
 
     /**
@@ -10153,7 +10098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsBoolean());
     }
 
     /**
@@ -10161,7 +10106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsBigInteger());
     }
 
     /**
@@ -10169,7 +10114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString2AsURL());
     }
 
     /**
@@ -10177,7 +10122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsInteger());
     }
 
     /**
@@ -10185,7 +10130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsLong());
     }
 
     /**
@@ -10193,7 +10138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsLocalDateTime());
     }
 
     /**
@@ -10201,7 +10146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsLocalTime());
     }
 
     /**
@@ -10209,7 +10154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsString());
     }
 
     /**
@@ -10217,7 +10162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsBoolean());
     }
 
     /**
@@ -10225,7 +10170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsBigInteger());
     }
 
     /**
@@ -10233,7 +10178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString3AsURL());
     }
 
     /**
@@ -10241,7 +10186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsInteger());
     }
 
     /**
@@ -10249,7 +10194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsLong());
     }
 
     /**
@@ -10257,7 +10202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsLocalDateTime());
     }
 
     /**
@@ -10265,7 +10210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsLocalTime());
     }
 
     /**
@@ -10273,7 +10218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsString());
     }
 
     /**
@@ -10281,7 +10226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsBoolean());
     }
 
     /**
@@ -10289,7 +10234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsBigInteger());
     }
 
     /**
@@ -10297,7 +10242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString4AsURL());
     }
 
     /**
@@ -10305,7 +10250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsInteger());
     }
 
     /**
@@ -10313,7 +10258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsLong());
     }
 
     /**
@@ -10321,7 +10266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsLocalDateTime());
     }
 
     /**
@@ -10329,7 +10274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsLocalTime());
     }
 
     /**
@@ -10337,7 +10282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsString());
     }
 
     /**
@@ -10345,7 +10290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsBoolean());
     }
 
     /**
@@ -10353,7 +10298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsBigInteger());
     }
 
     /**
@@ -10361,7 +10306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceDurationLastFrameString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceDurationLastFrameString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceDurationLastFrameString5AsURL());
     }
 
     /**
@@ -10369,7 +10314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsInteger());
     }
 
     /**
@@ -10377,7 +10322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsLong());
     }
 
     /**
@@ -10385,7 +10330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsLocalDateTime());
     }
 
     /**
@@ -10393,7 +10338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsLocalTime());
     }
 
     /**
@@ -10401,7 +10346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceFrameCountAsString());
     }
 
     /**
@@ -10409,7 +10354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsBoolean());
     }
 
     /**
@@ -10417,7 +10362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsBigInteger());
     }
 
     /**
@@ -10425,7 +10370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceFrameCountAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceFrameCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceFrameCountAsURL());
     }
 
     /**
@@ -10433,7 +10378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsInteger());
     }
 
     /**
@@ -10441,7 +10386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsLong());
     }
 
     /**
@@ -10449,7 +10394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsLocalDateTime());
     }
 
     /**
@@ -10457,7 +10402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsLocalTime());
     }
 
     /**
@@ -10465,7 +10410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeAsString());
     }
 
     /**
@@ -10473,7 +10418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsBoolean());
     }
 
     /**
@@ -10481,7 +10426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsBigInteger());
     }
 
     /**
@@ -10489,7 +10434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeAsURL());
     }
 
     /**
@@ -10497,7 +10442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsInteger());
     }
 
     /**
@@ -10505,7 +10450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsLong());
     }
 
     /**
@@ -10513,7 +10458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsLocalDateTime());
     }
 
     /**
@@ -10521,7 +10466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsLocalTime());
     }
 
     /**
@@ -10529,7 +10474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeStringAsString());
     }
 
     /**
@@ -10537,7 +10482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsBoolean());
     }
 
     /**
@@ -10545,7 +10490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsBigInteger());
     }
 
     /**
@@ -10553,7 +10498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeStringAsURL());
     }
 
     /**
@@ -10561,7 +10506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsInteger());
     }
 
     /**
@@ -10569,7 +10514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsLong());
     }
 
     /**
@@ -10577,7 +10522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsLocalDateTime());
     }
 
     /**
@@ -10585,7 +10530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsLocalTime());
     }
 
     /**
@@ -10593,7 +10538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeString1AsString());
     }
 
     /**
@@ -10601,7 +10546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsBoolean());
     }
 
     /**
@@ -10609,7 +10554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsBigInteger());
     }
 
     /**
@@ -10617,7 +10562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString1AsURL());
     }
 
     /**
@@ -10625,7 +10570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsInteger());
     }
 
     /**
@@ -10633,7 +10578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsLong());
     }
 
     /**
@@ -10641,7 +10586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsLocalDateTime());
     }
 
     /**
@@ -10649,7 +10594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsLocalTime());
     }
 
     /**
@@ -10657,7 +10602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeString2AsString());
     }
 
     /**
@@ -10665,7 +10610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsBoolean());
     }
 
     /**
@@ -10673,7 +10618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsBigInteger());
     }
 
     /**
@@ -10681,7 +10626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString2AsURL());
     }
 
     /**
@@ -10689,7 +10634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsInteger());
     }
 
     /**
@@ -10697,7 +10642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsLong());
     }
 
     /**
@@ -10705,7 +10650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsLocalDateTime());
     }
 
     /**
@@ -10713,7 +10658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsLocalTime());
     }
 
     /**
@@ -10721,7 +10666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeString3AsString());
     }
 
     /**
@@ -10729,7 +10674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsBoolean());
     }
 
     /**
@@ -10737,7 +10682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsBigInteger());
     }
 
     /**
@@ -10745,7 +10690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString3AsURL());
     }
 
     /**
@@ -10753,7 +10698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsInteger());
     }
 
     /**
@@ -10761,7 +10706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsLong());
     }
 
     /**
@@ -10769,7 +10714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsLocalDateTime());
     }
 
     /**
@@ -10777,7 +10722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsLocalTime());
     }
 
     /**
@@ -10785,7 +10730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeString4AsString());
     }
 
     /**
@@ -10793,7 +10738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsBoolean());
     }
 
     /**
@@ -10801,7 +10746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsBigInteger());
     }
 
     /**
@@ -10809,7 +10754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString4AsURL());
     }
 
     /**
@@ -10817,7 +10762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsInteger());
     }
 
     /**
@@ -10825,7 +10770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsLong());
     }
 
     /**
@@ -10833,7 +10778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsLocalDateTime());
     }
 
     /**
@@ -10841,7 +10786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsLocalTime());
     }
 
     /**
@@ -10849,7 +10794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeString5AsString());
     }
 
     /**
@@ -10857,7 +10802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsBoolean());
     }
 
     /**
@@ -10865,7 +10810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsBigInteger());
     }
 
     /**
@@ -10873,7 +10818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeString5AsURL());
     }
 
     /**
@@ -10881,7 +10826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsInteger());
     }
 
     /**
@@ -10889,7 +10834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsLong());
     }
 
     /**
@@ -10897,7 +10842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsLocalDateTime());
     }
 
     /**
@@ -10905,7 +10850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsLocalTime());
     }
 
     /**
@@ -10913,7 +10858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsString());
     }
 
     /**
@@ -10921,7 +10866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsBoolean());
     }
 
     /**
@@ -10929,7 +10874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsBigInteger());
     }
 
     /**
@@ -10937,7 +10882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedAsURL());
     }
 
     /**
@@ -10945,7 +10890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsInteger());
     }
 
     /**
@@ -10953,7 +10898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsLong());
     }
 
     /**
@@ -10961,7 +10906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -10969,7 +10914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsLocalTime());
     }
 
     /**
@@ -10977,7 +10922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsString());
     }
 
     /**
@@ -10985,7 +10930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsBoolean());
     }
 
     /**
@@ -10993,7 +10938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsBigInteger());
     }
 
     /**
@@ -11001,7 +10946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedStringAsURL());
     }
 
     /**
@@ -11009,7 +10954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsInteger());
     }
 
     /**
@@ -11017,7 +10962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsLong());
     }
 
     /**
@@ -11025,7 +10970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsLocalDateTime());
     }
 
     /**
@@ -11033,7 +10978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsLocalTime());
     }
 
     /**
@@ -11041,7 +10986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsString());
     }
 
     /**
@@ -11049,7 +10994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsBoolean());
     }
 
     /**
@@ -11057,7 +11002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsBigInteger());
     }
 
     /**
@@ -11065,7 +11010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString1AsURL());
     }
 
     /**
@@ -11073,7 +11018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsInteger());
     }
 
     /**
@@ -11081,7 +11026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsLong());
     }
 
     /**
@@ -11089,7 +11034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsLocalDateTime());
     }
 
     /**
@@ -11097,7 +11042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsLocalTime());
     }
 
     /**
@@ -11105,7 +11050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsString());
     }
 
     /**
@@ -11113,7 +11058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsBoolean());
     }
 
     /**
@@ -11121,7 +11066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsBigInteger());
     }
 
     /**
@@ -11129,7 +11074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString2AsURL());
     }
 
     /**
@@ -11137,7 +11082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsInteger());
     }
 
     /**
@@ -11145,7 +11090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsLong());
     }
 
     /**
@@ -11153,7 +11098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsLocalDateTime());
     }
 
     /**
@@ -11161,7 +11106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsLocalTime());
     }
 
     /**
@@ -11169,7 +11114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsString());
     }
 
     /**
@@ -11177,7 +11122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsBoolean());
     }
 
     /**
@@ -11185,7 +11130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsBigInteger());
     }
 
     /**
@@ -11193,7 +11138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString3AsURL());
     }
 
     /**
@@ -11201,7 +11146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsInteger());
     }
 
     /**
@@ -11209,7 +11154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsLong());
     }
 
     /**
@@ -11217,7 +11162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsLocalDateTime());
     }
 
     /**
@@ -11225,7 +11170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsLocalTime());
     }
 
     /**
@@ -11233,7 +11178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsString());
     }
 
     /**
@@ -11241,7 +11186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsBoolean());
     }
 
     /**
@@ -11249,7 +11194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsBigInteger());
     }
 
     /**
@@ -11257,7 +11202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString4AsURL());
     }
 
     /**
@@ -11265,7 +11210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsInteger());
     }
 
     /**
@@ -11273,7 +11218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsLong());
     }
 
     /**
@@ -11281,7 +11226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsLocalDateTime());
     }
 
     /**
@@ -11289,7 +11234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsLocalTime());
     }
 
     /**
@@ -11297,7 +11242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsString());
     }
 
     /**
@@ -11305,7 +11250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsBoolean());
     }
 
     /**
@@ -11313,7 +11258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsBigInteger());
     }
 
     /**
@@ -11321,7 +11266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedString5AsURL());
     }
 
     /**
@@ -11329,7 +11274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsInteger());
     }
 
     /**
@@ -11337,7 +11282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsLong());
     }
 
     /**
@@ -11345,7 +11290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsLocalDateTime());
     }
 
     /**
@@ -11353,7 +11298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsLocalTime());
     }
 
     /**
@@ -11361,7 +11306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsString());
     }
 
     /**
@@ -11369,7 +11314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsBoolean());
     }
 
     /**
@@ -11377,7 +11322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsBigInteger());
     }
 
     /**
@@ -11385,7 +11330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeEncodedProportionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeEncodedProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeEncodedProportionAsURL());
     }
 
     /**
@@ -11393,7 +11338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsInteger());
     }
 
     /**
@@ -11401,7 +11346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsLong());
     }
 
     /**
@@ -11409,7 +11354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsLocalDateTime());
     }
 
     /**
@@ -11417,7 +11362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsLocalTime());
     }
 
     /**
@@ -11425,7 +11370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsString());
     }
 
     /**
@@ -11433,7 +11378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsBoolean());
     }
 
     /**
@@ -11441,7 +11386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsBigInteger());
     }
 
     /**
@@ -11449,7 +11394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSourceStreamSizeProportionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSourceStreamSizeProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSourceStreamSizeProportionAsURL());
     }
 
     /**
@@ -11457,7 +11402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsInteger());
     }
 
     /**
@@ -11465,7 +11410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsLong());
     }
 
     /**
@@ -11473,7 +11418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsLocalDateTime());
     }
 
     /**
@@ -11481,7 +11426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsLocalTime());
     }
 
     /**
@@ -11489,7 +11434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStatusAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStatusAsString());
     }
 
     /**
@@ -11497,7 +11442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsBoolean());
     }
 
     /**
@@ -11505,7 +11450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsBigInteger());
     }
 
     /**
@@ -11513,7 +11458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStatusAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStatusAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStatusAsURL());
     }
 
     /**
@@ -11521,7 +11466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsInteger() {
-        assertEquals(Integer.valueOf(8), JMetaDataText_Test.jMetaDataText.getStreamCountAsInteger());
+        assertEquals(Integer.valueOf(8), AbstractTest.jMetaDataText.getStreamCountAsInteger());
     }
 
     /**
@@ -11529,7 +11474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsLong() {
-        assertEquals(Long.valueOf(8), JMetaDataText_Test.jMetaDataText.getStreamCountAsLong());
+        assertEquals(Long.valueOf(8), AbstractTest.jMetaDataText.getStreamCountAsLong());
     }
 
     /**
@@ -11537,7 +11482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamCountAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamCountAsLocalDateTime());
     }
 
     /**
@@ -11545,7 +11490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamCountAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamCountAsLocalTime());
     }
 
     /**
@@ -11553,7 +11498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsString() {
-        assertEquals("8", JMetaDataText_Test.jMetaDataText.getStreamCountAsString());
+        assertEquals("8", AbstractTest.jMetaDataText.getStreamCountAsString());
     }
 
     /**
@@ -11561,7 +11506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamCountAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamCountAsBoolean());
     }
 
     /**
@@ -11569,7 +11514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(8), JMetaDataText_Test.jMetaDataText.getStreamCountAsBigInteger());
+        assertEquals(BigInteger.valueOf(8), AbstractTest.jMetaDataText.getStreamCountAsBigInteger());
     }
 
     /**
@@ -11577,7 +11522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamCountAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamCountAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamCountAsURL());
     }
 
     /**
@@ -11585,7 +11530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsInteger());
     }
 
     /**
@@ -11593,7 +11538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsLong());
     }
 
     /**
@@ -11601,7 +11546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsLocalDateTime());
     }
 
     /**
@@ -11609,7 +11554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsLocalTime());
     }
 
     /**
@@ -11617,7 +11562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsString() {
-        assertEquals("Text", JMetaDataText_Test.jMetaDataText.getStreamKindAsString());
+        assertEquals("Text", AbstractTest.jMetaDataText.getStreamKindAsString());
     }
 
     /**
@@ -11625,7 +11570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsBoolean());
     }
 
     /**
@@ -11633,7 +11578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsBigInteger());
     }
 
     /**
@@ -11641,7 +11586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindAsURL());
     }
 
     /**
@@ -11649,7 +11594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsInteger());
     }
 
     /**
@@ -11657,7 +11602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsLong());
     }
 
     /**
@@ -11665,7 +11610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsLocalDateTime());
     }
 
     /**
@@ -11673,7 +11618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsLocalTime());
     }
 
     /**
@@ -11681,7 +11626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsString() {
-        assertEquals("Text", JMetaDataText_Test.jMetaDataText.getStreamKindStringAsString());
+        assertEquals("Text", AbstractTest.jMetaDataText.getStreamKindStringAsString());
     }
 
     /**
@@ -11689,7 +11634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsBoolean());
     }
 
     /**
@@ -11697,7 +11642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsBigInteger());
     }
 
     /**
@@ -11705,7 +11650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindStringAsURL());
     }
 
     /**
@@ -11713,7 +11658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsInteger() {
-        assertEquals(Integer.valueOf(0), JMetaDataText_Test.jMetaDataText.getStreamKindIDAsInteger());
+        assertEquals(Integer.valueOf(0), AbstractTest.jMetaDataText.getStreamKindIDAsInteger());
     }
 
     /**
@@ -11721,7 +11666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsLong() {
-        assertEquals(Long.valueOf(0), JMetaDataText_Test.jMetaDataText.getStreamKindIDAsLong());
+        assertEquals(Long.valueOf(0), AbstractTest.jMetaDataText.getStreamKindIDAsLong());
     }
 
     /**
@@ -11729,7 +11674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindIDAsLocalDateTime());
     }
 
     /**
@@ -11737,7 +11682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindIDAsLocalTime());
     }
 
     /**
@@ -11745,7 +11690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsString() {
-        assertEquals("0", JMetaDataText_Test.jMetaDataText.getStreamKindIDAsString());
+        assertEquals("0", AbstractTest.jMetaDataText.getStreamKindIDAsString());
     }
 
     /**
@@ -11753,7 +11698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindIDAsBoolean());
     }
 
     /**
@@ -11761,7 +11706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsBigInteger() {
-        assertEquals(BigInteger.valueOf(0), JMetaDataText_Test.jMetaDataText.getStreamKindIDAsBigInteger());
+        assertEquals(BigInteger.valueOf(0), AbstractTest.jMetaDataText.getStreamKindIDAsBigInteger());
     }
 
     /**
@@ -11769,7 +11714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindIDAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindIDAsURL());
     }
 
     /**
@@ -11777,7 +11722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsInteger() {
-        assertEquals(Integer.valueOf(1), JMetaDataText_Test.jMetaDataText.getStreamKindPosAsInteger());
+        assertEquals(Integer.valueOf(1), AbstractTest.jMetaDataText.getStreamKindPosAsInteger());
     }
 
     /**
@@ -11785,7 +11730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsLong() {
-        assertEquals(Long.valueOf(1), JMetaDataText_Test.jMetaDataText.getStreamKindPosAsLong());
+        assertEquals(Long.valueOf(1), AbstractTest.jMetaDataText.getStreamKindPosAsLong());
     }
 
     /**
@@ -11793,7 +11738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindPosAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindPosAsLocalDateTime());
     }
 
     /**
@@ -11801,7 +11746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindPosAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindPosAsLocalTime());
     }
 
     /**
@@ -11809,7 +11754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsString() {
-        assertEquals("1", JMetaDataText_Test.jMetaDataText.getStreamKindPosAsString());
+        assertEquals("1", AbstractTest.jMetaDataText.getStreamKindPosAsString());
     }
 
     /**
@@ -11817,7 +11762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindPosAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindPosAsBoolean());
     }
 
     /**
@@ -11825,7 +11770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1), JMetaDataText_Test.jMetaDataText.getStreamKindPosAsBigInteger());
+        assertEquals(BigInteger.valueOf(1), AbstractTest.jMetaDataText.getStreamKindPosAsBigInteger());
     }
 
     /**
@@ -11833,7 +11778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamKindPosAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamKindPosAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamKindPosAsURL());
     }
 
     /**
@@ -11841,7 +11786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsInteger() {
-        assertEquals(Integer.valueOf(3), JMetaDataText_Test.jMetaDataText.getStreamOrderAsInteger());
+        assertEquals(Integer.valueOf(3), AbstractTest.jMetaDataText.getStreamOrderAsInteger());
     }
 
     /**
@@ -11849,7 +11794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsLong() {
-        assertEquals(Long.valueOf(3), JMetaDataText_Test.jMetaDataText.getStreamOrderAsLong());
+        assertEquals(Long.valueOf(3), AbstractTest.jMetaDataText.getStreamOrderAsLong());
     }
 
     /**
@@ -11857,7 +11802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamOrderAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamOrderAsLocalDateTime());
     }
 
     /**
@@ -11865,7 +11810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamOrderAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamOrderAsLocalTime());
     }
 
     /**
@@ -11873,7 +11818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsString() {
-        assertEquals("3", JMetaDataText_Test.jMetaDataText.getStreamOrderAsString());
+        assertEquals("3", AbstractTest.jMetaDataText.getStreamOrderAsString());
     }
 
     /**
@@ -11881,7 +11826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamOrderAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamOrderAsBoolean());
     }
 
     /**
@@ -11889,7 +11834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsBigInteger() {
-        assertEquals(BigInteger.valueOf(3), JMetaDataText_Test.jMetaDataText.getStreamOrderAsBigInteger());
+        assertEquals(BigInteger.valueOf(3), AbstractTest.jMetaDataText.getStreamOrderAsBigInteger());
     }
 
     /**
@@ -11897,7 +11842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamOrderAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamOrderAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamOrderAsURL());
     }
 
     /**
@@ -11905,7 +11850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsInteger());
     }
 
     /**
@@ -11913,7 +11858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsLong());
     }
 
     /**
@@ -11921,7 +11866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsLocalDateTime());
     }
 
     /**
@@ -11929,7 +11874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsLocalTime());
     }
 
     /**
@@ -11937,7 +11882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeAsString());
     }
 
     /**
@@ -11945,7 +11890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsBoolean());
     }
 
     /**
@@ -11953,7 +11898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsBigInteger());
     }
 
     /**
@@ -11961,7 +11906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeAsURL());
     }
 
     /**
@@ -11969,7 +11914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsInteger());
     }
 
     /**
@@ -11977,7 +11922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsLong());
     }
 
     /**
@@ -11985,7 +11930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsLocalDateTime());
     }
 
     /**
@@ -11993,7 +11938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsLocalTime());
     }
 
     /**
@@ -12001,7 +11946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeStringAsString());
     }
 
     /**
@@ -12009,7 +11954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsBoolean());
     }
 
     /**
@@ -12017,7 +11962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsBigInteger());
     }
 
     /**
@@ -12025,7 +11970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeStringAsURL());
     }
 
     /**
@@ -12033,7 +11978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsInteger());
     }
 
     /**
@@ -12041,7 +11986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsLong());
     }
 
     /**
@@ -12049,7 +11994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsLocalDateTime());
     }
 
     /**
@@ -12057,7 +12002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsLocalTime());
     }
 
     /**
@@ -12065,7 +12010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeString1AsString());
     }
 
     /**
@@ -12073,7 +12018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsBoolean());
     }
 
     /**
@@ -12081,7 +12026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsBigInteger());
     }
 
     /**
@@ -12089,7 +12034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString1AsURL());
     }
 
     /**
@@ -12097,7 +12042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsInteger());
     }
 
     /**
@@ -12105,7 +12050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsLong());
     }
 
     /**
@@ -12113,7 +12058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsLocalDateTime());
     }
 
     /**
@@ -12121,7 +12066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsLocalTime());
     }
 
     /**
@@ -12129,7 +12074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeString2AsString());
     }
 
     /**
@@ -12137,7 +12082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsBoolean());
     }
 
     /**
@@ -12145,7 +12090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsBigInteger());
     }
 
     /**
@@ -12153,7 +12098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString2AsURL());
     }
 
     /**
@@ -12161,7 +12106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsInteger());
     }
 
     /**
@@ -12169,7 +12114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsLong());
     }
 
     /**
@@ -12177,7 +12122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsLocalDateTime());
     }
 
     /**
@@ -12185,7 +12130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsLocalTime());
     }
 
     /**
@@ -12193,7 +12138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeString3AsString());
     }
 
     /**
@@ -12201,7 +12146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsBoolean());
     }
 
     /**
@@ -12209,7 +12154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsBigInteger());
     }
 
     /**
@@ -12217,7 +12162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString3AsURL());
     }
 
     /**
@@ -12225,7 +12170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsInteger());
     }
 
     /**
@@ -12233,7 +12178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsLong());
     }
 
     /**
@@ -12241,7 +12186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsLocalDateTime());
     }
 
     /**
@@ -12249,7 +12194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsLocalTime());
     }
 
     /**
@@ -12257,7 +12202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeString4AsString());
     }
 
     /**
@@ -12265,7 +12210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsBoolean());
     }
 
     /**
@@ -12273,7 +12218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsBigInteger());
     }
 
     /**
@@ -12281,7 +12226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString4AsURL());
     }
 
     /**
@@ -12289,7 +12234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsInteger());
     }
 
     /**
@@ -12297,7 +12242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsLong());
     }
 
     /**
@@ -12305,7 +12250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsLocalDateTime());
     }
 
     /**
@@ -12313,7 +12258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsLocalTime());
     }
 
     /**
@@ -12321,7 +12266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeString5AsString());
     }
 
     /**
@@ -12329,7 +12274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsBoolean());
     }
 
     /**
@@ -12337,7 +12282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsBigInteger());
     }
 
     /**
@@ -12345,7 +12290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeString5AsURL());
     }
 
     /**
@@ -12353,7 +12298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsInteger());
     }
 
     /**
@@ -12361,7 +12306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsLong());
     }
 
     /**
@@ -12369,7 +12314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsLocalDateTime());
     }
 
     /**
@@ -12377,7 +12322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsLocalTime());
     }
 
     /**
@@ -12385,7 +12330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedAsString());
     }
 
     /**
@@ -12393,7 +12338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsBoolean());
     }
 
     /**
@@ -12401,7 +12346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsBigInteger());
     }
 
     /**
@@ -12409,7 +12354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedAsURL());
     }
 
     /**
@@ -12417,7 +12362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsInteger());
     }
 
     /**
@@ -12425,7 +12370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsLong());
     }
 
     /**
@@ -12433,7 +12378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsLocalDateTime());
     }
 
     /**
@@ -12441,7 +12386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsLocalTime());
     }
 
     /**
@@ -12449,7 +12394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsString());
     }
 
     /**
@@ -12457,7 +12402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsBoolean());
     }
 
     /**
@@ -12465,7 +12410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsBigInteger());
     }
 
     /**
@@ -12473,7 +12418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedStringAsURL());
     }
 
     /**
@@ -12481,7 +12426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsInteger());
     }
 
     /**
@@ -12489,7 +12434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsLong());
     }
 
     /**
@@ -12497,7 +12442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsLocalDateTime());
     }
 
     /**
@@ -12505,7 +12450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsLocalTime());
     }
 
     /**
@@ -12513,7 +12458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsString());
     }
 
     /**
@@ -12521,7 +12466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsBoolean());
     }
 
     /**
@@ -12529,7 +12474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsBigInteger());
     }
 
     /**
@@ -12537,7 +12482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString1AsURL());
     }
 
     /**
@@ -12545,7 +12490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsInteger());
     }
 
     /**
@@ -12553,7 +12498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsLong());
     }
 
     /**
@@ -12561,7 +12506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsLocalDateTime());
     }
 
     /**
@@ -12569,7 +12514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsLocalTime());
     }
 
     /**
@@ -12577,7 +12522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsString());
     }
 
     /**
@@ -12585,7 +12530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsBoolean());
     }
 
     /**
@@ -12593,7 +12538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsBigInteger());
     }
 
     /**
@@ -12601,7 +12546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString2AsURL());
     }
 
     /**
@@ -12609,7 +12554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsInteger());
     }
 
     /**
@@ -12617,7 +12562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsLong());
     }
 
     /**
@@ -12625,7 +12570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsLocalDateTime());
     }
 
     /**
@@ -12633,7 +12578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsLocalTime());
     }
 
     /**
@@ -12641,7 +12586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsString());
     }
 
     /**
@@ -12649,7 +12594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsBoolean());
     }
 
     /**
@@ -12657,7 +12602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsBigInteger());
     }
 
     /**
@@ -12665,7 +12610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString3AsURL());
     }
 
     /**
@@ -12673,7 +12618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsInteger());
     }
 
     /**
@@ -12681,7 +12626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsLong());
     }
 
     /**
@@ -12689,7 +12634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsLocalDateTime());
     }
 
     /**
@@ -12697,7 +12642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsLocalTime());
     }
 
     /**
@@ -12705,7 +12650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsString());
     }
 
     /**
@@ -12713,7 +12658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsBoolean());
     }
 
     /**
@@ -12721,7 +12666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsBigInteger());
     }
 
     /**
@@ -12729,7 +12674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString4AsURL());
     }
 
     /**
@@ -12737,7 +12682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsInteger());
     }
 
     /**
@@ -12745,7 +12690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsLong());
     }
 
     /**
@@ -12753,7 +12698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsLocalDateTime());
     }
 
     /**
@@ -12761,7 +12706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsLocalTime());
     }
 
     /**
@@ -12769,7 +12714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsString());
     }
 
     /**
@@ -12777,7 +12722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsBoolean());
     }
 
     /**
@@ -12785,7 +12730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsBigInteger());
     }
 
     /**
@@ -12793,7 +12738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeDemuxedString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeDemuxedString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeDemuxedString5AsURL());
     }
 
     /**
@@ -12801,7 +12746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsInteger());
     }
 
     /**
@@ -12809,7 +12754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsLong());
     }
 
     /**
@@ -12817,7 +12762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsLocalDateTime());
     }
 
     /**
@@ -12825,7 +12770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsLocalTime());
     }
 
     /**
@@ -12833,7 +12778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedAsString());
     }
 
     /**
@@ -12841,7 +12786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsBoolean());
     }
 
     /**
@@ -12849,7 +12794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsBigInteger());
     }
 
     /**
@@ -12857,7 +12802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedAsURL());
     }
 
     /**
@@ -12865,7 +12810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsInteger());
     }
 
     /**
@@ -12873,7 +12818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsLong());
     }
 
     /**
@@ -12881,7 +12826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsLocalDateTime());
     }
 
     /**
@@ -12889,7 +12834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsLocalTime());
     }
 
     /**
@@ -12897,7 +12842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsString());
     }
 
     /**
@@ -12905,7 +12850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsBoolean());
     }
 
     /**
@@ -12913,7 +12858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsBigInteger());
     }
 
     /**
@@ -12921,7 +12866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedStringAsURL());
     }
 
     /**
@@ -12929,7 +12874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsInteger());
     }
 
     /**
@@ -12937,7 +12882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsLong());
     }
 
     /**
@@ -12945,7 +12890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsLocalDateTime());
     }
 
     /**
@@ -12953,7 +12898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsLocalTime());
     }
 
     /**
@@ -12961,7 +12906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsString());
     }
 
     /**
@@ -12969,7 +12914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsBoolean());
     }
 
     /**
@@ -12977,7 +12922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsBigInteger());
     }
 
     /**
@@ -12985,7 +12930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString1AsURL());
     }
 
     /**
@@ -12993,7 +12938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsInteger());
     }
 
     /**
@@ -13001,7 +12946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsLong());
     }
 
     /**
@@ -13009,7 +12954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsLocalDateTime());
     }
 
     /**
@@ -13017,7 +12962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsLocalTime());
     }
 
     /**
@@ -13025,7 +12970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsString());
     }
 
     /**
@@ -13033,7 +12978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsBoolean());
     }
 
     /**
@@ -13041,7 +12986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsBigInteger());
     }
 
     /**
@@ -13049,7 +12994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString2AsURL());
     }
 
     /**
@@ -13057,7 +13002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsInteger());
     }
 
     /**
@@ -13065,7 +13010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsLong());
     }
 
     /**
@@ -13073,7 +13018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsLocalDateTime());
     }
 
     /**
@@ -13081,7 +13026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsLocalTime());
     }
 
     /**
@@ -13089,7 +13034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsString());
     }
 
     /**
@@ -13097,7 +13042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsBoolean());
     }
 
     /**
@@ -13105,7 +13050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsBigInteger());
     }
 
     /**
@@ -13113,7 +13058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString3AsURL());
     }
 
     /**
@@ -13121,7 +13066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsInteger());
     }
 
     /**
@@ -13129,7 +13074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsLong());
     }
 
     /**
@@ -13137,7 +13082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsLocalDateTime());
     }
 
     /**
@@ -13145,7 +13090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsLocalTime());
     }
 
     /**
@@ -13153,7 +13098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsString());
     }
 
     /**
@@ -13161,7 +13106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsBoolean());
     }
 
     /**
@@ -13169,7 +13114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsBigInteger());
     }
 
     /**
@@ -13177,7 +13122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString4AsURL());
     }
 
     /**
@@ -13185,7 +13130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsInteger());
     }
 
     /**
@@ -13193,7 +13138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsLong());
     }
 
     /**
@@ -13201,7 +13146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsLocalDateTime());
     }
 
     /**
@@ -13209,7 +13154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsLocalTime());
     }
 
     /**
@@ -13217,7 +13162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsString());
     }
 
     /**
@@ -13225,7 +13170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsBoolean());
     }
 
     /**
@@ -13233,7 +13178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsBigInteger());
     }
 
     /**
@@ -13241,7 +13186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedString5AsURL());
     }
 
     /**
@@ -13249,7 +13194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsInteger());
     }
 
     /**
@@ -13257,7 +13202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsLong());
     }
 
     /**
@@ -13265,7 +13210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsLocalDateTime());
     }
 
     /**
@@ -13273,7 +13218,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsLocalTime());
     }
 
     /**
@@ -13281,7 +13226,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsString());
     }
 
     /**
@@ -13289,7 +13234,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsBoolean());
     }
 
     /**
@@ -13297,7 +13242,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsBigInteger());
     }
 
     /**
@@ -13305,7 +13250,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeEncodedProportionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeEncodedProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeEncodedProportionAsURL());
     }
 
     /**
@@ -13313,7 +13258,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsInteger());
     }
 
     /**
@@ -13321,7 +13266,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsLong());
     }
 
     /**
@@ -13329,7 +13274,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsLocalDateTime());
     }
 
     /**
@@ -13337,7 +13282,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsLocalTime());
     }
 
     /**
@@ -13345,7 +13290,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getStreamSizeProportionAsString());
     }
 
     /**
@@ -13353,7 +13298,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsBoolean());
     }
 
     /**
@@ -13361,7 +13306,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsBigInteger());
     }
 
     /**
@@ -13369,7 +13314,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetStreamSizeProportionAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getStreamSizeProportionAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getStreamSizeProportionAsURL());
     }
 
     /**
@@ -13377,7 +13322,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsInteger());
     }
 
     /**
@@ -13385,7 +13330,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsLong());
     }
 
     /**
@@ -13393,7 +13338,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsLocalDateTime());
     }
 
     /**
@@ -13401,7 +13346,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsLocalTime());
     }
 
     /**
@@ -13409,7 +13354,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getSummaryAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getSummaryAsString());
     }
 
     /**
@@ -13417,7 +13362,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsBoolean());
     }
 
     /**
@@ -13425,7 +13370,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsBigInteger());
     }
 
     /**
@@ -13433,7 +13378,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetSummaryAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getSummaryAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getSummaryAsURL());
     }
 
     /**
@@ -13441,7 +13386,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsInteger());
     }
 
     /**
@@ -13449,7 +13394,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsLong());
     }
 
     /**
@@ -13457,7 +13402,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsLocalDateTime());
     }
 
     /**
@@ -13465,7 +13410,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsLocalTime());
     }
 
     /**
@@ -13473,7 +13418,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getTaggedDateAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getTaggedDateAsString());
     }
 
     /**
@@ -13481,7 +13426,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsBoolean());
     }
 
     /**
@@ -13489,7 +13434,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsBigInteger());
     }
 
     /**
@@ -13497,7 +13442,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTaggedDateAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTaggedDateAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getTaggedDateAsURL());
     }
 
     /**
@@ -13505,7 +13450,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsInteger());
     }
 
     /**
@@ -13513,7 +13458,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsLong());
     }
 
     /**
@@ -13521,7 +13466,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsLocalDateTime());
     }
 
     /**
@@ -13529,7 +13474,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsLocalTime());
     }
 
     /**
@@ -13537,7 +13482,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsString() {
-        assertEquals("English", JMetaDataText_Test.jMetaDataText.getTitleAsString());
+        assertEquals("English", AbstractTest.jMetaDataText.getTitleAsString());
     }
 
     /**
@@ -13545,7 +13490,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsBoolean());
     }
 
     /**
@@ -13553,7 +13498,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsBigInteger());
     }
 
     /**
@@ -13561,7 +13506,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetTitleAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getTitleAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getTitleAsURL());
     }
 
     /**
@@ -13569,7 +13514,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDAsInteger());
     }
 
     /**
@@ -13577,7 +13522,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsLong() {
-        assertEquals(new Long("5769028810173530433"), JMetaDataText_Test.jMetaDataText.getUniqueIDAsLong());
+        assertEquals(new Long("5769028810173530433"), AbstractTest.jMetaDataText.getUniqueIDAsLong());
     }
 
     /**
@@ -13585,7 +13530,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDAsLocalDateTime());
     }
 
     /**
@@ -13593,7 +13538,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDAsLocalTime());
     }
 
     /**
@@ -13601,7 +13546,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsString() {
-        assertEquals("5769028810173530433", JMetaDataText_Test.jMetaDataText.getUniqueIDAsString());
+        assertEquals("5769028810173530433", AbstractTest.jMetaDataText.getUniqueIDAsString());
     }
 
     /**
@@ -13609,7 +13554,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDAsBoolean());
     }
 
     /**
@@ -13617,7 +13562,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsBigInteger() {
-        assertEquals(new BigInteger("5769028810173530433"), JMetaDataText_Test.jMetaDataText.getUniqueIDAsBigInteger());
+        assertEquals(new BigInteger("5769028810173530433"), AbstractTest.jMetaDataText.getUniqueIDAsBigInteger());
     }
 
     /**
@@ -13625,7 +13570,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDAsURL());
     }
 
     /**
@@ -13633,7 +13578,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsInteger());
     }
 
     /**
@@ -13641,7 +13586,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsLong());
     }
 
     /**
@@ -13649,7 +13594,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsLocalDateTime());
     }
 
     /**
@@ -13657,7 +13602,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsLocalTime());
     }
 
     /**
@@ -13665,7 +13610,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getUniqueIDStringAsString());
     }
 
     /**
@@ -13673,7 +13618,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsBoolean());
     }
 
     /**
@@ -13681,7 +13626,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsBigInteger());
     }
 
     /**
@@ -13689,7 +13634,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetUniqueIDStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getUniqueIDStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getUniqueIDStringAsURL());
     }
 
     /**
@@ -13697,7 +13642,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsInteger());
     }
 
     /**
@@ -13705,7 +13650,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsLong());
     }
 
     /**
@@ -13713,7 +13658,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsLocalDateTime());
     }
 
     /**
@@ -13721,7 +13666,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsLocalTime());
     }
 
     /**
@@ -13729,7 +13674,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayAsString());
     }
 
     /**
@@ -13737,7 +13682,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsBoolean());
     }
 
     /**
@@ -13745,7 +13690,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsBigInteger());
     }
 
     /**
@@ -13753,7 +13698,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayAsURL());
     }
 
     /**
@@ -13761,7 +13706,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsInteger());
     }
 
     /**
@@ -13769,7 +13714,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsLong());
     }
 
     /**
@@ -13777,7 +13722,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsLocalDateTime());
     }
 
     /**
@@ -13785,7 +13730,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsLocalTime());
     }
 
     /**
@@ -13793,7 +13738,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayStringAsString());
     }
 
     /**
@@ -13801,7 +13746,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsBoolean());
     }
 
     /**
@@ -13809,7 +13754,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsBigInteger());
     }
 
     /**
@@ -13817,7 +13762,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayStringAsURL());
     }
 
     /**
@@ -13825,7 +13770,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsInteger());
     }
 
     /**
@@ -13833,7 +13778,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsLong());
     }
 
     /**
@@ -13841,7 +13786,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsLocalDateTime());
     }
 
     /**
@@ -13849,7 +13794,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsLocalTime());
     }
 
     /**
@@ -13857,7 +13802,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayString1AsString());
     }
 
     /**
@@ -13865,7 +13810,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsBoolean());
     }
 
     /**
@@ -13873,7 +13818,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsBigInteger());
     }
 
     /**
@@ -13881,7 +13826,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString1AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString1AsURL());
     }
 
     /**
@@ -13889,7 +13834,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsInteger());
     }
 
     /**
@@ -13897,7 +13842,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsLong());
     }
 
     /**
@@ -13905,7 +13850,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsLocalDateTime());
     }
 
     /**
@@ -13913,7 +13858,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsLocalTime());
     }
 
     /**
@@ -13921,7 +13866,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayString2AsString());
     }
 
     /**
@@ -13929,7 +13874,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsBoolean());
     }
 
     /**
@@ -13937,7 +13882,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsBigInteger());
     }
 
     /**
@@ -13945,7 +13890,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString2AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString2AsURL());
     }
 
     /**
@@ -13953,7 +13898,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsInteger());
     }
 
     /**
@@ -13961,7 +13906,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsLong());
     }
 
     /**
@@ -13969,7 +13914,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsLocalDateTime());
     }
 
     /**
@@ -13977,7 +13922,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsLocalTime());
     }
 
     /**
@@ -13985,7 +13930,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayString3AsString());
     }
 
     /**
@@ -13993,7 +13938,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsBoolean());
     }
 
     /**
@@ -14001,7 +13946,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsBigInteger());
     }
 
     /**
@@ -14009,7 +13954,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString3AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString3AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString3AsURL());
     }
 
     /**
@@ -14017,7 +13962,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsInteger());
     }
 
     /**
@@ -14025,7 +13970,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsLong());
     }
 
     /**
@@ -14033,7 +13978,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsLocalDateTime());
     }
 
     /**
@@ -14041,7 +13986,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsLocalTime());
     }
 
     /**
@@ -14049,7 +13994,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayString4AsString());
     }
 
     /**
@@ -14057,7 +14002,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsBoolean());
     }
 
     /**
@@ -14065,7 +14010,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsBigInteger());
     }
 
     /**
@@ -14073,7 +14018,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString4AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString4AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString4AsURL());
     }
 
     /**
@@ -14081,7 +14026,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsInteger());
     }
 
     /**
@@ -14089,7 +14034,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsLong());
     }
 
     /**
@@ -14097,7 +14042,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsLocalDateTime());
     }
 
     /**
@@ -14105,7 +14050,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsLocalTime());
     }
 
     /**
@@ -14113,7 +14058,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsString());
+        assertEquals("", AbstractTest.jMetaDataText.getVideoDelayString5AsString());
     }
 
     /**
@@ -14121,7 +14066,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsBoolean());
     }
 
     /**
@@ -14129,7 +14074,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsBigInteger());
     }
 
     /**
@@ -14137,7 +14082,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetVideoDelayString5AsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getVideoDelayString5AsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getVideoDelayString5AsURL());
     }
 
     /**
@@ -14145,7 +14090,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsInteger());
     }
 
     /**
@@ -14153,7 +14098,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsLong());
     }
 
     /**
@@ -14161,7 +14106,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsLocalDateTime());
     }
 
     /**
@@ -14169,7 +14114,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsLocalTime());
     }
 
     /**
@@ -14177,7 +14122,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getWidthAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getWidthAsString());
     }
 
     /**
@@ -14185,7 +14130,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsBoolean());
     }
 
     /**
@@ -14193,7 +14138,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsBigInteger());
     }
 
     /**
@@ -14201,7 +14146,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthAsURL());
     }
 
     /**
@@ -14209,7 +14154,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsInteger());
     }
 
     /**
@@ -14217,7 +14162,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsLong() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsLong());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsLong());
     }
 
     /**
@@ -14225,7 +14170,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsLocalDateTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsLocalDateTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsLocalDateTime());
     }
 
     /**
@@ -14233,7 +14178,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsLocalTime() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsLocalTime());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsLocalTime());
     }
 
     /**
@@ -14241,7 +14186,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsString() {
-        assertEquals("", JMetaDataText_Test.jMetaDataText.getWidthStringAsString());
+        assertEquals("", AbstractTest.jMetaDataText.getWidthStringAsString());
     }
 
     /**
@@ -14249,7 +14194,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsBoolean() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsBoolean());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsBoolean());
     }
 
     /**
@@ -14257,7 +14202,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsBigInteger() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsBigInteger());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsBigInteger());
     }
 
     /**
@@ -14265,7 +14210,7 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetWidthStringAsURL() {
-        assertEquals(null, JMetaDataText_Test.jMetaDataText.getWidthStringAsURL());
+        assertEquals(null, AbstractTest.jMetaDataText.getWidthStringAsURL());
     }
 
 }

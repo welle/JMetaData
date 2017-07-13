@@ -17,7 +17,6 @@ import org.eclipse.jdt.annotation.Nullable;
 import com.sun.jna.FunctionMapper;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
@@ -88,15 +87,15 @@ public final class MediaInfo {
         }
 
         // libmediainfo for Linux depends on libzen
-        if (!Platform.isWindows() && !Platform.isMac()) {
-            try {
-                // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
-                // If we do not, the system will look for dependencies, but only in the library path.
-                NativeLibrary.getInstance("mediainfo");
-            } catch (final LinkageError e) {
-                LOGGER.warning("Error loading libzen: " + e.getMessage());
-            }
-        }
+//        if (!Platform.isWindows() && !Platform.isMac()) {
+//            try {
+//                // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
+//                // If we do not, the system will look for dependencies, but only in the library path.
+//                NativeLibrary.getInstance("mediainfo");
+//            } catch (final LinkageError e) {
+//                LOGGER.warning("Error loading mediainfo: " + e.getMessage());
+//            }
+//        }
 
         try {
             LOGGER.info("Loading MediaInfo library");
