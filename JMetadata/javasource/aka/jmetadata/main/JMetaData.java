@@ -16,9 +16,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import com.sun.jna.Platform;
 
 import aka.jmetadata.main.constants.kind.StreamKind;
-import aka.jmetadata.main.exception.LibNotfoundException;
 import aka.jmetadata.main.mediainfo.MediaInfo;
-import aka.swissknife.data.TextUtils;
 import aka.swissknife.os.OSHelper;
 import aka.swissknife.os.OS_ARCH;
 
@@ -36,28 +34,24 @@ public final class JMetaData {
     static {
         String libraryName = null;
 
-        if (Platform.isWindows()) {
-            if (OSHelper.getOSArch() == OS_ARCH.BITS_64) {
-                libraryName = "mediainfo64.dll";
+        try {
+            if (Platform.isWindows()) {
+                if (OSHelper.getOSArch() == OS_ARCH.BITS_64) {
+                    libraryName = "mediainfo64.dll";
+                } else {
+                    libraryName = "mediainfo.dll";
+                }
+                loadDLL(libraryName);
+            } else if (Platform.isMac()) {
+                libraryName = "libmediainfo.dylib";
+                loadDLL(libraryName);
             } else {
-                libraryName = "mediainfo.dll";
-            }
-        } else if (Platform.isMac()) {
-            libraryName = "libmediainfo.dylib";
-        } else {
-            // libmediainfo for Linux depends on libzen
+                // libmediainfo for Linux depends on libzen
 //            NativeLibrary.getInstance("zen");
 //            libraryName = "libmediainfo.dylib";
-        }
-
-        try {
-            if (TextUtils.isEmpty(libraryName)) {
-                throw new LibNotfoundException();
             }
 
-            assert libraryName != null : "As LibNotfoundException was not throwed, it should not be possible.";
-            loadDLL(libraryName);
-        } catch (final LibNotfoundException | IOException e) {
+        } catch (final IOException e) {
             final Logger logger = Logger.getLogger(JMetaData.class.getPackage().getName());
             logger.logp(Level.SEVERE, "JMetaData", "Static block", e.getMessage(), e);
             throw new RuntimeException();
