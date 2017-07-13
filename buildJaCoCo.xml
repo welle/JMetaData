@@ -62,7 +62,6 @@
 				<classpath refid="JMetadataTest.classpath" />
 				<classpath>
 					<pathelement location="${result.test-classes.dir}" />
-					<pathelement location="${result.classes.dir}/aka/jmetadata/test/Sintel_DivXPlus_6500kbps.mkv" />
 				</classpath>
 				<formatter type="xml" />
 
