@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 
 import aka.jmetadata.main.constants.kind.StreamKind;
@@ -47,8 +46,8 @@ public final class JMetaData {
             libraryName = "libmediainfo.dylib";
         } else {
             // libmediainfo for Linux depends on libzen
-            NativeLibrary.getInstance("zen");
-            libraryName = "libmediainfo.dylib";
+//            NativeLibrary.getInstance("zen");
+//            libraryName = "libmediainfo.dylib";
         }
 
         try {
