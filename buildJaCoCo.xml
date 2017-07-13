@@ -76,7 +76,7 @@
 				<file file="${result.exec.file}" />
 			</executiondata>
 
-			<structure name="JaCoCo Ant Example">
+			<structure name="JaCoCo Ant">
 				<classfiles>
 					<fileset dir="${result.classes.dir}" />
 				</classfiles>
