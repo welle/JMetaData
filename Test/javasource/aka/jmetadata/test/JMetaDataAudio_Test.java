@@ -40,8 +40,8 @@ public final class JMetaDataAudio_Test {
     public static void beforeUnit() {
         try {
             jMetaData = new JMetaData();
-            final ClassLoader classLoader = JMetaDataAudio_Test.class.getClassLoader();
-            final File file = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
+            final String filePath = new File("").getAbsolutePath();
+            final File file = new File(filePath.concat("/Test/videosamples/Sintel_DivXPlus_6500kbps.mkv"));
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataAudio> audioStreams = jMetaData.getAudioStreams();
@@ -62,10 +62,12 @@ public final class JMetaDataAudio_Test {
      */
     @AfterClass
     public static void afterUnit() {
-        try {
-            jMetaData.close();
-        } catch (final Throwable e) {
-            LOGGER.log(Level.SEVERE, e.getMessage());
+        if (jMetaData != null) {
+            try {
+                jMetaData.close();
+            } catch (final Throwable e) {
+                LOGGER.log(Level.SEVERE, e.getMessage());
+            }
         }
     }
 

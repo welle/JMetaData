@@ -44,18 +44,9 @@
 		<ant antfile="buildJavadoc.xml" />
 	</target>
 
-	<target name="test" depends="run, clean" />
-
-	<property name="main.build.dir" value="JMetadata/classes" />
-	<property name="main.src.dir" value="JMetadata/javasource" />
-	<property name="test.build.dir" value="JMetadata/classes" />
-	<property name="test.sample.dir" value="Test/videosamples" />
-	<property name="test.src.dir" value="Test/javasource" />
-	<property name="dir.report.unittests.xml" value="reports/junit" />
-
 	<!-- Test and build all files  -->
 	<!-- To run this: use "ant" (default) or "ant run" -->
-	<target name="run" depends="rebuild"/>
+	<target name="run" depends="jars,rebuild"/>
 	
 	
 </project>
