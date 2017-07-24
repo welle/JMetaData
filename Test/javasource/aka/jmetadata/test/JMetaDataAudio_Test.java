@@ -44,10 +44,6 @@ public final class JMetaDataAudio_Test {
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataAudio> audioStreams = jMetaData.getAudioStreams();
-                System.err.println("[JMetaDataAudio_Test] beforeUnit - 1");
-                for (final JMetaDataAudio jMetaDataAudio : audioStreams) {
-                    System.err.println("[JMetaDataAudio_Test] beforeUnit - audio streams = " + jMetaDataAudio.getStreamNumber());
-                }
                 if (audioStreams.get(0) != null) {
                     jMetaDataAudio = audioStreams.get(0);
                 }

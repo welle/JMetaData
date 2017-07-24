@@ -69,7 +69,7 @@
 		<path id="JUnit.classpath">
 			<pathelement location="${result.test-classes.dir}" />
 
-			<path refid="JMetadata.classpath" />
+			<path refid="JMetadataTest.classpath" />
 		</path>
 		<jacoco:report>
 			<executiondata>
