@@ -45,11 +45,10 @@ public final class MediaInfo implements Closeable {
 
     private static String libraryName;
     private Pointer handlePointer;
-    private NativeLibrary lib;
 
-    public interface MediaInfoDLLInternal extends Library {
+    private interface MediaInfoDLLInternal extends Library {
 
-        MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, (FunctionMapper) (final NativeLibrary lib, final Method method) -> "MediaInfo_" + method.getName()));
+        MediaInfoDLLInternal INSTANCE = Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, (FunctionMapper) (final NativeLibrary lib, final Method method) -> "MediaInfo_" + method.getName()));
 
         /* Constructor */
         Pointer New();
@@ -86,6 +85,9 @@ public final class MediaInfo implements Closeable {
         WString Option(Pointer Handle, WString option, WString value);
     }
 
+    /**
+     * Constructor.
+     */
     public MediaInfo() {
         if (Platform.isWindows() && OSHelper.getOSArch() == OS_ARCH.BITS_64) {
             MediaInfo.libraryName = "mediainfo64";
@@ -93,21 +95,11 @@ public final class MediaInfo implements Closeable {
             MediaInfo.libraryName = "mediainfo";
         }
 
-//        if (!Platform.isWindows() && !Platform.isMac()) {
-//            try {
-//                // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
-//                // If we do not, the system will look for dependencies, but only in the library path.
-//                this.lib = NativeLibrary.getInstance("mediainfo");
-//            } catch (final LinkageError e) {
-//                LOGGER.warning("Error loading mediainfo: " + e.getMessage());
-//            }
-//        }
-
         try {
             LOGGER.info("Loading MediaInfo library");
             this.handlePointer = MediaInfoDLLInternal.INSTANCE.New();
             LOGGER.info("Loaded " + staticOption("Info_Version"));
-        } catch (final Throwable e) {
+        } catch (final Exception e) {
             LOGGER.info("Error loading MediaInfo library: " + e.getMessage());
             if (!Platform.isWindows() && !Platform.isMac()) {
                 LOGGER.info("Make sure you have MediaInfoDLLInternal and libzen are installed!");
@@ -115,6 +107,14 @@ public final class MediaInfo implements Closeable {
         }
     }
 
+    /**
+     * Open file.
+     *
+     * @param file
+     * @return instance of mediainfo
+     * @throws IOException
+     * @throws IllegalArgumentException
+     */
     public synchronized MediaInfo open(final File file) throws IOException, IllegalArgumentException {
         if (!file.isFile() || file.length() < 64 * 1024) {
             throw new IllegalArgumentException("Invalid media file: " + file);
@@ -139,7 +139,7 @@ public final class MediaInfo implements Closeable {
         throw new IOException("Failed to open media file: " + path);
     }
 
-    private boolean openViaBuffer(final RandomAccessFile f) throws IOException {
+    private synchronized boolean openViaBuffer(final RandomAccessFile f) throws IOException {
         final byte[] buffer = new byte[4 * 1024 * 1024]; // use large buffer to reduce JNA calls
         int read = -1;
 
@@ -165,40 +165,18 @@ public final class MediaInfo implements Closeable {
         return true;
     }
 
-    public synchronized String inform() {
-        return MediaInfoDLLInternal.INSTANCE.Inform(this.handlePointer, -1).toString();
-    }
-
-    public String option(final String option) {
-        return option(option, "");
-    }
-
-    public synchronized String option(final String option, final String value) {
-        return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString(value)).toString();
-    }
-
-    public String get(final StreamKind streamKind, final int streamNumber, final String parameter) {
-        return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-    }
-
-    public String get(final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind) {
-        return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);
-    }
-
-    public synchronized String get(final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind, final InfoKind searchKind) {
+    private synchronized String get(final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind, final InfoKind searchKind) {
         return MediaInfoDLLInternal.INSTANCE.Get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
     }
 
-    public String get(final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
-        return get(streamKind, streamNumber, parameterIndex, InfoKind.Text);
-    }
-
-    public synchronized String get(final StreamKind streamKind, final int streamNumber, final int parameterIndex, final InfoKind infoKind) {
-        return MediaInfoDLLInternal.INSTANCE.GetI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
-    }
-
+    /**
+     * Get number of streams.
+     *
+     * @param streamKind
+     * @return number of stream
+     */
     public synchronized int getStreamCount(final StreamKind streamKind) {
-        final String StreamCount = get(streamKind, 0, "StreamCount");
+        final String StreamCount = get(streamKind, 0, "StreamCount", InfoKind.Text, InfoKind.Name);
         if (StreamCount == null || StreamCount.length() == 0) {
             return 0;
         }
@@ -206,16 +184,12 @@ public final class MediaInfo implements Closeable {
 //        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), -1);
     }
 
-    public synchronized int parameterCount(final StreamKind streamKind, final int streamNumber) {
-        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
-    }
-
     @Override
     public synchronized void close() {
         MediaInfoDLLInternal.INSTANCE.Close(this.handlePointer);
     }
 
-    public synchronized void dispose() {
+    private synchronized void dispose() {
         if (this.handlePointer == null) {
             return;
         }
@@ -230,27 +204,11 @@ public final class MediaInfo implements Closeable {
         dispose();
     }
 
-    public static String version() {
-        return staticOption("Info_Version");
-    }
-
-    public static String parameters() {
-        return staticOption("Info_Parameters");
-    }
-
-    public static String codecs() {
-        return staticOption("Info_Codecs");
-    }
-
-    public static String capacities() {
-        return staticOption("Info_Capacities");
-    }
-
-    public static String staticOption(final String option) {
+    private synchronized static String staticOption(final String option) {
         return staticOption(option, "");
     }
 
-    public static String staticOption(final String option, final String value) {
+    private synchronized static String staticOption(final String option, final String value) {
         return MediaInfoDLLInternal.INSTANCE.Option(null, new WString(option), new WString(value)).toString();
     }
 
@@ -264,7 +222,7 @@ public final class MediaInfo implements Closeable {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public String getAsString(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized String getAsString(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
     }
 
@@ -278,7 +236,7 @@ public final class MediaInfo implements Closeable {
      * @return a string about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized Boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
 
         if ("Yes".equals(value)) {
@@ -300,7 +258,7 @@ public final class MediaInfo implements Closeable {
      * @return a Long about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Long result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = TextUtils.trimNonNumerical(value);
@@ -328,7 +286,7 @@ public final class MediaInfo implements Closeable {
      * @return a Integer about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Integer result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = TextUtils.trimNonNumerical(value);
@@ -356,7 +314,7 @@ public final class MediaInfo implements Closeable {
      * @return a BigInteger about information you search, an empty string if there is a problem
      */
     @Nullable
-    public BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         BigInteger result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = TextUtils.trimNonNumerical(value);
@@ -384,7 +342,7 @@ public final class MediaInfo implements Closeable {
      * @return a URL about information you search, an empty string if there is a problem
      */
     @Nullable
-    public URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         URL result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
@@ -408,7 +366,7 @@ public final class MediaInfo implements Closeable {
      * @return a Double about information you search, an empty string if there is a problem
      */
     @Nullable
-    public Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Double result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = TextUtils.trimNonNumerical(value);
@@ -436,7 +394,7 @@ public final class MediaInfo implements Closeable {
      * @return a Date about information you search, an empty string if there is a problem
      */
     @Nullable
-    public LocalDateTime getAsLocalDateTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized LocalDateTime getAsLocalDateTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         LocalDateTime result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
@@ -460,7 +418,7 @@ public final class MediaInfo implements Closeable {
      * @return a Date about information you search, an empty string if there is a problem
      */
     @Nullable
-    public LocalTime getAsLocalTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+    public synchronized LocalTime getAsLocalTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         LocalTime result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!TextUtils.isEmpty(value)) {
