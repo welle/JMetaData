@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JMetaData.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Ant</a> &gt; <a href="index.source.html" class="el_package">aka.jmetadata.main</a> &gt; <span class="el_source">JMetaData.java</span></div><h1>JMetaData.java</h1><pre class="source lang-java linenums">package aka.jmetadata.main;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.eclipse.jdt.annotation.NonNull;
+
+import com.sun.jna.Platform;
+
+import aka.jmetadata.main.constants.kind.StreamKind;
+import aka.jmetadata.main.mediainfo.MediaInfo;
+import aka.swissknife.os.OSHelper;
+import aka.swissknife.os.OS_ARCH;
+
+/**
+ * Main class to use to extract metadata informations. This class contains all useful methods to get all kind of streams that can be present in the file.
+ *
+ * @author Charlotte
+ */
+public final class JMetaData {
+
+    @NonNull
+    private final MediaInfo mediaInfo;
+    private static final int BUF_SIZE = 1024;
+
+    static {
+<span class="fc" id="L35">        String libraryName = null;</span>
+
+        try {
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">            if (Platform.isWindows()) {</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">                if (OSHelper.getOSArch() == OS_ARCH.BITS_64) {</span>
+<span class="fc" id="L40">                    libraryName = &quot;mediainfo64.dll&quot;;</span>
+                } else {
+<span class="nc" id="L42">                    libraryName = &quot;mediainfo.dll&quot;;</span>
+                }
+<span class="fc" id="L44">                loadDLL(libraryName);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            } else if (Platform.isMac()) {</span>
+<span class="nc" id="L46">                libraryName = &quot;libmediainfo.dylib&quot;;</span>
+<span class="nc" id="L47">                loadDLL(libraryName);</span>
+            } else {
+                // libmediainfo for Linux depends on libzen
+//            NativeLibrary.getInstance(&quot;zen&quot;);
+//            libraryName = &quot;libmediainfo.dylib&quot;;
+            }
+
+<span class="nc" id="L54">        } catch (final IOException e) {</span>
+<span class="nc" id="L55">            final Logger logger = Logger.getLogger(JMetaData.class.getPackage().getName());</span>
+<span class="nc" id="L56">            logger.logp(Level.SEVERE, &quot;JMetaData&quot;, &quot;Static block&quot;, e.getMessage(), e);</span>
+<span class="nc" id="L57">            throw new RuntimeException();</span>
+<span class="fc" id="L58">        }</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Constructor.
+     */
+<span class="fc" id="L64">    public JMetaData() {</span>
+<span class="fc" id="L65">        this.mediaInfo = new MediaInfo();</span>
+<span class="fc" id="L66">    }</span>
+
+    /**
+     * Constructor.
+     *
+     * @param jnaLibraryPath path for JNA to find library to be loaded
+     */
+<span class="nc" id="L73">    public JMetaData(@NonNull final String jnaLibraryPath) {</span>
+<span class="nc" id="L74">        System.setProperty(&quot;jna.library.path&quot;, jnaLibraryPath);</span>
+<span class="nc" id="L75">        this.mediaInfo = new MediaInfo();</span>
+<span class="nc" id="L76">    }</span>
+
+    /**
+     * Open a file and collect information about it (technical information and tags).
+     *
+     * @param file file to open
+     * @return &lt;code&gt;true&lt;/code&gt; if file was opened
+     */
+    public boolean open(@NonNull final File file) {
+<span class="fc" id="L85">        return this.mediaInfo.open(file);</span>
+    }
+
+    /**
+     * Called by the garbage collector on an object when garbage collection determines that there are no more references to the object. &lt;br&gt;
+     * A subclass overrides the finalize method to dispose of system resources or to perform other cleanup.
+     */
+    public void close() {
+<span class="fc" id="L93">        this.mediaInfo.finalize();</span>
+<span class="fc" id="L94">    }</span>
+
+    /**
+     * Open a file and collect information about it (technical information and tags).
+     *
+     * @param filename full name of the file to open
+     * @return true if file was opened, false if file was not not opened
+     */
+    public boolean open(@NonNull final String filename) {
+<span class="nc" id="L103">        return this.mediaInfo.open(filename);</span>
+    }
+
+    private int getNumVideoStreams() {
+<span class="fc" id="L107">        return this.mediaInfo.getStreamCount(StreamKind.Video);</span>
+    }
+
+    private int getNumAudioStreams() {
+<span class="fc" id="L111">        return this.mediaInfo.getStreamCount(StreamKind.Audio);</span>
+    }
+
+    private int getNumSubtitleStreams() {
+<span class="fc" id="L115">        return this.mediaInfo.getStreamCount(StreamKind.Text);</span>
+    }
+
+    private int getNumMenuStreams() {
+<span class="fc" id="L119">        return this.mediaInfo.getStreamCount(StreamKind.Menu);</span>
+    }
+
+    /**
+     * Get informations from main file.
+     *
+     * @return general information
+     * @see JMetaDataGeneral
+     */
+    @NonNull
+    public JMetaDataGeneral getGeneral() {
+<span class="fc" id="L130">        return new JMetaDataGeneral(this.mediaInfo);</span>
+    }
+
+    /**
+     * Get informations from video streams.
+     *
+     * @return list of video streams
+     * @see JMetaDataVideo
+     */
+    @NonNull
+    public List&lt;@NonNull JMetaDataVideo&gt; getVideoStreams() {
+<span class="fc" id="L141">        final List&lt;@NonNull JMetaDataVideo&gt; result = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L143">        final int numberVideoStream = getNumVideoStreams();</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        for (int i = 0; i &lt; numberVideoStream; i++) {</span>
+<span class="fc" id="L145">            final JMetaDataVideo jMetadataVideo = new JMetaDataVideo(this.mediaInfo, i);</span>
+<span class="fc" id="L146">            result.add(jMetadataVideo);</span>
+        }
+
+<span class="fc" id="L149">        return result;</span>
+    }
+
+    /**
+     * Get informations from audio streams.
+     *
+     * @return list of audio stream
+     * @see JMetaDataAudio
+     */
+    @NonNull
+    public List&lt;@NonNull JMetaDataAudio&gt; getAudioStreams() {
+<span class="fc" id="L160">        final List&lt;@NonNull JMetaDataAudio&gt; result = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L162">        final int numberAudioStream = getNumAudioStreams();</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">        for (int i = 0; i &lt; numberAudioStream; i++) {</span>
+<span class="fc" id="L164">            final JMetaDataAudio jMetadataAudio = new JMetaDataAudio(this.mediaInfo, i);</span>
+<span class="fc" id="L165">            result.add(jMetadataAudio);</span>
+        }
+
+<span class="fc" id="L168">        return result;</span>
+    }
+
+    /**
+     * Get informations from subtitle streams.
+     *
+     * @return list of subtitle stream
+     * @see JMetaDataText
+     */
+    @NonNull
+    public List&lt;@NonNull JMetaDataText&gt; getSubtitleStreams() {
+<span class="fc" id="L179">        final List&lt;@NonNull JMetaDataText&gt; result = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L181">        final int numberSubtitleStream = getNumSubtitleStreams();</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        for (int i = 0; i &lt; numberSubtitleStream; i++) {</span>
+<span class="fc" id="L183">            final JMetaDataText jMetadataSubtitle = new JMetaDataText(this.mediaInfo, i);</span>
+<span class="fc" id="L184">            result.add(jMetadataSubtitle);</span>
+        }
+
+<span class="fc" id="L187">        return result;</span>
+    }
+
+    /**
+     * Get informations from menu streams.
+     *
+     * @return list of menu stream
+     * @see JMetaDataMenu
+     */
+    @NonNull
+    public List&lt;@NonNull JMetaDataMenu&gt; getMenuStreams() {
+<span class="fc" id="L198">        final List&lt;@NonNull JMetaDataMenu&gt; result = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L200">        final int numberMenuStream = getNumMenuStreams();</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">        for (int i = 0; i &lt; numberMenuStream; i++) {</span>
+<span class="fc" id="L202">            final JMetaDataMenu jMetadataMenu = new JMetaDataMenu(this.mediaInfo, i);</span>
+<span class="fc" id="L203">            result.add(jMetadataMenu);</span>
+        }
+
+<span class="fc" id="L206">        return result;</span>
+    }
+
+    private static void loadDLL(@NonNull final String name) throws IOException {
+        try {
+            // have to use a stream
+<span class="fc" id="L212">            final InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);</span>
+            // always write to different location
+<span class="fc" id="L214">            final String tempDir = System.getProperty(&quot;java.io.tmpdir&quot;) + &quot;/&quot; + (&quot;&quot; + new Date().getTime()) + &quot;/lib/&quot;;</span>
+<span class="fc" id="L215">            final File dir = new File(tempDir);</span>
+<span class="pc bpc" id="L216" title="1 of 2 branches missed.">            if (!dir.exists()) {</span>
+<span class="fc" id="L217">                dir.mkdirs();</span>
+            }
+
+<span class="fc" id="L220">            final File fileOut = new File(tempDir + name);</span>
+<span class="fc" id="L221">            final OutputStream out = new FileOutputStream(fileOut);</span>
+<span class="fc" id="L222">            int read = -1;</span>
+<span class="fc" id="L223">            final byte[] buffer = new byte[BUF_SIZE];</span>
+<span class="fc bfc" id="L224" title="All 2 branches covered.">            while ((read = in.read(buffer)) != -1) {</span>
+<span class="fc" id="L225">                out.write(buffer, 0, read);</span>
+            }
+<span class="fc" id="L227">            in.close();</span>
+<span class="fc" id="L228">            out.close();</span>
+<span class="fc" id="L229">            System.setProperty(&quot;jna.library.path&quot;, tempDir);</span>
+<span class="fc" id="L230">            System.load(fileOut.toString());</span>
+<span class="nc" id="L231">        } catch (final UnsatisfiedLinkError e) {</span>
+<span class="nc" id="L232">            Logger.getAnonymousLogger().logp(Level.SEVERE, &quot;JMetaData&quot;, &quot;loadDLL&quot;, e.getMessage(), e);</span>
+<span class="fc" id="L233">        }</span>
+<span class="fc" id="L234">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

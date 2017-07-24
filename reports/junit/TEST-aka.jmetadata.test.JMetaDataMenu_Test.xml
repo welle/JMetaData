@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="ABSI-Charlottew" name="aka.jmetadata.test.JMetaDataMenu_Test" skipped="0" tests="703" time="2.731" timestamp="2017-07-24T05:43:57">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="src.test.dir" value="C:\Projects\Own\jmetadata\Test\javasource" />
+    <property name="ant.file.type.JMetadata Classpath" value="file" />
+    <property name="result.exec.file" value="C:\Projects\Own\jmetadata\reports\jacoco\jacoco.exec" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sonar.projectName" value="JMetaData" />
+    <property name="sonar.links.scm" value="https://github.com/welle/JMediaInfo" />
+    <property name="sonar.java.binaries" value="reports/classes" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="ant.file.type.Ant Build with JaCoCo" value="file" />
+    <property name="javadoc_dest" value="C:/Projects/Own/jmetadata/javadoc" />
+    <property name="os.name" value="Windows 10" />
+    <property name="sonar.jacoco.reportPath" value="reports/jacoco/jacoco.exec" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_121\jre\classes" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840" />
+    <property name="sonar.projectVersion" value="1.2" />
+    <property name="sonar.links.issue" value="https://github.com/welle/JMediaInfo/issues" />
+    <property name="java.runtime.version" value="1.8.0_121-b13" />
+    <property name="ant.file.type.JMetadata" value="file" />
+    <property name="ant.file.JMetadata Classpath" value="C:\Projects\Own\jmetadata\classpath.xml" />
+    <property name="user.name" value="charlottew" />
+    <property name="sonar.jacoco.reportPaths" value="reports/jacoco/jacoco.exec" />
+    <property name="build.properties.present" value="true" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin" />
+    <property name="ant.project.default-target" value="jars" />
+    <property name="ant.project.name" value="JMetadata" />
+    <property name="java.version" value="1.8.0_121" />
+    <property name="classes" value="JMetadata/classes" />
+    <property name="version" value="1.2" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="sonar.host.url" value="https://sonarcloud.io" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\endorsed" />
+    <property name="sonar.java.test.libraries" value="libTest/**/*.jar,libs/**/*.jar" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="sonar.sources" value="JMetadata/javasource" />
+    <property name="java.class.version" value="52.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_121\jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="C:\Projects\Own\jmetadata\build.xml" />
+    <property name="os.version" value="10.0" />
+    <property name="result.report.dir" value="C:\Projects\Own\jmetadata\reports\site\jacoco" />
+    <property name="ant.file.type.Sonar" value="file" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="25.121-b13" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840\lib" />
+    <property name="ant.file.Sonar" value="C:\Projects\Own\jmetadata\buildSonar.xml" />
+    <property name="result.classes.dir" value="C:\Projects\Own\jmetadata\reports\classes" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="_jacoco.agentFile" value="C:\Users\CHARLO~1\AppData\Local\Temp\jacocoagent5895186238494580080.jar" />
+    <property name="sonar.tests" value="Test/javasource" />
+    <property name="user.script" value="" />
+    <property name="sonar.java.test.binaries" value="JMetadata/classes" />
+    <property name="user.home" value="C:\Users\charlottew" />
+    <property name="sonar.language" value="java" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_131/bin/server;C:/Program Files/Java/jre1.8.0_131/bin;C:/Program Files/Java/jre1.8.0_131/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\PuTTY\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\GitExtensions\;C:\Program Files\ant\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Python\Python36-32\Scripts\;C:\Program Files (x86)\Python\Python36-32\;C:\Users\charlottew\AppData\Local\Microsoft\WindowsApps;C:\Program Files\sfdx\bin;C:\eclipse\eclipse-oxygen;;." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="sonar.links.ci" value="https://travis-ci.org/welle/JMediaInfo" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.10.1 compiled on February 2 2017" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner testsfile=C:\Projects\Own\jmetadata\junittestcases5564682718809169916.properties skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Projects\Own\jmetadata\reports\junit\IGNORETHIS.xml crashfile=C:\Projects\Own\jmetadata\junitvmwatcher8741049994980203882.properties propsfile=C:\Projects\Own\jmetadata\junit971004911751890070.properties" />
+    <property name="java.class.path" value="C:\Projects\Own\jmetadata\reports\classes;C:\Projects\Own\jmetadata\Test\videosamples;C:\Projects\Own\jmetadata\libs\SwissKnife-1.0.jar;C:\Projects\Own\jmetadata\libs\commons-lang3-3.1.jar;C:\Projects\Own\jmetadata\libs\jna-3.0.9.jar;C:\Projects\Own\jmetadata\libs\org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar;C:\Projects\Own\jmetadata\libs\tomcat-juli.jar;C:\Projects\Own\jmetadata\build\JMetadata-1.2.jar;C:\Projects\Own\jmetadata\libTest\hamcrest-core-1.3.jar;C:\Projects\Own\jmetadata\libTest\junit-4.11.jar;C:\Projects\Own\jmetadata\libTest\org.jacoco.ant-0.7.9-nodeps.jar;C:\Projects\Own\jmetadata\libTest\sonarqube-ant-task-2.4.jar;C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840\lib\ant-launcher.jar;C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840\lib\ant.jar;C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840\lib\ant-junit.jar;C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840\lib\ant-junit4.jar;C:\Users\CHARLO~1\AppData\Local\Temp\jacocoagent5895186238494580080.jar" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="sonar.sourceEncoding" value="UTF-8" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="java.io.tmpdir" value="C:\Users\CHARLO~1\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="ant.file.Ant Build with JaCoCo" value="C:\Projects\Own\jmetadata\buildJaCoCo.xml" />
+    <property name="result.test-classes.dir" value="C:\Projects\Own\jmetadata\reports\classes" />
+    <property name="jars_dest" value="C:/Projects/Own/jmetadata/" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_121\jre\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="user.dir" value="C:\Projects\Own\jmetadata" />
+    <property name="sonar.java.coveragePlugin" value="jacoco" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="result.dir" value="C:\Projects\Own\jmetadata\reports" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="C:\Projects\Own\jmetadata" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="ant.core.lib" value="C:\eclipse\eclipse-oxygen\plugins\org.apache.ant_1.10.1.v20170504-0840\lib\ant.jar" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="ant.file.JMetadata" value="C:\Projects\Own\jmetadata\build.xml" />
+    <property name="sonar.junit.reportPaths" value="reports/junit" />
+    <property name="sonar.java.libraries" value="libs/*.jar" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="src.dir" value="C:\Projects\Own\jmetadata\JMetadata\javasource" />
+    <property name="ant.project.invoked-targets" value="run" />
+    <property name="sonar.projectKey" value="JMetaData" />
+    <property name="sonar.links.homepage" value="https://github.com/welle/JMediaInfo" />
+  </properties>
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsLocalTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsLocalTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsLocalTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsLocalTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsLocalDateTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySourceAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialIfAnyAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString1AsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsLocalTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosEndAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetAlternateGroupAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelaySettingsAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayAsLocalTime" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindPosAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindStringAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceTypeAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDDescriptionAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamCountAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTimeZonesAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountriesAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingReasonAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCountAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString4AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStatusAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString5AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsURL" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetMenuIDAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString2AsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDInfoAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatSettingsAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamPosAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString1AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDUrlAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString3AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString2AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamOrderAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDefaultAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString3AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatUrlAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageString4AsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString4AsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatProfileAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetNetworkNameAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCompressionAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalNetworkNameAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetChaptersPosBeginAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationEndAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceChannelAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString2AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsString" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceKindAsBigInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetForcedAsBoolean" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetCodecIDHintAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListStreamKindAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceUrlAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetListAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetUniqueIDStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayDropFrameAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindIDAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatVersionAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationString3AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsBigInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatCommercialAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceNameAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFirstPacketOrderAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString5AsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLanguageMoreAsInteger" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDisabledStringAsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetLawRatingAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsURL" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDelayString1AsInteger" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetInformAsLong" time="0.001" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetFormatInfoAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetStreamKindStringAsLocalDateTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStringAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetServiceProviderrUrlAsLong" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetIDStringAsBoolean" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetOriginalSourceMediumIDStringAsString" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetTitleAsLocalTime" time="0.0" />
+  <testcase classname="aka.jmetadata.test.JMetaDataMenu_Test" name="subTestGetDurationStartAsBigInteger" time="0.001" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

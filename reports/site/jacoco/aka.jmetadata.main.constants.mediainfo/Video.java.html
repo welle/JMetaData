@@ -1,0 +1,1903 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Video.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Ant</a> &gt; <a href="index.source.html" class="el_package">aka.jmetadata.main.constants.mediainfo</a> &gt; <span class="el_source">Video.java</span></div><h1>Video.java</h1><pre class="source lang-java linenums">package aka.jmetadata.main.constants.mediainfo;
+
+import org.eclipse.jdt.annotation.NonNull;
+
+/**
+ * Video constants parameters.
+ *
+ * @author Welle Charlotte
+ */
+<span class="nc" id="L10">public final class Video {</span>
+
+   /**
+    * Original (in the raw stream) width in pixel.
+    */
+    @NonNull
+    public static final String WIDTHORIGINAL = &quot;Width_Original&quot;;
+
+   /**
+    * Delay source (Stream or empty).
+    */
+    @NonNull
+    public static final String DELAYORIGINALSOURCE = &quot;Delay_Original_Source&quot;;
+
+   /**
+    * Stream order in the file, whatever is the kind of stream (base=0).
+    */
+    @NonNull
+    public static final String STREAMORDER = &quot;StreamOrder&quot;;
+
+   /**
+    * Name of the the encoding-software.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARYNAME = &quot;Encoded_Library_Name&quot;;
+
+   /**
+    * Multiview, how views are muxed in the container in case of it is not muxing in the stream.
+    */
+    @NonNull
+    public static final String MULTIVIEWLAYOUT = &quot;MultiView_Layout&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAMESTRING4 = &quot;Duration_FirstFrame/String4&quot;;
+
+   /**
+    * Chromaticity coordinates of the source primaries.
+    */
+    @NonNull
+    public static final String COLOURPRIMARIES = &quot;colour_primaries&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAMESTRING5 = &quot;Duration_FirstFrame/String5&quot;;
+
+   /**
+    * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAMESTRING2 = &quot;Duration_FirstFrame/String2&quot;;
+
+   /**
+    * Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAMESTRING = &quot;Source_Duration_FirstFrame/String&quot;;
+
+   /**
+    * Rotation (if not horizontal).
+    */
+    @NonNull
+    public static final String ROTATIONSTRING = &quot;Rotation/String&quot;;
+
+   /**
+    * Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAMESTRING3 = &quot;Duration_FirstFrame/String3&quot;;
+
+   /**
+    * ScanType_StoreMethod.
+    */
+    @NonNull
+    public static final String SCANTYPESTOREMETHOD = &quot;ScanType_StoreMethod&quot;;
+
+   /**
+    * Source Duration of the last frame if it is longer than others, in ms.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAME = &quot;Source_Duration_LastFrame&quot;;
+
+   /**
+    * Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAMESTRING1 = &quot;Duration_FirstFrame/String1&quot;;
+
+   /**
+    * Clean Aperture width in pixel.
+    */
+    @NonNull
+    public static final String WIDTHCLEANAPERTURE = &quot;Width_CleanAperture&quot;;
+
+   /**
+    * Opto-electronic transfer characteristic of the source picture.
+    */
+    @NonNull
+    public static final String TRANSFERCHARACTERISTICS = &quot;transfer_characteristics&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled (M=x N=y).
+    */
+    @NonNull
+    public static final String FORMATSETTINGSGOP = &quot;Format_Settings_GOP&quot;;
+
+   /**
+    * Clean Aperture width with measurement (pixel).
+    */
+    @NonNull
+    public static final String WIDTHCLEANAPERTURESTRING = &quot;Width_CleanAperture/String&quot;;
+
+   /**
+    * Compression method used.
+    */
+    @NonNull
+    public static final String FORMATCOMPRESSION = &quot;Format_Compression&quot;;
+
+   /**
+    * Alignment/String.
+    */
+    @NonNull
+    public static final String ALIGNMENTSTRING = &quot;Alignment/String&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYSTRING = &quot;Delay/String&quot;;
+
+   /**
+    * Source Encoded Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDSTRING = &quot;Source_StreamSize_Encoded/String&quot;;
+
+   /**
+    * Manual description given by the container.
+    */
+    @NonNull
+    public static final String CODECIDDESCRIPTION = &quot;CodecID_Description&quot;;
+
+   /**
+    * bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    */
+    @NonNull
+    public static final String STATUS = &quot;Status&quot;;
+
+   /**
+    * Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAMESTRING = &quot;Duration_FirstFrame/String&quot;;
+
+   /**
+    * Frames per second.
+    */
+    @NonNull
+    public static final String FRAMERATE = &quot;FrameRate&quot;;
+
+   /**
+    * Service kind (full).
+    */
+    @NonNull
+    public static final String SERVICEKINDSTRING = &quot;ServiceKind/String&quot;;
+
+   /**
+    * How this file is muxed in the container.
+    */
+    @NonNull
+    public static final String MUXINGMODE = &quot;MuxingMode&quot;;
+
+   /**
+    * ScanType_StoreMethod/String.
+    */
+    @NonNull
+    public static final String SCANTYPESTOREMETHODSTRING = &quot;ScanType_StoreMethod/String&quot;;
+
+   /**
+    * Delay settings (in case of timecode for example).
+    */
+    @NonNull
+    public static final String DELAYSETTINGS = &quot;Delay_Settings&quot;;
+
+   /**
+    * Source Encoded Streamsize in bytes.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODED = &quot;Source_StreamSize_Encoded&quot;;
+
+   /**
+    * Clean Aperture Display Aspect ratio.
+    */
+    @NonNull
+    public static final String DISPLAYASPECTRATIOCLEANAPERTURESTRING = &quot;DisplayAspectRatio_CleanAperture/String&quot;;
+
+   /**
+    * Bit rate mode (Variable, Cconstant).
+    */
+    @NonNull
+    public static final String BITRATEMODESTRING = &quot;BitRate_Mode/String&quot;;
+
+   /**
+    * Multiview, count of views.
+    */
+    @NonNull
+    public static final String MULTIVIEWCOUNT = &quot;MultiView_Count&quot;;
+
+   /**
+    * Offset between original width and displayed width in pixel.
+    */
+    @NonNull
+    public static final String WIDTHOFFSETSTRING = &quot;Width_Offset/String&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSBVOPSTRING = &quot;Format_Settings_BVOP/String&quot;;
+
+   /**
+    * Minimum Frames per second (with measurement).
+    */
+    @NonNull
+    public static final String FRAMERATEMINIMUMSTRING = &quot;FrameRate_Minimum/String&quot;;
+
+   /**
+    * Version of encoding-software.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARYVERSION = &quot;Encoded_Library_Version&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSFRAMEMODE = &quot;Format_Settings_FrameMode&quot;;
+
+   /**
+    * Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAMESTRING = &quot;Source_Duration_LastFrame/String&quot;;
+
+   /**
+    * Info on the codec.
+    */
+    @NonNull
+    public static final String CODECIDINFO = &quot;CodecID/Info&quot;;
+
+   /**
+    * Original (in the raw stream) Display Aspect ratio.
+    */
+    @NonNull
+    public static final String DISPLAYASPECTRATIOORIGINAL = &quot;DisplayAspectRatio_Original&quot;;
+
+   /**
+    * Presence of colour description.
+    */
+    @NonNull
+    public static final String COLOURDESCRIPTIONPRESENTORIGINAL = &quot;colour_description_present_Original&quot;;
+
+   /**
+    * Streamsize in bytes.
+    */
+    @NonNull
+    public static final String STREAMSIZE = &quot;StreamSize&quot;;
+
+   /**
+    * Active Format Description (text).
+    */
+    @NonNull
+    public static final String ACTIVEFORMATDESCRIPTIONSTRING = &quot;ActiveFormatDescription/String&quot;;
+
+   /**
+    * Width (aperture size if present) with measurement (pixel).
+    */
+    @NonNull
+    public static final String WIDTHSTRING = &quot;Width/String&quot;;
+
+   /**
+    * Info about Format.
+    */
+    @NonNull
+    public static final String FORMATINFO = &quot;Format/Info&quot;;
+
+   /**
+    * Source_StreamSize/String1.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZESTRING1 = &quot;Source_StreamSize/String1&quot;;
+
+   /**
+    * Source Stream size divided by file size.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEPROPORTION = &quot;Source_StreamSize_Proportion&quot;;
+
+   /**
+    * Homepage for more details about this codec.
+    */
+    @NonNull
+    public static final String CODECIDURL = &quot;CodecID/Url&quot;;
+
+   /**
+    * Source_StreamSize/String2.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZESTRING2 = &quot;Source_StreamSize/String2&quot;;
+
+   /**
+    * Height with measurement (pixel).
+    */
+    @NonNull
+    public static final String HEIGHTSTRING = &quot;Height/String&quot;;
+
+   /**
+    * Source Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZESTRING5 = &quot;Source_StreamSize/String5&quot;;
+
+   /**
+    * Source_StreamSize/String3.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZESTRING3 = &quot;Source_StreamSize/String3&quot;;
+
+   /**
+    * Source_StreamSize/String4.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZESTRING4 = &quot;Source_StreamSize/String4&quot;;
+
+   /**
+    * Set if that track should not be used.
+    */
+    @NonNull
+    public static final String DISABLEDSTRING = &quot;Disabled/String&quot;;
+
+   /**
+    * ScanType_Original/String.
+    */
+    @NonNull
+    public static final String SCANTYPEORIGINALSTRING = &quot;ScanType_Original/String&quot;;
+
+   /**
+    * Operating System of encoding-software.
+    */
+    @NonNull
+    public static final String ENCODEDOPERATINGSYSTEM = &quot;Encoded_OperatingSystem&quot;;
+
+   /**
+    * Sampled height.
+    */
+    @NonNull
+    public static final String SAMPLEDHEIGHT = &quot;Sampled_Height&quot;;
+
+   /**
+    * Name of the company.
+    */
+    @NonNull
+    public static final String ENCODEDAPPLICATIONCOMPANYNAME = &quot;Encoded_Application_CompanyName&quot;;
+
+   /**
+    * Current stream size divided by uncompressed stream size.
+    */
+    @NonNull
+    public static final String COMPRESSIONRATIO = &quot;Compression_Ratio&quot;;
+
+   /**
+    * Commercial name used by vendor for theses setings if there is one.
+    */
+    @NonNull
+    public static final String FORMATCOMMERCIALIFANY = &quot;Format_Commercial_IfAny&quot;;
+
+   /**
+    * UTC time that the tags were done for this item..
+    */
+    @NonNull
+    public static final String TAGGEDDATE = &quot;Tagged_Date&quot;;
+
+   /**
+    * Clean Aperture Display Aspect ratio.
+    */
+    @NonNull
+    public static final String DISPLAYASPECTRATIOCLEANAPERTURE = &quot;DisplayAspectRatio_CleanAperture&quot;;
+
+   /**
+    * The ID for this stream in this file.
+    */
+    @NonNull
+    public static final String IDSTRING = &quot;ID/String&quot;;
+
+   /**
+    * Original (in the raw stream) Pixel Aspect ratio.
+    */
+    @NonNull
+    public static final String PIXELASPECTRATIOORIGINAL = &quot;PixelAspectRatio_Original&quot;;
+
+   /**
+    * Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
+    */
+    @NonNull
+    public static final String MATRIXCOEFFICIENTSORIGINAL = &quot;matrix_coefficients_Original&quot;;
+
+   /**
+    * Compression mode (Lossy or Lossless).
+    */
+    @NonNull
+    public static final String COMPRESSIONMODE = &quot;Compression_Mode&quot;;
+
+   /**
+    * Bit rate in bps.
+    */
+    @NonNull
+    public static final String BITRATE = &quot;BitRate&quot;;
+
+   /**
+    * UTC time that the encoding of this item was completed began..
+    */
+    @NonNull
+    public static final String ENCODEDDATE = &quot;Encoded_Date&quot;;
+
+   /**
+    * Bit rate mode (VBR, CBR).
+    */
+    @NonNull
+    public static final String BITRATEMODE = &quot;BitRate_Mode&quot;;
+
+   /**
+    * The unique ID for this stream, should be copied with stream copy.
+    */
+    @NonNull
+    public static final String UNIQUEID = &quot;UniqueID&quot;;
+
+   /**
+    * Maximum Bit rate (with measurement).
+    */
+    @NonNull
+    public static final String BITRATEMAXIMUMSTRING = &quot;BitRate_Maximum/String&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DELAYSTRING3 = &quot;Delay/String3&quot;;
+
+   /**
+    * Matrix, in binary format encoded BASE64. Order = intra, non-intra, gray intra, gray non-intra.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSMATRIXDATA = &quot;Format_Settings_Matrix_Data&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DELAYSTRING4 = &quot;Delay/String4&quot;;
+
+   /**
+    * ColorSpace.
+    */
+    @NonNull
+    public static final String COLORSPACE = &quot;ColorSpace&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYSTRING1 = &quot;Delay/String1&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYSTRING2 = &quot;Delay/String2&quot;;
+
+   /**
+    * Time code settings.
+    */
+    @NonNull
+    public static final String TIMECODESETTINGS = &quot;TimeCode_Settings&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DELAYSTRING5 = &quot;Delay/String5&quot;;
+
+   /**
+    * Delay fixed in the stream (relative) IN MS.
+    */
+    @NonNull
+    public static final String DELAY = &quot;Delay&quot;;
+
+   /**
+    * Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
+    */
+    @NonNull
+    public static final String GOPOPENCLOSEDFIRSTFRAMESTRING = &quot;Gop_OpenClosed_FirstFrame/String&quot;;
+
+   /**
+    * Name of the software package used to create the file, such as Microsoft WaveEdit..
+    */
+    @NonNull
+    public static final String ENCODEDAPPLICATIONURL = &quot;Encoded_Application_Url&quot;;
+
+   /**
+    * Time code in HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available format.
+    */
+    @NonNull
+    public static final String TIMECODEFIRSTFRAME = &quot;TimeCode_FirstFrame&quot;;
+
+   /**
+    * Source_StreamSize_Encoded/String4.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDSTRING4 = &quot;Source_StreamSize_Encoded/String4&quot;;
+
+   /**
+    * Source Encoded Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDSTRING5 = &quot;Source_StreamSize_Encoded/String5&quot;;
+
+   /**
+    * Source Duration of the first frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAMESTRING1 = &quot;Source_Duration_FirstFrame/String1&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSPULLDOWN = &quot;Format_Settings_Pulldown&quot;;
+
+   /**
+    * Source Duration of the first frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAMESTRING2 = &quot;Source_Duration_FirstFrame/String2&quot;;
+
+   /**
+    * Source Duration of the first frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAMESTRING3 = &quot;Source_Duration_FirstFrame/String3&quot;;
+
+   /**
+    * Software used to create the file.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARY = &quot;Encoded_Library&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAMESTRING4 = &quot;Source_Duration_FirstFrame/String4&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAMESTRING5 = &quot;Source_Duration_FirstFrame/String5&quot;;
+
+   /**
+    * Stored height.
+    */
+    @NonNull
+    public static final String STOREDHEIGHT = &quot;Stored_Height&quot;;
+
+   /**
+    * Nominal Frames per second.
+    */
+    @NonNull
+    public static final String FRAMERATENOMINAL = &quot;FrameRate_Nominal&quot;;
+
+   /**
+    * Internet Media Type (aka MIME Type, Content-Type).
+    */
+    @NonNull
+    public static final String INTERNETMEDIATYPE = &quot;InternetMediaType&quot;;
+
+   /**
+    * Source_StreamSize_Encoded/String2.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDSTRING2 = &quot;Source_StreamSize_Encoded/String2&quot;;
+
+   /**
+    * Set if that track should not be used.
+    */
+    @NonNull
+    public static final String DISABLED = &quot;Disabled&quot;;
+
+   /**
+    * Frames per second, denominator.
+    */
+    @NonNull
+    public static final String FRAMERATEDEN = &quot;FrameRate_Den&quot;;
+
+   /**
+    * Source_StreamSize_Encoded/String3.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDSTRING3 = &quot;Source_StreamSize_Encoded/String3&quot;;
+
+   /**
+    * Maximum Frames per second (with measurement).
+    */
+    @NonNull
+    public static final String FRAMERATEMAXIMUMSTRING = &quot;FrameRate_Maximum/String&quot;;
+
+   /**
+    * Encoded Stream size divided by file size.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDPROPORTION = &quot;StreamSize_Encoded_Proportion&quot;;
+
+   /**
+    * Source_StreamSize_Encoded/String1.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDSTRING1 = &quot;Source_StreamSize_Encoded/String1&quot;;
+
+   /**
+    * ScanOrder_Original.
+    */
+    @NonNull
+    public static final String SCANORDERORIGINAL = &quot;ScanOrder_Original&quot;;
+
+   /**
+    * Play time of the stream in ms.
+    */
+    @NonNull
+    public static final String DURATION = &quot;Duration&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String SOURCEDURATIONSTRING5 = &quot;Source_Duration/String5&quot;;
+
+   /**
+    * Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAMESTRING = &quot;Duration_LastFrame/String&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONSTRING4 = &quot;Source_Duration/String4&quot;;
+
+   /**
+    * Source Play time in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONSTRING3 = &quot;Source_Duration/String3&quot;;
+
+   /**
+    * Source Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONSTRING2 = &quot;Source_Duration/String2&quot;;
+
+   /**
+    * ChromaSubsampling/String.
+    */
+    @NonNull
+    public static final String CHROMASUBSAMPLINGSTRING = &quot;ChromaSubsampling/String&quot;;
+
+   /**
+    * Source Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONSTRING1 = &quot;Source_Duration/String1&quot;;
+
+   /**
+    * Hint/popular name for this codec.
+    */
+    @NonNull
+    public static final String CODECIDHINT = &quot;CodecID/Hint&quot;;
+
+   /**
+    * Name of the software package used to create the file, such as Microsoft WaveEdit.
+    */
+    @NonNull
+    public static final String ENCODEDAPPLICATION = &quot;Encoded_Application&quot;;
+
+   /**
+    * Compression mode (Lossy or Lossless).
+    */
+    @NonNull
+    public static final String COMPRESSIONMODESTRING = &quot;Compression_Mode/String&quot;;
+
+   /**
+    * StreamSize/String2.
+    */
+    @NonNull
+    public static final String STREAMSIZESTRING2 = &quot;StreamSize/String2&quot;;
+
+   /**
+    * StreamSize/String1.
+    */
+    @NonNull
+    public static final String STREAMSIZESTRING1 = &quot;StreamSize/String1&quot;;
+
+   /**
+    * StreamSize/String4.
+    */
+    @NonNull
+    public static final String STREAMSIZESTRING4 = &quot;StreamSize/String4&quot;;
+
+   /**
+    * Original frame rate mode (Constant, Variable).
+    */
+    @NonNull
+    public static final String FRAMERATEMODEORIGINALSTRING = &quot;FrameRate_Mode_Original/String&quot;;
+
+   /**
+    * StreamSize/String3.
+    */
+    @NonNull
+    public static final String STREAMSIZESTRING3 = &quot;StreamSize/String3&quot;;
+
+   /**
+    * Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String STREAMSIZESTRING5 = &quot;StreamSize/String5&quot;;
+
+   /**
+    * Minimum Frames per second.
+    */
+    @NonNull
+    public static final String FRAMERATEMINIMUM = &quot;FrameRate_Minimum&quot;;
+
+   /**
+    * Stream type name.
+    */
+    @NonNull
+    public static final String STREAMKIND = &quot;StreamKind&quot;;
+
+   /**
+    * Bit rate (with measurement).
+    */
+    @NonNull
+    public static final String BITRATESTRING = &quot;BitRate/String&quot;;
+
+   /**
+    * Frame rate mode (Constant, Variable).
+    */
+    @NonNull
+    public static final String FRAMERATEMODESTRING = &quot;FrameRate_Mode/String&quot;;
+
+   /**
+    * Language (full).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING1 = &quot;Language/String1&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSGMC = &quot;Format_Settings_GMC&quot;;
+
+   /**
+    * NTSC or PAL.
+    */
+    @NonNull
+    public static final String STANDARD = &quot;Standard&quot;;
+
+   /**
+    * Language (2-letter ISO 639-1 if exists, else empty).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING2 = &quot;Language/String2&quot;;
+
+   /**
+    * Language (3-letter ISO 639-2 if exists, else empty).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING3 = &quot;Language/String3&quot;;
+
+   /**
+    * Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING4 = &quot;Language/String4&quot;;
+
+   /**
+    * Codec ID (found in some containers).
+    */
+    @NonNull
+    public static final String CODECID = &quot;CodecID&quot;;
+
+   /**
+    * Number of a group in order to provide versions of the same track.
+    */
+    @NonNull
+    public static final String ALTERNATEGROUP = &quot;AlternateGroup&quot;;
+
+   /**
+    * Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+    */
+    @NonNull
+    public static final String LANGUAGE = &quot;Language&quot;;
+
+   /**
+    * ScanOrder/String.
+    */
+    @NonNull
+    public static final String SCANORDERSTRING = &quot;ScanOrder/String&quot;;
+
+   /**
+    * Offset between original height and displayed height  in pixel.
+    */
+    @NonNull
+    public static final String HEIGHTOFFSETSTRING = &quot;Height_Offset/String&quot;;
+
+   /**
+    * Duration of the last frame if it is longer than others, in ms.
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAME = &quot;Duration_LastFrame&quot;;
+
+   /**
+    * Software used to create the file, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARYSTRING = &quot;Encoded_Library/String&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSREFFRAMESSTRING = &quot;Format_Settings_RefFrames/String&quot;;
+
+   /**
+    * Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String STREAMSIZESTRING = &quot;StreamSize/String&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String DEFAULTSTRING = &quot;Default/String&quot;;
+
+   /**
+    * The ID for this stream in the original medium of the material.
+    */
+    @NonNull
+    public static final String ORIGINALSOURCEMEDIUMIDSTRING = &quot;OriginalSourceMedium_ID/String&quot;;
+
+   /**
+    * Source Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAMESTRING1 = &quot;Source_Duration_LastFrame/String1&quot;;
+
+   /**
+    * Source Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAMESTRING3 = &quot;Source_Duration_LastFrame/String3&quot;;
+
+   /**
+    * Presence of colour description.
+    */
+    @NonNull
+    public static final String COLOURDESCRIPTIONPRESENT = &quot;colour_description_present&quot;;
+
+   /**
+    * Source Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAMESTRING2 = &quot;Source_Duration_LastFrame/String2&quot;;
+
+   /**
+    * ScanOrder_Stored/String.
+    */
+    @NonNull
+    public static final String SCANORDERSTOREDSTRING = &quot;ScanOrder_Stored/String&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSMATRIX = &quot;Format_Settings_Matrix&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAMESTRING5 = &quot;Source_Duration_LastFrame/String5&quot;;
+
+   /**
+    * Display Aspect ratio.
+    */
+    @NonNull
+    public static final String DISPLAYASPECTRATIOSTRING = &quot;DisplayAspectRatio/String&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONLASTFRAMESTRING4 = &quot;Source_Duration_LastFrame/String4&quot;;
+
+   /**
+    * 16/24/32 bits.
+    */
+    @NonNull
+    public static final String BITDEPTHSTRING = &quot;BitDepth/String&quot;;
+
+   /**
+    * Number of frames.
+    */
+    @NonNull
+    public static final String FRAMECOUNT = &quot;FrameCount&quot;;
+
+   /**
+    * Name of the track.
+    */
+    @NonNull
+    public static final String TITLE = &quot;Title&quot;;
+
+   /**
+    * Delay drop frame.
+    */
+    @NonNull
+    public static final String DELAYDROPFRAME = &quot;Delay_DropFrame&quot;;
+
+   /**
+    * Rotation.
+    */
+    @NonNull
+    public static final String ROTATION = &quot;Rotation&quot;;
+
+   /**
+    * Maximum Bit rate in bps.
+    */
+    @NonNull
+    public static final String BITRATEMAXIMUM = &quot;BitRate_Maximum&quot;;
+
+   /**
+    * Defines the size of the buffer needed to decode the sequence..
+    */
+    @NonNull
+    public static final String BUFFERSIZE = &quot;BufferSize&quot;;
+
+   /**
+    * Stream size divided by file size.
+    */
+    @NonNull
+    public static final String STREAMSIZEPROPORTION = &quot;StreamSize_Proportion&quot;;
+
+   /**
+    * Source Encoded Stream size divided by file size.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZEENCODEDPROPORTION = &quot;Source_StreamSize_Encoded_Proportion&quot;;
+
+   /**
+    * Parameters used by the software.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARYSETTINGS = &quot;Encoded_Library_Settings&quot;;
+
+   /**
+    * Source Play time of the stream, in ms.
+    */
+    @NonNull
+    public static final String SOURCEDURATION = &quot;Source_Duration&quot;;
+
+   /**
+    * Frame rate mode (CFR, VFR).
+    */
+    @NonNull
+    public static final String FRAMERATEMODE = &quot;FrameRate_Mode&quot;;
+
+   /**
+    * Offset between original width and displayed width in pixel.
+    */
+    @NonNull
+    public static final String WIDTHOFFSET = &quot;Width_Offset&quot;;
+
+   /**
+    * Sampled width.
+    */
+    @NonNull
+    public static final String SAMPLEDWIDTH = &quot;Sampled_Width&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYORIGINALSTRING1 = &quot;Delay_Original/String1&quot;;
+
+   /**
+    * Count of objects available in this stream.
+    */
+    @NonNull
+    public static final String COUNT = &quot;Count&quot;;
+
+   /**
+    * Wrapping mode (Frame wrapped or Clip wrapped).
+    */
+    @NonNull
+    public static final String FORMATSETTINGSWRAPPING = &quot;Format_Settings_Wrapping&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYORIGINALSTRING2 = &quot;Delay_Original/String2&quot;;
+
+   /**
+    * Encryption.
+    */
+    @NonNull
+    public static final String ENCRYPTION = &quot;Encryption&quot;;
+
+   /**
+    * Multiview, profile of the base stream.
+    */
+    @NonNull
+    public static final String MULTIVIEWBASEPROFILE = &quot;MultiView_BaseProfile&quot;;
+
+   /**
+    * Delay fixed in the raw stream (relative) IN MS.
+    */
+    @NonNull
+    public static final String DELAYORIGINAL = &quot;Delay_Original&quot;;
+
+   /**
+    * bits/(Pixel*Frame) (like Gordian Knot).
+    */
+    @NonNull
+    public static final String BITSPIXELFRAME = &quot;Bits-(Pixel*Frame)&quot;;
+
+   /**
+    * Frames per second, numerator.
+    */
+    @NonNull
+    public static final String FRAMERATENUM = &quot;FrameRate_Num&quot;;
+
+   /**
+    * How this stream file is aligned in the container.
+    */
+    @NonNull
+    public static final String ALIGNMENT = &quot;Alignment&quot;;
+
+   /**
+    * Version of this format.
+    */
+    @NonNull
+    public static final String FORMATVERSION = &quot;Format_Version&quot;;
+
+   /**
+    * When multiple streams, number of the stream (base=1).
+    */
+    @NonNull
+    public static final String STREAMKINDPOS = &quot;StreamKindPos&quot;;
+
+   /**
+    * The ID for this stream in the original medium of the material.
+    */
+    @NonNull
+    public static final String ORIGINALSOURCEMEDIUMID = &quot;OriginalSourceMedium_ID&quot;;
+
+   /**
+    * Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONSTRING = &quot;Duration/String&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSMATRIXSTRING = &quot;Format_Settings_Matrix/String&quot;;
+
+   /**
+    * The ID for this stream in this file.
+    */
+    @NonNull
+    public static final String ID = &quot;ID&quot;;
+
+   /**
+    * Time code source (Container, Stream, SystemScheme1, SDTI, ANC...).
+    */
+    @NonNull
+    public static final String TIMECODESOURCE = &quot;TimeCode_Source&quot;;
+
+   /**
+    * Release date of software.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARYDATE = &quot;Encoded_Library_Date&quot;;
+
+   /**
+    * The menu ID for this stream in this file.
+    */
+    @NonNull
+    public static final String MENUIDSTRING = &quot;MenuID/String&quot;;
+
+   /**
+    * ScanType/String.
+    */
+    @NonNull
+    public static final String SCANTYPESTRING = &quot;ScanType/String&quot;;
+
+   /**
+    * More info about Language (e.g. Director's Comment).
+    */
+    @NonNull
+    public static final String LANGUAGEMORE = &quot;Language_More&quot;;
+
+   /**
+    * Source Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZESTRING = &quot;Source_StreamSize/String&quot;;
+
+   /**
+    * Maximum Frames per second.
+    */
+    @NonNull
+    public static final String FRAMERATEMAXIMUM = &quot;FrameRate_Maximum&quot;;
+
+   /**
+    * Original (in the raw stream) frames per second.
+    */
+    @NonNull
+    public static final String FRAMERATEORIGINAL = &quot;FrameRate_Original&quot;;
+
+   /**
+    * Display Aspect ratio.
+    */
+    @NonNull
+    public static final String DISPLAYASPECTRATIO = &quot;DisplayAspectRatio&quot;;
+
+   /**
+    * Duration of the first frame if it is longer than others, in ms.
+    */
+    @NonNull
+    public static final String DURATIONFIRSTFRAME = &quot;Duration_FirstFrame&quot;;
+
+   /**
+    * Delay in format: HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DELAYORIGINALSTRING3 = &quot;Delay_Original/String3&quot;;
+
+   /**
+    * Name of the software package used to create the file, such as Microsoft WaveEdit, trying to have the format 'CompanyName ProductName (OperatingSystem) Version (Date)'.
+    */
+    @NonNull
+    public static final String ENCODEDAPPLICATIONSTRING = &quot;Encoded_Application/String&quot;;
+
+   /**
+    * Delay in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DELAYORIGINALSTRING4 = &quot;Delay_Original/String4&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DELAYORIGINALSTRING5 = &quot;Delay_Original/String5&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String FORCED = &quot;Forced&quot;;
+
+   /**
+    * Stored width.
+    */
+    @NonNull
+    public static final String STOREDWIDTH = &quot;Stored_Width&quot;;
+
+   /**
+    * Frames per second, denominator.
+    */
+    @NonNull
+    public static final String FRAMERATEORIGINALDEN = &quot;FrameRate_Original_Den&quot;;
+
+   /**
+    * Last **Inform** call.
+    */
+    @NonNull
+    public static final String INFORM = &quot;Inform&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSREFFRAMES = &quot;Format_Settings_RefFrames&quot;;
+
+   /**
+    * Source Duration of the first frame if it is longer than others, in ms.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONFIRSTFRAME = &quot;Source_Duration_FirstFrame&quot;;
+
+   /**
+    * TimeStamp with measurement.
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAMESTRING = &quot;TimeStamp_FirstFrame/String&quot;;
+
+   /**
+    * Active Format Description (AFD value).
+    */
+    @NonNull
+    public static final String ACTIVEFORMATDESCRIPTION = &quot;ActiveFormatDescription&quot;;
+
+   /**
+    * ScanOrder_StoredDisplayedInverted.
+    */
+    @NonNull
+    public static final String SCANORDERSTOREDDISPLAYEDINVERTED = &quot;ScanOrder_StoredDisplayedInverted&quot;;
+
+   /**
+    * Number of the stream (base=0).
+    */
+    @NonNull
+    public static final String STREAMKINDID = &quot;StreamKindID&quot;;
+
+   /**
+    * Nominal Frames per second (with measurement).
+    */
+    @NonNull
+    public static final String FRAMERATENOMINALSTRING = &quot;FrameRate_Nominal/String&quot;;
+
+   /**
+    * Link.
+    */
+    @NonNull
+    public static final String FORMATURL = &quot;Format/Url&quot;;
+
+   /**
+    * Minimum Bit rate (with measurement).
+    */
+    @NonNull
+    public static final String BITRATEMINIMUMSTRING = &quot;BitRate_Minimum/String&quot;;
+
+   /**
+    * Width (aperture size if present) in pixel.
+    */
+    @NonNull
+    public static final String WIDTH = &quot;Width&quot;;
+
+   /**
+    * Frames per second (with measurement).
+    */
+    @NonNull
+    public static final String FRAMERATESTRING = &quot;FrameRate/String&quot;;
+
+   /**
+    * Tier of the Format (only MIXML).
+    */
+    @NonNull
+    public static final String FORMATTIER = &quot;Format_Tier&quot;;
+
+   /**
+    * Source Number of frames.
+    */
+    @NonNull
+    public static final String SOURCEFRAMECOUNT = &quot;Source_FrameCount&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSBVOP = &quot;Format_Settings_BVOP&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String DEFAULT = &quot;Default&quot;;
+
+   /**
+    * Time code information about Open/Closed of first frame if GOP is Open for the other GOPs.
+    */
+    @NonNull
+    public static final String GOPOPENCLOSEDFIRSTFRAME = &quot;Gop_OpenClosed_FirstFrame&quot;;
+
+   /**
+    * Time code information about Open/Closed.
+    */
+    @NonNull
+    public static final String GOPOPENCLOSED = &quot;Gop_OpenClosed&quot;;
+
+   /**
+    * Delay settings (in case of timecode for example).
+    */
+    @NonNull
+    public static final String DELAYORIGINALSETTINGS = &quot;Delay_Original_Settings&quot;;
+
+   /**
+    * Name of the product.
+    */
+    @NonNull
+    public static final String ENCODEDAPPLICATIONNAME = &quot;Encoded_Application_Name&quot;;
+
+   /**
+    * The unique ID for this stream, should be copied with stream copy.
+    */
+    @NonNull
+    public static final String UNIQUEIDSTRING = &quot;UniqueID/String&quot;;
+
+   /**
+    * ScanOrder.
+    */
+    @NonNull
+    public static final String SCANORDER = &quot;ScanOrder&quot;;
+
+   /**
+    * Profile of the Format (old XML: 'Profile@Level@Tier' format.
+    */
+    @NonNull
+    public static final String FORMATPROFILE = &quot;Format_Profile&quot;;
+
+   /**
+    * Offset between original height and displayed height in pixel.
+    */
+    @NonNull
+    public static final String HEIGHTOFFSET = &quot;Height_Offset&quot;;
+
+   /**
+    * ChromaSubsampling_Position.
+    */
+    @NonNull
+    public static final String CHROMASUBSAMPLINGPOSITION = &quot;ChromaSubsampling_Position&quot;;
+
+   /**
+    * StreamSize_Encoded/String2.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDSTRING2 = &quot;StreamSize_Encoded/String2&quot;;
+
+   /**
+    * StreamSize_Demuxed/String1.
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXEDSTRING1 = &quot;StreamSize_Demuxed/String1&quot;;
+
+   /**
+    * StreamSize_Encoded/String3.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDSTRING3 = &quot;StreamSize_Encoded/String3&quot;;
+
+   /**
+    * StreamSize_Demuxed/String2.
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXEDSTRING2 = &quot;StreamSize_Demuxed/String2&quot;;
+
+   /**
+    * StreamSize_Demuxed/String3.
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXEDSTRING3 = &quot;StreamSize_Demuxed/String3&quot;;
+
+   /**
+    * StreamSize_Encoded/String1.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDSTRING1 = &quot;StreamSize_Encoded/String1&quot;;
+
+   /**
+    * Language (full).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING = &quot;Language/String&quot;;
+
+   /**
+    * StreamSize_Demuxed/String4.
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXEDSTRING4 = &quot;StreamSize_Demuxed/String4&quot;;
+
+   /**
+    * StreamSize_Demuxed in with percentage value (note: theoritical value, not for real use).
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXEDSTRING5 = &quot;StreamSize_Demuxed/String5&quot;;
+
+   /**
+    * StreamSize_Encoded/String4.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDSTRING4 = &quot;StreamSize_Encoded/String4&quot;;
+
+   /**
+    * Original (in the raw stream) frames per second (with measurement).
+    */
+    @NonNull
+    public static final String FRAMERATEORIGINALSTRING = &quot;FrameRate_Original/String&quot;;
+
+   /**
+    * Encoded Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDSTRING5 = &quot;StreamSize_Encoded/String5&quot;;
+
+   /**
+    * Level of the Format (only MIXML).
+    */
+    @NonNull
+    public static final String FORMATLEVEL = &quot;Format_Level&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAMESTRING5 = &quot;Duration_LastFrame/String5&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAMESTRING4 = &quot;Duration_LastFrame/String4&quot;;
+
+   /**
+    * Original frame rate mode (CFR, VFR).
+    */
+    @NonNull
+    public static final String FRAMERATEMODEORIGINAL = &quot;FrameRate_Mode_Original&quot;;
+
+   /**
+    * StreamSize_Demuxed in with percentage value.
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXEDSTRING = &quot;StreamSize_Demuxed/String&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String FORCEDSTRING = &quot;Forced/String&quot;;
+
+   /**
+    * 16/24/32.
+    */
+    @NonNull
+    public static final String BITDEPTH = &quot;BitDepth&quot;;
+
+   /**
+    * Encoded Streamsize in bytes.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODED = &quot;StreamSize_Encoded&quot;;
+
+   /**
+    * Colour range for YUV colour space.
+    */
+    @NonNull
+    public static final String COLOURRANGE = &quot;colour_range&quot;;
+
+   /**
+    * Count of streams of that kind available.
+    */
+    @NonNull
+    public static final String STREAMCOUNT = &quot;StreamCount&quot;;
+
+   /**
+    * Format_Settings_GMC/String.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSGMCSTRING = &quot;Format_Settings_GMC/String&quot;;
+
+   /**
+    * Original (in the raw stream) Pixel Aspect ratio.
+    */
+    @NonNull
+    public static final String PIXELASPECTRATIOORIGINALSTRING = &quot;PixelAspectRatio_Original/String&quot;;
+
+   /**
+    * Encoded Streamsize in with percentage value.
+    */
+    @NonNull
+    public static final String STREAMSIZEENCODEDSTRING = &quot;StreamSize_Encoded/String&quot;;
+
+   /**
+    * Chromaticity coordinates of the source primaries.
+    */
+    @NonNull
+    public static final String COLOURPRIMARIESORIGINAL = &quot;colour_primaries_Original&quot;;
+
+   /**
+    * Pixel Aspect ratio.
+    */
+    @NonNull
+    public static final String PIXELASPECTRATIOSTRING = &quot;PixelAspectRatio/String&quot;;
+
+   /**
+    * Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONSTRING2 = &quot;Duration/String2&quot;;
+
+   /**
+    * ScanOrder_Original/String.
+    */
+    @NonNull
+    public static final String SCANORDERORIGINALSTRING = &quot;ScanOrder_Original/String&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DURATIONSTRING3 = &quot;Duration/String3&quot;;
+
+   /**
+    * Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONSTRING1 = &quot;Duration/String1&quot;;
+
+   /**
+    * Clean Aperture Pixel Aspect ratio.
+    */
+    @NonNull
+    public static final String PIXELASPECTRATIOCLEANAPERTURE = &quot;PixelAspectRatio_CleanAperture&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DURATIONSTRING4 = &quot;Duration/String4&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSCABACSTRING = &quot;Format_Settings_CABAC/String&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DURATIONSTRING5 = &quot;Duration/String5&quot;;
+
+   /**
+    * Encoded (with forced padding) bit rate in bps, if some container padding is present.
+    */
+    @NonNull
+    public static final String BITRATEENCODED = &quot;BitRate_Encoded&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSQPEL = &quot;Format_Settings_QPel&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled (Type of frame, and field/frame info).
+    */
+    @NonNull
+    public static final String FORMATSETTINGSPICTURESTRUCTURE = &quot;Format_Settings_PictureStructure&quot;;
+
+   /**
+    * Original (in the raw stream) height with measurement (pixel).
+    */
+    @NonNull
+    public static final String HEIGHTORIGINALSTRING = &quot;Height_Original/String&quot;;
+
+   /**
+    * Delay source (Container or Stream or empty).
+    */
+    @NonNull
+    public static final String DELAYSOURCE = &quot;Delay_Source&quot;;
+
+   /**
+    * ScanType.
+    */
+    @NonNull
+    public static final String SCANTYPE = &quot;ScanType&quot;;
+
+   /**
+    * ScanType_StoreMethod_FieldsPerBlock.
+    */
+    @NonNull
+    public static final String SCANTYPESTOREMETHODFIELDSPERBLOCK = &quot;ScanType_StoreMethod_FieldsPerBlock&quot;;
+
+   /**
+    * Delay drop frame info.
+    */
+    @NonNull
+    public static final String DELAYORIGINALDROPFRAME = &quot;Delay_Original_DropFrame&quot;;
+
+   /**
+    * Duration of the last frame if it is longer than others, in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAMESTRING1 = &quot;Duration_LastFrame/String1&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYORIGINALSTRING = &quot;Delay_Original/String&quot;;
+
+   /**
+    * Duration of the last frame if it is longer than others, in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAMESTRING3 = &quot;Duration_LastFrame/String3&quot;;
+
+   /**
+    * Duration of the last frame if it is longer than others, in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONLASTFRAMESTRING2 = &quot;Duration_LastFrame/String2&quot;;
+
+   /**
+    * Clean Aperture height in pixel.
+    */
+    @NonNull
+    public static final String HEIGHTCLEANAPERTURE = &quot;Height_CleanAperture&quot;;
+
+   /**
+    * StreamSize in bytes of hte stream after demux.
+    */
+    @NonNull
+    public static final String STREAMSIZEDEMUXED = &quot;StreamSize_Demuxed&quot;;
+
+   /**
+    * Settings needed for decoder used, summary.
+    */
+    @NonNull
+    public static final String FORMATSETTINGS = &quot;Format_Settings&quot;;
+
+   /**
+    * Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @NonNull
+    public static final String SERVICEKIND = &quot;ServiceKind&quot;;
+
+   /**
+    * Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    */
+    @NonNull
+    public static final String FIRSTPACKETORDER = &quot;FirstPacketOrder&quot;;
+
+   /**
+    * Clean Aperture height with measurement (pixel).
+    */
+    @NonNull
+    public static final String HEIGHTCLEANAPERTURESTRING = &quot;Height_CleanAperture/String&quot;;
+
+   /**
+    * TimeStamp with measurement.
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAMESTRING1 = &quot;TimeStamp_FirstFrame/String1&quot;;
+
+   /**
+    * TimeStamp in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAMESTRING5 = &quot;TimeStamp_FirstFrame/String5&quot;;
+
+   /**
+    * Clean Aperture Pixel Aspect ratio.
+    */
+    @NonNull
+    public static final String PIXELASPECTRATIOCLEANAPERTURESTRING = &quot;PixelAspectRatio_CleanAperture/String&quot;;
+
+   /**
+    * TimeStamp in format: HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAMESTRING4 = &quot;TimeStamp_FirstFrame/String4&quot;;
+
+   /**
+    * TimeStamp in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAMESTRING3 = &quot;TimeStamp_FirstFrame/String3&quot;;
+
+   /**
+    * TimeStamp with measurement.
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAMESTRING2 = &quot;TimeStamp_FirstFrame/String2&quot;;
+
+   /**
+    * Nominal Bit rate (with measurement).
+    */
+    @NonNull
+    public static final String BITRATENOMINALSTRING = &quot;BitRate_Nominal/String&quot;;
+
+   /**
+    * ScanOrder_Stored.
+    */
+    @NonNull
+    public static final String SCANORDERSTORED = &quot;ScanOrder_Stored&quot;;
+
+   /**
+    * Format used.
+    */
+    @NonNull
+    public static final String FORMAT = &quot;Format&quot;;
+
+   /**
+    * Original (in the raw stream) Display Aspect ratio.
+    */
+    @NonNull
+    public static final String DISPLAYASPECTRATIOORIGINALSTRING = &quot;DisplayAspectRatio_Original/String&quot;;
+
+   /**
+    * Original (in the raw stream) width with measurement (pixel).
+    */
+    @NonNull
+    public static final String WIDTHORIGINALSTRING = &quot;Width_Original/String&quot;;
+
+   /**
+    * Frames per second, numerator.
+    */
+    @NonNull
+    public static final String FRAMERATEORIGINALNUM = &quot;FrameRate_Original_Num&quot;;
+
+   /**
+    * Height in pixel.
+    */
+    @NonNull
+    public static final String HEIGHT = &quot;Height&quot;;
+
+   /**
+    * Codec ID (found in some containers).
+    */
+    @NonNull
+    public static final String CODECIDSTRING = &quot;CodecID/String&quot;;
+
+   /**
+    * Name of the company.
+    */
+    @NonNull
+    public static final String ENCODEDLIBRARYCOMPANYNAME = &quot;Encoded_Library_CompanyName&quot;;
+
+   /**
+    * TimeStamp fixed in the stream (relative) IN MS.
+    */
+    @NonNull
+    public static final String TIMESTAMPFIRSTFRAME = &quot;TimeStamp_FirstFrame&quot;;
+
+   /**
+    * Source Streamsize in bytes.
+    */
+    @NonNull
+    public static final String SOURCESTREAMSIZE = &quot;Source_StreamSize&quot;;
+
+   /**
+    * Commercial name used by vendor for theses setings or Format field if there is no difference.
+    */
+    @NonNull
+    public static final String FORMATCOMMERCIAL = &quot;Format_Commercial&quot;;
+
+   /**
+    * Active Format Description (AFD value) muxing mode (Ancillary or Raw stream).
+    */
+    @NonNull
+    public static final String ACTIVEFORMATDESCRIPTIONMUXINGMODE = &quot;ActiveFormatDescription_MuxingMode&quot;;
+
+   /**
+    * ScanType_Original.
+    */
+    @NonNull
+    public static final String SCANTYPEORIGINAL = &quot;ScanType_Original&quot;;
+
+   /**
+    * Delay source (Container or Stream or empty).
+    */
+    @NonNull
+    public static final String DELAYSOURCESTRING = &quot;Delay_Source/String&quot;;
+
+   /**
+    * Opto-electronic transfer characteristic of the source picture.
+    */
+    @NonNull
+    public static final String TRANSFERCHARACTERISTICSORIGINAL = &quot;transfer_characteristics_Original&quot;;
+
+   /**
+    * Nominal Bit rate in bps.
+    */
+    @NonNull
+    public static final String BITRATENOMINAL = &quot;BitRate_Nominal&quot;;
+
+   /**
+    * Minimum Bit rate in bps.
+    */
+    @NonNull
+    public static final String BITRATEMINIMUM = &quot;BitRate_Minimum&quot;;
+
+   /**
+    * Original (in the raw stream) height in pixel.
+    */
+    @NonNull
+    public static final String HEIGHTORIGINAL = &quot;Height_Original&quot;;
+
+   /**
+    * Source Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String SOURCEDURATIONSTRING = &quot;Source_Duration/String&quot;;
+
+   /**
+    * Matrix coefficients used in deriving luma and chroma signals from the green, blue, and red primaries.
+    */
+    @NonNull
+    public static final String MATRIXCOEFFICIENTS = &quot;matrix_coefficients&quot;;
+
+   /**
+    * Encoded (with forced padding) bit rate (with measurement), if some container padding is present.
+    */
+    @NonNull
+    public static final String BITRATEENCODEDSTRING = &quot;BitRate_Encoded/String&quot;;
+
+   /**
+    * Stream type name.
+    */
+    @NonNull
+    public static final String STREAMKINDSTRING = &quot;StreamKind/String&quot;;
+
+   /**
+    * ChromaSubsampling.
+    */
+    @NonNull
+    public static final String CHROMASUBSAMPLING = &quot;ChromaSubsampling&quot;;
+
+   /**
+    * Time code information about Open/Closed.
+    */
+    @NonNull
+    public static final String GOPOPENCLOSEDSTRING = &quot;Gop_OpenClosed/String&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSQPELSTRING = &quot;Format_Settings_QPel/String&quot;;
+
+   /**
+    * Version of the product.
+    */
+    @NonNull
+    public static final String ENCODEDAPPLICATIONVERSION = &quot;Encoded_Application_Version&quot;;
+
+   /**
+    * The menu ID for this stream in this file.
+    */
+    @NonNull
+    public static final String MENUID = &quot;MenuID&quot;;
+
+   /**
+    * Number of a group in order to provide versions of the same track.
+    */
+    @NonNull
+    public static final String ALTERNATEGROUPSTRING = &quot;AlternateGroup/String&quot;;
+
+   /**
+    * Settings needed for decoder used, detailled.
+    */
+    @NonNull
+    public static final String FORMATSETTINGSCABAC = &quot;Format_Settings_CABAC&quot;;
+
+   /**
+    * Pixel Aspect ratio.
+    */
+    @NonNull
+    public static final String PIXELASPECTRATIO = &quot;PixelAspectRatio&quot;;
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

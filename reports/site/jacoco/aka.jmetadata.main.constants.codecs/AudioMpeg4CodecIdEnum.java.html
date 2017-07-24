@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AudioMpeg4CodecIdEnum.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Ant</a> &gt; <a href="index.source.html" class="el_package">aka.jmetadata.main.constants.codecs</a> &gt; <span class="el_source">AudioMpeg4CodecIdEnum.java</span></div><h1>AudioMpeg4CodecIdEnum.java</h1><pre class="source lang-java linenums">package aka.jmetadata.main.constants.codecs;
+
+import aka.jmetadata.main.constants.codecs.interfaces.CodecEnum;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
+/**
+ * AudioMpeg4 constants parameters.
+ *
+ * @author Welle Charlotte
+ */
+<span class="nc" id="L16">public enum AudioMpeg4CodecIdEnum implements CodecEnum {</span>
+
+    /**
+     * .mp3.
+     */
+<span class="nc" id="L21">    MP3(&quot;.mp3&quot;, &quot;MPEG Audio&quot;),</span>
+
+    /**
+     * A104.
+     */
+<span class="nc" id="L26">    A104(&quot;A104&quot;, &quot;AMR&quot;, &quot;Wide band&quot;),</span>
+
+    /**
+     * aac .
+     */
+<span class="nc" id="L31">    AAC_(&quot;aac &quot;, &quot;AAC&quot;),</span>
+
+    /**
+     * ac-3.
+     */
+<span class="nc" id="L36">    AC_3(&quot;ac-3&quot;, &quot;AC-3&quot;),</span>
+
+    /**
+     * alac.
+     */
+<span class="nc" id="L41">    ALAC(&quot;alac&quot;, &quot;ALAC&quot;, &quot;Apple Lossless Audio Codec&quot;),</span>
+
+    /**
+     * alaw.
+     */
+<span class="nc" id="L46">    ALAW(&quot;alaw&quot;, &quot;ADPCM&quot;),</span>
+
+    /**
+     * dtsc.
+     */
+<span class="nc" id="L51">    DTSC(&quot;dtsc&quot;, &quot;DTS&quot;, &quot;Digital Theater Systems&quot;),</span>
+
+    /**
+     * dtse.
+     */
+<span class="nc" id="L56">    DTSE(&quot;dtse&quot;, &quot;DTS&quot;, &quot;Express&quot;, &quot;Digital Theater Systems Low Bitrate&quot;),</span>
+
+    /**
+     * dtsh.
+     */
+<span class="nc" id="L61">    DTSH(&quot;dtsh&quot;, &quot;DTS&quot;, &quot;HRA&quot;, &quot;Digital Theater Systems High Res&quot;),</span>
+
+    /**
+     * dtsl.
+     */
+<span class="nc" id="L66">    DTSL(&quot;dtsl&quot;, &quot;DTS&quot;, &quot;MA&quot;, &quot;Digital Theater Systems Master Audio&quot;),</span>
+
+    /**
+     * dvca.
+     */
+<span class="nc" id="L71">    DVCA(&quot;dvca&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * ec-3.
+     */
+<span class="nc" id="L76">    EC_3(&quot;ec-3&quot;, &quot;E-AC-3&quot;),</span>
+
+    /**
+     * enca.
+     */
+<span class="nc" id="L81">    ENCA(&quot;enca&quot;, &quot;(Encrypted)&quot;),</span>
+
+    /**
+     * fl32.
+     */
+<span class="nc" id="L86">    FL32(&quot;fl32&quot;, &quot;PCM &quot;),</span>
+
+    /**
+     * fl64.
+     */
+<span class="nc" id="L91">    FL64(&quot;fl64&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * ima4.
+     */
+<span class="nc" id="L96">    IMA4(&quot;ima4&quot;, &quot;ADPCM&quot;),</span>
+
+    /**
+     * in24.
+     */
+<span class="nc" id="L101">    IN24(&quot;in24&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * in32.
+     */
+<span class="nc" id="L106">    IN32(&quot;in32&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * lpcm.
+     */
+<span class="nc" id="L111">    LPCM(&quot;lpcm&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * MAC3.
+     */
+<span class="nc" id="L116">    MAC3(&quot;MAC3&quot;, &quot;MACE 3&quot;),</span>
+
+    /**
+     * MAC6.
+     */
+<span class="nc" id="L121">    MAC6(&quot;MAC6&quot;, &quot;MACE 6&quot;),</span>
+
+    /**
+     * nmos.
+     */
+<span class="nc" id="L126">    NMOS(&quot;nmos&quot;, &quot;Nellymoser&quot;),</span>
+
+    /**
+     * NONE.
+     */
+<span class="nc" id="L131">    NONE(&quot;NONE&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * owma.
+     */
+<span class="nc" id="L136">    OWMA(&quot;owma&quot;, &quot;WMA Pro&quot;, &quot;Smooth Streaming Media Audio&quot;),</span>
+
+    /**
+     * Qclp.
+     */
+<span class="nc" id="L141">    QCLP(&quot;Qclp&quot;, &quot;QCELP&quot;, &quot;Qualcomm PureVoice&quot;),</span>
+
+    /**
+     * QDM1.
+     */
+<span class="nc" id="L146">    QDM1(&quot;QDM1&quot;, &quot;QDesign 1&quot;, &quot;QDesign Music 1&quot;),</span>
+
+    /**
+     * QDM2.
+     */
+<span class="nc" id="L151">    QDM2(&quot;QDM2&quot;, &quot;Qdesign 2&quot;, &quot;QDesign Music 2&quot;),</span>
+
+    /**
+     * QDMC.
+     */
+<span class="nc" id="L156">    QDMC(&quot;QDMC&quot;, &quot;Qdesign 2&quot;, &quot;(Old)&quot;, &quot;QDesign Music 2 (old version, rare)&quot;),</span>
+
+    /**
+     * raw .
+     */
+<span class="nc" id="L161">    RAW_(&quot;raw &quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * sac3.
+     */
+<span class="nc" id="L166">    SAC3(&quot;sac3&quot;, &quot;AC-3&quot;, &quot;Made by Nero&quot;),</span>
+
+    /**
+     * samr.
+     */
+<span class="nc" id="L171">    SAMR(&quot;samr&quot;, &quot;AMR&quot;, &quot;Narrow band&quot;),</span>
+
+    /**
+     * sawb.
+     */
+<span class="nc" id="L176">    SAWB(&quot;sawb&quot;, &quot;AMR&quot;, &quot;Wide band&quot;),</span>
+
+    /**
+     * sevc.
+     */
+<span class="nc" id="L181">    SEVC(&quot;sevc&quot;, &quot;EVRC&quot;),</span>
+
+    /**
+     * sowt.
+     */
+<span class="nc" id="L186">    SOWT(&quot;sowt&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * twos.
+     */
+<span class="nc" id="L191">    TWOS(&quot;twos&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * ulaw.
+     */
+<span class="nc" id="L196">    ULAW(&quot;ulaw&quot;, &quot;ADPCM&quot;),</span>
+
+    /**
+     * vdva.
+     */
+<span class="nc" id="L201">    VDVA(&quot;vdva&quot;, &quot;PCM&quot;),</span>
+
+    /**
+     * WMA2.
+     */
+<span class="nc" id="L206">    WMA2(&quot;WMA2&quot;, &quot;WMA&quot;, &quot;Windows Media Audio&quot;, &quot;Version 2&quot;);</span>
+
+    @NonNull
+    private final List&lt;@NonNull String&gt; codecIDList;
+
+<span class="nc" id="L211">    AudioMpeg4CodecIdEnum(@NonNull final String @NonNull... codecIdParam) {</span>
+<span class="nc" id="L212">        this.codecIDList = Arrays.asList(codecIdParam);</span>
+<span class="nc" id="L213">    }</span>
+
+    @Override
+    public List&lt;@NonNull String&gt; getValues() {
+<span class="nc" id="L217">        return this.codecIDList;</span>
+    }
+
+    /**
+     * Get AudioMpeg4CodecIdEnum corresponding to given string.
+     *
+     * @param param
+     * @return corresponding AudioMpeg4Enum
+     */
+    @Nullable
+    public static final AudioMpeg4CodecIdEnum getAudioMpeg4CodecIdEnum(@Nullable final String param) {
+<span class="nc" id="L228">        AudioMpeg4CodecIdEnum result = null;</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">        if (param != null) {</span>
+<span class="nc" id="L230">            final String trimmedParam = param.trim().toLowerCase();</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">            if (trimmedParam.length() &gt; 0) {</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                for (final AudioMpeg4CodecIdEnum codecEnum : AudioMpeg4CodecIdEnum.values()) {</span>
+<span class="nc" id="L233">                    final List&lt;@NonNull String&gt; values = codecEnum.getValues();</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">                    for (final String expectedCodec : values) {</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">                        if (trimmedParam.equals(expectedCodec)) {</span>
+<span class="nc" id="L236">                            result = codecEnum;</span>
+                            // found, just break
+<span class="nc" id="L238">                            break;</span>
+                        }
+<span class="nc" id="L240">                    }</span>
+                }
+            }
+        }
+<span class="nc" id="L244">        return result;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MediaInfo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Ant</a> &gt; <a href="index.source.html" class="el_package">aka.jmetadata.main.mediainfo</a> &gt; <span class="el_source">MediaInfo.java</span></div><h1>MediaInfo.java</h1><pre class="source lang-java linenums">package aka.jmetadata.main.mediainfo;
+
+import static java.util.Collections.singletonMap;
+
+import java.io.File;
+import java.math.BigInteger;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+import java.util.logging.Logger;
+
+import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
+
+import com.sun.jna.FunctionMapper;
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
+import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
+import com.sun.jna.WString;
+
+import aka.jmetadata.main.constants.kind.InfoKind;
+import aka.jmetadata.main.constants.kind.StreamKind;
+import aka.jmetadata.main.helper.DateTimeHelper;
+import aka.swissknife.data.TextUtils;
+import aka.swissknife.os.OSHelper;
+import aka.swissknife.os.OS_ARCH;
+
+/**
+ * MediaInfo JNA library.
+ *
+ * @author Charlotte
+ */
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">public final class MediaInfo {</span>
+    private static final Logger LOGGER;
+    static {
+<span class="fc" id="L40">        LOGGER = Logger.getLogger(MediaInfo.class.getPackage().getName());</span>
+<span class="fc" id="L41">    }</span>
+
+    private static String libraryName;
+
+    private interface MediaInfoDLLInternal extends Library {
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        Library LIB_ZEN = Platform.isLinux() ? (Library) Native.loadLibrary(&quot;zen&quot;, Library.class) : null;</span>
+
+        /**
+         * Instance of the media info dll internal.
+         */
+<span class="fc" id="L51">        MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, (FunctionMapper) (lib, method) -&gt; {</span>
+            // e.g. MediaInfo_New(), MediaInfo_Open() ...
+<span class="fc" id="L53">            final String methodName = method.getName();</span>
+<span class="fc" id="L54">            return &quot;MediaInfo_&quot; + Character.toUpperCase(methodName.charAt(0)) + methodName.substring(1);</span>
+        }));
+
+        // Constructor/Destructor
+        Pointer New();
+
+        void delete(Pointer handle);
+
+        // File
+        int open(Pointer handle, WString file);
+
+        void close(Pointer handle);
+
+        // Info
+        WString inform(Pointer handle);
+
+        WString get(Pointer handle, int streamKind, int streamNumber, WString parameter, int infoKind, int searchKind);
+
+        WString getI(Pointer handle, int streamKind, int streamNumber, int parameterIndex, int infoKind);
+
+        int count_Get(Pointer handle, int streamKind, int streamNumber);
+
+        // Options
+        WString option(Pointer handle, WString option, WString value);
+    }
+
+    private Pointer handlePointer;
+    private NativeLibrary lib;
+
+    /**
+     * Constructor
+     */
+<span class="fc" id="L86">    public MediaInfo() {</span>
+<span class="pc bpc" id="L87" title="2 of 4 branches missed.">        if (Platform.isWindows() &amp;&amp; OSHelper.getOSArch() == OS_ARCH.BITS_64) {</span>
+<span class="fc" id="L88">            MediaInfo.libraryName = &quot;mediainfo64&quot;;</span>
+        } else {
+<span class="nc" id="L90">            MediaInfo.libraryName = &quot;mediainfo&quot;;</span>
+        }
+
+<span class="pc bpc" id="L93" title="3 of 4 branches missed.">        if (!Platform.isWindows() &amp;&amp; !Platform.isMac()) {</span>
+            try {
+                // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
+                // If we do not, the system will look for dependencies, but only in the library path.
+<span class="nc" id="L97">                this.lib = NativeLibrary.getInstance(&quot;mediainfo&quot;);</span>
+<span class="nc" id="L98">            } catch (final LinkageError e) {</span>
+<span class="nc" id="L99">                LOGGER.warning(&quot;Error loading mediainfo: &quot; + e.getMessage());</span>
+<span class="nc" id="L100">            }</span>
+        }
+
+        try {
+<span class="fc" id="L104">            LOGGER.info(&quot;Loading MediaInfo library&quot;);</span>
+<span class="fc" id="L105">            this.handlePointer = MediaInfoDLLInternal.INSTANCE.New();</span>
+<span class="fc" id="L106">            LOGGER.info(&quot;Loaded &quot; + optionStatic(&quot;Info_Version&quot;));</span>
+<span class="nc" id="L107">        } catch (final Throwable e) {</span>
+<span class="nc" id="L108">            LOGGER.info(&quot;Error loading MediaInfo library: &quot; + e.getMessage());</span>
+<span class="nc bnc" id="L109" title="All 4 branches missed.">            if (!Platform.isWindows() &amp;&amp; !Platform.isMac()) {</span>
+<span class="nc" id="L110">                LOGGER.info(&quot;Make sure you have libmediainfo and libzen are installed!&quot;);</span>
+            }
+<span class="fc" id="L112">        }</span>
+<span class="fc" id="L113">    }</span>
+
+    @SuppressWarnings(&quot;javadoc&quot;)
+    public boolean isValid() {
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        return this.handlePointer != null;</span>
+    }
+
+    @SuppressWarnings(&quot;javadoc&quot;)
+    public void dispose() {
+<span class="fc" id="L122">        close();</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        if (this.handlePointer == null) {</span>
+<span class="nc" id="L124">            throw new IllegalStateException();</span>
+        }
+<span class="fc" id="L126">        MediaInfoDLLInternal.INSTANCE.delete(this.handlePointer);</span>
+<span class="fc" id="L127">        this.handlePointer = null;</span>
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">        if (this.lib != null) {</span>
+<span class="nc" id="L129">            this.lib.dispose();</span>
+        }
+<span class="fc" id="L131">    }</span>
+
+    @Override
+    public void finalize() {
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        if (this.handlePointer != null) {</span>
+<span class="fc" id="L136">            dispose();</span>
+        }
+<span class="fc" id="L138">    }</span>
+
+    /**
+     * Open a file and collect information about it (technical information and tags).
+     *
+     * @param fileName full name of the file to open
+     * @return true if file was opened, false if file was not not opened
+     */
+    public boolean open(@NonNull final String fileName) {
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        return MediaInfoDLLInternal.INSTANCE.open(this.handlePointer, new WString(fileName)) &gt; 0;</span>
+    }
+
+    /**
+     * Open a file and collect information about it (technical information and tags).
+     *
+     * @param file file to open
+     * @return true if file was opened, false if file was not not opened
+     */
+    public boolean open(@NonNull final File file) {
+<span class="pc bpc" id="L157" title="2 of 4 branches missed.">        return file.isFile() &amp;&amp; MediaInfoDLLInternal.INSTANCE.open(this.handlePointer, new WString(file.getAbsolutePath())) &gt; 0;</span>
+    }
+
+    /**
+     * Close a file opened before with Open().
+     */
+    public void close() {
+<span class="fc" id="L164">        MediaInfoDLLInternal.INSTANCE.close(this.handlePointer);</span>
+<span class="fc" id="L165">    }</span>
+
+    /**
+     * Get all details about a file.
+     *
+     * @return All details about a file in one string
+     */
+    @Nullable
+    public String inform() {
+<span class="nc" id="L174">        return MediaInfoDLLInternal.INSTANCE.inform(this.handlePointer).toString();</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public String getAsString(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L188">        return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L202">        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+
+<span class="fc bfc" id="L204" title="All 2 branches covered.">        if (&quot;Yes&quot;.equals(value)) {</span>
+<span class="fc" id="L205">            return Boolean.TRUE;</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        } else if (&quot;No&quot;.equals(value)) {</span>
+<span class="fc" id="L207">            return Boolean.TRUE;</span>
+        } else {
+<span class="fc" id="L209">            return null;</span>
+        }
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a Long about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L224">        Long result = null;</span>
+<span class="fc" id="L225">        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="fc" id="L226">        value = TextUtils.trimNonNumerical(value);</span>
+<span class="fc bfc" id="L227" title="All 2 branches covered.">        if (!TextUtils.isEmpty(value)) {</span>
+<span class="pc bpc" id="L228" title="2 of 4 branches missed.">            assert value != null : &quot;As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.&quot;;</span>
+<span class="pc bpc" id="L229" title="1 of 2 branches missed.">            if (TextUtils.isDigit(value)) {</span>
+                try {
+<span class="fc" id="L231">                    result = Long.valueOf(value);</span>
+<span class="fc" id="L232">                } catch (final NumberFormatException e) {</span>
+                    // Nothing to do
+<span class="fc" id="L234">                }</span>
+            }
+        }
+
+<span class="fc" id="L238">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a Integer about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L252">        Integer result = null;</span>
+<span class="fc" id="L253">        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="fc" id="L254">        value = TextUtils.trimNonNumerical(value);</span>
+<span class="fc bfc" id="L255" title="All 2 branches covered.">        if (!TextUtils.isEmpty(value)) {</span>
+<span class="pc bpc" id="L256" title="2 of 4 branches missed.">            assert value != null : &quot;As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.&quot;;</span>
+<span class="pc bpc" id="L257" title="1 of 2 branches missed.">            if (TextUtils.isDigit(value)) {</span>
+                try {
+<span class="fc" id="L259">                    result = Integer.valueOf(value);</span>
+<span class="fc" id="L260">                } catch (final NumberFormatException e) {</span>
+                    // Nothing to do
+<span class="fc" id="L262">                }</span>
+            }
+        }
+
+<span class="fc" id="L266">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a BigInteger about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L280">        BigInteger result = null;</span>
+<span class="fc" id="L281">        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="fc" id="L282">        value = TextUtils.trimNonNumerical(value);</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">        if (!TextUtils.isEmpty(value)) {</span>
+<span class="pc bpc" id="L284" title="2 of 4 branches missed.">            assert value != null : &quot;As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.&quot;;</span>
+<span class="pc bpc" id="L285" title="1 of 2 branches missed.">            if (TextUtils.isDigit(value)) {</span>
+                try {
+<span class="fc" id="L287">                    result = new BigInteger(value);</span>
+<span class="nc" id="L288">                } catch (final NumberFormatException e) {</span>
+                    // Nothing to do
+<span class="fc" id="L290">                }</span>
+            }
+        }
+
+<span class="fc" id="L294">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a URL about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L308">        URL result = null;</span>
+<span class="fc" id="L309">        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="fc bfc" id="L310" title="All 2 branches covered.">        if (!TextUtils.isEmpty(value)) {</span>
+            try {
+<span class="fc" id="L312">                result = new URL(value);</span>
+<span class="fc" id="L313">            } catch (final MalformedURLException e) {</span>
+                // Nothing to do
+<span class="fc" id="L315">            }</span>
+        }
+
+<span class="fc" id="L318">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a Double about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="nc" id="L332">        Double result = null;</span>
+<span class="nc" id="L333">        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="nc" id="L334">        value = TextUtils.trimNonNumerical(value);</span>
+<span class="nc bnc" id="L335" title="All 2 branches missed.">        if (!TextUtils.isEmpty(value)) {</span>
+<span class="nc bnc" id="L336" title="All 4 branches missed.">            assert value != null : &quot;As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.&quot;;</span>
+<span class="nc bnc" id="L337" title="All 2 branches missed.">            if (TextUtils.isDigit(value)) {</span>
+                try {
+<span class="nc" id="L339">                    result = Double.valueOf(value);</span>
+<span class="nc" id="L340">                } catch (final NumberFormatException e) {</span>
+                    // Nothing to do
+<span class="nc" id="L342">                }</span>
+            }
+        }
+
+<span class="nc" id="L346">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a Date about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public LocalDateTime getAsLocalDateTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L360">        LocalDateTime result = null;</span>
+<span class="fc" id="L361">        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="fc bfc" id="L362" title="All 2 branches covered.">        if (!TextUtils.isEmpty(value)) {</span>
+<span class="pc bpc" id="L363" title="2 of 4 branches missed.">            assert value != null : &quot;As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.&quot;;</span>
+            try {
+<span class="fc" id="L365">                result = DateTimeHelper.parseLocalDateTime(value);</span>
+<span class="nc" id="L366">            } catch (final DateTimeParseException e) {</span>
+                // Nothing to do
+<span class="fc" id="L368">            }</span>
+        }
+<span class="fc" id="L370">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @return a Date about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public LocalTime getAsLocalTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
+<span class="fc" id="L384">        LocalTime result = null;</span>
+<span class="fc" id="L385">        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);</span>
+<span class="fc bfc" id="L386" title="All 2 branches covered.">        if (!TextUtils.isEmpty(value)) {</span>
+<span class="pc bpc" id="L387" title="2 of 4 branches missed.">            assert value != null : &quot;As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.&quot;;</span>
+            try {
+<span class="fc" id="L389">                result = DateTimeHelper.parseLocalTime(value);</span>
+<span class="nc" id="L390">            } catch (final DateTimeParseException e) {</span>
+                // Nothing to do
+<span class="fc" id="L392">            }</span>
+        }
+<span class="fc" id="L394">        return result;</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @param infoKind Kind of information you want about the parameter (the text, the measure,
+     *            the help...)
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind) {
+<span class="nc" id="L410">        return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in string format (&quot;Codec&quot;, &quot;Width&quot;...)
+     * @param infoKind Kind of information you want about the parameter (the text, the measure,
+     *            the help...)
+     * @param searchKind Where to look for the parameter
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind, @NonNull final InfoKind searchKind) {
+<span class="fc" id="L427">        return MediaInfoDLLInternal.INSTANCE.get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is an integer).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameterIndex Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in integer format (first parameter, second parameter...)
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
+<span class="nc" id="L441">        return get(streamKind, streamNumber, parameterIndex, InfoKind.Text);</span>
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is an integer).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameterIndex Parameter you are looking for in the Stream (Codec, width, bitrate...),
+     *            in integer format (first parameter, second parameter...)
+     * @param infoKind Kind of information you want about the parameter (the text, the measure,
+     *            the help...)
+     * @return a string about information you search, an empty string if there is a problem
+     */
+    @Nullable
+    public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex, @NonNull final InfoKind infoKind) {
+<span class="nc" id="L457">        return MediaInfoDLLInternal.INSTANCE.getI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();</span>
+    }
+
+    /**
+     * Count of Streams of a Stream kind (StreamNumber not filled), or count of piece of
+     * information in this Stream.
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @return number of Streams of the given Stream kind
+     */
+    public int getStreamCount(@NonNull final StreamKind streamKind) {
+<span class="fc" id="L468">        return MediaInfoDLLInternal.INSTANCE.count_Get(this.handlePointer, streamKind.ordinal(), -1);</span>
+    }
+
+    /**
+     * Count of Streams of a Stream kind (StreamNumber not filled), or count of piece of
+     * information in this Stream.
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in this kind of Stream (first, second...)
+     * @return number of Streams of the given Stream kind
+     */
+    public int getStreamCount(@NonNull final StreamKind streamKind, final int streamNumber) {
+<span class="nc" id="L480">        return MediaInfoDLLInternal.INSTANCE.count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);</span>
+    }
+
+    /**
+     * Configure or get information about MediaInfo.
+     *
+     * @param option The name of option
+     * @return Depends on the option: by default &quot;&quot; (nothing) means No, other means Yes
+     */
+    @Nullable
+    public String option(@NonNull final String option) {
+<span class="nc" id="L491">        return MediaInfoDLLInternal.INSTANCE.option(this.handlePointer, new WString(option), new WString(&quot;&quot;)).toString();</span>
+    }
+
+    /**
+     * Configure or get information about MediaInfo.
+     *
+     * @param option The name of option
+     * @param value The value of option
+     * @return Depends on the option: by default &quot;&quot; (nothing) means No, other means Yes
+     */
+    @Nullable
+    public String option(@NonNull final String option, @NonNull final String value) {
+<span class="nc" id="L503">        return MediaInfoDLLInternal.INSTANCE.option(this.handlePointer, new WString(option), new WString(value)).toString();</span>
+    }
+
+    /**
+     * Configure or get information about MediaInfo (Static version).
+     *
+     * @param option The name of option
+     * @return Depends on the option: by default &quot;&quot; (nothing) means No, other means Yes
+     */
+    @Nullable
+    public static String optionStatic(@NonNull final String option) {
+<span class="fc" id="L514">        return MediaInfoDLLInternal.INSTANCE.option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(&quot;&quot;)).toString();</span>
+    }
+
+    /**
+     * Configure or get information about MediaInfo (Static version).
+     *
+     * @param option The name of option
+     * @param value The value of option
+     * @return Depends on the option: by default &quot;&quot; (nothing) means No, other means Yes
+     */
+    @Nullable
+    public static String optionStatic(@NonNull final String option, @NonNull final String value) {
+<span class="nc" id="L526">        return MediaInfoDLLInternal.INSTANCE.option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(value)).toString();</span>
+    }
+
+//    public static String version() {
+//        return optionStatic(&quot;Info_Version&quot;);
+//    }
+//
+//    public static String parameters() {
+//        return optionStatic(&quot;Info_Parameters&quot;);
+//    }
+//
+//    public static String codecs() {
+//        return optionStatic(&quot;Info_Codecs&quot;);
+//    }
+//
+//    public static String capacities() {
+//        return optionStatic(&quot;Info_Capacities&quot;);
+//    }
+//
+//    public static String staticOption(final String option) {
+//        return optionStatic(option, &quot;&quot;);
+//    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

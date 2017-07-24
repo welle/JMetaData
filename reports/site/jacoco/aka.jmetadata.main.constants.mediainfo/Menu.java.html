@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Menu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Ant</a> &gt; <a href="index.source.html" class="el_package">aka.jmetadata.main.constants.mediainfo</a> &gt; <span class="el_source">Menu.java</span></div><h1>Menu.java</h1><pre class="source lang-java linenums">package aka.jmetadata.main.constants.mediainfo;
+
+import org.eclipse.jdt.annotation.NonNull;
+
+/**
+ * Menu constants parameters.
+ *
+ * @author Welle Charlotte
+ */
+<span class="nc" id="L10">public final class Menu {</span>
+
+   /**
+    * The unique ID for this stream, should be copied with stream copy.
+    */
+    @NonNull
+    public static final String UNIQUEID = &quot;UniqueID&quot;;
+
+   /**
+    * NetworkName.
+    */
+    @NonNull
+    public static final String NETWORKNAME = &quot;NetworkName&quot;;
+
+   /**
+    * TimeZones.
+    */
+    @NonNull
+    public static final String TIMEZONES = &quot;TimeZones&quot;;
+
+   /**
+    * Language (full).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING = &quot;Language/String&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DELAYSTRING3 = &quot;Delay/String3&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DELAYSTRING4 = &quot;Delay/String4&quot;;
+
+   /**
+    * Countries.
+    */
+    @NonNull
+    public static final String COUNTRIES = &quot;Countries&quot;;
+
+   /**
+    * Stream order in the file, whatever is the kind of stream (base=0).
+    */
+    @NonNull
+    public static final String STREAMORDER = &quot;StreamOrder&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYSTRING1 = &quot;Delay/String1&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYSTRING2 = &quot;Delay/String2&quot;;
+
+   /**
+    * Delay in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DELAYSTRING5 = &quot;Delay/String5&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String FORCEDSTRING = &quot;Forced/String&quot;;
+
+   /**
+    * Count of objects available in this stream.
+    */
+    @NonNull
+    public static final String COUNT = &quot;Count&quot;;
+
+   /**
+    * Delay fixed in the stream (relative) IN MS.
+    */
+    @NonNull
+    public static final String DELAY = &quot;Delay&quot;;
+
+   /**
+    * Count of streams of that kind available.
+    */
+    @NonNull
+    public static final String STREAMCOUNT = &quot;StreamCount&quot;;
+
+   /**
+    * Used by third-party developers to know about the end of the chapters list (this position excluded).
+    */
+    @NonNull
+    public static final String CHAPTERSPOSEND = &quot;Chapters_Pos_End&quot;;
+
+   /**
+    * Version of this format.
+    */
+    @NonNull
+    public static final String FORMATVERSION = &quot;Format_Version&quot;;
+
+   /**
+    * When multiple streams, number of the stream (base=1).
+    */
+    @NonNull
+    public static final String STREAMKINDPOS = &quot;StreamKindPos&quot;;
+
+   /**
+    * The ID for this stream in the original medium of the material.
+    */
+    @NonNull
+    public static final String ORIGINALSOURCEMEDIUMID = &quot;OriginalSourceMedium_ID&quot;;
+
+   /**
+    * Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONSTRING = &quot;Duration/String&quot;;
+
+   /**
+    * ServiceType.
+    */
+    @NonNull
+    public static final String SERVICETYPE = &quot;ServiceType&quot;;
+
+   /**
+    * Compression method used.
+    */
+    @NonNull
+    public static final String FORMATCOMPRESSION = &quot;Format_Compression&quot;;
+
+   /**
+    * List of programs available.
+    */
+    @NonNull
+    public static final String LIST = &quot;List&quot;;
+
+   /**
+    * The ID for this stream in this file.
+    */
+    @NonNull
+    public static final String ID = &quot;ID&quot;;
+
+   /**
+    * Delay with measurement.
+    */
+    @NonNull
+    public static final String DELAYSTRING = &quot;Delay/String&quot;;
+
+   /**
+    * Depending on the country it's the format of the rating of a movie (P, R, X in the USA, an age in other countries or a URI defining a logo)..
+    */
+    @NonNull
+    public static final String LAWRATING = &quot;LawRating&quot;;
+
+   /**
+    * Set if that track should not be used.
+    */
+    @NonNull
+    public static final String DISABLED = &quot;Disabled&quot;;
+
+   /**
+    * List of programs available.
+    */
+    @NonNull
+    public static final String LISTSTREAMKIND = &quot;List_StreamKind&quot;;
+
+   /**
+    * Manual description given by the container.
+    */
+    @NonNull
+    public static final String CODECIDDESCRIPTION = &quot;CodecID_Description&quot;;
+
+   /**
+    * bit field (0=IsAccepted, 1=IsFilled, 2=IsUpdated, 3=IsFinished).
+    */
+    @NonNull
+    public static final String STATUS = &quot;Status&quot;;
+
+   /**
+    * The menu ID for this stream in this file.
+    */
+    @NonNull
+    public static final String MENUIDSTRING = &quot;MenuID/String&quot;;
+
+   /**
+    * Play time in format : XXx YYy only, YYy omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONSTRING2 = &quot;Duration/String2&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.MMM.
+    */
+    @NonNull
+    public static final String DURATIONSTRING3 = &quot;Duration/String3&quot;;
+
+   /**
+    * More info about Language (e.g. Director's Comment).
+    */
+    @NonNull
+    public static final String LANGUAGEMORE = &quot;Language_More&quot;;
+
+   /**
+    * Play time in format : HHh MMmn SSs MMMms, XX omited if zero.
+    */
+    @NonNull
+    public static final String DURATIONSTRING1 = &quot;Duration/String1&quot;;
+
+   /**
+    * Service kind (full).
+    */
+    @NonNull
+    public static final String SERVICEKINDSTRING = &quot;ServiceKind/String&quot;;
+
+   /**
+    * Play time of the stream in ms.
+    */
+    @NonNull
+    public static final String DURATION = &quot;Duration&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS:FF, last colon replaced by semicolon for drop frame if available.
+    */
+    @NonNull
+    public static final String DURATIONSTRING4 = &quot;Duration/String4&quot;;
+
+   /**
+    * Play time in format : HH:MM:SS.mmm (HH:MM:SS:FF).
+    */
+    @NonNull
+    public static final String DURATIONSTRING5 = &quot;Duration/String5&quot;;
+
+   /**
+    * Duration_Start.
+    */
+    @NonNull
+    public static final String DURATIONSTART = &quot;Duration_Start&quot;;
+
+   /**
+    * A hint/popular name for this codec.
+    */
+    @NonNull
+    public static final String CODECIDHINT = &quot;CodecID/Hint&quot;;
+
+   /**
+    * Delay source (Container or Stream or empty).
+    */
+    @NonNull
+    public static final String DELAYSOURCE = &quot;Delay_Source&quot;;
+
+   /**
+    * Delay settings (in case of timecode for example).
+    */
+    @NonNull
+    public static final String DELAYSETTINGS = &quot;Delay_Settings&quot;;
+
+   /**
+    * Service/Url.
+    */
+    @NonNull
+    public static final String SERVICEURL = &quot;Service/Url&quot;;
+
+   /**
+    * List of programs available.
+    */
+    @NonNull
+    public static final String LISTSTREAMPOS = &quot;List_StreamPos&quot;;
+
+   /**
+    * ServiceName.
+    */
+    @NonNull
+    public static final String SERVICENAME = &quot;ServiceName&quot;;
+
+   /**
+    * ServiceProvider.
+    */
+    @NonNull
+    public static final String SERVICEPROVIDER = &quot;ServiceProvider&quot;;
+
+   /**
+    * Used by third-party developers to know about the beginning of the chapters list, to be used by Get(Stream_Menu, x, Pos), where Pos is an Integer between Chapters_Pos_Begin and Chapters_Pos_End.
+    */
+    @NonNull
+    public static final String CHAPTERSPOSBEGIN = &quot;Chapters_Pos_Begin&quot;;
+
+   /**
+    * ServiceProviderr/Url.
+    */
+    @NonNull
+    public static final String SERVICEPROVIDERRURL = &quot;ServiceProviderr/Url&quot;;
+
+   /**
+    * Settings needed for decoder used.
+    */
+    @NonNull
+    public static final String FORMATSETTINGS = &quot;Format_Settings&quot;;
+
+   /**
+    * Service kind, e.g. visually impaired, commentary, voice over.
+    */
+    @NonNull
+    public static final String SERVICEKIND = &quot;ServiceKind&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String FORCED = &quot;Forced&quot;;
+
+   /**
+    * Order of the first fully decodable packet met in the file, whatever is the kind of stream (base=0).
+    */
+    @NonNull
+    public static final String FIRSTPACKETORDER = &quot;FirstPacketOrder&quot;;
+
+   /**
+    * Duration_End.
+    */
+    @NonNull
+    public static final String DURATIONEND = &quot;Duration_End&quot;;
+
+   /**
+    * Stream type name.
+    */
+    @NonNull
+    public static final String STREAMKIND = &quot;StreamKind&quot;;
+
+   /**
+    * Last **Inform** call.
+    */
+    @NonNull
+    public static final String INFORM = &quot;Inform&quot;;
+
+   /**
+    * Language (full).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING1 = &quot;Language/String1&quot;;
+
+   /**
+    * Reason for the law rating.
+    */
+    @NonNull
+    public static final String LAWRATINGREASON = &quot;LawRating_Reason&quot;;
+
+   /**
+    * Language (2-letter ISO 639-1 if exists, else empty).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING2 = &quot;Language/String2&quot;;
+
+   /**
+    * Language (3-letter ISO 639-2 if exists, else empty).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING3 = &quot;Language/String3&quot;;
+
+   /**
+    * Language (2-letter ISO 639-1 if exists with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn, else empty).
+    */
+    @NonNull
+    public static final String LANGUAGESTRING4 = &quot;Language/String4&quot;;
+
+   /**
+    * Codec ID (found in some containers).
+    */
+    @NonNull
+    public static final String CODECID = &quot;CodecID&quot;;
+
+   /**
+    * Number of a group in order to provide versions of the same track.
+    */
+    @NonNull
+    public static final String ALTERNATEGROUP = &quot;AlternateGroup&quot;;
+
+   /**
+    * Number of the stream (base=0).
+    */
+    @NonNull
+    public static final String STREAMKINDID = &quot;StreamKindID&quot;;
+
+   /**
+    * Format used.
+    */
+    @NonNull
+    public static final String FORMAT = &quot;Format&quot;;
+
+   /**
+    * Language (2-letter ISO 639-1 if exists, else 3-letter ISO 639-2, and with optional ISO 3166-1 country separated by a dash if available, e.g. en, en-us, zh-cn).
+    */
+    @NonNull
+    public static final String LANGUAGE = &quot;Language&quot;;
+
+   /**
+    * Original/NetworkName.
+    */
+    @NonNull
+    public static final String ORIGINALNETWORKNAME = &quot;Original/NetworkName&quot;;
+
+   /**
+    * Info about this codec.
+    */
+    @NonNull
+    public static final String CODECIDINFO = &quot;CodecID/Info&quot;;
+
+   /**
+    * Link.
+    */
+    @NonNull
+    public static final String FORMATURL = &quot;Format/Url&quot;;
+
+   /**
+    * Codec ID (found in some containers).
+    */
+    @NonNull
+    public static final String CODECIDSTRING = &quot;CodecID/String&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String DEFAULTSTRING = &quot;Default/String&quot;;
+
+   /**
+    * The ID for this stream in the original medium of the material.
+    */
+    @NonNull
+    public static final String ORIGINALSOURCEMEDIUMIDSTRING = &quot;OriginalSourceMedium_ID/String&quot;;
+
+   /**
+    * Commercial name used by vendor for theses setings or Format field if there is no difference.
+    */
+    @NonNull
+    public static final String FORMATCOMMERCIAL = &quot;Format_Commercial&quot;;
+
+   /**
+    * Info about Format.
+    */
+    @NonNull
+    public static final String FORMATINFO = &quot;Format/Info&quot;;
+
+   /**
+    * A link to more details about this codec ID.
+    */
+    @NonNull
+    public static final String CODECIDURL = &quot;CodecID/Url&quot;;
+
+   /**
+    * Name of this menu.
+    */
+    @NonNull
+    public static final String TITLE = &quot;Title&quot;;
+
+   /**
+    * Stream type name.
+    */
+    @NonNull
+    public static final String STREAMKINDSTRING = &quot;StreamKind/String&quot;;
+
+   /**
+    * List of programs available.
+    */
+    @NonNull
+    public static final String LISTSTRING = &quot;List/String&quot;;
+
+   /**
+    * Delay drop frame.
+    */
+    @NonNull
+    public static final String DELAYDROPFRAME = &quot;Delay_DropFrame&quot;;
+
+   /**
+    * Set if that track should not be used.
+    */
+    @NonNull
+    public static final String DISABLEDSTRING = &quot;Disabled/String&quot;;
+
+   /**
+    * Set if that track should be used if no language found matches the user preference..
+    */
+    @NonNull
+    public static final String DEFAULT = &quot;Default&quot;;
+
+   /**
+    * The menu ID for this stream in this file.
+    */
+    @NonNull
+    public static final String MENUID = &quot;MenuID&quot;;
+
+   /**
+    * The unique ID for this stream, should be copied with stream copy.
+    */
+    @NonNull
+    public static final String UNIQUEIDSTRING = &quot;UniqueID/String&quot;;
+
+   /**
+    * Commercial name used by vendor for theses setings if there is one.
+    */
+    @NonNull
+    public static final String FORMATCOMMERCIALIFANY = &quot;Format_Commercial_IfAny&quot;;
+
+   /**
+    * The ID for this stream in this file.
+    */
+    @NonNull
+    public static final String IDSTRING = &quot;ID/String&quot;;
+
+   /**
+    * Number of a group in order to provide versions of the same track.
+    */
+    @NonNull
+    public static final String ALTERNATEGROUPSTRING = &quot;AlternateGroup/String&quot;;
+
+   /**
+    * Profile of the Format.
+    */
+    @NonNull
+    public static final String FORMATPROFILE = &quot;Format_Profile&quot;;
+
+   /**
+    * ServiceChannel.
+    */
+    @NonNull
+    public static final String SERVICECHANNEL = &quot;ServiceChannel&quot;;
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
