@@ -3,6 +3,7 @@ package aka.jmetadata.main.mediainfo;
 import static java.util.Collections.singletonMap;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -41,39 +42,43 @@ public final class MediaInfo {
     private Pointer handlePointer;
     private NativeLibrary lib;
 
-    private interface MediaInfoDLLInternal extends Library {
-        Library LIB_ZEN = Platform.isLinux() ? (Library) Native.loadLibrary("zen", Library.class) : null;
+    public interface MediaInfoDLLInternal extends Library {
 
-        /**
-         * Instance of the media info dll internal.
-         */
-        MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, (FunctionMapper) (lib, method) -> {
-            // e.g. MediaInfo_New(), MediaInfo_Open() ...
-            final String methodName = method.getName();
-            return "MediaInfo_" + Character.toUpperCase(methodName.charAt(0)) + methodName.substring(1);
-        }));
+        MediaInfoDLLInternal INSTANCE = (MediaInfoDLLInternal) Native.loadLibrary(libraryName, MediaInfoDLLInternal.class, singletonMap(OPTION_FUNCTION_MAPPER, (FunctionMapper) (final NativeLibrary lib, final Method method) -> "MediaInfo_" + method.getName()));
 
-        // Constructor/Destructor
+        /* Constructor */
         Pointer New();
 
-        void Delete(Pointer handle);
+        /* Deconstructor */
+        void Delete(Pointer Handle);
 
-        // File
-        int Open(Pointer handle, WString file);
+        /* Opens a file for inspection */
+        int Open(Pointer Handle, WString file);
 
-        void Close(Pointer handle);
+        /* Closes the file upon completion */
+        void Close(Pointer Handle);
 
-        // Info
-        WString Inform(Pointer handle);
+        /* Opens a buffered read for the specified length beginning at offset */
+        int Open_Buffer_Init(Pointer handle, long length, long offset);
 
-        WString Get(Pointer handle, int streamKind, int streamNumber, WString parameter, int infoKind, int searchKind);
+        int Open_Buffer_Continue(Pointer handle, byte[] buffer, int size);
 
-        WString GetI(Pointer handle, int streamKind, int streamNumber, int parameterIndex, int infoKind);
+        long Open_Buffer_Continue_GoTo_Get(Pointer handle);
 
-        int Count_Get(Pointer handle, int streamKind, int streamNumber);
+        /* release buffer resources (close) */
+        int Open_Buffer_Finalize(Pointer handle);
 
-        // Options
-        WString Option(Pointer handle, WString option, WString value);
+        /* return information in various ways */
+        WString Inform(Pointer Handle, int Reserved);
+
+        WString Get(Pointer Handle, int StreamKind, int StreamNumber, WString parameter, int infoKind, int searchKind);
+
+        WString GetI(Pointer Handle, int StreamKind, int StreamNumber, int parameterIndex, int infoKind);
+
+        int Count_Get(Pointer Handle, int StreamKind, int StreamNumber);
+
+        /* Set options */
+        WString Option(Pointer Handle, WString option, WString value);
     }
 
     /**
@@ -103,7 +108,7 @@ public final class MediaInfo {
         } catch (final Throwable e) {
             LOGGER.info("Error loading MediaInfo library: " + e.getMessage());
             if (!Platform.isWindows() && !Platform.isMac()) {
-                LOGGER.info("Make sure you have libmediainfo and libzen are installed!");
+                LOGGER.info("Make sure you have MediaInfoDLLInternal and libzen are installed!");
             }
         }
     }
@@ -123,6 +128,17 @@ public final class MediaInfo {
         this.handlePointer = null;
         if (this.lib != null) {
             this.lib.dispose();
+        }
+    }
+
+    /**
+     * Closes the underlying file handle, and releases the native instance.
+     */
+    public void close() {
+        if (this.handlePointer != null) {
+            MediaInfoDLLInternal.INSTANCE.Close(this.handlePointer);
+            MediaInfoDLLInternal.INSTANCE.Delete(this.handlePointer);
+            this.handlePointer = null;
         }
     }
 
@@ -151,23 +167,6 @@ public final class MediaInfo {
      */
     public boolean open(@NonNull final File file) {
         return file.isFile() && MediaInfoDLLInternal.INSTANCE.Open(this.handlePointer, new WString(file.getAbsolutePath())) > 0;
-    }
-
-    /**
-     * Close a file opened before with Open().
-     */
-    public void close() {
-        MediaInfoDLLInternal.INSTANCE.Close(this.handlePointer);
-    }
-
-    /**
-     * Get all details about a file.
-     *
-     * @return All details about a file in one string
-     */
-    @Nullable
-    public String inform() {
-        return MediaInfoDLLInternal.INSTANCE.Inform(this.handlePointer).toString();
     }
 
     /**
@@ -391,69 +390,6 @@ public final class MediaInfo {
     }
 
     /**
-     * Get a piece of information about a file (parameter is a string).
-     *
-     * @param streamKind Kind of Stream (general, video, audio...)
-     * @param streamNumber Stream number in Kind of Stream (first, second...)
-     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
-     *            in string format ("Codec", "Width"...)
-     * @param infoKind Kind of information you want about the parameter (the text, the measure,
-     *            the help...)
-     * @return a string about information you search, an empty string if there is a problem
-     */
-    @Nullable
-    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind) {
-        return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);
-    }
-
-    /**
-     * Get a piece of information about a file (parameter is a string).
-     *
-     * @param streamKind Kind of Stream (general, video, audio...)
-     * @param streamNumber Stream number in Kind of Stream (first, second...)
-     * @param parameter Parameter you are looking for in the Stream (Codec, width, bitrate...),
-     *            in string format ("Codec", "Width"...)
-     * @param infoKind Kind of information you want about the parameter (the text, the measure,
-     *            the help...)
-     * @param searchKind Where to look for the parameter
-     * @return a string about information you search, an empty string if there is a problem
-     */
-    @Nullable
-    public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind, @NonNull final InfoKind searchKind) {
-        return MediaInfoDLLInternal.INSTANCE.Get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
-    }
-
-    /**
-     * Get a piece of information about a file (parameter is an integer).
-     *
-     * @param streamKind Kind of Stream (general, video, audio...)
-     * @param streamNumber Stream number in Kind of Stream (first, second...)
-     * @param parameterIndex Parameter you are looking for in the Stream (Codec, width, bitrate...),
-     *            in integer format (first parameter, second parameter...)
-     * @return a string about information you search, an empty string if there is a problem
-     */
-    @Nullable
-    public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
-        return get(streamKind, streamNumber, parameterIndex, InfoKind.Text);
-    }
-
-    /**
-     * Get a piece of information about a file (parameter is an integer).
-     *
-     * @param streamKind Kind of Stream (general, video, audio...)
-     * @param streamNumber Stream number in Kind of Stream (first, second...)
-     * @param parameterIndex Parameter you are looking for in the Stream (Codec, width, bitrate...),
-     *            in integer format (first parameter, second parameter...)
-     * @param infoKind Kind of information you want about the parameter (the text, the measure,
-     *            the help...)
-     * @return a string about information you search, an empty string if there is a problem
-     */
-    @Nullable
-    public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex, @NonNull final InfoKind infoKind) {
-        return MediaInfoDLLInternal.INSTANCE.GetI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
-    }
-
-    /**
      * Count of Streams of a Stream kind (StreamNumber not filled), or count of piece of
      * information in this Stream.
      *
@@ -476,35 +412,6 @@ public final class MediaInfo {
         return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
     }
 
-    /**
-     * Configure or get information about MediaInfo.
-     *
-     * @param option The name of option
-     * @return Depends on the option: by default "" (nothing) means No, other means Yes
-     */
-    @Nullable
-    public String option(@NonNull final String option) {
-        return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString("")).toString();
-    }
-
-    /**
-     * Configure or get information about MediaInfo.
-     *
-     * @param option The name of option
-     * @param value The value of option
-     * @return Depends on the option: by default "" (nothing) means No, other means Yes
-     */
-    @Nullable
-    public String option(@NonNull final String option, @NonNull final String value) {
-        return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString(value)).toString();
-    }
-
-    /**
-     * Configure or get information about MediaInfo (Static version).
-     *
-     * @param option The name of option
-     * @return Depends on the option: by default "" (nothing) means No, other means Yes
-     */
     @Nullable
     public static String optionStatic(@NonNull final String option) {
         return MediaInfoDLLInternal.INSTANCE.Option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString("")).toString();
@@ -520,6 +427,149 @@ public final class MediaInfo {
     @Nullable
     public static String optionStatic(@NonNull final String option, @NonNull final String value) {
         return MediaInfoDLLInternal.INSTANCE.Option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(value)).toString();
+    }
+
+    /**
+     * Get all details about a file.
+     *
+     * @return All details about a file in one string
+     */
+    public String inform() {
+        return MediaInfoDLLInternal.INSTANCE.Inform(this.handlePointer, 0).toString();
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec,
+     *            width, bitrate...), in string format ("Codec", "Width"...)
+     * @return a string about information you search, an empty string if there
+     *         is a problem
+     */
+    public String get(final StreamKind streamKind, final int streamNumber, final String parameter) {
+        return get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is an integer).
+     *
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameterIndex Parameter you are looking for in the Stream (Codec,
+     *            width, bitrate...), in integer format (first parameter, second
+     *            parameter...)
+     * @return information requested, empty string if not found
+     */
+    public String get(final StreamKind streamKind, final int streamNumber, final int parameterIndex) {
+        return get(streamKind, streamNumber, parameterIndex, InfoKind.Text);
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec,
+     *            width, bitrate...), in string format ("Codec", "Width"...)
+     * @param infoKind Kind of information you want about the parameter (the
+     *            text, the measure, the help...)
+     * @return information requested, empty string if not found
+     */
+    public String get(final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind) {
+        return get(streamKind, streamNumber, parameter, infoKind, InfoKind.Name);
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is a string).
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameter Parameter you are looking for in the Stream (Codec,
+     *            width, bitrate...), in string format ("Codec", "Width"...)
+     * @param infoKind Kind of information you want about the parameter (the
+     *            text, the measure, the help...)
+     * @param searchKind Where to look for the parameter
+     * @return a string about information you search, an empty string if there
+     *         is a problem
+     */
+    public String get(final StreamKind streamKind, final int streamNumber, final String parameter, final InfoKind infoKind, final InfoKind searchKind) {
+        return MediaInfoDLLInternal.INSTANCE.Get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
+    }
+
+    /**
+     * Get a piece of information about a file (parameter is an integer).
+     *
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in Kind of Stream (first, second...)
+     * @param parameterIndex Parameter you are looking for in the Stream (Codec,
+     *            width, bitrate...), in integer format (first parameter, second
+     *            parameter...)
+     * @param infoKind Kind of information you want about the parameter (the
+     *            text, the measure, the help...)
+     * @return a string about information you search, an empty string if there
+     *         is a problem
+     */
+    public String get(final StreamKind streamKind, final int streamNumber, final int parameterIndex, final InfoKind infoKind) {
+        return MediaInfoDLLInternal.INSTANCE.GetI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
+    }
+
+    /**
+     * Count of Streams of a Stream kind (StreamNumber not filled), or count of
+     * piece of information in this Stream.
+     *
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @return number of Streams of the given Stream kind
+     */
+    public int getCount(final StreamKind streamKind) {
+        // We should use NativeLong for -1, but it fails on 64-bit
+        // int Count_Get(Pointer Handle, int StreamKind, NativeLong StreamNumber);
+        // return MediaInfoDLL_Internal.INSTANCE.Count_Get(Handle, StreamKind.ordinal(), -1);
+        // so we use slower Get() with a character string
+        final String streamCount = get(streamKind, 0, "StreamCount");
+        if (streamCount == null || streamCount.length() == 0) {
+            return 0;
+        }
+        return Integer.parseInt(streamCount);
+    }
+
+    /**
+     * Count of Streams of a Stream kind in the Stream Number.
+     *
+     * @param streamKind Kind of Stream (general, video, audio...)
+     * @param streamNumber Stream number in this kind of Stream (first,
+     *            second...)
+     * @return number of Streams of the given Stream kind
+     */
+    public int getCount(final StreamKind streamKind, final int streamNumber) {
+        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
+    }
+
+    /**
+     * Configure or get information about MediaInfo.
+     *
+     * @param option The name of option
+     * @return Depends on the option: by default "" (nothing) means No, other
+     *         means Yes
+     */
+    public String option(final String option) {
+        return option(option, "");
+    }
+
+    /**
+     * Configure or get information about MediaInfo.
+     *
+     * @param option The name of option
+     * @param value The value of option
+     * @return Depends on the option: by default "" (nothing) means No, other
+     *         means Yes
+     */
+    public String option(final String option, final String value) {
+        return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString(value)).toString();
     }
 
 //    public static String version() {
