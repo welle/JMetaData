@@ -41,8 +41,10 @@ public final class JMetaDataText_Test {
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataText> textStreams = jMetaData.getSubtitleStreams();
-                if (textStreams.get(0) != null) {
-                    jMetaDataText = textStreams.get(0);
+                for (final JMetaDataText textStream : textStreams) {
+                    if ("4".equals(textStream.getIDStringAsString())) {
+                        jMetaDataText = textStream;
+                    }
                 }
             } else {
                 throw new RuntimeErrorException(null, "Can not open file.");

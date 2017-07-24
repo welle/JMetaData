@@ -41,7 +41,7 @@ public final class JMetaDataMenu_Test {
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataMenu> menuStreams = jMetaData.getMenuStreams();
-                if (menuStreams.get(0) != null) {
+                if (menuStreams.size() > 0 && menuStreams.get(0) != null) {
                     jMetaDataMenu = menuStreams.get(0);
                 }
             } else {

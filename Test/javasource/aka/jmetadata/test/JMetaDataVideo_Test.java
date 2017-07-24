@@ -44,8 +44,10 @@ public final class JMetaDataVideo_Test {
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataVideo> videoStreams = jMetaData.getVideoStreams();
-                if (videoStreams.get(0) != null) {
-                    jMetaDataVideo = videoStreams.get(0);
+                for (final JMetaDataVideo videoStream : videoStreams) {
+                    if ("2".equals(videoStream.getIDStringAsString())) {
+                        jMetaDataVideo = videoStream;
+                    }
                 }
             } else {
                 throw new RuntimeErrorException(null, "Can not open file.");
@@ -683,7 +685,7 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetBitRateAsString() {
-        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsString());
+        assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getBitRateAsString());
     }
 
     /**
@@ -2699,7 +2701,7 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getCountAsInteger());
+        assertEquals(Integer.valueOf(338), JMetaDataVideo_Test.jMetaDataVideo.getCountAsInteger());
     }
 
     /**
@@ -5099,7 +5101,7 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString4AsString() {
-        assertEquals("00:14:58.04", JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsString());
+        assertEquals("00:14:58:04", JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsString());
     }
 
     /**
@@ -11344,7 +11346,7 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetInternetMediaTypeAsInteger() {
-        assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsInteger());
+        assertEquals(Integer.valueOf(264), JMetaDataVideo_Test.jMetaDataVideo.getInternetMediaTypeAsInteger());
     }
 
     /**
