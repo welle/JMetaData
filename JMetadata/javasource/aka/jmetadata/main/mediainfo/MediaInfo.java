@@ -35,12 +35,11 @@ import aka.swissknife.os.OS_ARCH;
  * @author Charlotte
  */
 public final class MediaInfo {
-    private static final Logger LOGGER;
-    static {
-        LOGGER = Logger.getLogger(MediaInfo.class.getPackage().getName());
-    }
+    private static final Logger LOGGER = Logger.getLogger(MediaInfo.class.getPackage().getName());
 
     private static String libraryName;
+    private Pointer handlePointer;
+    private NativeLibrary lib;
 
     private interface MediaInfoDLLInternal extends Library {
         Library LIB_ZEN = Platform.isLinux() ? (Library) Native.loadLibrary("zen", Library.class) : null;
@@ -77,9 +76,6 @@ public final class MediaInfo {
         WString option(Pointer handle, WString option, WString value);
     }
 
-    private Pointer handlePointer;
-    private NativeLibrary lib;
-
     /**
      * Constructor
      */
@@ -90,15 +86,15 @@ public final class MediaInfo {
             MediaInfo.libraryName = "mediainfo";
         }
 
-        if (!Platform.isWindows() && !Platform.isMac()) {
-            try {
-                // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
-                // If we do not, the system will look for dependencies, but only in the library path.
-                this.lib = NativeLibrary.getInstance("mediainfo");
-            } catch (final LinkageError e) {
-                LOGGER.warning("Error loading mediainfo: " + e.getMessage());
-            }
-        }
+//        if (!Platform.isWindows() && !Platform.isMac()) {
+//            try {
+//                // We need to load dependencies first, because we know where our native libs are (e.g. Java Web Start Cache).
+//                // If we do not, the system will look for dependencies, but only in the library path.
+//                this.lib = NativeLibrary.getInstance("mediainfo");
+//            } catch (final LinkageError e) {
+//                LOGGER.warning("Error loading mediainfo: " + e.getMessage());
+//            }
+//        }
 
         try {
             LOGGER.info("Loading MediaInfo library");
