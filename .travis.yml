@@ -8,7 +8,7 @@ before_script:
   - sudo apt-get -f install libmediainfo-dev ant-optional
 script:
   # other script steps might be done before running the actual analysis
-  - ant jars
+  - ant run
   - sonar-scanner
 env:
   global:
