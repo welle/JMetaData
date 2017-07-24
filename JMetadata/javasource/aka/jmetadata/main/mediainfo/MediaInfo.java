@@ -198,7 +198,12 @@ public final class MediaInfo implements Closeable {
     }
 
     public synchronized int getStreamCount(final StreamKind streamKind) {
-        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), -1);
+        final String StreamCount = get(streamKind, 0, "StreamCount");
+        if (StreamCount == null || StreamCount.length() == 0) {
+            return 0;
+        }
+        return Integer.parseInt(StreamCount);
+//        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), -1);
     }
 
     public synchronized int parameterCount(final StreamKind streamKind, final int streamNumber) {
