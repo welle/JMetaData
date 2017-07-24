@@ -80,9 +80,11 @@ public final class JMetaData {
      *
      * @param file file to open
      * @return <code>true</code> if file was opened
+     * @throws IOException
+     * @throws IllegalArgumentException
      */
-    public boolean open(@NonNull final File file) {
-        return this.mediaInfo.open(file);
+    public boolean open(@NonNull final File file) throws IllegalArgumentException, IOException {
+        return this.mediaInfo.open(file) != null;
     }
 
     /**
@@ -91,16 +93,6 @@ public final class JMetaData {
      */
     public void close() {
         this.mediaInfo.finalize();
-    }
-
-    /**
-     * Open a file and collect information about it (technical information and tags).
-     *
-     * @param filename full name of the file to open
-     * @return true if file was opened, false if file was not not opened
-     */
-    public boolean open(@NonNull final String filename) {
-        return this.mediaInfo.open(filename);
     }
 
     private int getNumVideoStreams() {
