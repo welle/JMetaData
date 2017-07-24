@@ -3,10 +3,13 @@ package aka.jmetadata.test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -36,6 +39,7 @@ public final class JMetaDataGeneral_Test {
 
     private static JMetaDataGeneral jMetaDataGeneral;
     private static JMetaData jMetaData;
+    private static File file;
 
     /**
      * Initialize test.
@@ -44,7 +48,7 @@ public final class JMetaDataGeneral_Test {
     public static void beforeUnit() {
         try {
             jMetaData = new JMetaData();
-            final File file = new File(ClassLoader.getSystemClassLoader().getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
+            file = new File(ClassLoader.getSystemClassLoader().getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
             if (jMetaData.open(file)) {
                 jMetaDataGeneral = jMetaData.getGeneral();
             } else {
@@ -7611,7 +7615,15 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFileCreatedDateAsBigInteger() {
-        assertEquals(new BigInteger("20170627140003689"), JMetaDataGeneral_Test.jMetaDataGeneral.getFileCreatedDateAsBigInteger());
+        try {
+            final BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            String time = attr.creationTime().toString();
+            time = time.replaceAll("[^0-9]", "");
+            time = time.substring(0, time.length() - 3);
+            assertEquals(new BigInteger(time), JMetaDataGeneral_Test.jMetaDataGeneral.getFileCreatedDateAsBigInteger());
+        } catch (final IOException e) {
+            // Nothing to do
+        }
     }
 
     /**
