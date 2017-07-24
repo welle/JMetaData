@@ -3,13 +3,10 @@ package aka.jmetadata.test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -7608,22 +7605,6 @@ public final class JMetaDataGeneral_Test {
     @Test
     public void subTestGetFileCreatedDateAsBoolean() {
         assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFileCreatedDateAsBoolean());
-    }
-
-    /**
-     * Test getFileCreatedDateAsBigInteger() method.
-     */
-    @Test
-    public void subTestGetFileCreatedDateAsBigInteger() {
-        try {
-            final BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-            String time = attr.creationTime().toString();
-            time = time.replaceAll("[^0-9]", "");
-            time = time.substring(0, time.length() - 3);
-            assertEquals(new BigInteger(time), JMetaDataGeneral_Test.jMetaDataGeneral.getFileCreatedDateAsBigInteger());
-        } catch (final IOException e) {
-            // Nothing to do
-        }
     }
 
     /**
