@@ -44,13 +44,9 @@ public final class JMetaDataAudio_Test {
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataAudio> audioStreams = jMetaData.getAudioStreams();
-                System.err.println("[JMetaDataAudio_Test] beforeUnit - " + audioStreams);
-                if (audioStreams != null) {
-                    System.err.println("[JMetaDataAudio_Test] beforeUnit - SIZE = " + audioStreams.size());
-                }
-                if (audioStreams != null && audioStreams.get(0) != null) {
-                    jMetaDataAudio = audioStreams.get(0);
-                }
+//                if (audioStreams.size() > 0 && audioStreams.get(0) != null) {
+                jMetaDataAudio = audioStreams.get(0);
+//                }
             } else {
                 throw new RuntimeErrorException(null, "Can not open file.");
             }

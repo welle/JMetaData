@@ -56,24 +56,24 @@ public final class MediaInfo {
         // Constructor/Destructor
         Pointer New();
 
-        void delete(Pointer handle);
+        void Delete(Pointer handle);
 
         // File
-        int open(Pointer handle, WString file);
+        int Open(Pointer handle, WString file);
 
-        void close(Pointer handle);
+        void Close(Pointer handle);
 
         // Info
-        WString inform(Pointer handle);
+        WString Inform(Pointer handle);
 
-        WString get(Pointer handle, int streamKind, int streamNumber, WString parameter, int infoKind, int searchKind);
+        WString Get(Pointer handle, int streamKind, int streamNumber, WString parameter, int infoKind, int searchKind);
 
-        WString getI(Pointer handle, int streamKind, int streamNumber, int parameterIndex, int infoKind);
+        WString GetI(Pointer handle, int streamKind, int streamNumber, int parameterIndex, int infoKind);
 
-        int count_Get(Pointer handle, int streamKind, int streamNumber);
+        int Count_Get(Pointer handle, int streamKind, int streamNumber);
 
         // Options
-        WString option(Pointer handle, WString option, WString value);
+        WString Option(Pointer handle, WString option, WString value);
     }
 
     /**
@@ -119,7 +119,7 @@ public final class MediaInfo {
         if (this.handlePointer == null) {
             throw new IllegalStateException();
         }
-        MediaInfoDLLInternal.INSTANCE.delete(this.handlePointer);
+        MediaInfoDLLInternal.INSTANCE.Delete(this.handlePointer);
         this.handlePointer = null;
         if (this.lib != null) {
             this.lib.dispose();
@@ -140,7 +140,7 @@ public final class MediaInfo {
      * @return true if file was opened, false if file was not not opened
      */
     public boolean open(@NonNull final String fileName) {
-        return MediaInfoDLLInternal.INSTANCE.open(this.handlePointer, new WString(fileName)) > 0;
+        return MediaInfoDLLInternal.INSTANCE.Open(this.handlePointer, new WString(fileName)) > 0;
     }
 
     /**
@@ -150,14 +150,14 @@ public final class MediaInfo {
      * @return true if file was opened, false if file was not not opened
      */
     public boolean open(@NonNull final File file) {
-        return file.isFile() && MediaInfoDLLInternal.INSTANCE.open(this.handlePointer, new WString(file.getAbsolutePath())) > 0;
+        return file.isFile() && MediaInfoDLLInternal.INSTANCE.Open(this.handlePointer, new WString(file.getAbsolutePath())) > 0;
     }
 
     /**
      * Close a file opened before with Open().
      */
     public void close() {
-        MediaInfoDLLInternal.INSTANCE.close(this.handlePointer);
+        MediaInfoDLLInternal.INSTANCE.Close(this.handlePointer);
     }
 
     /**
@@ -167,7 +167,7 @@ public final class MediaInfo {
      */
     @Nullable
     public String inform() {
-        return MediaInfoDLLInternal.INSTANCE.inform(this.handlePointer).toString();
+        return MediaInfoDLLInternal.INSTANCE.Inform(this.handlePointer).toString();
     }
 
     /**
@@ -420,7 +420,7 @@ public final class MediaInfo {
      */
     @Nullable
     public String get(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter, @NonNull final InfoKind infoKind, @NonNull final InfoKind searchKind) {
-        return MediaInfoDLLInternal.INSTANCE.get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
+        return MediaInfoDLLInternal.INSTANCE.Get(this.handlePointer, streamKind.ordinal(), streamNumber, new WString(parameter), infoKind.ordinal(), searchKind.ordinal()).toString();
     }
 
     /**
@@ -450,7 +450,7 @@ public final class MediaInfo {
      */
     @Nullable
     public String get(@NonNull final StreamKind streamKind, final int streamNumber, final int parameterIndex, @NonNull final InfoKind infoKind) {
-        return MediaInfoDLLInternal.INSTANCE.getI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
+        return MediaInfoDLLInternal.INSTANCE.GetI(this.handlePointer, streamKind.ordinal(), streamNumber, parameterIndex, infoKind.ordinal()).toString();
     }
 
     /**
@@ -461,7 +461,7 @@ public final class MediaInfo {
      * @return number of Streams of the given Stream kind
      */
     public int getStreamCount(@NonNull final StreamKind streamKind) {
-        return MediaInfoDLLInternal.INSTANCE.count_Get(this.handlePointer, streamKind.ordinal(), -1);
+        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), -1);
     }
 
     /**
@@ -473,7 +473,7 @@ public final class MediaInfo {
      * @return number of Streams of the given Stream kind
      */
     public int getStreamCount(@NonNull final StreamKind streamKind, final int streamNumber) {
-        return MediaInfoDLLInternal.INSTANCE.count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
+        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), streamNumber);
     }
 
     /**
@@ -484,7 +484,7 @@ public final class MediaInfo {
      */
     @Nullable
     public String option(@NonNull final String option) {
-        return MediaInfoDLLInternal.INSTANCE.option(this.handlePointer, new WString(option), new WString("")).toString();
+        return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString("")).toString();
     }
 
     /**
@@ -496,7 +496,7 @@ public final class MediaInfo {
      */
     @Nullable
     public String option(@NonNull final String option, @NonNull final String value) {
-        return MediaInfoDLLInternal.INSTANCE.option(this.handlePointer, new WString(option), new WString(value)).toString();
+        return MediaInfoDLLInternal.INSTANCE.Option(this.handlePointer, new WString(option), new WString(value)).toString();
     }
 
     /**
@@ -507,7 +507,7 @@ public final class MediaInfo {
      */
     @Nullable
     public static String optionStatic(@NonNull final String option) {
-        return MediaInfoDLLInternal.INSTANCE.option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString("")).toString();
+        return MediaInfoDLLInternal.INSTANCE.Option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString("")).toString();
     }
 
     /**
@@ -519,7 +519,7 @@ public final class MediaInfo {
      */
     @Nullable
     public static String optionStatic(@NonNull final String option, @NonNull final String value) {
-        return MediaInfoDLLInternal.INSTANCE.option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(value)).toString();
+        return MediaInfoDLLInternal.INSTANCE.Option(MediaInfoDLLInternal.INSTANCE.New(), new WString(option), new WString(value)).toString();
     }
 
 //    public static String version() {
