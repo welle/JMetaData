@@ -44,7 +44,7 @@ public final class JMetaDataAudio_Test {
             if (jMetaData.open(file)) {
                 @NonNull
                 final List<@NonNull JMetaDataAudio> audioStreams = jMetaData.getAudioStreams();
-                if (audioStreams.get(0) != null) {
+                if (audioStreams != null && audioStreams.get(0) != null) {
                     jMetaDataAudio = audioStreams.get(0);
                 }
             } else {
