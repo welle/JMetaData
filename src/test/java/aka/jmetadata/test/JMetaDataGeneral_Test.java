@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -5477,7 +5478,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("14 min 58 s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString2AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString2AsString());
+        } else {
+            assertEquals("14mn 58s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString2AsString());
+        }
     }
 
     /**
