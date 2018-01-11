@@ -3960,7 +3960,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayStringAsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsString());
+        } else {
+            assertEquals("170ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayStringAsString());
+        }
     }
 
     /**
@@ -4088,7 +4092,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString1AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsString());
+        } else {
+            assertEquals("170ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString1AsString());
+        }
     }
 
     /**
@@ -4152,7 +4160,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayString2AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsString());
+        } else {
+            assertEquals("170ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayString2AsString());
+        }
     }
 
     /**
@@ -6904,7 +6916,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetBitRateStringAsString() {
-        assertEquals("192 kb/s", JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("192 kb/s", JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsString());
+        } else {
+            assertEquals("192 Kbp", JMetaDataAudio_Test.jMetaDataAudio.getBitRateStringAsString());
+        }
     }
 
     /**
@@ -7800,7 +7816,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetSamplingRateStringAsString() {
-        assertEquals("48.0 kHz", JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("48.0 kHz", JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsString());
+        } else {
+            assertEquals("48.0 KHz", JMetaDataAudio_Test.jMetaDataAudio.getSamplingRateStringAsString());
+        }
     }
 
     /**
@@ -9928,7 +9948,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals("14 min 58 s", JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s", JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsString());
+        } else {
+            assertEquals("14mn 58s", JMetaDataAudio_Test.jMetaDataAudio.getDurationStringAsString());
+        }
     }
 
     /**
@@ -13184,7 +13208,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("14 min 58 s", JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s", JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsString());
+        } else {
+            assertEquals("14mn 58s", JMetaDataAudio_Test.jMetaDataAudio.getDurationString2AsString());
+        }
     }
 
     /**
@@ -13376,7 +13404,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals("14 min 58 s 167 ms", JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s 167 ms", JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsString());
+        } else {
+            assertEquals("14mn 58s 167ms", JMetaDataAudio_Test.jMetaDataAudio.getDurationString1AsString());
+        }
     }
 
     /**
@@ -14476,7 +14508,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString1AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsString());
+        } else {
+            assertEquals("170ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString1AsString());
+        }
     }
 
     /**
@@ -14540,7 +14576,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetVideoDelayString2AsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsString());
+        } else {
+            assertEquals("170ms", JMetaDataAudio_Test.jMetaDataAudio.getVideoDelayString2AsString());
+        }
     }
 
     /**
