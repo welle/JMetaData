@@ -10,6 +10,9 @@ before_script:
 script: 
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
   - mkdir ./repository
+matrix:
+  allow_failures:
+    - os: linux  
 addons:
   sonarcloud:
     organization: "welle-github" # the key of the org you chose at step #3
