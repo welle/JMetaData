@@ -5974,11 +5974,7 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsString() {
-        if (SystemUtils.IS_OS_WINDOWS) {
-            assertEquals("DivXMKVMux Version 1.4.3.0014", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationAsString());
-        } else {
-            assertEquals("", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationAsString());
-        }
+        assertEquals("DivXMKVMux Version 1.4.3.0014", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationAsString());
     }
 
     /**
@@ -6050,7 +6046,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsString() {
-        assertEquals("DivXMKVMux Version 1.4.3.0014", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("DivXMKVMux Version 1.4.3.0014", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsString());
+        } else {
+            assertEquals("", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsString());
+        }
     }
 
     /**
@@ -9573,7 +9573,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsString() {
-        assertEquals("24.000 FPS", JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("24.000 FPS", JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsString());
+        } else {
+            assertEquals("", JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsString());
+        }
     }
 
     /**
