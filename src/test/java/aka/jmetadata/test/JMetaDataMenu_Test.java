@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -264,7 +265,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosEndAsInteger() {
-        assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsInteger());
+        } else {
+            assertEquals(Integer.valueOf(88), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsInteger());
+        }
     }
 
     /**
@@ -272,7 +277,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosEndAsLong() {
-        assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLong());
+        } else {
+            assertEquals(Long.valueOf(88), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsLong());
+        }
     }
 
     /**
@@ -296,7 +305,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosEndAsString() {
-        assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsString());
+        } else {
+            assertEquals("88", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsString());
+        }
     }
 
     /**
@@ -312,7 +325,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosEndAsBigInteger() {
-        assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(88), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosEndAsBigInteger());
+        }
     }
 
     /**
@@ -712,7 +729,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsInteger());
+        } else {
+            assertEquals(Integer.valueOf(88), JMetaDataMenu_Test.jMetaDataMenu.getCountAsInteger());
+        }
     }
 
     /**
@@ -720,7 +741,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsLong());
+        } else {
+            assertEquals(Long.valueOf(88), JMetaDataMenu_Test.jMetaDataMenu.getCountAsLong());
+        }
     }
 
     /**
@@ -744,7 +769,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getCountAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("103", JMetaDataMenu_Test.jMetaDataMenu.getCountAsString());
+        } else {
+            assertEquals("88", JMetaDataMenu_Test.jMetaDataMenu.getCountAsString());
+        }
     }
 
     /**
@@ -760,7 +789,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(103), JMetaDataMenu_Test.jMetaDataMenu.getCountAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(88), JMetaDataMenu_Test.jMetaDataMenu.getCountAsBigInteger());
+        }
     }
 
     /**
