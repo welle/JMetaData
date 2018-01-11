@@ -5478,6 +5478,7 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString2AsString() {
+        System.err.println("[JMetaDataGeneral_Test] subTestGetDurationString2AsString - " + SystemUtils.IS_OS_WINDOWS);
         if (SystemUtils.IS_OS_WINDOWS) {
             assertEquals("14 min 58 s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString2AsString());
         } else {
