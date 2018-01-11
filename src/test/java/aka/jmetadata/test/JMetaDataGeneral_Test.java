@@ -3526,7 +3526,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(327), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(327), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsInteger());
+        } else {
+            assertEquals(Integer.valueOf(285), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsInteger());
+        }
     }
 
     /**
@@ -3534,7 +3538,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(327), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(327), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsLong());
+        } else {
+            assertEquals(Long.valueOf(285), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsLong());
+        }
     }
 
     /**
@@ -3558,7 +3566,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("327", JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("327", JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsString());
+        } else {
+            assertEquals("285", JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsString());
+        }
     }
 
     /**
@@ -3574,7 +3586,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(327), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(327), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(285), JMetaDataGeneral_Test.jMetaDataGeneral.getCountAsBigInteger());
+        }
     }
 
     /**
@@ -5350,7 +5366,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationStringAsString() {
-        assertEquals("14 min 58 s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationStringAsString());
+        } else {
+            assertEquals("14mn 58s", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationStringAsString());
+        }
     }
 
     /**
@@ -5414,7 +5434,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString1AsString() {
-        assertEquals("14 min 58 s 167 ms", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString1AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s 167 ms", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString1AsString());
+        } else {
+            assertEquals("14mn 58s 167ms", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString1AsString());
+        }
     }
 
     /**
@@ -5642,7 +5666,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(Integer.valueOf(1458167), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(1458167), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsInteger());
+        }
     }
 
     /**
@@ -5650,7 +5678,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(Long.valueOf(1458167), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(1458167), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsLong());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsLong());
+        }
     }
 
     /**
@@ -5666,7 +5698,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString5AsLocalTime() {
-        assertEquals(LocalTime.of(0, 14, 58, 167000000), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsLocalTime());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(LocalTime.of(0, 14, 58, 167000000), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsLocalTime());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsLocalTime());
+        }
     }
 
     /**
@@ -5674,7 +5710,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals("00:14:58.167", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("00:14:58.167", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsString());
+        } else {
+            assertEquals("", JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsString());
+        }
     }
 
     /**
@@ -5690,7 +5730,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458167), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(1458167), JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getDurationString5AsBigInteger());
+        }
     }
 
     /**
@@ -5930,7 +5974,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetEncodedApplicationAsString() {
-        assertEquals("DivXMKVMux Version 1.4.3.0014", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("DivXMKVMux Version 1.4.3.0014", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationAsString());
+        } else {
+            assertEquals("", JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationAsString());
+        }
     }
 
     /**
@@ -5962,7 +6010,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsInteger() {
-        assertEquals(Integer.valueOf(1430014), JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(1430014), JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsInteger());
+        }
     }
 
     /**
@@ -5970,7 +6022,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsLong() {
-        assertEquals(Long.valueOf(1430014), JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(1430014), JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsLong());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsLong());
+        }
     }
 
     /**
@@ -6010,7 +6066,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetEncodedApplicationStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1430014), JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(1430014), JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getEncodedApplicationStringAsBigInteger());
+        }
     }
 
     /**
@@ -7704,9 +7764,15 @@ public final class JMetaDataGeneral_Test {
         try {
             final ClassLoader classLoader = JMetaDataGeneral_Test.class.getClassLoader();
             final File file2 = new File(classLoader.getResource("Sintel_DivXPlus_6500kbps.mkv").toURI());
-            final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-            final String result = sdf.format(file2.lastModified());
-            assertEquals(result, JMetaDataGeneral_Test.jMetaDataGeneral.getFileModifiedDateLocalAsString());
+            if (SystemUtils.IS_OS_WINDOWS) {
+                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+                final String result = sdf.format(file2.lastModified());
+                assertEquals(result, JMetaDataGeneral_Test.jMetaDataGeneral.getFileModifiedDateLocalAsString());
+            } else {
+                final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                final String result = sdf.format(file2.lastModified());
+                assertEquals(result, JMetaDataGeneral_Test.jMetaDataGeneral.getFileModifiedDateLocalAsString());
+            }
         } catch (final URISyntaxException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -9387,7 +9453,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateAsInteger() {
-        assertEquals(Integer.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsInteger());
+        }
     }
 
     /**
@@ -9395,7 +9465,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateAsLong() {
-        assertEquals(Long.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsLong());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsLong());
+        }
     }
 
     /**
@@ -9419,7 +9493,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateAsString() {
-        assertEquals("24.000", JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("24.000", JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsString());
+        } else {
+            assertEquals("", JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsString());
+        }
     }
 
     /**
@@ -9435,7 +9513,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateAsBigInteger() {
-        assertEquals(BigInteger.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateAsBigInteger());
+        }
     }
 
     /**
@@ -9451,7 +9533,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsInteger() {
-        assertEquals(Integer.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsInteger());
+        }
     }
 
     /**
@@ -9459,7 +9545,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsLong() {
-        assertEquals(Long.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsLong());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsLong());
+        }
     }
 
     /**
@@ -9499,7 +9589,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(24000), JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataGeneral_Test.jMetaDataGeneral.getFrameRateStringAsBigInteger());
+        }
     }
 
     /**
@@ -10387,7 +10481,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(new BigInteger("13732253260588722412635437150074040825206745960386419573650016011458561143001435300140000"), JMetaDataGeneral_Test.jMetaDataGeneral.getInformAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(new BigInteger("13732253260588722412635437150074040825206745960386419573650016011458561143001435300140000"), JMetaDataGeneral_Test.jMetaDataGeneral.getInformAsBigInteger());
+        } else {
+            assertEquals(new BigInteger("1373225326058872241263543715007404082520674596038641957365001601145856114300143530014"), JMetaDataGeneral_Test.jMetaDataGeneral.getInformAsBigInteger());
+        }
     }
 
     /**
@@ -13699,7 +13797,11 @@ public final class JMetaDataGeneral_Test {
      */
     @Test
     public void subTestGetOverallBitRateStringAsString() {
-        assertEquals("56.1 kb/s", JMetaDataGeneral_Test.jMetaDataGeneral.getOverallBitRateStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("56.1 kb/s", JMetaDataGeneral_Test.jMetaDataGeneral.getOverallBitRateStringAsString());
+        } else {
+            assertEquals("56.1 Kbps", JMetaDataGeneral_Test.jMetaDataGeneral.getOverallBitRateStringAsString());
+        }
     }
 
     /**

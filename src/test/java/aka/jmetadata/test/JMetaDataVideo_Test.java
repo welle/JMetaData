@@ -1007,7 +1007,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetBitRateMaximumStringAsString() {
-        assertEquals("20.0 Mb/s", JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("20.0 Mb/s", JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsString());
+        } else {
+            assertEquals("20.0 Mbps", JMetaDataVideo_Test.jMetaDataVideo.getBitRateMaximumStringAsString());
+        }
     }
 
     /**
@@ -1551,11 +1555,7 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingAsInteger() {
-        if (SystemUtils.IS_OS_WINDOWS) {
-            assertEquals(Integer.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsInteger());
-        } else {
-            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsInteger());
-        }
+        assertEquals(Integer.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingAsInteger());
     }
 
     /**
@@ -1619,7 +1619,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsInteger() {
-        assertEquals(Integer.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsInteger());
+        }
     }
 
     /**
@@ -1627,7 +1631,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsLong() {
-        assertEquals(Long.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsLong());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsLong());
+        }
     }
 
     /**
@@ -1651,7 +1659,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsString() {
-        assertEquals("4:2:0", JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("4:2:0", JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsString());
+        } else {
+            assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsString());
+        }
     }
 
     /**
@@ -1667,7 +1679,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetChromaSubsamplingStringAsBigInteger() {
-        assertEquals(BigInteger.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(420), JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getChromaSubsamplingStringAsBigInteger());
+        }
     }
 
     /**
@@ -2485,7 +2501,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetcolourrangeAsString() {
-        assertEquals("Limited", JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("Limited", JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsString());
+        } else {
+            assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getcolourrangeAsString());
+        }
     }
 
     /**
@@ -5005,7 +5025,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString2AsString() {
-        assertEquals("14 min 58 s", JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("14 min 58 s", JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsString());
+        } else {
+            assertEquals("14mn 58s", JMetaDataVideo_Test.jMetaDataVideo.getDurationString2AsString());
+        }
     }
 
     /**
@@ -5101,7 +5125,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString4AsInteger() {
-        assertEquals(Integer.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsInteger());
+        }
     }
 
     /**
@@ -5109,7 +5137,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString4AsLong() {
-        assertEquals(Long.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsLong());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsLong());
+        }
     }
 
     /**
@@ -5153,7 +5185,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString4AsBigInteger() {
-        assertEquals(BigInteger.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(145804), JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString4AsBigInteger());
+        }
     }
 
     /**
@@ -5205,7 +5241,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString5AsString() {
-        assertEquals("00:14:58.167 (00:14:58:04)", JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("00:14:58.167 (00:14:58:04)", JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsString());
+        } else {
+            assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsString());
+        }
     }
 
     /**
@@ -5221,7 +5261,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(new BigInteger("145816700145804"), JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(new BigInteger("145816700145804"), JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getDurationString5AsBigInteger());
+        }
     }
 
     /**
@@ -7814,7 +7858,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetFormatProfileAsLong() {
-        assertEquals(Long.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsLong());
+        } else {
+            assertEquals(Long.valueOf(40), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsLong());
+        }
     }
 
     /**
@@ -7838,7 +7886,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetFormatProfileAsString() {
-        assertEquals("High@L4", JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("High@L4", JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsString());
+        } else {
+            assertEquals("High@L4.0", JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsString());
+        }
     }
 
     /**
@@ -7854,7 +7906,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetFormatProfileAsBigInteger() {
-        assertEquals(BigInteger.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(4), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(40), JMetaDataVideo_Test.jMetaDataVideo.getFormatProfileAsBigInteger());
+        }
     }
 
     /**
@@ -9374,7 +9430,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetFrameRateStringAsString() {
-        assertEquals("24.000 FPS", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("24.000 FPS", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsString());
+        } else {
+            assertEquals("24.000 fps", JMetaDataVideo_Test.jMetaDataVideo.getFrameRateStringAsString());
+        }
     }
 
     /**
@@ -11366,7 +11426,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetInformAsBigInteger() {
-        assertEquals(new BigInteger("144414582001920872221240004208709709709"), JMetaDataVideo_Test.jMetaDataVideo.getInformAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(new BigInteger("144414582001920872221240004208709709709"), JMetaDataVideo_Test.jMetaDataVideo.getInformAsBigInteger());
+        } else {
+            assertEquals(new BigInteger("1404414582001920872221240004208709709709"), JMetaDataVideo_Test.jMetaDataVideo.getInformAsBigInteger());
+        }
     }
 
     /**
@@ -13046,7 +13110,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledHeightAsInteger() {
-        assertEquals(Integer.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsInteger());
+        }
     }
 
     /**
@@ -13054,7 +13122,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledHeightAsLong() {
-        assertEquals(Long.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsLong());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsLong());
+        }
     }
 
     /**
@@ -13078,7 +13150,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledHeightAsString() {
-        assertEquals("872", JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("872", JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsString());
+        } else {
+            assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsString());
+        }
     }
 
     /**
@@ -13094,7 +13170,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledHeightAsBigInteger() {
-        assertEquals(BigInteger.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(872), JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledHeightAsBigInteger());
+        }
     }
 
     /**
@@ -13110,7 +13190,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledWidthAsInteger() {
-        assertEquals(Integer.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsInteger());
+        }
     }
 
     /**
@@ -13118,7 +13202,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledWidthAsLong() {
-        assertEquals(Long.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsLong());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsLong());
+        }
     }
 
     /**
@@ -13162,7 +13250,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetSampledWidthAsBigInteger() {
-        assertEquals(BigInteger.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(1920), JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getSampledWidthAsBigInteger());
+        }
     }
 
     /**
@@ -16762,7 +16854,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetStoredHeightAsInteger() {
-        assertEquals(Integer.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsInteger());
+        }
     }
 
     /**
@@ -16770,7 +16866,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetStoredHeightAsLong() {
-        assertEquals(Long.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsLong());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsLong());
+        }
     }
 
     /**
@@ -16794,7 +16894,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetStoredHeightAsString() {
-        assertEquals("880", JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("880", JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsString());
+        } else {
+            assertEquals("", JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsString());
+        }
     }
 
     /**
@@ -16810,7 +16914,11 @@ public final class JMetaDataVideo_Test {
      */
     @Test
     public void subTestGetStoredHeightAsBigInteger() {
-        assertEquals(BigInteger.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(880), JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataVideo_Test.jMetaDataVideo.getStoredHeightAsBigInteger());
+        }
     }
 
     /**
