@@ -201,7 +201,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosBeginAsInteger() {
-        assertEquals(Integer.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsInteger());
+        } else {
+            assertEquals(Integer.valueOf(77), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsInteger());
+        }
     }
 
     /**
@@ -209,7 +213,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosBeginAsLong() {
-        assertEquals(Long.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLong());
+        } else {
+            assertEquals(Long.valueOf(77), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsLong());
+        }
     }
 
     /**
@@ -233,7 +241,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosBeginAsString() {
-        assertEquals("92", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("92", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsString());
+        } else {
+            assertEquals("77", JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsString());
+        }
     }
 
     /**
@@ -249,7 +261,11 @@ public final class JMetaDataMenu_Test {
      */
     @Test
     public void subTestGetChaptersPosBeginAsBigInteger() {
-        assertEquals(BigInteger.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(92), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(77), JMetaDataMenu_Test.jMetaDataMenu.getChaptersPosBeginAsBigInteger());
+        }
     }
 
     /**

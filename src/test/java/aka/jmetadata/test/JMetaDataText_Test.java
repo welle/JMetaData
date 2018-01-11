@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -1802,7 +1803,11 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsInteger());
+        } else {
+            assertEquals(Integer.valueOf(195), JMetaDataText_Test.jMetaDataText.getCountAsInteger());
+        }
     }
 
     /**
@@ -1810,7 +1815,11 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsLong());
+        } else {
+            assertEquals(Long.valueOf(195), JMetaDataText_Test.jMetaDataText.getCountAsLong());
+        }
     }
 
     /**
@@ -1834,7 +1843,11 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("236", JMetaDataText_Test.jMetaDataText.getCountAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("236", JMetaDataText_Test.jMetaDataText.getCountAsString());
+        } else {
+            assertEquals("195", JMetaDataText_Test.jMetaDataText.getCountAsString());
+        }
     }
 
     /**
@@ -1850,7 +1863,11 @@ public final class JMetaDataText_Test {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(236), JMetaDataText_Test.jMetaDataText.getCountAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(195), JMetaDataText_Test.jMetaDataText.getCountAsBigInteger());
+        }
     }
 
     /**

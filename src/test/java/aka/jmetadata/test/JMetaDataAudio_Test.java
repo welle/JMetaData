@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 import javax.management.RuntimeErrorException;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -1006,7 +1007,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDelayStringAsString() {
-        assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("170 ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsString());
+        } else {
+            assertEquals("170ms", JMetaDataAudio_Test.jMetaDataAudio.getDelayStringAsString());
+        }
     }
 
     /**
@@ -9235,7 +9240,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsInteger() {
-        assertEquals(Integer.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsInteger());
+        } else {
+            assertEquals(Integer.valueOf(222), JMetaDataAudio_Test.jMetaDataAudio.getCountAsInteger());
+        }
     }
 
     /**
@@ -9243,7 +9252,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsLong() {
-        assertEquals(Long.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsLong());
+        } else {
+            assertEquals(Long.valueOf(222), JMetaDataAudio_Test.jMetaDataAudio.getCountAsLong());
+        }
     }
 
     /**
@@ -9267,7 +9280,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsString() {
-        assertEquals("275", JMetaDataAudio_Test.jMetaDataAudio.getCountAsString());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals("275", JMetaDataAudio_Test.jMetaDataAudio.getCountAsString());
+        } else {
+            assertEquals("222", JMetaDataAudio_Test.jMetaDataAudio.getCountAsString());
+        }
     }
 
     /**
@@ -9283,7 +9300,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetCountAsBigInteger() {
-        assertEquals(BigInteger.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(275), JMetaDataAudio_Test.jMetaDataAudio.getCountAsBigInteger());
+        } else {
+            assertEquals(BigInteger.valueOf(222), JMetaDataAudio_Test.jMetaDataAudio.getCountAsBigInteger());
+        }
     }
 
     /**
@@ -13451,7 +13472,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsInteger() {
-        assertEquals(Integer.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Integer.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsInteger());
+        } else {
+            assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsInteger());
+        }
     }
 
     /**
@@ -13459,7 +13484,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsLong() {
-        assertEquals(Long.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsLong());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(Long.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsLong());
+        } else {
+            assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsLong());
+        }
     }
 
     /**
@@ -13499,7 +13528,11 @@ public final class JMetaDataAudio_Test {
      */
     @Test
     public void subTestGetDurationString5AsBigInteger() {
-        assertEquals(BigInteger.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsBigInteger());
+        if (SystemUtils.IS_OS_WINDOWS) {
+            assertEquals(BigInteger.valueOf(1458167), JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsBigInteger());
+        } else {
+            assertEquals(null, JMetaDataAudio_Test.jMetaDataAudio.getDurationString5AsBigInteger());
+        }
     }
 
     /**
