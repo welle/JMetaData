@@ -9,7 +9,7 @@ before_script:
   - sudo apt-get -f -y install libmediainfo-dev ant-optional
 script: 
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
-  - mkdir ./repository
+  - mkdir -p /home/travis/repository
 addons:
   sonarcloud:
     organization: "welle-github" # the key of the org you chose at step #3
