@@ -29,10 +29,9 @@ import com.sun.jna.WString;
 
 import aka.jmetadata.main.constants.kind.InfoKind;
 import aka.jmetadata.main.constants.kind.StreamKind;
+import aka.jmetadata.main.helper.DataUtilsHelper;
 import aka.jmetadata.main.helper.DateTimeHelper;
-import aka.swissknife.data.TextUtils;
-import aka.swissknife.os.OSHelper;
-import aka.swissknife.os.OS_ARCH;
+import aka.jmetadata.main.helper.MediaInfoHelper;
 
 /**
  * MediaInfo JNA library.
@@ -89,7 +88,7 @@ public final class MediaInfo implements Closeable {
      * Constructor.
      */
     public MediaInfo() {
-        if (Platform.isWindows() && OSHelper.getOSArch() == OS_ARCH.BITS_64) {
+        if (Platform.isWindows() && MediaInfoHelper.getOSArch() == MediaInfoHelper.OS_ARCH.BITS_64) {
             MediaInfo.libraryName = "mediainfo64";
         } else {
             MediaInfo.libraryName = "mediainfo";
@@ -261,10 +260,10 @@ public final class MediaInfo implements Closeable {
     public synchronized Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Long result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        value = TextUtils.trimNonNumerical(value);
-        if (!TextUtils.isEmpty(value)) {
+        value = DataUtilsHelper.trimNonNumerical(value);
+        if (!DataUtilsHelper.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
-            if (TextUtils.isDigit(value)) {
+            if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = Long.valueOf(value);
                 } catch (final NumberFormatException e) {
@@ -289,10 +288,10 @@ public final class MediaInfo implements Closeable {
     public synchronized Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Integer result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        value = TextUtils.trimNonNumerical(value);
-        if (!TextUtils.isEmpty(value)) {
+        value = DataUtilsHelper.trimNonNumerical(value);
+        if (!DataUtilsHelper.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
-            if (TextUtils.isDigit(value)) {
+            if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = Integer.valueOf(value);
                 } catch (final NumberFormatException e) {
@@ -317,10 +316,10 @@ public final class MediaInfo implements Closeable {
     public synchronized BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         BigInteger result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        value = TextUtils.trimNonNumerical(value);
-        if (!TextUtils.isEmpty(value)) {
+        value = DataUtilsHelper.trimNonNumerical(value);
+        if (!DataUtilsHelper.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
-            if (TextUtils.isDigit(value)) {
+            if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = new BigInteger(value);
                 } catch (final NumberFormatException e) {
@@ -345,7 +344,7 @@ public final class MediaInfo implements Closeable {
     public synchronized URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         URL result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        if (!TextUtils.isEmpty(value)) {
+        if (!DataUtilsHelper.isEmpty(value)) {
             try {
                 result = new URL(value);
             } catch (final MalformedURLException e) {
@@ -369,10 +368,10 @@ public final class MediaInfo implements Closeable {
     public synchronized Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Double result = null;
         String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        value = TextUtils.trimNonNumerical(value);
-        if (!TextUtils.isEmpty(value)) {
+        value = DataUtilsHelper.trimNonNumerical(value);
+        if (!DataUtilsHelper.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
-            if (TextUtils.isDigit(value)) {
+            if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = Double.valueOf(value);
                 } catch (final NumberFormatException e) {
@@ -397,7 +396,7 @@ public final class MediaInfo implements Closeable {
     public synchronized LocalDateTime getAsLocalDateTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         LocalDateTime result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        if (!TextUtils.isEmpty(value)) {
+        if (!DataUtilsHelper.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             try {
                 result = DateTimeHelper.parseLocalDateTime(value);
@@ -421,7 +420,7 @@ public final class MediaInfo implements Closeable {
     public synchronized LocalTime getAsLocalTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         LocalTime result = null;
         final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
-        if (!TextUtils.isEmpty(value)) {
+        if (!DataUtilsHelper.isEmpty(value)) {
             assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             try {
                 result = DateTimeHelper.parseLocalTime(value);

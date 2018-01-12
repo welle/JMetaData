@@ -7,7 +7,6 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import aka.jmetadata.main.constants.video.AspectRatio;
 import aka.jmetadata.main.constants.video.Resolution;
-import aka.swissknife.data.MathUtils;
 
 /**
  * Media info(s) helper
@@ -18,6 +17,35 @@ public class MediaInfoHelper {
 
     private MediaInfoHelper() {
         // nothing to do
+    }
+
+    /**
+     * @author charlottew
+     */
+    public enum OS_ARCH {
+        /**
+         * 32 CPU based
+         */
+        BITS_32,
+
+        /**
+         * 64 CPU based
+         */
+        BITS_64,
+    }
+
+    /**
+     * Get OS_ARCH 32 or 64 bits.
+     *
+     * @return OS_ARCH
+     */
+    @NonNull
+    public static OS_ARCH getOSArch() {
+        final String arch = System.getenv("PROCESSOR_ARCHITECTURE");
+        final String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
+
+        final OS_ARCH realArch = arch.endsWith("64") || wow64Arch != null && wow64Arch.endsWith("64") ? OS_ARCH.BITS_64 : OS_ARCH.BITS_32;
+        return realArch;
     }
 
     /**
@@ -64,7 +92,7 @@ public class MediaInfoHelper {
     private static double calculateRatio(@Nullable final Long width, @Nullable final Long height) {
         double result = 0;
         if (width != null && height != null) {
-            if (!MathUtils.isZero(Double.valueOf(width.doubleValue())) && !MathUtils.isZero(Double.valueOf(height.doubleValue()))) {
+            if (width.doubleValue() != 0 && height.doubleValue() != 0) {
                 final double w = width.doubleValue();
                 final double h = height.doubleValue();
 

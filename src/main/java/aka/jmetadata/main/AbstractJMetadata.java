@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.eclipse.jdt.annotation.NonNull;
 
+import aka.jmetadata.main.helper.DataUtilsHelper;
 import aka.jmetadata.main.mediainfo.MediaInfo;
-import aka.swissknife.data.TextUtils;
 
 /**
  * AbstractJMetadata is a basic abstract class providing basic methods for metadata extraction.
@@ -41,7 +41,7 @@ public abstract class AbstractJMetadata {
         final String[] values = valueToSplit.split(splitter);
         for (final String value : values) {
             final String text = value.trim();
-            if (!TextUtils.isEmpty(text)) {
+            if (!DataUtilsHelper.isEmpty(text)) {
                 assert text != null;
                 result.add(text);
             }

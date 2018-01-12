@@ -77,13 +77,6 @@
 			<artifactId>jna</artifactId>
 			<version>4.5.1</version>
 		</dependency>
-		<dependency>
-			<groupId>aka.swissknife</groupId>
-			<artifactId>SwissKnife</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/libs/SwissKnife-1.0.jar</systemPath>
-		</dependency>
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>

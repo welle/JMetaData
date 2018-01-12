@@ -16,9 +16,8 @@ import org.eclipse.jdt.annotation.NonNull;
 import com.sun.jna.Platform;
 
 import aka.jmetadata.main.constants.kind.StreamKind;
+import aka.jmetadata.main.helper.MediaInfoHelper;
 import aka.jmetadata.main.mediainfo.MediaInfo;
-import aka.swissknife.os.OSHelper;
-import aka.swissknife.os.OS_ARCH;
 
 /**
  * Main class to use to extract metadata informations. This class contains all useful methods to get all kind of streams that can be present in the file.
@@ -36,7 +35,7 @@ public final class JMetaData {
 
         try {
             if (Platform.isWindows()) {
-                if (OSHelper.getOSArch() == OS_ARCH.BITS_64) {
+                if (MediaInfoHelper.getOSArch() == MediaInfoHelper.OS_ARCH.BITS_64) {
                     libraryName = "mediainfo64.dll";
                 } else {
                     libraryName = "mediainfo.dll";
