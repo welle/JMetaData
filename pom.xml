@@ -14,7 +14,7 @@
 				</property>
 			</activation>
 			<properties>
-				<m2e.jdt.annotationpath>/JMetadata/src/main/resources/externalAnnotations</m2e.jdt.annotationpath>
+				<m2e.jdt.annotationpath>${basedir}/src/main/resources/externalAnnotations</m2e.jdt.annotationpath>
 			</properties>
 			<dependencies>
 			</dependencies>
@@ -90,10 +90,11 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.5.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -114,4 +115,5 @@
 			<url>${github.maven.repository}</url>
 		</repository>
 	</distributionManagement>
+
 </project>
