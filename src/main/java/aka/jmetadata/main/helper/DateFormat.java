@@ -14,17 +14,17 @@ enum DateFormat {
     /**
      * Date format 1 {@value} (example: UTC 2014-07-17 07:48:54.611)
      */
-    Type1("z yyyy-MM-dd HH:mm:ss.SSS"),
+    TYPE1("z yyyy-MM-dd HH:mm:ss.SSS"),
 
     /**
      * Date format 1 {@value} (example: UTC 2014-07-17 07:48:54.611)
      */
-    Type2("HH:mm:ss.SSS"),
+    TYPE2("HH:mm:ss.SSS"),
 
     /**
      * Date format 1 {@value} (example: UTC 2010-02-19 02:01:40)
      */
-    Type3("z yyyy-MM-dd HH:mm:ss");
+    TYPE3("z yyyy-MM-dd HH:mm:ss");
 
     @NonNull
     private final String value;

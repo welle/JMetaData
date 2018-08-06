@@ -2,9 +2,7 @@ package aka.jmetadata.main.helper;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.jdt.annotation.NonNull;
@@ -31,10 +29,10 @@ public final class DateTimeHelper {
     @Nullable
     public static LocalDateTime parseLocalDateTime(@NonNull final String dateToParse) {
         LocalDateTime result = null;
-        final DateFormat[] values = DateFormat.values();
+        final var values = DateFormat.values();
         for (final DateFormat dateFormat : values) {
             try {
-                final DateTimeFormatter formatter = dateFormat.getSimpleDateFormat();
+                final var formatter = dateFormat.getSimpleDateFormat();
                 result = LocalDateTime.parse(dateToParse, formatter);
             } catch (final DateTimeParseException e) {
                 // Nothing to do
@@ -56,7 +54,7 @@ public final class DateTimeHelper {
     public static LocalTime parseLocalTime(@NonNull final String timeToParse) {
         LocalTime localTime = null;
 
-        final Matcher matcher = PATTERN_ABSOLUTE.matcher(timeToParse);
+        final var matcher = PATTERN_ABSOLUTE.matcher(timeToParse);
         if (matcher.matches()) {
             try {
                 localTime = LocalTime.parse(timeToParse);

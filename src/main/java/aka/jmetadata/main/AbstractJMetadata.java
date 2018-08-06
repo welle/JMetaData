@@ -37,10 +37,10 @@ public abstract class AbstractJMetadata {
      */
     @NonNull
     protected final List<@NonNull String> splitValues(@NonNull final String valueToSplit, @NonNull final String splitter) {
-        final List<@NonNull String> result = new ArrayList<>();
-        final String[] values = valueToSplit.split(splitter);
+        final var result = new ArrayList<@NonNull String>();
+        final var values = valueToSplit.split(splitter);
         for (final String value : values) {
-            final String text = value.trim();
+            final var text = value.trim();
             if (!DataUtilsHelper.isEmpty(text)) {
                 assert text != null;
                 result.add(text);

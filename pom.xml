@@ -1,9 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>aka.jmetadata</groupId>
-	<artifactId>JMetadata</artifactId>
-	<version>0.4.6</version>
+	<artifactId>JMetaData</artifactId>
+	<version>0.4.7</version>
+
+	<properties>
+		<!-- Source encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>10</maven.compiler.target>
+		<maven.compiler.source>10</maven.compiler.source>
+	</properties>
 
 	<profiles>
 		<profile>
@@ -92,8 +101,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>10</source>
+					<target>10</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

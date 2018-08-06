@@ -3,8 +3,6 @@ package aka.jmetadata.main;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -129,11 +127,11 @@ public final class JMetaData {
      */
     @NonNull
     public List<@NonNull JMetaDataVideo> getVideoStreams() {
-        final List<@NonNull JMetaDataVideo> result = new ArrayList<>();
+        final var result = new ArrayList<@NonNull JMetaDataVideo>();
 
-        final int numberVideoStream = getNumVideoStreams();
-        for (int i = 0; i < numberVideoStream; i++) {
-            final JMetaDataVideo jMetadataVideo = new JMetaDataVideo(this.mediaInfo, i);
+        final var numberVideoStream = getNumVideoStreams();
+        for (var i = 0; i < numberVideoStream; i++) {
+            final var jMetadataVideo = new JMetaDataVideo(this.mediaInfo, i);
             result.add(jMetadataVideo);
         }
 
@@ -148,11 +146,11 @@ public final class JMetaData {
      */
     @NonNull
     public List<@NonNull JMetaDataAudio> getAudioStreams() {
-        final List<@NonNull JMetaDataAudio> result = new ArrayList<>();
+        final var result = new ArrayList<@NonNull JMetaDataAudio>();
 
-        final int numberAudioStream = getNumAudioStreams();
-        for (int i = 0; i < numberAudioStream; i++) {
-            final JMetaDataAudio jMetadataAudio = new JMetaDataAudio(this.mediaInfo, i);
+        final var numberAudioStream = getNumAudioStreams();
+        for (var i = 0; i < numberAudioStream; i++) {
+            final var jMetadataAudio = new JMetaDataAudio(this.mediaInfo, i);
             result.add(jMetadataAudio);
         }
 
@@ -167,11 +165,11 @@ public final class JMetaData {
      */
     @NonNull
     public List<@NonNull JMetaDataText> getSubtitleStreams() {
-        final List<@NonNull JMetaDataText> result = new ArrayList<>();
+        final var result = new ArrayList<@NonNull JMetaDataText>();
 
-        final int numberSubtitleStream = getNumSubtitleStreams();
-        for (int i = 0; i < numberSubtitleStream; i++) {
-            final JMetaDataText jMetadataSubtitle = new JMetaDataText(this.mediaInfo, i);
+        final var numberSubtitleStream = getNumSubtitleStreams();
+        for (var i = 0; i < numberSubtitleStream; i++) {
+            final var jMetadataSubtitle = new JMetaDataText(this.mediaInfo, i);
             result.add(jMetadataSubtitle);
         }
 
@@ -186,11 +184,11 @@ public final class JMetaData {
      */
     @NonNull
     public List<@NonNull JMetaDataMenu> getMenuStreams() {
-        final List<@NonNull JMetaDataMenu> result = new ArrayList<>();
+        final var result = new ArrayList<@NonNull JMetaDataMenu>();
 
-        final int numberMenuStream = getNumMenuStreams();
-        for (int i = 0; i < numberMenuStream; i++) {
-            final JMetaDataMenu jMetadataMenu = new JMetaDataMenu(this.mediaInfo, i);
+        final var numberMenuStream = getNumMenuStreams();
+        for (var i = 0; i < numberMenuStream; i++) {
+            final var jMetadataMenu = new JMetaDataMenu(this.mediaInfo, i);
             result.add(jMetadataMenu);
         }
 
@@ -200,21 +198,18 @@ public final class JMetaData {
     private static void loadDLL(@NonNull final String name) throws IOException {
         try {
             // have to use a stream
-            final InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);
+            final var in = ClassLoader.getSystemClassLoader().getResourceAsStream(name);
             // always write to different location
-            final String tempDir = System.getProperty("java.io.tmpdir") + "/" + ("" + new Date().getTime()) + "/lib/";
-            final File dir = new File(tempDir);
+            final var tempDir = System.getProperty("java.io.tmpdir") + "/" + ("" + new Date().getTime()) + "/lib/";
+            final var dir = new File(tempDir);
             if (!dir.exists()) {
                 dir.mkdirs();
             }
 
-            final File fileOut = new File(tempDir + name);
-            final OutputStream out = new FileOutputStream(fileOut);
-            int read = -1;
-            final byte[] buffer = new byte[BUF_SIZE];
-            while ((read = in.read(buffer)) != -1) {
-                out.write(buffer, 0, read);
-            }
+            final var fileOut = new File(tempDir + name);
+            final var out = new FileOutputStream(fileOut);
+            final byte[] buffer = in.readAllBytes();
+            out.write(buffer);
             in.close();
             out.close();
             System.setProperty("jna.library.path", tempDir);

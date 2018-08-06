@@ -119,7 +119,7 @@ public final class MediaInfo implements Closeable {
             throw new IllegalArgumentException("Invalid media file: " + file);
         }
 
-        final String path = file.getCanonicalPath();
+        final var path = file.getCanonicalPath();
 
         // on Mac files that contain accents cannot be opened via JNA WString file paths due to encoding differences so we use the buffer interface instead for these files
         if (Platform.isMac() && !StandardCharsets.US_ASCII.newEncoder().canEncode(path)) {
@@ -139,7 +139,7 @@ public final class MediaInfo implements Closeable {
     }
 
     private synchronized boolean openViaBuffer(final RandomAccessFile f) throws IOException {
-        final byte[] buffer = new byte[4 * 1024 * 1024]; // use large buffer to reduce JNA calls
+        final var buffer = new byte[4 * 1024 * 1024]; // use large buffer to reduce JNA calls
         int read = -1;
 
         if (0 == MediaInfoDLLInternal.INSTANCE.Open_Buffer_Init(this.handlePointer, f.length(), 0)) {
@@ -148,12 +148,12 @@ public final class MediaInfo implements Closeable {
 
         do {
             read = f.read(buffer);
-            final int result = MediaInfoDLLInternal.INSTANCE.Open_Buffer_Continue(this.handlePointer, buffer, read);
+            final var result = MediaInfoDLLInternal.INSTANCE.Open_Buffer_Continue(this.handlePointer, buffer, read);
             if ((result & 8) == 8) {
                 break;
             }
 
-            final long gotoPos = MediaInfoDLLInternal.INSTANCE.Open_Buffer_Continue_GoTo_Get(this.handlePointer);
+            final var gotoPos = MediaInfoDLLInternal.INSTANCE.Open_Buffer_Continue_GoTo_Get(this.handlePointer);
             if (gotoPos >= 0) {
                 f.seek(gotoPos);
                 MediaInfoDLLInternal.INSTANCE.Open_Buffer_Init(this.handlePointer, f.length(), gotoPos);
@@ -175,12 +175,11 @@ public final class MediaInfo implements Closeable {
      * @return number of stream
      */
     public synchronized int getStreamCount(final StreamKind streamKind) {
-        final String StreamCount = get(streamKind, 0, "StreamCount", InfoKind.Text, InfoKind.Name);
+        final var StreamCount = get(streamKind, 0, "StreamCount", InfoKind.Text, InfoKind.Name);
         if (StreamCount == null || StreamCount.length() == 0) {
             return 0;
         }
         return Integer.parseInt(StreamCount);
-//        return MediaInfoDLLInternal.INSTANCE.Count_Get(this.handlePointer, streamKind.ordinal(), -1);
     }
 
     @Override
@@ -236,11 +235,11 @@ public final class MediaInfo implements Closeable {
      */
     @Nullable
     public synchronized Boolean getAsBoolean(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        final var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
 
-        if ("Yes".equals(value)) {
+        if ("Yes".equalsIgnoreCase(value)) {
             return Boolean.TRUE;
-        } else if ("No".equals(value)) {
+        } else if ("No".equalsIgnoreCase(value)) {
             return Boolean.TRUE;
         } else {
             return null;
@@ -259,10 +258,10 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized Long getAsLong(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Long result = null;
-        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = DataUtilsHelper.trimNonNumerical(value);
         if (!DataUtilsHelper.isEmpty(value)) {
-            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            assert value != null : "As DataUtilsHelper.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = Long.valueOf(value);
@@ -287,10 +286,10 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized Integer getAsInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Integer result = null;
-        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = DataUtilsHelper.trimNonNumerical(value);
         if (!DataUtilsHelper.isEmpty(value)) {
-            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            assert value != null : "As DataUtilsHelper.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = Integer.valueOf(value);
@@ -315,10 +314,10 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized BigInteger getAsBigInteger(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         BigInteger result = null;
-        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = DataUtilsHelper.trimNonNumerical(value);
         if (!DataUtilsHelper.isEmpty(value)) {
-            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            assert value != null : "As DataUtilsHelper.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = new BigInteger(value);
@@ -343,7 +342,7 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized URL getAsURL(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         URL result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        final var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!DataUtilsHelper.isEmpty(value)) {
             try {
                 result = new URL(value);
@@ -367,10 +366,10 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized Double getAsDouble(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         Double result = null;
-        String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         value = DataUtilsHelper.trimNonNumerical(value);
         if (!DataUtilsHelper.isEmpty(value)) {
-            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            assert value != null : "As DataUtilsHelper.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             if (DataUtilsHelper.isDigit(value)) {
                 try {
                     result = Double.valueOf(value);
@@ -395,9 +394,9 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized LocalDateTime getAsLocalDateTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         LocalDateTime result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        final var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!DataUtilsHelper.isEmpty(value)) {
-            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            assert value != null : "As DataUtilsHelper.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             try {
                 result = DateTimeHelper.parseLocalDateTime(value);
             } catch (final DateTimeParseException e) {
@@ -419,9 +418,9 @@ public final class MediaInfo implements Closeable {
     @Nullable
     public synchronized LocalTime getAsLocalTime(@NonNull final StreamKind streamKind, final int streamNumber, @NonNull final String parameter) {
         LocalTime result = null;
-        final String value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
+        final var value = get(streamKind, streamNumber, parameter, InfoKind.Text, InfoKind.Name);
         if (!DataUtilsHelper.isEmpty(value)) {
-            assert value != null : "As Textutils.isEmpty test if null or trim.lenght = 0, it should not be possible.";
+            assert value != null : "As DataUtilsHelper.isEmpty test if null or trim.lenght = 0, it should not be possible.";
             try {
                 result = DateTimeHelper.parseLocalTime(value);
             } catch (final DateTimeParseException e) {

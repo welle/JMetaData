@@ -41,10 +41,10 @@ public class MediaInfoHelper {
      */
     @NonNull
     public static OS_ARCH getOSArch() {
-        final String arch = System.getenv("PROCESSOR_ARCHITECTURE");
-        final String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
+        final var arch = System.getenv("PROCESSOR_ARCHITECTURE");
+        final var wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
 
-        final OS_ARCH realArch = arch.endsWith("64") || wow64Arch != null && wow64Arch.endsWith("64") ? OS_ARCH.BITS_64 : OS_ARCH.BITS_32;
+        final var realArch = arch.endsWith("64") || wow64Arch != null && wow64Arch.endsWith("64") ? OS_ARCH.BITS_64 : OS_ARCH.BITS_32;
         return realArch;
     }
 
@@ -57,7 +57,7 @@ public class MediaInfoHelper {
      */
     @Nullable
     public static AspectRatio getClosestRatio(@Nullable final Long width, @Nullable final Long height) {
-        final double ratio = calculateRatio(width, height);
+        final var ratio = calculateRatio(width, height);
 
         return getClosestRatio(ratio);
     }
@@ -71,7 +71,7 @@ public class MediaInfoHelper {
      */
     @Nullable
     public static AspectRatio getClosestRatio(final double aspectRatio) {
-        final AspectRatio result = AspectRatio.getClosestAspectRatio(aspectRatio);
+        final var result = AspectRatio.getClosestAspectRatio(aspectRatio);
 
         return result;
     }
@@ -84,7 +84,7 @@ public class MediaInfoHelper {
      */
     @Nullable
     public static Resolution getClosestResolution(final double resolution) {
-        final Resolution result = Resolution.getClosestResolution(resolution);
+        final var result = Resolution.getClosestResolution(resolution);
 
         return result;
     }
@@ -93,8 +93,8 @@ public class MediaInfoHelper {
         double result = 0;
         if (width != null && height != null) {
             if (width.doubleValue() != 0 && height.doubleValue() != 0) {
-                final double w = width.doubleValue();
-                final double h = height.doubleValue();
+                final var w = width.doubleValue();
+                final var h = height.doubleValue();
 
                 result = w / h;
             }
@@ -111,11 +111,11 @@ public class MediaInfoHelper {
      */
     @NonNull
     public static String readableFileSize(final long size) {
-        String result = "0";
+        var result = "0";
 
         if (size > 0) {
-            final String[] units = new String[] { "B", "kB", "MB", "GB", "TB" };
-            final int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+            final var units = new String[] { "B", "kB", "MB", "GB", "TB" };
+            final var digitGroups = (int) (Math.log10(size) / Math.log10(1024));
             result = new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
         }
 

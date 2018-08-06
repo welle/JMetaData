@@ -45,7 +45,7 @@ public class DataUtilsHelper {
             return false;
         }
 
-        for (int i = 0; i < str.length(); i++) {
+        for (var i = 0; i < str.length(); i++) {
             if (!Character.isDigit(str.charAt(i)) && str.charAt(i) != '.') {
                 return false;
             }
