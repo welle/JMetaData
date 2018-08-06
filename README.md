@@ -1,4 +1,4 @@
-# JMetaData [![Build Status](https://travis-ci.org/welle/JMetaData.svg?branch=master)](https://travis-ci.org/welle/JMetaData) [![quality gate](https://sonarcloud.io/api/project_badges/measure?project=aka.jmetadata%3AJMetaData&metric=alert_status)] (https://sonarcloud.io/dashboard?id=aka.jmetadata%3AJMetaData) #
+# JMetaData [![Build Status](https://travis-ci.org/welle/JMetaData.svg?branch=master)](https://travis-ci.org/welle/JMetaData) [![quality gate](https://sonarcloud.io/api/project_badges/measure?project=aka.jmetadata%3AJMetaData&metric=alert_status)](https://sonarcloud.io/dashboard?id=aka.jmetadata%3AJMetaData) #
 
 ## Quick summary ##
 
